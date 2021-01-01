@@ -1,11 +1,9 @@
-//header declarations
-const express = require('express');
-const app = express();
-
-//server will open at localhost:4000
-const PORT = 4000;
-
+const express = require('express')
+const app = express()
+const port = 3000
 app.get('/', (req, res) => {
-    res.send("testing..")
+  res.send('Hello World!')
 })
-app.listen(PORT);
+app.listen(port, () => {
+  console.log(`TESTING...`)
+})
