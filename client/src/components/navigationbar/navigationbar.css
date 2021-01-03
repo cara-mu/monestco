@@ -1,0 +1,37 @@
+.NavigationItems{
+    background: #ffffff;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 24px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.NavigationMenu{
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-gap: 60px;
+    list-style: none;
+    justify-content: end;
+}
+
+.nav-links{
+    color:black;
+    text-decoration: none;
+}
+
+
+.nav-links-responsive{
+    text-decoration: none;
+    color:black;
+}
+
+img{
+    width: 200px;
+    height: 200px;
+    position: static;
+    left: 20px;
+    cursor: pointer;
+}
+
