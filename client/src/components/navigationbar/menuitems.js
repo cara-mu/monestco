@@ -1,21 +1,21 @@
 export const MenuItems = [
     {
-        title: 'Apparel',
+        title: 'Brand x',
         url: '#',
         cName: 'nav-links'
     },
     {
-        title: 'Fast Food',
+        title: 'Brand x',
         url: '#',
         cName: 'nav-links'
     },
     {
-        title: 'Tech',
+        title: 'Brand x',
         url: '#',
         cName: 'nav-links'
     },
     {
-        title: 'Compare',
+        title: 'Brand x',
         url: '#',
         cName: 'nav-links-responsive'
     },

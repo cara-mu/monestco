@@ -1,14 +1,12 @@
 import logo from './DP.png';
 import NavigationBar from './components/navigationbar/navigationbar';
 import './App.css';
-
+import { BrowserRouter as Router } from 'react-router-dom';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <NavigationBar />
-      </header>
-    </div>
+    <Router>
+      <NavigationBar />
+    </Router>
   );
 }
 
