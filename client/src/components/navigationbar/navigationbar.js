@@ -2,12 +2,15 @@ import React from 'react';
 import { MenuItems } from "./menuitems.js";
 import './navigationbar.css';
 import LogoTransparent from "./graphics/logo_transparent.png"
- 
+import { Link } from 'react-router-dom';
+
 class NavigationBar extends React.Component {
     render() {
         return(
             <nav className = "NavigationItems">
-                <img src = {LogoTransparent} className = "NavigationLogo"/>
+                <Link to = '/' className = "NavigationLogo">
+                    <img src = { LogoTransparent } alt = "logo"/>
+                </Link>
                 <div className = "MenuIcon">
                 </div>
                 <ul className = "NavigationMenu">
