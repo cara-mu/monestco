@@ -1,12 +1,27 @@
 import React, { useState } from 'react';
-import { MenuItems } from "./menuitems.js";
-import LogoTransparent from "./graphics/logo_transparent.png"
-import './dropdown.css';
+import { MenuItems } from "./MenuItems.js";
+import { Link } from 'react-router-dom';
+import './Dropdown.css';
 
 function Dropdown(){
+    const [click, setClick] = useState(false);
+
+    const handleClick = () => setClick(!click);
+
     return(
-        <h1>e</h1>
-    )
+        <ul onClick = {handleClick} className = {click ? 'dropdown-menu clicked' : "dropdown-menu"}>
+            {MenuItems.map((item, index) => {
+                return(
+                <li key = {index}>
+                    <Link className = {item.cName} to= {item.path} onClick = {() =>
+                    setClick(false)}>
+                    {item.title}
+                    </Link>
+                </li>
+                );
+            })}
+        </ul>
+    );
 }
 
 export default Dropdown;

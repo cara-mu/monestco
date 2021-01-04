@@ -1,64 +1,62 @@
 import React, { useState } from 'react';
-import { MenuItems } from "./menuitems.js";
-import './navigationbar.css';
 import LogoTransparent from "./graphics/logo_transparent.png"
 import { Link } from 'react-router-dom';
-import Dropdown from './dropdown.js';
+
+import Dropdown from './Dropdown.js';
+import './NavigationBar.css';
 
 function NavigationBar(){
     const [click, setClick] = useState(false);
     const [dropdown, setDropdown] = useState(false);
+
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
+
+    const onMouseEnter = () => {
+        if(window.innerWidth < 960) {
+            setDropdown(false);
+        }else{
+            setDropdown(true);
+        }
+    };
+
+    const onMouseLeave = () => {
+        if(window.innerWidth < 960) {
+            setDropdown(false);
+        }else{
+            setDropdown(false);
+        }
+    };
 
     return(
         <nav className = "NavigationItems">
             <Link to = '/' className = "NavigationLogo">
                 <img src = { LogoTransparent } alt = "logo"/>
             </Link>
-            <div className = "MenuIcon" onClick ={handleClick}>
-                <i className = {click ? 'fas fa-times' : 'fas fa-bars'}/>
-            </div>
 
-
-            {/* start tutorial */}
-            <ul className ={click ? 'nav-menu active' : 'nav-menu'}>
-            <li className = 'nav-item'>
-                <Link to = '/' className ='nav-links' onClick={closeMobileMenu}>
+            <li className = 'Navigation-Menu-Items'>
+                <Link to = '/' className ='Navigation-Item' onClick={closeMobileMenu}>
                     Apparel
                 </Link>
             </li>
-            <li className = 'nav-item'>
-                <Link to = '/' className ='nav-links' onClick={closeMobileMenu}>
+            <li className = 'Navigation-Menu-Items'>
+                <Link to = '/' className ='Navigation-Item' onClick={closeMobileMenu}>
                     Fast Food
                 </Link>
             </li>
-            <li className = 'nav-item'>
-                <Link to = '/' className ='nav-links' onClick={closeMobileMenu}>
+            <li className = 'Navigation-Menu-Items'>
+                <Link to = '/' className ='Navigation-Item' onClick={closeMobileMenu}>
                     Tech
                 </Link>
             </li>
-            <li className = 'nav-item'>
-                <Link to = '/' className ='nav-links-responsive' onClick={closeMobileMenu}>
+            <li className = 'Navigation-Menu-Items'
+            onMouseEnter={onMouseEnter}
+            onMouseLeave ={onMouseLeave}>
+                <Link to = '/' onClick={closeMobileMenu} className ="Compare-Button">
                     Compare
                 </Link>
                 {dropdown && <Dropdown/>}
             </li>
-            </ul>
-
-
-            {/* end tutorial */}
-            <ul className = "NavigationMenu">
-                {MenuItems.map((item, index) => {
-                    return (
-                        <li key ={index}>
-                            <a className={item.cName} href ={item.url}>
-                                {item.title}
-                            </a>
-                        </li>
-                    )
-                })}
-            </ul>
         </nav>
     );
 }

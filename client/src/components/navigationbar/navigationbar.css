@@ -1,31 +1,44 @@
 .NavigationItems{
     background: #ffffff;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
     height: 80px;
+
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    justify-content: space-around;
+
     font-size: 24px;
     font-weight: 700;
     font-family: 'DM Sans', sans-serif;    
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-.NavigationMenu{
+.Navigation-Menu-Items{
     display: grid;
     grid-template-columns: repeat(5, auto);
-    grid-gap: 60px;
+    grid-gap: 10px;
+
     list-style: none;
-    justify-content: end;
+    text-align: center;
 }
 
-.nav-links{
+.Navigation-Item{
     color:black;
     text-decoration: none;
 }
 
-.nav-links-responsive{
+.Compare-Button{
+    display: block;
+    text-align: center;
+    padding: 0.75rem;
+    margin: 2rem auto;
+
+    border: 3px solid #4F4F4F;
+    border-radius: 15px;
+    width: 80%;
+
     text-decoration: none;
-    color:black;
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
 }
 
 img{
@@ -35,4 +48,5 @@ img{
     left: 20px;
     cursor: pointer;
 }
+
 
