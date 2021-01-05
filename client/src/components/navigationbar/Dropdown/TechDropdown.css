@@ -1,0 +1,22 @@
+.Dropdown-Menu {
+    background:#ffffff;
+    position: absolute;
+    width: 99%;
+    left:0px;
+    top: 60px;
+    list-style: none;
+    text-align: start;
+  }
+  
+  .Dropdown-Menu li {
+    background: #ffffff;
+    cursor: pointer;
+  }
+  
+  .Dropdown-Menu li:hover {
+    background: rgb(255, 255, 255);
+  }
+  
+  .Dropdow-Menu.clicked {
+    display: none;
+  }

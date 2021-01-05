@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import { MenuItems } from './MenuItems';
 import { Link } from 'react-router-dom';
-
 import './ApparelDropdown.css';
 
 function ApparelDropdown() {
   {/* Functions handling click */}
-
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
 
   return (
       <ul
         onClick={handleClick}
-        className={click ? 'dropdown-menu clicked' : 'DropdownMenu'} >  
+        className={click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'} >  
          
         {/* Maps over company items -- currently reference the same JS file due to placeholders */}
 

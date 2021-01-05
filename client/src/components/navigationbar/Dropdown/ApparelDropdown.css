@@ -1,4 +1,4 @@
-.DropdownMenu {
+.Dropdown-Menu {
   background:#ffffff;
   position: absolute;
   width: 99%;
@@ -8,30 +8,15 @@
   text-align: start;
 }
 
-.DropdownMenu li {
+.Dropdown-Menu li {
   background: #ffffff;
   cursor: pointer;
 }
 
-.DropdownMenu li:hover {
-  background: rgb(216, 153, 153);
+.Dropdown-Menu li:hover {
+  background: rgb(255, 255, 255);
 }
 
-.DropdownMenu.clicked {
+.Dropdow-Menu.clicked {
   display: none;
-}
-
-.dropdown-link {
-  display: block;
-  height: 100%;
-  width: 100%;
-  text-decoration: none;
-  color: #fff;
-  padding: 16px;
-}
-
-@media screen and (max-width: 960px) {
-  .fa-caret-down {
-    display: none;
-  }
 }

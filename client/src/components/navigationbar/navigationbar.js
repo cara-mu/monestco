@@ -1,31 +1,74 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './NavigationBar.css';
 import Dropdown from './Dropdown/Dropdown.js';
 import ApparelDropdown from './Dropdown/ApparelDropdown.js'
-
+import FastFoodDropdown from './Dropdown/FastFoodDropdown.js'
+import TechDropdown from './Dropdown/TechDropdown.js'
 import LogoTransparent from "./Graphics/logo_transparent.png"
+import './NavigationBar.css';
 
 function NavigationBar() {
+  {/* Declare variables that will change state when clicked */ }
+  {/* Set to false by default, when a component is triggered, will set to respective state */}
   const [click, setClick] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
 
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
+  {/* Declare additional variables to change state when dropdown menu is triggered*/}
+  {/* Need to define for each navigation item (apparel, tech, etc..) */}
+  const [appDropdown, setAppDropdown] = useState(false);
+  const [foodDropdown, setFoodDropdown] = useState(false);
+  const [techDropdown, setTechDropdown] = useState(false);
 
-  const onMouseEnter = () => {
+  {/* Closes menu when navigated away */}
+  const closeMenu = () => setClick(false);
+
+  {/* Manage apparel dropdown menu*/}
+  const enterAppDropdown = () => {
     if (window.innerWidth < 960) {
-      setDropdown(false);
+      setAppDropdown(false);
     } else {
-      setDropdown(true);
+      setAppDropdown(true);
     }
   };
 
-  const onMouseLeave = () => {
+  const exitAppDropdown = () => {
     if (window.innerWidth < 960) {
-      setDropdown(false);
+      setAppDropdown(false);
     } else {
-      setDropdown(false);
+      setAppDropdown(false);
+    }
+  };
+
+  {/* Manage fast food dropdown menu */}
+  const enterFoodDropdown = () => {
+    if (window.innerWidth < 960) {
+      setFoodDropdown(false);
+    } else {
+      setFoodDropdown(true);
+    }
+  };
+
+  const exitFoodDropdown = () => {
+    if (window.innerWidth < 960) {
+      setFoodDropdown(false);
+    } else {
+      setFoodDropdown(false);
+    }
+  };
+
+  {/* Manage tech dropdown menu */}
+  const enterTechDropdown = () => {
+    if (window.innerWidth < 960) {
+      setTechDropdown(false);
+    } else {
+      setTechDropdown(true);
+    }
+  };
+
+  const exitTechDropdown = () => {
+    if (window.innerWidth < 960) {
+      setTechDropdown(false);
+    } else {
+      setTechDropdown(false);
     }
   };
 
@@ -36,7 +79,7 @@ function NavigationBar() {
         <Link 
             to='/' 
             className='Logo' 
-            onClick={closeMobileMenu}>
+            onClick={closeMenu}>
                 <img src = {LogoTransparent} alt = "logo"/>
         </Link>
 
@@ -44,35 +87,36 @@ function NavigationBar() {
 
         <ul className = {click ? 'nav-menu active' : 'Navigation-Menu'}>
             {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} >
+          <li className='Menu-Item' onMouseEnter={enterAppDropdown} onMouseLeave={exitAppDropdown} >
             <Link 
                 to='/' 
                 className='Navigation-Link' 
-                onClick={closeMobileMenu}>
+                onClick={closeMenu}>
                     Apparel
             </Link>
-            {dropdown && <ApparelDropdown />}
+            {appDropdown && <ApparelDropdown />}
           </li>
 
            {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} >
+          <li className='Menu-Item' onMouseEnter={enterFoodDropdown} onMouseLeave={exitFoodDropdown} >
             <Link
               to='/'
               className='Navigation-Link'
-              onClick={closeMobileMenu} >
+              onClick={closeMenu} >
                  Fast Food 
             </Link>
-            {dropdown && <Dropdown />}
+            {foodDropdown && <FastFoodDropdown />}
           </li>
 
            {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} >
+          <li className='Menu-Item' onMouseEnter={enterTechDropdown} onMouseLeave={exitTechDropdown} >
             <Link
-              to='/products'
+              to='/'
               className='Navigation-Link'
-              onClick={closeMobileMenu} >
-                 Products
+              onClick={closeMenu} >
+                 Tech
             </Link>
+            {techDropdown && <TechDropdown />}
           </li>
 
           {/* Compare button had unique css styling and does not include hover option */}
@@ -80,7 +124,7 @@ function NavigationBar() {
             <Link
               to='/contact-us'
               className='Compare-Button'
-              onClick={closeMobileMenu} >
+              onClick={closeMenu} >
                 Compare
             </Link>
           </li>
