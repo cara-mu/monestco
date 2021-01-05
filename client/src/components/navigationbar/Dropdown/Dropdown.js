@@ -13,8 +13,10 @@ function Dropdown(){
             {MenuItems.map((item, index) => {
                 return(
                 <li key = {index}>
-                    <Link className = {item.cName} to= {item.path} onClick = {() =>
-                    setClick(false)}>
+                    <Link 
+                        className = {item.cName}
+                        to= {item.path}
+                        onClick = { () => setClick(false)} >
                     {item.title}
                     </Link>
                 </li>

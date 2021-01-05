@@ -1,64 +1,92 @@
 import React, { useState } from 'react';
-import LogoTransparent from "./graphics/logo_transparent.png"
 import { Link } from 'react-router-dom';
-
-import Dropdown from './Dropdown.js';
 import './NavigationBar.css';
+import Dropdown from './Dropdown/Dropdown.js';
+import ApparelDropdown from './Dropdown/ApparelDropdown.js'
 
-function NavigationBar(){
-    const [click, setClick] = useState(false);
-    const [dropdown, setDropdown] = useState(false);
+import LogoTransparent from "./Graphics/logo_transparent.png"
 
-    const handleClick = () => setClick(!click);
-    const closeMobileMenu = () => setClick(false);
+function NavigationBar() {
+  const [click, setClick] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
 
-    const onMouseEnter = () => {
-        if(window.innerWidth < 960) {
-            setDropdown(false);
-        }else{
-            setDropdown(true);
-        }
-    };
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
 
-    const onMouseLeave = () => {
-        if(window.innerWidth < 960) {
-            setDropdown(false);
-        }else{
-            setDropdown(false);
-        }
-    };
+  const onMouseEnter = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(true);
+    }
+  };
 
-    return(
-        <nav className = "NavigationItems">
-            <Link to = '/' className = "NavigationLogo">
-                <img src = { LogoTransparent } alt = "logo"/>
-            </Link>
+  const onMouseLeave = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(false);
+    }
+  };
 
-            <li className = 'Navigation-Menu-Items'>
-                <Link to = '/' className ='Navigation-Item' onClick={closeMobileMenu}>
+  return (
+      <nav className = 'Navigation-Bar' >
+          {/* Monest Logo */}
+
+        <Link 
+            to='/' 
+            className='Logo' 
+            onClick={closeMobileMenu}>
+                <img src = {LogoTransparent} alt = "logo"/>
+        </Link>
+
+        {/* Begin Navigation Menu */}
+
+        <ul className = {click ? 'nav-menu active' : 'Navigation-Menu'}>
+            {/* onMouseEnter denotes hover-over */}
+          <li className='Menu-Item' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} >
+            <Link 
+                to='/' 
+                className='Navigation-Link' 
+                onClick={closeMobileMenu}>
                     Apparel
-                </Link>
-            </li>
-            <li className = 'Navigation-Menu-Items'>
-                <Link to = '/' className ='Navigation-Item' onClick={closeMobileMenu}>
-                    Fast Food
-                </Link>
-            </li>
-            <li className = 'Navigation-Menu-Items'>
-                <Link to = '/' className ='Navigation-Item' onClick={closeMobileMenu}>
-                    Tech
-                </Link>
-            </li>
-            <li className = 'Navigation-Menu-Items'
-            onMouseEnter={onMouseEnter}
-            onMouseLeave ={onMouseLeave}>
-                <Link to = '/' onClick={closeMobileMenu} className ="Compare-Button">
-                    Compare
-                </Link>
-                {dropdown && <Dropdown/>}
-            </li>
-        </nav>
-    );
+            </Link>
+            {dropdown && <ApparelDropdown />}
+          </li>
+
+           {/* onMouseEnter denotes hover-over */}
+          <li className='Menu-Item' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} >
+            <Link
+              to='/'
+              className='Navigation-Link'
+              onClick={closeMobileMenu} >
+                 Fast Food 
+            </Link>
+            {dropdown && <Dropdown />}
+          </li>
+
+           {/* onMouseEnter denotes hover-over */}
+          <li className='Menu-Item' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} >
+            <Link
+              to='/products'
+              className='Navigation-Link'
+              onClick={closeMobileMenu} >
+                 Products
+            </Link>
+          </li>
+
+          {/* Compare button had unique css styling and does not include hover option */}
+          <li className='Menu-Item'>
+            <Link
+              to='/contact-us'
+              className='Compare-Button'
+              onClick={closeMobileMenu} >
+                Compare
+            </Link>
+          </li>
+        </ul>
+      </nav>
+  );
 }
 
 export default NavigationBar;
