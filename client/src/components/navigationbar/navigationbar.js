@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Dropdown from './Dropdown/Dropdown.js';
 import ApparelDropdown from './Dropdown/ApparelDropdown.js'
 import FastFoodDropdown from './Dropdown/FastFoodDropdown.js'
 import TechDropdown from './Dropdown/TechDropdown.js'

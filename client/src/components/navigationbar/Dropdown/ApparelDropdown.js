@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MenuItems } from './MenuItems';
 import { Link } from 'react-router-dom';
-import './ApparelDropdown.css';
+import './ApparelDropdown.css'
 
 function ApparelDropdown() {
   {/* Functions handling click */}
@@ -14,7 +14,8 @@ function ApparelDropdown() {
         className={click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'} >  
          
         {/* Maps over company items -- currently reference the same JS file due to placeholders */}
-
+        <h1>Compare</h1>
+        <h2>Category 1</h2>
         { MenuItems.map((item, index) => {
             return (
                 <li key = {index} >

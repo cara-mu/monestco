@@ -66,4 +66,10 @@
     color: rgb(0, 0, 0);
     font-size: 1.5rem;
 }
+
+/* CSS Styling was not working when using the logo's class name, resorted to using img tag instead */
+img {
+  width: 200px;
+  height: 200px;
+}
   
