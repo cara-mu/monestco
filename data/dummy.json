@@ -1,0 +1,269 @@
+[{
+    "_id": "1",
+    "name": "State Capitals",
+    "description": "The capitals of the first 25 states in the U.S. alphabetically.",
+    "creation_date": "1559404138",
+    "tags": [
+        "Geography", "US", "Trivia"
+    ],
+    "card_count": "25",
+    "cards": [{
+        "prompt": "Alabama",
+        "answer": "Montgomery"
+    }, {
+        "prompt": "Alaska",
+        "answer": "Juneau"
+    }, {
+        "prompt": "Arizona",
+        "answer": "Phoenix"
+    }, {
+        "prompt": "Arkansas",
+        "answer": "Little Rock"
+    }, {
+        "prompt": "California",
+        "answer": "Sacramento"
+    }, {
+        "prompt": "Colorado",
+        "answer": "Denver"
+    }, {
+        "prompt": "Connecticut",
+        "answer": "Hartford"
+    }, {
+        "prompt": "Delaware",
+        "answer": "Dover"
+    }, {
+        "prompt": "Florida",
+        "answer": "Tallahassee"
+    }, {
+        "prompt": "Georgia",
+        "answer": "Atlanta"
+    }, {
+        "prompt": "Hawaii",
+        "answer": "Honolulu"
+    }, {
+        "prompt": "Idaho",
+        "answer": "Boise"
+    }, {
+        "prompt": "Illinois",
+        "answer": "Springfield"
+    }, {
+        "prompt": "Indiana",
+        "answer": "Indianapolis"
+    }, {
+        "prompt": "Iowa",
+        "answer": "Des Moines"
+    }, {
+        "prompt": "Kansas",
+        "answer": "Topeka"
+    }, {
+        "prompt": "Kentucky",
+        "answer": "Frankfort"
+    }, {
+        "prompt": "Louisiana",
+        "answer": "Baton Rouge"
+    }, {
+        "prompt": "Maine",
+        "answer": "Augusta"
+    }, {
+        "prompt": "Maryland",
+        "answer": "Annapolis"
+    }, {
+        "prompt": "Massachusetts",
+        "answer": "Boston"
+    }, {
+        "prompt": "Michigan",
+        "answer": "Lansing"
+    }, {
+        "prompt": "Minnesota",
+        "answer": "Saint Paul"
+    }, {
+        "prompt": "Mississippi",
+        "answer": "Jackson"
+    }, {
+        "prompt": "Missouri",
+        "answer": "Jefferson City"
+    }]
+}, {
+    "_id": "2",
+    "name": "French Vocab from FR 101 Midterm with Dr. Pierre Study Set",
+    "description": "Important terminology for any new french student.",
+    "creation_date": "1560052266",
+    "tags": [
+        "Language", "French"
+    ],
+    "card_count": "4",
+    "cards": [{
+        "prompt": "Bonjour",
+        "answer": "Hello"
+    }, {
+        "prompt": "Au revoir",
+        "answer": "Good bye"
+    }, {
+        "prompt": "S'il vous plaît",
+        "answer": "Please"
+    }, {
+        "prompt": "Merci",
+        "answer": "Thank you"
+    }]
+}, {
+    "_id": "3",
+    "name": "MTH 231 Logically Equivalent Rules",
+    "description": "",
+    "creation_date": "1560056401",
+    "tags": [
+        "ComputerScience", "Math", "Logic"
+    ],
+    "card_count": "8",
+    "cards": [{
+        "prompt": "p -> q",
+        "answer": "¬ p v q"
+    }, {
+        "prompt": "p -> q",
+        "answer": "¬ q -> ¬ p"
+    }, {
+        "prompt": "p <-> q",
+        "answer": "( p -> q ) ^ ( q -> p )"
+    }, {
+        "prompt": "¬ ( p ^ q )",
+        "answer": "¬ p v ¬ q"
+    }, {
+        "prompt": "¬ ( p v q )",
+        "answer": "¬ p ^ q"
+    }, {
+        "prompt": "¬ ∀x P(x)",
+        "answer": "∃y ¬ P(x)"
+    }, {
+        "prompt": "¬ ∃y P(x)",
+        "answer": "∀x ¬ P(x)"
+    }, {
+        "prompt": "¬ ∀x ∀y P(x,y)",
+        "answer": "∃x ∃y ¬ P(x,y)"
+    }]
+},
+{
+    "_id": "4",
+    "name": "CSS Selecting",
+    "description": "How to select various html elements.",
+    "creation_date": "1560375138 ",
+    "tags": [
+        "ComputerScience", "Logic", "CSS"
+    ],
+    "card_count": "6",
+    "cards": [{
+        "prompt": "Class identifier",
+        "answer": "."
+    }, {
+        "prompt": "ID identifier",
+        "answer": "#"
+    }, {
+        "prompt": "Select paragraph of div",
+        "answer": "div > p"
+    },{
+
+        "prompt": "Select child of parent",
+        "answer": "parent > child"
+    },{
+
+        "prompt": "Select next sibling paragraph of class special",
+        "answer": "#special + p"
+    },{
+
+        "prompt": "Select any sibling of ID special",
+        "answer": "#special ~ p"
+    }]
+},
+{
+    "_id": "5",
+    "name": "Counting",
+    "description": "Can you count the numbers all the way to 10?",
+    "creation_date": "1560375138 ",
+    "tags": [
+        "ComputerScience", "Logic", "CSS"
+    ],
+    "card_count": "11",
+    "cards": [{
+        "prompt": "What's the first number?",
+        "answer": "0"
+    }, {
+        "prompt": "What comes after 0?",
+        "answer": "1"
+    }, {
+        "prompt": "What comes after 1?",
+        "answer": "2"
+    },{
+
+        "prompt": "What comes after 2?",
+        "answer": "3"
+    },{
+
+        "prompt": "What comes after 3?",
+        "answer": "4"
+    },{
+
+        "prompt": "What comes after 4?",
+        "answer": "5"
+    }, {
+        "prompt": "What comes after 5?",
+        "answer": "6"
+    }, {
+        "prompt": "What comes after 6?",
+        "answer": "7"
+    }, {
+        "prompt": "What comes after 7?",
+        "answer": "8"
+    },{
+
+        "prompt": "What comes after 8?",
+        "answer": "9"
+    },{
+
+        "prompt": "What comes after 9?",
+        "answer": "A"
+    }]
+},
+{
+    "_id": "6",
+    "name": "Cognitive Psychology",
+    "description": "Kathleen Galotti's Cognitive Psychology In and Out of the Labratory",
+    "creation_date": "1560375138 ",
+    "tags": [
+        "Psychology", "Cognition"
+    ],
+    "card_count": "4",
+    "cards": [{
+        "prompt": "Attention",
+        "answer": "Cognitive resources, mental effort, or concentration devoted to a cognitive process."
+    },{
+        "prompt": "brain imaging",
+        "answer": "The construction of pictures of the anatomy and functioning of intact brains through such techniques as computerized axial tomography (CAT, or CT), positron emission tomography (PET), magnetic resonance imaging (MRI), or functional magnetic resonance imaging (fMRI)"
+    },{
+        "prompt": "computer metaphor",
+        "answer": "The basis for the information processing view of the brain. Different types of psychological processes are thought to be analogous to the workings of a computer processor."
+    },{
+        "prompt": "Gestalt psychology",
+        "answer": "A school of psychology emphasizing the study of whole entities rather than simple elements. Gestalt psychologists concentrate on problems of perception and problem solving and argue that people's cognitive experience is not reducible to their experience of simple elements (for example, sensations) but, rather, to the overall structure(s) of their experience."
+    }]
+},
+{
+    "_id": "7",
+    "name": "Pandas",
+    "description": "I love pandas",
+    "creation_date": "1560375138 ",
+    "tags": [
+        "Panda", "Animal"
+    ],
+    "card_count": "4",
+    "cards": [{
+        "prompt": "These magnificent mammals are omnivores. But whilst pandas will occasionally eat small animals and fish, bamboo counts for __ percent of their diet.",
+        "answer": "99"
+    },{
+        "prompt": "Pandas are BIG eaters – every day they fill their tummies for up to 12 hours, shifting up to __ kilograms of bamboo!",
+        "answer": "12"
+    },{
+        "prompt": "Unlike most other bears, pandas do not hibernate. When winter approaches, they head lower down their mountain homes to warmer temperatures, where they continue to chomp away on bamboo!",
+        "answer": "hibernate"
+    },{
+        "prompt": "A panda Can Poop __ Kilos per day",
+        "answer": "28"
+    }]
+}]
