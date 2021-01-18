@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import ApparelDropdown from './Dropdown/ApparelDropdown.js'
 import FastFoodDropdown from './Dropdown/FastFoodDropdown.js'
 import TechDropdown from './Dropdown/TechDropdown.js'
-import LogoTransparent from "./Graphics/logo_transparent.png"
-import './NavigationBar.css';
+import LogoTransparent from '../assets/logo_transparent.png'
+import '../styles/NavigationBar.css';
 
 function NavigationBar() {
   {/* Declare variables that will change state when clicked */ }

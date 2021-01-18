@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MenuItems } from './MenuItems';
 import { Link } from 'react-router-dom';
-import './ApparelDropdown.css'
+import '../../styles/ApparelDropdown.css';
 
 function ApparelDropdown() {
   {/* Functions handling click */}
