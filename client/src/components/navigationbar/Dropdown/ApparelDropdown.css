@@ -32,3 +32,14 @@ h1{
 h2{
   font-size: 16px;
 }
+
+.Companies{
+  column-count: 7;
+  column-fill: auto;
+}
+
+.Category-Titles{
+  top:20px;
+  column-count: 7;
+  column-fill: auto;
+}

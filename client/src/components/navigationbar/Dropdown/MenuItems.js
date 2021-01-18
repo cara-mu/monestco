@@ -1,4 +1,182 @@
+/* THESE ARE ALL PLACE HOLDERS, WILL UPDATE ONCE WE HAVE INFORMATION ON THE COMPANIES, THIS FILE IS LONG
+TO REPLICATE TO PROTOTYPE */
+
 export const MenuItems = [
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Brand x',
+        path: '#',
+        cName: 'nav-links'
+    },
     {
         title: 'Brand x',
         path: '#',
