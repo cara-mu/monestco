@@ -96,6 +96,17 @@ function NavigationBar() {
             {appDropdown && <ApparelDropdown />}
           </li>
 
+          {/* onMouseEnter denotes hover-over */}
+          <li className='Menu-Item' onMouseEnter={enterTechDropdown} onMouseLeave={exitTechDropdown} >
+            <Link
+              to='/'
+              className='Navigation-Link'
+              onClick={closeMenu} >
+                 Tech
+            </Link>
+            {techDropdown && <TechDropdown />}
+          </li>
+
            {/* onMouseEnter denotes hover-over */}
           <li className='Menu-Item' onMouseEnter={enterFoodDropdown} onMouseLeave={exitFoodDropdown} >
             <Link
@@ -107,15 +118,15 @@ function NavigationBar() {
             {foodDropdown && <FastFoodDropdown />}
           </li>
 
-           {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={enterTechDropdown} onMouseLeave={exitTechDropdown} >
+          {/* onMouseEnter denotes hover-over */}
+          <li className='Menu-Item' onMouseEnter={enterFoodDropdown} onMouseLeave={exitFoodDropdown} >
             <Link
               to='/'
               className='Navigation-Link'
               onClick={closeMenu} >
-                 Tech
+                 Beauty 
             </Link>
-            {techDropdown && <TechDropdown />}
+            {foodDropdown && <FastFoodDropdown />}
           </li>
 
           {/* Compare button had unique css styling and does not include hover option */}

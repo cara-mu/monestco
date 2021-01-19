@@ -12,24 +12,11 @@ function FastFoodDropdown() {
       <ul
         onClick={handleClick}
         className={click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'} >  
+
+         {/* First launch will not include */}
          
-        {/* Maps over company items -- currently reference the same JS file due to placeholders */}
+         <h1>coming soon!</h1>
 
-        { MenuItems.map((item, index) => {
-            return (
-                <li key = {index} >
-
-                    {/* Creates a Link object for every item mapped from MenuItems.js */}
-
-                    <Link
-                        className = {item.cName}
-                        to = {item.path}
-                        onClick = {() => setClick(false)} >
-                            {item.title}
-                     </Link>
-                </li>
-             );
-         })}
       </ul>
   );
 }
