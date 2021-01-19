@@ -121,7 +121,7 @@ function NavigationBar() {
           {/* Compare button had unique css styling and does not include hover option */}
           <li className='Menu-Item'>
             <Link
-              to='/contact-us'
+              to='/comparison'
               className='Compare-Button'
               onClick={closeMenu} >
                 Compare
