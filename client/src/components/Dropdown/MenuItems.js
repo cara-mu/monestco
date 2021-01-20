@@ -211,7 +211,7 @@ export const MenuItems = [
         title: 'Brand x',
         path: '#',
         cName: 'nav-links'
-    },
+    }
 ]
 
 /* ALL THE DROPDOWN COMPONENTS USE THE SAME MENUITEM.JS FILE CURRENTLY, SO CSS CHANGES MADE TO EACH LINK IN INDIVIDUAL

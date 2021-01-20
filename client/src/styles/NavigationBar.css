@@ -74,8 +74,9 @@
 }
 
 /* CSS Styling was not working when using the logo's class name, resorted to using img tag instead */
-img {
+  img {
   width: 150px;
   height: 150px;
 }
-  
+
+/* Responsive Design */
