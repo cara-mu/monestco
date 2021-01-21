@@ -10,6 +10,7 @@ function NavigationBar() {
   {/* Declare variables that will change state when clicked */ }
   {/* Set to false by default, when a component is triggered, will set to respective state */}
   const [click, setClick] = useState(false);
+  const state = { clicked: false }
 
   {/* Declare additional variables to change state when dropdown menu is triggered*/}
   {/* Need to define for each navigation item (apparel, tech, etc..) */}
@@ -19,6 +20,8 @@ function NavigationBar() {
 
   {/* Closes menu when navigated away */}
   const closeMenu = () => setClick(false);
+  const handleClick = () => setClick(!click);
+
 
   {/* Manage apparel dropdown menu*/}
   const enterAppDropdown = () => {
@@ -82,6 +85,12 @@ function NavigationBar() {
                 <img src = {LogoTransparent} alt = "logo"/>
         </Link>
 
+        {/* Hamburger menu appears when screen size is smaller/mobile */}
+
+        <div className = "Mobile-Hamburger-Menu" onClick = {handleClick}>
+          {/* Retrieved from Font Awesome CDN */}
+          <i className = {click ? 'fas fa-times' : 'fas fa-bars'}></i>
+        </div>
         {/* Begin Navigation Menu */}
 
         <ul className = {click ? 'nav-menu active' : 'Navigation-Menu'}>
