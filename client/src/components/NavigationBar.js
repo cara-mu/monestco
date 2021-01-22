@@ -5,6 +5,7 @@ import FastFoodDropdown from './Dropdown/FastFoodDropdown.js'
 import TechDropdown from './Dropdown/TechDropdown.js'
 import LogoTransparent from '../assets/logo_transparent.png'
 import '../styles/NavigationBar.css';
+import ComparisonDropdown from './Dropdown/ComparisonDropdown.js';
 
 function NavigationBar() {
   {/* Declare variables that will change state when clicked */ }
@@ -17,6 +18,7 @@ function NavigationBar() {
   const [appDropdown, setAppDropdown] = useState(false);
   const [foodDropdown, setFoodDropdown] = useState(false);
   const [techDropdown, setTechDropdown] = useState(false);
+  const [compareDropdown, setCompareDropdown] = useState(false);
 
   {/* Closes menu when navigated away */}
   const closeMenu = () => setClick(false);
@@ -71,6 +73,23 @@ function NavigationBar() {
       setTechDropdown(false);
     } else {
       setTechDropdown(false);
+    }
+  };
+
+    {/* Manage compare dropdown menu */}
+  const enterCompareDropdown = () => {
+    if (window.innerWidth < 960) {
+      setCompareDropdown(false);
+    } else {
+      setCompareDropdown(true);
+    }
+  };
+
+  const exitCompareDropdown = () => {
+    if (window.innerWidth < 960) {
+      setCompareDropdown(false);
+    } else {
+      setCompareDropdown(false);
     }
   };
 
@@ -138,14 +157,15 @@ function NavigationBar() {
             {foodDropdown && <FastFoodDropdown />}
           </li>
 
-          {/* Compare button had unique css styling and does not include hover option */}
-          <li className='Menu-Item'>
+          {/* Compare button had unique css styling but still has hover dropdown, denoted by having two classNames */}
+          <li className='Menu-Item' onMouseEnter={enterCompareDropdown} onMouseLeave={exitCompareDropdown}>
             <Link
               to='/contact-us'
-              className='Compare-Button'
+              className='Compare-Button Navigation-Link'
               onClick={closeMenu} >
                 Compare
             </Link>
+            {compareDropdown && <ComparisonDropdown />}
           </li>
         </ul>
       </nav>
