@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import '../styles/Comparison.css';
 
 import CompareSearch from '../components/CompareSearch';
 
@@ -13,8 +14,8 @@ function Comparison(props) {
             <Grid container spacing={3}>
                 <Grid item xs={4}>
                     <div style={{marginTop: '15%', marginLeft: '30%'}}>
-                        <p>Brands</p>
-                        <p>Type or click the brands that you want to learn more</p>
+                        <p id="brands">Brands</p>
+                        <p style={{marginBottom: '8%', color: '#4F4F4F'}}>Type or click the brands that you want to learn more</p>
                         <CompareSearch />
                     </div>
                 </Grid>

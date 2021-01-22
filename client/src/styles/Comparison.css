@@ -6,6 +6,7 @@ span {
     margin-right: 3%;
     padding: 2.5%;
     transition: 0.2s;
+    color: #3D3E3F;
 }
 
 span:hover {
@@ -15,4 +16,27 @@ span:hover {
 .categoryfocus {
     background-color: #BFE0CA;
     transition: 0.2s;
+    border-color: #BFE0CA;
+}
+
+hr {
+    margin-top: 10%;
+}
+
+#brands {
+    margin-bottom: '8%';
+    font-family: 'DM Sans';
+    font-weight: 550;
+    font-size: 24px;
+    color: #26385A;
+}
+
+input {
+    padding-top: 6px;
+    padding-bottom: 5px;
+    color: #BDBDBD;
+    padding-left: 27px;
+    border-radius: 6px;
+    border-color: #BDBDBD;
+    margin-top: 4%;
 }

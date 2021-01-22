@@ -1,5 +1,7 @@
 import React from 'react'; 
 import '../styles/Comparison.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 var filterBy = [
     'Clothing', 'Sportswear', 'Shoes', 'All'
@@ -40,7 +42,7 @@ class CompareSearch extends React.Component {
     render() {   
         return (
             <div>
-                <p>Filter by:</p>
+                <p style={{marginBottom: '9%', fontSize: '18px', color: '#3D3E3F'}}>Filter by:</p>
                 <span 
                     className={this.state.clothing ? 'categoryfocus' : null}
                     onClick = {this.toggleClassClothing}
@@ -57,6 +59,10 @@ class CompareSearch extends React.Component {
                     className={this.state.all ? 'categoryfocus' : null}
                     onClick = {this.toggleClassAll}
                 >All</span>
+
+                <hr />
+                <FontAwesomeIcon style={{position: "absolute", marginTop: '22px', marginLeft: '8px', color: 'rgba(50, 50, 50, 0.5'}} icon={faSearch} />
+                <input type="text" onChange={this.handleChange} placeholder="Search the brand" />
             </div>
         )
     }
