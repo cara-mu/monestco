@@ -4,7 +4,6 @@ import ApparelDropdown from './Dropdown/ApparelDropdown.js'
 import FastFoodDropdown from './Dropdown/FastFoodDropdown.js'
 import TechDropdown from './Dropdown/TechDropdown.js'
 import LogoTransparent from "./graphics/logo_transparent.png"
-import './navigationbar.css';
 
 function NavigationBar() {
   {/* Declare variables that will change state when clicked */ }
@@ -96,6 +95,17 @@ function NavigationBar() {
             {appDropdown && <ApparelDropdown />}
           </li>
 
+          {/* onMouseEnter denotes hover-over */}
+          <li className='Menu-Item' onMouseEnter={enterTechDropdown} onMouseLeave={exitTechDropdown} >
+            <Link
+              to='/'
+              className='Navigation-Link'
+              onClick={closeMenu} >
+                 Tech
+            </Link>
+            {techDropdown && <TechDropdown />}
+          </li>
+
            {/* onMouseEnter denotes hover-over */}
           <li className='Menu-Item' onMouseEnter={enterFoodDropdown} onMouseLeave={exitFoodDropdown} >
             <Link
@@ -107,21 +117,21 @@ function NavigationBar() {
             {foodDropdown && <FastFoodDropdown />}
           </li>
 
-           {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={enterTechDropdown} onMouseLeave={exitTechDropdown} >
+          {/* onMouseEnter denotes hover-over */}
+          <li className='Menu-Item' onMouseEnter={enterFoodDropdown} onMouseLeave={exitFoodDropdown} >
             <Link
               to='/'
               className='Navigation-Link'
               onClick={closeMenu} >
-                 Tech
+                 Beauty 
             </Link>
-            {techDropdown && <TechDropdown />}
+            {foodDropdown && <FastFoodDropdown />}
           </li>
 
           {/* Compare button had unique css styling and does not include hover option */}
           <li className='Menu-Item'>
             <Link
-              to='/contact-us'
+              to='/comparison'
               className='Compare-Button'
               onClick={closeMenu} >
                 Compare

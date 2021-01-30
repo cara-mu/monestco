@@ -30,9 +30,9 @@
   }
   
   .Menu-Item {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
-    font-family: 'DM Sans', sans-serif;    
+    font-family: 'DM Sans', sans-serif;
 
     display: flex;
     align-items: center;
@@ -70,12 +70,12 @@
 
     text-decoration: none;
     color: rgb(0, 0, 0);
-    font-size: 1.5rem;
+    font-size: 20px;
 }
 
 /* CSS Styling was not working when using the logo's class name, resorted to using img tag instead */
 img {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
 }
   
