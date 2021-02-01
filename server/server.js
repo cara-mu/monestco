@@ -3,8 +3,6 @@ const app = express()
 const port = process.env.PORT || 3000
 const sqlite3 = require('sqlite3');
 
-const exampleData = require('../data/dummy.json');
-
 const db = new sqlite3.Database('./database.db', (err) => {
   if (err) {
       console.error("Error opening database " + err.message);
