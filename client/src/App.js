@@ -1,6 +1,8 @@
+
 import logo from './assets/DP.png';
 import NavigationBar from './components/NavigationBar';
 import Comparison from './pages/Comparison';
+
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
