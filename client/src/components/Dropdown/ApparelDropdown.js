@@ -15,13 +15,11 @@ function ApparelDropdown() {
          
         {/* Maps over company items -- currently reference the same JS file due to placeholders */}
         <div className = "Category-Titles">
-        <h2>Category 1</h2>
-        <h2>Category 2</h2>
-        <h2>Category 3</h2>
-        <h2>Category 4</h2>
-        <h2>Category 5</h2>
-        <h2>Category 6</h2>
-        <h2>Category 7</h2>
+        <h2>Unisex</h2>
+        <h2>Women</h2>
+        <h2>Sportswear</h2>
+        <h2>Luxury</h2>
+        <h2>Shoes & Accessories</h2>
         </div>
         
         <div className = 'Companies'>
@@ -39,6 +37,9 @@ function ApparelDropdown() {
                 </li>
              );
          })}
+         </div>
+         <div className = 'Brand-Directory'>
+            <li>All Brands A-Z</li>
          </div>
       </ul>
   );

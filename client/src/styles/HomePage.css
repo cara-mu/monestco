@@ -1,0 +1,19 @@
+.About-Us{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 87px;
+    height: 600px;
+    background: #F5F4F2;
+}
+
+.About-Us h1{
+    display: flex;
+
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 47px;
+    color: #26385A;
+}

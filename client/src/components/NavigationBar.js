@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ApparelDropdown from './Dropdown/ApparelDropdown.js'
-import FastFoodDropdown from './Dropdown/FastFoodDropdown.js'
-import TechDropdown from './Dropdown/TechDropdown.js'
 import LogoTransparent from '../assets/logo_transparent.png'
-import '../styles/NavigationBar.css';
+import ApparelDropdown from './Dropdown/ApparelDropdown.js'
+import TechDropdown from './Dropdown/TechDropdown.js'
+import FastFoodDropdown from './Dropdown/FastFoodDropdown.js'
 import ComparisonDropdown from './Dropdown/ComparisonDropdown.js';
+import '../styles/NavigationBar.css';
 
 function NavigationBar() {
   {/* Declare variables that will change state when clicked */ }
@@ -112,7 +112,7 @@ function NavigationBar() {
         </div>
         {/* Begin Navigation Menu */}
 
-        <ul className = {click ? 'nav-menu active' : 'Navigation-Menu'}>
+        <ul className = {click ? 'Nav-Menu active' : 'Navigation-Menu'}>
             {/* onMouseEnter denotes hover-over */}
           <li className='Menu-Item' onMouseEnter={enterAppDropdown} onMouseLeave={exitAppDropdown} >
             <Link 
@@ -157,11 +157,21 @@ function NavigationBar() {
             {foodDropdown && <FastFoodDropdown />}
           </li>
 
+          {/* onMouseEnter denotes hover-over */}
+          <li className='Menu-Item' >
+            <Link
+              to='/'
+              className='Navigation-Link'
+              onClick={closeMenu} >
+                 Methodology
+            </Link>
+          </li>
+
           {/* Compare button had unique css styling but still has hover dropdown, denoted by having two classNames */}
           <li className='Menu-Item' onMouseEnter={enterCompareDropdown} onMouseLeave={exitCompareDropdown}>
             <Link
               to='/contact-us'
-              className='Compare-Button Navigation-Link'
+              className='Compare-Button'
               onClick={closeMenu} >
                 Compare
             </Link>

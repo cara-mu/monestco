@@ -1,9 +1,7 @@
 .Dropdown-Menu {
   background:#ffffff;
-  position: absolute;
+  position: relative;
   width: 99%;
-  left:0px;
-  top: 60px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
   list-style: none;
   text-align: start;
@@ -18,11 +16,7 @@
 }
 
 .Dropdown-Menu li:hover {
-  background: rgb(240, 237, 237);
-}
-
-.Dropdow-Menu.clicked {
-  display: none;
+  background: rgb(255, 255, 255);
 }
 
 h1{
@@ -34,12 +28,17 @@ h2{
 }
 
 .Companies{
-  column-count: 7;
+  column-count: 5;
+  line-height: 25px;
   column-fill: auto;
 }
 
 .Category-Titles{
-  top:20px;
+  color: #3D3E3F;
   column-count: 7;
   column-fill: auto;
+}
+
+.Brand-Directory{
+  right: 40px;
 }
