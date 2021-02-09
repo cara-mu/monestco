@@ -17,7 +17,8 @@
   }
 
   .nav-links:hover{
-    color: pink;
+    background-color: #ecf1f7;
+    transition: all 0.2s ease-out;
   }
 
   .Navigation-Menu {

@@ -2,7 +2,7 @@ import logo from './assets/DP.png';
 import NavigationBar from './components/NavigationBar';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Uniqlo from './components/Companies/uniqlo';
+import Company from './components/Companies/Company';
 import HomePage from './components/Home/HomePage';
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Route path = '/' exact component = {HomePage}/>
       </Switch>
       <Switch>
-        <Route path = '/components/Companies/uniqlo.js' exact component = {Uniqlo}/>
+        <Route path = '/Companies/:companyName' exact component = {Company}/>
       </Switch>
     </Router>
   );

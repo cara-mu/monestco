@@ -1,19 +1,38 @@
 .About-Us{
     display: flex;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
+
     top: 87px;
     height: 600px;
     background: #F5F4F2;
 }
 
 .About-Us h1{
-    display: flex;
-
     font-family: DM Sans;
     font-style: normal;
     font-weight: bold;
     font-size: 36px;
     line-height: 47px;
     color: #26385A;
+}
+
+.About-Us img{
+    height: 400px;
+    width: 630px;
+}
+
+.Goals{
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.Goals h1{
+    color: #26385A;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 34px;
 }
