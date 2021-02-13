@@ -1,4 +1,4 @@
-span {
+#filterbutton, #filterbutton1, #filterbutton2, #filterbutton3 {
     border: solid;
     border-width: 1px;
     border-color: #BDBDBD;
@@ -6,13 +6,131 @@ span {
     margin-right: 3%;
     padding: 2.5%;
     transition: 0.2s;
+    color: #3D3E3F;
 }
 
-span:hover {
+#filterbutton, #filterbutton1, #filterbutton2, #filterbutton3 span:hover {
     cursor: pointer;
 }
 
 .categoryfocus {
     background-color: #BFE0CA;
     transition: 0.2s;
+    border-color: #BFE0CA;
+}
+
+hr {
+    margin-top: 10%;
+}
+
+#brands {
+    margin-bottom: '8%';
+    font-family: 'DM Sans';
+    font-weight: 550;
+    font-size: 24px;
+    color: #26385A;
+}
+
+#apparel {
+    font-weight: 450;
+    font-size: 30px;
+    color: #26385A;
+}
+
+input {
+    padding-top: 6px;
+    padding-bottom: 5px;
+    color: #BDBDBD;
+    padding-left: 27px;
+    border-radius: 6px;
+    border-color: #BDBDBD;
+    margin-top: 4%;
+}
+
+#colors {
+    font-size: 14px;
+    margin-top: 3%;
+}
+
+#abvavg {
+    background-color: #93CE8F;
+    padding-left: 17px;
+    margin-left: 32%;
+    margin-bottom: 1%;
+}
+
+#avg {
+    background-color: #FFEB84;
+    padding-left: 17px;
+    margin-left: 5%;
+}
+
+#blwavg {
+    background-color: #FBB178;
+    padding-left: 17px;
+    margin-left: 5%;
+    margin-bottom: 1%;
+}
+
+.avgtext {
+    margin-left: 1%;
+    font-size: 12px;
+}
+
+.apparelsearch input {
+    border: 0;
+    border-bottom: 1px solid black;
+    outline: 0;
+    background: 'transparent';
+    margin-right: 1%;
+    margin-left: 2%;
+    color: #3D3E3F;
+    font-weight: 700;
+    width: 17%;
+}
+
+::placeholder {
+    color: #BDBDBD;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.rendercompanies {
+    transition: 2s;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 4%;
+}
+
+.square {
+    background-color: rgba(196, 196, 196, 0.3);
+    width: 188px;
+    padding: 10px;
+    border-radius: 21px 21px 0 0;
+}
+
+.squarecontainer {
+    margin-top: 4%;
+    height: 98px;
+}
+
+.circle {
+    border-radius: 50px;
+    width: 29px;
+    height: 29px;
+    background-color:rgba(196, 196, 196, 0.3);
+    margin-left: 6%;
+    margin-top: 3.5%;
+    background-color: #26385A;
+}
+
+.arrowdown{
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 4px;
+    margin-left: 33%;
+    margin-top: 24%;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
 }
