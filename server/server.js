@@ -1,7 +1,10 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3080
+app.set('port', port)
 const sqlite3 = require('sqlite3');
+var cors = require("cors");
+app.use(cors());
 
 const db = new sqlite3.Database('./database.db', (err) => {
   if (err) {
@@ -10,20 +13,62 @@ const db = new sqlite3.Database('./database.db', (err) => {
 
       db.run('CREATE TABLE company( \
           company_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\
-          name NVARCHAR(20)  NOT NULL,\
-          slogan NVARCHAR(100)\
+          name NVARCHAR(20) NOT NULL,\
+          subsidiary INTEGER, \
+          description NVARCHAR(100), \
+          politicalaffiliation NVARCHAR(100), \
+          logo NVARCHAR(100), \
+          industrystandards_id INTEGER UNIQUE NOT NULL, \
+          industry_id INTEGER NOT NULL \
+          \
       )', (err) => {
           if (err) {
-              console.log("Table already exists.");
-          }else{
-            let insert = 'INSERT INTO company (name, slogan) VALUES (?,?)';
-            db.run(insert, ["Nike", "Just do it"]);
-            db.run(insert, ["Adidas", "3 stripes"]);
-            db.run(insert, ["State Farm", "Like a good neighbor State Farm is there!!"]);
-
+              console.log("Company table already exists.");
+          } else{
+            let insert = 'INSERT INTO company (name, industrystandards_id, industry_id) VALUES (?,?,?)';
+            db.run(insert, ["Nike", 1, 1]);
+            db.run(insert, ["Adidas", 2, 1]);
+            db.run(insert, ["Timberland", 3, 1]);
           }
       });
-  }
+
+      db.run('CREATE TABLE industrystandards( \
+          industrystandards_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \
+          company_id INTEGER UNIQUE NOT NULL, \
+          diversityandinclusion INTEGER, \
+          workerexploitation INTEGER, \
+          wasteandpollution INTEGER, \
+          sustainablematerials INTEGER \
+          \
+      )', (err) => {
+          if (err) {
+            console.log("Industry Standards table already exists.");
+          } else {
+            let insert = 'INSERT INTO industrystandards (company_id, diversityandinclusion, workerexploitation, wasteandpollution, sustainablematerials) VALUES (?,?,?,?,?)';
+            db.run(insert, [1, 20, 40, 50, 70]);
+            db.run(insert, [2, 80, 50, 10, 30]);
+            db.run(insert, [3, 90, 15, 50, 30]);
+          }
+      });
+
+      db.run('CREATE TABLE industry( \
+        industry_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \
+        industry NVARCHAR(20), \
+        diversityandinclusion INTEGER, \
+        workerexploitation INTEGER, \
+        wasteandpollution INTEGER, \
+        sustainablematerials INTEGER \
+        \
+    )', (err) => {
+        if (err) {
+          console.log("Industry table already exists.");
+        } else {
+          let insert = 'INSERT INTO industry (industry, diversityandinclusion, workerexploitation, wasteandpollution, sustainablematerials) VALUES (?,?,?,?,?)';
+          db.run(insert, ["Shoes", 50, 50, 50, 50]);
+        }
+    });
+
+    }
 });
 
 app.get('/', (req, res) => {
@@ -45,6 +90,46 @@ app.get('/company/:companyID', function(req,res,next){
 
     next();
 });
+})
+
+app.post('/companydetails', (req, res) => {
+  const companyname = req.query['0'];
+  db.all("SELECT diversityandinclusion, workerexploitation, wasteandpollution, sustainablematerials FROM industrystandards WHERE company_id IN (SELECT company_id FROM company WHERE name = ?)", [companyname], (err, rows) => {
+    if (err) {
+      res.status(400).json({ "error": err.message });
+      return;
+    }
+    if(rows){
+      res.status(200).json({ rows });
+      console.log(rows);
+    }
+  });
+})
+
+app.get('/allcompanies', (req, res) => {
+  db.all("SELECT name FROM company", [], (err, rows) => {
+    if (err) {
+      res.status(400).json({ "error": err.message });
+      return;
+    }
+    if(rows){
+      res.status(200).json({ rows });
+    }
+  });
+
+});
+
+app.get('/industry', (req, res) => {
+  var industryID = 1;
+  db.all("SELECT diversityandinclusion, workerexploitation, wasteandpollution, sustainablematerials FROM industry WHERE industry_id = ?", [industryID], (err, rows) => {
+    if (err) {
+      res.status(400).json({ "error": err.message });
+      return;
+    }
+    if(rows){
+      res.status(200).json({ rows });
+    }
+  });
 })
 
 //Comparison Page with these 3 companies

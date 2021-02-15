@@ -9,7 +9,9 @@ import CompareTool from '../components/CompareTool';
 
 import CompareSearch from '../components/CompareSearch';
 
-function Comparison(props) {
+class Comparison extends React.Component {
+
+    render() {
     return (
         <div>
             <Grid container>
@@ -25,8 +27,8 @@ function Comparison(props) {
                 </Row>
                 {/* </Grid> */}
                 {/* <Grid item xs={8} style={{border: 'solid'}}> */}
-                <Row style={{marginLeft: '5%', width: '70%', border: ''}}>
-                    <div style={{textAlign: 'center', marginTop: '14.5%', marginBottom: '2%', paddingLeft: '6%'}}>
+                <Row style={{marginLeft: '5%', width: '70%', border: 'dotted'}}>
+                    <div style={{textAlign: 'center', marginTop: '14%', marginBottom: '2%', paddingLeft: '9%'}}>
                         <p id ="apparel">Apparel Comparison Chart</p>
                         <p style={{lineHeight: '10px'}}>The percentages represent the score brands received based on our methodology.</p>
                         <p>The higher the percentage, the better the brand is at addressing the issue.</p>
@@ -43,7 +45,7 @@ function Comparison(props) {
                 </Row>
             </Grid>
         </div>
-    )
+    )}
 }
 
 export default Comparison;
