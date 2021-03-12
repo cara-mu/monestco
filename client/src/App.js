@@ -7,6 +7,7 @@ import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Methodology from './pages/Methodology';
 import BrandBreakdown from './pages/BrandBreakdown';
+import BrandDirectory from './pages/BrandDirectory';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/comparison" exact render={() => <Comparison />} />
       <Route path="/methodology" exact render ={()=> <Methodology/>}/>
       <Route path="/brand-breakdown" exact render ={()=> <BrandBreakdown/>}/>
+      <Route path="/brand-directory" exact render={()=><BrandDirectory/>}/>
     </Router>
   );
 }

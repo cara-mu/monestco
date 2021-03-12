@@ -1,0 +1,68 @@
+.brand_directory {
+    height: 100%;
+    width: 100%;
+}
+
+.brand_directory_title {
+    display: flex;
+    justify-content: center;
+    margin-top: 87px;
+}
+
+.brand_directory_title p {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 38px;
+    color: #3D3E3F;
+}
+
+.brand_directory_list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 100px;
+}
+
+.brand_directory_list a{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 38px;
+    color: #26385A;
+}
+
+hr {
+    margin: 0 90px !important;
+}
+
+.brand_directory_eachRow{
+    display: flex;
+    min-height: 70px;
+}
+
+.brand_directory_eachRow .letter {
+    margin-left:10em;
+}
+
+.row {
+    width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+    .brand_directory_list{
+        padding: 0px;
+    }
+    hr{
+        margin: 0% !important;
+    }
+    .brand_directory_eachRow .letter {
+        margin-left:2em;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
