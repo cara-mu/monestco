@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Company from './components/Companies/Company';
 import HomePage from './components/Home/HomePage';
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <Router>

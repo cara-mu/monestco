@@ -3,7 +3,6 @@
     justify-content: flex-start;
     align-items: center;
 
-    top: 87px;
     height: 600px;
     background: #F5F4F2;
 }
@@ -15,6 +14,14 @@
     font-size: 36px;
     line-height: 47px;
     color: #26385A;
+}
+
+.About-Us h3 {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #9A9B9C;
 }
 
 .About-Us img{
@@ -30,9 +37,82 @@
 
 .Goals h1{
     color: #26385A;
+    text-align: center;
     font-family: DM Sans;
     font-style: normal;
     font-weight: bold;
     font-size: 24px;
     line-height: 34px;
+}
+
+.Goal-Panel {
+    width: 400px;
+    height: 208px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
+}
+.Goal-Panel h1 {
+    color: #26385A;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.Goal-Panel p{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    color: #3D3E3F, 100%;
+    font-size:14px;
+}
+
+.Goal-Panel img {
+    width: 60px;
+    height: 58px;
+}
+.Goal-Positioning{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    justify-content: center;
+}
+
+.Video{
+    background: #F5F4F2;
+    height: 600px;
+    display: flex;
+    align-items: center;
+}
+
+.About-Us-Positioning label{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+
+    color: #9A9B9C;
+}
+
+#button{
+    width: 94px;
+    height: 40px;
+    font-family: DM Sans;
+    font-style: normal;
+
+    border-style: none;
+    border-radius: 13px;
+    background-color: #F29A72;
+
+    color: #ffffff;
+
+    margin-left: 5%;
+}
+
+#fetched_email{
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box; 
+    border-radius: 13px;
 }

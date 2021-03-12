@@ -1,33 +1,21 @@
-.Layout{
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-gap: 20px;
-}
-
-.Left-Menu {
-    display: flex;
-    justify-content: center;
-    top: 40px;
-}
-
-.Left-Menu h1{
+.Layout h1{
     font-family: DM Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 48px;
 }
 
-.Right-Menu{
-
-    top: 60px;
-}
 .Decorative-Line{
-    
     border-bottom: solid 3px #3D3E3F;
+    width: 90%;
     height: 6px;
 }
 
-.Right-Menu h2{
+.Right-Menu{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
     color:#3D3E3F;
 }
 
@@ -35,4 +23,68 @@
     display: grid;
     grid-column-start: 1;
     grid-column-end: 3;
+}
+
+.Description{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: #3D3E3F;
+
+    padding-bottom: 20%;
+}
+
+.Description img {
+    width: 200px;
+    height: 200px;
+}
+
+.Fun-Fact{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #3D3E3F;
+
+    padding-bottom: 1%;
+}
+
+.Fun-Fact img {
+    height: 15px;
+    width: 15px;
+}
+
+.FunFact-Decorative-Line{
+    border-bottom: solid 1px #3D3E3F;
+    width: 90%;
+    height: 6px;
+    padding-bottom: 1%;
+}
+
+.Fun-Fact-Dropdown{
+    background-color: #F2F2F2;
+    width: 90%;
+}
+.In-The-News img{
+    width: 350px;
+    height: 250px;
+}
+
+.News-Description {
+    font-family: DM Sans;
+    font-style: normal;
+    color: #3D3E3F;
+}
+
+.News-Description h1{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.News-Description p{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
 }
