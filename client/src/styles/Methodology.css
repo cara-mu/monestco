@@ -1,0 +1,15 @@
+.leftIcon {
+    background: #ABD4B7;
+    border-radius: 0px 12.5px 12.5px 0px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: bold;
+    color:white;
+    height: 70px;
+}
+
+.listItem {
+    margin-left: 10px;
+}

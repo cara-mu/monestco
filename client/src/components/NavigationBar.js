@@ -6,7 +6,6 @@ import TechDropdown from './Dropdown/TechDropdown.js'
 import FastFoodDropdown from './Dropdown/FastFoodDropdown.js'
 import ComparisonDropdown from './Dropdown/ComparisonDropdown.js';
 import '../styles/NavigationBar.css';
-
 function NavigationBar() {
   {/* Declare variables that will change state when clicked */ }
   {/* Set to false by default, when a component is triggered, will set to respective state */}
@@ -170,7 +169,7 @@ function NavigationBar() {
           {/* Compare button had unique css styling but still has hover dropdown, denoted by having two classNames */}
           <li className='Menu-Item' onMouseEnter={enterCompareDropdown} onMouseLeave={exitCompareDropdown}>
             <Link
-              to='/contact-us'
+              to='/comparison'
               className='Compare-Button'
               onClick={closeMenu} >
                 Compare

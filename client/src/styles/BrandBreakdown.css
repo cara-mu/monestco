@@ -1,0 +1,38 @@
+.breakdown_page{
+    height: 100%;
+    width: 100%;
+}
+
+.breakdown_logo{
+    display: flex;
+    justify-content: center;
+}
+
+.breakdown_logoImage {
+    margin-top: 87px;
+    width: 115.67px;
+    height: 115.37px;
+}
+
+.breakdown_logoText {
+    margin-top: 118px;
+    margin-left:50px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 66px;
+    color: #3D3E3F;
+}
+.breakdown_accordian{
+    display: flex;
+    justify-content: space-around;
+}
+
+.table_column{
+    margin-left: 50px;
+}
+
+.table_column_up {
+    margin-left: 85px;
+}
