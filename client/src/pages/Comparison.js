@@ -27,7 +27,7 @@ class Comparison extends React.Component {
                 </Row>
                 {/* </Grid> */}
                 {/* <Grid item xs={8} style={{border: 'solid'}}> */}
-                <Row style={{marginLeft: '5%', width: '70%', border: 'dotted'}}>
+                <Row style={{marginLeft: '5%', width: '70%', border: ''}}>
                     <div style={{textAlign: 'center', marginTop: '14%', marginBottom: '2%', paddingLeft: '9%'}}>
                         <p id ="apparel">Apparel Comparison Chart</p>
                         <p style={{lineHeight: '10px'}}>The percentages represent the score brands received based on our methodology.</p>
