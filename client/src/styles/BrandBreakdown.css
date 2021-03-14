@@ -36,3 +36,36 @@
 .table_column_up {
     margin-left: 85px;
 }
+
+.upper_border {
+    width: 800px;
+}
+
+.inside_border {
+    width: 650px;
+}
+
+@media only screen and (max-width: 750px) {
+    .upper_border {
+        width: 550px;
+    }
+    
+    .inside_border {
+        width: 350px;
+    }    
+
+}
+
+@media only screen and (max-width: 555px) {
+    .upper_border {
+        width: 450px;
+    }
+    
+    .inside_border {
+        width: 150px;
+    }    
+
+}
+.MuiAccordion-rounded:last-child{
+    box-shadow: none;
+}
