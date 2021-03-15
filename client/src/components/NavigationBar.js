@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ApparelDropdown from './Dropdown/ApparelDropdown.js'
-import FastFoodDropdown from './Dropdown/FastFoodDropdown.js'
-import TechDropdown from './Dropdown/TechDropdown.js'
 import LogoTransparent from '../assets/logo_transparent.png'
+import ApparelDropdown from './Dropdown/ApparelDropdown.js'
+import TechDropdown from './Dropdown/TechDropdown.js'
+import FastFoodDropdown from './Dropdown/FastFoodDropdown.js'
+import ComparisonDropdown from './Dropdown/ComparisonDropdown.js';
 import '../styles/NavigationBar.css';
 function NavigationBar() {
   {/* Declare variables that will change state when clicked */ }
   {/* Set to false by default, when a component is triggered, will set to respective state */}
   const [click, setClick] = useState(false);
+  const state = { clicked: false }
 
   {/* Declare additional variables to change state when dropdown menu is triggered*/}
   {/* Need to define for each navigation item (apparel, tech, etc..) */}
   const [appDropdown, setAppDropdown] = useState(false);
   const [foodDropdown, setFoodDropdown] = useState(false);
   const [techDropdown, setTechDropdown] = useState(false);
+  const [compareDropdown, setCompareDropdown] = useState(false);
 
   {/* Closes menu when navigated away */}
   const closeMenu = () => setClick(false);
+  const handleClick = () => setClick(!click);
+
 
   {/* Manage apparel dropdown menu*/}
   const enterAppDropdown = () => {
@@ -70,6 +75,23 @@ function NavigationBar() {
     }
   };
 
+    {/* Manage compare dropdown menu */}
+  const enterCompareDropdown = () => {
+    if (window.innerWidth < 960) {
+      setCompareDropdown(false);
+    } else {
+      setCompareDropdown(true);
+    }
+  };
+
+  const exitCompareDropdown = () => {
+    if (window.innerWidth < 960) {
+      setCompareDropdown(false);
+    } else {
+      setCompareDropdown(false);
+    }
+  };
+
   return (
       <nav className = 'Navigation-Bar' >
           {/* Monest Logo */}
@@ -81,9 +103,15 @@ function NavigationBar() {
                 <img src = {LogoTransparent} alt = "logo"/>
         </Link>
 
+        {/* Hamburger menu appears when screen size is smaller/mobile */}
+
+        <div className = "Mobile-Hamburger-Menu" onClick = {handleClick}>
+          {/* Retrieved from Font Awesome CDN */}
+          <i className = {click ? 'fas fa-times' : 'fas fa-bars'}></i>
+        </div>
         {/* Begin Navigation Menu */}
 
-        <ul className = {click ? 'nav-menu active' : 'Navigation-Menu'}>
+        <ul className = {click ? 'Nav-Menu active' : 'Navigation-Menu'}>
             {/* onMouseEnter denotes hover-over */}
           <li className='Menu-Item' onMouseEnter={enterAppDropdown} onMouseLeave={exitAppDropdown} >
             <Link 
@@ -128,14 +156,25 @@ function NavigationBar() {
             {foodDropdown && <FastFoodDropdown />}
           </li>
 
-          {/* Compare button had unique css styling and does not include hover option */}
-          <li className='Menu-Item'>
+          {/* onMouseEnter denotes hover-over */}
+          <li className='Menu-Item' >
+            <Link
+              to='/'
+              className='Navigation-Link'
+              onClick={closeMenu} >
+                 Methodology
+            </Link>
+          </li>
+
+          {/* Compare button had unique css styling but still has hover dropdown, denoted by having two classNames */}
+          <li className='Menu-Item' onMouseEnter={enterCompareDropdown} onMouseLeave={exitCompareDropdown}>
             <Link
               to='/comparison'
               className='Compare-Button'
               onClick={closeMenu} >
                 Compare
             </Link>
+            {compareDropdown && <ComparisonDropdown />}
           </li>
         </ul>
       </nav>

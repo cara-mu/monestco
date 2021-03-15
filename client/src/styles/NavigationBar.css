@@ -12,36 +12,41 @@
   
   .nav-links{
     font-size: 14px;
-    color: black;
+    color: #3D3E3F;
     text-decoration: none;
   }
 
+  .nav-links:hover{
+    background-color: #ecf1f7;
+    transition: all 0.2s ease-out;
+  }
+
   .Navigation-Menu {
-    right: 20%;
+    right: 50%;
     display: grid;
-    grid-template-columns: repeat(5, auto);
-    grid-gap: 80px;
+    grid-template-columns: repeat(6, auto);
+    grid-gap: 15px;
 
     list-style: none;
     text-align: center;
     width: 70vw;
-    justify-content: end;
+    justify-content:center;
     margin-right: 2rem;
   }
   
   .Menu-Item {
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 700;
     font-family: 'DM Sans', sans-serif;
 
     display: flex;
     align-items: center;
-    height: 80px;
   }
   
   .Navigation-Link {
-    color: rgb(0, 0, 0);
+    color: #26385A;
     text-decoration: none;
+    line-height: 50%;
     padding: 0.5rem 1rem;
   }
   
@@ -54,23 +59,23 @@
     display: none;
   }
   
-  .menu-icon {
+  .Mobile-Hamburger-Menu {
     display: none;
   }
 
-  .Compare-Button{
+  .Compare-Button {
     display: block;
     text-align: center;
     padding: 0.75rem;
     margin: 2rem auto;
 
-    border: 3px solid #4F4F4F;
+    border: 3px solid #26385A;
     border-radius: 15px;
-    width: 80%;
+    width: 100%;
 
     text-decoration: none;
-    color: rgb(0, 0, 0);
-    font-size: 20px;
+    color: #26385A;
+    font-size: 16px;
 }
 
 /* CSS Styling was not working when using the logo's class name, resorted to using img tag instead */
@@ -80,3 +85,42 @@
 }
 
 /* Responsive Design */
+@media screen and (max-width: 660px){
+  /* hides the navigation bar and displays it under the hamburger menu */
+  .Navigation-Menu{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    top: 100px;
+    left: -100%;
+  }
+
+  .Navigation-Link{
+    width: 80%;
+    line-height: 60px;
+    border-bottom: 1px solid #000;
+  }
+  
+  .Nav-Menu.active {
+    background-color: #ffffff;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    left: 0%;
+    top: 60px;
+    transition: all 0.5s ease;
+}
+  
+  .Mobile-Hamburger-Menu{
+    display: block;
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+}
+

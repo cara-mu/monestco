@@ -3,213 +3,133 @@ TO REPLICATE TO PROTOTYPE */
 
 export const MenuItems = [
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Abercrombie & Fitch',
+        path: '/companies/Abercrombie-&-Fitch',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'American Eagle',
+        path: '/companies/American-Eagle',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Aritizia',
+        path: '/companies/Aritizia',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Banana Republic',
+        path: '/companies/Banana-Republic',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Boohoo',
+        path: '/companies/Boohoo',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Calvin Klein',
+        path: '/companies/Calvin-Klein',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Club Monaco',
+        path: '/companies/Club-Monaco',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Forever 21',
+        path: '/companies/Forever-21',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'GAP',
+        path: '/companies/GAP',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'GUESS',
+        path: '/companies/GUESS',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'H&M',
+        path: '/companies/H&M',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'J. CREW',
+        path: '/companies/J-CREW',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Levis',
+        path: '/companies/Levis',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Mango',
+        path: '/companies/Mango',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Patagonia',
+        path: '/companies/Patagonia',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Ralph Lauren',
+        path: '/companies/Ralph-Lauren',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Roots',
+        path: '/companies/Roots',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'The North Face',
+        path: '/companies/The-North-Face',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Uniqlo',
+        path: '/companies/Uniqlo',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Urban Outfitters',
+        path: '/companies/Urban-Outfitters',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Patagonia',
+        path: '/companies/Patagonia',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Patagonia',
+        path: '/companies/Patagonia',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Patagonia',
+        path: '/companies/Patagonia',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Patagonia',
+        path: '/companies/Patagonia',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Patagonia',
+        path: '/companies/Patagonia',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
+        title: 'Patagonia',
+        path: '/companies/Patagonia',
         cName: 'nav-links'
     }
 ]

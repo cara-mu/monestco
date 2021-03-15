@@ -1,0 +1,58 @@
+.Dropdown-Menu {
+    background:#ffffff;
+    position: absolute;
+    width: 99%;
+    left:0px;
+    top: 80px;
+    list-style: none;
+    text-align: start;
+  }
+  
+  .Dropdown-Menu li {
+    background: #ffffff;
+    cursor: pointer;
+  }
+  
+  .Dropdown-Menu li:hover {
+    background: rgb(255, 255, 255);
+  }
+  
+  .Dropdow-Menu.clicked {
+    display: none;
+  }
+
+  .Comparison-Options {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+  }
+
+  h1{
+    display: flex;
+    justify-content: flex-start;
+    font-size: 16px;
+    color: #3D3E3F;
+  }
+
+  .Selection-Box{  
+    width: 330px;
+    height: 150px;
+    background: aqua;
+    border-radius: 7px;
+  }
+  
+  .Apparel{
+    background: #E3F0FD;
+  }
+
+  .Tech{
+      background:#D3D8E1;
+  }
+
+  .Fast-Food{
+      background: #FAD8BE; 
+  }
+
+  .Beauty{
+      background: #D9ECDF;
+  }
