@@ -4,6 +4,7 @@ import  EducateImg from '../../assets/educate.png'
 import  EmpowerImg from '../../assets/empower.png'
 import '../../styles/HomePage.css';
 import * as emailjs from "emailjs-com";
+import WindowLogo from '../../assets/window.svg';
 
 function HomePage(){
     function sendEmail(e) {
@@ -60,8 +61,30 @@ function HomePage(){
                 </div>
                 {/* sorry i got lazy with positioning */}
                 <br></br><br></br><br></br><br></br><br></br>
-            <div className = 'Video'>
-                <h1>video</h1>
+            <div className = 'Video d-flex justify-content-center'>
+                <div className="embed-responsive embed-responsive-21by9" style={{width:600,height:400}}>
+                    <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowFullScreen></iframe>
+                </div>
+            </div>
+            <div className="sign_up_section mt-5">
+                <div className="d-flex justify-content-center"><p className="window_header_text">Make your purchases more purposeful</p></div>
+                <div className="row ">
+                    <div className="col-12 col-md-6 d-flex justify-content-center">
+                        <img src={WindowLogo} className="window_logo"/>
+                    </div>
+                    <div className="col-12 col-md-6">
+                            <p className="text_window">We help empower you to hold<br/> corporations to higher ethical<br/> standards. Understand and <br/>compare brands’ impact at a <br/>glance with Monest
+                            </p>
+                            <p className="sign_up_text">Join our Chrome extension waitlist</p>
+                            <form className="form-inline">
+                                <div className="form-group mx-sm-3 mb-2">
+                                    <label for="email" className="sr-only">Email</label>
+                                    <input type="email" className="form-control input_sign_up" id="email" placeholder="Email"/>
+                                </div>
+                                <button type="submit" className="btn btn-primary mb-2 sign_up_button">Sign Up</button>
+                                </form>
+                    </div>
+                </div>
             </div>
         </Fragment>)
 }
