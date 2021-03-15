@@ -1,0 +1,78 @@
+
+{
+    "industryaverages":
+        {
+            "apparel": {
+                "diversityandinclusion": 50,
+                "workerexploitation": 50,
+                "wasteandpollution": 50,
+                "sustainablematerials": 50
+            },
+            "tech": {
+                "diversityandinclusion": 50,
+                "workerexploitation": 50,
+                "wasteandpollution": 50,
+                "sustainablematerials": 50
+            }
+        },
+    "companies":
+        [
+            {
+                "name": "Nike",
+                "industry": "apparel",
+                "categories": [
+                    "shoes", "sportswear"
+                ],
+                "description": "just do it??.",
+                "fun facts": [
+                    "Nike headquarters are in beaverton??", "air forces", "knight"
+                ],
+                "diversityandinclusion": 40,
+                "workerexploitation": 50,
+                "wasteandpollution": 60,
+                "sustainablematerials": 50
+            }, {
+                "name": "American Eagle",
+                "industry": "apparel",
+                "categories": [
+                    "clothes"
+                ],
+                "description": "best clothes here",
+                "fun facts": [
+                    "originated because of the eagle", "great workplace"
+                ],
+                "diversityandinclusion": 50,
+                "workerexploitation": 50,
+                "wasteandpollution": 50,
+                "sustainablematerials": 20
+            },  {
+                "name": "Facebook",
+                "industry": "tech",
+                "categories": [
+                    "social media"
+                ],
+                "description": "social media company",
+                "fun facts": [
+                    "logo is blue", "great tech company"
+                ],
+                "diversityandinclusion": 90,
+                "workerexploitation": 50,
+                "wasteandpollution": 50,
+                "sustainablematerials": 50
+            }, {
+                "name": "Amazon",
+                "industry": "tech",
+                "categories": [
+                    "third-party", "efficiency"
+                ],
+                "description": "ships your stuff!",
+                "fun facts": [
+                    "so convenient", "super fast shipping", "free Prime trial"
+                ],
+                "diversityandinclusion": 50,
+                "workerexploitation": 30,
+                "wasteandpollution": 50,
+                "sustainablematerials": 60
+            }
+        ]
+}

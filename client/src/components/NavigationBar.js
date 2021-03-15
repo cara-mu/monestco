@@ -5,7 +5,6 @@ import FastFoodDropdown from './Dropdown/FastFoodDropdown.js'
 import TechDropdown from './Dropdown/TechDropdown.js'
 import LogoTransparent from '../assets/logo_transparent.png'
 import '../styles/NavigationBar.css';
-
 function NavigationBar() {
   {/* Declare variables that will change state when clicked */ }
   {/* Set to false by default, when a component is triggered, will set to respective state */}
