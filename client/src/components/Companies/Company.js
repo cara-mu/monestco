@@ -11,24 +11,66 @@ import WasteImg from '../../assets/wastepollution.png';
 import SustainableImg from '../../assets/sustainable.png';
 import DropdownButton from '../../assets/dropdownbutton.png';
 import NewsPlaceHolder from '../../assets/news.png';
+import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+import ModalBody from '../ModalBody';
 
-class Company extends React.Component {
-    
-    constructor(){
-        super()
-        this.state = {
-            showFact : false
-        }
-        this.toggleFact = this.toggleFact.bind(this)
-    }
 
-    toggleFact() {
-        this.setState({
-            showFact : !this.state.showFact
-        })
+function rand() {
+    return Math.round(Math.random() * 20) - 10;
+  }
+  
+  function getModalStyle() {
+    const top = 50 + rand();
+    const left = 50 + rand();
+  
+    return {
+      top: `${top}%`,
+      left: `${left}%`,
+      transform: `translate(-${top}%, -${left}%)`,
+    };
+  }
+  
+  const useStyles = makeStyles((theme) => ({
+    paper: {
+      position: 'absolute',
+      width: 900,
+      backgroundColor: theme.palette.background.paper,
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+    },
+  }));
+
+
+function Company () {
+    
+    const [showFact,setShowFact] = useState(false);
+    
+
+    const classes = useStyles();
+    const [modalStyle] = React.useState(getModalStyle);
+    const [open, setOpen] = React.useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+
+    const toggleFact = ()=> {
+        setShowFact(!showFact)
     }
     
-    render(){
+
+    const body = (
+        <div style={modalStyle} className={classes.paper}>
+          <ModalBody/>
+        </div>
+      );
+
     return(
         <div className = 'Layout'>
         <Grid container spacing={3}>
@@ -84,31 +126,31 @@ class Company extends React.Component {
                     Company Facts
                     <div className = 'Decorative-Line'></div>
                     <div className = 'Fun-Fact'>This is a fun fact
-                        <img onClick = {this.toggleFact} style = {{marginLeft : '75%'}} src = {DropdownButton}/>
+                        <img onClick = {toggleFact} style = {{marginLeft : '75%'}} src = {DropdownButton}/>
                     </div>
                     {
-                        this.state.showFact ? <div className = 'Fun-Fact-Dropdown'> Insert company fact</div> : null
+                        showFact ? <div className = 'Fun-Fact-Dropdown'> Insert company fact</div> : null
                     }
                     <div className = 'FunFact-Decorative-Line'></div>
                     <div className = 'Fun-Fact'>This is a fun fact
-                        <img onClick = {this.toggleFact} style = {{marginLeft : '75%'}} src = {DropdownButton}/>
+                        <img onClick = {toggleFact} style = {{marginLeft : '75%'}} src = {DropdownButton}/>
                     </div>
                     {
-                        this.state.showFact ? <div className = 'Fun-Fact-Dropdown'> Insert company fact</div> : null
+                        showFact ? <div className = 'Fun-Fact-Dropdown'> Insert company fact</div> : null
                     }
                     <div className = 'FunFact-Decorative-Line'></div>
                     <div className = 'Fun-Fact'>This is a fun fact
-                        <img onClick = {this.toggleFact} style = {{marginLeft : '75%'}} src = {DropdownButton}/>
+                        <img onClick = {toggleFact} style = {{marginLeft : '75%'}} src = {DropdownButton}/>
                     </div>
                     {
-                        this.state.showFact ? <div className = 'Fun-Fact-Dropdown'> Insert company fact</div> : null
+                        showFact ? <div className = 'Fun-Fact-Dropdown'> Insert company fact</div> : null
                     }
                     <div className = 'FunFact-Decorative-Line'></div>
                     <div className = 'Fun-Fact'>This is a fun fact
-                        <img onClick = {this.toggleFact} style = {{marginLeft : '75%'}} src = {DropdownButton}/>
+                        <img onClick = {toggleFact} style = {{marginLeft : '75%'}} src = {DropdownButton}/>
                     </div>
                     {
-                        this.state.showFact ? <div className = 'Fun-Fact-Dropdown'> Insert company fact</div> : null
+                        showFact ? <div className = 'Fun-Fact-Dropdown'> Insert company fact</div> : null
                     }
                     <div className = 'FunFact-Decorative-Line'></div>
 
@@ -118,14 +160,14 @@ class Company extends React.Component {
                         <Container>
                             <Row>
                                 <Col style={{marginTop: '5%'}}>
-                                    <img src = {NewsPlaceHolder}/>
+                                    <img src = {NewsPlaceHolder} onClick={handleOpen}/>
                                     <div style={{marginTop: '3%'}} className = 'News-Description'>
                                         <h1>Title</h1>
                                         <p>info about news</p>
                                     </div>
                                 </Col>
                                 <Col style={{marginTop: '5%'}}>
-                                    <img src = {NewsPlaceHolder}/>
+                                    <img src = {NewsPlaceHolder} onClick={handleOpen}/>
                                     <div style={{marginTop: '3%'}} className = 'News-Description'>
                                         <h1>Title</h1>
                                         <p>info about news</p>
@@ -134,20 +176,28 @@ class Company extends React.Component {
                             </Row>
                             <Row>
                                 <Col style={{marginTop: '5%'}}>
-                                    <img src = {NewsPlaceHolder}/>
+                                    <img src = {NewsPlaceHolder} onClick={handleOpen}/>
                                     <div style={{marginTop: '3%'}} className = 'News-Description'>
                                         <h1>Title</h1>
                                         <p>info about news</p>
                                     </div>
                                 </Col>
                                 <Col style={{marginTop: '5%'}}>
-                                    <img src = {NewsPlaceHolder}/>
+                                    <img src = {NewsPlaceHolder} onClick={handleOpen}/>
                                     <div style={{marginTop: '3%'}} className = 'News-Description'>
                                         <h1>Title</h1>
                                         <p>info about news</p>
                                     </div>
                                 </Col>
                             </Row>
+                            <Modal
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="simple-modal-title"
+                                aria-describedby="simple-modal-description"
+                            >
+                                {body}
+                            </Modal>
                         </Container>
                     </div>
             </div>
@@ -155,7 +205,6 @@ class Company extends React.Component {
         </Grid>
     </div>
     );
-    }
 }
 
 export default Company;
