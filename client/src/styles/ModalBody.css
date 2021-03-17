@@ -1,0 +1,32 @@
+.paragraph_text {
+    font-family: DM Sans;
+font-style: normal;
+font-weight: normal;
+font-size: 14.0467px;
+line-height: 24px;
+color: #3D3E3F;
+}
+
+.modal_body_header{
+
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30.1px;
+    line-height: 38px;
+    /* or 127% */
+    
+    
+    /* dark gray */
+    
+    color: #3D3E3F;
+}
+
+.paragraph_header {
+    font-family: DM Sans;
+font-style: normal;
+font-weight: bold;
+font-size: 14.0467px;
+line-height: 24px;
+color: #3D3E3F;
+}

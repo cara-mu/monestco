@@ -84,6 +84,7 @@
     height: 600px;
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .About-Us-Positioning label{
@@ -115,4 +116,55 @@
     border: 1px solid #BDBDBD;
     box-sizing: border-box; 
     border-radius: 13px;
+}
+
+
+.sign_up_section{
+    width: 100%;
+}
+
+.window_logo{
+    width: 400px;
+    height: 270px;
+}
+
+.text_window {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 50px;
+}
+
+.window_header_text {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 38px;
+    line-height: 34px;
+    color: #26385A;
+}
+
+.sign_up_text {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+    color: #9A9B9C;
+}
+
+.input_sign_up {
+    background: #FFFFFF !important;
+    border: 1px solid #BDBDBD !important;
+    box-sizing: border-box !important;
+    border-radius: 13px !important;
+    width: 368px !important;
+    height: 40px !important;
+}
+
+.sign_up_button {
+    background: #26385A !important;
+    border-radius: 13px !important;
+    border-color: transparent !important;
 }
