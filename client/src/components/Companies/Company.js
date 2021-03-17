@@ -16,6 +16,9 @@ import Modal from '@material-ui/core/Modal';
 import ModalBody from '../ModalBody';
 
 
+import BrandBox from '../../assets/brand_box.svg';
+import BrandLogo from '../../assets/brandBreakdown.svg';
+
 function rand() {
     return Math.round(Math.random() * 20) - 10;
   }
@@ -74,15 +77,18 @@ function Company () {
     return(
         <div className = 'Layout'>
         <Grid container spacing={3}>
-            <Grid item xs={4}>
-                <div className = 'Left-Menu' style= {{marginTop: '45%', marginLeft: '30%'}}>
+            <Grid item xs={12} md={4}>
+                <div className = 'Left-Menu'>
                 {/*<img src={'../../assets/' + companyName + '.png'} />
                     <h1>{companyName}</h1>*/}
-                    <p style={{marginBottom: '8%', color: '#4F4F4F'}}>Placeholder for company information</p>
+                    <img src={BrandLogo}/>
+                    <p style={{marginTop:"5%", color: '#4F4F4F'}}><b>Uniqlo</b> is a clothing apparel company, which was originally founded in Yamaguchi, Japan. Now it is a global brand with over 1000 stores around the world.</p>
+                    <img src={BrandBox} style={{width:"250px",}}/>
+                    <p className="brand_inside_text">48/154</p>
                     <Link>Detailed Breakdown</Link>
                 </div>
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={12} md={8}>
                 <div className = 'Right-Menu' style={{marginTop: '7%', marginLeft: '0%'}}>
                     Brand Performance
                     <div className = 'Decorative-Line'></div>
@@ -199,6 +205,42 @@ function Company () {
                                 {body}
                             </Modal>
                         </Container>
+                    </div>
+                    <div className="similar_brands">
+                        <p>Similar Brands</p>
+                        <div className = 'Decorative-Line'></div>
+                        <div className="row"> 
+                            <div className="col-12 col-lg-5  ml-1 mt-4 brand_box">
+                                <p>NIKE</p>
+                                <div className="d-flex justify-content-center">
+                                    <img src={BrandBox} className="brand_logo"/>
+                                </div>
+                                <p className="brand_inside_text ml-4">50/154</p>
+                            </div>
+                            <div className="col-12 col-lg-5  ml-lg-5 mt-4 brand_box">
+                                <p>Champion</p>
+                                <div className="d-flex justify-content-center">
+                                    <img src={BrandBox} className="brand_logo"/>
+                                </div>
+                                <p className="brand_inside_text ml-4">42/154</p>
+                            </div>
+                        </div>
+                        <div className="row">
+                        <div className="col-12 col-lg-5  ml-1 mt-4 brand_box">
+                                <p>ALDO</p>
+                                <div className="d-flex justify-content-center">
+                                    <img src={BrandBox} className="brand_logo"/>
+                                </div>
+                                <p className="brand_inside_text ml-4">49/154</p>
+                            </div>
+                            <div className="col-12 col-lg-5  ml-lg-5 mt-4 brand_box">
+                                <p>Sem id mauris</p>
+                                <div className="d-flex justify-content-center">
+                                    <img src={BrandBox} className="brand_logo"/>
+                                </div>
+                                <p className="brand_inside_text ml-4">48/154</p>
+                            </div>
+                        </div>
                     </div>
             </div>
             </Grid>
