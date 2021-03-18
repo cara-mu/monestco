@@ -79,6 +79,10 @@ input {
     font-size: 12px;
 }
 
+.apparelsearch{
+    padding-bottom: 500px;
+}
+
 .apparelsearch input {
     border: 0;
     border-bottom: 1px solid black;
@@ -106,11 +110,123 @@ input {
 
 .square {
     background-color: rgba(196, 196, 196, 0.3);
-    width: 188px;
+    width: 150px;
     padding: 10px;
     border-radius: 21px 21px 0 0;
 }
 
+.square_orange {
+    background-color: #FBB178;
+    width: 150px;
+    padding: 10px;
+    border-radius: 21px 21px 0 0;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 34px;
+    /* identical to box height, or 189% */
+
+    text-align: center;
+
+    /* dark gray */
+
+    color: #3D3E3F;
+}
+
+.square_green {
+    background-color: #93CE8F;
+    width: 150px;
+    padding: 10px;
+    border-radius: 21px 21px 0 0;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 34px;
+    /* identical to box height, or 189% */
+
+    text-align: center;
+
+    /* dark gray */
+
+    color: #3D3E3F;
+}
+
+.square_yellow {
+    background-color: #FFEB84;
+    width: 150px;
+    padding: 10px;
+    border-radius: 21px 21px 0 0;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 34px;
+    /* identical to box height, or 189% */
+
+    text-align: center;
+
+    /* dark gray */
+
+    color: #3D3E3F;
+}
+
+
+.square_inside_orange {
+    background-color: #FCCCA7;
+    width: 150px;
+    padding: 10px;
+}
+
+.square_inside_yellow {
+    background-color: #FFF3B5;
+    width: 150px;
+    padding: 10px;
+}
+
+.square_inside_green {
+    background-color: #BBDEB5;
+    width: 150px;
+    padding: 10px;
+}
+
+
+.square_inside_orange_text {
+    background-color: #FEE8D7;
+    width: 150px;
+    padding: 10px;
+}
+
+.square_inside_yellow_text {
+    background-color: #FFF9DA;
+    width: 150px;
+    padding: 10px;
+}
+
+.square_inside_green_text {
+    background-color: #DDEFD8;
+    width: 150px;
+    padding: 10px;
+}
+
+.MuiAccordion-rounded:last-child {
+    width: 100% !important;
+}
+.MuiAccordionDetails-root {
+    padding: 0% !important;
+}
+
+
+.MuiAccordionSummary-content.Mui-expanded {
+    margin: 0% !important;
+}
+.MuiAccordionSummary-root.Mui-expanded {
+    min-height: 0% !important;
+}
+.MuiAccordionSummary-content {
+    margin: 0% !important;
+}
 .squarecontainer {
     margin-top: 4%;
     height: 98px;
