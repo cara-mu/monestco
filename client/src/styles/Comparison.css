@@ -45,6 +45,8 @@ input {
     border-radius: 6px;
     border-color: #BDBDBD;
     margin-top: 4%;
+    border: transparent;
+    outline: transparent;
 }
 
 #colors {
@@ -134,3 +136,13 @@ input {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
 }
+
+.search_box{
+    background: #FFFFFF;
+/* gray 5 */
+
+border: 2px solid #BDBDBD;
+box-sizing: border-box;
+border-radius: 6px;
+}
+
