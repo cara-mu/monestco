@@ -68,4 +68,5 @@
 }
 .MuiAccordion-rounded:last-child{
     box-shadow: none;
+    width: auto !important;
 }

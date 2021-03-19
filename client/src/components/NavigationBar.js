@@ -159,7 +159,7 @@ function NavigationBar() {
           {/* onMouseEnter denotes hover-over */}
           <li className='Menu-Item' >
             <Link
-              to='/'
+              to='/methodology'
               className='Navigation-Link'
               onClick={closeMenu} >
                  Methodology
