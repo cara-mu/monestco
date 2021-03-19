@@ -262,3 +262,34 @@ box-sizing: border-box;
 border-radius: 6px;
 }
 
+
+
+.input_brand_holder{
+    margin-left: 19.5%;
+}
+
+
+@media only screen and (max-width : 475px){
+    .paragraph_header{
+        font-size: 10px !important;
+        font-weight: 300;
+    }
+}
+
+@media only screen and (max-width : 575px){
+    .input_brand{
+        display: none;
+    }
+    .input_brand_holder{
+        margin-left: 24.5%;
+    }
+
+    .input_brand_holder input {
+        margin-left: 7%;
+    }
+
+    .paragraph_header{
+        font-size: 12px !important;
+        font-weight: 400;
+    }
+}

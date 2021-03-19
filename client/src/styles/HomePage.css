@@ -2,9 +2,12 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
-    height: 600px;
+    padding-bottom: 70px;
     background: #F5F4F2;
+}
+
+body{
+    overflow-x: hidden;
 }
 
 .About-Us h1{
@@ -134,6 +137,12 @@
     font-weight: normal;
     font-size: 30px;
     line-height: 50px;
+}
+
+.main_image{
+    max-width: 100%; 
+display:block; 
+height: auto;
 }
 
 .window_header_text {

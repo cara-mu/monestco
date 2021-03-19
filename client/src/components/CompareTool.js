@@ -27,10 +27,10 @@ function CompareTool() {
 
         return(
             <div className="apparelsearch" style={{marginTop: '2.5%'}}>
-                <span style={{marginLeft: '19.5%'}}>
+                <span className="input_brand_holder">
                     <input placeholder="Type the brand" />
                     <input placeholder="Type the brand" />
-                    <input placeholder="Type the brand" />
+                    <input placeholder="Type the brand" className="input_brand"/>
                 </span>
                 <div className="row mt-5">
                 <div className={classes.root}>
@@ -41,7 +41,7 @@ function CompareTool() {
                             id="panel1bh-header"
                             >
                             <div className="row">
-                                <p className="col-4 col-sm-3 col-md-3 " style={{color: '#3D3E3F', fontWeight: 500}}>DIVERSITY & INCLUSION</p>
+                                <p className="col-4 col-sm-3 col-md-3 paragraph_header" style={{color: '#3D3E3F', fontWeight: 500}}>DIVERSITY & INCLUSION</p>
                                 <div className='square_orange col-4 col-sm-3 col-md-3'>25/100</div>
                                 <div className='square_yellow col-4 col-sm-3 col-md-3'>25/100</div>
                                 <div className='square_orange d-none d-sm-block col-sm-3 col-md-3'>25/100</div>
@@ -83,7 +83,7 @@ function CompareTool() {
                             id="panel1bh-header"
                             >
                             <div className="row">
-                                <p className="col-4 col-sm-3 col-md-3" style={{color: '#3D3E3F', fontWeight: 550, paddingTop: '2%'}}>WORKER EXPLOITATION</p>
+                                <p className="col-4 col-sm-3 col-md-3 paragraph_header" style={{color: '#3D3E3F', fontWeight: 550, paddingTop: '2%'}}>WORKER EXPLOITATION</p>
                                 <div className='square_orange col-4 col-sm-3 col-md-3'>25/100</div>
                                 <div className='square_yellow col-4 col-sm-3 col-md-3'>25/100</div>
                                 <div className='square_orange d-none d-sm-block col-sm-3 col-md-3'>25/100</div>
@@ -125,7 +125,7 @@ function CompareTool() {
                             id="panel1bh-header"
                             >
                             <div className="row">
-                                <p className="col-4 col-sm-3 col-md-3" style={{color: '#3D3E3F', fontWeight: 550, paddingTop: '2%'}}>WASTE & POLLUTION</p>
+                                <p className="col-4 col-sm-3 col-md-3 paragraph_header" style={{color: '#3D3E3F', fontWeight: 550, paddingTop: '2%'}}>WASTE & POLLUTION</p>
                                 <div className='square_orange col-4 col-sm-3 col-md-3'>25/100</div>
                                 <div className='square_yellow col-4 col-sm-3 col-md-3'>25/100</div>
                                 <div className='square_orange d-none d-sm-block col-sm-3 col-md-3'>25/100</div>
@@ -167,7 +167,7 @@ function CompareTool() {
                             id="panel1bh-header"
                             >
                             <div className="row">
-                                <p className="col-4 col-sm-3 col-md-3" style={{color: '#3D3E3F', fontWeight: 550}}>SUSTAINABLE MATERIALS</p>
+                                <p className="col-4 col-sm-3 col-md-3 paragraph_header" style={{color: '#3D3E3F', fontWeight: 550}}>SUSTAINABLE MATERIALS</p>
                                 <div className='square_orange col-4 col-sm-3 col-md-3'>25/100</div>
                                 <div className='square_yellow col-4 col-sm-3 col-md-3'>25/100</div>
                                 <div className='square_orange d-none d-sm-block col-sm-3 col-md-3'>25/100</div>
