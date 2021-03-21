@@ -70,9 +70,7 @@ hr {
     min-height: 70px;
 }
 
-.brand_directory_eachRow .letter {
-    margin-left:10em;
-}
+
 
 .row {
     width: 100%;
@@ -85,6 +83,16 @@ hr {
     hr{
         margin: 0% !important;
     }
+    .brand_directory_eachRow .letter {
+        margin-left:2em;
+    }
+
+    .break {
+        display: block;
+      }
+  }
+
+  @media only screen and (max-width: 767px) {
     .brand_directory_eachRow .letter {
         margin-left:2em;
     }

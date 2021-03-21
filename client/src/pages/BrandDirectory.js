@@ -4,32 +4,32 @@ import '../styles/BrandDirectory.css';
 
 export default function BrandDirectory() {
     const letterArray = {
-        'A':["test","test1","test3","test4","test5","test6"],
-        'B':["test2"],
-        'C':[],
-        'D':[],
+        'A':["Abercrombie & Fitch","Aldo","Aritiza","Adidas","American Eagle"],
+        'B':["Banana Republic","Burberry","Boohoo","Balenciaga"],
+        'C':["Canada Goose","Chanel","Converse","Calvin Klein","Christian Dior","Columbia","Champion","Coach"],
+        'D':["Dynamite"],
         'E':[],
-        'F':[],
-        'G':[],
-        'H':[],
+        'F':["Fila","Forever 21"],
+        'G':["Gap","Giorgio Armani","Guess","Garage","Givenchy","Gildan","Gucci"],
+        'H':["H & M","Hermes"],
         'I':[],
-        'J':[],
-        'K':[],
-        'L':[],
-        'M':[],
-        'N':[],
-        'O':[],
-        'P':[],
-        'Q':[],
+        'J':["J.Crew"],
+        'K':["Kate Spade"],
+        'L':["Lacoste","Lululemon Athletica","Levi’s","Louis Vuitton"],
+        'M':["Mango","Marc Jacobs","Michael Kors"],
+        'N':["NastyGal","New Balance","Nike"],
+        'O':["Old Navy"],
+        'P':["Patagonia","Prada","PrettyLittleThing"],
+        'Q':["Ralph Lauren","Reebok","Roots"],
         'R':[],
-        'S':[],
-        'T':[],
-        'U':[],
-        'V':[],
+        'S':["Skechers","Steve Madden"],
+        'T':["Ted Baker","The North Face","Tommy Hilfiger"],
+        'U':["Under Armour","Uniqlo","Urban Outfitters"],
+        'V':["Vans","Versace","Victoria’s Secret"],
         'W':[],
         'X':[],
         'Y':[],
-        'Z':[]
+        'Z':["Zara"]
     }
 
     console.log(letterArray['A'])
@@ -41,7 +41,7 @@ export default function BrandDirectory() {
             <div className="brand_directory_list">
                 {
                     Object.keys(letterArray).map((key)=>(
-                        <a href={`#${key}`}>{key}</a>
+                        <a href={`#${key}`}><span  className={key == "N" ?"break":null}>{key}</span></a>
                     ))
                 }
             </div>
@@ -49,19 +49,26 @@ export default function BrandDirectory() {
              <hr></hr>
                 {
                     Object.keys(letterArray).map((key)=>(
-                        <div>
-                            <div className="brand_directory_eachRow d-block d-md-flex"  id={`${key}`}>
-                                <h6 className="letter" >{key}</h6>
-                                <div className="row ml-5 ml-md-3 mr-auto">
-                                {
-                                    letterArray[key].map(val=>(
-                                        <p className="col-3 col-md-3 ml-5 ml-md-0">{val}</p>
-                                    ))
-                                }
+                        <>
+                        { 
+                            letterArray[key].length>0 ?
+                                <div>
+                                    <div className="brand_directory_eachRow d-block d-md-flex"  id={`${key}`}>
+                                        {letterArray[key].length>0 ? <>
+                                            <hr></hr> 
+                                            <h6 className="letter" >{key}</h6>
+                                            
+                                            <div className="row ml-5 ml-md-3 mr-auto">
+                                                {letterArray[key].length>0 && letterArray[key].map(val=>(
+                                                    <p className="col-3 col-md-3 ml-5 ml-md-0">{val}</p>
+                                                ))}
+                                            </div>
+                                            </>:
+                                            null}
+                                    </div>
                                 </div>
-                            </div>
-                        <hr></hr>
-                        </div>
+                            :null}
+                        </>
                     ))
                 }
             </div>
