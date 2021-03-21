@@ -16,24 +16,74 @@ const useStyles = makeStyles((theme) => ({
       marginTop:20
     },
     heading: {
-      fontSize: theme.typography.pxToRem(10),
+      fontSize: "10px !important",
       fontWeight: theme.typography.fontWeightRegular,
       color:"white",
-      marginLeft:70
+      width: 50,
+      [theme.breakpoints.up(300)]: {
+        fontSize: "10px !important",
+        fontWeight: theme.typography.fontWeightRegular,
+        color:"white",
+        width: 50,
+      },
+      [theme.breakpoints.up('sm')]: {
+        fontSize: "20px !important",
+        fontWeight: theme.typography.fontWeightRegular,
+        color:"white",
+        width: 300,
+      },
+    },
+    innerheading: {
+        fontSize: "10px !important",
+        color:"black",
+        width: 50,
+        [theme.breakpoints.up(300)]: {
+            fontSize: "10px !important",
+            color:"black",
+            width: 50,
+        },
+        [theme.breakpoints.up('sm')]: {
+            fontSize: "20px !important",
+            color:"black",
+            width: 300,
+        },
     },
     border :{
         background: "#3D3E3F",
     },
     heading1:{
-        fontSize: theme.typography.pxToRem(10),
+        fontSize: "10px !important",
         fontWeight: theme.typography.fontWeightRegular,
+        width: 50,
+        [theme.breakpoints.up(300)]: {
+            fontSize: "10px !important",
+            fontWeight: theme.typography.fontWeightRegular,
+            width: 50,
+        },
+        [theme.breakpoints.up('sm')]: {
+            fontSize: "20px !important",
+            fontWeight: theme.typography.fontWeightRegular,
+            width: 335,
+        }
     },
     border1: {
-        borderBottom: "1px solid #3D3E3F",
-        marginLeft:80
+        borderBottom: "0px",
+        marginLeft:0
     },
     paragraph:{
-        marginLeft:80
+        marginLeft:0,
+        fontSize:"10px !important",
+        [theme.breakpoints.up(300)]: {
+            marginLeft:20,
+            fontSize:"10px !important",
+        },
+        [theme.breakpoints.up('sm')]: {
+            marginLeft:80,
+            fontSize:"20px !important",
+        }
+    },
+    paragraph1: {
+        
     }
   }));
 
@@ -42,12 +92,14 @@ function BrandBreakdown() {
     const classes = useStyles();
 
     return (
-        <div className="breakdown_page">
-            <div className="breakdown_logo">   
+    <div>
+        <div className="breakdown_logo">   
                 <img src={Logo} className="breakdown_logoImage"/>
-                <p className="breakdown_logoText">48/154</p>
+                <p className="breakdown_logoText">48/<span style={{fontSize:32}}>154</span></p>
             </div>
-            <div className={`breakdown_accordian ${classes.root}`}>
+        <div className="breakdown_page">
+            
+            <div className={`breakdown_accordian ${classes.root} `}>
                 <Accordion>
                     <AccordionSummary
                     expandIcon={<ExpandMoreIcon  style={{color:"white"}}/>}
@@ -55,7 +107,7 @@ function BrandBreakdown() {
                     id="panel1a-header"
                     className={`${classes.border} upper_border`}
                     >
-                    <Typography className={classes.heading}>DIVERSITY & INCLUSION<span className="table_column_up">5.5/22</span></Typography>
+                    <Typography className={classes.heading}>DIVERSITY & INCLUSION</Typography> <span className="table_column_up">5.5/22</span>
                     </AccordionSummary>
                     <AccordionDetails>
                     <Typography>
@@ -66,9 +118,10 @@ function BrandBreakdown() {
                             id="panel1a-header"
                             className={`${classes.border1} inside_border`}
                             >
-                            <Typography className={classes.heading1}>Discrimination<span className="table_column">3/4</span></Typography>
+                            <Typography className={classes.heading1}>Discrimination</Typography> <span className="table_column">3/4</span>
                             </AccordionSummary>
                             <AccordionDetails>
+                             <p className="innerheading">Prohibits discrimination throughout all stages of the organization</p> <span className="table_column_inner" >5.5/22</span>
                             <Typography className={classes.paragraph}>
                             Prohibits discrimination throughout the organization<br/>
                             Identifies and addresses discrimination concerns 
@@ -82,9 +135,10 @@ function BrandBreakdown() {
                             id="panel1a-header"
                             className={`${classes.border1} inside_border`}
                             >
-                            <Typography className={classes.heading1}>Gender Equality<span className="table_column">3/4</span></Typography>
+                            <Typography className={classes.heading1}>Gender Equality</Typography> <span className="table_column">3/4</span>
                             </AccordionSummary>
                             <AccordionDetails>
+                             <p className="innerheading">Prohibits discrimination throughout all stages of the organization</p> <span className="table_column_inner" >5.5/22</span>
                             <Typography className={classes.paragraph}>
                             Commits to improving gender equality<br/>
                             Has strong female representation in leadership positions<br/>
@@ -99,9 +153,11 @@ function BrandBreakdown() {
                             id="panel1a-header"
                             className={`${classes.border1} inside_border`}
                             >
-                            <Typography className={classes.heading1}>Cultural Diversity<span className="table_column">3/4</span></Typography>
+                            <Typography className={classes.heading1}>Cultural Diversity</Typography><span className="table_column">3/4</span>
                             </AccordionSummary>
                             <AccordionDetails>
+                                
+                             <p className="innerheading">Prohibits discrimination throughout all stages of the organization</p> <span className="table_column_inner" >5.5/22</span>
                             <Typography className={classes.paragraph}>
                             Commits to increasing cultural diversity<br/>
                             Has diverse ethnic representation in leadership positions<br/>
@@ -116,9 +172,10 @@ function BrandBreakdown() {
                             id="panel1a-header"
                             className={`${classes.border1} inside_border`}
                             >
-                            <Typography className={classes.heading1}>Inclusivity<span className="table_column">3/4</span></Typography>
+                            <Typography className={classes.heading1}>Inclusivity</Typography><span className="table_column">3/4</span>
                             </AccordionSummary>
                             <AccordionDetails>
+                             <p className="innerheading">Prohibits discrimination throughout all stages of the organization</p> <span className="table_column_inner" >5.5/22</span>
                             <Typography className={classes.paragraph}>
                             Fosters an inclusive workplace for LGBTQ+ employees<br/>
                             Supports the growth of employees with disabilities<br/>
@@ -138,7 +195,7 @@ function BrandBreakdown() {
                     id="panel1a-header"
                     className={`${classes.border} upper_border`}
                     >
-                    <Typography className={classes.heading}>WORKER EXPLOITATION<span className="table_column_up">5.5/22</span></Typography>
+                    <Typography className={classes.heading}>WORKER EXPLOITATION</Typography><span className="table_column_up">5.5/22</span>
                     </AccordionSummary>
                     <AccordionDetails>
                     <Typography>
@@ -149,9 +206,10 @@ function BrandBreakdown() {
                             id="panel1a-header"
                             className={`${classes.border1} inside_border`}
                             >
-                            <Typography className={classes.heading1}>Child Labour<span className="table_column">3/4</span></Typography>
+                            <Typography className={classes.heading1}>Child Labour</Typography><span className="table_column">3/4</span>
                             </AccordionSummary>
                             <AccordionDetails>
+                             <p className="innerheading">Prohibits discrimination throughout all stages of the organization</p> <span className="table_column_inner" >5.5/22</span>
                             <Typography className={classes.paragraph}>
                             Prohibits the use of child labour<br/>
                             Identifies and prevents child labour violations<br/>
@@ -166,9 +224,11 @@ function BrandBreakdown() {
                             id="panel1a-header"
                             className={`${classes.border1} inside_border`}
                             >
-                            <Typography className={classes.heading1}>Forced Labour<span className="table_column">3/4</span></Typography>
+                            <Typography className={classes.heading1}>Forced Labour</Typography><span className="table_column">3/4</span>
                             </AccordionSummary>
                             <AccordionDetails>
+                                
+                             <p className="innerheading">Prohibits discrimination throughout all stages of the organization</p> <span className="table_column_inner" >5.5/22</span>
                             <Typography className={classes.paragraph}>
                             Prohibits the use of forced labour<br/>
                             Identifies and prevents forced labour violations<br/>
@@ -183,9 +243,11 @@ function BrandBreakdown() {
                             id="panel1a-header"
                             className={`${classes.border1} inside_border`}
                             >
-                            <Typography className={classes.heading1}>Living Wage<span className="table_column">3/4</span></Typography>
+                            <Typography className={classes.heading1}>Living Wage</Typography><span className="table_column">3/4</span>
                             </AccordionSummary>
                             <AccordionDetails>
+                                
+                             <p className="innerheading">Prohibits discrimination throughout all stages of the organization</p> <span className="table_column_inner" >5.5/22</span>
                             <Typography className={classes.paragraph}>
                             Pays all factory workers a living wage<br/>
                             Commits to fair compensation and higher wages<br/>
@@ -201,9 +263,11 @@ function BrandBreakdown() {
                             id="panel1a-header"
                             className={`${classes.border1} inside_border`}
                             >
-                            <Typography className={classes.heading1}>Working Conditions<span className="table_column">3/4</span></Typography>
+                            <Typography className={classes.heading1}>Working Conditions</Typography><span className="table_column">3/4</span>
                             </AccordionSummary>
                             <AccordionDetails>
+                                
+                             <p className="innerheading">Prohibits discrimination throughout all stages of the organization</p> <span className="table_column_inner" >5.5/22</span>
                             <Typography className={classes.paragraph}>
                             Prioritizes factory health and safety conditions<br/>
                             Prohibits excessive work hours<br/>
@@ -225,7 +289,7 @@ function BrandBreakdown() {
                     id="panel1a-header"
                     className={`${classes.border} upper_border`}
                     >
-                    <Typography className={classes.heading}>WASTE & POLLUTION<span className="table_column_up">5.5/22</span></Typography>
+                    <Typography className={classes.heading}>WASTE & POLLUTION</Typography><span className="table_column_up">5.5/22</span>
                     </AccordionSummary>
                     <AccordionDetails>
                     <Typography>
@@ -236,9 +300,11 @@ function BrandBreakdown() {
                             id="panel1a-header"
                             className={`${classes.border1} inside_border`}
                             >
-                            <Typography className={classes.heading1}>Air Pollution <span className="table_column">3/4</span></Typography>
+                            <Typography className={classes.heading1}>Air Pollution </Typography><span className="table_column">3/4</span>
                             </AccordionSummary>
                             <AccordionDetails>
+                                
+                             <p className="innerheading">Prohibits discrimination throughout all stages of the organization</p> <span className="table_column_inner" >5.5/22</span>
                             <Typography className={classes.paragraph}>
                             Commits to reducing energy consumption<br/>
                             Commits to reducing greenhouse gas emissions<br/>
@@ -254,9 +320,10 @@ function BrandBreakdown() {
                             id="panel1a-header"
                             className={`${classes.border1} inside_border`}
                             >
-                            <Typography className={classes.heading1}>Water Pollution & Waste<span className="table_column">3/4</span></Typography>
+                            <Typography className={classes.heading1}>Water Pollution & Waste</Typography><span className="table_column">3/4</span>
                             </AccordionSummary>
                             <AccordionDetails>
+                             <p className="innerheading">Prohibits discrimination throughout all stages of the organization</p> <span className="table_column_inner" >5.5/22</span>
                             <Typography className={classes.paragraph}>
                             Commits to reducing water consumption<br/>
                             Works with suppliers to reduce water waste<br/>
@@ -272,9 +339,10 @@ function BrandBreakdown() {
                             id="panel1a-header"
                             className={`${classes.border1} inside_border`}
                             >
-                            <Typography className={classes.heading1}>Packaging Waste<span className="table_column">3/4</span></Typography>
+                            <Typography className={classes.heading1}>Packaging Waste</Typography><span className="table_column">3/4</span>
                             </AccordionSummary>
                             <AccordionDetails>
+                             <p className="innerheading">Prohibits discrimination throughout all stages of the organization</p> <span className="table_column_inner" >5.5/22</span>
                             <Typography className={classes.paragraph}>
                             Does not use plastic bags and packaging<br/>
                             Uses recycled packaging materials <br/>
@@ -290,9 +358,10 @@ function BrandBreakdown() {
                             id="panel1a-header"
                             className={`${classes.border1} inside_border`}
                             >
-                            <Typography className={classes.heading1}>Material Waste<span className="table_column">3/4</span></Typography>
+                            <Typography className={classes.heading1}>Material Waste</Typography><span className="table_column">3/4</span>
                             </AccordionSummary>
                             <AccordionDetails>
+                             <p className="innerheading">Prohibits discrimination throughout all stages of the organization</p> <span className="table_column_inner" >5.5/22</span>
                             <Typography className={classes.paragraph}>
                             Uses recycled materials in products<br/>
                             Repurposes damaged and excess products<br/>
@@ -313,7 +382,7 @@ function BrandBreakdown() {
                     id="panel1a-header"
                     className={`${classes.border} upper_border`}
                     >
-                    <Typography className={classes.heading}>SUSTAINABLE MATERIALS<span className="table_column_up">5.5/22</span></Typography>
+                    <Typography className={classes.heading}>SUSTAINABLE MATERIALS</Typography><span className="table_column_up">5.5/22</span>
                     </AccordionSummary>
                     <AccordionDetails>
                     <Typography>
@@ -324,9 +393,10 @@ function BrandBreakdown() {
                             id="panel1a-header"
                             className={`${classes.border1} inside_border`}
                             >
-                            <Typography className={classes.heading1}>Cotton Farming <span className="table_column">3/4</span></Typography>
+                            <Typography className={classes.heading1}>Cotton Farming </Typography><span className="table_column">3/4</span>
                             </AccordionSummary>
                             <AccordionDetails>
+                             <p className="innerheading">Prohibits discrimination throughout all stages of the organization</p> <span className="table_column_inner" >5.5/22</span>
                             <Typography className={classes.paragraph}>
                             Sources sustainably produced cotton<br/>
                             Advocates against unethical farming practices
@@ -340,9 +410,10 @@ function BrandBreakdown() {
                             id="panel1a-header"
                             className={`${classes.border1} inside_border`}
                             >
-                            <Typography className={classes.heading1}>Deforestation<span className="table_column">3/4</span></Typography>
+                            <Typography className={classes.heading1}>Deforestation</Typography><span className="table_column">3/4</span>
                             </AccordionSummary>
                             <AccordionDetails>
+                             <p className="innerheading">Prohibits discrimination throughout all stages of the organization</p> <span className="table_column_inner" >5.5/22</span>
                             <Typography className={classes.paragraph}>
                             Sources sustainably produced forest-based fabrics<br/>
                             Uses paper materials from sustainable sources<br/>
@@ -357,9 +428,10 @@ function BrandBreakdown() {
                             id="panel1a-header"
                             className={`${classes.border1} inside_border`}
                             >
-                            <Typography className={classes.heading1}>Animal Welfare<span className="table_column">3/4</span></Typography>
+                            <Typography className={classes.heading1}>Animal Welfare</Typography><span className="table_column">3/4</span>
                             </AccordionSummary>
                             <AccordionDetails>
+                             <p className="innerheading">Prohibits discrimination throughout all stages of the organization</p> <span className="table_column_inner" >5.5/22</span>
                             <Typography className={classes.paragraph}>
                             Prohibits animal cruelty<br/>
                             Sources sustainably produced leather<br/>
@@ -374,7 +446,7 @@ function BrandBreakdown() {
                 </Accordion>
             </div>
         </div>
-    )
+    </div>)
 }
 
 export default BrandBreakdown;
