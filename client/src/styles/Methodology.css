@@ -34,3 +34,67 @@ line-height: 35px;
 .MuiTypography-body1 {
     font-size: large !important;
 }
+
+.makeStyles-drawer-80 {
+    width: 0% !important;
+}
+
+@media only screen and (min-width:1300px) {
+    .methodology_heading {
+        margin-left:384px;
+        font-style:  normal;
+        font-size: 30px;
+        color: #3D3E3F;
+        font-family:"DM Sans";
+        margin-top:121px;
+        font-weight:bold
+    }
+    .method_page{
+        margin-left : 624px;
+        margin-right: 283px;
+    }
+}
+
+.methodology_heading {
+    margin-left: 24px;
+    font-style:  normal;
+    font-size: 30px;
+    color: #3D3E3F;
+    font-family:"DM Sans";
+    font-weight:bold
+}
+
+
+
+@media only screen and (min-width:414px) {
+    .methodology_heading {
+        margin-left: 24px;
+        font-style:  normal;
+        font-size: 30px;
+        color: #3D3E3F;
+        font-family:"DM Sans";
+        margin-top:40px;
+        font-weight:bold
+    }
+    .method_page{
+        margin-left : 30px;
+        margin-top: 130px;
+    }
+}
+
+
+@media only screen and (max-width:414px) {
+    .methodology_heading {
+        margin-left: 24px;
+        font-style:  normal;
+        font-size: 30px;
+        color: #3D3E3F;
+        font-family:"DM Sans";
+        margin-top:40px;
+        font-weight:bold
+    }
+    .method_page{
+        margin-left : 19px;
+        margin-top: 130px;
+    }
+}

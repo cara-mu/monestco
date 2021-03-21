@@ -35,12 +35,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
-  drawer: {
-    [theme.breakpoints.up('sm')]: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
-  },
   appBar: {
     color:"black",
     boxShadow:"none",
@@ -58,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
     padding:0,
     position:"fixed",
     paddingLeft:15,
+    marginTop:146,
     marginRight: theme.spacing(4),
     [theme.breakpoints.up('sm')]: {
       display: 'none',
@@ -68,17 +63,24 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     width: drawerWidth,
     marginTop:0,
+    marginLeft:277,
     background:"white",
+    position:'absolute',
+    height:'auto',
     borderColor:"transparent",
     [theme.breakpoints.up('sm')]: {
-        marginTop:40,
+        marginTop:330,
         background:"transparent",
     },
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
-    marginLeft:30,
+    [theme.breakpoints.up('sm')]: {
+        marginTop:307,
+        marginLeft:30,
+        background:"transparent",
+    },
   },
 }));
 
@@ -134,7 +136,7 @@ function Methodology(props) {
     const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
-        <div className={classes.root}>
+        <div className={`method_page ${classes.root}`}>
             <CssBaseline />
             <AppBar position="absolute" className={classes.appBar}>
                 <Toolbar>
@@ -149,9 +151,9 @@ function Methodology(props) {
                         INDEX
                     </div>
                 </IconButton>
-                <Typography variant="h6" noWrap style={{marginLeft:28, fontStyle:"normal", fontBold:"bold",fontSize:"30px",color:"#3D3E3F",fontFamily:"DM Sans"}}>
+                <p className="methodology_heading" >
                     Methodology
-                </Typography>
+                </p>
                 </Toolbar>
             </AppBar>
             <nav className={classes.drawer} aria-label="mailbox folders">
