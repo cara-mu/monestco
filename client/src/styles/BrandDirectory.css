@@ -9,6 +9,39 @@
     margin-top: 87px;
 }
 
+.brand_directory_wholeList {
+    margin-left: 9px;
+    margin-right: 9px;
+}
+
+
+.brand_directory_list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 100px;
+}
+
+@media only screen and (min-width:1500px) {
+    .brand_directory_wholeList {
+        margin-left: 349px;
+        margin-right: 349px;
+    }
+    .horizontal_row{
+        display: flex;
+        justify-content: center;
+        max-width: 890px;
+    }
+    
+    .brand_directory_list {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 449px;
+    }
+}
+
+
 .brand_directory_title p {
     font-family: DM Sans;
     font-style: normal;
@@ -18,12 +51,6 @@
     color: #3D3E3F;
 }
 
-.brand_directory_list {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 100px;
-}
 
 .brand_directory_list a{
     font-family: DM Sans;

@@ -45,8 +45,8 @@ export default function BrandDirectory() {
                     ))
                 }
             </div>
-            <hr/>
             <div className="brand_directory_wholeList">
+             <hr></hr>
                 {
                     Object.keys(letterArray).map((key)=>(
                         <div>
