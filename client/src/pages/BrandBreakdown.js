@@ -37,6 +37,11 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "10px !important",
         color:"black",
         width: 50,
+        [theme.breakpoints.between(1200,1400)]: {
+            fontSize: "10px !important",
+            color:"black",
+            width: 100,
+        },
         [theme.breakpoints.up(300)]: {
             fontSize: "10px !important",
             color:"black",

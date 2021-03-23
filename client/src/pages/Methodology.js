@@ -67,6 +67,14 @@ const useStyles = makeStyles((theme) => ({
     background:"white",
     position:'absolute',
     height:'auto',
+    [theme.breakpoints.between(600,1300)]: {
+        width: drawerWidth,
+        marginTop:0,
+        marginLeft:17,
+        background:"white",
+        position:'absolute',
+        height:'auto',
+    },
     borderColor:"transparent",
     [theme.breakpoints.up('sm')]: {
         marginTop:330,
@@ -76,6 +84,11 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+    [theme.breakpoints.between(600,1300) ]: {
+        marginTop:307,
+        marginLeft:130,
+        background:"transparent",
+    },
     [theme.breakpoints.up('sm')]: {
         marginTop:307,
         marginLeft:30,
