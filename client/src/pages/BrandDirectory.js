@@ -41,12 +41,12 @@ export default function BrandDirectory() {
             <div className="brand_directory_list">
                 {
                     Object.keys(letterArray).map((key)=>(
-                        <a href={`#${key}`}><span  className={key == "N" ?"break":null}>{key}</span></a>
+                        <a href={`#${key}`}><span  className={key == "N" ?"break":null} style={{marginLeft:1, marginRight:2}}>{key}</span></a>
                     ))
                 }
             </div>
             <div className="brand_directory_wholeList">
-             <hr></hr>
+             <hr className="hr"></hr>
                 {
                     Object.keys(letterArray).map((key)=>(
                         <>
@@ -54,18 +54,18 @@ export default function BrandDirectory() {
                             letterArray[key].length>0 ?
                                 <div>
                                     <div className="brand_directory_eachRow d-block d-md-flex"  id={`${key}`}>
-                                        {letterArray[key].length>0 ? <>
-                                            <hr></hr> 
+                                        {letterArray[key].length>0 ? <> 
                                             <h6 className="letter" >{key}</h6>
                                             
                                             <div className="row ml-5 ml-md-3 mr-auto">
                                                 {letterArray[key].length>0 && letterArray[key].map(val=>(
-                                                    <p className="col-3 col-md-3 ml-5 ml-md-0">{val}</p>
+                                                    <p className="col-3 col-md-3 ml-5 ml-md-0 list_letter">{val}</p>
                                                 ))}
                                             </div>
                                             </>:
                                             null}
                                     </div>
+                                    <hr className="hr"></hr>
                                 </div>
                             :null}
                         </>
