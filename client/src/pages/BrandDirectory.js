@@ -41,7 +41,7 @@ export default function BrandDirectory() {
             <div className="brand_directory_list">
                 {
                     Object.keys(letterArray).map((key)=>(
-                        <a href={`#${key}`}><span  className={key == "N" ?"break":null} style={{marginLeft:1, marginRight:2}}>{key}</span></a>
+                        <a href={`#${key}`}><span  className={key === "E"  ||  key === "I" || key=== "Q" || key=== "W"||key=== "X"||key=== "Y"  ? "greyed_color":"black_color"} style={{marginLeft:1, marginRight:2}}>{key}</span></a>
                     ))
                 }
             </div>
@@ -59,7 +59,16 @@ export default function BrandDirectory() {
                                             
                                             <div className="row ml-5 ml-md-3 mr-auto">
                                                 {letterArray[key].length>0 && letterArray[key].map(val=>(
-                                                    <p className="col-3 col-md-3 ml-5 ml-md-0 list_letter">{val}</p>
+                                                    <p className={`col-3 col-md-3 ml-5 ml-md-0 list_letter 
+                                                            ${val==="Burberry" ||val==="Balenciaga" ||val==="Canada Goose" ||val==="Chanel"||val==="Christian Dior"||val==="Coach"
+                                                            ||val==="Dynamite"||val==="Fila"||val==="Giorgio Armani "||val==="Gucci"||val==="Givenchy"||val==="Garage"||val==="Gildan"
+                                                            ||val==="Hermes"||val==="Hugo Boss"||val==="J. Crew"||val==="Kate Spade"||val==="Lacoste"||val==="Louis Vuitton"
+                                                            ||val==="Mango"||val==="Marc Jacobs"||val==="Michael Kors"||val==="Prada"||val==="Roots"||val==="Skechers"||val==="Ted Baker"
+                                                            ||val==="Urban Outfitters"||val==="Versace"
+                                                            ? "greyed_color":"black_color"}`}
+                                                    >
+                                                        {val}
+                                                    </p>
                                                 ))}
                                             </div>
                                             </>:

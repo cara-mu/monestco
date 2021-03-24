@@ -1,9 +1,17 @@
 .brand_directory {
-    max-width: 1022px;  
+    max-width: 1364px;  
     margin-right: auto;
     margin-left: auto; 
 }
 
+
+.greyed_color {
+    color: #9A9B9C !important;
+}
+
+.black_color {
+    color: #26385A !important;
+}
 
 .brand_directory_title p {
     width: 291px;
@@ -126,16 +134,7 @@ line-height: 28px;
 color: #3D3E3F;
 }
 
-.brand_directory_eachRow .row p:nth-child(3) {
-    margin: 0%;
-  }
 
-  .brand_directory_eachRow .row p:nth-child(6) {
-    margin: 0%;
-  }
-  .brand_directory_eachRow .row p:nth-child(9) {
-    margin: 0%;
-  }
   html {
     scroll-behavior: smooth;
   }
