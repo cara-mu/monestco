@@ -67,6 +67,15 @@ const useStyles = makeStyles((theme) => ({
     background:"white",
     position:'absolute',
     height:'auto',
+    marginRight:10,
+    [theme.breakpoints.up(1300)]: {
+        width: drawerWidth,
+        marginTop:0,
+        background:"white",
+        position:'absolute',
+        height:'auto',
+        marginRight:10,
+    },
     [theme.breakpoints.between(600,1300)]: {
         width: drawerWidth,
         marginTop:0,
@@ -74,24 +83,23 @@ const useStyles = makeStyles((theme) => ({
         background:"white",
         position:'absolute',
         height:'auto',
+        marginRight:10,
     },
     borderColor:"transparent",
     [theme.breakpoints.up('sm')]: {
         marginTop:330,
         background:"transparent",
+        marginRight:10,
     },
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
     [theme.breakpoints.between(600,1300) ]: {
-        marginTop:307,
-        marginLeft:130,
+        marginTop:10,
         background:"transparent",
     },
     [theme.breakpoints.up('sm')]: {
-        marginTop:307,
-        marginLeft:30,
+        marginTop:10,
         background:"transparent",
     },
   },
@@ -115,32 +123,101 @@ function Methodology(props) {
         <List>
             
             <ListItem button key="Overview"  component="a" href="#overview" onClick={()=>setMobileOpen(false)}>
-                <ListItemText primary="Overview"/>
+                <ListItemText primary={<Typography style={{ 
+                    fontFamily: "DM Sans",
+                    fontStyle: "normal",
+                    fontWeight: "bold",
+                    fontSize: "20px",
+                    lineHeight: "34px",
+                    color: "#000000",
+                 }}>Overview</Typography>} />
             </ListItem>
             
             <ListItem button key="Scope of Brand" component="a" href="#scope_of_brand" onClick={()=>setMobileOpen(false)}>
-                <ListItemText primary="Scope of Brand" className="listItem"/>
+                <ListItemText primary={<Typography style={{ 
+                    fontFamily: "DM Sans",
+                    fontStyle: "normal",
+                    fontWeight: "normal",
+                    fontSize: "20px",
+                    lineHeight: "34px",
+                    color: "#000000",
+                    marginLeft:10,
+                 }}>Scope of Brand</Typography>} />
             </ListItem>
             <ListItem button key="Research Principles" component="a" href="#research_prinicple" onClick={()=>setMobileOpen(false)}>
-                <ListItemText primary="Research Principles" className="listItem"/>
+                <ListItemText primary={<Typography style={{ 
+                    fontFamily: "DM Sans",
+                    fontStyle: "normal",
+                    fontWeight: "normal",
+                    fontSize: "20px",
+                    lineHeight: "34px",
+                    color: "#000000",
+                    marginLeft:10,
+                 }}>Research Principles</Typography>} />
             </ListItem>
             <ListItem button key="Research Methodology" component="a" href="#research_methodology" onClick={()=>setMobileOpen(false)}>
-                <ListItemText primary="Research Methodology"/>
+                <ListItemText primary={<Typography style={{ 
+                    fontFamily: "DM Sans",
+                    fontStyle: "normal",
+                    fontWeight: "bold",
+                    fontSize: "20px",
+                    lineHeight: "34px",
+                    color: "#000000",
+                 }}>Research Methodology</Typography>} />
             </ListItem>
             <ListItem button key="Diversity and Inclusion" component="a" href="#diversity" onClick={()=>setMobileOpen(false)}>
-                <ListItemText primary="Diversity and Inclusion"className="listItem" />
+                <ListItemText primary={<Typography style={{ 
+                    fontFamily: "DM Sans",
+                    fontStyle: "normal",
+                    fontWeight: "normal",
+                    fontSize: "20px",
+                    lineHeight: "34px",
+                    color: "#000000",
+                    marginLeft:10,
+                 }}>Diversity and Inclusion</Typography>} />
             </ListItem>
             <ListItem button key="Worker Exploitation" component="a" href="#exploitation" onClick={()=>setMobileOpen(false)}>
-                <ListItemText primary="Worker Exploitation" className="listItem"/>
+                <ListItemText primary={<Typography style={{ 
+                    fontFamily: "DM Sans",
+                    fontStyle: "normal",
+                    fontWeight: "normal",
+                    fontSize: "20px",
+                    lineHeight: "34px",
+                    color: "#000000",
+                    marginLeft:10,
+                 }}>Worker Exploitation</Typography>} />
             </ListItem>
             <ListItem button key="Waste and Pollution" component="a" href="#waste" onClick={()=>setMobileOpen(false)}>
-                <ListItemText primary="Waste and Pollution"  className="listItem"/>
+                <ListItemText primary={<Typography style={{ 
+                    fontFamily: "DM Sans",
+                    fontStyle: "normal",
+                    fontWeight: "normal",
+                    fontSize: "20px",
+                    lineHeight: "34px",
+                    color: "#000000",
+                    marginLeft:10,
+                 }}>Waste and Pollution</Typography>} />
             </ListItem>
             <ListItem button key="Sustainable Materials" component="a" href="#materials" onClick={()=>setMobileOpen(false)}>
-                <ListItemText primary="Sustainable Materials"  className="listItem"/>
+                 <ListItemText primary={<Typography style={{ 
+                    fontFamily: "DM Sans",
+                    fontStyle: "normal",
+                    fontWeight: "normal",
+                    fontSize: "20px",
+                    lineHeight: "34px",
+                    color: "#000000",
+                    marginLeft:10,
+                 }}>Sustainable Materials</Typography>} />
             </ListItem>
             <ListItem button key="Information Sources" component="a" href="#sources" onClick={()=>setMobileOpen(false)}>
-                <ListItemText primary="Information Sources" />
+                <ListItemText primary={<Typography style={{ 
+                    fontFamily: "DM Sans",
+                    fontStyle: "normal",
+                    fontWeight: "bold",
+                    fontSize: "20px",
+                    lineHeight: "34px",
+                    color: "#000000",
+                 }}>Information Sources</Typography>} />
             </ListItem>
         </List>
         </div>
@@ -164,9 +241,6 @@ function Methodology(props) {
                         INDEX
                     </div>
                 </IconButton>
-                <p className="methodology_heading" >
-                    Methodology
-                </p>
                 </Toolbar>
             </AppBar>
             <nav className={classes.drawer} aria-label="mailbox folders">
@@ -203,28 +277,54 @@ function Methodology(props) {
 
             <main className={classes.content}>
                 <div className={classes.toolbar} />
-                <p className="paragraph_text">
-                <p id="overview" className="heading">Overview</p>
+                <p className="paragraph_text"></p>
+                <p id="overview" className="method_head">Methodology</p>
+                <div className="apparel_div">
+                    <p>Apparel</p>
+                </div>
+                <div className="tech_div">
+                    <p>Tech</p>
+                </div>
+                <div className="fast_div">
+                    <p>Fast Food</p>
+                </div>
+                <div className="beauty_div">
+                    <p>Beauty</p>
+                </div>
+                <p id="overview" className="heading" style={{marginBottom:25}}>Overview</p>
 
-                Monest analyzes the social and environmental metrics of brands. Our goal is to educate and equip consumers with data to leverage their purchasing power and hold brands to higher ethical standards. 
+                <p className="par">Monest analyzes the social and environmental metrics of brands. Our goal is to educate and equip consumers with data to leverage their purchasing power and hold brands to higher ethical standards. 
 
-                Monest aims to best inform consumers in making their purchasing decisions. While our scoring does not reflect the nature of each brand’s business model, we believe it is important to acknowledge the detrimental impacts of fast fashion brands and excessive consumption. Inherent to the fast fashion business model, the pressure to reduce costs and speed up production time results in cutting corners at the expense of workers and the environment. To decrease demand for the production of new clothes, we strongly encourage consumers to follow best practices by reducing consumption and shopping second hand when possible. 
+                Monest aims to best inform consumers in making their purchasing decisions. While our scoring does not reflect the nature of each brand’s business model, we believe it is important to acknowledge the detrimental impacts of fast fashion brands and excessive consumption. Inherent to the fast fashion business model, the pressure to reduce costs and speed up production time results in cutting corners at the 
+                expense of workers and the environment. To decrease demand for the production of new clothes, 
+                we strongly encourage consumers to follow best practices by reducing consumption and shopping second hand when possible. </p>
 
-                <p id="scope_of_brand" className="heading">Scope of Brands</p>
+                <p id="scope_of_brand" className="heading" style={{marginTop:50,marginBottom:36}}>Scope of Brands</p>
 
-                Monest assesses brands at the forefront of the apparel industry with the power and influence to become catalysts for social and environmental change. Consumer-facing brands are selected based on sector indices and benchmarks, supplemented by top performing lists in the fashion sector and their respective markets. Factors such as market capitalization, size, and North American recognition are prioritized in the selection process. 
+                <p className="par">Monest assesses brands at the forefront of the apparel industry with the power and influence to become catalysts 
+                for social and environmental change. Consumer-facing brands are selected based on sector indices and benchmarks,
+                 supplemented by top performing lists in the fashion sector and their respective markets. Factors such as market
+                  capitalization, size, and North American recognition are prioritized in the selection process. </p>
 
-                <p id="research_prinicple" className="heading">Research Principles</p>
-                The following principles guide our approach to the research process: 
+                <p id="research_prinicple" className="heading" style={{marginTop:50,marginBottom:36}}>Research Principles</p>
+                <p className="par">The following principles guide our approach to the research process: 
 
-                Evidence-based: The foundation of our research is built on a strong governance process. Our research process identifies and avoids potential biases by following a detailed methodology that mitigates the risk of subjectivity in qualitative research. We evaluate brands based on explicit statements of intent and published metrics of progress. Brands will not receive full scores for vague commitments without evidence to support their claims. 
+                Evidence-based: The foundation of our research is built on a strong governance process. 
+                Our research process identifies and avoids potential biases by following a detailed methodology that mitigates
+                 the risk of subjectivity in qualitative research. We evaluate brands based on explicit statements of intent and 
+                 published metrics of progress. Brands will not receive full scores for vague commitments without evidence to support their claims. 
 
-                Transparency: Our methodology acknowledges the importance of publicly disclosing credible and comprehensive data. We require brands to be transparent regarding their operations and supply chain practices in order to fulfill the corresponding criteria. Transparency does not equal sustainability, but it does enable accountability and allows consumers to make better informed decisions.
+                Transparency: Our methodology acknowledges the importance of publicly disclosing credible and comprehensive data. 
+                We require brands to be transparent regarding their operations and supply chain practices in order to fulfill the 
+                corresponding criteria. Transparency does not equal sustainability, but it does enable accountability and allows consumers to 
+                make better informed decisions.
+                Accuracy: We set high standards of quality for our research and strive for accuracy by employing a diligent review process. 
+                To accurately reflect the most relevant brand information and account for changes, scores will be responsively updated and 
+                revised on an annual basis. In the future, we plan to implement a feedback system for users and stakeholders to notify 
+                us of any inaccuracies to hold us accountable. </p>
 
-                Accuracy: We set high standards of quality for our research and strive for accuracy by employing a diligent review process. To accurately reflect the most relevant brand information and account for changes, scores will be responsively updated and revised on an annual basis. In the future, we plan to implement a feedback system for users and stakeholders to notify us of any inaccuracies to hold us accountable. 
-
-                <p id="research_methodology" className="heading">Research Methodology</p>
-                Our research methodology was created in 2020 and will be reviewed annually to ensure that it continues to reflect the most important issues and best practices within the apparel industry. 
+                <p id="research_methodology" className="heading" style={{marginTop:50,marginBottom:36}}>Research Methodology</p>
+                <p className="par">Our research methodology was created in 2020 and will be reviewed annually to ensure that it continues to reflect the most important issues and best practices within the apparel industry. 
 
                 The foundation of our methodology centers around two core values:
                 Focusing on issues that matter most
@@ -234,30 +334,32 @@ function Methodology(props) {
                 Taking a pragmatic approach, we only evaluate actions within the scope of a brand’s control. The scores are reflective of current brand performance and do not focus on historical incidences, which are instead showcased in our “In the News” section for users to consider. We believe that brands have the power to change for the better and designed our methodology to reflect a realistic roadmap of actions brands can work towards achieving.
 
                 Apparel brands are assessed using a scoring system that evaluates each brand’s performance in the following four categories: Diversity & Inclusion, Worker Exploitation, Waste & Pollution, and Sustainable Materials. Each category highlights the most prevalent issues which consist of actions brands can take to address the specific issue:
-
-                <p id="diversity" className="heading">Diversity & Inclusion</p>
-                Many brands with operations in North America have faced issues such as discrimination in their hiring practices, as well as a lack of diverse representation in executive leadership. In addition, many brands lack policies that ensure the wellbeing of underrepresented groups. 
+                </p>
+                <p id="diversity" className="heading" style={{marginTop:50,marginBottom:36}}>Diversity & Inclusion</p>
+                <p className="par">Many brands with operations in North America have faced issues such as discrimination in their hiring practices, as well as a lack of diverse representation in executive leadership. In addition, many brands lack policies that ensure the wellbeing of underrepresented groups. 
 
                 This category evaluates the brand on a corporate-level divided into four main issues: Discrimination, Gender Equality, Cultural Diversity, and Inclusivity. Brands are scored on their performance in the context of the workplace, executive leadership, and in their consumer-facing marketing and product design efforts.
-
-                <p id="exploitation" className="heading">Worker Exploitation</p>
+                </p>
+                <p id="exploitation" className="heading" style={{marginTop:50,marginBottom:36}}>Worker Exploitation</p>
+                <p className="par">
                 Clothing production is a manufacturing-intensive process that is commonly outsourced to suppliers in developing countries with less stringent regulations. Workers in factories around the world face unsafe working conditions and are victims of exploitative labour practices. 
 
                 This category evaluates the brand’s global supply chains and treatment of workers across four main issues: Child Labour, Forced Labour, Living Wage, and Working Conditions. Brands are scored on their supply chain policies, the quality of their safeguards against labour risks, the traceability of their supply chains, and their commitment to eliminating worker exploitation. 
-
-                <p id="waste" className="heading">Waste & Pollution</p>
+                </p>
+                <p id="waste" className="heading" style={{marginTop:50,marginBottom:36}}>Waste & Pollution</p>
+                <p className="par">
                 The apparel industry is the second largest polluter in the world, accounting for 10% of the world’s carbon emissions. It is also the second largest consumer of the world’s water supply. From the production process to the textile waste that eventually ends up in landfills, apparel brands have opportunities to reduce their environmental impact at each step of the value chain.
 
                 This category evaluates the brand’s environmental management across the entire value chain for the following issues: Air Pollution, Water Pollution and Waste, Packaging Waste, and Material Waste. Brands are scored on their commitments, initiatives and progress disclosed across their owned and operated facilities as well as their supply chain. 
-
-                <p id="materials" className="heading">Sustainable Materials</p>
-                The greatest sustainability risks within textile production occur in the growing and extracting of raw materials. Cotton is the most common material used in the production of clothes, but the harvesting process is rampant with interconnected environmental and socio-economic risks. Furthermore, the lack of governance surrounding where materials are sourced from raises concerns for habitat biodiversity and animal welfare.
+                </p>
+                <p id="materials" className="heading" style={{marginTop:50,marginBottom:36}}>Sustainable Materials</p>
+                <p className="par"> The greatest sustainability risks within textile production occur in the growing and extracting of raw materials. Cotton is the most common material used in the production of clothes, but the harvesting process is rampant with interconnected environmental and socio-economic risks. Furthermore, the lack of governance surrounding where materials are sourced from raises concerns for habitat biodiversity and animal welfare.
 
                 This category evaluates the brand’s sourcing practices across the most prevalent issues within the industry: Cotton Farming, Deforestation, and Animal Welfare. Brands are scored on their commitment to using more sustainable materials and reducing unethical practices in those areas. 
 
-
-                <p id="sources" className="heading">Information Sources</p>
-                Brands are assessed on publicly available information from direct and indirect sources.
+                </p>
+                <p id="sources" className="heading" style={{marginTop:50,marginBottom:36}}>Information Sources</p>
+                <p className="par">Brands are assessed on publicly available information from direct and indirect sources.
 
                 Direct data sources include all materials published by the brand or parent brand. This includes all information available on websites, annual reports, corporate responsibility reports, press releases and other direct publications. 
 
