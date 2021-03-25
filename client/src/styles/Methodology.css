@@ -168,6 +168,15 @@ flex-grow: 0;
     margin-left: 10px;
 }
 
+
+a:hover{
+    background-color:transparent !important;
+}
+
+a .text:hover{
+    color: #ABD4B7 !important;
+}
+
 .heading {
     font-family: DM Sans;
     font-style: normal;
