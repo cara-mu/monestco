@@ -24,8 +24,9 @@ function HomePage(){
     }
 
         return(
-        <Fragment>
+        <div>
             <div className = 'About-Us row d-flex'>
+                <div className="body">
                 <div className="col-12 d-md-none">
                     <img style = {{marginLeft: '5%'}} className="main_image" src = {MonestSketch} alt = 'browser sketch'></img>
                 </div>
@@ -49,12 +50,15 @@ function HomePage(){
                 <div className="col-12 col-md-6 d-md-flex d-none">
                     <img className="main_image" src = {MonestSketch} alt = 'browser sketch'></img>
                 </div>
+                </div>
             </div>
 
-            <div className = 'Goals'>  
-                <h1 style = {{marginTop: '3%'}} >Our Goal</h1>
+            <div className = 'Goals'> 
+            <div className="body">
+                <h1 style = {{marginTop: '3%'}} >Our Goal</h1></div>
             </div>
             <div style = {{marginLeft: '3%'}} className = 'Goal-Positioning row'>
+            <div className="body">
                 <div className = 'Goal-Panel col-10 col-sm-5 '>
                     <img style = {{marginTop:'8%'}} src = {EducateImg}></img>
                     <h1 style = {{marginLeft:'3%'}}>Educate</h1>
@@ -65,15 +69,19 @@ function HomePage(){
                     <h1 style = {{marginLeft:'3%'}}>Empower</h1>
                     <p style = {{marginLeft:'3%'}}>consumers to vote with their dollars, and support brands with values that align to their own.</p>
                 </div>
+                </div>
             </div>
                 {/* sorry i got lazy with positioning */}
                 <br></br><br></br><br></br><br></br><br></br>
             <div className = 'Video d-flex justify-content-center'>
+            <div className="body">
                 <div className="embed-responsive embed-responsive-21by9" style={{width:600,height:400}}>
                     <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowFullScreen></iframe>
                 </div>
+                </div>
             </div>
             <div className="sign_up_section mt-5">
+            <div className="body" style={{flexDirection:"column"}}>
                 <div className="d-flex justify-content-center"><p className="window_header_text">Make your purchases more purposeful</p></div>
                 <div className="row ">
                     <div className="col-12 col-md-6 d-flex justify-content-center">
@@ -92,8 +100,9 @@ function HomePage(){
                                 </form>
                     </div>
                 </div>
+                </div>
             </div>
-        </Fragment>)
+        </div>)
 }
 
 export default HomePage;
