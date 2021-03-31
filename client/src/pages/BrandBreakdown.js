@@ -8,84 +8,59 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import '../styles/BrandBreakdown.css';
+import InfoIcon from '@material-ui/icons/Info';
 
 const useStyles = makeStyles((theme) => ({
     root: {
       width: '100%',
       boxShadow:"none",
-      marginTop:20
+      marginTop:64
     },
-    heading: {
-      fontSize: "10px !important",
-      fontWeight: theme.typography.fontWeightRegular,
-      color:"white",
-      width: 50,
-      [theme.breakpoints.up(300)]: {
-        fontSize: "10px !important",
-        fontWeight: theme.typography.fontWeightRegular,
-        color:"white",
-        width: 50,
+    root1: {
+        width: '100%',
+        boxShadow:"none",
+        marginTop:40
       },
-      [theme.breakpoints.up('sm')]: {
+    heading: {
         fontSize: "20px !important",
         fontWeight: theme.typography.fontWeightRegular,
         color:"white",
         width: 300,
-      },
+        fontFamily: "DM Sans",
+            fontStyle: "normal",
+            fontWeight:" bold",
+            fontSize: 18,
     },
     innerheading: {
-        fontSize: "10px !important",
-        color:"black",
-        width: 50,
-        [theme.breakpoints.between(1200,1400)]: {
-            fontSize: "10px !important",
-            color:"black",
-            width: 100,
-        },
-        [theme.breakpoints.up(300)]: {
-            fontSize: "10px !important",
-            color:"black",
-            width: 50,
-        },
-        [theme.breakpoints.up('sm')]: {
             fontSize: "20px !important",
             color:"black",
             width: 300,
-        },
     },
     border :{
         background: "#3D3E3F",
     },
     heading1:{
-        fontSize: "10px !important",
-        fontWeight: theme.typography.fontWeightRegular,
-        width: 50,
-        [theme.breakpoints.up(300)]: {
-            fontSize: "10px !important",
-            fontWeight: theme.typography.fontWeightRegular,
-            width: 50,
-        },
-        [theme.breakpoints.up('sm')]: {
             fontSize: "20px !important",
             fontWeight: theme.typography.fontWeightRegular,
             width: 335,
-        }
+            fontFamily: "DM Sans",
+            fontStyle: "normal",
+            fontWeight:" bold",
+            fontSize: 18,
+
+            color: "#3D3E3F",
     },
     border1: {
         borderBottom: "0px",
         marginLeft:0
     },
     paragraph:{
-        marginLeft:0,
-        fontSize:"10px !important",
-        [theme.breakpoints.up(300)]: {
-            marginLeft:20,
-            fontSize:"10px !important",
-        },
-        [theme.breakpoints.up('sm')]: {
-            marginLeft:80,
-            fontSize:"20px !important",
-        }
+            marginLeft:100,
+            fontFamily: "DM Sans",
+            fontStyle: "normal",
+            fontWeight: "normal",
+            fontSize: 16,
+            color: "#3D3E3F",
     },
     paragraph1: {
         
@@ -103,8 +78,8 @@ function BrandBreakdown() {
                 <p className="breakdown_logoText">48/<span style={{fontSize:32}}>154</span></p>
             </div>
         <div className="breakdown_page">
-            
-            <div className={`breakdown_accordian ${classes.root} `}>
+            <p className="text_war"><span><InfoIcon/></span> As the parent company, Fast Retailing manages and oversees Uniqlo.</p>
+            <div className={`breakdown_accordian ${classes.root} `} style={{marginTop:0}}>
                 <Accordion>
                     <AccordionSummary
                     expandIcon={<ExpandMoreIcon  style={{color:"white"}}/>}
@@ -116,7 +91,7 @@ function BrandBreakdown() {
                     </AccordionSummary>
                     <AccordionDetails>
                     <Typography>
-                        <Accordion className={classes.root}>
+                        <Accordion className={classes.root1}>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel1a-content"
@@ -133,7 +108,7 @@ function BrandBreakdown() {
                             </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion className={classes.root}>
+                        <Accordion className={classes.root1}>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel1a-content"
@@ -144,14 +119,14 @@ function BrandBreakdown() {
                             </AccordionSummary>
                             <AccordionDetails>
                              <p className="innerheading">Prohibits discrimination throughout all stages of the organization</p> <span className="table_column_inner" >5.5/22</span>
-                            <Typography className={classes.paragraph}>
+                            <Typography className={`${classes.paragraph} inner_paragraph`}>
                             Commits to improving gender equality<br/>
                             Has strong female representation in leadership positions<br/>
                             Ensures equal pay for equal work 
                             </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion className={classes.root}>
+                        <Accordion className={classes.root1}>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel1a-content"
@@ -170,7 +145,7 @@ function BrandBreakdown() {
                             </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion className={classes.root}>
+                        <Accordion className={classes.root1}>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel1a-content"
@@ -204,7 +179,7 @@ function BrandBreakdown() {
                     </AccordionSummary>
                     <AccordionDetails>
                     <Typography>
-                        <Accordion className={classes.root}>
+                        <Accordion className={classes.root1}>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel1a-content"
@@ -222,7 +197,7 @@ function BrandBreakdown() {
                             </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion className={classes.root}>
+                        <Accordion className={classes.root1}>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel1a-content"
@@ -241,7 +216,7 @@ function BrandBreakdown() {
                             </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion className={classes.root}>
+                        <Accordion className={classes.root1}>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel1a-content"
@@ -261,7 +236,7 @@ function BrandBreakdown() {
                             </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion className={classes.root}>
+                        <Accordion className={classes.root1}>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel1a-content"
@@ -298,7 +273,7 @@ function BrandBreakdown() {
                     </AccordionSummary>
                     <AccordionDetails>
                     <Typography>
-                        <Accordion className={classes.root}>
+                        <Accordion className={classes.root1}>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel1a-content"
@@ -318,7 +293,7 @@ function BrandBreakdown() {
                             </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion className={classes.root}>
+                        <Accordion className={classes.root1}>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel1a-content"
@@ -337,7 +312,7 @@ function BrandBreakdown() {
                             </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion className={classes.root}>
+                        <Accordion className={classes.root1}>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel1a-content"
@@ -356,7 +331,7 @@ function BrandBreakdown() {
                             </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion className={classes.root}>
+                        <Accordion className={classes.root1}>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel1a-content"
@@ -391,7 +366,7 @@ function BrandBreakdown() {
                     </AccordionSummary>
                     <AccordionDetails>
                     <Typography>
-                        <Accordion className={classes.root}>
+                        <Accordion className={classes.root1}>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel1a-content"
@@ -408,7 +383,7 @@ function BrandBreakdown() {
                             </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion className={classes.root}>
+                        <Accordion className={classes.root1}>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel1a-content"
@@ -426,7 +401,7 @@ function BrandBreakdown() {
                             </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion className={classes.root}>
+                        <Accordion className={classes.root1}>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon/>}
                             aria-controls="panel1a-content"
