@@ -1,11 +1,18 @@
 .About-Us{
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     padding-bottom: 70px;
     background: #F5F4F2;
+    
 }
 
+.body {
+    display: flex;
+    justify-content: center;
+    max-width: 1192px;
+    margin: auto;
+}
 body{
     overflow-x: hidden;
 }
