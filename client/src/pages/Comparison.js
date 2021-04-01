@@ -5,7 +5,8 @@ import Container from 'react-bootstrap/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import '../styles/Comparison.css';
-import CompareTool from '../components/CompareTool';
+//import CompareTool from '../components/CompareTool';
+import CompareTool from '../components/CompareTool-new';
 
 import CompareSearch from '../components/CompareSearch';
 
@@ -16,7 +17,7 @@ class Comparison extends React.Component {
         <div>
             <Grid container>
                 {/* <Grid item xs={4} style={{border: 'solid'}}> */}
-                <Row style={{marginLeft: '6%', width: '17%', paddingTop: '3%'}}>
+                <Row style={{marginLeft: '6%', width: '17%', paddingTop: '3%'}} className='row-1'>
                     {/* <Col style={{marginTop: '25%', marginLeft: '50%', border: 'solid', paddingRight: '20%'}}> */}
                     <span style={{marginTop: ''}}>
                         <p id="brands" style={{marginTop: '43%'}}>Brands</p>
@@ -27,8 +28,9 @@ class Comparison extends React.Component {
                 </Row>
                 {/* </Grid> */}
                 {/* <Grid item xs={8} style={{border: 'solid'}}> */}
-                <Row style={{marginLeft: '5%', width: '70%', border: ''}}>
-                    <div style={{textAlign: 'center', marginTop: '14%', marginBottom: '2%', paddingLeft: '9%'}}>
+                <Row style={{marginLeft: '5%', width: '70%', border: ''}} className='row-2'>
+                    <div>
+                    <div style={{textAlign: 'center', marginTop: '14%', marginBottom: '2%'}}>
                         <p id ="apparel">Apparel Comparison Chart</p>
                         <p style={{lineHeight: '10px'}}>The percentages represent the score brands received based on our methodology.</p>
                         <p>The higher the percentage, the better the brand is at addressing the issue.</p>
@@ -40,6 +42,7 @@ class Comparison extends React.Component {
                     <span className="avgtext">Average</span>
                     <span id="blwavg"></span>
                     <span className="avgtext"><span style={{fontWeight: 'bold'}}>Below</span> Average</span>
+                    </div>
                 {/* </Grid> */}
                     <CompareTool />
                 </Row>

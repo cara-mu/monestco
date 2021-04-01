@@ -55,7 +55,7 @@ input {
 #abvavg {
     background-color: #93CE8F;
     padding-left: 17px;
-    margin-left: 35%;
+    margin-left: 32%;
     margin-bottom: 1%;
 }
 
@@ -372,4 +372,17 @@ x
 
 .dropdownarrows {
     margin-left: 6%;
+}
+
+@media screen and (max-width:900px) {
+
+    .row-1 {
+        display: none;
+    }
+
+}
+
+
+.row-2 {
+
 }
