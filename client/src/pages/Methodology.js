@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft:15,
     marginTop:146,
     marginRight: theme.spacing(4),
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('lg')]: {
       display: 'none',
     },
   },
@@ -75,6 +75,9 @@ const useStyles = makeStyles((theme) => ({
         position:'absolute',
         height:'auto',
         marginRight:10,
+    },
+    [theme.breakpoints.down('md')]: {
+        display:'none'
     },
     [theme.breakpoints.between(600,1300)]: {
         width: drawerWidth,
@@ -289,6 +292,8 @@ function Methodology(props) {
                 <div className={classes.toolbar} />
                 <p className="paragraph_text"></p>
                 <p id="overview" className="method_head">Methodology</p>
+                
+                <div >
                 <div className="apparel_div">
                     <p>Apparel</p>
                 </div>
@@ -300,6 +305,7 @@ function Methodology(props) {
                 </div>
                 <div className="beauty_div">
                     <p>Beauty</p>
+                </div>
                 </div>
                 <p id="overview" className="heading" style={{marginBottom:25}}>Overview</p>
 
