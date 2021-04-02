@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     left:0,
     padding:0,
     position:"fixed",
-    paddingLeft:15,
+    paddingLeft:16,
     marginTop:146,
     marginRight: theme.spacing(4),
     [theme.breakpoints.up('lg')]: {
