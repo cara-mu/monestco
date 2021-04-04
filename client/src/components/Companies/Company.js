@@ -99,14 +99,34 @@ function Company () {
                 {/*<img src={'../../assets/' + companyName + '.png'} />
                     <h1>{companyName}</h1>*/}
                     <img src={BrandLogo}/>
-                    <p style={{marginTop:"5%", color: '#4F4F4F'}}><b>Uniqlo</b> is a clothing apparel company, which was originally founded in Yamaguchi, Japan. Now it is a global brand with over 1000 stores around the world.</p>
-                    <img src={BrandBox} style={{width:"250px",}}/>
-                    <p className="brand_inside_text">48/154</p>
-                    <Link>Detailed Breakdown</Link>
+                    
+                    <p style={{fontFamily: "DM Sans",
+                            fontStyle: "normal",
+                            fontWeight: 500,
+                            fontSize: 14,
+                            /* identical to box height, or 171% */
+
+
+                            /* gray 3 */
+
+                            color: "#797979"}}>Subsidiary of Fast Retailing</p>
+                    <p style={{marginTop:"5%", color: '#4F4F4F', marginBottom:0}}><b>Uniqlo</b> is a clothing apparel company, which was originally founded in Yamaguchi, Japan. Now it is a global brand with over 1000 stores around the world.</p>
+                    <img src={BrandBox} style={{width:"250px",height:100}}/>
+                    <p className="brand_inside_text" style={{marginTop:40}}>48/154</p>
+                    <Link 
+                        style={{
+                            fontFamily: "DM Sans",
+                            fontStyle: "normal",
+                            fontWeight: "bold",
+                            fontSize: 18,
+                            textDecorationLineine: "underline",
+                            color: "#3D3E3F",
+                        }}
+                    >Detailed Breakdown</Link>
                 </div>
             </Grid>
             <Grid item xs={12} md={8}>
-                <div className = 'Right-Menu' style={{marginTop: '7%', marginLeft: '0%'}}>
+                <div className = 'Right-Menu' style={{marginTop: '7%', marginLeft: '120px'}}>
                     Brand Performance
                     <div className = 'Decorative-Line'></div>
                 
@@ -214,38 +234,38 @@ function Company () {
                         In The News
                         <div className = 'Decorative-Line'></div>
                         <Container>
-                            <Row>
-                                <Col style={{marginTop: '5%'}}>
+                            <div className="row">
+                                <div style={{marginTop: '5%'}} className="col-12 col-sm-5 ">
+                                    <img src = {NewsPlaceHolder} onClick={handleOpen}/>
+                                    <div style={{marginTop: '3%',marginLeft: '5%'}} className = 'News-Description'>
+                                        <h1>Title</h1>
+                                        <p>info about news</p>
+                                    </div>
+                                </div>
+                                <div style={{marginTop: '5%'}} className="col-12 col-sm-5">
+                                    <img src = {NewsPlaceHolder} onClick={handleOpen}/>
+                                    <div style={{marginTop: '3%',marginLeft: '5%'}} className = 'News-Description'>
+                                        <h1>Title</h1>
+                                        <p>info about news</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div style={{marginTop: '5%'}} className="col-12 col-sm-5">
                                     <img src = {NewsPlaceHolder} onClick={handleOpen}/>
                                     <div style={{marginTop: '3%'}} className = 'News-Description'>
                                         <h1>Title</h1>
                                         <p>info about news</p>
                                     </div>
-                                </Col>
-                                <Col style={{marginTop: '5%'}}>
+                                </div>
+                                <div style={{marginTop: '5%'}} className="col-12 col-sm-5">
                                     <img src = {NewsPlaceHolder} onClick={handleOpen}/>
-                                    <div style={{marginTop: '3%'}} className = 'News-Description'>
+                                    <div style={{marginTop: '3%',marginLeft: '5%' }} className = 'News-Description'>
                                         <h1>Title</h1>
                                         <p>info about news</p>
                                     </div>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col style={{marginTop: '5%'}}>
-                                    <img src = {NewsPlaceHolder} onClick={handleOpen}/>
-                                    <div style={{marginTop: '3%'}} className = 'News-Description'>
-                                        <h1>Title</h1>
-                                        <p>info about news</p>
-                                    </div>
-                                </Col>
-                                <Col style={{marginTop: '5%'}}>
-                                    <img src = {NewsPlaceHolder} onClick={handleOpen}/>
-                                    <div style={{marginTop: '3%'}} className = 'News-Description'>
-                                        <h1>Title</h1>
-                                        <p>info about news</p>
-                                    </div>
-                                </Col>
-                            </Row>
+                                </div>
+                            </div>
                             <Modal
                                 open={open}
                                 onClose={handleClose}
