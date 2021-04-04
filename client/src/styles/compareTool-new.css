@@ -25,17 +25,42 @@
     border-bottom: 2px solid #BDBDBD;
 }
 
+.compare-companyList-container {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat( 3, 13rem );
+    column-gap: 1.5rem;
+}
+
 .compare-companyList {
     margin-top: 3rem;
     background-color: white;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
     border-radius: 15px;
-    width: 13rem;
-    line-height: 28px;
-    position: absolute;
+    line-height: 28px;    
     color: #4F4F4F;
     padding: 11px;
     box-sizing: border-box;
+}
+
+.compare-companyList>div {
+    cursor: pointer;
+}
+
+.compare-companyList>div:hover {
+    background-color: #F2F2F2;
+}
+
+.list-1 {
+    grid-column: 1 / 2;
+}
+
+.list-2 {
+    grid-column: 2 / 3;
+}
+
+.list-3 {
+    grid-column: 3 / 4;
 }
 
 .compare__tool-mainField {
@@ -186,6 +211,38 @@
     -webkit-transform: rotate(225deg);
 }
 
+.brand-button-container {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-name {
+    padding: 5px 9px;
+    border: 1px solid #333333;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 13px;
+    margin-left: 10px;
+}
+
+.brand-name-placeholder {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #bdbdbd;
+    text-align: center;
+}
+
+.brand-button-close {
+    font-size: 1.5rem;
+    color: #797979;
+}
+
+.diplay-none {
+    display: none;
+}
+
 @media screen and (max-width:1350px) {
 
     .compare-input-container {
@@ -193,6 +250,10 @@
         margin-left: 12.5rem;
     }
 
+    .compare-companyList-container {
+        grid-template-columns: repeat( 3, 12rem );
+    }
+ 
     .mainField-container {
         grid-template-columns: 11rem repeat( 3, 12rem ) 3rem;
     }
@@ -213,6 +274,10 @@
     .compare-input-container {
         grid-template-columns: repeat( 3, minmax( 6rem, 10rem ) );
         margin-left: 11.5rem;
+    }
+
+    .compare-companyList-container {
+        grid-template-columns: repeat( 3, 10rem );
     }
 
     .mainField-container {
@@ -240,6 +305,10 @@
         margin-left: 9.5rem;
     }
 
+    .compare-companyList-container {
+        grid-template-columns: repeat( 3, 8rem );
+    }
+
     .mainField-container {
         grid-template-columns: 8rem repeat( 3, 8rem ) 2rem;
         grid-template-rows: 4rem;
@@ -260,9 +329,25 @@
 
 @media screen and (max-width:900px) {
 
+    .compare__tool-container {
+        margin:0 auto;
+    }
+
+    .compare-input-container>input {
+        display: none;
+    }
+
+    .brand-button-container {
+        display: flex;
+    }
+
     .compare-input-container {
         grid-template-columns: repeat( 3, 10rem );
         margin-left: 11.5rem;
+    }
+
+    .compare-companyList-container {
+        grid-template-columns: repeat( 3, 10rem );
     }
 
     .mainField-container {
@@ -285,8 +370,17 @@
 
 @media screen and (max-width:800px) {
 
-    .compare-input-container {
+    /* .compare-input-container>input {
         display: none;
+    }
+
+    .brand-button-container {
+        display: flex;
+    } */
+
+    .compare-input-container {
+        grid-template-columns: repeat( 3, 8rem );
+        margin: 4rem 0 1rem 9.5rem;
     }
 
     .mainField-container {
@@ -309,6 +403,14 @@
 
 @media screen and (max-width:700px) {
 
+    .compare-input-container {
+        grid-template-columns: repeat( 3, 6rem );
+    }
+
+    .brand-name{
+        margin-left: 5px;
+    }
+
     .mainField-container {
         grid-template-columns: 8rem repeat( 3, 6rem ) 2rem;
         grid-template-rows: 3rem;
@@ -316,7 +418,7 @@
 
     .subField-container {
         grid-template-columns: 8rem repeat( 3, 6rem ) 2rem;
-        grid-template-rows: 3rem;
+        grid-template-rows: 4rem;
 
     }
 
@@ -328,6 +430,10 @@
 }
 
 @media screen and (max-width:600px) {
+
+    .compare-input-container {
+        grid-template-columns: repeat( 2, 6rem );
+    }
 
     .mainField-container {
         grid-template-columns: 8rem repeat( 2, 6rem ) 2rem;
@@ -343,6 +449,41 @@
     .nestedField-container {
         grid-template-columns: 8rem repeat( 2, 6rem ) 2rem;
         grid-template-rows: 11rem;
+    }
+
+}
+
+@media screen and (max-width:500px) {
+
+    .compare-input-container {
+        grid-template-columns: repeat( 2, 5rem );
+        margin: 4rem 0 1rem 6rem;
+    }
+
+    .mainField-container {
+        grid-template-columns: 6rem repeat( 2, 5rem ) 2rem;
+        grid-template-rows: 4rem;
+        column-gap: 1rem;
+    }
+
+    .subField-container {
+        grid-template-columns: 6rem repeat( 2, 5rem ) 2rem;
+        grid-template-rows: 4rem;
+        column-gap: 1rem;
+    }
+
+    .subField-title {
+        padding-left: 0;
+    }
+
+    .nestedField-container {
+        grid-template-columns: 6rem repeat( 2, 5rem ) 2rem;
+        grid-template-rows: 11rem;
+        column-gap: 1rem;
+    }
+
+    .nestedField-title {
+        padding-left: 0;
     }
 
 }

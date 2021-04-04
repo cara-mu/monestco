@@ -586,7 +586,6 @@ const ScoreContainer = ({
   firstLayer,
   secondLayer,  
 }) => {
-  console.log(score, industrialStandard, "....");
   if (score) {
     if(score > industrialStandard) {      
       return (
@@ -681,6 +680,7 @@ const NestedField = ({ item }) => {
               />
             );
           }
+          return null
         })}
         {item.subNestedField.length > 0 && (
           <div
@@ -715,6 +715,7 @@ const NestedField = ({ item }) => {
                     />
                     );
                 }
+                return null
               })}
             </div>
           );
@@ -765,7 +766,7 @@ const Subfield = ({ item }) => {
               />
             );
           }
-
+          return null
         })}
         {item.subfield.length > 0 && (
           <div
@@ -788,9 +789,8 @@ const Subfield = ({ item }) => {
 
 
 
-const CompareTool = () => {
+const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
   const [companiesList, setCompaniesList] = useState([]);
-  const [industrystandards, setIndustrystandards] = useState([]);
   const [inputBrandOne, setInputBrandOne] = useState("");
   const [inputBrandTwo, setInputBrandTwo] = useState("");
   const [inputBrandThree, setInputBrandThree] = useState("");
@@ -799,7 +799,6 @@ const CompareTool = () => {
   const [listBrandThree, setListBrandThree] = useState(false);
   const [fieldData, setFieldData] = useState(field);
 
-  const companies = [];
   const handleChangeOne = (e) => {
     setInputBrandOne(e.target.value);
     setListBrandOne(true);
@@ -815,10 +814,9 @@ const CompareTool = () => {
     setListBrandThree(true);
   };
 
-  async function renderData(company, index, inputIndex) {
+  async function renderData(company, inputIndex) {
     let data = fieldData;
     inputIndex--;
-
     await axios
       .post(
         "/companydetailsA",
@@ -1103,6 +1101,7 @@ const CompareTool = () => {
         allcompanies.push(resp.data.rows[i].name);
       }
       setCompaniesList(allcompanies);
+      fetchBrand(allcompanies);
     });
 
     axios.get("/industry").then((resp) => {
@@ -1226,30 +1225,40 @@ const CompareTool = () => {
       data[3].subfield[2].industrialStandard = resp.data.rows[0]["D1"];
     });
   }, []);
+
+  useEffect(() => {
+    selectedCompaniesList.forEach((item, index) => {
+      item && renderData(item, index+1)
+    })
+  }, [selectedCompaniesList])
   
   return (
-    <div className="compare__tool-container">
+    <div className="compare__tool-container">        
       <div className="compare-input-container">
         <input
           placeholder="Type the brand"
           value={inputBrandOne}
           onChange={handleChangeOne}
+          onBlur={() => setTimeout(() => setListBrandOne(false), 200)}
         />
         <input
           placeholder="Type the brand"
           value={inputBrandTwo}
           onChange={handleChangeTwo}
+          onBlur={() => setTimeout(() => setListBrandTwo(false), 200)}
         />
         <input
           placeholder="Type the brand"
           value={inputBrandThree}
           onChange={handleChangeThree}
+          onBlur={() => setTimeout(() => setListBrandThree(false), 200)}
         />
+        <div className='compare-companyList-container'>
         {listBrandOne && (
-          <div className="compare-companyList">
+          <div className="compare-companyList list-1">
             {companiesList.map((item, index) => {
               return (
-                <div key={index} onClick={() => renderData(item, index, 1)}>
+                <div key={index} onClick={() => renderData(item, 1)}>
                   {item}
                 </div>
               );
@@ -1257,13 +1266,10 @@ const CompareTool = () => {
           </div>
         )}
         {listBrandTwo && (
-          <div
-            className="compare-companyList"
-            style={{ marginLeft: "14.5rem" }}
-          >
+          <div className="compare-companyList list-2">
             {companiesList.map((item, index) => {
               return (
-                <div key={index} onClick={() => renderData(item, index, 2)}>
+                <div key={index} onClick={() => renderData(item, 2)}>
                   {item}
                 </div>
               );
@@ -1271,16 +1277,27 @@ const CompareTool = () => {
           </div>
         )}
         {listBrandThree && (
-          <div className="compare-companyList" style={{ marginLeft: "29rem" }}>
+          <div className="compare-companyList list-3">
             {companiesList.map((item, index) => {
               return (
-                <div key={index} onClick={() => renderData(item, index, 3)}>
+                <div key={index} onClick={() => renderData(item, 3)}>
                   {item}
                 </div>
               );
             })}
           </div>
         )}
+        </div>
+        {
+          selectedCompaniesList.map( (item, index) => {
+            return(
+              <div key={index} className='brand-button-container'>    
+                <span className={item ? 'brand-button-close' : 'diplay-none'} onClick={() => removeBrand(index)}>&#10006;</span>
+                <span className={item ? 'brand-name' : 'brand-name-placeholder'}>{item ? item : 'Select the brand'}</span>
+              </div>
+            )
+          })
+        }
       </div>
       {fieldData.map((item, index) => <Subfield key={index} item={item} /> )}
     </div>
