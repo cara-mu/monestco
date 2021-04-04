@@ -20,9 +20,9 @@ body{
 .About-Us h1{
     font-family: DM Sans;
     font-style: normal;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 36px;
-    line-height: 47px;
+    line-height: 36px;
     color: #26385A;
 }
 
@@ -113,6 +113,8 @@ body{
     font-family: DM Sans;
     font-style: normal;
 
+    text-align: center;
+
     border-style: none;
     border-radius: 13px;
     background-color: #F29A72;
@@ -121,6 +123,7 @@ body{
 
     margin-left: 5%;
 }
+
 
 #fetched_email{
     border: 1px solid #BDBDBD;
@@ -156,7 +159,7 @@ height: auto;
     font-family: DM Sans;
     font-style: normal;
     font-weight: bold;
-    font-size: 38px;
+    font-size: 36px;
     line-height: 34px;
     color: #26385A;
 }

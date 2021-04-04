@@ -35,6 +35,10 @@
     padding-bottom: 20%;
 }
 
+.Dropdown-Styling{
+    background-color: pink;
+}
+
 .Description img {
     width: 200px;
     height: 200px;

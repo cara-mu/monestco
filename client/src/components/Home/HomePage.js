@@ -26,7 +26,7 @@ function HomePage(){
         return(
         <div>
             <div className = 'About-Us row d-flex'>
-                <div className="body">
+                <div style = {{marginTop: '5%'}}  className="body">
                 <div className="col-12 d-md-none">
                     <img style = {{marginLeft: '5%'}} className="main_image" src = {MonestSketch} alt = 'browser sketch'></img>
                 </div>

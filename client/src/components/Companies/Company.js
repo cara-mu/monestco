@@ -14,6 +14,11 @@ import NewsPlaceHolder from '../../assets/news.png';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import ModalBody from '../ModalBody';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
 import BrandBox from '../../assets/brand_box.svg';
@@ -35,6 +40,18 @@ function rand() {
   }
   
   const useStyles = makeStyles((theme) => ({
+    dropdown:{ 
+        width: '90%',
+        boxShadow: 'none'
+    },
+    heading:{
+        fontFamily: 'DM Sans',
+        color: '#3D3E3F',
+        fontSize: '16px'
+    },
+    expandMenu:{
+        backgroundColor: '#F2F2F2'
+    },
     paper: {
       position: 'absolute',
       width: 900,
@@ -129,35 +146,68 @@ function Company () {
                             </Row>
                         </Container>
                     </div>
-                    Company Facts
+                    Company Initiatives
                     <div className = 'Decorative-Line'></div>
-                    <div className = 'Fun-Fact'>This is a fun fact
-                        <img onClick = {toggleFact} style = {{marginLeft : '75%'}} src = {DropdownButton}/>
-                    </div>
-                    {
-                        showFact ? <div className = 'Fun-Fact-Dropdown'> Insert company fact</div> : null
-                    }
+
+                    <Accordion className = {classes.dropdown}>
+                        <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        >
+                        <Typography className={classes.heading}>This is a fact 1 </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        <Typography className = {classes.expandMenu}>
+                            import from database
+                        </Typography>
+                        </AccordionDetails>
+                    </Accordion>
                     <div className = 'FunFact-Decorative-Line'></div>
-                    <div className = 'Fun-Fact'>This is a fun fact
-                        <img onClick = {toggleFact} style = {{marginLeft : '75%'}} src = {DropdownButton}/>
-                    </div>
-                    {
-                        showFact ? <div className = 'Fun-Fact-Dropdown'> Insert company fact</div> : null
-                    }
+                    <Accordion className = {classes.dropdown}>
+                        <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        >
+                        <Typography className={classes.heading}>This is a fact 2</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        <Typography className = {classes.expandMenu}>
+                            import from database
+                        </Typography>
+                        </AccordionDetails>
+                    </Accordion>
                     <div className = 'FunFact-Decorative-Line'></div>
-                    <div className = 'Fun-Fact'>This is a fun fact
-                        <img onClick = {toggleFact} style = {{marginLeft : '75%'}} src = {DropdownButton}/>
-                    </div>
-                    {
-                        showFact ? <div className = 'Fun-Fact-Dropdown'> Insert company fact</div> : null
-                    }
+                    <Accordion className = {classes.dropdown}>
+                        <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        >
+                        <Typography className={classes.heading}>This is a fact 3</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        <Typography className = {classes.expandMenu}>
+                            import from database
+                        </Typography>
+                        </AccordionDetails>
+                    </Accordion>
                     <div className = 'FunFact-Decorative-Line'></div>
-                    <div className = 'Fun-Fact'>This is a fun fact
-                        <img onClick = {toggleFact} style = {{marginLeft : '75%'}} src = {DropdownButton}/>
-                    </div>
-                    {
-                        showFact ? <div className = 'Fun-Fact-Dropdown'> Insert company fact</div> : null
-                    }
+                    <Accordion className = {classes.dropdown}>
+                        <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        >
+                        <Typography className={classes.heading}>This is a fact 4</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        <Typography className = {classes.expandMenu}>
+                            import from database
+                        </Typography>
+                        </AccordionDetails>
+                    </Accordion>
                     <div className = 'FunFact-Decorative-Line'></div>
 
                     <div className = 'In-The-News' style={{marginTop: '7%', marginLeft: '-1.5%'}}>
