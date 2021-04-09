@@ -57,9 +57,9 @@ export default function BrandDirectory() {
                                         {letterArray[key].length>0 ? <> 
                                             <h6 className="letter" >{key}</h6>
                                             
-                                            <div className="row ml-5 ml-md-3 mr-auto">
+                                            <div className="brand-name-container">
                                                 {letterArray[key].length>0 && letterArray[key].map(val=>(
-                                                    <p className={`col-3 col-md-3 ml-5 ml-md-0 list_letter 
+                                                    <p className={`col-3 col-md-3 ml-md-0 list_letter 
                                                             ${val==="Burberry" ||val==="Balenciaga" ||val==="Canada Goose" ||val==="Chanel"||val==="Christian Dior"||val==="Coach"
                                                             ||val==="Dynamite"||val==="Fila"||val==="Giorgio Armani "||val==="Gucci"||val==="Givenchy"||val==="Garage"||val==="Gildan"
                                                             ||val==="Hermes"||val==="Hugo Boss"||val==="J. Crew"||val==="Kate Spade"||val==="Lacoste"||val==="Louis Vuitton"

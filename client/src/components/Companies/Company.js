@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useLayoutEffect } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
@@ -12,8 +12,11 @@ import SustainableImg from '../../assets/sustainable.png';
 import DropdownButton from '../../assets/dropdownbutton.png';
 import NewsPlaceHolder from '../../assets/news.png';
 import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
+import Modal, { ModalManager } from '@material-ui/core/Modal';
 import ModalBody from '../ModalBody';
+import InfoIcon from "@material-ui/icons/Info";
+import HighlightOffRoundedIcon from '@material-ui/icons/HighlightOffRounded';
+
 
 
 import BrandBox from '../../assets/brand_box.svg';
@@ -24,8 +27,8 @@ function rand() {
   }
   
   function getModalStyle() {
-    const top = 50 + rand();
-    const left = 50 + rand();
+    const top = 50;
+    const left = 50;
   
     return {
       top: `${top}%`,
@@ -53,6 +56,11 @@ function Company () {
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
+    const [showInfo, setShowInfo] = useState(false)
+
+    const handleCloseInfo = () => {
+        setShowInfo(false)
+    }
 
     const handleOpen = () => {
         setOpen(true);
@@ -66,136 +74,291 @@ function Company () {
     const toggleFact = ()=> {
         setShowFact(!showFact)
     }
+
+    const fact = [
+        {
+            title:"Uniqlo appoints its first ever female CEO.",
+            discription:"Maki Akaida, a 40-year-old group senior vice president at parent company Fast Retailing, assumed the role of CEO for Uniqlo's Japanese business in 2019. After joining Uniqlo in 2001.",
+            citation: "https://asia.nikkei.com/Business-Companies-Uniqlo-appoints-first-female-CEO-for-its-Japan-business"
+        },
+        {
+            title:"Shifting to LED store lighting.",
+            discription:"Maki Akaida, a 40-year-old group senior vice president at parent company Fast Retailing, assumed the role of CEO for Uniqlo's Japanese business in 2019. After joining Uniqlo in 2001.",
+            citation: "https://asia.nikkei.com/Business-Companies-Uniqlo-appoints-first-female-CEO-for-its-Japan-business"
+        },
+        {
+            title:"Recycled down is the future of Uniqlo’s collection.",
+            discription:"Maki Akaida, a 40-year-old group senior vice president at parent company Fast Retailing, assumed the role of CEO for Uniqlo's Japanese business in 2019. After joining Uniqlo in 2001.",
+            citation: "https://asia.nikkei.com/Business-Companies-Uniqlo-appoints-first-female-CEO-for-its-Japan-business"
+        },
+        {
+            title:"Uniqlo provides resources for workers in Bangladesh.",
+            discription:"Maki Akaida, a 40-year-old group senior vice president at parent company Fast Retailing, assumed the role of CEO for Uniqlo's Japanese business in 2019. After joining Uniqlo in 2001.",
+            citation: "https://asia.nikkei.com/Business-Companies-Uniqlo-appoints-first-female-CEO-for-its-Japan-business"
+        }
+    ];
     
 
     const body = (
-        <div style={modalStyle} className={classes.paper}>
-          <ModalBody/>
-        </div>
+          <ModalBody handleClose={handleClose}/>
       );
+
+    const Popup = ({handleCloseInfo}) => {
+
+        return (
+            <div className="company-popup">
+                <div className='company-popup-content'>
+                    <div style={{display:'flex', flexDirection:'column', marginTop:'1rem'}}>
+                        <div>Brand Performance</div>
+                        <div style={{fontSize:'16px', fontWeight:'500'}}>
+                            Mobile Vulputate sit condimentum nulla eget placerat tincidunt.
+                        </div>
+                    </div>
+                    <HighlightOffRoundedIcon onClick={handleCloseInfo} className="popup-close-icon"/>
+                </div>
+            </div>
+        )
+    };
+
+    const RenderFact = ({item}) => {
+        const [showFact, setShowFact] = useState(false);
+        const [showCitation, setShowCitation] = useState(false);
+
+        useEffect(() => {
+            if(showFact === false) {
+                setShowCitation(false)
+            }
+        }, [showFact])
+        
+        return(
+            <div>
+                <div className = 'Fun-Fact'>{item.title}
+                    <div
+                        className={showFact ? "Fun-Fact-circle-close" : "Fun-Fact-circle"}
+                        onClick={() => setShowFact(!showFact)}
+                        >
+                        <i className={showFact ? "Fun-Fact-arrowdown-close" : "Fun-Fact-arrowdown"}></i>
+                    </div>
+                </div>
+                {
+                    showFact ? 
+                        <div className = 'Fun-Fact-Dropdown'>
+                            {item.discription}
+                            <div className = 'Fun-Fact' style={{width:'100%', fontWeight:'700'}}>
+                                Citation
+                                <i onClick={() => setShowCitation(!showCitation)} style={{borderColor:'#323232'}} className={showCitation ? "Fun-Fact-arrowdown-close" : "Fun-Fact-arrowdown"}></i>
+                            </div>
+                            {
+                                showCitation ? <div>{item.citation}</div> : null
+                            }
+                        </div> : null
+                }
+                <div className = 'FunFact-Decorative-Line'></div>
+            </div>
+        )
+
+    }
+
+    const RenderInfo = () => {
+
+        const [tabView, setTabView] = useState(window.innerWidth < 800);
+        
+        useLayoutEffect(() => {
+            function updateSize() {
+              if (window.innerWidth > 800) {
+                setTabView(false);
+              } else {
+                setTabView(true);
+              }
+            }
+            window.addEventListener("resize", updateSize);
+            updateSize();
+            return () => window.removeEventListener("resize", updateSize);
+          }, []);
+
+        if(!tabView) { //web view
+            return(
+                <div className='brand_info-text'>Vulputate sit condimentum nulla eget placerat tincidunt.</div>
+                )
+        } else if ( showInfo && tabView ) { //tab view
+            return(
+                    <Popup handleCloseInfo={handleCloseInfo} />
+                )
+        } else return null
+
+    }
+
+    const newsDiscriptionTitle = "Nike allegedly discriminates against women at its corporate headquarters";
+    const newsDiscriptionInfo = "Fed up with feeling marginalized working at the Nike headquarters, a group of female employees began secretly surveying their coworkers on their experiences with gender discrimination....";
 
     return(
         <div className = 'Layout'>
         <Grid container spacing={3}>
             <Grid item xs={12} md={4}>
-                <div className = 'Left-Menu'>
-                {/*<img src={'../../assets/' + companyName + '.png'} />
-                    <h1>{companyName}</h1>*/}
-                    <img src={BrandLogo}/>
-                    <p style={{marginTop:"5%", color: '#4F4F4F'}}><b>Uniqlo</b> is a clothing apparel company, which was originally founded in Yamaguchi, Japan. Now it is a global brand with over 1000 stores around the world.</p>
-                    <img src={BrandBox} style={{width:"250px",}}/>
-                    <p className="brand_inside_text">48/154</p>
-                    <Link>Detailed Breakdown</Link>
+                <div className = 'Left-Menu'>                
+                    <div>
+                        <img className='brand-logo' src={BrandLogo}/>
+                        <div style={{fontSize:'14px', color:'#797979'}}>Subsidiary of Fast Retailing</div>
+                        <p style={{marginTop:"5%", color: '#4F4F4F'}}><b>Uniqlo</b> is a clothing apparel company, which was originally founded in Yamaguchi, Japan. Now it is a global brand with over 1000 stores around the world.</p>
+                    </div>
+                    <div>
+                        <img src={BrandBox} style={{width:"90%",}}/>
+                        <div className="brand_inside_text">
+                            <span className='navy'>48</span>
+                            <span>/154</span>
+                        </div>
+                        <Link className='breakDown-link'>Detailed Breakdown</Link>
+                    </div>
                 </div>
             </Grid>
             <Grid item xs={12} md={8}>
-                <div className = 'Right-Menu' style={{marginTop: '7%', marginLeft: '0%'}}>
-                    Brand Performance
+                <div className = 'Right-Menu' style={{marginTop: '7%', marginLeft: '0.5rem'}}>
+                    <div className = 'Brand-Section-title'>
+                        Brand Performance 
+                        <InfoIcon className='brand_info-icon' onClick={() => setShowInfo(!showInfo)} />
+                        <RenderInfo />
+                    </div>
                     <div className = 'Decorative-Line'></div>
                 
-                    <div className = 'Brand-Performance' style={{marginTop: '3%', marginLeft: '-1.5%'}}>
-                        <Container>
-                            <Row>
-                                <Col>
+                    <div className = 'Brand-Performance'>
+                            <div className = 'Brand-Performance-container'>
+                                <div>
                                     DIVERSITY & INCLUSION
                                     <div className = 'Description'>
-                                        Ac mi ac pharetra sagittis quis egestas sed lobortis egestas.
+                                        Ac mi ac pharetra sagittis quis egestas sed lobortis duis non egestas.
+                                        <div className='Description-data'>
                                         <img src = {DiversityImg}/>
+                                        <div className="Description-score"><span>5.5</span><span>/22</span></div>
+                                        </div>
                                     </div>
-                                </Col>
-                                <Col>
+                                </div>
+                                <div>
                                     WORKER EXPLOITATION
                                     <div className = 'Description'>
                                         Sit vestibulum interdum et duis non feugiat pellentesque turpis.
+                                        <div className='Description-data'>
                                         <img src = {WorkerExploitImg}/>
+                                        <div className="Description-score"><span>19.5</span><span>/46</span></div>
+                                        </div>
                                     </div>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col>
+                                </div>
+                                <div>
                                     WASTE & POLLUTION
                                     <div className = 'Description'>
                                         Sed massa proin scelerisque turpis.  Sed massa proin scelerisque turpis.
+                                        <div className='Description-data'>
                                         <img src = {WasteImg}/>
+                                        <div className="Description-score"><span>9</span><span>/52</span></div>
+                                        </div>
                                     </div>
-                                </Col>
-                                <Col>
+                                </div>
+                                <div>
                                     SUSTAINABLE MATERIALS
                                     <div className = 'Description'>
                                         Sit vestibulum interdum et duis non feugiat pellentesque turpis.
+                                        <div className='Description-data'>
                                         <img src = {SustainableImg}/>
+                                        <div className="Description-score"><span>14</span><span>/34</span></div>
+                                        </div>
                                     </div>
-                                </Col>
-                            </Row>
-                        </Container>
+                                </div>
+                            </div>
                     </div>
-                    Company Facts
+                    <div className = 'Brand-Section-title'>
+                        Company Facts 
+                        <InfoIcon className='brand_info-icon' onClick={() => setShowInfo(!showInfo)} />
+                        <RenderInfo />
+                    </div>
                     <div className = 'Decorative-Line'></div>
-                    <div className = 'Fun-Fact'>This is a fun fact
-                        <img onClick = {toggleFact} style = {{marginLeft : '75%'}} src = {DropdownButton}/>
-                    </div>
                     {
-                        showFact ? <div className = 'Fun-Fact-Dropdown'> Insert company fact</div> : null
+                        fact.map((item, index) => <RenderFact key={index} item={item} />)
                     }
-                    <div className = 'FunFact-Decorative-Line'></div>
-                    <div className = 'Fun-Fact'>This is a fun fact
-                        <img onClick = {toggleFact} style = {{marginLeft : '75%'}} src = {DropdownButton}/>
-                    </div>
-                    {
-                        showFact ? <div className = 'Fun-Fact-Dropdown'> Insert company fact</div> : null
-                    }
-                    <div className = 'FunFact-Decorative-Line'></div>
-                    <div className = 'Fun-Fact'>This is a fun fact
-                        <img onClick = {toggleFact} style = {{marginLeft : '75%'}} src = {DropdownButton}/>
-                    </div>
-                    {
-                        showFact ? <div className = 'Fun-Fact-Dropdown'> Insert company fact</div> : null
-                    }
-                    <div className = 'FunFact-Decorative-Line'></div>
-                    <div className = 'Fun-Fact'>This is a fun fact
-                        <img onClick = {toggleFact} style = {{marginLeft : '75%'}} src = {DropdownButton}/>
-                    </div>
-                    {
-                        showFact ? <div className = 'Fun-Fact-Dropdown'> Insert company fact</div> : null
-                    }
-                    <div className = 'FunFact-Decorative-Line'></div>
-
-                    <div className = 'In-The-News' style={{marginTop: '7%', marginLeft: '-1.5%'}}>
-                        In The News
+                    
+                    <div className = 'In-The-News'>
+                        <div className = 'Brand-Section-title'>In The News</div>
                         <div className = 'Decorative-Line'></div>
-                        <Container>
-                            <Row>
-                                <Col style={{marginTop: '5%'}}>
+                            <div className='In-The-News-container'>
+                                <div className='news-card'>
                                     <img src = {NewsPlaceHolder} onClick={handleOpen}/>
-                                    <div style={{marginTop: '3%'}} className = 'News-Description'>
-                                        <h1>Title</h1>
-                                        <p>info about news</p>
+                                    <div className='news-category'>
+                                        <span className='news-category-title'>Worker Exploitation</span>
+                                        <span className='news-category-year'>2018</span>
                                     </div>
-                                </Col>
-                                <Col style={{marginTop: '5%'}}>
+                                    <div style={{marginTop: '3%'}} className = 'News-Description'>
+                                        <div className = 'News-Description-title'>{newsDiscriptionTitle}</div>
+                                        <div className = 'News-Description-info'>{newsDiscriptionInfo}</div>
+                                        <div style={{fontSize:'14px'}}>
+                                            <span>Responsibility Taken?</span>
+                                            <span style={{color:'#fd7e14', marginLeft:'5px'}}>No</span>
+                                        </div>
+                                        <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
+                                            <span>Issue Addressed?</span>
+                                            <span style={{color:'#28a745', marginLeft:'5px'}}>Yes</span>
+                                            <button className='News-read-more-btn'>read more</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='news-card'>
                                     <img src = {NewsPlaceHolder} onClick={handleOpen}/>
-                                    <div style={{marginTop: '3%'}} className = 'News-Description'>
-                                        <h1>Title</h1>
-                                        <p>info about news</p>
+                                    <div className='news-category'>
+                                        <span className='news-category-title'>Worker Exploitation</span>
+                                        <span className='news-category-year'>2018</span>
                                     </div>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col style={{marginTop: '5%'}}>
+                                    <div style={{marginTop: '3%'}} className = 'News-Description'>
+                                        <div className = 'News-Description-title'>{newsDiscriptionTitle}</div>
+                                        <div className = 'News-Description-info'>{newsDiscriptionInfo}</div>
+                                        <div style={{fontSize:'14px'}}>
+                                            <span>Responsibility Taken?</span>
+                                            <span style={{color:'#fd7e14', marginLeft:'5px'}}>No</span>
+                                        </div>
+                                        <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
+                                            <span>Issue Addressed?</span>
+                                            <span style={{color:'#28a745', marginLeft:'5px'}}>Yes</span>
+                                            <button className='News-read-more-btn'>read more</button>
+                                        </div>
+                                    </div>
+                                </div>                            
+                                <div className='news-card'>
                                     <img src = {NewsPlaceHolder} onClick={handleOpen}/>
-                                    <div style={{marginTop: '3%'}} className = 'News-Description'>
-                                        <h1>Title</h1>
-                                        <p>info about news</p>
+                                    <div className='news-category'>
+                                        <span className='news-category-title'>Worker Exploitation</span>
+                                        <span className='news-category-year'>2018</span>
                                     </div>
-                                </Col>
-                                <Col style={{marginTop: '5%'}}>
+                                    <div style={{marginTop: '3%'}} className = 'News-Description'>
+                                        <div className = 'News-Description-title'>{newsDiscriptionTitle}</div>
+                                        <div className = 'News-Description-info'>{newsDiscriptionInfo}</div>
+                                        <div style={{fontSize:'14px'}}>
+                                            <span>Responsibility Taken?</span>
+                                            <span style={{color:'#fd7e14', marginLeft:'5px'}}>No</span>
+                                        </div>
+                                        <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
+                                            <span>Issue Addressed?</span>
+                                            <span style={{color:'#28a745', marginLeft:'5px'}}>Yes</span>
+                                            <button className='News-read-more-btn'>read more</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='news-card'>
                                     <img src = {NewsPlaceHolder} onClick={handleOpen}/>
-                                    <div style={{marginTop: '3%'}} className = 'News-Description'>
-                                        <h1>Title</h1>
-                                        <p>info about news</p>
+                                    <div className='news-category'>
+                                        <span className='news-category-title'>Worker Exploitation</span>
+                                        <span className='news-category-year'>2018</span>
                                     </div>
-                                </Col>
-                            </Row>
+                                    <div style={{marginTop: '3%'}} className = 'News-Description'>
+                                        <div className = 'News-Description-title'>{newsDiscriptionTitle}</div>
+                                        <div className = 'News-Description-info'>{newsDiscriptionInfo}</div>
+                                        <div style={{fontSize:'14px'}}>
+                                            <span>Responsibility Taken?</span>
+                                            <span style={{color:'#fd7e14', marginLeft:'5px'}}>No</span>
+                                        </div>
+                                        <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
+                                            <span>Issue Addressed?</span>
+                                            <span style={{color:'#28a745', marginLeft:'5px'}}>Yes</span>
+                                            <button className='News-read-more-btn'>read more</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <Modal
                                 open={open}
                                 onClose={handleClose}
@@ -204,42 +367,59 @@ function Company () {
                             >
                                 {body}
                             </Modal>
-                        </Container>
                     </div>
                     <div className="similar_brands">
-                        <p>Similar Brands</p>
+                        <div className = 'Brand-Section-title'>Similar Brands</div>
                         <div className = 'Decorative-Line'></div>
-                        <div className="row"> 
-                            <div className="col-12 col-lg-5  ml-1 mt-4 brand_box">
-                                <p>NIKE</p>
-                                <div className="d-flex justify-content-center">
-                                    <img src={BrandBox} className="brand_logo"/>
+                        <div className="similar_brands-container"> 
+                            <div>
+                                <div>NIKE</div>
+                                <div className='brand_box'>
+                                    <div className="d-flex justify-content-center">
+                                        <img src={BrandBox} className="brand_logo"/>
+                                    </div>
+                                    <div className="brand_inside_text ml-10perc">
+                                        <span>50</span>
+                                        <span>/154</span>
+                                    </div>
                                 </div>
-                                <p className="brand_inside_text ml-4">50/154</p>
                             </div>
-                            <div className="col-12 col-lg-5  ml-lg-5 mt-4 brand_box">
-                                <p>Champion</p>
-                                <div className="d-flex justify-content-center">
-                                    <img src={BrandBox} className="brand_logo"/>
+                            <div>
+                                <div>Champion</div>
+                                <div className='brand_box'>
+                                    <div className="d-flex justify-content-center">
+                                        <img src={BrandBox} className="brand_logo"/>
+                                    </div>
+                                    <div className="brand_inside_text ml-10perc">
+                                        <span>42</span>
+                                        <span>/154</span>
+                                    </div>
                                 </div>
-                                <p className="brand_inside_text ml-4">42/154</p>
-                            </div>
-                        </div>
-                        <div className="row">
-                        <div className="col-12 col-lg-5  ml-1 mt-4 brand_box">
-                                <p>ALDO</p>
-                                <div className="d-flex justify-content-center">
-                                    <img src={BrandBox} className="brand_logo"/>
+                            </div>                        
+                            <div>
+                                <div>ALDO</div>
+                                <div className='brand_box'>
+                                    <div className="d-flex justify-content-center">
+                                        <img src={BrandBox} className="brand_logo"/>
+                                    </div>
+                                    <div className="brand_inside_text ml-10perc">
+                                        <span>42</span>
+                                        <span>/154</span>
+                                    </div>
                                 </div>
-                                <p className="brand_inside_text ml-4">49/154</p>
                             </div>
-                            <div className="col-12 col-lg-5  ml-lg-5 mt-4 brand_box">
-                                <p>Sem id mauris</p>
-                                <div className="d-flex justify-content-center">
-                                    <img src={BrandBox} className="brand_logo"/>
+                            <div>
+                                <div>Sem id mauris</div>
+                                <div className='brand_box'>
+                                    <div className="d-flex justify-content-center">
+                                        <img src={BrandBox} className="brand_logo"/>
+                                    </div>
+                                    <div className="brand_inside_text ml-10perc">
+                                        <span>48</span>
+                                        <span>/154</span>
+                                    </div>
                                 </div>
-                                <p className="brand_inside_text ml-4">48/154</p>
-                            </div>
+                            </div>                            
                         </div>
                     </div>
             </div>

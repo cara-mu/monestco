@@ -372,12 +372,12 @@ const NestedField = ({ item }) => {
         {showInfo ? (
           <CancelIcon
             onClick={() => setShowInfo(!showInfo)}
-            className="info-icon"
+            className="breakdown_info-icon"
           />
         ) : (
           <InfoIcon
             onClick={() => setShowInfo(!showInfo)}
-            className="info-icon"
+            className="breakdown_info-icon"
           />
         )}
         {showPopup && <Popup item={item} closePopup={closePopup} />}
@@ -412,12 +412,12 @@ const NestedField = ({ item }) => {
         {showInfo ? (
           <CancelIcon
             onClick={() => setShowInfo(!showInfo)}
-            className="info-icon"
+            className="breakdown_info-icon"
           />
         ) : (
           <InfoIcon
             onClick={() => setShowInfo(!showInfo)}
-            className="info-icon"
+            className="breakdown_info-icon"
           />
         )}
         {showPopup && <Popup item={item} closePopup={closePopup} />}
@@ -488,7 +488,7 @@ const BrandBreakdown = () => {
       <div className="breakdown_logo">
         <img src={Logo} className="breakdown_logoImage" />
         <p className="breakdown_logoText">
-          48/<span style={{ fontSize: 32 }}>154</span>
+          48<span style={{ fontSize: 32 }}>/154</span>
         </p>
       </div>
       <div className="breakdown_data-container">
