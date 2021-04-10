@@ -22,7 +22,7 @@
 
 .breakdown_logoText {
     margin-top: 118px;
-    margin-left:50px;
+    margin-left:100px;
     font-family: DM Sans;
     font-style: normal;
     font-weight: bold;
@@ -163,6 +163,9 @@
         width: 100%;
         padding-left: 100px !important;
     }
+    .breakdown_logoText {
+        margin-left: 22px;
+    }
 }
 @media only screen and (max-width: 650px) {  
     .breakdown_page{
@@ -193,6 +196,9 @@
         font-size: 10px;
         text-align: center;
         color: black;
+    }
+    .breakdown_logoText {
+        margin-left: 50px;
     }
 }
 

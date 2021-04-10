@@ -335,7 +335,7 @@ const NestedField = ({ item }) => {
     return (
       <div className="breakdown_nestedField">
         <div className="breakdown_nestedField-title">{item.title}</div>
-        <div>{item.scores}</div>
+        <div className="breakdown_nestedField-score">{item.scores}</div>
         <div>
           {item.texts.map((text, index) => {
             return (
@@ -395,7 +395,7 @@ const NestedField = ({ item }) => {
           <div className="breakdown_nestedField-title">{item.title}</div>
         )}
         {!showInfo && (
-          <div>{item.scores}</div>
+          <div className="breakdown_nestedField-score">{item.scores}</div>
         )}
         {showInfo && (
           <div style={{ gridColumnEnd: "span 2" }}>
@@ -462,7 +462,7 @@ const Mainfield = ({ item }) => {
         className="breakdown_mainField-container"
       >
         <div className="breakdown_mainField-title">{item.mainField}</div>
-        <div className="breakdown_mainField-title">{item.mainScore}</div>
+        <div className="breakdown_mainField-score">{item.mainScore}</div>
         <div
           className={show ? "circle-new-close white" : "circle-new white"}
           onClick={() => setShow(!show)}

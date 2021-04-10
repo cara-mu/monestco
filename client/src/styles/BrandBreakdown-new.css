@@ -22,8 +22,12 @@
     color: #fff;
     background-color: #3D3E3F;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
     padding: 0 1rem;
+}
+
+.breakdown_mainField-score {
+    text-align: center;
 }
 
 .breakdown_subField {
@@ -38,7 +42,7 @@
     align-items: center;
     color: #3D3E3F;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
     padding: 0 1rem;
 }
 
@@ -47,8 +51,9 @@
 }
 
 .breakdown_subField-score {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
+    text-align: center;
 }
 
 .breakdown_nestedField {
@@ -64,8 +69,13 @@
 }
 
 .breakdown_nestedField-title {
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 700;
     padding: 0 0.5rem;
+}
+
+.breakdown_nestedField-score {
+    text-align: center;
 }
 
 .selected {
@@ -83,8 +93,8 @@
 
 .circle-new {
     border-radius: 50%;
-    width: 29px;
-    height: 29px;
+    width: 26px;
+    height: 26px;
     background-color: #26385A;
     text-align: center;
     transition: all 0.5s;
@@ -93,8 +103,8 @@
 
 .circle-new-close {
     border-radius: 50%;
-    width: 29px;
-    height: 29px;
+    width: 26px;
+    height: 26px;
     background-color: #FAF7F2;
     text-align: center;
     transition: all 0.5s;
@@ -106,7 +116,7 @@
     border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 4px;
-    /* margin-bottom: 2px; */
+    margin-bottom: 3px;
     transition: all 0.5s;
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
@@ -176,8 +186,27 @@
 
     .breakdown_nestedField {
         grid-template-columns: 1fr 4rem;
+        grid-template-rows: 8rem;
     }
 
+    .breakdown_subField-score {
+        font-size: 16px;
+    }
+
+    .breakdown_nestedField-title {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .circle-new {
+        width: 24px;
+        height: 25px;
+    }
+
+    .circle-new-close {
+        width: 24px;
+        height: 25px;
+    }
 }
 
 @media screen and (max-width:600px) {
@@ -192,8 +221,45 @@
 
     .breakdown_nestedField {
         grid-template-columns: 17rem 6rem 1fr;
+        grid-template-rows: 6rem;
     }
 
+    .breakdown_mainField-container {
+        font-size: 16px;
+    }
+
+    .breakdown_subField-container {
+        font-size: 16px;
+    }
+
+    .breakdown_subField-score {
+        font-weight: 400;
+    }
+
+    .breakdown_nestedField-title {
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .breakdown_nestedField {
+        font-size: 12px;
+    }
+
+    .circle-new {
+        width: 20px;
+        height: 20px;
+    }
+
+    .circle-new-close {
+        width: 20px;
+        height: 20px;
+    }
+    .breakdown_info-icon {
+        font-size: 24px !important;
+    }
+    .arrowdown-new {
+        margin-bottom: 4px;
+    }
 }
 
 @media screen and (max-width:480px) {
