@@ -56,7 +56,7 @@
     line-height: 34px;
     letter-spacing: 0px;
     text-align: left;
-    color: #000;
+    color: #333333;
     margin: 15px 0;
     cursor: pointer;
 }
@@ -68,7 +68,7 @@
     line-height: 34px;
     letter-spacing: 0px;
     text-align: left;
-    color: #000;
+    color: #333333;
     margin-left: 15px;
     cursor: pointer;
 }
@@ -176,11 +176,11 @@
 }
 
 .logo-container {
-    margin-top: 2rem;
+    margin-top: 6rem;
     width: 100%;
     display: grid;
     grid-template-columns: repeat( 3, 30%);
-    grid-gap: 25px 20px;
+    grid-gap: 30px;
 }
 
 .logo-container>img {

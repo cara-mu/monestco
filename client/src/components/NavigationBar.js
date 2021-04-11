@@ -5,6 +5,9 @@ import ApparelDropdown from './Dropdown/ApparelDropdown.js'
 import TechDropdown from './Dropdown/TechDropdown.js'
 import FastFoodDropdown from './Dropdown/FastFoodDropdown.js'
 import ComparisonDropdown from './Dropdown/ComparisonDropdown.js';
+import TextField from '@material-ui/core/TextField';
+import SearchIcon from '@material-ui/icons/Search';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import '../styles/NavigationBar.css';
 function NavigationBar() {
   {/* Declare variables that will change state when clicked */ }
@@ -175,6 +178,21 @@ function NavigationBar() {
                 Compare
             </Link>
             {compareDropdown && <ComparisonDropdown />}
+          </li>
+
+          <li className='Menu-Item' >
+            <TextField 
+              id="standard-basic" 
+              placeholder="Search"
+              // label="Standard"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon style={{fill:'rgba(50,50,50,0.5)'}} />
+                  </InputAdornment>
+                ),
+              }}
+               /> 
           </li>
         </ul>
       </nav>

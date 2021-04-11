@@ -22,21 +22,28 @@
   }
 
   .Navigation-Menu {
-    right: 50%;
+    /* right: 50%;
     display: grid;
-    grid-template-columns: repeat(6, auto);
+    grid-template-columns: repeat(6, auto); */
     grid-gap: 15px;
+
+    display: flex;
+    height: 100%;
+    align-items: center;
+    margin: 0;
 
     list-style: none;
     text-align: center;
     width: 70vw;
     justify-content:center;
-    margin-right: 2rem;
+    /* margin-right: 2rem; */
   }
   
   .Menu-Item {
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 16px;
+    line-height: 36px;
+    color: #26385A;
+    font-weight: 500;
     font-family: 'DM Sans', sans-serif;
 
     display: flex;
@@ -46,8 +53,8 @@
   .Navigation-Link {
     color: #26385A;
     text-decoration: none;
-    line-height: 50%;
-    padding: 0.5rem 1rem;
+    /* line-height: 50%;
+    padding: 0.5rem 1rem; */
   }
   
   .Navigation-Link:hover {
@@ -66,20 +73,28 @@
   .Compare-Button {
     display: block;
     text-align: center;
-    padding: 0.75rem;
-    margin: 2rem auto;
+    padding: 2px 9px;
+    /* margin: 2rem auto; */
 
-    border: 3px solid #26385A;
+    border: 2px solid #26385A;
     border-radius: 15px;
     width: 100%;
 
     text-decoration: none;
     color: #26385A;
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 38px;
+    font-weight: 700;
 }
 
 /* CSS Styling was not working when using the logo's class name, resorted to using img tag instead */
-  img {
+.Navigation-Bar>a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+img {
   width: 150px;
   height: 150px;
 }
