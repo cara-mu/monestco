@@ -259,7 +259,7 @@ function Company () {
                                     </div>
                                 </div>
                                 <div>
-                                    SUSTAINABLE MATERIALS
+                                    ETHICAL SOURCING
                                     <div className = 'Description'>
                                         <div className='Description-text'>
                                             Discrimination, Gender Equality, Culture Diversity, Inclusivity

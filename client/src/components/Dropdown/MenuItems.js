@@ -102,36 +102,36 @@ export const MenuItems = [
         path: '/companies/Urban-Outfitters',
         cName: 'nav-links'
     },
-    {
-        title: 'Patagonia',
-        path: '/companies/Patagonia',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Patagonia',
-        path: '/companies/Patagonia',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Patagonia',
-        path: '/companies/Patagonia',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Patagonia',
-        path: '/companies/Patagonia',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Patagonia',
-        path: '/companies/Patagonia',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Patagonia',
-        path: '/companies/Patagonia',
-        cName: 'nav-links'
-    }
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // },
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // },
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // },
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // },
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // },
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // }
 ]
 
 /* ALL THE DROPDOWN COMPONENTS USE THE SAME MENUITEM.JS FILE CURRENTLY, SO CSS CHANGES MADE TO EACH LINK IN INDIVIDUAL

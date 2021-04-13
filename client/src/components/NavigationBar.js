@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
 import LogoTransparent from '../assets/logo_transparent.png'
 import ApparelDropdown from './Dropdown/ApparelDropdown.js'
@@ -26,10 +26,11 @@ function NavigationBar() {
   const closeMenu = () => setClick(false);
   const handleClick = () => setClick(!click);
 
+  const minWidth = 850;
 
   {/* Manage apparel dropdown menu*/}
   const enterAppDropdown = () => {
-    if (window.innerWidth < 960) {
+    if (window.innerWidth < minWidth) {
       setAppDropdown(false);
     } else {
       setAppDropdown(true);
@@ -37,7 +38,7 @@ function NavigationBar() {
   };
 
   const exitAppDropdown = () => {
-    if (window.innerWidth < 960) {
+    if (window.innerWidth < minWidth) {
       setAppDropdown(false);
     } else {
       setAppDropdown(false);
@@ -46,7 +47,7 @@ function NavigationBar() {
 
   {/* Manage fast food dropdown menu */}
   const enterFoodDropdown = () => {
-    if (window.innerWidth < 960) {
+    if (window.innerWidth < minWidth) {
       setFoodDropdown(false);
     } else {
       setFoodDropdown(true);
@@ -54,7 +55,7 @@ function NavigationBar() {
   };
 
   const exitFoodDropdown = () => {
-    if (window.innerWidth < 960) {
+    if (window.innerWidth < minWidth) {
       setFoodDropdown(false);
     } else {
       setFoodDropdown(false);
@@ -63,7 +64,7 @@ function NavigationBar() {
 
   {/* Manage tech dropdown menu */}
   const enterTechDropdown = () => {
-    if (window.innerWidth < 960) {
+    if (window.innerWidth < minWidth) {
       setTechDropdown(false);
     } else {
       setTechDropdown(true);
@@ -71,7 +72,7 @@ function NavigationBar() {
   };
 
   const exitTechDropdown = () => {
-    if (window.innerWidth < 960) {
+    if (window.innerWidth < minWidth) {
       setTechDropdown(false);
     } else {
       setTechDropdown(false);
@@ -80,7 +81,7 @@ function NavigationBar() {
 
     {/* Manage compare dropdown menu */}
   const enterCompareDropdown = () => {
-    if (window.innerWidth < 960) {
+    if (window.innerWidth < minWidth) {
       setCompareDropdown(false);
     } else {
       setCompareDropdown(true);
@@ -88,12 +89,23 @@ function NavigationBar() {
   };
 
   const exitCompareDropdown = () => {
-    if (window.innerWidth < 960) {
+    if (window.innerWidth < minWidth) {
       setCompareDropdown(false);
     } else {
       setCompareDropdown(false);
     }
   };
+
+  useLayoutEffect(() => {
+    function updateSize() {
+      if (window.innerWidth > minWidth) {
+        setClick(false)
+      }
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
 
   return (
       <nav className = 'Navigation-Bar' >
@@ -120,10 +132,12 @@ function NavigationBar() {
             <Link 
                 to='/' 
                 className='Navigation-Link' 
-                onClick={closeMenu}>
+                onClick={closeMenu}
+                >
                     Apparel
             </Link>
-            {appDropdown && <ApparelDropdown />}
+            {appDropdown && <ApparelDropdown exitAppDropdown={exitAppDropdown}/>}
+            {/* {true && <ApparelDropdown />} */}
           </li>
 
           {/* onMouseEnter denotes hover-over */}
@@ -180,7 +194,7 @@ function NavigationBar() {
             {compareDropdown && <ComparisonDropdown />}
           </li>
 
-          <li className='Menu-Item' >
+          <li className='Menu-Item Menu-Item-search' >
             <TextField 
               id="standard-basic" 
               placeholder="Search"
@@ -195,6 +209,9 @@ function NavigationBar() {
                /> 
           </li>
         </ul>
+        <div className='mobile-search-icon'>
+          <SearchIcon style={{fill:'rgb(50,50,50)', fontSize:'25px'}} />
+        </div>
       </nav>
   );
 }

@@ -33,7 +33,7 @@ function HomePage(){
                         purchasing decisions.</h1>         
                         <label for="fetched_email">Join our Chrome Extension waitlist!</label>               
                         <form id="form" onClick = {sendEmail}>
-                            <div class="field">                                                                
+                            <div class="field" style={{display:'flex', alignItems:'center', flexWrap:'nowrap'}}>                                                                
                                 <input type="text" name="fetched_email" id="fetched_email" placeholder="Your email address"></input>
                                 <input type="submit" id="button" value="Sign Up" ></input>
                             </div>
@@ -76,10 +76,16 @@ function HomePage(){
                             <p className="text_window">We help empower you to hold<br/> corporations to higher ethical<br/> standards. Understand and <br/>compare brands’ impact at a <br/>glance with Monest
                             </p>
                             <p className="sign_up_text">Join our Chrome extension waitlist</p>
-                            <div style={{display:'flex'}}>
+                            <form id="form" onClick = {sendEmail}>
+                                <div class="field" style={{display:'flex', alignItems:'center', flexWrap:'nowrap'}}>                                                                
+                                    <input type="text" name="fetched_email" id="fetched_email" placeholder="Your email address"></input>
+                                    <input type="submit" id="button" value="Sign Up" ></input>
+                                </div>
+                            </form>
+                            {/* <div style={{display:'flex'}}>
                                 <input type="email" placeholder='Your email address' className="input_sign_up" id="email"/>
                                 <button type="submit" className="btn btn-primary sign_up_button">Sign Up</button>
-                            </div>
+                            </div> */}
                             {/* <form className="form-inline">
                                 <div className="form-group">
                                     {/* <label for="email" className="sr-only">Email</label> */}
