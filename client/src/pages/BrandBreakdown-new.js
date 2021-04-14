@@ -3,6 +3,7 @@ import Logo from "../assets/brandBreakdown.svg";
 import InfoIcon from "@material-ui/icons/Info";
 import CancelIcon from "@material-ui/icons/Cancel";
 import HighlightOffRoundedIcon from '@material-ui/icons/HighlightOffRounded';
+import ExpandMoreSharpIcon from "@material-ui/icons/ExpandMoreSharp";
 import "../styles/BrandBreakdown.css";
 import "../styles/BrandBreakdown-new.css";
 
@@ -224,7 +225,7 @@ const field = [
     ],
   },
   {
-    mainField: "SUSTAINABLE MATERIALS",
+    mainField: "ETHICAL SOURCING",
     mainScore: "5.5/22",
     subfield: [
       {
@@ -437,12 +438,10 @@ const Subfield = ({ item }) => {
       >
         <div className="breakdown_subField-title">{item.mainNestedField}</div>
         <div className="breakdown_subField-score">{item.mainNestedScore}</div>
-        <div
-          className={show ? "circle-new-close" : "circle-new"}
+        <ExpandMoreSharpIcon
           onClick={() => setShow(!show)}
-        >
-          <i className={show ? "arrowdown-new-close" : "arrowdown-new"}></i>
-        </div>
+          className={show ? "circle-breakdown-close" : "circle-breakdown fill-white"}          
+        />
       </div>
       {show &&
         item.subNestedField.map((item, index) => {
@@ -452,8 +451,8 @@ const Subfield = ({ item }) => {
   );
 };
 
-const Mainfield = ({ item }) => {
-  const [show, setShow] = useState(false);
+const Mainfield = ({ item, index }) => {
+  const [show, setShow] = useState(index === 0 ? true : false);
 
   return (
     <div className="breakdown_mainField">
@@ -463,14 +462,11 @@ const Mainfield = ({ item }) => {
       >
         <div className="breakdown_mainField-title">{item.mainField}</div>
         <div className="breakdown_mainField-score">{item.mainScore}</div>
-        <div
-          className={show ? "circle-new-close white" : "circle-new white"}
+        <ExpandMoreSharpIcon
           onClick={() => setShow(!show)}
-        >
-          <i
-            className={show ? "arrowdown-new-close grey" : "arrowdown-new grey"}
-          ></i>
-        </div>
+          className={show ? "circle-breakdown-close" : "circle-breakdown"}
+          style={{backgroundColor:'#FAF7F2', fill:'#26385A'}}
+        />
       </div>
       <div>
         {show &&
@@ -491,9 +487,15 @@ const BrandBreakdown = () => {
           48<span style={{ fontSize: 32 }}>/154</span>
         </p>
       </div>
+      <div className="breakdown_info-container">
+        <InfoIcon style={{fontSize:'15px', fill:'#3D3E3F', marginRight:'4px'}}/>
+        <span className="breakdown_info-container-text">
+          As the parent company, Fast Retailing manages and oversees Uniqlo.
+        </span>
+      </div>
       <div className="breakdown_data-container">
         {field.map((item, index) => (
-          <Mainfield key={index} item={item} />
+          <Mainfield key={index} item={item} index={index} />
         ))}
       </div>
     </div>

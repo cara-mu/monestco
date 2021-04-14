@@ -182,7 +182,8 @@
     background-color: rgba(196, 196, 196, 0.3);
 }
 
-.circle-new {    
+.circle-new {   
+    border-radius: 50%; 
     background-color: #26385A;
     fill: #ffffff !important;
     font-size: 26px !important;
@@ -190,6 +191,7 @@
 }
 
 .circle-new-close {
+    border-radius: 50%; 
     background-color: #FAF7F2;
     fill: #26385A !important;
     font-size: 26px !important;
@@ -281,6 +283,7 @@
 
     .nestedField-title {
         font-size: 16px;
+        line-height: 20px;
     }
 }
 

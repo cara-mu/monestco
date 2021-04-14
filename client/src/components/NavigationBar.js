@@ -17,9 +17,16 @@ function NavigationBar() {
 
   {/* Declare additional variables to change state when dropdown menu is triggered*/}
   {/* Need to define for each navigation item (apparel, tech, etc..) */}
+  const [appDropdownLink, setAppDropdownLink] = useState(false);
   const [appDropdown, setAppDropdown] = useState(false);
+
+  const [foodDropdownLink, setFoodDropdownLink] = useState(false);
   const [foodDropdown, setFoodDropdown] = useState(false);
+
+  const [techDropdownLink, setTechDropdownLink] = useState(false);
   const [techDropdown, setTechDropdown] = useState(false);
+
+  const [compareDropdownLink, setCompareDropdownLink] = useState(false);
   const [compareDropdown, setCompareDropdown] = useState(false);
 
   {/* Closes menu when navigated away */}
@@ -27,72 +34,121 @@ function NavigationBar() {
   const handleClick = () => setClick(!click);
 
   const minWidth = 850;
+  const timeLimit = 400;
 
   {/* Manage apparel dropdown menu*/}
   const enterAppDropdown = () => {
-    if (window.innerWidth < minWidth) {
-      setAppDropdown(false);
-    } else {
-      setAppDropdown(true);
+    if (window.innerWidth > minWidth) {    
+      setAppDropdown(true);    
     }
   };
 
   const exitAppDropdown = () => {
-    if (window.innerWidth < minWidth) {
-      setAppDropdown(false);
-    } else {
-      setAppDropdown(false);
+    if (window.innerWidth > minWidth) { 
+      setTimeout(() => {      
+        setAppDropdown(false);      
+      }, timeLimit)
+    }
+  };
+
+  const enterAppDropdownLink = () => { 
+    if (window.innerWidth > minWidth) { 
+      setAppDropdownLink(true);
+    }
+  };
+
+  const exitAppDropdownLink = () => {
+    if (window.innerWidth > minWidth) {
+    setTimeout(() => {      
+        setAppDropdownLink(false);
+    }, timeLimit)
     }
   };
 
   {/* Manage fast food dropdown menu */}
   const enterFoodDropdown = () => {
-    if (window.innerWidth < minWidth) {
-      setFoodDropdown(false);
-    } else {
+    if (window.innerWidth > minWidth) {
       setFoodDropdown(true);
     }
   };
 
   const exitFoodDropdown = () => {
-    if (window.innerWidth < minWidth) {
-      setFoodDropdown(false);
-    } else {
-      setFoodDropdown(false);
+    if (window.innerWidth > minWidth) {
+      setTimeout(() => {      
+        setFoodDropdown(false);   
+      }, timeLimit)
+    }
+  };
+
+  const enterFoodDropdownLink = () => {
+    if (window.innerWidth > minWidth) {
+      setFoodDropdownLink(true);
+    }
+  };
+
+  const exitFoodDropdownLink = () => {
+    if (window.innerWidth > minWidth) {
+      setTimeout(() => {      
+        setFoodDropdownLink(false);   
+      }, timeLimit)      
     }
   };
 
   {/* Manage tech dropdown menu */}
+  const enterTechDropdownLink = () => {
+    if (window.innerWidth > minWidth) {      
+      setTechDropdownLink(true);
+    }
+  };
+
+  const exitTechDropdownLink = () => {
+    if (window.innerWidth > minWidth) {
+      setTimeout(() => {      
+        setTechDropdownLink(false);   
+      }, timeLimit)      
+    }
+  };
+
   const enterTechDropdown = () => {
-    if (window.innerWidth < minWidth) {
-      setTechDropdown(false);
-    } else {
+    if (window.innerWidth > minWidth) {      
       setTechDropdown(true);
     }
   };
 
   const exitTechDropdown = () => {
-    if (window.innerWidth < minWidth) {
-      setTechDropdown(false);
-    } else {
-      setTechDropdown(false);
+    if (window.innerWidth > minWidth) {
+      setTimeout(() => {      
+        setTechDropdown(false);   
+      }, timeLimit)      
     }
   };
 
     {/* Manage compare dropdown menu */}
+  const enterCompareDropdownLink = () => {
+    if (window.innerWidth > minWidth) {      
+      setCompareDropdownLink(true);
+    }
+  };
+
+  const exitCompareDropdownLink = () => {
+    if (window.innerWidth > minWidth) {
+      setTimeout(() => {      
+        setCompareDropdownLink(false);   
+      }, timeLimit)       
+    }
+  };
+
   const enterCompareDropdown = () => {
-    if (window.innerWidth < minWidth) {
-      setCompareDropdown(false);
-    } else {
+    if (window.innerWidth > minWidth) {      
       setCompareDropdown(true);
     }
   };
 
   const exitCompareDropdown = () => {
-    if (window.innerWidth < minWidth) {
-      setCompareDropdown(false);
-    } else {
-      setCompareDropdown(false);
+    if (window.innerWidth > minWidth) {
+      setTimeout(() => {      
+        setCompareDropdown(false);   
+      }, timeLimit)       
     }
   };
 
@@ -106,7 +162,7 @@ function NavigationBar() {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-
+  console.log(foodDropdown, foodDropdownLink)
   return (
       <nav className = 'Navigation-Bar' >
           {/* Monest Logo */}
@@ -128,7 +184,7 @@ function NavigationBar() {
 
         <ul className = {click ? 'Nav-Menu active' : 'Navigation-Menu'}>
             {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={enterAppDropdown} onMouseLeave={exitAppDropdown} >
+          <li className='Menu-Item' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink} >
             <Link 
                 to='/' 
                 className='Navigation-Link' 
@@ -136,41 +192,40 @@ function NavigationBar() {
                 >
                     Apparel
             </Link>
-            {appDropdown && <ApparelDropdown exitAppDropdown={exitAppDropdown}/>}
-            {/* {true && <ApparelDropdown />} */}
+            {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
           </li>
 
           {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={enterTechDropdown} onMouseLeave={exitTechDropdown} >
+          <li className='Menu-Item' onMouseEnter={enterTechDropdownLink} onMouseLeave={exitTechDropdownLink} >
             <Link
               to='/'
               className='Navigation-Link'
               onClick={closeMenu} >
                  Tech
             </Link>
-            {techDropdown && <TechDropdown />}
+            {(techDropdownLink || techDropdown) && <TechDropdown enterTechDropdown={enterTechDropdown} exitTechDropdown={exitTechDropdown}  />}
           </li>
 
            {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={enterFoodDropdown} onMouseLeave={exitFoodDropdown} >
+          <li className='Menu-Item' onMouseEnter={enterFoodDropdownLink} onMouseLeave={exitFoodDropdownLink} >
             <Link
               to='/'
               className='Navigation-Link'
               onClick={closeMenu} >
                  Fast Food 
             </Link>
-            {foodDropdown && <FastFoodDropdown />}
+            {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
           </li>
 
           {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={enterFoodDropdown} onMouseLeave={exitFoodDropdown} >
+          <li className='Menu-Item' onMouseEnter={enterFoodDropdownLink} onMouseLeave={exitFoodDropdownLink} >
             <Link
               to='/'
               className='Navigation-Link'
               onClick={closeMenu} >
                  Beauty 
             </Link>
-            {foodDropdown && <FastFoodDropdown />}
+            {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
           </li>
 
           {/* onMouseEnter denotes hover-over */}
@@ -184,14 +239,14 @@ function NavigationBar() {
           </li>
 
           {/* Compare button had unique css styling but still has hover dropdown, denoted by having two classNames */}
-          <li className='Menu-Item' onMouseEnter={enterCompareDropdown} onMouseLeave={exitCompareDropdown}>
+          <li className='Menu-Item' onMouseEnter={enterCompareDropdownLink} onMouseLeave={exitCompareDropdownLink}>
             <Link
               to='/comparison'
               className='Compare-Button'
               onClick={closeMenu} >
                 Compare
             </Link>
-            {compareDropdown && <ComparisonDropdown />}
+            {(compareDropdownLink || compareDropdown) && <ComparisonDropdown enterCompareDropdown={enterCompareDropdown} exitCompareDropdown={exitCompareDropdown} />}
           </li>
 
           <li className='Menu-Item Menu-Item-search' >

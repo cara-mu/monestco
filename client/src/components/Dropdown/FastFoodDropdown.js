@@ -3,7 +3,7 @@ import { MenuItems } from './MenuItems';
 import { Link } from 'react-router-dom';
 import '../../styles/FastFoodDropdown.css';
 
-function FastFoodDropdown() {
+function FastFoodDropdown({enterFoodDropdown, exitFoodDropdown}) {
   {/* Functions handling click */}
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -11,7 +11,10 @@ function FastFoodDropdown() {
   return (
       <ul
         onClick={handleClick}
-        className={click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'} >  
+        className={click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'}
+        onMouseEnter={enterFoodDropdown} 
+        onMouseLeave={exitFoodDropdown}
+        >  
 
          {/* First launch will not include */}
          

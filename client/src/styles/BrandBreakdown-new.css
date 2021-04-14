@@ -6,8 +6,21 @@
     margin: 0 auto;
 }
 
+.breakdown_info-container {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.breakdown_info-container-text {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 34px;
+}
+
 .breakdown_data-container {
-    margin-top: 4rem;
+    margin-top: 1rem;
 }
 
 .breakdown_mainField {
@@ -91,45 +104,29 @@
     justify-self: end;
 }
 
-.circle-new {
-    border-radius: 50%;
-    width: 26px;
-    height: 26px;
-    background-color: #26385A;
+.circle-breakdown {
+    border-radius: 50%;    
+    font-size: 26px !important;
+    background-color: #26385A;    
     text-align: center;
     transition: all 0.5s;
     justify-self: end;
+    transition: all 0.5s ease !important;
 }
 
-.circle-new-close {
-    border-radius: 50%;
-    width: 26px;
-    height: 26px;
+.circle-breakdown-close {
+    border-radius: 50%;    
+    font-size: 26px !important;
     background-color: #FAF7F2;
     text-align: center;
     transition: all 0.5s;
     justify-self: end;
+    transform: rotate(180deg);
+    transition: all 0.5s ease !important;
 }
 
-.arrowdown-new {
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 4px;
-    margin-bottom: 3px;
-    transition: all 0.5s;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-}
-
-.arrowdown-new-close {
-    border: solid #26385A;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 4px;
-    transition: all 0.5s;
-    transform: rotate(225deg);
-    -webkit-transform: rotate(225deg);
+.fill-white {
+    fill: #FAF7F2 !important;
 }
 
 .white {
@@ -207,6 +204,18 @@
         width: 24px;
         height: 25px;
     }
+
+    .circle-breakdown {          
+        font-size: 24px !important;        
+    }
+    
+    .circle-breakdown-close {           
+        font-size: 24px !important;        
+    }
+
+    .breakdown_info-container-text {
+        font-size: 14px;
+    }
 }
 
 @media screen and (max-width:600px) {
@@ -245,20 +254,24 @@
         font-size: 12px;
     }
 
-    .circle-new {
-        width: 20px;
-        height: 20px;
+    .circle-breakdown {          
+        font-size: 20px !important;        
+    }
+    
+    .circle-breakdown-close {           
+        font-size: 20px !important;        
     }
 
-    .circle-new-close {
-        width: 20px;
-        height: 20px;
-    }
     .breakdown_info-icon {
         font-size: 24px !important;
     }
     .arrowdown-new {
         margin-bottom: 4px;
+    }
+    .breakdown_info-container-text {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
     }
 }
 

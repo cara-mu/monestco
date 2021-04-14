@@ -3,7 +3,7 @@ import { MenuItems } from './MenuItems';
 import { Link } from 'react-router-dom';
 import '../../styles/ApparelDropdown.css';
 
-function ApparelDropdown({exitAppDropdown}) {
+function ApparelDropdown({enterAppDropdown, exitAppDropdown}) {
   {/* Functions handling click */}
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -11,8 +11,10 @@ function ApparelDropdown({exitAppDropdown}) {
   return (
       <ul
         onClick={handleClick}
-        className={click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'} >  
-         
+        className={click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'} 
+        onMouseEnter={enterAppDropdown}
+        onMouseLeave={exitAppDropdown}
+        >  
         {/* Maps over company items -- currently reference the same JS file due to placeholders */}
         <div className = "Category-Titles">
             <h2>Unisex</h2>

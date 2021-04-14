@@ -3,7 +3,7 @@ import { MenuItems } from './MenuItems';
 import { Link } from 'react-router-dom';
 import '../../styles/ComparisonDropdown.css';
 
-function ComparisonDropdown() {
+function ComparisonDropdown({enterCompareDropdown, exitCompareDropdown}) {
   {/* Functions handling click */}
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -11,7 +11,10 @@ function ComparisonDropdown() {
   return (
       <ul
         onClick={handleClick}
-        className={click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'} >  
+        className={click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'} 
+        onMouseEnter={enterCompareDropdown} 
+        onMouseLeave={exitCompareDropdown}
+        >  
 
         <div className = 'Comparison-Options'>
           <div className = 'Selection-Box Apparel'>

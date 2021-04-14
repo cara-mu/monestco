@@ -556,7 +556,7 @@ const field = [
     ],
   },
   {
-    mainField: "SUSTAINABLE MATERIALS",
+    mainField: "ETHICAL SOURCING",
     mainScore: [{ score: "" }, { score: "" }, { score: "" }],
     industrialStandard: "",
     subfield: [
