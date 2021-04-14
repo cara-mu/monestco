@@ -36,12 +36,15 @@
     flex-direction: row;
     align-items: center;
     position: relative;
+    font-size: 24px;
+    line-height: 38px;
 }
 
 .brand_info-icon {
     font-size: 18px;
     margin-left: 8px;
     color: #26385A;
+    
 }
 
 .brand_info-icon:hover + .brand_info-text {
@@ -77,6 +80,7 @@
     grid-template-columns: repeat( 2 , 1fr);
     grid-gap: 1.5rem;
     width: 90%;
+    margin-bottom: 106px;
 }
 
 .Description{
@@ -87,8 +91,13 @@
     font-weight: normal;
     font-size: 12px;
     color: #3D3E3F;
+    /* padding-bottom: 20%; */
+}
 
-    padding-bottom: 20%;
+.Description-text {
+    font-size: 16px;
+    font-weight: 400;
+    width: 80%;
 }
 
 .Description-data>img {
@@ -106,7 +115,7 @@
 
 .Description-score>span:first-of-type {
     font-size: 48px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .Description-score:last-child {
@@ -125,6 +134,21 @@
     font-size: 16px;
     color: #3D3E3F;
     padding: 10px 0;
+    /* padding-bottom: 1%; */
+}
+
+.Fun-Fact-Citation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #3D3E3F;
+    padding: 30px 0 10px 0;
     /* padding-bottom: 1%; */
 }
 
@@ -192,7 +216,8 @@
 }
 
 .In-The-News {
-    margin: 10% 0;
+    margin: 106px 0;
+    /* margin: 10% 0; */
     /* margin-left: -1.5%; */
 }
 
@@ -200,7 +225,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 90%;
-    grid-gap: 50px 25px;
+    grid-gap: 75px 25px;
 }
 
 .news-card {
@@ -228,7 +253,7 @@
 }
 
 .news-category-year {
-    font-weight: 600;
+    font-weight: 700;
     color: #F2F2F2;
 }
 
@@ -236,7 +261,7 @@
     width: 100%;
     object-fit: cover;
     background-color: rgba(87, 114, 104, 0.5);
-    /* height: 250px; */
+    height: 200px;
 }
 
 .News-Description {
@@ -285,6 +310,8 @@
     margin-top: 15%;
     margin-left: 30%;
     margin-right: 10%;
+    position: sticky;
+    top: 2rem;
 }
 
 .brand_box {

@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Grid from '@material-ui/core/Grid';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import '../../styles/Companies.css';
 import DiversityImg from '../../assets/diversity.png';
 import WorkerExploitImg from '../../assets/workerexploit.png';
@@ -48,7 +48,10 @@ function rand() {
   }));
 
 
-function Company () {
+function Company ({match, location})  {
+        const {
+            params: { companyName }
+        } = match;
     
     const [showFact,setShowFact] = useState(false);
     
@@ -144,7 +147,7 @@ function Company () {
                     showFact ? 
                         <div className = 'Fun-Fact-Dropdown'>
                             {item.discription}
-                            <div className = 'Fun-Fact' style={{width:'100%', fontWeight:'700'}}>
+                            <div className = 'Fun-Fact-Citation' style={{width:'100%', fontWeight:'700'}}>
                                 Citation
                                 <i onClick={() => setShowCitation(!showCitation)} style={{borderColor:'#323232'}} className={showCitation ? "Fun-Fact-arrowdown-close" : "Fun-Fact-arrowdown"}></i>
                             </div>
@@ -191,14 +194,17 @@ function Company () {
     const newsDiscriptionTitle = "Nike allegedly discriminates against women at its corporate headquarters";
     const newsDiscriptionInfo = "Fed up with feeling marginalized working at the Nike headquarters, a group of female employees began secretly surveying their coworkers on their experiences with gender discrimination....";
 
+    
+
     return(
         <div className = 'Layout'>
         <Grid container spacing={3}>
             <Grid item xs={12} md={4}>
                 <div className = 'Left-Menu'>                
                     <div>
+                        <h1>{companyName}</h1>
                         <img className='brand-logo' src={BrandLogo}/>
-                        <div style={{fontSize:'14px', color:'#797979'}}>Subsidiary of Fast Retailing</div>
+                        <div style={{fontSize:'14px', fontWeight:'500', color:'#797979', margin:'10px 0'}}>Subsidiary of Fast Retailing</div>
                         <p style={{marginTop:"5%", color: '#4F4F4F'}}><b>Uniqlo</b> is a clothing apparel company, which was originally founded in Yamaguchi, Japan. Now it is a global brand with over 1000 stores around the world.</p>
                     </div>
                     <div>
@@ -225,7 +231,9 @@ function Company () {
                                 <div>
                                     DIVERSITY & INCLUSION
                                     <div className = 'Description'>
-                                        Ac mi ac pharetra sagittis quis egestas sed lobortis duis non egestas.
+                                        <div className='Description-text'>
+                                            Discrimination, Gender Equality, Culture Diversity, Inclusivity
+                                        </div>
                                         <div className='Description-data'>
                                         <img src = {DiversityImg}/>
                                         <div className="Description-score"><span>5.5</span><span>/22</span></div>
@@ -235,7 +243,9 @@ function Company () {
                                 <div>
                                     WORKER EXPLOITATION
                                     <div className = 'Description'>
-                                        Sit vestibulum interdum et duis non feugiat pellentesque turpis.
+                                        <div className='Description-text'>
+                                            Discrimination, Gender Equality, Culture Diversity, Inclusivity
+                                        </div>
                                         <div className='Description-data'>
                                         <img src = {WorkerExploitImg}/>
                                         <div className="Description-score"><span>19.5</span><span>/46</span></div>
@@ -245,7 +255,9 @@ function Company () {
                                 <div>
                                     WASTE & POLLUTION
                                     <div className = 'Description'>
-                                        Sed massa proin scelerisque turpis.  Sed massa proin scelerisque turpis.
+                                        <div className='Description-text'>
+                                            Discrimination, Gender Equality, Culture Diversity, Inclusivity
+                                        </div>
                                         <div className='Description-data'>
                                         <img src = {WasteImg}/>
                                         <div className="Description-score"><span>9</span><span>/52</span></div>
@@ -253,9 +265,11 @@ function Company () {
                                     </div>
                                 </div>
                                 <div>
-                                    SUSTAINABLE MATERIALS
+                                    ETHICAL SOURCING
                                     <div className = 'Description'>
-                                        Sit vestibulum interdum et duis non feugiat pellentesque turpis.
+                                        <div className='Description-text'>
+                                            Discrimination, Gender Equality, Culture Diversity, Inclusivity
+                                        </div>
                                         <div className='Description-data'>
                                         <img src = {SustainableImg}/>
                                         <div className="Description-score"><span>14</span><span>/34</span></div>
@@ -265,7 +279,7 @@ function Company () {
                             </div>
                     </div>
                     <div className = 'Brand-Section-title'>
-                        Company Facts 
+                        Company Initiaitves 
                         <InfoIcon className='brand_info-icon' onClick={() => setShowInfo(!showInfo)} />
                         <RenderInfo />
                     </div>
@@ -279,7 +293,7 @@ function Company () {
                         <div className = 'Decorative-Line'></div>
                             <div className='In-The-News-container'>
                                 <div className='news-card'>
-                                    <img src = {NewsPlaceHolder} onClick={handleOpen}/>
+                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} onClick={handleOpen}/>
                                     <div className='news-category'>
                                         <span className='news-category-title'>Worker Exploitation</span>
                                         <span className='news-category-year'>2018</span>
@@ -289,7 +303,7 @@ function Company () {
                                         <div className = 'News-Description-info'>{newsDiscriptionInfo}</div>
                                         <div style={{fontSize:'14px'}}>
                                             <span>Responsibility Taken?</span>
-                                            <span style={{color:'#fd7e14', marginLeft:'5px'}}>No</span>
+                                            <span style={{color:'#E94921', marginLeft:'5px'}}>No</span>
                                         </div>
                                         <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
                                             <span>Issue Addressed?</span>
@@ -299,7 +313,7 @@ function Company () {
                                     </div>
                                 </div>
                                 <div className='news-card'>
-                                    <img src = {NewsPlaceHolder} onClick={handleOpen}/>
+                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} onClick={handleOpen}/>
                                     <div className='news-category'>
                                         <span className='news-category-title'>Worker Exploitation</span>
                                         <span className='news-category-year'>2018</span>
@@ -309,7 +323,7 @@ function Company () {
                                         <div className = 'News-Description-info'>{newsDiscriptionInfo}</div>
                                         <div style={{fontSize:'14px'}}>
                                             <span>Responsibility Taken?</span>
-                                            <span style={{color:'#fd7e14', marginLeft:'5px'}}>No</span>
+                                            <span style={{color:'#E94921', marginLeft:'5px'}}>No</span>
                                         </div>
                                         <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
                                             <span>Issue Addressed?</span>
@@ -319,7 +333,7 @@ function Company () {
                                     </div>
                                 </div>                            
                                 <div className='news-card'>
-                                    <img src = {NewsPlaceHolder} onClick={handleOpen}/>
+                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} onClick={handleOpen}/>
                                     <div className='news-category'>
                                         <span className='news-category-title'>Worker Exploitation</span>
                                         <span className='news-category-year'>2018</span>
@@ -329,7 +343,7 @@ function Company () {
                                         <div className = 'News-Description-info'>{newsDiscriptionInfo}</div>
                                         <div style={{fontSize:'14px'}}>
                                             <span>Responsibility Taken?</span>
-                                            <span style={{color:'#fd7e14', marginLeft:'5px'}}>No</span>
+                                            <span style={{color:'#E94921', marginLeft:'5px'}}>No</span>
                                         </div>
                                         <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
                                             <span>Issue Addressed?</span>
@@ -339,7 +353,7 @@ function Company () {
                                     </div>
                                 </div>
                                 <div className='news-card'>
-                                    <img src = {NewsPlaceHolder} onClick={handleOpen}/>
+                                    <img style={{background:`url: ${NewsPlaceHolder}`}} onClick={handleOpen}/>
                                     <div className='news-category'>
                                         <span className='news-category-title'>Worker Exploitation</span>
                                         <span className='news-category-year'>2018</span>
@@ -349,7 +363,7 @@ function Company () {
                                         <div className = 'News-Description-info'>{newsDiscriptionInfo}</div>
                                         <div style={{fontSize:'14px'}}>
                                             <span>Responsibility Taken?</span>
-                                            <span style={{color:'#fd7e14', marginLeft:'5px'}}>No</span>
+                                            <span style={{color:'#E94921', marginLeft:'5px'}}>No</span>
                                         </div>
                                         <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
                                             <span>Issue Addressed?</span>

@@ -46,14 +46,14 @@ export default function BrandDirectory() {
                 }
             </div>
             <div className="brand_directory_wholeList">
-             <hr className="hr"></hr>
+             <hr className="hr" id='0'></hr>
                 {
                     Object.keys(letterArray).map((key)=>(
                         <>
                         { 
                             letterArray[key].length>0 ?
                                 <div>
-                                    <div className="brand_directory_eachRow d-block d-md-flex"  id={`${key}`}>
+                                    <div className="brand_directory_eachRow d-block d-md-flex" id={`${key}`}>
                                         {letterArray[key].length>0 ? <> 
                                             <h6 className="letter" >{key}</h6>
                                             

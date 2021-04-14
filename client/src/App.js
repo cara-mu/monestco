@@ -5,7 +5,8 @@ import Comparison from './pages/Comparison';
 
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Methodology from './pages/Methodology';
+//import Methodology from './pages/Methodology';
+import Methodology from './pages/Methodology-new';
 //import BrandBreakdown from './pages/BrandBreakdown';
 import BrandBreakdown from './pages/BrandBreakdown-new';
 import BrandDirectory from './pages/BrandDirectory';

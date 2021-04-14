@@ -4,12 +4,12 @@ TO REPLICATE TO PROTOTYPE */
 export const MenuItems = [
     {
         title: 'Abercrombie & Fitch',
-        path: '/companies/Abercrombie-&-Fitch',
+        path: '/companies/Abercromie & Fitch',
         cName: 'nav-links'
     },
     {
         title: 'American Eagle',
-        path: '/companies/American-Eagle',
+        path: '/companies/American Eagle',
         cName: 'nav-links'
     },
     {
@@ -19,7 +19,7 @@ export const MenuItems = [
     },
     {
         title: 'Banana Republic',
-        path: '/companies/Banana-Republic',
+        path: '/companies/Banana Republic',
         cName: 'nav-links'
     },
     {
@@ -29,7 +29,7 @@ export const MenuItems = [
     },
     {
         title: 'Calvin Klein',
-        path: '/companies/Calvin-Klein',
+        path: '/companies/Calvin Klein',
         cName: 'nav-links'
     },
     {
@@ -102,36 +102,36 @@ export const MenuItems = [
         path: '/companies/Urban-Outfitters',
         cName: 'nav-links'
     },
-    {
-        title: 'Patagonia',
-        path: '/companies/Patagonia',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Patagonia',
-        path: '/companies/Patagonia',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Patagonia',
-        path: '/companies/Patagonia',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Patagonia',
-        path: '/companies/Patagonia',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Patagonia',
-        path: '/companies/Patagonia',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Patagonia',
-        path: '/companies/Patagonia',
-        cName: 'nav-links'
-    }
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // },
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // },
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // },
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // },
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // },
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // }
 ]
 
 /* ALL THE DROPDOWN COMPONENTS USE THE SAME MENUITEM.JS FILE CURRENTLY, SO CSS CHANGES MADE TO EACH LINK IN INDIVIDUAL

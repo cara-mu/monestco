@@ -77,9 +77,9 @@ class CompareSearch extends React.Component {
 
     render() {   
         return (
-            <div className="row">
-                <div className="col-12">
-                <p style={{ fontSize: '18px', color: '#3D3E3F'}}>Filter by:</p>
+            <div style={{display:'flex', flexDirection:'column'}}>
+                <p style={{margin: '0 0 20px 0', fontSize: '18px', lineHeight:'34px', color: '#3D3E3F'}}>Filter by:</p>
+                <div style={{display:'flex', flexWrap:'wrap'}}>
                 <span id="filterbutton"
                     className={this.state.clothing ? 'categoryfocus' : null}
                     onClick = {this.toggleClassClothing}
@@ -97,14 +97,15 @@ class CompareSearch extends React.Component {
                     className={this.state.all ? 'categoryfocus' : null}
                     onClick = {this.toggleClassAll}
                 >All</span>
+                </div>
 
-                <div style={{marginTop:"20px"}} className="search_box d-flex">
-                    <FontAwesomeIcon style={{ marginTop: '5px', marginLeft: '8px', color: 'rgba(50, 50, 50, 0.5'}} icon={faSearch} />
-                    <input type="text" id="categorysearch" onChange={this.handleChange} placeholder="Search the brand" style={{width: '100%', height: '23px'}} />
+                <hr style={{width: '100%', margin:'20px 0'}}/>
+                <div style={{position:'relative'}}>
+                <FontAwesomeIcon style={{position: "absolute", marginTop: '21px', marginLeft: '8px', color: 'rgba(50, 50, 50, 0.5'}} icon={faSearch} />
+                <input type="text" id="categorysearch" onChange={this.handleChange} placeholder="Search the brand" style={{width: '85%', height: '23px', border:'2px solid #BDBDBD'}} />
                 </div>
-                <div>
+                <div style={{marginTop:'20px'}}>
                     {this.renderCompanies(this.state.foundCompanies)}
-                </div>
                 </div>
             </div>
             )
