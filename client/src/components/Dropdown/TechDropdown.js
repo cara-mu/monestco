@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import '../../styles/TechDropdown.css';
 
 
-function TechDropdown() {
+function TechDropdown({enterTechDropdown, exitTechDropdown}) {
   {/* Functions handling click */}
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -12,7 +12,10 @@ function TechDropdown() {
   return (
       <ul
         onClick={handleClick}
-        className={click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'} >  
+        className={click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'} 
+        onMouseEnter={enterTechDropdown} 
+        onMouseLeave={exitTechDropdown}
+        >  
         
         {/* First launch will not include */}
 

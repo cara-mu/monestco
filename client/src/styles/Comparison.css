@@ -513,6 +513,12 @@ x
     z-index: 10;
 }
 
+.horizontal-row {
+    width: 85%;
+    border-bottom: 2px solid #E0E0E0;
+    margin-bottom: 20px;
+}
+
 @media screen and (max-width:900px) {
 
     .row-1 {

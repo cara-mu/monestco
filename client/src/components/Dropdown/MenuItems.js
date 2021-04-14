@@ -4,7 +4,7 @@ TO REPLICATE TO PROTOTYPE */
 export const MenuItems = [
     {
         title: 'Abercrombie & Fitch',
-        path: '/companies/Abercromie & Fitch',
+        path: '/companies/Abercrombie & Fitch',
         cName: 'nav-links'
     },
     {
@@ -34,12 +34,12 @@ export const MenuItems = [
     },
     {
         title: 'Club Monaco',
-        path: '/companies/Club-Monaco',
+        path: '/companies/Club Monaco',
         cName: 'nav-links'
     },
     {
         title: 'Forever 21',
-        path: '/companies/Forever-21',
+        path: '/companies/Forever 21',
         cName: 'nav-links'
     },
     {
@@ -59,7 +59,7 @@ export const MenuItems = [
     },
     {
         title: 'J. CREW',
-        path: '/companies/J-CREW',
+        path: '/companies/J CREW',
         cName: 'nav-links'
     },
     {
@@ -79,7 +79,7 @@ export const MenuItems = [
     },
     {
         title: 'Ralph Lauren',
-        path: '/companies/Ralph-Lauren',
+        path: '/companies/Ralph Lauren',
         cName: 'nav-links'
     },
     {
@@ -89,7 +89,7 @@ export const MenuItems = [
     },
     {
         title: 'The North Face',
-        path: '/companies/The-North-Face',
+        path: '/companies/The North Face',
         cName: 'nav-links'
     },
     {
@@ -99,7 +99,7 @@ export const MenuItems = [
     },
     {
         title: 'Urban Outfitters',
-        path: '/companies/Urban-Outfitters',
+        path: '/companies/Urban Outfitters',
         cName: 'nav-links'
     },
     // {

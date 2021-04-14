@@ -49,12 +49,12 @@ function HomePage(){
             </div>
             <div className = 'Goal-Positioning'>
                 <div className = 'Goal-Panel'>
-                    <img src = {EducateImg}></img>
+                    <img src = {EducateImg} style={{width:'60px', height:'58px'}}></img>
                     <h1>Educate</h1>
                     <p>consumers on the social and environmental impacts of leading brands across a variety of industries. </p>
                 </div>
                 <div className = 'Goal-Panel'>
-                    <img src = {EmpowerImg}></img>
+                    <img src = {EmpowerImg} style={{width:'60px', height:'53px', marginBottom:'5px'}}></img>
                     <h1>Empower</h1>
                     <p>consumers to vote with their dollars, and support brands with values that align to their own.</p>
                 </div>
