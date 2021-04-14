@@ -443,10 +443,12 @@ const Subfield = ({ item }) => {
           className={show ? "circle-breakdown-close" : "circle-breakdown fill-white"}          
         />
       </div>
-      {show &&
-        item.subNestedField.map((item, index) => {
-          return <NestedField key={index} item={item} />;
-        })}
+      <div className={`animate-field ${show ? 'animate' : ''}`}>
+        {show &&
+          item.subNestedField.map((item, index) => {
+            return <NestedField key={index} item={item} />;
+          })}
+      </div>
     </div>
   );
 };
@@ -468,7 +470,7 @@ const Mainfield = ({ item, index }) => {
           style={{backgroundColor:'#FAF7F2', fill:'#26385A'}}
         />
       </div>
-      <div>
+      <div className={`animate-field ${show ? 'animate' : ''}`}>
         {show &&
           item.subfield.map((item, index) => {
             return <Subfield key={index} item={item} />;

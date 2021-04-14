@@ -251,6 +251,39 @@
     display: none;
 }
 
+.info-text-hover {
+    position: absolute;
+    display: none;
+    top: 26px;
+    left: 0;
+    background-color: #f2f2f2;
+    width: 237px;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 16px;
+    line-height: 28px;
+    color: #3d3e3f;
+}
+
+.animate-field {
+    /* position: relative;
+    z-index: 1; */
+    height: auto;
+    max-height: 0;
+    overflow: hidden;    
+    transition: all 2s ease;
+    visibility: hidden;    
+}
+
+.animate {
+    max-height: 5000px; 
+    visibility: visible;
+}
+
+.compare-info-icon:hover + .info-text-hover {
+    display: block;
+}
+
 @media screen and (max-width:1600px) {
     .mainField-title {
         font-size: 16px;

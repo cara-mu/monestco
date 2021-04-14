@@ -696,13 +696,17 @@ const NestedField = ({ item }) => {
         />
         )}
       </div>
+      <div className={`animate-field ${show ? 'animate' : ''}`}>
       {show &&
         item.subNestedField.map((item, index) => {
           return (
             <div key={index} className="nestedField-container">
               <div className="nestedField-title">
                 {item.title}
-                <HelpOutlineTwoToneIcon style={{fontSize:'16px', marginLeft:'3px', fill:'#26385A'}} />
+                <div style={{position:'relative', zIndex:'1'}}>
+                  <HelpOutlineTwoToneIcon className="compare-info-icon" style={{fontSize:'16px', marginLeft:'3px', fill:'#26385A'}} />
+                  <span className="info-text-hover">Vulputate sit condimentum nulla eget placerat tincidunt.</span>
+                </div>
               </div>
               {item.scores.map((element, index) => {
                 if (mobileView && index < 2) {
@@ -728,6 +732,7 @@ const NestedField = ({ item }) => {
             </div>
           );
         })}
+        </div>
     </div>
   );
 };
@@ -783,7 +788,7 @@ const Subfield = ({ item }) => {
           />
         )}
       </div>
-      <div>
+      <div className={`animate-field ${show ? 'animate' : ''}`}>
         {show &&
           item.subfield.map((item, index) => {
             return <NestedField key={index} item={item} />;

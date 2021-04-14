@@ -21,8 +21,8 @@ function ApparelDropdown({enterAppDropdown, exitAppDropdown}) {
             <h2>Women</h2>
             <h2>Sportswear</h2>
             <h2>Shoes & Accessories</h2>
-            <h2>Luxury</h2>       
-            <h2>All Brands A-Z</h2>
+            <h2>Luxury</h2>
+            <h2 style={{cursor:'pointer'}} onClick={() => window.location.href="/brand-directory"}>All Brands A-Z</h2>
         </div>
         
         <div className = 'Companies'>

@@ -162,7 +162,7 @@ function NavigationBar() {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-  console.log(foodDropdown, foodDropdownLink)
+  
   return (
       <nav className = 'Navigation-Bar' >
           {/* Monest Logo */}
