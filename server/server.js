@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 app.get('/companies/:companyName', function(req,res,next){
   var companyName = req.params.companyName;
 
-  db.get("SELECT * FROM companies WHERE name = ?", [companyName], (err, row) => {
+  db.get("SELECT name FROM companies WHERE name = ?", [companyName], (err, row) => {
     if (err) {
         res.status(400).json({ "error": err.message });
         return;
