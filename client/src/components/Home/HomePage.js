@@ -5,6 +5,8 @@ import  EmpowerImg from '../../assets/empower.png'
 import '../../styles/HomePage.css';
 import * as emailjs from "emailjs-com";
 import WindowLogo from '../../assets/window.svg';
+import CareerImg from '../../assets/career.svg';
+
 
 function HomePage(){
     function sendEmail(e) {
@@ -92,6 +94,15 @@ function HomePage(){
                                 {/* </div> */}
                             {/* </form> */}
                     </div>
+                </div>
+            </div>
+            <div className = "Career">
+                <div className = "Career-Positioning" style={{ marginLeft:'20%'}}>
+                    {/*<img src = {CareerImg} style={{width:'350px', height:'250px', marginLeft:'40%'}}></img>*/}
+                    <h1>We're hiring</h1>
+                    <h2>Research Analysts!</h2>
+                    <br></br>
+                    <p>Are you interested in working with us?</p>
                 </div>
             </div>
         </Fragment>)
