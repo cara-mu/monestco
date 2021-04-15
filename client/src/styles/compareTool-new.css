@@ -83,8 +83,11 @@
 }
 
 .mainField-title {
-    font-size: 1rem;
+    font-family: DM Sans;
+    font-size: 18px;
+    font-style: normal;
     font-weight: 700;
+    line-height: 34px;
     color: #3D3E3F;    
 }
 
@@ -99,8 +102,10 @@
 }
 
 .subField-title {
-    font-size: 1rem;
+    font-size: 18px;
     font-weight: 500;
+    line-height: 34px;
+
     color: #3D3E3F;
     padding-left: 1rem;
 }
@@ -116,8 +121,12 @@
 }
 
 .nestedField-title {
-    font-size: 1rem;
+    font-family: DM Sans;
+    font-size: 18px;
+    font-style: normal;
     font-weight: 400;
+    line-height: 34px;
+
     color: #000;
     padding-left: 2.5rem;
 }
@@ -173,25 +182,24 @@
     background-color: rgba(196, 196, 196, 0.3);
 }
 
-.circle-new {
-    border-radius: 50%;
-    width: 29px;
-    height: 29px;
+.circle-new {   
+    border-radius: 50%; 
     background-color: #26385A;
-    text-align: center;
-    transition: all 0.5s;
+    fill: #ffffff !important;
+    font-size: 26px !important;
+    transition: all 0.5s ease !important;
 }
 
 .circle-new-close {
-    border-radius: 50%;
-    width: 29px;
-    height: 29px;
+    border-radius: 50%; 
     background-color: #FAF7F2;
-    text-align: center;
-    transition: all 0.5s;
+    fill: #26385A !important;
+    font-size: 26px !important;
+    transition: all 0.5s ease !important;
+    transform: rotate(180deg);
 }
 
-.arrowdown-new {
+/* .arrowdown-new {
     border: solid white;
     border-width: 0 2px 2px 0;
     display: inline-block;
@@ -209,7 +217,7 @@
     transition: all 0.5s;
     transform: rotate(225deg);
     -webkit-transform: rotate(225deg);
-}
+} */
 
 .brand-button-container {
     display: none;
@@ -243,6 +251,45 @@
     display: none;
 }
 
+.info-text-hover {
+    position: absolute;
+    display: none;
+    top: 26px;
+    left: 0;
+    background-color: #f2f2f2;
+    width: 237px;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 16px;
+    line-height: 28px;
+    color: #3d3e3f;
+}
+
+.animate-field {
+    /* position: relative;
+    z-index: 1; */
+    height: auto;
+    max-height: 0;
+    overflow: hidden;    
+    transition: all 2s ease;
+    visibility: hidden;    
+}
+
+.animate {
+    max-height: 5000px; 
+    visibility: visible;
+}
+
+.compare-info-icon:hover + .info-text-hover {
+    display: block;
+}
+
+@media screen and (max-width:1600px) {
+    .mainField-title {
+        font-size: 16px;
+    }
+}
+
 @media screen and (max-width:1350px) {
 
     .compare-input-container {
@@ -267,6 +314,10 @@
         grid-template-columns: 11rem repeat( 3, 12rem ) 3rem;
     }
 
+    .nestedField-title {
+        font-size: 16px;
+        line-height: 20px;
+    }
 }
 
 @media screen and (max-width:1250px) {
@@ -295,6 +346,7 @@
         grid-template-columns: 10rem repeat( 3, 10rem ) 3rem;
         /* grid-template-rows: 5rem; */
     }
+    
 
 }
 
@@ -399,6 +451,29 @@
         /* grid-template-rows: 5rem; */
     }
 
+    .mainField-title {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .subField-title {
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 400;
+    }
+    .nestedField-title {
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    .circle-new {    
+        font-size: 24px !important;
+    }
+    
+    .circle-new-close {
+        font-size: 24px !important;
+    }
+
 }
 
 @media screen and (max-width:700px) {
@@ -448,8 +523,31 @@
 
     .nestedField-container {
         grid-template-columns: 8rem repeat( 2, 6rem ) 2rem;
-        grid-template-rows: 11rem;
+        grid-template-rows: 105px;
     }
+
+    .mainField-title {
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .subField-title {
+        font-size: 13px;
+        line-height: 17px;
+    }
+    .nestedField-title {
+        font-size: 12px;
+        line-height: 15.5px;
+        padding-left: 1rem;
+    }
+
+    .circle-new {    
+        font-size: 20px !important;
+    }
+    
+    .circle-new-close {
+        font-size: 20px !important;
+    }
+    
 
 }
 

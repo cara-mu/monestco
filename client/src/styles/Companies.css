@@ -1,0 +1,523 @@
+.Layout h1{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+}
+
+.brand-logo {
+    width: 130px;
+    height: 130px;
+}
+
+.Decorative-Line{
+    border-bottom: solid 3px #3D3E3F;
+    width: 90%;
+    height: 6px;
+}
+
+.breakDown-link {
+    color: #3D3E3F;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.Right-Menu{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    color:#3D3E3F;
+}
+
+.Brand-Section-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    font-size: 24px;
+    line-height: 38px;
+}
+
+.brand_info-icon {
+    font-size: 18px;
+    margin-left: 8px;
+    color: #26385A;
+    
+}
+
+.brand_info-icon:hover + .brand_info-text {
+    display: block;
+}
+
+.brand_info-text {
+    display: none;
+    position: absolute;
+    width: 40%;
+    padding: 6px 16px;
+    top: 40px;
+    left: 0;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 15px;
+    background: #F2F2F2;
+}
+
+.Brand-Performance {
+    margin-top: 3%;
+    /* margin-left: -1.5%; */
+}
+
+.Brand-Performance-Menu{
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.Brand-Performance-container {
+    display: grid;
+    grid-template-columns: repeat( 2 , 1fr);
+    grid-gap: 1.5rem;
+    width: 90%;
+    margin-bottom: 106px;
+}
+
+.Description{
+    display: flex;
+    flex-direction: column;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: #3D3E3F;
+    /* padding-bottom: 20%; */
+}
+
+.Description-text {
+    font-size: 16px;
+    font-weight: 400;
+    width: 80%;
+}
+
+.Description-data>img {
+    width: 200px;
+    height: 200px;
+    transform: translateX(-28px);
+}
+
+.Description-data {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #26385A;
+}
+
+.Description-score>span:first-of-type {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.Description-score:last-child {
+    font-size: 24px;
+}
+
+.Fun-Fact{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #3D3E3F;
+    padding: 10px 0;
+    /* padding-bottom: 1%; */
+}
+
+.Fun-Fact-Citation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #3D3E3F;
+    padding: 30px 0 10px 0;
+    /* padding-bottom: 1%; */
+}
+
+.Fun-Fact>img {
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+}
+
+.FunFact-Decorative-Line{
+    border-bottom: solid 1px #3D3E3F;
+    width: 90%;
+    /* height: 6px;
+    padding-bottom: 1%; */
+}
+
+.Fun-Fact-Dropdown{
+    background-color: #F2F2F2;
+    width: 90%;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 20px;
+}
+
+.Fun-Fact-circle {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #26385A;
+    text-align: center;
+    transition: all 0.5s;
+    justify-self: end;
+}
+
+.Fun-Fact-circle-close {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #FAF7F2;
+    text-align: center;
+    transition: all 0.5s;
+    justify-self: end;
+}
+
+.Fun-Fact-arrowdown {
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-bottom: 4px;
+    transition: all 0.5s;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.Fun-Fact-arrowdown-close {
+    border: solid #26385A;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-bottom: 4px;
+    transition: all 0.5s;
+    transform: rotate(225deg);
+    -webkit-transform: rotate(225deg);
+}
+
+.In-The-News {
+    margin: 106px 0;
+    /* margin: 10% 0; */
+    /* margin-left: -1.5%; */
+}
+
+.In-The-News-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    grid-gap: 75px 25px;
+}
+
+.news-card {
+    margin-top: 5%;
+    position: relative;
+}
+
+.news-category {
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.news-category-title {
+    background-color: #fff;
+    font-weight: 400;
+    padding: 3px 9px;
+    border-radius: 1rem;
+    border: 1px solid #BDBDBD;
+}
+
+.news-category-year {
+    font-weight: 700;
+    color: #F2F2F2;
+}
+
+.In-The-News img{
+    width: 100%;
+    object-fit: cover;
+    background-color: rgba(87, 114, 104, 0.5);
+    height: 200px;
+}
+
+.News-Description {
+    font-family: DM Sans;
+    font-style: normal;
+    color: #3D3E3F;
+}
+
+.News-Description-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.News-Description-info {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.News-read-more-btn {
+    border: none;
+    font-weight: 700;
+    color: #fff;
+    background-color: #26385A;
+    padding: 2px 15px;
+    border-radius: 1rem;
+    position: absolute;
+    right: 0;
+}
+
+.News-Description h1{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.News-Description p{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+
+.Left-Menu {
+    margin-top: 15%;
+    margin-left: 30%;
+    margin-right: 10%;
+    position: sticky;
+    top: 2rem;
+}
+
+.brand_box {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.24);
+    margin-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.brand_logo {
+    /* width: 300px; */
+    width: 80%;
+}
+
+.brand_inside_text{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 66px;
+    color: #3D3E3F;
+}
+
+.ml-10perc {
+    margin-left: 10%;
+}
+
+.navy {
+    color: #26385A;
+}
+
+.brand_inside_text>span:last-of-type {
+    font-size: 32px;
+}
+
+.similar_brands-container {
+    margin: 2rem 0 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 35px 23px;
+    width: 90%;
+}
+
+.company-popup {
+    position: fixed;
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgb(224, 224, 224, 0.5);
+    z-index: 10;
+}
+
+.company-popup-content {
+    position: fixed;
+    background-color: #FAF7F2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    bottom: 0;
+    width: 80vw;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: 0.2s;
+    z-index: 10;
+    padding: 1rem;
+    border-radius: 1rem 1rem 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    opacity: 1;
+    /* animation: moveUp 0.5s; */
+}
+
+@media only screen and (max-width: 1120px) {
+
+    .Description-score>span:first-of-type {
+        font-size: 32px;
+        transition: font-size 1s;
+    }
+    
+    .Description-score:last-child {
+        font-size: 20px;
+        transition: font-size 1s;
+    }
+
+    .Right-Menu {
+        margin-left: 1rem !important;
+    }
+
+}
+
+@media only screen and (max-width: 1025px) {
+    .Description-data>img {
+        width: 150px;
+        height: 150px;
+    }
+    .Description-score>span:first-of-type {
+        font-size: 30px;
+    }
+    
+    .Description-score:last-child {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 1025px) {
+    .Left-Menu {
+        margin-left:6%
+    }
+
+    .Right-Menu {
+        margin-left: 6% !important;
+    }
+}
+
+@media only screen and (max-width: 959px) {
+
+    .Left-Menu {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 3rem;
+        width: 85%;
+    }
+
+    .Description-data>img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .brand_inside_text {
+        font-size: 48px;
+    }
+
+    .brand_inside_text>span:last-of-type {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
+    .Description-data>img {
+        width: 150px;
+        height: 150px;
+        transform: translateX(-22px);
+    }
+}
+
+@media only screen and (max-width: 630px) {
+
+    .In-The-News-container {
+        grid-template-columns: 1fr;
+    }
+
+    .similar_brands-container {
+        grid-template-columns: 1fr;
+    }
+
+    .brand_box {
+        flex-direction: column-reverse;
+    }
+
+    .brand_inside_text>span:first-of-type {
+        color: #26385A;
+        transform: rotate(-0.6deg);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .Left-Menu {
+        display: flex;
+        flex-direction: column;
+        grid-gap: unset;
+    }
+
+    .Description-data {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .Description-score>span:first-of-type {
+        font-size: 32px;
+    }
+
+    .Description-score:last-child {
+        font-size: 20px;
+    }
+
+}
+
+
+@media only screen and (max-width: 555px) {
+    
+    /* .brand_logo {
+        width: 200px;
+    } */
+
+    .brand_inside_text{
+        font-family: DM Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 48px;
+        line-height: 66px;
+        color: #3D3E3F;
+    }
+}

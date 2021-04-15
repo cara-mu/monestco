@@ -77,14 +77,7 @@ const db = new sqlite3.Database('./database.db', (err) => {
           A43_lr NVARCHAR(100) NOT NULL \
           \
       )', (err) => {
-          if (err) {
-            console.log("Discrimination table already exists.");
-          } else {
-            let insert = 'INSERT INTO A (industrystandards_id, company_id, A, A1, A11_score, A11_text, A12_score, A12_text, A2, A21_score, A21_text, A22_score, A22_text, A23_score, A23_text, A3, A31_score, A31_text, A32_score, A32_text, A33_score, A33_text, A4, A41_score, A41_text, A42_score, A42_text, A43_score, A43_text) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-            db.run(insert, [1, 1, 20, 40, 50, "a1.1 stuff", 70, "a1.2 stuff", 24, 37, "a2.1 stuff", 83, "a2.2 stuff", 99, "a2.3 stuff", 36, 1, "a3.1 stuff", 62, "a3.2 stuff", 44, "a3.3 stuff", 68, 80, "a4.1 stuff", 5, "a4.2 stuff", 32, "a4.3 stuff"]);
-            db.run(insert, [1, 2, 20, 40, 50, "a1.1 stuff", 70, "a1.2 stuff", 24, 37, "a2.1 stuff", 83, "a2.2 stuff", 99, "a2.3 stuff", 36, 1, "a3.1 stuff", 62, "a3.2 stuff", 44, "a3.3 stuff", 68, 80, "a4.1 stuff", 5, "a4.2 stuff", 32, "a4.3 stuff"]);
-            db.run(insert, [1, 3, 20, 40, 50, "a1.1 stuff", 70, "a1.2 stuff", 24, 37, "a2.1 stuff", 83, "a2.2 stuff", 99, "a2.3 stuff", 36, 1, "a3.1 stuff", 62, "a3.2 stuff", 44, "a3.3 stuff", 68, 80, "a4.1 stuff", 5, "a4.2 stuff", 32, "a4.3 stuff"]);
-          }
+          console.log(err);
       });
 
       db.run('CREATE TABLE B ( \
@@ -143,14 +136,7 @@ const db = new sqlite3.Database('./database.db', (err) => {
         B45_lr NVARCHAR(100) NOT NULL \
         \
     )', (err) => {
-        if (err) {
-          console.log("Worker Exploitation table already exists.");
-        } else {
-          let insert = 'INSERT INTO B (industrystandards_id, company_id, B, B1, B11_score, B11_text, B12_score, B12_text, B13_score, B13_text, B2, B21_score, B21_text, B22_score, B22_text, B23_score, B23_text, B3, B31_score, B31_text, B32_score, B32_text, B33_score, B33_text, B34_score, B34_text, B4, B41_score, B41_text, B42_score, B42_text, B43_score, B43_text, B44_score, B44_text, B45_score, B45_text) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-          db.run(insert, [1, 1, 20, 40, 50, "b1.1 stuff", 70, "b1.2 stuff", 24, "b1.3 stuff", 37, 63, "b2.1 stuff", 83, "b2.2 stuff", 99, "b2.3 stuff", 36, 1, "b3.1 stuff", 62, "b3.2 stuff", 44, "b3.3 stuff", 68, "b3.4 stuff", 23, 80, "b4.1 stuff", 5, "b4.2 stuff", 32, "b4.3 stuff", 78, "b4.4 stuff", 13, "b4.5 stuff"]);
-          db.run(insert, [1, 2, 20, 40, 50, "b1.1 stuff", 70, "b1.2 stuff", 24, "b1.3 stuff", 37, 63, "b2.1 stuff", 83, "b2.2 stuff", 99, "b2.3 stuff", 36, 1, "b3.1 stuff", 62, "b3.2 stuff", 44, "b3.3 stuff", 68, "b3.4 stuff", 23, 80, "b4.1 stuff", 5, "b4.2 stuff", 32, "b4.3 stuff", 78, "b4.4 stuff", 13, "b4.5 stuff"]);
-          db.run(insert, [1, 3, 20, 40, 50, "b1.1 stuff", 70, "b1.2 stuff", 24, "b1.3 stuff", 37, 63, "b2.1 stuff", 83, "b2.2 stuff", 99, "b2.3 stuff", 36, 1, "b3.1 stuff", 62, "b3.2 stuff", 44, "b3.3 stuff", 68, "b3.4 stuff", 23, 80, "b4.1 stuff", 5, "b4.2 stuff", 32, "b4.3 stuff", 78, "b4.4 stuff", 13, "b4.5 stuff"]);
-        }
+        console.log(err);
     });
 
     db.run('CREATE TABLE C ( \
@@ -212,14 +198,7 @@ const db = new sqlite3.Database('./database.db', (err) => {
       C44_lr NVARCHAR(100) NOT NULL \
       \
   )', (err) => {
-      if (err) {
-        console.log("Waste and Pollution table already exists.");
-      } else {
-        let insert = 'INSERT INTO C (industrystandards_id, company_id, C, C1, C11_score, C11_text, C12_score, C12_text, C13_score, C13_text, C14_score, C14_text, C2, C21_score, C21_text, C22_score, C22_text, C23_score, C23_text, C24_score, C24_text, C3, C31_score, C31_text, C32_score, C32_text, C33_score, C33_text, C34_score, C34_text, C4, C41_score, C41_text, C42_score, C42_text, C43_score, C43_text, C44_score, C44_text) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-        db.run(insert, [1, 1, 20, 40, 50, "c1.1 stuff", 70, "c1.2 stuff", 24, "c1.3 stuff", 37, "c1.4 stuff", 89, 63, "c2.1 stuff", 83, "c2.2 stuff", 99, "c2.3 stuff", 36, "c2.4 stuff", 43, 1, "c3.1 stuff", 62, "c3.2 stuff", 44, "c3.3 stuff", 68, "c3.4 stuff", 23, 80, "c4.1 stuff", 5, "c4.2 stuff", 32, "c4.3 stuff", 78, "c4.4 stuff"]);
-        db.run(insert, [1, 2, 20, 40, 50, "c1.1 stuff", 70, "c1.2 stuff", 24, "c1.3 stuff", 37, "c1.4 stuff", 89, 63, "c2.1 stuff", 83, "c2.2 stuff", 99, "c2.3 stuff", 36, "c2.4 stuff", 43, 1, "c3.1 stuff", 62, "c3.2 stuff", 44, "c3.3 stuff", 68, "c3.4 stuff", 23, 80, "c4.1 stuff", 5, "c4.2 stuff", 32, "c4.3 stuff", 78, "c4.4 stuff"]);
-        db.run(insert, [1, 3, 20, 40, 50, "c1.1 stuff", 70, "c1.2 stuff", 24, "c1.3 stuff", 37, "c1.4 stuff", 89, 63, "c2.1 stuff", 83, "c2.2 stuff", 99, "c2.3 stuff", 36, "c2.4 stuff", 43, 1, "c3.1 stuff", 62, "c3.2 stuff", 44, "c3.3 stuff", 68, "c3.4 stuff", 23, 80, "c4.1 stuff", 5, "c4.2 stuff", 32, "c4.3 stuff", 78, "c4.4 stuff"]);
-      }
+      console.log(err);
   });
 
   db.run('CREATE TABLE D ( \
@@ -262,14 +241,7 @@ const db = new sqlite3.Database('./database.db', (err) => {
     D35_lr NVARCHAR(100) NOT NULL \
     \
 )', (err) => {
-    if (err) {
-      console.log("Sustainable Materials table already exists.");
-    } else {
-      let insert = 'INSERT INTO D (industrystandards_id, company_id, D, D1, D11_score, D11_text, D12_score, D12_text, D2, D21_score, D21_text, D22_score, D22_text, D23_score, D23_text, D3, D31_score, D31_text, D32_score, D32_text, D33_score, D33_text, D34_score, D34_text, D35_score, D35_text) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-      db.run(insert, [1, 1, 20, 40, 50, "d1.1 stuff", 70, "d1.2 stuff", 24, 50, "d2.1 stuff", 83, "d2.2 stuff", 99, "d2.3 stuff", 36, 50, "c3.1 stuff", 62, "c3.2 stuff", 44, "c3.3 stuff", 68, "c3.4 stuff", 78, "c3.5 stuff"]);
-      db.run(insert, [1, 2, 20, 40, 50, "d1.1 stuff", 70, "d1.2 stuff", 24, 50, "d2.1 stuff", 83, "d2.2 stuff", 99, "d2.3 stuff", 36, 50, "c3.1 stuff", 62, "c3.2 stuff", 44, "c3.3 stuff", 68, "c3.4 stuff", 78, "c3.5 stuff"]);
-      db.run(insert, [1, 3, 20, 40, 50, "d1.1 stuff", 70, "d1.2 stuff", 24, 50, "d2.1 stuff", 83, "d2.2 stuff", 99, "d2.3 stuff", 36, 50, "c3.1 stuff", 62, "c3.2 stuff", 44, "c3.3 stuff", 68, "c3.4 stuff", 78, "c3.5 stuff"]);
-    }
+    console.log(err);
 });
 
       db.run('CREATE TABLE industrystandards ( \
@@ -421,7 +393,6 @@ const db = new sqlite3.Database('./database.db', (err) => {
         D23_high INTEGER NOT NULL, \
         D3_total INTEGER NOT NULL, \
         D3_low INTEGER NOT NULL, \
-        D3_low INTEGER NOT NULL, \
         D31_low INTEGER NOT NULL, \
         D31_high INTEGER NOT NULL, \
         D32_low INTEGER NOT NULL, \
@@ -434,12 +405,7 @@ const db = new sqlite3.Database('./database.db', (err) => {
         D35_high INTEGER NOT NULL \
         \
     )', (err) => {
-        if (err) {
-          console.log("Industry table already exists.");
-        } else {
-          let insert = 'INSERT INTO industrystandards (industrystandards_id, A, A1, A11, A12, A2, A21, A22, A23, A3, A31, A32, A33, A4, A41, A42, A43, B, B1, B11, B12, B13, B2, B21, B22, B23, B3, B31, B32, B33, B34, B4, B41, B42, B43, B44, B45, C, C1, C11, C12, C13, C14, C2, C21, C22, C23, C24, C3, C31, C32, C33, C34, C4, C41, C42, C43, C44, D, D1, D11, D12, D2, D21, D22, D23, D3, D31, D32, D33, D34, D35) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-          db.run(insert, ["Shoes", 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50]);
-        }
+        console.log(err);
     });
 
     db.run('CREATE TABLE Citations ( \
@@ -453,15 +419,7 @@ const db = new sqlite3.Database('./database.db', (err) => {
       pages NVARCHAR(20) \
       \
   )', (err) => {
-      if (err) {
-        console.log("Citations table already exists.");
-      } else {
-        let insert = 'INSERT INTO Citations (relational_id, type, citation) VALUES (?,?,?)';
-        db.run(insert, [1, "A1.1", "from google"]);
-        db.run(insert, [1, "B3.3", "from facebook"]);
-        db.run(insert, [1, "Facts", "yay so reputable"]);
-        db.run(insert, [1, "News", "wow so cool"]);
-      }
+      console.log(err);
   });
 
   db.run('CREATE TABLE Facts ( \
@@ -471,15 +429,7 @@ const db = new sqlite3.Database('./database.db', (err) => {
     heading NVARCHAR(20) \
     \
 )', (err) => {
-    if (err) {
-      console.log("Facts table already exists.");
-    } else {
-      let insert = 'INSERT INTO Facts (company_id, summary, heading) VALUES (?,?,?)';
-      db.run(insert, [1, "cool fact", "extensive description wow"]);
-      db.run(insert, [1, "B3.3", "from facebook"]);
-      db.run(insert, [2, "Facts", "yay so reputable"]);
-      db.run(insert, [2, "News", "wow so cool"]);
-    }
+    console.log(err);
 });
 
     }
@@ -490,10 +440,9 @@ app.get('/', (req, res) => {
 })
 
 // This would just be the page for singular company
-app.post('/company/:companyname', function(req,res,next){
-  var companyname = req.params.companyname;
-
-  db.get("SELECT * FROM company WHERE name = ?", [companyname], (err, row) => {
+app.post('/companyname', function(req,res,next){
+  var companyName = req.query['0'];
+  db.all("SELECT * FROM companies WHERE Name = ?", [companyName], (err, row) => {
     if (err) {
         res.status(400).json({ "error": err.message });
         return;
@@ -501,7 +450,21 @@ app.post('/company/:companyname', function(req,res,next){
     if(row){
       res.status(200).json(row);
     }
+    next();
+});
+})
 
+app.post('/companydetailsA_specific', function(req,res,next){
+  var companyName = req.query['0'];
+  console.log(companyName);
+  db.all("SELECT A FROM A WHERE company_id IN (SELECT company_id FROM company WHERE name = ?)", [companyName], (err, row) => {
+    if (err) {
+        res.status(400).json({ "error": err.message });
+        return;
+    }
+    if(row){
+      res.status(200).json(row);
+    }
     next();
 });
 })

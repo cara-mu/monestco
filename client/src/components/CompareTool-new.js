@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
+import ExpandMoreSharpIcon from "@material-ui/icons/ExpandMoreSharp";
+import HelpOutlineTwoToneIcon from '@material-ui/icons/HelpOutlineTwoTone';
 import "../styles/compareTool-new.css";
 import axios from "axios";
 
@@ -554,7 +556,7 @@ const field = [
     ],
   },
   {
-    mainField: "SUSTAINABLE MATERIALS",
+    mainField: "ETHICAL SOURCING",
     mainScore: [{ score: "" }, { score: "" }, { score: "" }],
     industrialStandard: "",
     subfield: [
@@ -582,44 +584,49 @@ const field = [
 
 const ScoreContainer = ({
   score,
-  industrialStandard,  
+  industrialStandard,
   firstLayer,
-  secondLayer,  
+  secondLayer,
 }) => {
   if (score) {
-    if(score > industrialStandard) {      
+    if (score > industrialStandard) {
       return (
         <div
           className={
-            firstLayer ? "compare__tool-scoreContainer greensquare border" :
-            (secondLayer ? "compare__tool-scoreContainer greensquare1" :
-            "compare__tool-scoreContainer greensquare2")
+            firstLayer
+              ? "compare__tool-scoreContainer greensquare border"
+              : secondLayer
+              ? "compare__tool-scoreContainer greensquare1"
+              : "compare__tool-scoreContainer greensquare2"
           }
         >
           {score}/100
         </div>
       );
-    } else if(score === industrialStandard) {
+    } else if (score === industrialStandard) {
       return (
         <div
-        className={
-          firstLayer ? "compare__tool-scoreContainer yellowsquare border" :
-          (secondLayer ? "compare__tool-scoreContainer yellowsquare1" :
-          "compare__tool-scoreContainer yellowsquare2")
-        }
+          className={
+            firstLayer
+              ? "compare__tool-scoreContainer yellowsquare border"
+              : secondLayer
+              ? "compare__tool-scoreContainer yellowsquare1"
+              : "compare__tool-scoreContainer yellowsquare2"
+          }
         >
           {score}/100
         </div>
       );
-
-    } else {            
+    } else {
       return (
         <div
-        className={
-          firstLayer ? "compare__tool-scoreContainer orangesquare border" :
-          (secondLayer ? "compare__tool-scoreContainer orangesquare1" :
-          "compare__tool-scoreContainer orangesquare2")
-        }
+          className={
+            firstLayer
+              ? "compare__tool-scoreContainer orangesquare border"
+              : secondLayer
+              ? "compare__tool-scoreContainer orangesquare1"
+              : "compare__tool-scoreContainer orangesquare2"
+          }
         >
           {score}/100
         </div>
@@ -640,19 +647,19 @@ const ScoreContainer = ({
 
 const NestedField = ({ item }) => {
   const [show, setShow] = useState(false);
-  const [ mobileView, setMobileView ] = useState(window.innerWidth < 600)
+  const [mobileView, setMobileView] = useState(window.innerWidth < 600);
 
   useLayoutEffect(() => {
     function updateSize() {
-      if(window.innerWidth > 600) {
-        setMobileView(false)
+      if (window.innerWidth > 600) {
+        setMobileView(false);
       } else {
-        setMobileView(true)
+        setMobileView(true);
       }
     }
-    window.addEventListener('resize', updateSize);
+    window.addEventListener("resize", updateSize);
     updateSize();
-    return () => window.removeEventListener('resize', updateSize);
+    return () => window.removeEventListener("resize", updateSize);
   }, []);
 
   return (
@@ -660,7 +667,7 @@ const NestedField = ({ item }) => {
       <div onClick={() => setShow(!show)} className="subField-container">
         <div className="subField-title">{item.mainNestedField}</div>
         {item.mainNestedScore.map((element, index) => {
-          if(mobileView && index < 2) {
+          if (mobileView && index < 2) {
             return (
               <ScoreContainer
                 key={index}
@@ -670,7 +677,7 @@ const NestedField = ({ item }) => {
               />
             );
           }
-          if(!mobileView) {
+          if (!mobileView) {
             return (
               <ScoreContainer
                 key={index}
@@ -680,65 +687,71 @@ const NestedField = ({ item }) => {
               />
             );
           }
-          return null
+          return null;
         })}
         {item.subNestedField.length > 0 && (
-          <div
-            className={show ? "circle-new-close" : "circle-new"}
-            onClick={() => setShow(!show)}
-          >
-            <i className={show ? "arrowdown-new-close" : "arrowdown-new"}></i>
-          </div>
+          <ExpandMoreSharpIcon
+          onClick={() => setShow(!show)}
+          className={show ? "circle-new-close" : "circle-new"}
+        />
         )}
       </div>
+      <div className={`animate-field ${show ? 'animate' : ''}`}>
       {show &&
         item.subNestedField.map((item, index) => {
           return (
             <div key={index} className="nestedField-container">
-              <div className="nestedField-title">{item.title}</div>
+              <div className="nestedField-title">
+                {item.title}
+                <div style={{position:'relative', zIndex:'1'}}>
+                  <HelpOutlineTwoToneIcon className="compare-info-icon" style={{fontSize:'16px', marginLeft:'3px', fill:'#26385A'}} />
+                  <span className="info-text-hover">Vulputate sit condimentum nulla eget placerat tincidunt.</span>
+                </div>
+              </div>
               {item.scores.map((element, index) => {
-                if(mobileView && index < 2) {
+                if (mobileView && index < 2) {
                   return (
                     <ScoreContainer
-                    key={index}
-                    score={element.score}
-                    industrialStandard={item.industrialStandard}                    
+                      key={index}
+                      score={element.score}
+                      industrialStandard={item.industrialStandard}
                     />
-                    );
-                  }
-                if(!mobileView) {
-                  return (
-                    <ScoreContainer
-                    key={index}
-                    score={element.score}
-                    industrialStandard={item.industrialStandard}                    
-                    />
-                    );
+                  );
                 }
-                return null
+                if (!mobileView) {
+                  return (
+                    <ScoreContainer
+                      key={index}
+                      score={element.score}
+                      industrialStandard={item.industrialStandard}
+                    />
+                  );
+                }
+                return null;
               })}
             </div>
           );
         })}
+        </div>
     </div>
   );
 };
 
 const Subfield = ({ item }) => {
   const [show, setShow] = useState(false);
-  const [ mobileView, setMobileView ] = useState(window.innerWidth < 600)
+  const [mobileView, setMobileView] = useState(window.innerWidth < 600);
 
   useLayoutEffect(() => {
     function updateSize() {
-      if(window.innerWidth > 600) {
-        setMobileView(false)
+      if (window.innerWidth > 600) {
+        setMobileView(false);
       } else {
-        setMobileView(true)
+        setMobileView(true);
       }
     }
-    window.addEventListener('resize', updateSize);
+    window.addEventListener("resize", updateSize);
     updateSize();
-    return () => window.removeEventListener('resize', updateSize);
+    return () => window.removeEventListener("resize", updateSize);
   }, []);
 
   return (
@@ -746,38 +759,36 @@ const Subfield = ({ item }) => {
       <div className="mainField-container">
         <div className="mainField-title">{item.mainField}</div>
         {item.mainScore.map((element, index) => {
-          if(mobileView && index < 2) {
+          if (mobileView && index < 2) {
             return (
               <ScoreContainer
                 key={index}
                 score={element.score}
-                industrialStandard={item.industrialStandard}              
+                industrialStandard={item.industrialStandard}
                 firstLayer
               />
             );
           }
-          if(!mobileView) {
+          if (!mobileView) {
             return (
               <ScoreContainer
                 key={index}
                 score={element.score}
-                industrialStandard={item.industrialStandard}              
+                industrialStandard={item.industrialStandard}
                 firstLayer
               />
             );
           }
-          return null
+          return null;
         })}
         {item.subfield.length > 0 && (
-          <div
-            className={show ? "circle-new-close" : "circle-new"}
+          <ExpandMoreSharpIcon
             onClick={() => setShow(!show)}
-          >
-            <i className={show ? "arrowdown-new-close" : "arrowdown-new"}></i>
-          </div>
+            className={show ? "circle-new-close" : "circle-new"}
+          />
         )}
       </div>
-      <div>
+      <div className={`animate-field ${show ? 'animate' : ''}`}>
         {show &&
           item.subfield.map((item, index) => {
             return <NestedField key={index} item={item} />;
@@ -787,9 +798,7 @@ const Subfield = ({ item }) => {
   );
 };
 
-
-
-const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
+const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
   const [companiesList, setCompaniesList] = useState([]);
   const [inputBrandOne, setInputBrandOne] = useState("");
   const [inputBrandTwo, setInputBrandTwo] = useState("");
