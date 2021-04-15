@@ -62,7 +62,11 @@ function rand() {
   }));
 
 
-function Company () {
+  function Company ({match, location})  {
+    const {
+        params: { companyName }
+    } = match;
+
     
     const [showFact,setShowFact] = useState(false);
     
