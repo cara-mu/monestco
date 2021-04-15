@@ -31,10 +31,10 @@ app.get('/', (req, res) => {
 })
 
 // This would just be the page for singular company
-app.get('/company/:companyID', function(req,res,next){
-  var companyID = req.params.companyID;
+app.get('/companies/:companyName', function(req,res,next){
+  var companyName = req.params.companyName;
 
-  db.get("SELECT * FROM company WHERE company_id = ?", [companyID], (err, row) => {
+  db.get("SELECT * FROM companies WHERE name = ?", [companyName], (err, row) => {
     if (err) {
         res.status(400).json({ "error": err.message });
         return;
