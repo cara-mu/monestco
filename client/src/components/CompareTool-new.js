@@ -333,18 +333,18 @@ const field = [
               { text: "b44 stuff" },
               { text: "b44 stuff" },
             ],
-          },
-          {
-            title:
-              "Compensates mistreated workers after discovering violations",
-            scores: [{ score: "" }, { score: "" }, { score: "" }],
-            industrialStandard: "",
-            texts: [
-              { text: "b45 stuff" },
-              { text: "b45 stuff" },
-              { text: "b45 stuff" },
-            ],
-          },
+          }
+          // {
+          //   title:
+          //     "Compensates mistreated workers after discovering violations",
+          //   scores: [{ score: "" }, { score: "" }, { score: "" }],
+          //   industrialStandard: "",
+          //   texts: [
+          //     { text: "b45 stuff" },
+          //     { text: "b45 stuff" },
+          //     { text: "b45 stuff" },
+          //   ],
+          // },
         ],
         mainNestedScore: [{ score: "" }, { score: "" }, { score: "" }],
         industrialStandard: "",
@@ -963,10 +963,10 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
           resp.data.rows[0]["B44_text"];
         data[1].subfield[3].subNestedField[3].scores[inputIndex].score =
           resp.data.rows[0]["B44_score"];
-        data[1].subfield[3].subNestedField[4].texts[inputIndex].text =
-          resp.data.rows[0]["B45_text"];
-        data[1].subfield[3].subNestedField[4].scores[inputIndex].score =
-          resp.data.rows[0]["B45_score"];
+        // data[1].subfield[3].subNestedField[4].texts[inputIndex].text =
+        //   resp.data.rows[0]["B45_text"];
+        // data[1].subfield[3].subNestedField[4].scores[inputIndex].score =
+        //   resp.data.rows[0]["B45_score"];
       });
 
     await axios
@@ -1176,8 +1176,8 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
         resp.data.rows[0]["B43"];
       data[1].subfield[3].subNestedField[3].industrialStandard =
         resp.data.rows[0]["B44"];
-      data[1].subfield[3].subNestedField[4].industrialStandard =
-        resp.data.rows[0]["B45"];
+      // data[1].subfield[3].subNestedField[4].industrialStandard =
+      //   resp.data.rows[0]["B45"];
 
       data[2].subfield[0].industrialStandard = resp.data.rows[0]["C1"];
       data[2].subfield[1].industrialStandard = resp.data.rows[0]["C2"];

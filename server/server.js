@@ -23,17 +23,14 @@ const db = new sqlite3.Database('./database.db', (err) => {
           A INTEGER NOT NULL, \
           B INTEGER NOT NULL, \
           C INTEGER NOT NULL, \
-          D INTEGER NOT NULL \
+          D INTEGER NOT NULL, \
+          sim_comp_1 INTEGER NOT NULL, \
+          sim_comp_2 INTEGER NOT NULL, \
+          sim_comp_3 INTEGER NOT NULL, \
+          sim_comp_4 INTEGER NOT NULL \
           \
       )', (err) => {
-          if (err) {
-              console.log("Company table already exists.");
-          } else{
-            let insert = 'INSERT INTO company (name, industrystandards_id, A, B, C, D) VALUES (?,?,?,?,?,?)';
-            db.run(insert, ["Nike", 1, 1, 1, 1, 1]);
-            db.run(insert, ["Adidas", 1, 2, 2, 2, 2]);
-            db.run(insert, ["Timberland", 1, 3, 3, 3, 3]);
-          }
+            console.log(err);
       });
 
       db.run('CREATE TABLE A ( \
@@ -46,28 +43,38 @@ const db = new sqlite3.Database('./database.db', (err) => {
           A11_sr NVARCHAR(100) NOT NULL, \
           A11_lr NVARCHAR(100) NOT NULL, \
           A12_score INTEGER NOT NULL, \
-          A12_text NVARCHAR(100) NOT NULL, \
+          A12_sr NVARCHAR(100) NOT NULL, \
+          A12_lr NVARCHAR(100) NOT NULL, \
           A2 INTEGER NOT NULL, \
           A21_score INTEGER NOT NULL, \
-          A21_text NVARCHAR(100) NOT NULL, \
+          A21_sr NVARCHAR(100) NOT NULL, \
+          A21_lr NVARCHAR(100) NOT NULL, \
           A22_score INTEGER NOT NULL, \
-          A22_text NVARCHAR(100) NOT NULL, \
+          A22_sr NVARCHAR(100) NOT NULL, \
+          A22_lr NVARCHAR(100) NOT NULL, \
           A23_score INTEGER NOT NULL, \
-          A23_text NVARCHAR(100) NOT NULL, \
+          A23_sr NVARCHAR(100) NOT NULL, \
+          A23_lr NVARCHAR(100) NOT NULL, \
           A3 INTEGER NOT NULL, \
           A31_score INTEGER NOT NULL, \
-          A31_text NVARCHAR(100) NOT NULL, \
+          A31_sr NVARCHAR(100) NOT NULL, \
+          A31_lr NVARCHAR(100) NOT NULL, \
           A32_score INTEGER NOT NULL, \
-          A32_text NVARCHAR(100) NOT NULL, \
+          A32_sr NVARCHAR(100) NOT NULL, \
+          A32_lr NVARCHAR(100) NOT NULL, \
           A33_score INTEGER NOT NULL, \
-          A33_text NVARCHAR(100) NOT NULL, \
+          A33_sr NVARCHAR(100) NOT NULL, \
+          A33_lr NVARCHAR(100) NOT NULL, \
           A4 INTEGER NOT NULL, \
           A41_score INTEGER NOT NULL, \
-          A41_text NVARCHAR(100) NOT NULL, \
+          A41_sr NVARCHAR(100) NOT NULL, \
+          A41_lr NVARCHAR(100) NOT NULL, \
           A42_score INTEGER NOT NULL, \
-          A42_text NVARCHAR(100) NOT NULL, \
+          A42_sr NVARCHAR(100) NOT NULL, \
+          A42_lr NVARCHAR(100) NOT NULL, \
           A43_score INTEGER NOT NULL, \
-          A43_text NVARCHAR(100) NOT NULL \
+          A43_sr NVARCHAR(100) NOT NULL, \
+          A43_lr NVARCHAR(100) NOT NULL \
           \
       )', (err) => {
           if (err) {
@@ -87,38 +94,53 @@ const db = new sqlite3.Database('./database.db', (err) => {
         B INTEGER NOT NULL, \
         B1 INTEGER NOT NULL, \
         B11_score INTEGER NOT NULL, \
-        B11_text NVARCHAR(100) NOT NULL, \
+        B11_sr NVARCHAR(100) NOT NULL, \
+        B11_lr NVARCHAR(100) NOT NULL, \
         B12_score INTEGER NOT NULL, \
-        B12_text NVARCHAR(100) NOT NULL, \
+        B12_sr NVARCHAR(100) NOT NULL, \
+        B12_lr NVARCHAR(100) NOT NULL, \
         B13_score INTEGER NOT NULL, \
-        B13_text NVARCHAR(100) NOT NULL, \
+        B13_sr NVARCHAR(100) NOT NULL, \
+        B13_lr NVARCHAR(100) NOT NULL, \
         B2 INTEGER NOT NULL, \
         B21_score INTEGER NOT NULL, \
-        B21_text NVARCHAR(100) NOT NULL, \
+        B21_sr NVARCHAR(100) NOT NULL, \
+        B21_lr NVARCHAR(100) NOT NULL, \
         B22_score INTEGER NOT NULL, \
-        B22_text NVARCHAR(100) NOT NULL, \
+        B22_sr NVARCHAR(100) NOT NULL, \
+        B22_lr NVARCHAR(100) NOT NULL, \
         B23_score INTEGER NOT NULL, \
-        B23_text NVARCHAR(100) NOT NULL, \
+        B23_sr NVARCHAR(100) NOT NULL, \
+        B23_lr NVARCHAR(100) NOT NULL, \
         B3 INTEGER NOT NULL, \
         B31_score INTEGER NOT NULL, \
-        B31_text NVARCHAR(100) NOT NULL, \
+        B31_sr NVARCHAR(100) NOT NULL, \
+        B31_lr NVARCHAR(100) NOT NULL, \
         B32_score INTEGER NOT NULL, \
-        B32_text NVARCHAR(100) NOT NULL, \
+        B32_sr NVARCHAR(100) NOT NULL, \
+        B32_lr NVARCHAR(100) NOT NULL, \
         B33_score INTEGER NOT NULL, \
-        B33_text NVARCHAR(100) NOT NULL, \
+        B33_sr NVARCHAR(100) NOT NULL, \
+        B33_lr NVARCHAR(100) NOT NULL, \
         B34_score INTEGER NOT NULL, \
-        B34_text NVARCHAR(100) NOT NULL, \
+        B34_sr NVARCHAR(100) NOT NULL, \
+        B34_lr NVARCHAR(100) NOT NULL, \
         B4 INTEGER NOT NULL, \
         B41_score INTEGER NOT NULL, \
-        B41_text NVARCHAR(100) NOT NULL, \
+        B41_sr NVARCHAR(100) NOT NULL, \
+        B41_lr NVARCHAR(100) NOT NULL, \
         B42_score INTEGER NOT NULL, \
-        B42_text NVARCHAR(100) NOT NULL, \
+        B42_sr NVARCHAR(100) NOT NULL, \
+        B42_lr NVARCHAR(100) NOT NULL, \
         B43_score INTEGER NOT NULL, \
-        B43_text NVARCHAR(100) NOT NULL, \
+        B43_sr NVARCHAR(100) NOT NULL, \
+        B43_lr NVARCHAR(100) NOT NULL, \
         B44_score INTEGER NOT NULL, \
-        B44_text NVARCHAR(100) NOT NULL, \
+        B44_sr NVARCHAR(100) NOT NULL, \
+        B44_lr NVARCHAR(100) NOT NULL, \
         B45_score INTEGER NOT NULL, \
-        B45_text NVARCHAR(100) NOT NULL \
+        B45_sr NVARCHAR(100) NOT NULL, \
+        B45_lr NVARCHAR(100) NOT NULL \
         \
     )', (err) => {
         if (err) {
@@ -138,40 +160,56 @@ const db = new sqlite3.Database('./database.db', (err) => {
       C INTEGER NOT NULL, \
       C1 INTEGER NOT NULL, \
       C11_score INTEGER NOT NULL, \
-      C11_text NVARCHAR(100) NOT NULL, \
+      C11_sr NVARCHAR(100) NOT NULL, \
+      C11_lr NVARCHAR(100) NOT NULL, \
       C12_score INTEGER NOT NULL, \
-      C12_text NVARCHAR(100) NOT NULL, \
+      C12_sr NVARCHAR(100) NOT NULL, \
+      C12_lr NVARCHAR(100) NOT NULL, \
       C13_score INTEGER NOT NULL, \
-      C13_text NVARCHAR(100) NOT NULL, \
+      C13_sr NVARCHAR(100) NOT NULL, \
+      C13_lr NVARCHAR(100) NOT NULL, \
       C14_score INTEGER NOT NULL, \
-      C14_text NVARCHAR(100) NOT NULL, \
+      C14_sr NVARCHAR(100) NOT NULL, \
+      C14_lr NVARCHAR(100) NOT NULL, \
       C2 INTEGER NOT NULL, \
       C21_score INTEGER NOT NULL, \
-      C21_text NVARCHAR(100) NOT NULL, \
+      C21_sr NVARCHAR(100) NOT NULL, \
+      C21_lr NVARCHAR(100) NOT NULL, \
       C22_score INTEGER NOT NULL, \
-      C22_text NVARCHAR(100) NOT NULL, \
+      C22_sr NVARCHAR(100) NOT NULL, \
+      C22_lr NVARCHAR(100) NOT NULL, \
       C23_score INTEGER NOT NULL, \
-      C23_text NVARCHAR(100) NOT NULL, \
+      C23_sr NVARCHAR(100) NOT NULL, \
+      C23_lr NVARCHAR(100) NOT NULL, \
       C24_score INTEGER NOT NULL, \
-      C24_text NVARCHAR(100) NOT NULL, \
+      C24_sr NVARCHAR(100) NOT NULL, \
+      C24_lr NVARCHAR(100) NOT NULL, \
       C3 INTEGER NOT NULL, \
       C31_score INTEGER NOT NULL, \
-      C31_text NVARCHAR(100) NOT NULL, \
+      C31_sr NVARCHAR(100) NOT NULL, \
+      C31_lr NVARCHAR(100) NOT NULL, \
       C32_score INTEGER NOT NULL, \
-      C32_text NVARCHAR(100) NOT NULL, \
+      C32_sr NVARCHAR(100) NOT NULL, \
+      C32_lr NVARCHAR(100) NOT NULL, \
       C33_score INTEGER NOT NULL, \
-      C33_text NVARCHAR(100) NOT NULL, \
+      C33_sr NVARCHAR(100) NOT NULL, \
+      C33_lr NVARCHAR(100) NOT NULL, \
       C34_score INTEGER NOT NULL, \
-      C34_text NVARCHAR(100) NOT NULL, \
+      C34_sr NVARCHAR(100) NOT NULL, \
+      C34_lr NVARCHAR(100) NOT NULL, \
       C4 INTEGER NOT NULL, \
       C41_score INTEGER NOT NULL, \
-      C41_text NVARCHAR(100) NOT NULL, \
+      C41_sr NVARCHAR(100) NOT NULL, \
+      C41_lr NVARCHAR(100) NOT NULL, \
       C42_score INTEGER NOT NULL, \
-      C42_text NVARCHAR(100) NOT NULL, \
+      C42_sr NVARCHAR(100) NOT NULL, \
+      C42_lr NVARCHAR(100) NOT NULL, \
       C43_score INTEGER NOT NULL, \
-      C43_text NVARCHAR(100) NOT NULL, \
+      C43_sr NVARCHAR(100) NOT NULL, \
+      C43_lr NVARCHAR(100) NOT NULL, \
       C44_score INTEGER NOT NULL, \
-      C44_text NVARCHAR(100) NOT NULL \
+      C44_sr NVARCHAR(100) NOT NULL, \
+      C44_lr NVARCHAR(100) NOT NULL \
       \
   )', (err) => {
       if (err) {
@@ -191,27 +229,37 @@ const db = new sqlite3.Database('./database.db', (err) => {
     D INTEGER NOT NULL, \
     D1 INTEGER NOT NULL, \
     D11_score INTEGER NOT NULL, \
-    D11_text NVARCHAR(100) NOT NULL, \
+    D11_sr NVARCHAR(100) NOT NULL, \
+    D11_lr NVARCHAR(100) NOT NULL, \
     D12_score INTEGER NOT NULL, \
-    D12_text NVARCHAR(100) NOT NULL, \
+    D12_sr NVARCHAR(100) NOT NULL, \
+    D12_lr NVARCHAR(100) NOT NULL, \
     D2 INTEGER NOT NULL, \
     D21_score INTEGER NOT NULL, \
-    D21_text NVARCHAR(100) NOT NULL, \
+    D21_sr NVARCHAR(100) NOT NULL, \
+    D21_lr NVARCHAR(100) NOT NULL, \
     D22_score INTEGER NOT NULL, \
-    D22_text NVARCHAR(100) NOT NULL, \
+    D22_sr NVARCHAR(100) NOT NULL, \
+    D22_lr NVARCHAR(100) NOT NULL, \
     D23_score INTEGER NOT NULL, \
-    D23_text NVARCHAR(100) NOT NULL, \
+    D23_sr NVARCHAR(100) NOT NULL, \
+    D23_lr NVARCHAR(100) NOT NULL, \
     D3 INTEGER NOT NULL, \
     D31_score INTEGER NOT NULL, \
-    D31_text NVARCHAR(100) NOT NULL, \
+    D31_sr NVARCHAR(100) NOT NULL, \
+    D31_lr NVARCHAR(100) NOT NULL, \
     D32_score INTEGER NOT NULL, \
-    D32_text NVARCHAR(100) NOT NULL, \
+    D32_sr NVARCHAR(100) NOT NULL, \
+    D32_lr NVARCHAR(100) NOT NULL, \
     D33_score INTEGER NOT NULL, \
-    D33_text NVARCHAR(100) NOT NULL, \
+    D33_sr NVARCHAR(100) NOT NULL, \
+    D33_lr NVARCHAR(100) NOT NULL, \
     D34_score INTEGER NOT NULL, \
-    D34_text NVARCHAR(100) NOT NULL, \
+    D34_sr NVARCHAR(100) NOT NULL, \
+    D34_lr NVARCHAR(100) NOT NULL, \
     D35_score INTEGER NOT NULL, \
-    D35_text NVARCHAR(100) NOT NULL \
+    D35_sr NVARCHAR(100) NOT NULL, \
+    D35_lr NVARCHAR(100) NOT NULL \
     \
 )', (err) => {
     if (err) {
@@ -227,96 +275,163 @@ const db = new sqlite3.Database('./database.db', (err) => {
       db.run('CREATE TABLE industrystandards ( \
         industrystandards_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \
         industry NVARCHAR(20), \
-        A_total INTEGER, \
-        A INTEGER NOT NULL, \
+        A_low INTEGER NOT NULL, \
+        A_high INTEGER NOT NULL, \
         A1_total INTEGER NOT NULL, \
-        A1 INTEGER NOT NULL, \
-        A11 INTEGER NOT NULL, \
-        A12 INTEGER NOT NULL, \
+        A1_low INTEGER NOT NULL, \
+        A1_high INTEGER NOT NULL, \
+        A11_low INTEGER NOT NULL, \
+        A11_high INTEGER NOT NULL, \
+        A12_low INTEGER NOT NULL, \
+        A12_high INTEGER NOT NULL, \
         A2_total INTEGER NOT NULL, \
-        A2 INTEGER NOT NULL, \
-        A21 INTEGER NOT NULL, \
-        A22 INTEGER NOT NULL, \
-        A23 INTEGER NOT NULL, \
+        A2_low INTEGER NOT NULL, \
+        A2_high INTEGER NOT NULL, \
+        A21_low INTEGER NOT NULL, \
+        A21_high INTEGER NOT NULL, \
+        A22_low INTEGER NOT NULL, \
+        A22_high INTEGER NOT NULL, \
+        A23_low INTEGER NOT NULL, \
+        A23_high INTEGER NOT NULL, \
         A3_total INTEGER NOT NULL, \
-        A3 INTEGER NOT NULL, \
-        A31 INTEGER NOT NULL, \
-        A32 INTEGER NOT NULL, \
-        A33 INTEGER NOT NULL, \
+        A3_low INTEGER NOT NULL, \
+        A3_high INTEGER NOT NULL, \
+        A31_low INTEGER NOT NULL, \
+        A31_high INTEGER NOT NULL, \
+        A32_low INTEGER NOT NULL, \
+        A32_high INTEGER NOT NULL, \
+        A33_low INTEGER NOT NULL, \
+        A33_high INTEGER NOT NULL, \
         A4_total INTEGER NOT NULL, \
-        A4 INTEGER NOT NULL, \
-        A41 INTEGER NOT NULL, \
-        A42 INTEGER NOT NULL, \
-        A43 INTEGER NOT NULL, \
-        B_total INTEGER, \
-        B INTEGER NOT NULL, \
+        A4_low INTEGER NOT NULL, \
+        A4_high INTEGER NOT NULL, \
+        A41_low INTEGER NOT NULL, \
+        A41_high INTEGER NOT NULL, \
+        A42_low INTEGER NOT NULL, \
+        A42_high INTEGER NOT NULL, \
+        A43_low INTEGER NOT NULL, \
+        A43_high INTEGER NOT NULL, \
+        B_low INTEGER NOT NULL, \
+        B_high INTEGER NOT NULL, \
         B1_total INTEGER NOT NULL, \
-        B1 INTEGER NOT NULL, \
-        B11 INTEGER NOT NULL, \
-        B12 INTEGER NOT NULL, \
-        B13 INTEGER NOT NULL, \
+        B1_low INTEGER NOT NULL, \
+        B1_high INTEGER NOT NULL, \
+        B11_low INTEGER NOT NULL, \
+        B11_high INTEGER NOT NULL, \
+        B12_low INTEGER NOT NULL, \
+        B12_high INTEGER NOT NULL, \
+        B13_low INTEGER NOT NULL, \
+        B13_high INTEGER NOT NULL, \
         B2_total INTEGER NOT NULL, \
-        B2 INTEGER NOT NULL, \
-        B21 INTEGER NOT NULL, \
-        B22 INTEGER NOT NULL, \
-        B23 INTEGER NOT NULL, \
+        B2_low INTEGER NOT NULL, \
+        B2_high INTEGER NOT NULL, \
+        B21_low INTEGER NOT NULL, \
+        B21_high INTEGER NOT NULL, \
+        B22_low INTEGER NOT NULL, \
+        B22_high INTEGER NOT NULL, \
+        B23_low INTEGER NOT NULL, \
+        B23_high INTEGER NOT NULL, \
         B3_total INTEGER NOT NULL, \
-        B3 INTEGER NOT NULL, \
-        B31 INTEGER NOT NULL, \
-        B32 INTEGER NOT NULL, \
-        B33 INTEGER NOT NULL, \
-        B34 INTEGER NOT NULL, \
+        B3_low INTEGER NOT NULL, \
+        B3_high INTEGER NOT NULL, \
+        B31_low INTEGER NOT NULL, \
+        B31_high INTEGER NOT NULL, \
+        B32_low INTEGER NOT NULL, \
+        B32_high INTEGER NOT NULL, \
+        B33_low INTEGER NOT NULL, \
+        B33_high INTEGER NOT NULL, \
+        B34_low INTEGER NOT NULL, \
+        B34_high INTEGER NOT NULL, \
         B4_total INTEGER NOT NULL, \
-        B4 INTEGER NOT NULL, \
-        B41 INTEGER NOT NULL, \
-        B42 INTEGER NOT NULL, \
-        B43 INTEGER NOT NULL, \
-        B44 INTEGER NOT NULL, \
-        B45 INTEGER NOT NULL, \
-        C_total INTEGER, \
-        C INTEGER NOT NULL, \
+        B4_low INTEGER NOT NULL, \
+        B4_high INTEGER NOT NULL, \
+        B41_low INTEGER NOT NULL, \
+        B41_high INTEGER NOT NULL, \
+        B42_low INTEGER NOT NULL, \
+        B42_high INTEGER NOT NULL, \
+        B43_low INTEGER NOT NULL, \
+        B43_high INTEGER NOT NULL, \
+        B44_low INTEGER NOT NULL, \
+        B44_high INTEGER NOT NULL, \
+        B45_low INTEGER NOT NULL, \
+        B45_high INTEGER NOT NULL, \
+        C_low INTEGER NOT NULL, \
+        C_high INTEGER NOT NULL, \
         C1_total INTEGER NOT NULL, \
-        C1 INTEGER NOT NULL, \
-        C11 INTEGER NOT NULL, \
-        C12 INTEGER NOT NULL, \
-        C13 INTEGER NOT NULL, \
-        C14 INTEGER NOT NULL, \
+        C1_low INTEGER NOT NULL, \
+        C1_high INTEGER NOT NULL, \
+        C11_low INTEGER NOT NULL, \
+        C11_high INTEGER NOT NULL, \
+        C12_low INTEGER NOT NULL, \
+        C12_high INTEGER NOT NULL, \
+        C13_low INTEGER NOT NULL, \
+        C13_high INTEGER NOT NULL, \
+        C14_low INTEGER NOT NULL, \
+        C14_high INTEGER NOT NULL, \
         C2_total INTEGER NOT NULL, \
-        C2 INTEGER NOT NULL, \
-        C21 INTEGER NOT NULL, \
-        C22 INTEGER NOT NULL, \
-        C23 INTEGER NOT NULL, \
-        C24 INTEGER NOT NULL, \
+        C2_low INTEGER NOT NULL, \
+        C2_high INTEGER NOT NULL, \
+        C21_low INTEGER NOT NULL, \
+        C21_high INTEGER NOT NULL, \
+        C22_low INTEGER NOT NULL, \
+        C22_high INTEGER NOT NULL, \
+        C23_low INTEGER NOT NULL, \
+        C23_high INTEGER NOT NULL, \
+        C24_low INTEGER NOT NULL, \
+        C24_high INTEGER NOT NULL, \
         C3_total INTEGER NOT NULL, \
-        C3 INTEGER NOT NULL, \
-        C31 INTEGER NOT NULL, \
-        C32 INTEGER NOT NULL, \
-        C33 INTEGER NOT NULL, \
-        C34 INTEGER NOT NULL, \
+        C3_low INTEGER NOT NULL, \
+        C3_high INTEGER NOT NULL, \
+        C31_low INTEGER NOT NULL, \
+        C31_high INTEGER NOT NULL, \
+        C32_low INTEGER NOT NULL, \
+        C32_high INTEGER NOT NULL, \
+        C33_low INTEGER NOT NULL, \
+        C33_high INTEGER NOT NULL, \
+        C34_low INTEGER NOT NULL, \
+        C34_high INTEGER NOT NULL, \
         C4_total INTEGER NOT NULL, \
-        C4 INTEGER NOT NULL, \
-        C41 INTEGER NOT NULL, \
-        C42 INTEGER NOT NULL, \
-        C43 INTEGER NOT NULL, \
-        C44 INTEGER NOT NULL, \
-        D_total INTEGER, \
-        D INTEGER NOT NULL, \
+        C4_low INTEGER NOT NULL, \
+        C4_high INTEGER NOT NULL, \
+        C41_low INTEGER NOT NULL, \
+        C41_high INTEGER NOT NULL, \
+        C42_low INTEGER NOT NULL, \
+        C42_high INTEGER NOT NULL, \
+        C43_low INTEGER NOT NULL, \
+        C43_high INTEGER NOT NULL, \
+        C44_low INTEGER NOT NULL, \
+        C44_high INTEGER NOT NULL, \
+        D_low INTEGER NOT NULL, \
+        D_high INTEGER NOT NULL, \
         D1_total INTEGER NOT NULL, \
-        D1 INTEGER NOT NULL, \
-        D11 INTEGER NOT NULL, \
-        D12 INTEGER NOT NULL, \
+        D1_low INTEGER NOT NULL, \
+        D1_high INTEGER NOT NULL, \
+        D11_low INTEGER NOT NULL, \
+        D11_high INTEGER NOT NULL, \
+        D12_low INTEGER NOT NULL, \
+        D12_high INTEGER NOT NULL, \
         D2_total INTEGER NOT NULL, \
-        D2 INTEGER NOT NULL, \
-        D21 INTEGER NOT NULL, \
-        D22 INTEGER NOT NULL, \
-        D23 INTEGER NOT NULL, \
+        D2_low INTEGER NOT NULL, \
+        D2_high INTEGER NOT NULL, \
+        D21_low INTEGER NOT NULL, \
+        D21_high INTEGER NOT NULL, \
+        D22_low INTEGER NOT NULL, \
+        D22_high INTEGER NOT NULL, \
+        D23_low INTEGER NOT NULL, \
+        D23_high INTEGER NOT NULL, \
         D3_total INTEGER NOT NULL, \
-        D3 INTEGER NOT NULL, \
-        D31 INTEGER NOT NULL, \
-        D32 INTEGER NOT NULL, \
-        D33 INTEGER NOT NULL, \
-        D34 INTEGER NOT NULL, \
-        D35 INTEGER NOT NULL \
+        D3_low INTEGER NOT NULL, \
+        D3_low INTEGER NOT NULL, \
+        D31_low INTEGER NOT NULL, \
+        D31_high INTEGER NOT NULL, \
+        D32_low INTEGER NOT NULL, \
+        D32_high INTEGER NOT NULL, \
+        D33_low INTEGER NOT NULL, \
+        D33_high INTEGER NOT NULL, \
+        D34_low INTEGER NOT NULL, \
+        D34_high INTEGER NOT NULL, \
+        D35_low INTEGER NOT NULL, \
+        D35_high INTEGER NOT NULL \
         \
     )', (err) => {
         if (err) {
@@ -330,6 +445,7 @@ const db = new sqlite3.Database('./database.db', (err) => {
     db.run('CREATE TABLE Citations ( \
       citations_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \
       relational_id INTEGER, \
+      type NVARCHAR(20), \
       author NVARCHAR(20), \
       title NVARCHAR(20), \
       publishing_group NVARCHAR(20), \
