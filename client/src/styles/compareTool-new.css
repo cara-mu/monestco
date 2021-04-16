@@ -570,10 +570,18 @@
         column-gap: 1rem;
     }
 
+    .subField-title {
+        padding-left: 0;
+    }
+
     .nestedField-container {
         grid-template-columns: 6rem repeat( 2, 5rem ) 2rem;
         grid-template-rows: 11rem;
         column-gap: 1rem;
-    }    
+    }
+
+    .nestedField-title {
+        padding-left: 0;
+    }
 
 }
