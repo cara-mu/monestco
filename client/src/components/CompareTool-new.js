@@ -335,18 +335,18 @@ const field = [
               { text: "b44 stuff" },
               { text: "b44 stuff" },
             ],
-          },
-          {
-            title:
-              "Compensates mistreated workers after discovering violations",
-            scores: [{ score: "" }, { score: "" }, { score: "" }],
-            industrialStandard: "",
-            texts: [
-              { text: "b45 stuff" },
-              { text: "b45 stuff" },
-              { text: "b45 stuff" },
-            ],
-          },
+          }
+          // {
+          //   title:
+          //     "Compensates mistreated workers after discovering violations",
+          //   scores: [{ score: "" }, { score: "" }, { score: "" }],
+          //   industrialStandard: "",
+          //   texts: [
+          //     { text: "b45 stuff" },
+          //     { text: "b45 stuff" },
+          //     { text: "b45 stuff" },
+          //   ],
+          // },
         ],
         mainNestedScore: [{ score: "" }, { score: "" }, { score: "" }],
         industrialStandard: "",
@@ -701,13 +701,13 @@ const NestedField = ({ item }) => {
         item.subNestedField.map((item, index) => {
           return (
             <div key={index} className="nestedField-container">
-              <div className="nestedField-title">
+              <span className="nestedField-title">
                 {item.title}
-                <div style={{position:'relative', zIndex:'1'}}>
-                  <HelpOutlineTwoToneIcon className="compare-info-icon" style={{fontSize:'16px', marginLeft:'3px', fill:'#26385A'}} />
+                <span style={{position:'relative', zIndex:'1'}}>
+                  <HelpOutlineTwoToneIcon className="compare-info-icon" style={{fontSize:'18px', marginLeft:'5px', fill:'#26385A'}} />
                   <span className="info-text-hover">Vulputate sit condimentum nulla eget placerat tincidunt.</span>
-                </div>
-              </div>
+                </span>
+              </span>
               {item.scores.map((element, index) => {
                 if (mobileView && index < 2) {
                   return (
@@ -972,10 +972,10 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
           resp.data.rows[0]["B44_text"];
         data[1].subfield[3].subNestedField[3].scores[inputIndex].score =
           resp.data.rows[0]["B44_score"];
-        data[1].subfield[3].subNestedField[4].texts[inputIndex].text =
-          resp.data.rows[0]["B45_text"];
-        data[1].subfield[3].subNestedField[4].scores[inputIndex].score =
-          resp.data.rows[0]["B45_score"];
+        // data[1].subfield[3].subNestedField[4].texts[inputIndex].text =
+        //   resp.data.rows[0]["B45_text"];
+        // data[1].subfield[3].subNestedField[4].scores[inputIndex].score =
+        //   resp.data.rows[0]["B45_score"];
       });
 
     await axios
@@ -1102,7 +1102,8 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
     }
   }
 
-  useEffect(() => {
+  useEffect(() => {    
+    
     axios.get("/allcompanies").then((resp) => {
       const allcompanies = [];
       for (var i = 0; i < resp.data.rows.length; i++) {
@@ -1184,8 +1185,8 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
         resp.data.rows[0]["B43"];
       data[1].subfield[3].subNestedField[3].industrialStandard =
         resp.data.rows[0]["B44"];
-      data[1].subfield[3].subNestedField[4].industrialStandard =
-        resp.data.rows[0]["B45"];
+      // data[1].subfield[3].subNestedField[4].industrialStandard =
+      //   resp.data.rows[0]["B45"];
 
       data[2].subfield[0].industrialStandard = resp.data.rows[0]["C1"];
       data[2].subfield[1].industrialStandard = resp.data.rows[0]["C2"];
@@ -1236,12 +1237,12 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
 
   useEffect(() => {
     selectedCompaniesList.forEach((item, index) => {
-      item && renderData(item, index + 1);
-    });
-  }, [selectedCompaniesList]);
-
+      item && renderData(item, index+1)
+    })
+  }, [selectedCompaniesList])
+  
   return (
-    <div className="compare__tool-container">
+    <div className="compare__tool-container">        
       <div className="compare-input-container">
         <input
           placeholder="Type the brand"
@@ -1261,60 +1262,53 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
           onChange={handleChangeThree}
           onBlur={() => setTimeout(() => setListBrandThree(false), 200)}
         />
-        <div className="compare-companyList-container">
-          {listBrandOne && (
-            <div className="compare-companyList list-1">
-              {companiesList.map((item, index) => {
-                return (
-                  <div key={index} onClick={() => renderData(item, 1)}>
-                    {item}
-                  </div>
-                );
-              })}
-            </div>
-          )}
-          {listBrandTwo && (
-            <div className="compare-companyList list-2">
-              {companiesList.map((item, index) => {
-                return (
-                  <div key={index} onClick={() => renderData(item, 2)}>
-                    {item}
-                  </div>
-                );
-              })}
-            </div>
-          )}
-          {listBrandThree && (
-            <div className="compare-companyList list-3">
-              {companiesList.map((item, index) => {
-                return (
-                  <div key={index} onClick={() => renderData(item, 3)}>
-                    {item}
-                  </div>
-                );
-              })}
-            </div>
-          )}
+        <div className='compare-companyList-container'>
+        {listBrandOne && (
+          <div className="compare-companyList list-1">
+            {companiesList.map((item, index) => {
+              return (
+                <div key={index} onClick={() => renderData(item, 1)}>
+                  {item}
+                </div>
+              );
+            })}
+          </div>
+        )}
+        {listBrandTwo && (
+          <div className="compare-companyList list-2">
+            {companiesList.map((item, index) => {
+              return (
+                <div key={index} onClick={() => renderData(item, 2)}>
+                  {item}
+                </div>
+              );
+            })}
+          </div>
+        )}
+        {listBrandThree && (
+          <div className="compare-companyList list-3">
+            {companiesList.map((item, index) => {
+              return (
+                <div key={index} onClick={() => renderData(item, 3)}>
+                  {item}
+                </div>
+              );
+            })}
+          </div>
+        )}
         </div>
-        {selectedCompaniesList.map((item, index) => {
-          return (
-            <div key={index} className="brand-button-container">
-              <span
-                className={item ? "brand-button-close" : "diplay-none"}
-                onClick={() => removeBrand(index)}
-              >
-                &#10006;
-              </span>
-              <span className={item ? "brand-name" : "brand-name-placeholder"}>
-                {item ? item : "Select the brand"}
-              </span>
-            </div>
-          );
-        })}
+        {
+          selectedCompaniesList.map( (item, index) => {
+            return(
+              <div key={index} className='brand-button-container'>    
+                <span className={item ? 'brand-button-close' : 'diplay-none'} onClick={() => removeBrand(index)}>&#10006;</span>
+                <span className={item ? 'brand-name' : 'brand-name-placeholder'}>{item ? item : 'Select the brand'}</span>
+              </div>
+            )
+          })
+        }
       </div>
-      {fieldData.map((item, index) => (
-        <Subfield key={index} item={item} />
-      ))}
+      {fieldData.map((item, index) => <Subfield key={index} item={item} /> )}
     </div>
   );
 };

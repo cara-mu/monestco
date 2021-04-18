@@ -181,6 +181,27 @@
     visibility: visible;
 }
 
+.citation-sup {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #26385A;
+}
+
+.citation-sup:hover + span {
+    display: block;
+}
+
+.breakdown_citation-hover {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #F2F2F2;
+    border-radius: 10px 10px 10px 0px;
+    padding: 16px 11px 13px 14px;
+}
+
 @keyframes moveUp {
     0% {
         opacity: 0;
@@ -228,6 +249,10 @@
 
     .breakdown_info-container-text {
         font-size: 14px;
+    }
+    .citation-sup {
+        font-size: 12px;
+        line-height: 15px;
     }
 }
 
@@ -285,6 +310,10 @@
         font-size: 12px;
         font-weight: 400;
         line-height: 16px;
+    }
+    .citation-sup {
+        font-size: 10px;
+        line-height: 12px;
     }
 }
 

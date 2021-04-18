@@ -337,7 +337,7 @@ const NestedField = ({ item }) => {
       <div className="breakdown_nestedField">
         <div className="breakdown_nestedField-title">{item.title}</div>
         <div className="breakdown_nestedField-score">{item.scores}</div>
-        <div>
+        <div style={{position:'relative'}}>
           {item.texts.map((text, index) => {
             return (
               <span key={index}>
@@ -345,6 +345,8 @@ const NestedField = ({ item }) => {
               </span>
             );
           })}
+          <sup className="citation-sup">[1]</sup>
+          <span className="breakdown_citation-hover">Fast Retailing Annual Report 2019, Fast Retailing, 2019, pages 25 responsibility.aldogroup.com/indicators/people/diversity/diversity_philosophy</span>
         </div>
       </div>
     );
@@ -365,7 +367,7 @@ const NestedField = ({ item }) => {
                 </span>
               );
             })}
-            <sup style={{fontWeight:'600'}} onClick={() => setShowPopup(true)}>[1]</sup>
+            <sup className="citation-sup" onClick={() => setShowPopup(true)}>[1]</sup>
           </div>
         ) : (
           <div className="breakdown_nestedField-title">{item.title}</div>
@@ -407,7 +409,7 @@ const NestedField = ({ item }) => {
                 </span>
               );
             })}
-            <sup style={{fontWeight:'600'}} onClick={() => setShowPopup(true)}>[1]</sup>
+            <sup className="citation-sup" onClick={() => setShowPopup(true)}>[1]</sup>
           </div>
         )}
         {showInfo ? (

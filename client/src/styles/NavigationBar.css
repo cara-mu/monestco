@@ -16,10 +16,9 @@
     text-decoration: none;
   }
 
-  .nav-links:hover{
-    background-color: #ecf1f7;
+  .nav-links:hover{    
     transition: all 0.2s ease-out;
-    color: initial;
+    color: #ABD4B7;
     text-decoration: none;
   }
 
@@ -40,7 +39,7 @@
     justify-content:flex-end;
     white-space: nowrap;
     padding: 0;
-    /* margin-right: 2rem; */
+    margin-right: 4.5%;
   }
   
   .Menu-Item {
@@ -62,10 +61,9 @@
     padding: 0.5rem 1rem; */
   }
   
-  .Navigation-Link:hover {
-    background-color: #ecf1f7;
+  .Navigation-Link:hover {    
     transition: all 0.2s ease-out;
-    color: initial;
+    color: #26385A;
     text-decoration: none;
   }
   
@@ -93,6 +91,10 @@
     line-height: 38px;
     font-weight: 700;
 }
+.Compare-Button:hover {
+    text-decoration: none;
+    color: #26385A;
+}
 
 /* CSS Styling was not working when using the logo's class name, resorted to using img tag instead */
 .Navigation-Bar>a {
@@ -114,12 +116,25 @@ img {
   cursor: pointer;
 }
 
-.MuiInput-underline::before {
-  border-bottom: 2px solid #BDBDBD !important;
+.search-input>.MuiInput-underline::before {
+  border-color: #BDBDBD !important;
+  transition: none !important;
 }
 
-.MuiInput-underline::after {
-  border-bottom: 2px solid #BDBDBD !important;
+.search-input>.MuiInput-underline::after {
+  border-color: #BDBDBD !important;
+  transition: none !important;
+}
+
+.seach-input-2>.MuiInput-underline::before {
+  border-bottom: none !important;
+}
+.seach-input-2>.MuiInput-underline::after {
+  border-bottom: none !important;
+}
+.seach-input-2>div {
+  box-shadow: 0px 2px 9px 3px rgb(152 165 177 / 12%);
+  border-radius: 6px;
 }
 
 
@@ -185,8 +200,9 @@ img {
     cursor: pointer;
   }
 
-  .Menu-Item-search {
+  .Menu-Item-search.search-input {
     display: none;
+    margin-right: 0;
   }
 
   .mobile-search-icon {

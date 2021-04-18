@@ -31,7 +31,16 @@ export default function BrandDirectory() {
         'Y':[],
         'Z':["Zara"]
     }
-
+    const setId = (key) => {        
+        if(key.charCodeAt(0) < 90) {
+            for(let i=1; i < 26; i++ ) {                
+                let newKey = String.fromCharCode(key.charCodeAt(0) + i);
+                if(letterArray[newKey] && letterArray[newKey].length > 0) {
+                    return newKey
+                }
+            }
+        }
+    }
     console.log(letterArray['A'])
     return (
         <div className="brand_directory">
@@ -46,14 +55,14 @@ export default function BrandDirectory() {
                 }
             </div>
             <div className="brand_directory_wholeList">
-             <hr className="hr" id='0'></hr>
+             <hr className="hr" id='A'></hr>
                 {
                     Object.keys(letterArray).map((key)=>(
                         <>
                         { 
                             letterArray[key].length>0 ?
                                 <div>
-                                    <div className="brand_directory_eachRow d-block d-md-flex" id={`${key}`}>
+                                    <div className="brand_directory_eachRow d-block d-md-flex">
                                         {letterArray[key].length>0 ? <> 
                                             <h6 className="letter" >{key}</h6>
                                             
@@ -74,7 +83,7 @@ export default function BrandDirectory() {
                                             </>:
                                             null}
                                     </div>
-                                    <hr className="hr"></hr>
+                                    <hr className="hr"  id={setId(key)}></hr>
                                 </div>
                             :null}
                         </>

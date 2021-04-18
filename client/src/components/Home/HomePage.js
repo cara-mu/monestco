@@ -4,7 +4,9 @@ import  EducateImg from '../../assets/educate.png'
 import  EmpowerImg from '../../assets/empower.png'
 import '../../styles/HomePage.css';
 import * as emailjs from "emailjs-com";
-import WindowLogo from '../../assets/window.svg';
+import WindowLogo from '../../assets/window.png';
+import CareerImg from '../../assets/career.png';
+
 
 function HomePage(){
     function sendEmail(e) {
@@ -75,15 +77,24 @@ function HomePage(){
                         <img className="main_image" src = {WindowLogo} alt = 'browser sketch'></img>
                     </div>
                     <div className = 'Sign-Up-Positioning'>
-                    <h1>We help empower you to hold <br></br> 
+                    <h1 className='sign-up-text-web'>We help empower you to hold corporations<br></br> 
+                        to higher ethical standards.<br></br>
+                        Understand and compare brands’ impact<br></br>
+                        at a glance with Monest
+                        {/* <br></br> */}
+                        </h1>         
+                        <h1 className='sign-up-text'>
+                        We help empower you to hold <br></br> 
                         corporations to higher ethical <br></br>
-                        standards. Understand and <br></br>
+                        standards. Understand and  <br></br>
                         compare brands’ impact at a <br></br>
-                        glance with Monest</h1>         
+                        glance with Monest
+                        {/* <br></br> */}
+                        </h1>
                         <label for="fetched_email">Join our Chrome Extension waitlist!</label>               
                         <form id="form" onClick = {sendEmail}>
                             <div class="field" style={{display:'flex', alignItems:'center', flexWrap:'nowrap'}}>                                                                
-                                <input type="text" name="fetched_email" id="fetched_email" placeholder="Your email address"></input>
+                                <input type="text" name="fetched_email" id="fetched_email" placeholder="Your email address" style={{width:'65%'}}></input>
                                 <input type="submit" id="button" value="Sign Up" ></input>
                             </div>
                         </form>
@@ -121,6 +132,20 @@ function HomePage(){
                             </form>
                     </div> 
                 </div> */}
+            </div>
+            <div className = "Career">
+                <div className = "Career-Positioning">
+                    {/*<img src = {CareerImg} style={{width:'350px', height:'250px', marginLeft:'40%'}}></img>*/}
+                    <h1>We're hiring</h1>
+                    <h2>Research Analysts!</h2>
+                    {/* <br></br> */}
+                    <img className="carrer_image-2" src = {CareerImg} alt = 'browser sketch'></img>
+                    <div style={{display:'flex', width:'100%'}} className="career-btn-container">
+                        <p style={{whiteSpace:'nowrap'}}>Are you interested in working with us?</p>
+                        <input type="submit" id="button" value="Career" className="career-btn" ></input>
+                    </div>
+                </div>
+                <img className="carrer_image" src = {CareerImg} alt = 'browser sketch'></img>
             </div>
         </Fragment>)
 }

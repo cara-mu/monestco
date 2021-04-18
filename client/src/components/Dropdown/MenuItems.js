@@ -4,12 +4,12 @@ TO REPLICATE TO PROTOTYPE */
 export const MenuItems = [
     {
         title: 'Abercrombie & Fitch',
-        path: '/companies/Abercrombie-&-Fitch',
+        path: '/companies/Abercrombie & Fitch',
         cName: 'nav-links'
     },
     {
         title: 'American Eagle',
-        path: '/companies/American-Eagle',
+        path: '/companies/American Eagle',
         cName: 'nav-links'
     },
     {
@@ -19,7 +19,7 @@ export const MenuItems = [
     },
     {
         title: 'Banana Republic',
-        path: '/companies/Banana-Republic',
+        path: '/companies/Banana Republic',
         cName: 'nav-links'
     },
     {
@@ -29,17 +29,17 @@ export const MenuItems = [
     },
     {
         title: 'Calvin Klein',
-        path: '/companies/Calvin-Klein',
+        path: '/companies/Calvin Klein',
         cName: 'nav-links'
     },
     {
         title: 'Club Monaco',
-        path: '/companies/Club-Monaco',
+        path: '/companies/Club Monaco',
         cName: 'nav-links'
     },
     {
         title: 'Forever 21',
-        path: '/companies/Forever-21',
+        path: '/companies/Forever 21',
         cName: 'nav-links'
     },
     {
@@ -59,7 +59,7 @@ export const MenuItems = [
     },
     {
         title: 'J. CREW',
-        path: '/companies/J-CREW',
+        path: '/companies/J CREW',
         cName: 'nav-links'
     },
     {
@@ -79,7 +79,7 @@ export const MenuItems = [
     },
     {
         title: 'Ralph Lauren',
-        path: '/companies/Ralph-Lauren',
+        path: '/companies/Ralph Lauren',
         cName: 'nav-links'
     },
     {
@@ -89,7 +89,7 @@ export const MenuItems = [
     },
     {
         title: 'The North Face',
-        path: '/companies/The-North-Face',
+        path: '/companies/The North Face',
         cName: 'nav-links'
     },
     {
@@ -99,7 +99,7 @@ export const MenuItems = [
     },
     {
         title: 'Urban Outfitters',
-        path: '/companies/Urban-Outfitters',
+        path: '/companies/Urban Outfitters',
         cName: 'nav-links'
     },
     // {
