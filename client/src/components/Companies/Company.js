@@ -140,9 +140,10 @@ function Company () {
                         <i className={showFact ? "Fun-Fact-arrowdown-close" : "Fun-Fact-arrowdown"}></i>
                     </div>
                 </div>
+                <div className = {`fact-animate-field ${showFact ? 'fact-animate' : ''}`}>
                 {
                     showFact ? 
-                        <div className = 'Fun-Fact-Dropdown'>
+                        <div className = "Fun-Fact-Dropdown">
                             {item.discription}
                             <div className = 'Fun-Fact-Citation' style={{width:'100%', fontWeight:'700'}}>
                                 Citation
@@ -153,6 +154,7 @@ function Company () {
                             }
                         </div> : null
                 }
+                </div>
                 <div className = 'FunFact-Decorative-Line'></div>
             </div>
         )
@@ -287,7 +289,7 @@ function Company () {
                         <div className = 'Decorative-Line'></div>
                             <div className='In-The-News-container'>
                                 <div className='news-card'>
-                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} onClick={handleOpen}/>
+                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} />
                                     <div className='news-category'>
                                         <span className='news-category-title'>Worker Exploitation</span>
                                         <span className='news-category-year'>2018</span>
@@ -302,12 +304,12 @@ function Company () {
                                         <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
                                             <span>Issue Addressed?</span>
                                             <span style={{color:'#28a745', marginLeft:'5px'}}>Yes</span>
-                                            <button className='News-read-more-btn'>read more</button>
+                                            <button className='News-read-more-btn' onClick={handleOpen}>read more</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='news-card'>
-                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} onClick={handleOpen}/>
+                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} />
                                     <div className='news-category'>
                                         <span className='news-category-title'>Worker Exploitation</span>
                                         <span className='news-category-year'>2018</span>
@@ -322,12 +324,12 @@ function Company () {
                                         <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
                                             <span>Issue Addressed?</span>
                                             <span style={{color:'#28a745', marginLeft:'5px'}}>Yes</span>
-                                            <button className='News-read-more-btn'>read more</button>
+                                            <button className='News-read-more-btn' onClick={handleOpen}>read more</button>
                                         </div>
                                     </div>
                                 </div>                            
                                 <div className='news-card'>
-                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} onClick={handleOpen}/>
+                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} />
                                     <div className='news-category'>
                                         <span className='news-category-title'>Worker Exploitation</span>
                                         <span className='news-category-year'>2018</span>
@@ -342,12 +344,12 @@ function Company () {
                                         <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
                                             <span>Issue Addressed?</span>
                                             <span style={{color:'#28a745', marginLeft:'5px'}}>Yes</span>
-                                            <button className='News-read-more-btn'>read more</button>
+                                            <button className='News-read-more-btn' onClick={handleOpen}>read more</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='news-card'>
-                                    <img style={{background:`url: ${NewsPlaceHolder}`}} onClick={handleOpen}/>
+                                    <img style={{background:`url: ${NewsPlaceHolder}`}} />
                                     <div className='news-category'>
                                         <span className='news-category-title'>Worker Exploitation</span>
                                         <span className='news-category-year'>2018</span>
@@ -362,7 +364,7 @@ function Company () {
                                         <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
                                             <span>Issue Addressed?</span>
                                             <span style={{color:'#28a745', marginLeft:'5px'}}>Yes</span>
-                                            <button className='News-read-more-btn'>read more</button>
+                                            <button className='News-read-more-btn' onClick={handleOpen}>read more</button>
                                         </div>
                                     </div>
                                 </div>

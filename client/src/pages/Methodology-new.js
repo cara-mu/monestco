@@ -311,7 +311,7 @@ const Methodology = () => {
           Brands are assessed on publicly available information from direct and
           indirect sources.
         </div>
-        <div>
+        <div style={{marginBottom:'10px'}}>
           <span className="Methodology-paragraph-highlight grey-text">
             1. Direct data sources{" "}
           </span>
@@ -339,13 +339,13 @@ const Methodology = () => {
             <img src={logo1}></img>
             <img src={logo2}></img>
             <img src={logo3}></img>
-            <img src={logo4}></img>          
-            <img src={logo5}></img>
-            <img src={logo6}></img>
             <img src={logo7}></img>            
+            <img src={logo6}></img>
+            <img src={logo5}></img>
             <img src={logo8}></img>
             <img src={logo9}></img>
-            <img src={logo10}></img>        
+            <img src={logo10} style={{width: '90%'}}></img>        
+            <img src={logo4}></img>          
         </div>
       </div>
     </div>

@@ -20,8 +20,8 @@ export default function BrandDirectory() {
         'N':["NastyGal","New Balance","Nike"],
         'O':["Old Navy"],
         'P':["Patagonia","Prada","PrettyLittleThing"],
-        'Q':["Ralph Lauren","Reebok","Roots"],
-        'R':[],
+        'Q':[],
+        'R':["Ralph Lauren","Reebok","Roots"],
         'S':["Skechers","Steve Madden"],
         'T':["Ted Baker","The North Face","Tommy Hilfiger"],
         'U':["Under Armour","Uniqlo","Urban Outfitters"],
@@ -62,7 +62,7 @@ export default function BrandDirectory() {
                                                     <p className={`col-3 col-md-3 ml-md-0 list_letter 
                                                             ${val==="Burberry" ||val==="Balenciaga" ||val==="Canada Goose" ||val==="Chanel"||val==="Christian Dior"||val==="Coach"
                                                             ||val==="Dynamite"||val==="Fila"||val==="Giorgio Armani "||val==="Gucci"||val==="Givenchy"||val==="Garage"||val==="Gildan"
-                                                            ||val==="Hermes"||val==="Hugo Boss"||val==="J. Crew"||val==="Kate Spade"||val==="Lacoste"||val==="Louis Vuitton"
+                                                            ||val==="Hermes"||val==="Hugo Boss"||val==="J.Crew"||val==="Kate Spade"||val==="Lacoste"||val==="Louis Vuitton"
                                                             ||val==="Mango"||val==="Marc Jacobs"||val==="Michael Kors"||val==="Prada"||val==="Roots"||val==="Skechers"||val==="Ted Baker"
                                                             ||val==="Urban Outfitters"||val==="Versace"
                                                             ? "greyed_color":"black_color"}`}

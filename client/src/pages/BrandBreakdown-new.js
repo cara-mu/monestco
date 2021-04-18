@@ -340,9 +340,9 @@ const NestedField = ({ item }) => {
         <div>
           {item.texts.map((text, index) => {
             return (
-              <div key={index}>
-                {text}
-              </div>
+              <span key={index}>
+                {text}{" "}
+              </span>
             );
           })}
         </div>
@@ -360,9 +360,9 @@ const NestedField = ({ item }) => {
           <div>
             {item.texts.map((text, index) => {
               return (
-                <div key={index}>
+                <span key={index}>
                   {text}
-                </div>
+                </span>
               );
             })}
             <sup style={{fontWeight:'600'}} onClick={() => setShowPopup(true)}>[1]</sup>
@@ -402,9 +402,9 @@ const NestedField = ({ item }) => {
           <div style={{ gridColumnEnd: "span 2" }}>
             {item.texts.map((text, index) => {
               return (
-                <div key={index}>
+                <span key={index}>
                   {text}
-                </div>
+                </span>
               );
             })}
             <sup style={{fontWeight:'600'}} onClick={() => setShowPopup(true)}>[1]</sup>

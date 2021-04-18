@@ -65,16 +65,44 @@ function HomePage(){
                 <div className="embed-responsive embed-responsive-21by9 Video-image">
                     <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowFullScreen></iframe>
                 </div>
-            </div>
+            </div>           
+
+
             <div className="sign_up_section">
                 <div className="window_header_text">Make your purchases more purposeful</div>
-                <div className="sign_up-container">
+                <div className = 'sign_up-form-container'>
+                    <div className="main_image-container">
+                        <img className="main_image" src = {WindowLogo} alt = 'browser sketch'></img>
+                    </div>
+                    <div className = 'Sign-Up-Positioning'>
+                    <h1>We help empower you to hold <br></br> 
+                        corporations to higher ethical <br></br>
+                        standards. Understand and <br></br>
+                        compare brands’ impact at a <br></br>
+                        glance with Monest</h1>         
+                        <label for="fetched_email">Join our Chrome Extension waitlist!</label>               
+                        <form id="form" onClick = {sendEmail}>
+                            <div class="field" style={{display:'flex', alignItems:'center', flexWrap:'nowrap'}}>                                                                
+                                <input type="text" name="fetched_email" id="fetched_email" placeholder="Your email address"></input>
+                                <input type="submit" id="button" value="Sign Up" ></input>
+                            </div>
+                        </form>
+                    </div>            
+                </div>
+                {/* <div className="sign_up-container">
                     <div className="window_logo-container">
                         <img src={WindowLogo} className="window_logo"/>
                     </div>
                     <div className="sign_up-form-container">
                             <p className="text_window">We help empower you to hold<br/> corporations to higher ethical<br/> standards. Understand and <br/>compare brands’ impact at a <br/>glance with Monest
                             </p>
+                            <label for="fetched_email">Join our Chrome Extension waitlist!</label>               
+                            <form id="form" onClick = {sendEmail}>
+                                <div class="field" style={{display:'flex', alignItems:'center', flexWrap:'nowrap'}}>                                                                
+                                    <input type="text" name="fetched_email" id="fetched_email" placeholder="Your email address"></input>
+                                    <input type="submit" id="button" value="Sign Up" ></input>
+                                </div>
+                            </form>
                             <p className="sign_up_text">Join our Chrome extension waitlist</p>
                             <form id="form" onClick = {sendEmail}>
                                 <div class="field" style={{display:'flex', alignItems:'center', flexWrap:'nowrap'}}>                                                                
@@ -82,17 +110,17 @@ function HomePage(){
                                     <input type="submit" id="button" value="Sign Up" ></input>
                                 </div>
                             </form>
-                            {/* <div style={{display:'flex'}}>
+                            <div style={{display:'flex'}}>
                                 <input type="email" placeholder='Your email address' className="input_sign_up" id="email"/>
                                 <button type="submit" className="btn btn-primary sign_up_button">Sign Up</button>
-                            </div> */}
-                            {/* <form className="form-inline">
+                            </div>
+                            <form className="form-inline">
                                 <div className="form-group">
-                                    {/* <label for="email" className="sr-only">Email</label> */}
-                                {/* </div> */}
-                            {/* </form> */}
-                    </div>
-                </div>
+                                    <label for="email" className="sr-only">Email</label>
+                                </div>
+                            </form>
+                    </div> 
+                </div> */}
             </div>
         </Fragment>)
 }

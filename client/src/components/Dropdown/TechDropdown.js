@@ -19,7 +19,7 @@ function TechDropdown({enterTechDropdown, exitTechDropdown}) {
         
         {/* First launch will not include */}
 
-        <h1>coming soon!</h1>
+        <h1 style={{justifyContent:'center'}}>coming soon!</h1>
         
       </ul>
   );

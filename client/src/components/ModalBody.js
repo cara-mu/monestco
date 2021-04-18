@@ -27,16 +27,7 @@ export default function ModalBody({ handleClose }) {
               outside of Xinjiang through potentially abusive labour transfer
               programs. The Business and Human Rights Resource Centre had
               invited UNIQLO to respond to this publication.
-            </div>
-            <div style={{ fontSize: "14px", marginTop: "1rem" }}>
-              <span style={{ fontWeight: "700" }}>Responsibility Taken?</span>
-              <span style={{ color: "#fd7e14", marginLeft: "5px" }}>No</span>
-            </div>
-            <div>
-              UNIQLO denied responsibility despite the published report and
-              states that they have not learned of any issues regarding the
-              Uyghur workers in abusive labour transfer programs.
-            </div>
+            </div>        
             <div style={{ fontSize: "14px", marginTop: "1rem" }}>
               <span style={{ fontWeight: "700" }}>Issue Addressed?</span>
               <span style={{ color: "#28a745", marginLeft: "5px" }}>Yes</span>
@@ -46,6 +37,15 @@ export default function ModalBody({ handleClose }) {
               linked to UNIQLO in the report. No product of UNIQLO is made in
               Xinjiang. Thus, UNIQLO has confirmed that they have not taken part
               in such allegations.
+            </div>
+            <div style={{ fontSize: "14px", marginTop: "1rem" }}>
+              <span style={{ fontWeight: "700" }}>Responsibility Taken?</span>
+              <span style={{ color: "#E94921", marginLeft: "5px" }}>No</span>
+            </div>
+            <div>
+              UNIQLO denied responsibility despite the published report and
+              states that they have not learned of any issues regarding the
+              Uyghur workers in abusive labour transfer programs.
             </div>
             <div
               className="Fun-Fact"

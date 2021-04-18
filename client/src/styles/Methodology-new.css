@@ -71,6 +71,7 @@
     color: #333333;
     margin-left: 15px;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .Methodology-heading {
@@ -177,10 +178,10 @@
 }
 
 .logo-container {
-    margin-top: 6rem;
+    margin-top: 10rem;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat( 3, 30%);
+    grid-template-columns: repeat( 3, 29%);
     grid-gap: 30px;
 }
 

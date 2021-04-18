@@ -171,7 +171,7 @@
 .animate-field {
     height: auto;
     max-height: 0;
-    overflow: hidden;    
+    /* overflow: hidden;     */
     transition: all 2s ease;
     visibility: hidden;    
 }
@@ -302,4 +302,11 @@
         grid-template-columns: 15rem 4rem 1fr;
     }
 
+}
+
+@media screen and (max-width:425px) {
+    .breakdown_info-container>svg {
+        margin-bottom: 14px;
+    }
+    
 }
