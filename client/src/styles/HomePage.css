@@ -394,7 +394,7 @@ body{
 }
 
 @media screen and (max-width: 1300px) {
-    .Career-Positioning h1{
+    /* .Career-Positioning h1{
         font-size: 60px;
         line-height: 72px;
     }
@@ -407,14 +407,17 @@ body{
     
     .Career-Positioning p{
         font-size: 28px;        
-    }
+    } */
     .Sign-Up-Positioning>h1 {
         font-size: 25px;
         line-height: 38px;
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1450px) {
+    .Sign-Up-Positioning>h1 {
+        font-size: 24px;
+    }
 
     .Career-Positioning h1{
         font-size: 40px;
