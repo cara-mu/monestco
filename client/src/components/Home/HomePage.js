@@ -4,7 +4,7 @@ import  EducateImg from '../../assets/educate.png'
 import  EmpowerImg from '../../assets/empower.png'
 import '../../styles/HomePage.css';
 import * as emailjs from "emailjs-com";
-import WindowLogo from '../../assets/window.png';
+import WindowLogo from '../../assets/window.jpg';
 import CareerImg from '../../assets/career.png';
 
 
@@ -147,7 +147,7 @@ function HomePage(){
                     {/* <br></br> */}
                     <img className="carrer_image-2" src = {CareerImg} alt = 'browser sketch'></img>
                     <div style={{display:'flex', width:'100%'}} className="career-btn-container">
-                        <p style={{whiteSpace:'nowrap'}}>Are you interested in working with us?</p>
+                        <p style={{whiteSpace:'nowrap', marginBottom:'0'}}>Are you interested in working with us?</p>
                         <input type="submit" id="button" value="Career" className="career-btn" ></input>
                     </div>
                 </div>
