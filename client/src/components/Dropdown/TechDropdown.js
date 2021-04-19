@@ -12,14 +12,14 @@ function TechDropdown({enterTechDropdown, exitTechDropdown}) {
   return (
       <ul
         onClick={handleClick}
-        className={click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'} 
+        className={`coming-soon-section ${click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'}`}
         onMouseEnter={enterTechDropdown} 
         onMouseLeave={exitTechDropdown}
         >  
         
         {/* First launch will not include */}
 
-        <h1>coming soon!</h1>
+        <h1 className="coming-soon-text" style={{justifyContent:'center'}}>coming soon!</h1>
         
       </ul>
   );

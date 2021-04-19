@@ -1,5 +1,6 @@
 import React, { useState, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
 import LogoTransparent from '../assets/logo_transparent.png'
 import ApparelDropdown from './Dropdown/ApparelDropdown.js'
 import TechDropdown from './Dropdown/TechDropdown.js'
@@ -9,11 +10,27 @@ import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import '../styles/NavigationBar.css';
+
+const useStyles = makeStyles((theme) => ({
+  searchInput: {
+    position:'fixed',
+    left:'0',
+    top:'80px',
+    width:'100%',
+    backgroundColor:'#fff',
+    boxShadow: '0px 2px 9px 3px rgb(152 165 177 / 12%)',    
+    padding:'16px 24px',    
+  }
+}));
+
+
 function NavigationBar() {
   {/* Declare variables that will change state when clicked */ }
   {/* Set to false by default, when a component is triggered, will set to respective state */}
   const [click, setClick] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
   const state = { clicked: false }
+  const classes = useStyles();
 
   {/* Declare additional variables to change state when dropdown menu is triggered*/}
   {/* Need to define for each navigation item (apparel, tech, etc..) */}
@@ -253,7 +270,7 @@ function NavigationBar() {
             <TextField 
               id="standard-basic" 
               placeholder="Search"
-              // label="Standard"
+              className="search-input"
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -261,11 +278,24 @@ function NavigationBar() {
                   </InputAdornment>
                 ),
               }}
-               /> 
+               />               
           </li>
         </ul>
         <div className='mobile-search-icon'>
-          <SearchIcon style={{fill:'rgb(50,50,50)', fontSize:'25px'}} />
+          <SearchIcon onClick={() => setShowSearch(!showSearch)} style={{fill:'rgb(50,50,50)', fontSize:'25px'}} />
+          {showSearch &&
+           <TextField 
+              id="search-dropdown" 
+              placeholder="Search for the brand"
+              className={`${classes.searchInput} seach-input-2` }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon style={{fill:'rgba(50,50,50,0.5)'}} />
+                  </InputAdornment>
+                ),
+              }}
+               />}
         </div>
       </nav>
   );

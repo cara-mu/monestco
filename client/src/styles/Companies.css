@@ -18,6 +18,9 @@
     font-weight: 700;
     text-decoration: underline;
 }
+.breakDown-link:hover {
+    color: #3D3E3F;
+}
 
 .Right-Menu{
     font-family: DM Sans;
@@ -55,6 +58,7 @@
     top: 40px;
     left: 0;
     font-size: 16px;
+    line-height: 24px;
     font-weight: 400;
     border-radius: 15px;
     background: #F2F2F2;
@@ -211,6 +215,19 @@
     -webkit-transform: rotate(225deg);
 }
 
+.fact-animate-field {
+    height: auto;
+    max-height: 0;
+    overflow: hidden;    
+    transition: all 2s ease;
+    visibility: hidden;    
+}
+
+.fact-animate {
+    max-height: 500px; 
+    visibility: visible;
+}
+
 .In-The-News {
     margin: 106px 0;
     /* margin: 10% 0; */
@@ -304,10 +321,16 @@
 
 .Left-Menu {
     margin-top: 15%;
-    margin-left: 30%;
-    margin-right: 10%;
+    /* margin-left: 30%;
+    margin-right: 10%; */
+    margin-left: 17%;
+    margin-right: 20%;
     position: sticky;
     top: 2rem;
+}
+
+#categorysearch:focus-visible {
+    outline-color: rgb(189, 189, 189);
 }
 
 .brand_box {

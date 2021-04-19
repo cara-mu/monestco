@@ -1,4 +1,5 @@
-#filterbutton, #filterbutton1, #filterbutton2, #filterbutton3 {
+#filterbutton, #filterbutton1, #filterbutton2, #filterbutton3, #filterbutton4,
+#filterbutton5 {
     border: solid;
     border-width: 1px;
     border-color: #BDBDBD;
@@ -11,7 +12,8 @@
     margin-bottom: 10px;
 }
 
-#filterbutton, #filterbutton1, #filterbutton2, #filterbutton3 span:hover {
+#filterbutton, #filterbutton1, #filterbutton2, #filterbutton3, #filterbutton4,
+#filterbutton5, span:hover {
     cursor: pointer;
 }
 
@@ -406,7 +408,12 @@ x
 .row-1 {
     height: min-content;
     position: sticky;
-    top: 0;
+    top: 50px;
+    margin-left: 5%; 
+    width: 20%;
+    max-width: 230px; 
+    min-width: 200px;
+    margin-top: 10%;
 }
 
 .row-2 {
@@ -517,6 +524,12 @@ x
     width: 85%;
     border-bottom: 2px solid #E0E0E0;
     margin-bottom: 20px;
+}
+
+@media screen and (max-width:1050px) {
+    .row-1 {
+        margin-left: 3%;
+    }
 }
 
 @media screen and (max-width:900px) {

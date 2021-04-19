@@ -171,7 +171,7 @@
 .animate-field {
     height: auto;
     max-height: 0;
-    overflow: hidden;    
+    /* overflow: hidden;     */
     transition: all 2s ease;
     visibility: hidden;    
 }
@@ -179,6 +179,27 @@
 .animate {
     max-height: 5000px; 
     visibility: visible;
+}
+
+.citation-sup {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #26385A;
+}
+
+.citation-sup:hover + span {
+    display: block;
+}
+
+.breakdown_citation-hover {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #F2F2F2;
+    border-radius: 10px 10px 10px 0px;
+    padding: 16px 11px 13px 14px;
 }
 
 @keyframes moveUp {
@@ -228,6 +249,10 @@
 
     .breakdown_info-container-text {
         font-size: 14px;
+    }
+    .citation-sup {
+        font-size: 12px;
+        line-height: 15px;
     }
 }
 
@@ -286,6 +311,10 @@
         font-weight: 400;
         line-height: 16px;
     }
+    .citation-sup {
+        font-size: 10px;
+        line-height: 12px;
+    }
 }
 
 @media screen and (max-width:480px) {
@@ -302,4 +331,11 @@
         grid-template-columns: 15rem 4rem 1fr;
     }
 
+}
+
+@media screen and (max-width:425px) {
+    .breakdown_info-container>svg {
+        margin-bottom: 14px;
+    }
+    
 }

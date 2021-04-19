@@ -101,10 +101,7 @@ const Comparison = () => {
     <div style={{display:'flex', flexDirection:'row'}}>
       {/* <Grid container> */}
         {/* <Grid item xs={4} style={{border: 'solid'}}> */}
-        <div
-          style={{ marginLeft: "6%", width: "20%", maxWidth:'230px', minWidth:'200px' ,marginTop: "10%" }}
-          className="row-1"
-        >
+        <div className="row-1" >
           {/* <Col style={{marginTop: '25%', marginLeft: '50%', border: 'solid', paddingRight: '20%'}}> */}
           {/* <div> */}
             <p id="brands" >

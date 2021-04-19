@@ -701,13 +701,13 @@ const NestedField = ({ item }) => {
         item.subNestedField.map((item, index) => {
           return (
             <div key={index} className="nestedField-container">
-              <div className="nestedField-title">
+              <span className="nestedField-title">
                 {item.title}
-                <div style={{position:'relative', zIndex:'1'}}>
-                  <HelpOutlineTwoToneIcon className="compare-info-icon" style={{fontSize:'16px', marginLeft:'3px', fill:'#26385A'}} />
+                <span style={{position:'relative', zIndex:'1'}}>
+                  <HelpOutlineTwoToneIcon className="compare-info-icon" style={{fontSize:'18px', marginLeft:'5px', fill:'#26385A'}} />
                   <span className="info-text-hover">Vulputate sit condimentum nulla eget placerat tincidunt.</span>
-                </div>
-              </div>
+                </span>
+              </span>
               {item.scores.map((element, index) => {
                 if (mobileView && index < 2) {
                   return (

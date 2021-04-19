@@ -128,7 +128,7 @@
     line-height: 34px;
 
     color: #000;
-    padding-left: 2.5rem;
+    padding-left: 1.8rem;
 }
 
 .compare__tool-scoreContainer {
@@ -270,7 +270,7 @@
     z-index: 1; */
     height: auto;
     max-height: 0;
-    overflow: hidden;    
+    /* overflow: hidden;     */
     transition: all 2s ease;
     visibility: hidden;    
 }
@@ -547,7 +547,9 @@
     .circle-new-close {
         font-size: 20px !important;
     }
-    
+    .compare__tool-mainField {
+        margin-bottom: 2rem;
+    }
 
 }
 
@@ -555,12 +557,12 @@
 
     .compare-input-container {
         grid-template-columns: repeat( 2, 5rem );
-        margin: 4rem 0 1rem 6rem;
+        margin: 4rem 0 1rem 6.7rem;
     }
 
     .mainField-container {
         grid-template-columns: 6rem repeat( 2, 5rem ) 2rem;
-        grid-template-rows: 4rem;
+        grid-template-rows: 3rem;
         column-gap: 1rem;
     }
 

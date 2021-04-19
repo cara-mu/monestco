@@ -76,7 +76,7 @@ const Methodology = () => {
 
   useLayoutEffect(() => {
     function updateSize() {
-      if (window.innerWidth > 800) {
+      if (window.innerWidth > 850) {
         setTabView(false);
       } else {
         setTabView(true);
@@ -214,7 +214,7 @@ const Methodology = () => {
         <div className="Methodology-paragraph-highlight grey-text">
           1. Focusing on issues that matter most
         </div>
-        <div className="Methodology-paragraph grey-text">
+        <div className="Methodology-paragraph grey-text mb-10">
           Our research methodology prioritizes the most pressing issues
           identified within the industry based on the views of industry experts
           and NGOs. Each criteria (or issue) is weighted in proportion to the
@@ -224,7 +224,7 @@ const Methodology = () => {
         <div className="Methodology-paragraph-highlight grey-text">
           2. Assessing actions brands have the power to change
         </div>
-        <div className="Methodology-paragraph grey-text">
+        <div className="Methodology-paragraph grey-text mb-10">
           Taking a pragmatic approach, we only evaluate actions within the scope
           of a brand’s control. The scores are reflective of current brand
           performance and do not focus on historical incidences, which are
@@ -233,7 +233,7 @@ const Methodology = () => {
           designed our methodology to reflect a realistic roadmap of actions
           brands can work towards achieving.
         </div>
-        <div className="Methodology-paragraph grey-text">
+        <div className="Methodology-paragraph grey-text mb-10">
           Apparel brands are assessed using a scoring system that evaluates each
           brand’s performance in the following four categories: Diversity &
           Inclusion, Worker Exploitation, Waste & Pollution, and Sustainable
@@ -311,7 +311,7 @@ const Methodology = () => {
           Brands are assessed on publicly available information from direct and
           indirect sources.
         </div>
-        <div>
+        <div style={{marginBottom:'10px'}}>
           <span className="Methodology-paragraph-highlight grey-text">
             1. Direct data sources{" "}
           </span>
@@ -339,13 +339,13 @@ const Methodology = () => {
             <img src={logo1}></img>
             <img src={logo2}></img>
             <img src={logo3}></img>
-            <img src={logo4}></img>          
-            <img src={logo5}></img>
-            <img src={logo6}></img>
             <img src={logo7}></img>            
+            <img src={logo6}></img>
+            <img src={logo5}></img>
             <img src={logo8}></img>
             <img src={logo9}></img>
-            <img src={logo10}></img>        
+            <img src={logo10} style={{width: '90%'}}></img>        
+            <img src={logo4}></img>          
         </div>
       </div>
     </div>

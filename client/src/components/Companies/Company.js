@@ -224,9 +224,10 @@ function Company ({match, location})  {
                         <i className={showFact ? "Fun-Fact-arrowdown-close" : "Fun-Fact-arrowdown"}></i>
                     </div>
                 </div>
+                <div className = {`fact-animate-field ${showFact ? 'fact-animate' : ''}`}>
                 {
                     showFact ? 
-                        <div className = 'Fun-Fact-Dropdown'>
+                        <div className = "Fun-Fact-Dropdown">
                             {item.discription}
                             <div className = 'Fun-Fact-Citation' style={{width:'100%', fontWeight:'700'}}>
                                 Citation
@@ -237,6 +238,7 @@ function Company ({match, location})  {
                             }
                         </div> : null
                 }
+                </div>
                 <div className = 'FunFact-Decorative-Line'></div>
             </div>
         )
@@ -537,7 +539,7 @@ function Company ({match, location})  {
                         <div className = 'Decorative-Line'></div>
                             <div className='In-The-News-container'>
                                 <div className='news-card'>
-                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} onClick={handleOpen}/>
+                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} />
                                     <div className='news-category'>
                                         <span className='news-category-title'>{companyNews[0]["Category1"]}</span>
                                         <span className='news-category-year'>{companyNews[0]["Year1"]}</span>
@@ -551,13 +553,13 @@ function Company ({match, location})  {
                                         </div>
                                         <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
                                             <span>Issue Addressed?</span>
-                                            <span style={{color:'#28a745', marginLeft:'5px'}}>{companyNews[0]["IssueAddressed1"]}</span>
-                                            <button className='News-read-more-btn'>read more</button>
+                                            <span style={{color:'#28a745', marginLeft:'5px'}}>Yes</span>
+                                            <button className='News-read-more-btn' onClick={handleOpen}>read more</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='news-card'>
-                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} onClick={handleOpen}/>
+                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} />
                                     <div className='news-category'>
                                         <span className='news-category-title'>{companyNews[0]["Category2"]}</span>
                                         <span className='news-category-year'>{companyNews[0]["Year2"]}</span>
@@ -571,13 +573,13 @@ function Company ({match, location})  {
                                         </div>
                                         <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
                                             <span>Issue Addressed?</span>
-                                            <span style={{color:'#28a745', marginLeft:'5px'}}>{companyNews[0]["IssueAddressed2"]}</span>
-                                            <button className='News-read-more-btn'>read more</button>
+                                            <span style={{color:'#28a745', marginLeft:'5px'}}>Yes</span>
+                                            <button className='News-read-more-btn' onClick={handleOpen}>read more</button>
                                         </div>
                                     </div>
                                 </div>                            
                                 <div className='news-card'>
-                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} onClick={handleOpen}/>
+                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} />
                                     <div className='news-category'>
                                         <span className='news-category-title'>{companyNews[0]["Category3"]}</span>
                                         <span className='news-category-year'>{companyNews[0]["Year3"]}</span>
@@ -591,13 +593,13 @@ function Company ({match, location})  {
                                         </div>
                                         <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
                                             <span>Issue Addressed?</span>
-                                            <span style={{color:'#28a745', marginLeft:'5px'}}>{companyNews[0]["IssueAddressed3"]}</span>
-                                            <button className='News-read-more-btn'>read more</button>
+                                            <span style={{color:'#28a745', marginLeft:'5px'}}>Yes</span>
+                                            <button className='News-read-more-btn' onClick={handleOpen}>read more</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='news-card'>
-                                    <img style={{background:`url: ${NewsPlaceHolder}`}} onClick={handleOpen}/>
+                                    <img style={{background:`url: ${NewsPlaceHolder}`}} />
                                     <div className='news-category'>
                                         <span className='news-category-title'>{companyNews[0]["Category4"]}</span>
                                         <span className='news-category-year'>{companyNews[0]["Year4"]}</span>
@@ -611,8 +613,8 @@ function Company ({match, location})  {
                                         </div>
                                         <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
                                             <span>Issue Addressed?</span>
-                                            <span style={{color:'#28a745', marginLeft:'5px'}}>{companyNews[0]["IssueAddressed4"]}</span>
-                                            <button className='News-read-more-btn'>read more</button>
+                                            <span style={{color:'#28a745', marginLeft:'5px'}}>Yes</span>
+                                            <button className='News-read-more-btn' onClick={handleOpen}>read more</button>
                                         </div>
                                     </div>
                                 </div>

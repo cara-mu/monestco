@@ -6,7 +6,7 @@
     font-size: 1.2rem;
 
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
   }
   
@@ -16,9 +16,10 @@
     text-decoration: none;
   }
 
-  .nav-links:hover{
-    background-color: #ecf1f7;
+  .nav-links:hover{    
     transition: all 0.2s ease-out;
+    color: #ABD4B7;
+    text-decoration: none;
   }
 
   .Navigation-Menu {
@@ -30,7 +31,7 @@
     display: flex;
     height: 100%;
     align-items: center;
-    margin: 0;
+    margin: 0 1rem 0 0;
 
     list-style: none;
     text-align: center;
@@ -38,7 +39,7 @@
     justify-content:flex-end;
     white-space: nowrap;
     padding: 0;
-    /* margin-right: 2rem; */
+    margin-right: 4.5%;
   }
   
   .Menu-Item {
@@ -60,9 +61,10 @@
     padding: 0.5rem 1rem; */
   }
   
-  .Navigation-Link:hover {
-    background-color: #ecf1f7;
+  .Navigation-Link:hover {    
     transition: all 0.2s ease-out;
+    color: #26385A;
+    text-decoration: none;
   }
   
   .nav-links-mobile {
@@ -89,12 +91,17 @@
     line-height: 38px;
     font-weight: 700;
 }
+.Compare-Button:hover {
+    text-decoration: none;
+    color: #26385A;
+}
 
 /* CSS Styling was not working when using the logo's class name, resorted to using img tag instead */
 .Navigation-Bar>a {
     height: 100%;
     display: flex;
     align-items: center;
+    margin-left: 4.5%;
 }
 
 img {
@@ -109,6 +116,28 @@ img {
   cursor: pointer;
 }
 
+.search-input>.MuiInput-underline::before {
+  border-color: #BDBDBD !important;
+  transition: none !important;
+}
+
+.search-input>.MuiInput-underline::after {
+  border-color: #BDBDBD !important;
+  transition: none !important;
+}
+
+.seach-input-2>.MuiInput-underline::before {
+  border-bottom: none !important;
+}
+.seach-input-2>.MuiInput-underline::after {
+  border-bottom: none !important;
+}
+.seach-input-2>div {
+  box-shadow: 0px 2px 9px 3px rgb(152 165 177 / 12%);
+  border-radius: 6px;
+}
+
+
 /* Responsive Design */
 @media screen and (max-width: 1200px){
   .Menu-Item {
@@ -119,6 +148,9 @@ img {
 @media screen and (max-width: 1050px){
   .Menu-Item {
     margin-right: 1%;
+  }
+  .Navigation-Bar>a {    
+    margin-left: 1.5%;
   }
 }
 
@@ -132,6 +164,14 @@ img {
     position: absolute;
     top: 100px;
     left: -100%;
+  }
+
+  .Navigation-Bar {
+    justify-content: space-around;
+  }
+
+  .Navigation-Bar>a {
+    margin-left: 0;
   }
 
   .Navigation-Link{
@@ -160,8 +200,9 @@ img {
     cursor: pointer;
   }
 
-  .Menu-Item-search {
+  .Menu-Item-search.search-input {
     display: none;
+    margin-right: 0;
   }
 
   .mobile-search-icon {
