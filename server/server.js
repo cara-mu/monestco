@@ -448,6 +448,7 @@ app.post('/companyscore', function(req,res,next) {
       res.status(400).json({ "error": err.message });
       return;
     }
+    console.log(res.data);
     if(row){
       console.log(row);
       res.status(200).json(row);

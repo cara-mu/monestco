@@ -285,6 +285,7 @@ function Company ({match, location})  {
             )
             .then((resp) => {
                 let data = companyDetails;
+                console.log(resp.data);
                 data[0]["A_ID"] = resp.data[0]["AID"];
                 data[0]["B_ID"] = resp.data[0]["BID"];
                 data[0]["C_ID"] = resp.data[0]["CID"];
@@ -368,7 +369,7 @@ function Company ({match, location})  {
     }, []);
 
     const Facts = (factinput) => {
-        console.log(factinput[0]['Summary'][0]);
+       // console.log(factinput[0]['Summary'][0]);
         return Object.entries(factinput[0]['Heading']).map((heading, i) => {
             return <div>
                 <Accordion className = {classes.dropdown}>
@@ -391,9 +392,9 @@ function Company ({match, location})  {
     }
 
     const News = (newsinput) => {
-        console.log(newsinput);
+        //console.log(newsinput);
         return Object.entries(newsinput[0]['Category']).map((category, i) => {
-            console.log(newsinput[0]["Title"][i]);
+            //console.log(newsinput[0]["Title"][i]);
             return <div>
             <div className='news-card'>
                 <img style={{background:`url("${newsinput[0]["Photo"][i]}") rgba(87, 114, 104, 0.5)`}} />
