@@ -596,17 +596,17 @@ app.get('/comparison/:companyID1/:companyID2/:companyID3', function(req,res,next
 });
 })
 
-app.get("/companies", (req, res, next) => {
-  db.all("SELECT * FROM company", [], (err, rows) => {
-      if (err) {
-          res.status(400).json({ "error": err.message });
-          return;
-      }
-      if(rows){
-        res.status(200).json({ rows });
-      }
-  });
-});
+// app.get("/companies", (req, res, next) => {
+//   db.all("SELECT * FROM company", [], (err, rows) => {
+//       if (err) {
+//           res.status(400).json({ "error": err.message });
+//           return;
+//       }
+//       if(rows){
+//         res.status(200).json({ rows });
+//       }
+//   });
+// });
 
 // Error page
 app.get('*', function(req, res) {

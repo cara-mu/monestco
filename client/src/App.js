@@ -21,7 +21,7 @@ function App() {
         <Route path = '/' exact component = {HomePage}/>
       </Switch>
       <Switch>
-        <Route path = '/Companies/:companyName' exact component = {Company}/>
+        <Route path = '/companies/:companyName' exact component = {Company}/>
       </Switch>
       <Route path="/comparison" exact component = {Comparison} />
       <Route path="/methodology" exact component ={Methodology}/>

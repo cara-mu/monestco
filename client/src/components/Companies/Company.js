@@ -135,6 +135,8 @@ function Company ({match, location})  {
     const [open, setOpen] = React.useState(false);
     const [showInfo, setShowInfo] = useState(false)
     const [companyDetails, setCompanyDetails] = React.useState(companyinfo);
+    const [fact, setFact] = React.useState(companyFacts);
+    const [news, setNews] = React.useState(companyNews);
     const {loading, setLoading} = useState(false);
     const [state, setState] = useState([])
     const [A, setA] = useState(0);
@@ -158,29 +160,6 @@ function Company ({match, location})  {
     const toggleFact = ()=> {
         setShowFact(!showFact)
     }
-
-    const fact = [
-        {
-            title:"Uniqlo appoints its first ever female CEO.",
-            discription:"Maki Akaida, a 40-year-old group senior vice president at parent company Fast Retailing, assumed the role of CEO for Uniqlo's Japanese business in 2019. After joining Uniqlo in 2001.",
-            citation: "https://asia.nikkei.com/Business-Companies-Uniqlo-appoints-first-female-CEO-for-its-Japan-business"
-        },
-        {
-            title:"Shifting to LED store lighting.",
-            discription:"Maki Akaida, a 40-year-old group senior vice president at parent company Fast Retailing, assumed the role of CEO for Uniqlo's Japanese business in 2019. After joining Uniqlo in 2001.",
-            citation: "https://asia.nikkei.com/Business-Companies-Uniqlo-appoints-first-female-CEO-for-its-Japan-business"
-        },
-        {
-            title:"Recycled down is the future of Uniqlo’s collection.",
-            discription:"Maki Akaida, a 40-year-old group senior vice president at parent company Fast Retailing, assumed the role of CEO for Uniqlo's Japanese business in 2019. After joining Uniqlo in 2001.",
-            citation: "https://asia.nikkei.com/Business-Companies-Uniqlo-appoints-first-female-CEO-for-its-Japan-business"
-        },
-        {
-            title:"Uniqlo provides resources for workers in Bangladesh.",
-            discription:"Maki Akaida, a 40-year-old group senior vice president at parent company Fast Retailing, assumed the role of CEO for Uniqlo's Japanese business in 2019. After joining Uniqlo in 2001.",
-            citation: "https://asia.nikkei.com/Business-Companies-Uniqlo-appoints-first-female-CEO-for-its-Japan-business"
-        }
-    ];
     
 
     const body = (
@@ -306,22 +285,10 @@ function Company ({match, location})  {
                 data[0]["Subsidiary"] = resp.data[0]["Subsidiary"];
                 setCompanyDetails(data);
                 setState(resp.data);
+                console.log("compname success");
+                console.log(companyDetails);
             })
-
-                axios.post(
-                    '/companydetailsA_specific', 
-                {},
-                    {
-                        params: companyName
-                    }
-                )
-                .then((resp) => {
-                    // console.log(resp.data);
-                    // let data = A;
-                    // data[0]["A"] = resp.data[0]["A"];
-                    // setA(A);
-                    // console.log(A);
-                })   
+ 
                 axios.post(
                     '/facts', 
                     {},
@@ -331,18 +298,16 @@ function Company ({match, location})  {
                     )
                     .then((resp) => {
                         let data = companyFacts;
-                        data[0]["CompanyID"] = resp.data[0]["CompanyID"];
-                        data[0]["Fact1"] = resp.data[0]["Heading"];
-                        data[0]["Fact2"] = resp.data[1]["Heading"];
-                        data[0]["Fact3"] = resp.data[2]["Heading"];
-                        data[0]["Fact4"] = resp.data[3]["Heading"];
-                        data[0]["FactSummary1"] = resp.data[0]["Summary"];
-                        data[0]["FactSummary2"] = resp.data[1]["Summary"];
-                        data[0]["FactSummary3"] = resp.data[2]["Summary"];
-                        data[0]["FactSummary4"] = resp.data[3]["Summary"];
-                        console.log(resp);
-                        setCompanyDetails(data);
-                        setState(resp.data);
+                        let headingsarr = [];
+                        let summaryarr = [];
+                        resp.data.map(fact => {
+                            headingsarr.push(fact['Heading']);
+                            summaryarr.push(fact['Summary']);
+                        })
+                        data[0]['Heading'] = headingsarr;
+                        data[0]['Summary'] = summaryarr;
+                        setFact(data);
+                        console.log("fact success");
                     })
                     axios.post(
                         '/news', 
@@ -378,11 +343,18 @@ function Company ({match, location})  {
                             data[0]["Summary2"] = resp.data[1]["Summary"];
                             data[0]["Summary3"] = resp.data[2]["Summary"];
                             data[0]["Summary4"] = resp.data[3]["Summary"];
-                            setCompanyDetails(data);
+                            setNews(data);
                             setState(resp.data);
-                            console.log(resp.data);
+                            console.log("news success");
                         })
-    });
+    }, []);
+
+    const Facts = (factinput) => {
+        console.log(typeof factinput[0]['Heading']);
+        return Object.entries(factinput[0]['Heading']).map(heading => {
+            return <div>{heading}</div>
+        })
+    }
 
     return(
         <div className = 'Layout'>
@@ -466,12 +438,13 @@ function Company ({match, location})  {
                             </div>
                     </div>
                     <div className = 'Brand-Section-title'>
-                        Company Initiaitives 
+                        Company Initiatives 
                         <InfoIcon className='brand_info-icon' onClick={() => setShowInfo(!showInfo)} />
                         <RenderInfo />
                         </div>
 
                         <div className = 'Decorative-Line'></div>
+                        {Facts(fact)}
         
                     <Accordion className = {classes.dropdown}>
                         <AccordionSummary

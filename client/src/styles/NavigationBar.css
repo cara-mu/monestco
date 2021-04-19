@@ -16,6 +16,16 @@
     text-decoration: none;
   }
 
+  .nav-links-gray{
+    font-size: 14px;
+    color: #9A9B9C;
+    text-decoration: none;
+  }
+  .nav-links-gray:hover{
+    font-size: 14px;
+    color: #9A9B9C;
+    text-decoration: none;
+  }
   .nav-links:hover{    
     transition: all 0.2s ease-out;
     color: #ABD4B7;
@@ -164,6 +174,7 @@ img {
     position: absolute;
     top: 100px;
     left: -100%;
+    z-index: 100;
   }
 
   .Navigation-Bar {
@@ -189,6 +200,7 @@ img {
     left: 0%;
     top: 80px;
     transition: all 0.5s ease;
+    z-index: 100;
 }
   
   .Mobile-Hamburger-Menu{
