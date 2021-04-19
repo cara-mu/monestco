@@ -439,6 +439,24 @@ app.get('/', (req, res) => {
   res.status(200).send('Monest Home Page!')
 })
 
+app.post('/companyscore', function(req,res,next) {
+  var companyName = req.query['0'];
+  console.log(companyName);
+  // db.all("SELECT A_scores.A, B_scores.B FROM A_scores, B_scores WHERE ((A_Scores.CompanyID IN (SELECT ID FROM companies WHERE name = ?) AND)", [companyName], (err, row) => {
+  db.all("SELECT A_scores.A, B_scores.B, C_scores.C, D_scores.D FROM A_scores, B_scores, C_scores, D_scores WHERE A_scores.CompanyID IN (SELECT ID FROM companies WHERE Name = ?) AND B_scores.CompanyID IN (SELECT ID FROM companies WHERE Name = ?) AND C_scores.CompanyID IN (SELECT ID FROM companies WHERE Name = ?) AND D_scores.CompanyID IN (SELECT ID FROM companies WHERE Name = ?)", [companyName, companyName, companyName, companyName], (err, row) => {
+    if (err) {
+      res.status(400).json({ "error": err.message });
+      return;
+    }
+    if(row){
+      console.log(row);
+      res.status(200).json(row);
+    }
+    next();
+  })
+
+})
+
 // This would just be the page for singular company
 app.post('/companyname', function(req,res,next){
   var companyName = req.query['0'];

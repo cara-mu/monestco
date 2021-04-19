@@ -387,6 +387,20 @@
     z-index: 10;
 }
 
+.verticalline {
+    border-left: 2px solid #333333;
+    height: 30px;
+    position: absolute;
+    margin-top: 8.5px;
+    margin-left: 162px;
+}
+
+.horizontalline {
+    border: 5px solid #333333;
+    position: absolute;
+    margin-top: 19px;
+}
+
 .company-popup-content {
     position: fixed;
     background-color: #FAF7F2;
