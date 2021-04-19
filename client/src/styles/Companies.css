@@ -204,6 +204,12 @@
     -webkit-transform: rotate(45deg);
 }
 
+.Fun-Fact-arrowdown-rotate {
+    transition: all 0.5s;
+    transform: rotate(225deg);
+    -webkit-transform: rotate(225deg);
+}
+
 .Fun-Fact-arrowdown-close {
     border: solid #26385A;
     border-width: 0 2px 2px 0;

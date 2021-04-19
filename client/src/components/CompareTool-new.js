@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import ExpandMoreSharpIcon from "@material-ui/icons/ExpandMoreSharp";
-import HelpOutlineTwoToneIcon from '@material-ui/icons/HelpOutlineTwoTone';
+import HelpOutlineTwoToneIcon from "@material-ui/icons/HelpOutlineTwoTone";
+import HighlightOffRoundedIcon from "@material-ui/icons/HighlightOffRounded";
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import "../styles/compareTool-new.css";
 import axios from "axios";
 
@@ -15,8 +17,8 @@ const field = [
         subNestedField: [
           {
             title: "Prohibits discrimination throughout the organization",
-            scores: [{ score: "" }, { score: "" }, { score: "" }],
-            industrialStandard: "",
+            scores: [{ score: "50" }, { score: "" }, { score: "" }],
+            industrialStandard: "60",
             texts: [
               { text: "a11 stuff" },
               { text: "a11 stuff" },
@@ -335,7 +337,7 @@ const field = [
               { text: "b44 stuff" },
               { text: "b44 stuff" },
             ],
-          }
+          },
           // {
           //   title:
           //     "Compensates mistreated workers after discovering violations",
@@ -582,12 +584,84 @@ const field = [
   },
 ];
 
+const ComparePopup = ({ title, handleClose }) => {
+  return (
+    <div className="compare-popup">
+      <div className="compare-popup-content">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            marginBottom: "50px"            
+          }}
+        >
+          <div className="compare-popup-title">{title}</div>
+          <div className="compare-popup-text">
+            Vulputate sit condimentum nulla eget placerat tincidunt. Vulputate
+            sit condimentum nulla eget placerat tincidunt.
+          </div>
+        </div>
+        <HighlightOffRoundedIcon
+          onClick={handleClose}
+          className="popup-close-icon"
+        />
+      </div>
+    </div>
+  );
+};
+
+const LearnMorePopup = () => {
+  const [showPopup, setShowPopup] = useState(false);
+  const [tabView, setTabView] = useState(false);
+
+  useLayoutEffect(() => {
+    function updateSize() {      
+      if (window.innerWidth > 800) {
+        setTabView(false);        
+      } else {
+        setTabView(true);
+      }
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
+  return (
+    <>
+    <div className="compare-learn-more" onClick={() => setShowPopup(true)}>
+      Learn more 
+      <ChevronRightIcon /> 
+    </div>
+      {tabView && showPopup && <ComparePopup title="Learn more" handleClose={() => setShowPopup(false)}/>}
+    </>
+  )
+};
+
 const ScoreContainer = ({
   score,
   industrialStandard,
   firstLayer,
   secondLayer,
 }) => {
+
+  const [tabView, setTabView] = useState(false);
+  const [showInfo, setShoInfo] = useState(false);
+
+  useLayoutEffect(() => {
+    function updateSize() {      
+      if (window.innerWidth > 800) {
+        setTabView(false);
+        console.log('hree')
+      } else {
+        setTabView(true);
+      }
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
   if (score) {
     if (score > industrialStandard) {
       return (
@@ -601,7 +675,8 @@ const ScoreContainer = ({
           }
         >
           {score}/100
-        </div>
+          {!firstLayer && !secondLayer && <LearnMorePopup tabView={tabView} />}
+        </div>        
       );
     } else if (score === industrialStandard) {
       return (
@@ -615,6 +690,7 @@ const ScoreContainer = ({
           }
         >
           {score}/100
+          {!firstLayer && !secondLayer && <LearnMorePopup tabView />}
         </div>
       );
     } else {
@@ -629,6 +705,7 @@ const ScoreContainer = ({
           }
         >
           {score}/100
+          {!firstLayer && !secondLayer && <LearnMorePopup tabView />}
         </div>
       );
     }
@@ -647,7 +724,9 @@ const ScoreContainer = ({
 
 const NestedField = ({ item }) => {
   const [show, setShow] = useState(false);
+  const [tabView, setTabView] = useState(window.innerWidth < 800);
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
+  const [showPopup, setShowPopup] = useState(false);
 
   useLayoutEffect(() => {
     function updateSize() {
@@ -655,6 +734,11 @@ const NestedField = ({ item }) => {
         setMobileView(false);
       } else {
         setMobileView(true);
+      }
+      if (window.innerWidth > 800) {
+        setTabView(false);
+      } else {
+        setTabView(true);
       }
     }
     window.addEventListener("resize", updateSize);
@@ -691,48 +775,64 @@ const NestedField = ({ item }) => {
         })}
         {item.subNestedField.length > 0 && (
           <ExpandMoreSharpIcon
-          onClick={() => setShow(!show)}
-          className={show ? "circle-new-close" : "circle-new"}
-        />
+            onClick={() => setShow(!show)}
+            className={show ? "circle-new-close" : "circle-new"}
+          />
         )}
       </div>
-      <div className={`animate-field ${show ? 'animate' : ''}`}>
-      {show &&
-        item.subNestedField.map((item, index) => {
-          return (
-            <div key={index} className="nestedField-container">
-              <span className="nestedField-title">
-                {item.title}
-                <span style={{position:'relative', zIndex:'1'}}>
-                  <HelpOutlineTwoToneIcon className="compare-info-icon" style={{fontSize:'18px', marginLeft:'5px', fill:'#26385A'}} />
-                  <span className="info-text-hover">Vulputate sit condimentum nulla eget placerat tincidunt.</span>
+      <div className={`animate-field ${show ? "animate" : ""}`}>
+        {show &&
+          item.subNestedField.map((item, index) => {
+            return (
+              <div key={index} className="nestedField-container">
+                <span className="nestedField-title">
+                  {item.title}
+                  <span style={{ position: "relative", zIndex: "1" }}>
+                    <HelpOutlineTwoToneIcon
+                      className="compare-info-icon"
+                      onClick={() => setShowPopup(true)}
+                      style={{
+                        fontSize: "18px",
+                        marginLeft: "5px",
+                        fill: "#26385A",
+                      }}
+                    />
+                    <span className="info-text-hover">
+                      Vulputate sit condimentum nulla eget placerat tincidunt.
+                    </span>
+                    {showPopup && tabView && (
+                      <ComparePopup
+                        title={item.title}
+                        handleClose={() => setShowPopup(false)}
+                      />
+                    )}
+                  </span>
                 </span>
-              </span>
-              {item.scores.map((element, index) => {
-                if (mobileView && index < 2) {
-                  return (
-                    <ScoreContainer
-                      key={index}
-                      score={element.score}
-                      industrialStandard={item.industrialStandard}
-                    />
-                  );
-                }
-                if (!mobileView) {
-                  return (
-                    <ScoreContainer
-                      key={index}
-                      score={element.score}
-                      industrialStandard={item.industrialStandard}
-                    />
-                  );
-                }
-                return null;
-              })}
-            </div>
-          );
-        })}
-        </div>
+                {item.scores.map((element, index) => {
+                  if (mobileView && index < 2) {
+                    return (
+                      <ScoreContainer
+                        key={index}
+                        score={element.score}
+                        industrialStandard={item.industrialStandard}
+                      />
+                    );
+                  }
+                  if (!mobileView) {
+                    return (
+                      <ScoreContainer
+                        key={index}
+                        score={element.score}
+                        industrialStandard={item.industrialStandard}
+                      />
+                    );
+                  }
+                  return null;
+                })}
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 };
@@ -788,7 +888,7 @@ const Subfield = ({ item }) => {
           />
         )}
       </div>
-      <div className={`animate-field ${show ? 'animate' : ''}`}>
+      <div className={`animate-field ${show ? "animate" : ""}`}>
         {show &&
           item.subfield.map((item, index) => {
             return <NestedField key={index} item={item} />;
@@ -1102,8 +1202,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
     }
   }
 
-  useEffect(() => {    
-    
+  useEffect(() => {
     axios.get("/allcompanies").then((resp) => {
       const allcompanies = [];
       for (var i = 0; i < resp.data.rows.length; i++) {
@@ -1237,12 +1336,12 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
 
   useEffect(() => {
     selectedCompaniesList.forEach((item, index) => {
-      item && renderData(item, index+1)
-    })
-  }, [selectedCompaniesList])
-  
+      item && renderData(item, index + 1);
+    });
+  }, [selectedCompaniesList]);
+
   return (
-    <div className="compare__tool-container">        
+    <div className="compare__tool-container">
       <div className="compare-input-container">
         <input
           placeholder="Type the brand"
@@ -1262,53 +1361,60 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
           onChange={handleChangeThree}
           onBlur={() => setTimeout(() => setListBrandThree(false), 200)}
         />
-        <div className='compare-companyList-container'>
-        {listBrandOne && (
-          <div className="compare-companyList list-1">
-            {companiesList.map((item, index) => {
-              return (
-                <div key={index} onClick={() => renderData(item, 1)}>
-                  {item}
-                </div>
-              );
-            })}
-          </div>
-        )}
-        {listBrandTwo && (
-          <div className="compare-companyList list-2">
-            {companiesList.map((item, index) => {
-              return (
-                <div key={index} onClick={() => renderData(item, 2)}>
-                  {item}
-                </div>
-              );
-            })}
-          </div>
-        )}
-        {listBrandThree && (
-          <div className="compare-companyList list-3">
-            {companiesList.map((item, index) => {
-              return (
-                <div key={index} onClick={() => renderData(item, 3)}>
-                  {item}
-                </div>
-              );
-            })}
-          </div>
-        )}
+        <div className="compare-companyList-container">
+          {listBrandOne && (
+            <div className="compare-companyList list-1">
+              {companiesList.map((item, index) => {
+                return (
+                  <div key={index} onClick={() => renderData(item, 1)}>
+                    {item}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+          {listBrandTwo && (
+            <div className="compare-companyList list-2">
+              {companiesList.map((item, index) => {
+                return (
+                  <div key={index} onClick={() => renderData(item, 2)}>
+                    {item}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+          {listBrandThree && (
+            <div className="compare-companyList list-3">
+              {companiesList.map((item, index) => {
+                return (
+                  <div key={index} onClick={() => renderData(item, 3)}>
+                    {item}
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
-        {
-          selectedCompaniesList.map( (item, index) => {
-            return(
-              <div key={index} className='brand-button-container'>    
-                <span className={item ? 'brand-button-close' : 'diplay-none'} onClick={() => removeBrand(index)}>&#10006;</span>
-                <span className={item ? 'brand-name' : 'brand-name-placeholder'}>{item ? item : 'Select the brand'}</span>
-              </div>
-            )
-          })
-        }
+        {selectedCompaniesList.map((item, index) => {
+          return (
+            <div key={index} className="brand-button-container">
+              <span
+                className={item ? "brand-button-close" : "diplay-none"}
+                onClick={() => removeBrand(index)}
+              >
+                &#10006;
+              </span>
+              <span className={item ? "brand-name" : "brand-name-placeholder"}>
+                {item ? item : "Select the brand"}
+              </span>
+            </div>
+          );
+        })}
       </div>
-      {fieldData.map((item, index) => <Subfield key={index} item={item} /> )}
+      {fieldData.map((item, index) => (
+        <Subfield key={index} item={item} />
+      ))}
     </div>
   );
 };

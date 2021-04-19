@@ -55,7 +55,7 @@ export default function ModalBody({ handleClose }) {
               <i
                 onClick={() => setShowCitation(!showCitation)}
                 style={{ borderColor: "#323232" }}
-                className="Fun-Fact-arrowdown"
+                className={`Fun-Fact-arrowdown ${showCitation ? "Fun-Fact-arrowdown-rotate" : ""}`}
               ></i>
             </div>
             {showCitation ? (

@@ -133,6 +133,7 @@
 
 .compare__tool-scoreContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     height: 100%;
     align-items: center;    
@@ -282,6 +283,58 @@
 
 .compare-info-icon:hover + .info-text-hover {
     display: block;
+}
+
+.compare-popup {
+    position: fixed;
+    opacity: 1;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: rgb(224, 224, 224, 0.5);
+    z-index: 10;
+}
+
+.compare-popup-content {
+    position: fixed;
+    background-color: #FAF7F2;;
+    color: #3D3E3F;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    bottom: 0;
+    height: minmax( min-content, 17vh);
+    width: 80vw;
+    left: 9vw;
+    z-index: 10;
+    padding: 1rem;
+    border-radius: 20px 20px 0 0;
+    font-size: 14px;
+    opacity: 1;
+    animation: moveUp 0.5s;
+}
+
+.compare-popup-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0px;    
+    margin-bottom: 23px;
+}
+
+.compare-popup-text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+}
+
+.compare-learn-more {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #9A9B9C;    
+    cursor: pointer;
 }
 
 @media screen and (max-width:1600px) {
@@ -474,6 +527,10 @@
         font-size: 24px !important;
     }
 
+    .compare-info-icon:hover + .info-text-hover {
+        display: none;
+    }
+
 }
 
 @media screen and (max-width:700px) {
@@ -549,6 +606,25 @@
     }
     .compare__tool-mainField {
         margin-bottom: 2rem;
+    }
+    .compare-popup-content {
+        width: 100%;
+        left: 0;
+    }
+    .compare-popup-title {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .compare-popup-text {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+    }
+
+    .compare-learn-more {
+        font-size: 10px;
+        line-height: 13px;
+        color: #3D3E3F;
     }
 
 }
