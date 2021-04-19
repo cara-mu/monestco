@@ -45,6 +45,7 @@ const companyinfo = [
     SimilarCompany3: "",
     SimilarCompany4: "",
     Subsidiary: "",
+    CompanyID: ""
     }
 ]
 
@@ -61,7 +62,7 @@ const companyNews = [
         CompanyID: 0,
         Photo: "",
         Category: "",
-        Year: "",
+        Year: 0,
         Title: "",
         Summary: "",
         Responsibility: "",
@@ -337,6 +338,9 @@ function Company ({match, location})  {
                         data[0]["FactSummary2"] = resp.data[1]["Summary"];
                         data[0]["FactSummary3"] = resp.data[2]["Summary"];
                         data[0]["FactSummary4"] = resp.data[3]["Summary"];
+                        console.log(resp);
+                        setCompanyDetails(data);
+                        setState(resp.data);
                     })
                     axios.post(
                         '/news', 
@@ -372,6 +376,9 @@ function Company ({match, location})  {
                             data[0]["Summary2"] = resp.data[1]["Summary"];
                             data[0]["Summary3"] = resp.data[2]["Summary"];
                             data[0]["Summary4"] = resp.data[3]["Summary"];
+                            setCompanyDetails(data);
+                            setState(resp.data);
+                            console.log(resp.data);
                         })
     });
 
@@ -557,7 +564,7 @@ function Company ({match, location})  {
                                     </div>
                                     <div style={{marginTop: '3%'}} className = 'News-Description'>
                                         <div className = 'News-Description-title'>{companyNews[0]["Title2"]}</div>
-                                        <div className = 'News-Description-info'>{companyNews[0]["Summary2"]}}</div>
+                                        <div className = 'News-Description-info'>{companyNews[0]["Summary2"]}</div>
                                         <div style={{fontSize:'14px'}}>
                                             <span>Responsibility Taken?</span>
                                             <span style={{color:'#E94921', marginLeft:'5px'}}>{companyNews[0]["Responsibility2"]}</span>
