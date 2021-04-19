@@ -285,6 +285,8 @@ function Company ({match, location})  {
                 data[0]["Subsidiary"] = resp.data[0]["Subsidiary"];
                 setCompanyDetails(data);
                 setState(resp.data);
+                console.log("compname success");
+                console.log(companyDetails);
             })
  
                 axios.post(
@@ -305,7 +307,7 @@ function Company ({match, location})  {
                         data[0]['Heading'] = headingsarr;
                         data[0]['Summary'] = summaryarr;
                         setFact(data);
-                        console.log(fact);
+                        console.log("fact success");
                     })
                     axios.post(
                         '/news', 
@@ -341,9 +343,9 @@ function Company ({match, location})  {
                             data[0]["Summary2"] = resp.data[1]["Summary"];
                             data[0]["Summary3"] = resp.data[2]["Summary"];
                             data[0]["Summary4"] = resp.data[3]["Summary"];
-                            setCompanyDetails(data);
+                            setNews(data);
                             setState(resp.data);
-                            console.log(resp.data);
+                            console.log("news success");
                         })
     }, []);
 
