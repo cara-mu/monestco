@@ -161,6 +161,7 @@
 .FunFact-Decorative-Line{
     border-bottom: solid 1px #3D3E3F;
     width: 90%;
+    /* display: inline; */
     /* height: 6px;
     padding-bottom: 1%; */
 }
