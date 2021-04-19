@@ -119,15 +119,15 @@ body{
 
 .Video{
     background: #F5F4F2;
-    height: 800px;
+    height: 600px;
     display: flex;
     align-items: center;
     width: 100%;
 }
 
 .Video-image {
-    width: 800px !important;
-    height: 600px !important;
+    width: 600px !important;
+    height: 400px !important;
 }
 
 .About-Us-Positioning label{
