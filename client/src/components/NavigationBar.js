@@ -189,7 +189,7 @@ function NavigationBar() {
             to='/' 
             className='Logo' 
             onClick={closeMenu}>
-                <img src = {LogoTransparent} alt = "logo"/>
+                <img src = {LogoTransparent} alt = "logo" class="logo"/>
         </Link>
 
         {/* Hamburger menu appears when screen size is smaller/mobile */}

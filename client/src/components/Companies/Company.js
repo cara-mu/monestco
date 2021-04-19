@@ -22,10 +22,9 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { AiFillCaretDown } from 'react-icons/ai';
 
 
-
-import BrandBox from '../../assets/brand_box.svg';
 import BrandLogo from '../../assets/brandBreakdown.svg';
 
 const companyinfo = [
@@ -260,6 +259,24 @@ function Company ({match, location})  {
         // setLoading(true);
         // let data = companyDetails;
         axios.post(
+            '/companyscore',
+            {},
+                {
+                    params: companyName
+                }
+        ).then((resp) => {
+            let data = companyDetails;
+            let score = (parseInt(resp.data[0]["A"]) + parseInt(resp.data[0]["B"]) + parseInt(resp.data[0]["C"]) + parseInt(resp.data[0]["D"]))/4;
+            data[0]["TotalScore"] = score;
+            data[0]["A"] = resp.data[0]["A"];
+            data[0]["B"] = resp.data[0]["B"];
+            data[0]["C"] = resp.data[0]["C"];
+            data[0]["D"] = resp.data[0]["D"];
+            let ratio = 324*57/100;
+            data[0]["SliderLength"] = ratio;
+            setCompanyDetails(data);
+        })
+        axios.post(
             '/companyname', 
             {},
                 {
@@ -272,7 +289,6 @@ function Company ({match, location})  {
                 data[0]["B_ID"] = resp.data[0]["BID"];
                 data[0]["C_ID"] = resp.data[0]["CID"];
                 data[0]["D_ID"] = resp.data[0]["DID"];
-                data[0]["TotalScore"] = resp.data[0]["Totalscore"];
                 data[0]["Category"] = resp.data[0]["Category"];
                 data[0]["Description"] = resp.data[0]["Description"];
                 data[0]["IndustryStandardsID"] = resp.data[0]["IndustryStandardsID"];
@@ -285,8 +301,6 @@ function Company ({match, location})  {
                 data[0]["Subsidiary"] = resp.data[0]["Subsidiary"];
                 setCompanyDetails(data);
                 setState(resp.data);
-                console.log("compname success");
-                console.log(companyDetails);
             })
  
                 axios.post(
@@ -307,7 +321,7 @@ function Company ({match, location})  {
                         data[0]['Heading'] = headingsarr;
                         data[0]['Summary'] = summaryarr;
                         setFact(data);
-                        console.log("fact success");
+                        setState(resp.data);
                     })
                     axios.post(
                         '/news', 
@@ -318,41 +332,90 @@ function Company ({match, location})  {
                         )
                         .then((resp) => {
                             let data = companyNews;
-                            data[0]["CompanyID"] = resp.data[0]["CompanyID"];
-                            data[0]["Category1"] = resp.data[0]["Category"];
-                            data[0]["Category2"] = resp.data[1]["Category"];
-                            data[0]["Category3"] = resp.data[2]["Category"];
-                            data[0]["Category4"] = resp.data[3]["Category"];
-                            data[0]["Year1"] = resp.data[0]["Year"];
-                            data[0]["Year2"] = resp.data[1]["Year"];
-                            data[0]["Year3"] = resp.data[2]["Year"];
-                            data[0]["Year4"] = resp.data[3]["Year"];
-                            data[0]["Title1"] = resp.data[0]["Title"];
-                            data[0]["Title2"] = resp.data[1]["Title"];
-                            data[0]["Title3"] = resp.data[2]["Title"];
-                            data[0]["Title4"] = resp.data[3]["Title"];
-                            data[0]["Responsibility1"] = resp.data[0]["ResponsibilityAddressed"];
-                            data[0]["Responsibility2"] = resp.data[1]["ResponsibilityAddressed"];
-                            data[0]["Responsibility3"] = resp.data[2]["ResponsibilityAddressed"];
-                            data[0]["Responsibility4"] = resp.data[3]["ResponsibilityAddressed"];
-                            data[0]["IssueAddressed1"] = resp.data[0]["IssueAddressed"];
-                            data[0]["IssueAddressed2"] = resp.data[1]["IssueAddressed"];
-                            data[0]["IssueAddressed3"] = resp.data[2]["IssueAddressed"];
-                            data[0]["IssueAddressed4"] = resp.data[3]["IssueAddressed"];
-                            data[0]["Summary1"] = resp.data[0]["Summary"];
-                            data[0]["Summary2"] = resp.data[1]["Summary"];
-                            data[0]["Summary3"] = resp.data[2]["Summary"];
-                            data[0]["Summary4"] = resp.data[3]["Summary"];
+                            let photoarr = [];
+                            let yeararr = [];
+                            let catarr = [];
+                            let titlearr = [];
+                            let summarr = [];
+                            let issueaddarr = [];
+                            let issueexparr = [];
+                            let resptakearr = [];
+                            let respexparr = [];
+                            resp.data.map(news => {
+                                photoarr.push(news['Photo']);
+                                yeararr.push(news['Year']);
+                                catarr.push(news['Category']);
+                                titlearr.push(news['Title']);
+                                summarr.push(news['Summary']);
+                                issueaddarr.push(news['IssueAddressed']);
+                                issueexparr.push(news['IssueAddressedExplanation']);
+                                resptakearr.push(news['ResponsibilityTaken']);
+                                respexparr.push(news['ResponsibilityTakenExplanation']);
+                            })
+                            data[0]["Photo"] = photoarr;
+                            data[0]["Year"] = yeararr;
+                            data[0]["Category"] = catarr;
+                            data[0]["Title"] = titlearr;
+                            data[0]["Summary"] = summarr;
+                            data[0]["IssueAddressed"] = issueaddarr;
+                            data[0]["IssueAddressedExplanation"] = issueexparr;
+                            data[0]["ResponsibilityTaken"] = resptakearr;
+                            data[0]["ResponsibilityTakenExplanation"] = respexparr;
                             setNews(data);
                             setState(resp.data);
-                            console.log("news success");
                         })
+        console.log(companyDetails);
     }, []);
 
     const Facts = (factinput) => {
-        console.log(typeof factinput[0]['Heading']);
-        return Object.entries(factinput[0]['Heading']).map(heading => {
-            return <div>{heading}</div>
+        console.log(factinput[0]['Summary'][0]);
+        return Object.entries(factinput[0]['Heading']).map((heading, i) => {
+            return <div>
+                <Accordion className = {classes.dropdown}>
+                            <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1a-content"
+                            id="panel1a-header"
+                            >
+                            <Typography className={classes.heading}>{heading[1]}</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                            <Typography className = {classes.expandMenu}>
+                            {factinput[0]['Summary'][i]}
+                            </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                <div className = 'FunFact-Decorative-Line'></div>
+            </div>
+        })
+    }
+
+    const News = (newsinput) => {
+        console.log(newsinput);
+        return Object.entries(newsinput[0]['Category']).map((category, i) => {
+            console.log(newsinput[0]["Title"][i]);
+            return <div>
+            <div className='news-card'>
+                <img style={{background:`url("${newsinput[0]["Photo"][i]}") rgba(87, 114, 104, 0.5)`}} />
+                <div className='news-category'>
+                    <span className='news-category-title'>{category[1]}</span>
+                    <span className='news-category-year'>{newsinput[0]["Year"][i]}</span>
+                </div>
+                <div style={{marginTop: '3%'}} className = 'News-Description'>
+                    <div className = 'News-Description-title'>{newsinput[0]["Title"][i]}</div>
+                    <div className = 'News-Description-info'>{newsinput[0]["Summary"][i]}</div>
+                    <div style={{fontSize:'14px'}}>
+                        <span>Responsibility Taken?</span>
+                        <span style={{color:'#E94921', marginLeft:'5px'}}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
+                    </div>
+                    <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
+                        <span>Issue Addressed?</span>
+                        <span style={{color:'#28a745', marginLeft:'5px'}}>{newsinput[0]["IssueAddressed"][i]}</span>
+                        <button className='News-read-more-btn' onClick={handleOpen}>read more</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         })
     }
 
@@ -367,10 +430,15 @@ function Company ({match, location})  {
                         <p style={{marginTop:"5%", color: '#4F4F4F'}}><b>{companyName}</b> {companyDetails[0]["Description"]}</p>
                     </div>
                     <div>
-                        <img src={BrandBox} style={{width:"90%",}}/>
+                        <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginLeft: '105px'}}>industry average</div>
+                        <AiFillCaretDown style={{marginLeft: '155px'}}/>
+                        <div class="horizontalline" style={{width: `${companyDetails[0]["SliderLength"]}px` }}></div>
+                        <div class="verticalline"></div>
+                        <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true"/>
+                        <p style={{fontFamily: 'DM Sans', fontSize: '12px', color: '#4F4F4F'}} >underperforming<span style={{marginLeft: '145px'}}>overperforming</span></p>
                         <div className="brand_inside_text">
-                            <span className='navy'>{companyDetails[0]["TotalScore"]}</span>
-                            <span>/154</span>
+                            <span className='navy'>{Math.round(companyDetails[0]["TotalScore"], 2)}</span>
+                            <span>/100</span>
                         </div>
                         <Link className='breakDown-link'>Detailed Breakdown</Link>
                     </div>
@@ -395,7 +463,7 @@ function Company ({match, location})  {
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {DiversityImg}/>
-                                        <div className="Description-score"><span>{companyDetails[0]["A_ID"]}</span><span>/22</span></div>
+                                        <div className="Description-score"><span>{companyDetails[0]["A"]}</span><span>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -407,7 +475,7 @@ function Company ({match, location})  {
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {WorkerExploitImg}/>
-                                        <div className="Description-score"><span>{companyDetails[0]["B_ID"]}</span><span>/46</span></div>
+                                        <div className="Description-score"><span>{companyDetails[0]["B"]}</span><span>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -419,7 +487,7 @@ function Company ({match, location})  {
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {WasteImg}/>
-                                        <div className="Description-score"><span>{companyDetails[0]["C_ID"]}</span><span>/52</span></div>
+                                        <div className="Description-score"><span>{companyDetails[0]["C"]}</span><span>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -431,7 +499,7 @@ function Company ({match, location})  {
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {SustainableImg}/>
-                                        <div className="Description-score"><span>{companyDetails[0]["D_ID"]}</span><span>/34</span></div>
+                                        <div className="Description-score"><span>{companyDetails[0]["D"]}</span><span>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -445,152 +513,13 @@ function Company ({match, location})  {
 
                         <div className = 'Decorative-Line'></div>
                         {Facts(fact)}
-        
-                    <Accordion className = {classes.dropdown}>
-                        <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                        >
-                        <Typography className={classes.heading}>{companyFacts[0]["Fact1"]}</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                        <Typography className = {classes.expandMenu}>
-                        {companyFacts[0]["FactSummary1"]}
-                        </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                    <div className = 'FunFact-Decorative-Line'></div>
-                    <Accordion className = {classes.dropdown}>
-                        <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                        >
-                        <Typography className={classes.heading}>{companyFacts[0]["Fact2"]}</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                        <Typography className = {classes.expandMenu}>
-                        {companyFacts[0]["FactSummary2"]}
-                        </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                    <div className = 'FunFact-Decorative-Line'></div>
-                    <Accordion className = {classes.dropdown}>
-                        <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                        >
-                        <Typography className={classes.heading}>{companyFacts[0]["Fact3"]}</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                        <Typography className = {classes.expandMenu}>
-                        {companyFacts[0]["FactSummary3"]}
-                        </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                    <div className = 'FunFact-Decorative-Line'></div>
-                    <Accordion className = {classes.dropdown}>
-                        <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                        >
-                        <Typography className={classes.heading}>{companyFacts[0]["Fact4"]}</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                        <Typography className = {classes.expandMenu}>
-                        {companyFacts[0]["FactSummary4"]}
-                        </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                    <div className = 'FunFact-Decorative-Line'></div>
+    
                     
                     <div className = 'In-The-News'>
                         <div className = 'Brand-Section-title'>In The News</div>
                         <div className = 'Decorative-Line'></div>
                             <div className='In-The-News-container'>
-                                <div className='news-card'>
-                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} />
-                                    <div className='news-category'>
-                                        <span className='news-category-title'>{companyNews[0]["Category1"]}</span>
-                                        <span className='news-category-year'>{companyNews[0]["Year1"]}</span>
-                                    </div>
-                                    <div style={{marginTop: '3%'}} className = 'News-Description'>
-                                        <div className = 'News-Description-title'>{companyNews[0]["Title1"]}</div>
-                                        <div className = 'News-Description-info'>{companyNews[0]["Summary1"]}</div>
-                                        <div style={{fontSize:'14px'}}>
-                                            <span>Responsibility Taken?</span>
-                                            <span style={{color:'#E94921', marginLeft:'5px'}}>{companyNews[0]["Responsibility1"]}</span>
-                                        </div>
-                                        <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
-                                            <span>Issue Addressed?</span>
-                                            <span style={{color:'#28a745', marginLeft:'5px'}}>Yes</span>
-                                            <button className='News-read-more-btn' onClick={handleOpen}>read more</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='news-card'>
-                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} />
-                                    <div className='news-category'>
-                                        <span className='news-category-title'>{companyNews[0]["Category2"]}</span>
-                                        <span className='news-category-year'>{companyNews[0]["Year2"]}</span>
-                                    </div>
-                                    <div style={{marginTop: '3%'}} className = 'News-Description'>
-                                        <div className = 'News-Description-title'>{companyNews[0]["Title2"]}</div>
-                                        <div className = 'News-Description-info'>{companyNews[0]["Summary2"]}</div>
-                                        <div style={{fontSize:'14px'}}>
-                                            <span>Responsibility Taken?</span>
-                                            <span style={{color:'#E94921', marginLeft:'5px'}}>{companyNews[0]["Responsibility2"]}</span>
-                                        </div>
-                                        <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
-                                            <span>Issue Addressed?</span>
-                                            <span style={{color:'#28a745', marginLeft:'5px'}}>Yes</span>
-                                            <button className='News-read-more-btn' onClick={handleOpen}>read more</button>
-                                        </div>
-                                    </div>
-                                </div>                            
-                                <div className='news-card'>
-                                    <img style={{background:`url: ${NewsPlaceHolder} rgba(87, 114, 104, 0.5)`}} />
-                                    <div className='news-category'>
-                                        <span className='news-category-title'>{companyNews[0]["Category3"]}</span>
-                                        <span className='news-category-year'>{companyNews[0]["Year3"]}</span>
-                                    </div>
-                                    <div style={{marginTop: '3%'}} className = 'News-Description'>
-                                        <div className = 'News-Description-title'>{companyNews[0]["Title3"]}</div>
-                                        <div className = 'News-Description-info'>{companyNews[0]["Summary3"]}</div>
-                                        <div style={{fontSize:'14px'}}>
-                                            <span>Responsibility Taken?</span>
-                                            <span style={{color:'#E94921', marginLeft:'5px'}}>{companyNews[0]["Responsibility3"]}</span>
-                                        </div>
-                                        <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
-                                            <span>Issue Addressed?</span>
-                                            <span style={{color:'#28a745', marginLeft:'5px'}}>Yes</span>
-                                            <button className='News-read-more-btn' onClick={handleOpen}>read more</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='news-card'>
-                                    <img style={{background:`url: ${NewsPlaceHolder}`}} />
-                                    <div className='news-category'>
-                                        <span className='news-category-title'>{companyNews[0]["Category4"]}</span>
-                                        <span className='news-category-year'>{companyNews[0]["Year4"]}</span>
-                                    </div>
-                                    <div style={{marginTop: '3%'}} className = 'News-Description'>
-                                        <div className = 'News-Description-title'>{companyNews[0]["Title4"]}</div>
-                                        <div className = 'News-Description-info'>{companyNews[0]["Summary4"]}</div>
-                                        <div style={{fontSize:'14px'}}>
-                                            <span>Responsibility Taken?</span>
-                                            <span style={{color:'#E94921', marginLeft:'5px'}}>{companyNews[0]["Responsibility4"]}</span>
-                                        </div>
-                                        <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
-                                            <span>Issue Addressed?</span>
-                                            <span style={{color:'#28a745', marginLeft:'5px'}}>Yes</span>
-                                            <button className='News-read-more-btn' onClick={handleOpen}>read more</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                {News(news)}
                             </div>
                             <Modal
                                 open={open}
@@ -609,7 +538,7 @@ function Company ({match, location})  {
                                 <div>{companyDetails[0]["SimilarCompany1"]}</div>
                                 <div className='brand_box'>
                                     <div className="d-flex justify-content-center">
-                                        <img src={BrandBox} className="brand_logo"/>
+                                        <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
                                     </div>
                                     <div className="brand_inside_text ml-10perc">
                                         <span>50</span>
@@ -621,7 +550,7 @@ function Company ({match, location})  {
                                 <div>{companyDetails[0]["SimilarCompany2"]}</div>
                                 <div className='brand_box'>
                                     <div className="d-flex justify-content-center">
-                                        <img src={BrandBox} className="brand_logo"/>
+                                        <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
                                     </div>
                                     <div className="brand_inside_text ml-10perc">
                                         <span>42</span>
@@ -633,7 +562,7 @@ function Company ({match, location})  {
                                 <div>{companyDetails[0]["SimilarCompany3"]}</div>
                                 <div className='brand_box'>
                                     <div className="d-flex justify-content-center">
-                                        <img src={BrandBox} className="brand_logo"/>
+                                        <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
                                     </div>
                                     <div className="brand_inside_text ml-10perc">
                                         <span>42</span>
@@ -645,7 +574,7 @@ function Company ({match, location})  {
                                 <div>{companyDetails[0]["SimilarCompany4"]}</div>
                                 <div className='brand_box'>
                                     <div className="d-flex justify-content-center">
-                                        <img src={BrandBox} className="brand_logo"/>
+                                        <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
                                     </div>
                                     <div className="brand_inside_text ml-10perc">
                                         <span>48</span>
