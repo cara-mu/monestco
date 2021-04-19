@@ -10,6 +10,7 @@ import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import '../styles/NavigationBar.css';
+import BrandDirectory from '../pages/BrandDirectory';
 
 const useStyles = makeStyles((theme) => ({
   searchInput: {
@@ -201,9 +202,9 @@ function NavigationBar() {
 
         <ul className = {click ? 'Nav-Menu active' : 'Navigation-Menu'}>
             {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink} >
+          <li className='Menu-Item' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
             <Link 
-                to='/' 
+                to='/brand-directory'
                 className='Navigation-Link' 
                 onClick={closeMenu}
                 >

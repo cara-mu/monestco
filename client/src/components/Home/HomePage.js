@@ -4,7 +4,7 @@ import  EducateImg from '../../assets/educate.png'
 import  EmpowerImg from '../../assets/empower.png'
 import '../../styles/HomePage.css';
 import * as emailjs from "emailjs-com";
-import WindowLogo from '../../assets/window.png';
+import WindowLogo from '../../assets/window.jpg';
 import CareerImg from '../../assets/career.png';
 
 
@@ -77,20 +77,26 @@ function HomePage(){
                         <img className="main_image" src = {WindowLogo} alt = 'browser sketch'></img>
                     </div>
                     <div className = 'Sign-Up-Positioning'>
-                    <h1 className='sign-up-text-web'>We help empower you to hold corporations<br></br> 
+                    {/* <h1 className='sign-up-text-web'>
+                        We help empower you to hold corporations<br></br> 
                         to higher ethical standards.<br></br>
                         Understand and compare brands’ impact<br></br>
-                        at a glance with Monest
-                        {/* <br></br> */}
-                        </h1>         
-                        <h1 className='sign-up-text'>
+                        at a glance with Monest                        
+                        </h1>  */}
+                        <h1 className='sign-up-text-web'>
                         We help empower you to hold <br></br> 
                         corporations to higher ethical <br></br>
                         standards. Understand and  <br></br>
                         compare brands’ impact at a <br></br>
-                        glance with Monest
-                        {/* <br></br> */}
-                        </h1>
+                        glance with Monest                    
+                        </h1>         
+                        {/* <h1 className='sign-up-text'>
+                        We help empower you to hold <br></br> 
+                        corporations to higher ethical <br></br>
+                        standards. Understand and  <br></br>
+                        compare brands’ impact at a <br></br>
+                        glance with Monest                        
+                        </h1> */}
                         <label for="fetched_email">Join our Chrome Extension waitlist!</label>               
                         <form id="form" onClick = {sendEmail}>
                             <div class="field" style={{display:'flex', alignItems:'center', flexWrap:'nowrap'}}>                                                                
@@ -141,7 +147,7 @@ function HomePage(){
                     {/* <br></br> */}
                     <img className="carrer_image-2" src = {CareerImg} alt = 'browser sketch'></img>
                     <div style={{display:'flex', width:'100%'}} className="career-btn-container">
-                        <p style={{whiteSpace:'nowrap'}}>Are you interested in working with us?</p>
+                        <p style={{whiteSpace:'nowrap', marginBottom:'0'}}>Are you interested in working with us?</p>
                         <input type="submit" id="button" value="Career" className="career-btn" ></input>
                     </div>
                 </div>
