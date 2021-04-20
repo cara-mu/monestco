@@ -630,10 +630,10 @@ const LearnMorePopup = () => {
   return (
     <>
     <div className="compare-learn-more" onClick={() => setShowPopup(true)}>
-      Learn more 
+      Learn More
       <ChevronRightIcon /> 
     </div>
-      {tabView && showPopup && <ComparePopup title="Learn more" handleClose={() => setShowPopup(false)}/>}
+      {tabView && showPopup && <ComparePopup title="Learn More" handleClose={() => setShowPopup(false)}/>}
     </>
   )
 };

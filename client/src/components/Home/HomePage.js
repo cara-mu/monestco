@@ -100,7 +100,7 @@ function HomePage(){
                         <label for="fetched_email">Join our Chrome Extension waitlist!</label>               
                         <form id="form" onClick = {sendEmail}>
                             <div class="field" style={{display:'flex', alignItems:'center', flexWrap:'nowrap'}}>                                                                
-                                <input type="text" name="fetched_email" id="fetched_email" placeholder="Your email address" style={{width:'65%'}}></input>
+                                <input type="text" name="fetched_email" id="fetched_email" placeholder="Your email address" ></input>
                                 <input type="submit" id="button" value="Sign Up" ></input>
                             </div>
                         </form>
@@ -146,7 +146,7 @@ function HomePage(){
                     <h2>Research Analysts!</h2>
                     {/* <br></br> */}
                     <img className="carrer_image-2" src = {CareerImg} alt = 'browser sketch'></img>
-                    <div style={{display:'flex', width:'100%'}} className="career-btn-container">
+                    <div className="career-btn-container">
                         <p style={{whiteSpace:'nowrap', marginBottom:'0'}}>Are you interested in working with us?</p>
                         <input type="submit" id="button" value="Career" className="career-btn" ></input>
                     </div>

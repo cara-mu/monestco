@@ -305,10 +305,10 @@
     justify-content: space-between;
     bottom: 0;
     height: minmax( min-content, 17vh);
-    width: 80vw;
-    left: 9vw;
+    width: 100vw;
+    left: 0;
     z-index: 10;
-    padding: 1rem;
+    padding: 30px;
     border-radius: 20px 20px 0 0;
     font-size: 14px;
     opacity: 1;
@@ -319,7 +319,7 @@
     font-size: 18px;
     font-weight: 700;
     line-height: 22px;
-    letter-spacing: 0px;    
+    letter-spacing: 2px;    
     margin-bottom: 23px;
 }
 
@@ -332,7 +332,7 @@
 .compare-learn-more {
     font-size: 14px;
     font-weight: 400;
-    line-height: 24px;
+    line-height: 24px;    
     color: #9A9B9C;    
     cursor: pointer;
 }
@@ -531,6 +531,14 @@
         display: none;
     }
 
+    .compare-learn-more>svg {
+        display: none;
+    }
+    
+    .compare-learn-more {
+        text-decoration: underline;
+    }
+
 }
 
 @media screen and (max-width:700px) {
@@ -613,7 +621,7 @@
     }
     .compare-popup-title {
         font-size: 16px;
-        line-height: 20px;
+        line-height: 20px;        
     }
     .compare-popup-text {
         font-size: 14px;
@@ -622,8 +630,9 @@
     }
 
     .compare-learn-more {
-        font-size: 10px;
+        font-size: 11px;
         line-height: 13px;
+        text-decoration: underline;
         color: #3D3E3F;
     }
 
@@ -654,7 +663,7 @@
 
     .nestedField-container {
         grid-template-columns: 6rem repeat( 2, 5rem ) 2rem;
-        grid-template-rows: 11rem;
+        grid-template-rows: 8rem;
         column-gap: 1rem;
     }
 
