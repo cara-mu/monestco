@@ -26,6 +26,7 @@ import { AiFillCaretDown } from 'react-icons/ai';
 
 
 import BrandLogo from '../../assets/brandBreakdown.svg';
+import { pink } from '@material-ui/core/colors';
 
 const companyinfo = [
     {
@@ -68,6 +69,15 @@ const companyNews = [
         Explanation: "",
         IssueAddressed: "",
         IssueExplained: ""
+    }
+]
+
+const companyScores = [
+    {
+        AScore: 0,
+        BScore: 0,
+        CScore: 0,
+        DScore: 0
     }
 ]
 
@@ -114,9 +124,11 @@ function rand() {
         color: '#3D3E3F',
         fontSize: '16px'
     },
-    // expandMenu:{
-    //     backgroundColor: '#F2F2F2'
-    // },
+    expandMenu:{
+        fontFamily: 'DM Sans',
+        fontWeight: 'normal',
+        fontSize: '16px'
+     },
     paper: {
         position: 'absolute',
         width: 900,
@@ -146,6 +158,7 @@ function Company ({match, location})  {
     const [openID, setOpenID] = useState(0);
     const [showInfo, setShowInfo] = useState(false)
     const [companyDetails, setCompanyDetails] = React.useState(companyinfo);
+    const [brandScores, setBrandScores] = React.useState(companyScores);
     const [fact, setFact] = React.useState(companyFacts);
     const [news, setNews] = React.useState(companyNews);
     const [citations, setCitations] = React.useState(companyCit);
@@ -271,7 +284,7 @@ function Company ({match, location})  {
 
     }
 
-    const RenderInfo = () => {
+    const BrandPerformance = () => {
 
         const [tabView, setTabView] = useState(window.innerWidth < 800);
         
@@ -290,7 +303,36 @@ function Company ({match, location})  {
 
         if(!tabView) { //web view
             return(
-                <div className='brand_info-text'>Vulputate sit condimentum nulla eget placerat tincidunt.</div>
+                <div className='brand_info-text'>Performance is scored following an assessment of company policies, practices and actions taken in each of the following categories. To understand the scores given, click on Detailed Breakdown</div>
+                )
+        } else if ( showInfo && tabView ) { //tab view
+            return(
+                    <Popup handleCloseInfo={handleCloseInfo} />
+                )
+        } else return null
+
+    }
+
+    const CompanyInitiative = () => {
+
+        const [tabView, setTabView] = useState(window.innerWidth < 800);
+        
+        useLayoutEffect(() => {
+            function updateSize() {
+              if (window.innerWidth > 800) {
+                setTabView(false);
+              } else {
+                setTabView(true);
+              }
+            }
+            window.addEventListener("resize", updateSize);
+            updateSize();
+            return () => window.removeEventListener("resize", updateSize);
+          }, []);
+
+        if(!tabView) { //web view
+            return(
+                <div className='brand_info-text'>A showcase of brand initiatives and achievements that are not directly correlated to the scores given</div>
                 )
         } else if ( showInfo && tabView ) { //tab view
             return(
@@ -306,26 +348,7 @@ function Company ({match, location})  {
     useEffect(() => {
         // setLoading(true);
         // let data = companyDetails;
-        axios.post(
-            '/companyscore',
-            {},
-                {
-                    params: companyName
-                }
-        ).then((resp) => {
-            let data = companyDetails;
-            let score = (parseInt(resp.data[0]["A"]) + parseInt(resp.data[0]["B"]) + parseInt(resp.data[0]["C"]) + parseInt(resp.data[0]["D"]))/4;
-            console.log(resp.data);
-            console.log('d');
-            data[0]["TotalScore"] = score;
-            data[0]["A"] = resp.data[0]["A"];
-            data[0]["B"] = resp.data[0]["B"];
-            data[0]["C"] = resp.data[0]["C"];
-            data[0]["D"] = resp.data[0]["D"];
-            let ratio = 324*57/100;
-            data[0]["SliderLength"] = ratio;
-            setCompanyDetails(data);
-        })
+        
         axios.post(
             '/companyname', 
             {},
@@ -335,7 +358,6 @@ function Company ({match, location})  {
             )
             .then((resp) => {
                 let data = companyDetails;
-                console.log(resp.data);
                 data[0]["A_ID"] = resp.data[0]["AID"];
                 data[0]["B_ID"] = resp.data[0]["BID"];
                 data[0]["C_ID"] = resp.data[0]["CID"];
@@ -352,6 +374,20 @@ function Company ({match, location})  {
                 data[0]["Subsidiary"] = resp.data[0]["Subsidiary"];
                 setCompanyDetails(data);
                 setState(resp.data);
+                console.log(resp.data);
+            })
+
+            axios.post(
+                '/companyScore',
+                {},
+                    {
+                        params: companyName
+                    }
+            ).then((resp) => {
+                let data = brandScores;
+                setBrandScores(data);
+                setState(resp.data);
+                console.log(resp.data);
             })
  
                 axios.post(
@@ -479,7 +515,7 @@ function Company ({match, location})  {
                     <div>
                         <img className='brand-logo' src={`${companyDetails[0]["Logo"]}`} alt={`${companyDetails[0]["Logo"]}`} />
                         <div style={{fontSize:'14px', fontWeight:'500', color:'#797979', margin:'10px 0'}}>Subsidiary of {companyDetails[0]["Subsidiary"]}</div>
-                        <p style={{marginTop:"5%", color: '#4F4F4F'}}><b>{companyName}</b> {companyDetails[0]["Description"]}</p>
+                        <p style={{marginTop:"5%", color: '#4F4F4F'}}><b>{companyDetails[0]["Name"]}</b> {companyDetails[0]["Description"]}</p>
                     </div>
                     <div>
                         <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginLeft: '105px'}}>industry average</div>
@@ -501,7 +537,7 @@ function Company ({match, location})  {
                     <div className = 'Brand-Section-title'>
                         Brand Performance 
                         <InfoIcon className='brand_info-icon' onClick={() => setShowInfo(!showInfo)} />
-                        <RenderInfo />
+                        <BrandPerformance />
                     </div>
                     <div className = 'Decorative-Line'></div>
                 
@@ -523,7 +559,7 @@ function Company ({match, location})  {
                                     WORKER EXPLOITATION
                                     <div className = 'Description'>
                                         <div className='Description-text'>
-                                            Discrimination, Gender Equality, Culture Diversity, Inclusivity
+                                            Child Labour, Forced Labour, Living Wage, Working Conditions
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {WorkerExploitImg}/>
@@ -535,7 +571,7 @@ function Company ({match, location})  {
                                     WASTE & POLLUTION
                                     <div className = 'Description'>
                                         <div className='Description-text'>
-                                            Discrimination, Gender Equality, Culture Diversity, Inclusivity
+                                            Air Pollution, Water Pollution & Waste, Packaging Waste, Material Waste
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {WasteImg}/>
@@ -547,7 +583,7 @@ function Company ({match, location})  {
                                     ETHICAL SOURCING
                                     <div className = 'Description'>
                                         <div className='Description-text'>
-                                            Discrimination, Gender Equality, Culture Diversity, Inclusivity
+                                            Animal Welfare, Cotton Farming, Deforestation
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {SustainableImg}/>
@@ -560,7 +596,7 @@ function Company ({match, location})  {
                     <div className = 'Brand-Section-title'>
                         Company Initiatives 
                         <InfoIcon className='brand_info-icon' onClick={() => setShowInfo(!showInfo)} />
-                        <RenderInfo />
+                        <CompanyInitiative />
                         </div>
 
                         <div className = 'Decorative-Line'></div>
