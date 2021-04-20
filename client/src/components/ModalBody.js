@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CancelIcon from "@material-ui/icons/Cancel";
 import "../styles/ModalBody.css";
 
-export default function ModalBody({ handleClose }) {
+export default function ModalBody({ handleClose, i, title, summary, issueAdd, issueAddExp, respTake, respTakenExp, newsID, citID, author, cittitle, pubgroup, date, pages, url }) {
   const [showCitation, setShowCitation] = useState(false);
 
   return (
@@ -15,37 +15,27 @@ export default function ModalBody({ handleClose }) {
           }}
         >
           <div className="model-title">
-            UNIQLO was questioned for partaking in direct and indirect use of
-            Uyghur workers outside Xinjiang, China
+            {title[i]}
             <CancelIcon onClick={handleClose} className="model-close-icon" />
           </div>
           <div className="model-description">
             <div>
-              The Australian Strategic Policy Institute (ASPI) published a
-              report in March of 2020 identifying 83 foreign and Chinese
-              companies allegedly benefiting from the use of Uyghur workers
-              outside of Xinjiang through potentially abusive labour transfer
-              programs. The Business and Human Rights Resource Centre had
-              invited UNIQLO to respond to this publication.
+              {summary[i]}
+              {newsID[i]}
             </div>        
             <div style={{ fontSize: "14px", marginTop: "1rem" }}>
               <span style={{ fontWeight: "700" }}>Issue Addressed?</span>
-              <span style={{ color: "#28a745", marginLeft: "5px" }}>Yes</span>
+              <span style={{ color: "#28a745", marginLeft: "5px" }}>{issueAdd[i]}</span>
             </div>
             <div>
-              UNIQLO states that they are not associated with the two factories
-              linked to UNIQLO in the report. No product of UNIQLO is made in
-              Xinjiang. Thus, UNIQLO has confirmed that they have not taken part
-              in such allegations.
+              {issueAddExp[i]}
             </div>
             <div style={{ fontSize: "14px", marginTop: "1rem" }}>
               <span style={{ fontWeight: "700" }}>Responsibility Taken?</span>
-              <span style={{ color: "#E94921", marginLeft: "5px" }}>No</span>
+              <span style={{ color: "#E94921", marginLeft: "5px" }}>{respTake[i]}</span>
             </div>
             <div>
-              UNIQLO denied responsibility despite the published report and
-              states that they have not learned of any issues regarding the
-              Uyghur workers in abusive labour transfer programs.
+              {respTakenExp[i]}
             </div>
             <div
               className="Fun-Fact"
@@ -59,11 +49,15 @@ export default function ModalBody({ handleClose }) {
               ></i>
             </div>
             {showCitation ? (
-              <div>
-                “Business & Human Rights Resource Centre.” UNIQLO's Response -
-                Business & Human Rights Resource Centre,
-                www.business-humanrights.org/en/latest-news/uniqlos-response/.
+              citID.map((key, i) => {
+                return <div>
+                   "{pubgroup[i]}" {cittitle[i]} -
+                   {pubgroup[i]}
+                   {date[i]}
+                   {pages[i]}
+                   {url[i]}
               </div>
+              })
             ) : null}
           </div>
         </div>

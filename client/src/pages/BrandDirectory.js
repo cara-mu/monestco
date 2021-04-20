@@ -1,21 +1,21 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom';
 import '../styles/BrandDirectory.css';
 
 export default function BrandDirectory() {
     const letterArray = {
         'A':["Abercrombie & Fitch","Aldo","Aritiza","Adidas","American Eagle"],
         'B':["Banana Republic","Burberry","Boohoo","Balenciaga"],
-        'C':["Canada Goose","Chanel","Converse","Calvin Klein","Christian Dior","Columbia","Champion","Coach"],
+        'C':["Canada Goose","Chanel","Converse","Calvin Klein","Christian Dior","Columbia","Champion","Club Monaco", "Coach"],
         'D':["Dynamite"],
         'E':[],
         'F':["Fila","Forever 21"],
         'G':["Gap","Giorgio Armani","Guess","Garage","Givenchy","Gildan","Gucci"],
-        'H':["H & M","Hermes"],
+        'H':["H&M","Hermes"],
         'I':[],
         'J':["J.Crew"],
         'K':["Kate Spade"],
-        'L':["Lacoste","Lululemon Athletica","Levi’s","Louis Vuitton"],
+        'L':["Lacoste","Lululemon","Levis","Louis Vuitton"],
         'M':["Mango","Marc Jacobs","Michael Kors"],
         'N':["NastyGal","New Balance","Nike"],
         'O':["Old Navy"],
@@ -68,16 +68,18 @@ export default function BrandDirectory() {
                                             
                                             <div className="brand-name-container">
                                                 {letterArray[key].length>0 && letterArray[key].map(val=>(
-                                                    <p className={`col-3 col-md-3 ml-md-0 list_letter 
+                                                    <Link to = {'/companies/'+ val}
+                                                    
+                                                    className={`col-3 col-md-3 ml-md-0 list_letter 
                                                             ${val==="Burberry" ||val==="Balenciaga" ||val==="Canada Goose" ||val==="Chanel"||val==="Christian Dior"||val==="Coach"
                                                             ||val==="Dynamite"||val==="Fila"||val==="Giorgio Armani "||val==="Gucci"||val==="Givenchy"||val==="Garage"||val==="Gildan"
                                                             ||val==="Hermes"||val==="Hugo Boss"||val==="J.Crew"||val==="Kate Spade"||val==="Lacoste"||val==="Louis Vuitton"
                                                             ||val==="Mango"||val==="Marc Jacobs"||val==="Michael Kors"||val==="Prada"||val==="Roots"||val==="Skechers"||val==="Ted Baker"
-                                                            ||val==="Urban Outfitters"||val==="Versace"
+                                                            ||val==="Urban Outfitters"||val==="Versace"||val ==="Giorgio Armani"
                                                             ? "greyed_color":"black_color"}`}
                                                     >
                                                         {val}
-                                                    </p>
+                                                    </Link>
                                                 ))}
                                             </div>
                                             </>:

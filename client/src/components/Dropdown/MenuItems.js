@@ -3,53 +3,13 @@ TO REPLICATE TO PROTOTYPE */
 
 export const MenuItems = [
     {
-        title: 'Abercrombie & Fitch',
-        path: '/companies/Abercrombie & Fitch',
+        title: 'Uniqlo',
+        path: '/companies/Uniqlo',
         cName: 'nav-links'
     },
     {
-        title: 'American Eagle',
-        path: '/companies/American Eagle',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Aritizia',
-        path: '/companies/Aritizia',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Banana Republic',
-        path: '/companies/Banana Republic',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Boohoo',
-        path: '/companies/Boohoo',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Calvin Klein',
-        path: '/companies/Calvin Klein',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Club Monaco',
-        path: '/companies/Club Monaco',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Forever 21',
-        path: '/companies/Forever 21',
-        cName: 'nav-links'
-    },
-    {
-        title: 'GAP',
-        path: '/companies/GAP',
-        cName: 'nav-links'
-    },
-    {
-        title: 'GUESS',
-        path: '/companies/GUESS',
+        title: 'Zara',
+        path: '/companies/Zara',
         cName: 'nav-links'
     },
     {
@@ -58,50 +18,86 @@ export const MenuItems = [
         cName: 'nav-links'
     },
     {
-        title: 'J. CREW',
-        path: '/companies/J CREW',
-        cName: 'nav-links'
-    },
-    {
         title: 'Levis',
         path: '/companies/Levis',
         cName: 'nav-links'
     },
     {
-        title: 'Mango',
-        path: '/companies/Mango',
+        title: 'Aritzia',
+        path: '/companies/Aritzia',
         cName: 'nav-links'
     },
     {
-        title: 'Patagonia',
-        path: '/companies/Patagonia',
+        title: 'Boohoo',
+        path: '/companies/Boohoo',
         cName: 'nav-links'
     },
     {
-        title: 'Ralph Lauren',
-        path: '/companies/Ralph Lauren',
+        title: 'Victoria Secret',
+        path: '/companies/Victoria Secret',
         cName: 'nav-links'
     },
     {
-        title: 'Roots',
-        path: '/companies/Roots',
+        title: 'Nasty Gal',
+        path: '/companies/Banana Republic',
         cName: 'nav-links'
     },
     {
-        title: 'The North Face',
-        path: '/companies/The North Face',
+        title: 'Nike',
+        path: '/companies/Nike',
         cName: 'nav-links'
     },
     {
-        title: 'Uniqlo',
-        path: '/companies/Uniqlo',
+        title: 'Adidas',
+        path: '/companies/Adidas',
         cName: 'nav-links'
     },
     {
-        title: 'Urban Outfitters',
-        path: '/companies/Urban Outfitters',
+        title: 'Under Armour',
+        path: '/companies/Under Armour',
         cName: 'nav-links'
     },
+    {
+        title: 'Lululemon',
+        path: '/companies/Lululemon',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Vans',
+        path: '/companies/Vans',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Converse',
+        path: '/companies/Converse',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Aldo',
+        path: '/companies/Aldo',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Steve Madden',
+        path: '/companies/Steve Madden ',
+        cName: 'nav-links'
+    },
+    {
+        title: 'Gucci',
+        cName: 'nav-links-gray'
+    },
+    {
+        title: 'Hermes',
+        cName: 'nav-links-gray'
+    },
+    {
+        title: 'Louis Vuitton',
+        cName: 'nav-links-gray'
+    },
+    {
+        title: 'Hugo Boss',
+        cName: 'nav-links-gray'
+    }
     // {
     //     title: 'Patagonia',
     //     path: '/companies/Patagonia',

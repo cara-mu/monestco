@@ -71,6 +71,17 @@ const companyNews = [
     }
 ]
 
+const companyCit = [
+    {
+        RelationalID: "",
+        Author: "",
+        Date: "",
+        PublishingGroup: "",
+        Title: "",
+        Pages: ""
+    }
+]
+
 function rand() {
     return Math.round(Math.random() * 20) - 10;
   }
@@ -96,16 +107,16 @@ function rand() {
     },
     dropdown:{ 
         width: '90%',
-        boxShadow: 'none'
+        boxShadow: 'none',
     },
     heading:{
         fontFamily: 'DM Sans',
         color: '#3D3E3F',
         fontSize: '16px'
     },
-    expandMenu:{
-        backgroundColor: '#F2F2F2'
-    },
+    // expandMenu:{
+    //     backgroundColor: '#F2F2F2'
+    // },
     paper: {
         position: 'absolute',
         width: 900,
@@ -132,10 +143,12 @@ function Company ({match, location})  {
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
+    const [openID, setOpenID] = useState(0);
     const [showInfo, setShowInfo] = useState(false)
     const [companyDetails, setCompanyDetails] = React.useState(companyinfo);
     const [fact, setFact] = React.useState(companyFacts);
     const [news, setNews] = React.useState(companyNews);
+    const [citations, setCitations] = React.useState(companyCit);
     const {loading, setLoading} = useState(false);
     const [state, setState] = useState([])
     const [A, setA] = useState(0);
@@ -147,7 +160,42 @@ function Company ({match, location})  {
         setShowInfo(false)
     }
 
-    const handleOpen = () => {
+    const handleOpen = (k, ID) => {
+        axios.post('/citationsNews',
+            {},
+            {
+                params: [companyName, ID]
+            }
+        ).then(resp => {
+            let data = citations;
+            let relidarr = [];
+            let authorarr = [];
+            let datearr = [];
+            let pubarr = [];
+            let titlearr = [];
+            let urlarr = [];
+            let pagesarr = [];
+            resp.data.map(citation => {
+                relidarr.push(citation["RelationalID"]);
+                authorarr.push(citation["Author"]);
+                datearr.push(citation["Date"]);
+                pubarr.push(citation["PublishingGroup"]);
+                titlearr.push(citation["Title"]);
+                urlarr.push(citation["URL"]);
+                pagesarr.push(citation["Pages"]);
+            })
+            data[0]["RelationalID"] = relidarr;
+            data[0]["Author"] = authorarr;
+            data[0]["Date"] = datearr;
+            data[0]["PublishingGroup"] = pubarr;
+            data[0]["Title"] = titlearr;
+            data[0]["URL"] = urlarr;
+            data[0]["Pages"] = pagesarr;
+            setCitations(data);
+            setState(resp.data);
+            console.log(citations);
+        })
+        setOpenID(k);
         setOpen(true);
     };
 
@@ -162,7 +210,7 @@ function Company ({match, location})  {
     
 
     const body = (
-          <ModalBody handleClose={handleClose}/>
+          <ModalBody handleClose={handleClose} i={openID} title={news[0]["Title"]} summary={news[0]["Summary"]} issueAdd={news[0]["IssueAddressed"]} issueAddExp={news[0]["IssueAddressedExplanation"]} respTake={news[0]["ResponsibilityTaken"]} respTakenExp = {news[0]["ResponsibilityTakenExplanation"]} newsID={news[0]["ID"]} citID={citations[0]["RelationalID"]} author={citations[0]["RelationalID"]} cittitle={citations[0]["Title"]} pubgroup = {citations[0]["PublishingGroup"]} date = {citations[0]["Date"]} pages = {citations[0]["Pages"]} url = {citations[0]["URL"]} />
       );
 
     const Popup = ({handleCloseInfo}) => {
@@ -341,6 +389,7 @@ function Company ({match, location})  {
                             let issueexparr = [];
                             let resptakearr = [];
                             let respexparr = [];
+                            let idarr = [];
                             resp.data.map(news => {
                                 photoarr.push(news['Photo']);
                                 yeararr.push(news['Year']);
@@ -351,6 +400,7 @@ function Company ({match, location})  {
                                 issueexparr.push(news['IssueAddressedExplanation']);
                                 resptakearr.push(news['ResponsibilityTaken']);
                                 respexparr.push(news['ResponsibilityTakenExplanation']);
+                                idarr.push(news['ID']);
                             })
                             data[0]["Photo"] = photoarr;
                             data[0]["Year"] = yeararr;
@@ -361,30 +411,29 @@ function Company ({match, location})  {
                             data[0]["IssueAddressedExplanation"] = issueexparr;
                             data[0]["ResponsibilityTaken"] = resptakearr;
                             data[0]["ResponsibilityTakenExplanation"] = respexparr;
+                            data[0]["ID"] = idarr;
                             setNews(data);
                             setState(resp.data);
                         })
-        console.log(companyDetails);
     }, []);
 
     const Facts = (factinput) => {
-        console.log(factinput[0]['Summary'][0]);
         return Object.entries(factinput[0]['Heading']).map((heading, i) => {
             return <div>
                 <Accordion className = {classes.dropdown}>
-                            <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                            >
-                            <Typography className={classes.heading}>{heading[1]}</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                            <Typography className = {classes.expandMenu}>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                    >
+                        <Typography className={classes.heading}>{heading[1]}</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails style={{backgroundColor: '#F2F2F2'}}>
+                        <Typography className = {classes.expandMenu}>
                             {factinput[0]['Summary'][i]}
-                            </Typography>
-                            </AccordionDetails>
-                        </Accordion>
+                        </Typography>
+                    </AccordionDetails>
+                </Accordion>
                 <div className = 'FunFact-Decorative-Line'></div>
             </div>
         })
@@ -411,7 +460,7 @@ function Company ({match, location})  {
                     <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
                         <span>Issue Addressed?</span>
                         <span style={{color:'#28a745', marginLeft:'5px'}}>{newsinput[0]["IssueAddressed"][i]}</span>
-                        <button className='News-read-more-btn' onClick={handleOpen}>read more</button>
+                        <button className='News-read-more-btn' onClick={() => handleOpen(i, news[0]["ID"][i])}>read more</button>
                     </div>
                 </div>
             </div>
