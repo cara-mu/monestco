@@ -940,52 +940,52 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
         data[0].subfield[0].mainNestedScore[inputIndex].score =
           resp.data.rows[0]["A1"];
         data[0].subfield[0].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["A11_text"];
+          resp.data.rows[0]["A11short"];
         data[0].subfield[0].subNestedField[0].scores[inputIndex].score =
           resp.data.rows[0]["A11_score"];
         data[0].subfield[0].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["A12_text"];
+          resp.data.rows[0]["A12short"];
         data[0].subfield[0].subNestedField[1].scores[inputIndex].score =
           resp.data.rows[0]["A12_score"];
 
         data[0].subfield[1].mainNestedScore[inputIndex].score =
           resp.data.rows[0]["A2"];
         data[0].subfield[1].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["A21_text"];
+          resp.data.rows[0]["A21short"];
         data[0].subfield[1].subNestedField[0].scores[inputIndex].score =
           resp.data.rows[0]["A21_score"];
         data[0].subfield[1].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["A22_text"];
+          resp.data.rows[0]["A22short"];
         data[0].subfield[1].subNestedField[1].scores[inputIndex].score =
           resp.data.rows[0]["A22_score"];
         data[0].subfield[1].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["A23_text"];
+          resp.data.rows[0]["A23short"];
         data[0].subfield[1].subNestedField[2].scores[inputIndex].score =
           resp.data.rows[0]["A23_score"];
 
         data[0].subfield[2].mainNestedScore[inputIndex].score =
           resp.data.rows[0]["A3"];
         data[0].subfield[2].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["A31_text"];
+          resp.data.rows[0]["A31short"];
         data[0].subfield[2].subNestedField[0].scores[inputIndex].score =
           resp.data.rows[0]["A31_score"];
         data[0].subfield[2].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["A32_text"];
+          resp.data.rows[0]["A32short"];
         data[0].subfield[2].subNestedField[1].scores[inputIndex].score =
           resp.data.rows[0]["A32_score"];
         data[0].subfield[2].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["A33_text"];
+          resp.data.rows[0]["A33short"];
         data[0].subfield[2].subNestedField[2].scores[inputIndex].score =
           resp.data.rows[0]["A33_score"];
 
         data[0].subfield[3].mainNestedScore[inputIndex].score =
           resp.data.rows[0]["A4"];
         data[0].subfield[3].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["A41_text"];
+          resp.data.rows[0]["A41short"];
         data[0].subfield[3].subNestedField[0].scores[inputIndex].score =
           resp.data.rows[0]["A41_score"];
         data[0].subfield[3].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["A42_text"];
+          resp.data.rows[0]["A42short"];
         data[0].subfield[3].subNestedField[1].scores[inputIndex].score =
           resp.data.rows[0]["A42_score"];
       });
@@ -1004,76 +1004,76 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
         data[1].subfield[0].mainNestedScore[inputIndex].score =
           resp.data.rows[0]["B1"];
         data[1].subfield[0].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["B11_text"];
+          resp.data.rows[0]["B11short"];
         data[1].subfield[0].subNestedField[0].scores[inputIndex].score =
           resp.data.rows[0]["B11_score"];
         data[1].subfield[0].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["B12_text"];
+          resp.data.rows[0]["B12short"];
         data[1].subfield[0].subNestedField[1].scores[inputIndex].score =
           resp.data.rows[0]["B12_score"];
         data[1].subfield[0].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["B13_text"];
+          resp.data.rows[0]["B13short"];
         data[1].subfield[0].subNestedField[2].scores[inputIndex].score =
           resp.data.rows[0]["B13_score"];
 
         data[1].subfield[1].mainNestedScore[inputIndex].score =
           resp.data.rows[0]["B2"];
         data[1].subfield[1].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["B21_text"];
+          resp.data.rows[0]["B21short"];
         data[1].subfield[1].subNestedField[0].scores[inputIndex].score =
           resp.data.rows[0]["B21_score"];
         data[1].subfield[1].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["B22_text"];
+          resp.data.rows[0]["B22short"];
         data[1].subfield[1].subNestedField[1].scores[inputIndex].score =
           resp.data.rows[0]["B22_score"];
         data[1].subfield[1].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["B23_text"];
+          resp.data.rows[0]["B23short"];
         data[1].subfield[1].subNestedField[2].scores[inputIndex].score =
           resp.data.rows[0]["B23_score"];
 
         data[1].subfield[2].mainNestedScore[inputIndex].score =
           resp.data.rows[0]["B3"];
         data[1].subfield[2].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["B31_text"];
+          resp.data.rows[0]["B31short"];
         data[1].subfield[2].subNestedField[0].scores[inputIndex].score =
           resp.data.rows[0]["B31_score"];
         data[1].subfield[2].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["B32_text"];
+          resp.data.rows[0]["B32short"];
         data[1].subfield[2].subNestedField[1].scores[inputIndex].score =
           resp.data.rows[0]["B32_score"];
         data[1].subfield[2].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["B33_text"];
+          resp.data.rows[0]["B33short"];
         data[1].subfield[2].subNestedField[2].scores[inputIndex].score =
           resp.data.rows[0]["B33_score"];
         data[1].subfield[2].subNestedField[3].texts[inputIndex].text =
-          resp.data.rows[0]["B34_text"];
+          resp.data.rows[0]["B34short"];
         data[1].subfield[2].subNestedField[3].scores[inputIndex].score =
           resp.data.rows[0]["B34_score"];
         data[1].subfield[2].subNestedField[4].texts[inputIndex].text =
-          resp.data.rows[0]["B35_text"];
+          resp.data.rows[0]["B35short"];
         data[1].subfield[2].subNestedField[4].scores[inputIndex].score =
           resp.data.rows[0]["B35_score"];
 
         data[1].subfield[3].mainNestedScore[inputIndex].score =
           resp.data.rows[0]["B4"];
         data[1].subfield[3].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["B41_text"];
+          resp.data.rows[0]["B41short"];
         data[1].subfield[3].subNestedField[0].scores[inputIndex].score =
           resp.data.rows[0]["B41_score"];
         data[1].subfield[3].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["B42_text"];
+          resp.data.rows[0]["B42short"];
         data[1].subfield[3].subNestedField[1].scores[inputIndex].score =
           resp.data.rows[0]["B42_score"];
         data[1].subfield[3].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["B43_text"];
+          resp.data.rows[0]["B43short"];
         data[1].subfield[3].subNestedField[2].scores[inputIndex].score =
           resp.data.rows[0]["B43_score"];
         data[1].subfield[3].subNestedField[3].texts[inputIndex].text =
-          resp.data.rows[0]["B44_text"];
+          resp.data.rows[0]["B44short"];
         data[1].subfield[3].subNestedField[3].scores[inputIndex].score =
           resp.data.rows[0]["B44_score"];
         // data[1].subfield[3].subNestedField[4].texts[inputIndex].text =
-        //   resp.data.rows[0]["B45_text"];
+        //   resp.data.rows[0]["B45short"];
         // data[1].subfield[3].subNestedField[4].scores[inputIndex].score =
         //   resp.data.rows[0]["B45_score"];
       });
@@ -1092,76 +1092,76 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
         data[2].subfield[0].mainNestedScore[inputIndex].score =
           resp.data.rows[0]["C1"];
         data[2].subfield[0].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["C11_text"];
+          resp.data.rows[0]["C11short"];
         data[2].subfield[0].subNestedField[0].scores[inputIndex].score =
           resp.data.rows[0]["C11_score"];
         data[2].subfield[0].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["C12_text"];
+          resp.data.rows[0]["C12short"];
         data[2].subfield[0].subNestedField[1].scores[inputIndex].score =
           resp.data.rows[0]["C12_score"];
         data[2].subfield[0].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["C13_text"];
+          resp.data.rows[0]["C13short"];
         data[2].subfield[0].subNestedField[2].scores[inputIndex].score =
           resp.data.rows[0]["C13_score"];
         data[2].subfield[0].subNestedField[3].texts[inputIndex].text =
-          resp.data.rows[0]["C14_text"];
+          resp.data.rows[0]["C14short"];
         data[2].subfield[0].subNestedField[3].scores[inputIndex].score =
           resp.data.rows[0]["C14_score"];
 
         data[2].subfield[1].mainNestedScore[inputIndex].score =
           resp.data.rows[0]["C2"];
         data[2].subfield[1].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["C21_text"];
+          resp.data.rows[0]["C21short"];
         data[2].subfield[1].subNestedField[0].scores[inputIndex].score =
           resp.data.rows[0]["C21_score"];
         data[2].subfield[1].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["C22_text"];
+          resp.data.rows[0]["C22short"];
         data[2].subfield[1].subNestedField[1].scores[inputIndex].score =
           resp.data.rows[0]["C22_score"];
         data[2].subfield[1].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["C23_text"];
+          resp.data.rows[0]["C23short"];
         data[2].subfield[1].subNestedField[2].scores[inputIndex].score =
           resp.data.rows[0]["C23_score"];
         data[2].subfield[1].subNestedField[3].texts[inputIndex].text =
-          resp.data.rows[0]["C24_text"];
+          resp.data.rows[0]["C24short"];
         data[2].subfield[1].subNestedField[3].scores[inputIndex].score =
           resp.data.rows[0]["C24_score"];
 
         data[2].subfield[2].mainNestedScore[inputIndex].score =
           resp.data.rows[0]["C3"];
         data[2].subfield[2].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["C31_text"];
+          resp.data.rows[0]["C31short"];
         data[2].subfield[2].subNestedField[0].scores[inputIndex].score =
           resp.data.rows[0]["C31_score"];
         data[2].subfield[2].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["C32_text"];
+          resp.data.rows[0]["C32short"];
         data[2].subfield[2].subNestedField[1].scores[inputIndex].score =
           resp.data.rows[0]["C32_score"];
         data[2].subfield[2].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["C33_text"];
+          resp.data.rows[0]["C33short"];
         data[2].subfield[2].subNestedField[2].scores[inputIndex].score =
           resp.data.rows[0]["C33_score"];
         data[2].subfield[2].subNestedField[3].texts[inputIndex].text =
-          resp.data.rows[0]["C34_text"];
+          resp.data.rows[0]["C34short"];
         data[2].subfield[2].subNestedField[3].scores[inputIndex].score =
           resp.data.rows[0]["C34_score"];
 
         data[2].subfield[3].mainNestedScore[inputIndex].score =
           resp.data.rows[0]["C4"];
         data[2].subfield[3].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["C41_text"];
+          resp.data.rows[0]["C41short"];
         data[2].subfield[3].subNestedField[0].scores[inputIndex].score =
           resp.data.rows[0]["C41_score"];
         data[2].subfield[3].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["C42_text"];
+          resp.data.rows[0]["C42short"];
         data[2].subfield[3].subNestedField[1].scores[inputIndex].score =
           resp.data.rows[0]["C42_score"];
         data[2].subfield[3].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["C43_text"];
+          resp.data.rows[0]["C43short"];
         data[2].subfield[3].subNestedField[2].scores[inputIndex].score =
           resp.data.rows[0]["C43_score"];
         data[2].subfield[3].subNestedField[3].texts[inputIndex].text =
-          resp.data.rows[0]["C44_text"];
+          resp.data.rows[0]["C44short"];
         data[2].subfield[3].subNestedField[3].scores[inputIndex].score =
           resp.data.rows[0]["C44_score"];
       });

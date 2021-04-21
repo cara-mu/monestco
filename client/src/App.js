@@ -25,7 +25,7 @@ function App() {
       </Switch>
       <Route path="/comparison" exact component = {Comparison} />
       <Route path="/methodology" exact component ={Methodology}/>
-      <Route path="/brand-breakdown" exact render ={()=> <BrandBreakdown/>}/>
+      <Route path="/brand-breakdown/:companyName" exact component={BrandBreakdown}/>
       <Route path="/brand-directory" exact render={()=><BrandDirectory/>}/>
     </Router>
   );

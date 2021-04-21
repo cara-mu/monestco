@@ -320,10 +320,12 @@ function Company ({match, location})  {
             data[0]["B"] = resp.data[0]["B"];
             data[0]["C"] = resp.data[0]["C"];
             data[0]["D"] = resp.data[0]["D"];
-            let ratio = 324*57/100;
+            let ratio = 324*score/100;
             data[0]["SliderLength"] = ratio;
             setCompanyDetails(data);
-        })
+            setState(resp.data);
+        });
+
         axios.post(
             '/companyname', 
             {},
@@ -481,6 +483,7 @@ function Company ({match, location})  {
                     <div>
                         <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginLeft: '105px'}}>industry average</div>
                         <AiFillCaretDown style={{marginLeft: '155px'}}/>
+                        {companyDetails[0]["SliderLength"]}
                         <div class="horizontalline" style={{width: `${companyDetails[0]["SliderLength"]}px` }}></div>
                         <div class="verticalline"></div>
                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true"/>

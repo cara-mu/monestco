@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useLayoutEffect, useEffect } from "react";
 import Logo from "../assets/brandBreakdown.svg";
 import InfoIcon from "@material-ui/icons/Info";
 import CancelIcon from "@material-ui/icons/Cancel";
@@ -482,9 +482,20 @@ const Mainfield = ({ item, index }) => {
   );
 };
 
-const BrandBreakdown = () => {
+class BrandBreakdown extends React.Component {
+  state = {
+    companyName: ""
+  }
+
+  componentDidMount () {
+    this.setState({companyName: this.props.match.params.companyName})
+    console.log(this.state.companyName);
+  }
+
+  render() {
   return (
     <div className="breakdown_container">
+      {/* {props} */}
       <div className="breakdown_logo">
         <img src={Logo} className="breakdown_logoImage" />
         <p className="breakdown_logoText">
@@ -504,6 +515,7 @@ const BrandBreakdown = () => {
       </div>
     </div>
   );
+  }
 };
 
 export default BrandBreakdown;
