@@ -376,6 +376,7 @@ function Company ({match, location})  {
                     params: companyName
                 }
         ).then((resp) => {
+            console.log(resp.data);
             let data = companyDetails;
             let score = (parseInt(resp.data[0]["Ascore"]) + parseInt(resp.data[0]["Bscore"]) + parseInt(resp.data[0]["Cscore"]) + parseInt(resp.data[0]["Dscore"]))/4;
             data[0]["TotalScore"] = score;
@@ -397,6 +398,7 @@ function Company ({match, location})  {
                 }
             )
             .then((resp) => {
+                console.log(resp.data);
                 let data = companyDetails;
                 data[0]["A_ID"] = resp.data[0]["A_ID"];
                 data[0]["B_ID"] = resp.data[0]["B_ID"];
