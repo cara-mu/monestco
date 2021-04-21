@@ -45,7 +45,8 @@ const companyinfo = [
     SimilarCompany3: "",
     SimilarCompany4: "",
     Subsidiary: "",
-    CompanyID: ""
+    CompanyID: "",
+    A: 0
     }
 ]
 
@@ -69,15 +70,6 @@ const companyNews = [
         Explanation: "",
         IssueAddressed: "",
         IssueExplained: ""
-    }
-]
-
-const companyScores = [
-    {
-        AScore: 0,
-        BScore: 0,
-        CScore: 0,
-        DScore: 0
     }
 ]
 
@@ -158,7 +150,7 @@ function Company ({match, location})  {
     const [openID, setOpenID] = useState(0);
     const [showInfo, setShowInfo] = useState(false)
     const [companyDetails, setCompanyDetails] = React.useState(companyinfo);
-    const [brandScores, setBrandScores] = React.useState(companyScores);
+    // const [brandScores, setBrandScores] = React.useState(companyScores);
     const [fact, setFact] = React.useState(companyFacts);
     const [news, setNews] = React.useState(companyNews);
     const [citations, setCitations] = React.useState(companyCit);
@@ -377,7 +369,26 @@ function Company ({match, location})  {
     useEffect(() => {
         // setLoading(true);
         // let data = companyDetails;
-        
+        axios.post(
+            '/companyscores',
+            {},
+                {
+                    params: companyName
+                }
+        ).then((resp) => {
+            let data = companyDetails;
+            let score = (parseInt(resp.data[0]["Ascore"]) + parseInt(resp.data[0]["Bscore"]) + parseInt(resp.data[0]["Cscore"]) + parseInt(resp.data[0]["Dscore"]))/4;
+            data[0]["TotalScore"] = score;
+            data[0]["A"] = resp.data[0]["Ascore"];
+            data[0]["B"] = resp.data[0]["Bscore"];
+            data[0]["C"] = resp.data[0]["Cscore"];
+            data[0]["D"] = resp.data[0]["Dscore"];
+            let ratio = 324*score/100;
+            data[0]["SliderLength"] = ratio;
+            setCompanyDetails(data);
+            setState(resp.data);
+        });
+
         axios.post(
             '/companyname', 
             {},
@@ -405,14 +416,6 @@ function Company ({match, location})  {
                 setCompanyDetails(data);
                 setState(resp.data);
             })
-            axios.post(
-                '/scores',
-                {}, {
-                    params: companyName
-                }).then((resp) =>{
-                    console.log(resp.data);
-                })
- 
                 axios.post(
                     '/facts', 
                     {},
@@ -507,7 +510,7 @@ function Company ({match, location})  {
             //console.log(newsinput[0]["Title"][i]);
             return <div>
             <div className='news-card'>
-                <img style={{background:`url("${newsinput[0]["Photo"][i]}") rgba(87, 114, 104, 0.5)`}} />
+                <img style={{background:`url("${newsinput[0]["Photo"][i]}") rgba(87, 114, 104, 0.5)`, objectFit: 'scale-down'}} />
                 <div className='news-category'>
                     <span className='news-category-title'>{category[1]}</span>
                     <span className='news-category-year'>{newsinput[0]["Year"][i]}</span>
@@ -569,6 +572,7 @@ function Company ({match, location})  {
                     <div>
                         <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginLeft: '105px'}}>industry average</div>
                         <AiFillCaretDown style={{marginLeft: '155px'}}/>
+                        {companyDetails[0]["SliderLength"]}
                         <div class="horizontalline" style={{width: `${companyDetails[0]["SliderLength"]}px` }}></div>
                         <div class="verticalline"></div>
                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true"/>
@@ -670,14 +674,16 @@ function Company ({match, location})  {
                             >
                                 {body}
                             </Modal>
+                    
                     </div>
                     <div className="similar_brands">
                         <div className = 'Brand-Section-title'>Similar Brands</div>
                         <div className = 'Decorative-Line'></div>
                         <div className="similar_brands-container"> 
                             <div>
-                                <div>{companyDetails[0]["SimilarCompany1"]}</div>
-                                <div className='brand_box'>
+                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany1"]}>{companyDetails[0]["SimilarCompany1"]}</Link> 
+                                {/* <div>{companyDetails[0]["SimilarCompany1"]}</div> */}
+                                <div className='brand_box'> 
                                     <div className="d-flex justify-content-center">
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
                                     </div>
@@ -688,7 +694,8 @@ function Company ({match, location})  {
                                 </div>
                             </div>
                             <div>
-                                <div>{companyDetails[0]["SimilarCompany2"]}</div>
+                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany2"]}>{companyDetails[0]["SimilarCompany2"]}</Link> 
+                                {/* <div>{companyDetails[0]["SimilarCompany2"]}</div> */}
                                 <div className='brand_box'>
                                     <div className="d-flex justify-content-center">
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
@@ -700,7 +707,8 @@ function Company ({match, location})  {
                                 </div>
                             </div>                        
                             <div>
-                                <div>{companyDetails[0]["SimilarCompany3"]}</div>
+                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany3"]}>{companyDetails[0]["SimilarCompany3"]}</Link> 
+                                {/* <div>{companyDetails[0]["SimilarCompany3"]}</div> */}
                                 <div className='brand_box'>
                                     <div className="d-flex justify-content-center">
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
@@ -712,7 +720,8 @@ function Company ({match, location})  {
                                 </div>
                             </div>
                             <div>
-                                <div>{companyDetails[0]["SimilarCompany4"]}</div>
+                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany4"]}>{companyDetails[0]["SimilarCompany4"]}</Link> 
+                                {/* <div>{companyDetails[0]["SimilarCompany4"]}</div> */}
                                 <div className='brand_box'>
                                     <div className="d-flex justify-content-center">
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>

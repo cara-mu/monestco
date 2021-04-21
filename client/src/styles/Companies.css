@@ -384,6 +384,11 @@
     width: 90%;
 }
 
+.Similar-Link{
+    color: inherit;
+    text-decoration: none;
+}
+
 .company-popup {
     position: fixed;
     opacity: 1;
