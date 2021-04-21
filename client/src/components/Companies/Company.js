@@ -342,6 +342,35 @@ function Company ({match, location})  {
 
     }
 
+    const InTheNews = () => {
+
+        const [tabView, setTabView] = useState(window.innerWidth < 800);
+        
+        useLayoutEffect(() => {
+            function updateSize() {
+              if (window.innerWidth > 800) {
+                setTabView(false);
+              } else {
+                setTabView(true);
+              }
+            }
+            window.addEventListener("resize", updateSize);
+            updateSize();
+            return () => window.removeEventListener("resize", updateSize);
+          }, []);
+
+        if(!tabView) { //web view
+            return(
+                <div className='brand_info-text'>News and recent events summarized with an assessment of the company’s actions taken in response</div>
+                )
+        } else if ( showInfo && tabView ) { //tab view
+            return(
+                    <Popup handleCloseInfo={handleCloseInfo} />
+                )
+        } else return null
+
+    }
+
     const newsDiscriptionTitle = "Nike allegedly discriminates against women at its corporate headquarters";
     const newsDiscriptionInfo = "Fed up with feeling marginalized working at the Nike headquarters, a group of female employees began secretly surveying their coworkers on their experiences with gender discrimination....";
 
@@ -372,23 +401,17 @@ function Company ({match, location})  {
                 data[0]["SimilarCompany3"] = resp.data[0]["SimilarCompany3"];
                 data[0]["SimilarCompany4"] = resp.data[0]["SimilarCompany4"];
                 data[0]["Subsidiary"] = resp.data[0]["Subsidiary"];
+                console.log(data[0]["Subsidiary"]);
                 setCompanyDetails(data);
                 setState(resp.data);
-                console.log(resp.data);
             })
-
             axios.post(
-                '/companyScore',
-                {},
-                    {
-                        params: companyName
-                    }
-            ).then((resp) => {
-                let data = brandScores;
-                setBrandScores(data);
-                setState(resp.data);
-                console.log(resp.data);
-            })
+                '/scores',
+                {}, {
+                    params: companyName
+                }).then((resp) =>{
+                    console.log(resp.data);
+                })
  
                 axios.post(
                     '/facts', 
@@ -494,11 +517,32 @@ function Company ({match, location})  {
                     <div className = 'News-Description-info'>{newsinput[0]["Summary"][i]}</div>
                     <div style={{fontSize:'14px'}}>
                         <span>Responsibility Taken?</span>
-                        <span style={{color:'#E94921', marginLeft:'5px'}}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
+
+                        {newsinput[0]["ResponsibilityTaken"][i] == "No" &&
+                            <span style={{color:'#E94921', marginLeft:'5px'}}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
+                        ||
+                        newsinput[0]["ResponsibilityTaken"][i] == "Yes" &&
+                            <span style={{color:'#28a745', marginLeft:'5px'}}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
+                        ||
+                        newsinput[0]["ResponsibilityTaken"][i] == "Maybe" &&
+                            <span style={{color:'#F29A72', marginLeft:'5px'}}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
+                        }
+
+
                     </div>
                     <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
                         <span>Issue Addressed?</span>
-                        <span style={{color:'#28a745', marginLeft:'5px'}}>{newsinput[0]["IssueAddressed"][i]}</span>
+
+                        
+                        {newsinput[0]["IssueAddressed"][i] == "No" &&
+                            <span style={{color:'#E94921', marginLeft:'5px'}}>{newsinput[0]["IssueAddressed"][i]}</span>
+                        || 
+                        newsinput[0]["IssueAddressed"][i] == "Yes" &&
+                            <span style={{color:'#28a745', marginLeft:'5px'}}>{newsinput[0]["IssueAddressed"][i]}</span>
+                        || 
+                        newsinput[0]["ResponsibilityTaken"][i] == "Maybe" &&
+                            <span style={{color:'#F29A72', marginLeft:'5px'}}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
+                        }
                         <button className='News-read-more-btn' onClick={() => handleOpen(i, news[0]["ID"][i])}>read more</button>
                     </div>
                 </div>
@@ -514,7 +558,12 @@ function Company ({match, location})  {
                 <div className = 'Left-Menu'>                
                     <div>
                         <img className='brand-logo' src={`${companyDetails[0]["Logo"]}`} alt={`${companyDetails[0]["Logo"]}`} />
-                        <div style={{fontSize:'14px', fontWeight:'500', color:'#797979', margin:'10px 0'}}>Subsidiary of {companyDetails[0]["Subsidiary"]}</div>
+                        
+                        {/* conditional rendering for subsidiary */}
+                        { companyDetails[0]["Subsidiary"] != null  &&
+                            <div style={{fontSize:'14px', fontWeight:'500', color:'#797979', margin:'10px 0'}}>Subsidiary of {companyDetails[0]["Subsidiary"]}</div>
+                        }
+
                         <p style={{marginTop:"5%", color: '#4F4F4F'}}><b>{companyDetails[0]["Name"]}</b> {companyDetails[0]["Description"]}</p>
                     </div>
                     <div>
@@ -604,7 +653,11 @@ function Company ({match, location})  {
     
                     
                     <div className = 'In-The-News'>
-                        <div className = 'Brand-Section-title'>In The News</div>
+                        <div className = 'Brand-Section-title'>
+                            In The News
+                            <InfoIcon className='brand_info-icon' onClick={() => setShowInfo(!showInfo)} />
+                             <InTheNews />
+                            </div>
                         <div className = 'Decorative-Line'></div>
                             <div className='In-The-News-container'>
                                 {News(news)}

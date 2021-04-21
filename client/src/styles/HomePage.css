@@ -377,6 +377,16 @@ body{
     white-space: nowrap;
 }
 
+.career-btn-container {
+    display: flex;        
+    width: 100%;
+}
+
+.About-Us>.main_image-container {
+    width: 90%;
+    height: 90%;
+}
+
 @media screen and (max-width:1700px) {
     .text_window {
         font-size: 25px;
@@ -386,7 +396,7 @@ body{
 
 @media screen and (max-width: 1500px) {
     .carrer_image {        
-        margin-right: 6%;
+        margin-right: 7%;
     }   
     .sign_up-form-container {
         grid-template-columns: 1fr 1fr;
@@ -589,6 +599,12 @@ body{
         line-height: 20px;
     }
 
+    .Sign-Up-Positioning {
+        justify-self: start;
+        margin-right: 0;
+        width: 90%;
+    }
+
 }
 
 @media screen and (max-width:730px) {
@@ -771,6 +787,10 @@ body{
     }
     .career-btn {
         margin-left: 0 !important;
+    }
+    .career-btn-container {
+        width: max-content;
+        margin-left: 2%;
     }
 }
 
