@@ -417,6 +417,75 @@ function Company ({match, location})  {
                 setCompanyDetails(data);
                 setState(resp.data);
             })
+        axios.post(
+            '/similarCompany1',
+            {},
+            {
+                params: companyName
+            }
+        ).then((resp) =>{
+            // console.log(resp.data);
+            let data = companyDetails;
+            data[0]["company1Ascore"] = resp.data[0]["Ascore"];
+            data[0]["company1Bscore"] = resp.data[0]["Bscore"];
+            data[0]["company1Cscore"] = resp.data[0]["Cscore"];
+            data[0]["company1Dscore"] = resp.data[0]["Dscore"];
+            let company1TotalScore = (parseInt(data[0]["company1Ascore"]) + parseInt(data[0]["company1Bscore"]) + parseInt(data[0]["company1Cscore"]) + parseInt(data[0]["company1Dscore"]))/4;
+            data[0]["company1TotalScore"] = company1TotalScore;
+            // console.log(company1TotalScore);
+        })
+        axios.post(
+            '/similarCompany2',
+            {},
+            {
+                params: companyName
+            }
+        ).then((resp) =>{
+            // console.log(resp.data);
+            let data = companyDetails;
+            data[0]["company2Ascore"] = resp.data[0]["Ascore"];
+            data[0]["company2Bscore"] = resp.data[0]["Bscore"];
+            data[0]["company2Cscore"] = resp.data[0]["Cscore"];
+            data[0]["company2Dscore"] = resp.data[0]["Dscore"];
+            let company2TotalScore = (parseInt(data[0]["company2Ascore"]) + parseInt(data[0]["company2Bscore"]) + parseInt(data[0]["company2Cscore"]) + parseInt(data[0]["company2Dscore"]))/4;
+            data[0]["company2TotalScore"] = company2TotalScore;
+            // console.log(company2TotalScore);
+        })
+        axios.post(
+            '/similarCompany3',
+            {},
+            {
+                params: companyName
+            }
+        ).then((resp) =>{
+            // console.log(resp.data);
+            let data = companyDetails;
+            data[0]["company3Ascore"] = resp.data[0]["Ascore"];
+            data[0]["company3Bscore"] = resp.data[0]["Bscore"];
+            data[0]["company3Cscore"] = resp.data[0]["Cscore"];
+            data[0]["company3Dscore"] = resp.data[0]["Dscore"];
+            let company3TotalScore = (parseInt(data[0]["company3Ascore"]) + parseInt(data[0]["company3Bscore"]) + parseInt(data[0]["company3Cscore"]) + parseInt(data[0]["company3Dscore"]))/4;
+            data[0]["company3TotalScore"] = company3TotalScore;
+            console.log(company3TotalScore);
+            console.log('3');
+        })
+        axios.post(
+            '/similarCompany4',
+            {},
+            {
+                params: companyName
+            }
+        ).then((resp) =>{
+            // console.log(resp.data);
+            let data = companyDetails;
+            data[0]["company4Ascore"] = resp.data[0]["Ascore"];
+            data[0]["company4Bscore"] = resp.data[0]["Bscore"];
+            data[0]["company4Cscore"] = resp.data[0]["Cscore"];
+            data[0]["company4Dscore"] = resp.data[0]["Dscore"];
+            let company4TotalScore = (parseInt(data[0]["company4Ascore"]) + parseInt(data[0]["company4Bscore"]) + parseInt(data[0]["company4Cscore"]) + parseInt(data[0]["company4Dscore"]))/4;
+            data[0]["company4TotalScore"] = company4TotalScore;
+            // console.log(company4TotalScore);
+        })
                 axios.post(
                     '/facts', 
                     {},
@@ -573,10 +642,7 @@ function Company ({match, location})  {
                     <div>
                         <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginLeft: '105px'}}>industry average</div>
                         <AiFillCaretDown style={{marginLeft: '155px'}}/>
-<<<<<<< HEAD
                         {/* {companyDetails[0]["SliderLength"]} */}
-=======
->>>>>>> c04f78b7ba1afa8ce3d609f1bcde7f2c974aeb0f
                         <div class="horizontalline" style={{width: `${companyDetails[0]["SliderLength"]}px` }}></div>
                         <div class="verticalline"></div>
                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true"/>
@@ -692,7 +758,7 @@ function Company ({match, location})  {
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
                                     </div>
                                     <div className="brand_inside_text ml-10perc">
-                                        <span>50</span>
+                                        <span>{Math.round(companyDetails[0]["company1TotalScore"], 2)}</span>
                                         <span>/100</span>
                                     </div>
                                 </div>
@@ -705,7 +771,7 @@ function Company ({match, location})  {
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
                                     </div>
                                     <div className="brand_inside_text ml-10perc">
-                                        <span>42</span>
+                                        <span>{Math.round(companyDetails[0]["company2TotalScore"], 2)}</span>
                                         <span>/100</span>
                                     </div>
                                 </div>
@@ -718,7 +784,7 @@ function Company ({match, location})  {
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
                                     </div>
                                     <div className="brand_inside_text ml-10perc">
-                                        <span>42</span>
+                                        <span>{Math.round(companyDetails[0]["company3TotalScore"], 2)}</span>
                                         <span>/154</span>
                                     </div>
                                 </div>
@@ -731,7 +797,7 @@ function Company ({match, location})  {
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
                                     </div>
                                     <div className="brand_inside_text ml-10perc">
-                                        <span>48</span>
+                                        <span>{Math.round(companyDetails[0]["company4TotalScore"], 2)}</span>
                                         <span>/100</span>
                                     </div>
                                 </div>
