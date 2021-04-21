@@ -83,6 +83,7 @@
 }
 
 .mainField-title {
+    /* white-space: nowrap; */
     font-family: DM Sans;
     font-size: 18px;
     font-style: normal;
@@ -337,9 +338,9 @@
     cursor: pointer;
 }
 
-@media screen and (max-width:1600px) {
+@media screen and (max-width:1450px) {
     .mainField-title {
-        font-size: 16px;
+        font-size: 17px;
     }
 }
 
@@ -365,6 +366,9 @@
 
     .nestedField-container {
         grid-template-columns: 11rem repeat( 3, 12rem ) 3rem;
+    }
+    .mainField-title {
+        line-height: 26px;
     }
 
     .nestedField-title {
@@ -399,8 +403,16 @@
         grid-template-columns: 10rem repeat( 3, 10rem ) 3rem;
         /* grid-template-rows: 5rem; */
     }
-    
 
+    .subField-title {
+        font-size: 16px;
+        line-height: 24px;
+        padding-left: 0;
+    }
+
+    .nestedField-title {
+        padding-left: 1rem;
+    }
 }
 
 @media screen and (max-width:1100px) {
@@ -427,7 +439,7 @@
 
     .nestedField-container {
         grid-template-columns: 8rem repeat( 3, 8rem ) 2rem;
-        /* grid-template-rows: 5rem; */
+        grid-template-rows: 10rem;
     }
 
 }
@@ -634,6 +646,8 @@
         line-height: 13px;
         text-decoration: underline;
         color: #3D3E3F;
+        display: flex;
+        justify-content: center;
     }
 
 }
