@@ -457,7 +457,7 @@ app.post('/citationsNews', function(req, res, next) {
 app.post('/companyscores', function(req,res,next) {
   var companyName = req.query['0'];
   // db.all("SELECT A_scores.A, B_scores.B FROM A_scores, B_scores WHERE ((A_Scores.CompanyID IN (SELECT ID FROM companies WHERE name = ?) AND)", [companyName], (err, row) => {
-  db.all("SELECT A_scores.Ascore, B_scores.Bscore, C_scores.Cscore, D_scores.Dscore FROM A_scores, B_scores, C_scores, D_scores WHERE A_scores.CompanyID IN (SELECT ID FROM companies WHERE Name = ?) AND B_scores.CompanyID IN (SELECT ID FROM companies WHERE Name = ?) AND C_scores.CompanyID IN (SELECT ID FROM companies WHERE Name = ?) AND D_scores.CompanyID IN (SELECT ID FROM companies WHERE Name = ?)", [companyName, companyName, companyName, companyName], (err, row) => {
+  db.all("SELECT A.Ascore, B.Bscore, C.Cscore, D.Dscore FROM A, B, C, D WHERE A.CompanyID IN (SELECT ID FROM Companies WHERE Name = ?) AND B.CompanyID IN (SELECT ID FROM Companies WHERE Name = ?) AND C.CompanyID IN (SELECT ID FROM companies WHERE Name = ?) AND D.CompanyID IN (SELECT ID FROM companies WHERE Name = ?)", [companyName, companyName, companyName, companyName], (err, row) => {
     if (err) {
       res.status(400).json({ "error": err.message });
       return;
@@ -473,7 +473,7 @@ app.post('/companyscores', function(req,res,next) {
 // This would just be the page for singular company
 app.post('/companyname', function(req,res,next){
   var companyName = req.query['0'];
-  db.all("SELECT * FROM companies WHERE Name = ?", [companyName], (err, row) => {
+  db.all("SELECT * FROM Companies WHERE Name = ?", [companyName], (err, row) => {
     if (err) {
         res.status(400).json({ "error": err.message });
         return;
@@ -487,7 +487,7 @@ app.post('/companyname', function(req,res,next){
 
 app.post('/facts', function(req,res,next){
   var companyName = req.query['0'];
-  db.all("SELECT * FROM facts WHERE companyID IN (SELECT ID FROM companies WHERE name = ? )", [companyName], (err, row) => {
+  db.all("SELECT * FROM Facts WHERE CompanyID IN (SELECT ID FROM Companies WHERE Name = ? )", [companyName], (err, row) => {
     if (err) {
         res.status(400).json({ "error": err.message });
         return;
@@ -501,7 +501,7 @@ app.post('/facts', function(req,res,next){
 
 app.post('/news', function(req,res,next){
   var companyName = req.query['0'];
-  db.all("SELECT * FROM news WHERE companyID IN (SELECT ID FROM companies WHERE name = ? )", [companyName], (err, row) => {
+  db.all("SELECT * FROM News WHERE CompanyID IN (SELECT ID FROM Companies WHERE Name = ? )", [companyName], (err, row) => {
     if (err) {
         res.status(400).json({ "error": err.message });
         return;
@@ -515,7 +515,7 @@ app.post('/news', function(req,res,next){
 
 app.post('/companydetailsA_specific', function(req,res,next){
   var companyName = req.query['0'];
-  db.all("SELECT A FROM A WHERE company_id IN (SELECT company_id FROM company WHERE name = ?)", [companyName], (err, row) => {
+  db.all("SELECT Ascore FROM A WHERE CompanyID IN (SELECT ID FROM Companies WHERE Name = ?)", [companyName], (err, row) => {
     if (err) {
         res.status(400).json({ "error": err.message });
         return;
@@ -528,8 +528,8 @@ app.post('/companydetailsA_specific', function(req,res,next){
 })
 
 app.post('/companydetailsA', (req, res) => {
-  const companyname = req.query['0'];
-  db.all("SELECT * FROM A WHERE company_id IN (SELECT company_id FROM company WHERE name = ?)", [companyname], (err, rows) => {
+  const companyName = req.query['0'];
+  db.all("SELECT * FROM A WHERE CompanyID IN (SELECT ID FROM Companies WHERE Name = ?)", [companyName], (err, rows) => {
     if (err) {
       res.status(400).json({ "error": err.message });
       return;
@@ -542,8 +542,8 @@ app.post('/companydetailsA', (req, res) => {
 })
 
 app.post('/companydetailsB', (req, res) => {
-  const companyname = req.query['0'];
-  db.all("SELECT * FROM B WHERE company_id IN (SELECT company_id FROM company WHERE name = ?)", [companyname], (err, rows) => {
+  const companyName = req.query['0'];
+  db.all("SELECT * FROM B WHERE CompanyID IN (SELECT ID FROM Companies WHERE name = ?)", [companyName], (err, rows) => {
     if (err) {
       res.status(400).json({ "error": err.message });
       return;
@@ -556,8 +556,8 @@ app.post('/companydetailsB', (req, res) => {
 })
 
 app.post('/companydetailsC', (req, res) => {
-  const companyname = req.query['0'];
-  db.all("SELECT * FROM C WHERE company_id IN (SELECT company_id FROM company WHERE name = ?)", [companyname], (err, rows) => {
+  const companyName = req.query['0'];
+  db.all("SELECT * FROM C WHERE CompanyID IN (SELECT ID FROM Companies WHERE Name = ?)", [companyName], (err, rows) => {
     if (err) {
       res.status(400).json({ "error": err.message });
       return;
@@ -570,8 +570,8 @@ app.post('/companydetailsC', (req, res) => {
 })
 
 app.post('/companydetailsD', (req, res) => {
-  const companyname = req.query['0'];
-  db.all("SELECT * FROM D WHERE company_id IN (SELECT company_id FROM company WHERE name = ?)", [companyname], (err, rows) => {
+  const companyName = req.query['0'];
+  db.all("SELECT * FROM D WHERE CompanyID IN (SELECT ID FROM Companies WHERE Name = ?)", [companyName], (err, rows) => {
     if (err) {
       res.status(400).json({ "error": err.message });
       return;
@@ -584,7 +584,7 @@ app.post('/companydetailsD', (req, res) => {
 })
 
 app.get('/allcompanies', (req, res) => {
-  db.all("SELECT name FROM company", [], (err, rows) => {
+  db.all("SELECT Name FROM Companies", [], (err, rows) => {
     if (err) {
       res.status(400).json({ "error": err.message });
       return;
@@ -598,7 +598,7 @@ app.get('/allcompanies', (req, res) => {
 
 app.get('/industry', (req, res) => {
   var industryID = 1;
-  db.all("SELECT * FROM industrystandards WHERE industry_id = ?", [industryID], (err, rows) => {
+  db.all("SELECT * FROM IndustryStandards WHERE ID = ?", [industryID], (err, rows) => {
     if (err) {
       res.status(400).json({ "error": err.message });
       return;
