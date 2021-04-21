@@ -26,6 +26,7 @@ import { AiFillCaretDown } from 'react-icons/ai';
 
 
 import BrandLogo from '../../assets/brandBreakdown.svg';
+import { pink } from '@material-ui/core/colors';
 
 const companyinfo = [
     {
@@ -44,7 +45,8 @@ const companyinfo = [
     SimilarCompany3: "",
     SimilarCompany4: "",
     Subsidiary: "",
-    CompanyID: ""
+    CompanyID: "",
+    A: 0
     }
 ]
 
@@ -114,9 +116,11 @@ function rand() {
         color: '#3D3E3F',
         fontSize: '16px'
     },
-    // expandMenu:{
-    //     backgroundColor: '#F2F2F2'
-    // },
+    expandMenu:{
+        fontFamily: 'DM Sans',
+        fontWeight: 'normal',
+        fontSize: '16px'
+     },
     paper: {
         position: 'absolute',
         width: 900,
@@ -146,6 +150,7 @@ function Company ({match, location})  {
     const [openID, setOpenID] = useState(0);
     const [showInfo, setShowInfo] = useState(false)
     const [companyDetails, setCompanyDetails] = React.useState(companyinfo);
+    // const [brandScores, setBrandScores] = React.useState(companyScores);
     const [fact, setFact] = React.useState(companyFacts);
     const [news, setNews] = React.useState(companyNews);
     const [citations, setCitations] = React.useState(companyCit);
@@ -271,7 +276,7 @@ function Company ({match, location})  {
 
     }
 
-    const RenderInfo = () => {
+    const BrandPerformance = () => {
 
         const [tabView, setTabView] = useState(window.innerWidth < 800);
         
@@ -290,7 +295,65 @@ function Company ({match, location})  {
 
         if(!tabView) { //web view
             return(
-                <div className='brand_info-text'>Vulputate sit condimentum nulla eget placerat tincidunt.</div>
+                <div className='brand_info-text'>Performance is scored following an assessment of company policies, practices and actions taken in each of the following categories. To understand the scores given, click on Detailed Breakdown</div>
+                )
+        } else if ( showInfo && tabView ) { //tab view
+            return(
+                    <Popup handleCloseInfo={handleCloseInfo} />
+                )
+        } else return null
+
+    }
+
+    const CompanyInitiative = () => {
+
+        const [tabView, setTabView] = useState(window.innerWidth < 800);
+        
+        useLayoutEffect(() => {
+            function updateSize() {
+              if (window.innerWidth > 800) {
+                setTabView(false);
+              } else {
+                setTabView(true);
+              }
+            }
+            window.addEventListener("resize", updateSize);
+            updateSize();
+            return () => window.removeEventListener("resize", updateSize);
+          }, []);
+
+        if(!tabView) { //web view
+            return(
+                <div className='brand_info-text'>A showcase of brand initiatives and achievements that are not directly correlated to the scores given</div>
+                )
+        } else if ( showInfo && tabView ) { //tab view
+            return(
+                    <Popup handleCloseInfo={handleCloseInfo} />
+                )
+        } else return null
+
+    }
+
+    const InTheNews = () => {
+
+        const [tabView, setTabView] = useState(window.innerWidth < 800);
+        
+        useLayoutEffect(() => {
+            function updateSize() {
+              if (window.innerWidth > 800) {
+                setTabView(false);
+              } else {
+                setTabView(true);
+              }
+            }
+            window.addEventListener("resize", updateSize);
+            updateSize();
+            return () => window.removeEventListener("resize", updateSize);
+          }, []);
+
+        if(!tabView) { //web view
+            return(
+                <div className='brand_info-text'>News and recent events summarized with an assessment of the company’s actions taken in response</div>
                 )
         } else if ( showInfo && tabView ) { //tab view
             return(
@@ -307,7 +370,7 @@ function Company ({match, location})  {
         // setLoading(true);
         // let data = companyDetails;
         axios.post(
-            '/companyscore',
+            '/companyscores',
             {},
                 {
                     params: companyName
@@ -349,10 +412,10 @@ function Company ({match, location})  {
                 data[0]["SimilarCompany3"] = resp.data[0]["SimilarCompany3"];
                 data[0]["SimilarCompany4"] = resp.data[0]["SimilarCompany4"];
                 data[0]["Subsidiary"] = resp.data[0]["Subsidiary"];
+                console.log(data[0]["Subsidiary"]);
                 setCompanyDetails(data);
                 setState(resp.data);
             })
- 
                 axios.post(
                     '/facts', 
                     {},
@@ -442,12 +505,12 @@ function Company ({match, location})  {
     }
 
     const News = (newsinput) => {
-        console.log(newsinput);
+        //console.log(newsinput);
         return Object.entries(newsinput[0]['Category']).map((category, i) => {
-            console.log(newsinput[0]["Title"][i]);
+            //console.log(newsinput[0]["Title"][i]);
             return <div>
             <div className='news-card'>
-                <img style={{background:`url("${newsinput[0]["Photo"][i]}") rgba(87, 114, 104, 0.5)`}} />
+                <img style={{background:`url("${newsinput[0]["Photo"][i]}") rgba(87, 114, 104, 0.5)`, objectFit: 'scale-down'}} />
                 <div className='news-category'>
                     <span className='news-category-title'>{category[1]}</span>
                     <span className='news-category-year'>{newsinput[0]["Year"][i]}</span>
@@ -457,11 +520,32 @@ function Company ({match, location})  {
                     <div className = 'News-Description-info'>{newsinput[0]["Summary"][i]}</div>
                     <div style={{fontSize:'14px'}}>
                         <span>Responsibility Taken?</span>
-                        <span style={{color:'#E94921', marginLeft:'5px'}}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
+
+                        {newsinput[0]["ResponsibilityTaken"][i] == "No" &&
+                            <span style={{color:'#E94921', marginLeft:'5px'}}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
+                        ||
+                        newsinput[0]["ResponsibilityTaken"][i] == "Yes" &&
+                            <span style={{color:'#28a745', marginLeft:'5px'}}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
+                        ||
+                        newsinput[0]["ResponsibilityTaken"][i] == "Maybe" &&
+                            <span style={{color:'#F29A72', marginLeft:'5px'}}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
+                        }
+
+
                     </div>
                     <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
                         <span>Issue Addressed?</span>
-                        <span style={{color:'#28a745', marginLeft:'5px'}}>{newsinput[0]["IssueAddressed"][i]}</span>
+
+                        
+                        {newsinput[0]["IssueAddressed"][i] == "No" &&
+                            <span style={{color:'#E94921', marginLeft:'5px'}}>{newsinput[0]["IssueAddressed"][i]}</span>
+                        || 
+                        newsinput[0]["IssueAddressed"][i] == "Yes" &&
+                            <span style={{color:'#28a745', marginLeft:'5px'}}>{newsinput[0]["IssueAddressed"][i]}</span>
+                        || 
+                        newsinput[0]["ResponsibilityTaken"][i] == "Maybe" &&
+                            <span style={{color:'#F29A72', marginLeft:'5px'}}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
+                        }
                         <button className='News-read-more-btn' onClick={() => handleOpen(i, news[0]["ID"][i])}>read more</button>
                     </div>
                 </div>
@@ -477,8 +561,13 @@ function Company ({match, location})  {
                 <div className = 'Left-Menu'>                
                     <div>
                         <img className='brand-logo' src={`${companyDetails[0]["Logo"]}`} alt={`${companyDetails[0]["Logo"]}`} />
-                        <div style={{fontSize:'14px', fontWeight:'500', color:'#797979', margin:'10px 0'}}>Subsidiary of {companyDetails[0]["Subsidiary"]}</div>
-                        <p style={{marginTop:"5%", color: '#4F4F4F'}}><b>{companyName}</b> {companyDetails[0]["Description"]}</p>
+                        
+                        {/* conditional rendering for subsidiary */}
+                        { companyDetails[0]["Subsidiary"] != null  &&
+                            <div style={{fontSize:'14px', fontWeight:'500', color:'#797979', margin:'10px 0'}}>Subsidiary of {companyDetails[0]["Subsidiary"]}</div>
+                        }
+
+                        <p style={{marginTop:"5%", color: '#4F4F4F'}}><b>{companyDetails[0]["Name"]}</b> {companyDetails[0]["Description"]}</p>
                     </div>
                     <div>
                         <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginLeft: '105px'}}>industry average</div>
@@ -500,7 +589,7 @@ function Company ({match, location})  {
                     <div className = 'Brand-Section-title'>
                         Brand Performance 
                         <InfoIcon className='brand_info-icon' onClick={() => setShowInfo(!showInfo)} />
-                        <RenderInfo />
+                        <BrandPerformance />
                     </div>
                     <div className = 'Decorative-Line'></div>
                 
@@ -522,7 +611,7 @@ function Company ({match, location})  {
                                     WORKER EXPLOITATION
                                     <div className = 'Description'>
                                         <div className='Description-text'>
-                                            Discrimination, Gender Equality, Culture Diversity, Inclusivity
+                                            Child Labour, Forced Labour, Living Wage, Working Conditions
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {WorkerExploitImg}/>
@@ -534,7 +623,7 @@ function Company ({match, location})  {
                                     WASTE & POLLUTION
                                     <div className = 'Description'>
                                         <div className='Description-text'>
-                                            Discrimination, Gender Equality, Culture Diversity, Inclusivity
+                                            Air Pollution, Water Pollution & Waste, Packaging Waste, Material Waste
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {WasteImg}/>
@@ -546,7 +635,7 @@ function Company ({match, location})  {
                                     ETHICAL SOURCING
                                     <div className = 'Description'>
                                         <div className='Description-text'>
-                                            Discrimination, Gender Equality, Culture Diversity, Inclusivity
+                                            Animal Welfare, Cotton Farming, Deforestation
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {SustainableImg}/>
@@ -559,7 +648,7 @@ function Company ({match, location})  {
                     <div className = 'Brand-Section-title'>
                         Company Initiatives 
                         <InfoIcon className='brand_info-icon' onClick={() => setShowInfo(!showInfo)} />
-                        <RenderInfo />
+                        <CompanyInitiative />
                         </div>
 
                         <div className = 'Decorative-Line'></div>
@@ -567,7 +656,11 @@ function Company ({match, location})  {
     
                     
                     <div className = 'In-The-News'>
-                        <div className = 'Brand-Section-title'>In The News</div>
+                        <div className = 'Brand-Section-title'>
+                            In The News
+                            <InfoIcon className='brand_info-icon' onClick={() => setShowInfo(!showInfo)} />
+                             <InTheNews />
+                            </div>
                         <div className = 'Decorative-Line'></div>
                             <div className='In-The-News-container'>
                                 {News(news)}
@@ -580,14 +673,16 @@ function Company ({match, location})  {
                             >
                                 {body}
                             </Modal>
+                    
                     </div>
                     <div className="similar_brands">
                         <div className = 'Brand-Section-title'>Similar Brands</div>
                         <div className = 'Decorative-Line'></div>
                         <div className="similar_brands-container"> 
                             <div>
-                                <div>{companyDetails[0]["SimilarCompany1"]}</div>
-                                <div className='brand_box'>
+                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany1"]}>{companyDetails[0]["SimilarCompany1"]}</Link> 
+                                {/* <div>{companyDetails[0]["SimilarCompany1"]}</div> */}
+                                <div className='brand_box'> 
                                     <div className="d-flex justify-content-center">
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
                                     </div>
@@ -598,7 +693,8 @@ function Company ({match, location})  {
                                 </div>
                             </div>
                             <div>
-                                <div>{companyDetails[0]["SimilarCompany2"]}</div>
+                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany2"]}>{companyDetails[0]["SimilarCompany2"]}</Link> 
+                                {/* <div>{companyDetails[0]["SimilarCompany2"]}</div> */}
                                 <div className='brand_box'>
                                     <div className="d-flex justify-content-center">
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
@@ -610,7 +706,8 @@ function Company ({match, location})  {
                                 </div>
                             </div>                        
                             <div>
-                                <div>{companyDetails[0]["SimilarCompany3"]}</div>
+                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany3"]}>{companyDetails[0]["SimilarCompany3"]}</Link> 
+                                {/* <div>{companyDetails[0]["SimilarCompany3"]}</div> */}
                                 <div className='brand_box'>
                                     <div className="d-flex justify-content-center">
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
@@ -622,7 +719,8 @@ function Company ({match, location})  {
                                 </div>
                             </div>
                             <div>
-                                <div>{companyDetails[0]["SimilarCompany4"]}</div>
+                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany4"]}>{companyDetails[0]["SimilarCompany4"]}</Link> 
+                                {/* <div>{companyDetails[0]["SimilarCompany4"]}</div> */}
                                 <div className='brand_box'>
                                     <div className="d-flex justify-content-center">
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
