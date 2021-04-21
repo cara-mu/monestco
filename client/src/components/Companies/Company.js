@@ -314,12 +314,12 @@ function Company ({match, location})  {
                 }
         ).then((resp) => {
             let data = companyDetails;
-            let score = (parseInt(resp.data[0]["A"]) + parseInt(resp.data[0]["B"]) + parseInt(resp.data[0]["C"]) + parseInt(resp.data[0]["D"]))/4;
+            let score = (parseInt(resp.data[0]["Ascore"]) + parseInt(resp.data[0]["Bscore"]) + parseInt(resp.data[0]["Cscore"]) + parseInt(resp.data[0]["Dscore"]))/4;
             data[0]["TotalScore"] = score;
-            data[0]["A"] = resp.data[0]["A"];
-            data[0]["B"] = resp.data[0]["B"];
-            data[0]["C"] = resp.data[0]["C"];
-            data[0]["D"] = resp.data[0]["D"];
+            data[0]["Ascore"] = resp.data[0]["Ascore"];
+            data[0]["Bscore"] = resp.data[0]["Bscore"];
+            data[0]["Cscore"] = resp.data[0]["Cscore"];
+            data[0]["Dscore"] = resp.data[0]["Dscore"];
             let ratio = 324*score/100;
             data[0]["SliderLength"] = ratio;
             setCompanyDetails(data);
@@ -335,10 +335,10 @@ function Company ({match, location})  {
             )
             .then((resp) => {
                 let data = companyDetails;
-                data[0]["A_ID"] = resp.data[0]["AID"];
-                data[0]["B_ID"] = resp.data[0]["BID"];
-                data[0]["C_ID"] = resp.data[0]["CID"];
-                data[0]["D_ID"] = resp.data[0]["DID"];
+                data[0]["A_ID"] = resp.data[0]["A_ID"];
+                data[0]["B_ID"] = resp.data[0]["B_ID"];
+                data[0]["C_ID"] = resp.data[0]["C_ID"];
+                data[0]["D_ID"] = resp.data[0]["D_ID"];
                 data[0]["Category"] = resp.data[0]["Category"];
                 data[0]["Description"] = resp.data[0]["Description"];
                 data[0]["IndustryStandardsID"] = resp.data[0]["IndustryStandardsID"];
@@ -483,7 +483,6 @@ function Company ({match, location})  {
                     <div>
                         <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginLeft: '105px'}}>industry average</div>
                         <AiFillCaretDown style={{marginLeft: '155px'}}/>
-                        {companyDetails[0]["SliderLength"]}
                         <div class="horizontalline" style={{width: `${companyDetails[0]["SliderLength"]}px` }}></div>
                         <div class="verticalline"></div>
                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true"/>
@@ -515,7 +514,7 @@ function Company ({match, location})  {
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {DiversityImg}/>
-                                        <div className="Description-score"><span>{companyDetails[0]["A"]}</span><span>/100</span></div>
+                                        <div className="Description-score"><span>{companyDetails[0]["Ascore"]}</span><span>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -527,7 +526,7 @@ function Company ({match, location})  {
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {WorkerExploitImg}/>
-                                        <div className="Description-score"><span>{companyDetails[0]["B"]}</span><span>/100</span></div>
+                                        <div className="Description-score"><span>{companyDetails[0]["Bscore"]}</span><span>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -539,7 +538,7 @@ function Company ({match, location})  {
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {WasteImg}/>
-                                        <div className="Description-score"><span>{companyDetails[0]["C"]}</span><span>/100</span></div>
+                                        <div className="Description-score"><span>{companyDetails[0]["Cscore"]}</span><span>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -551,7 +550,7 @@ function Company ({match, location})  {
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {SustainableImg}/>
-                                        <div className="Description-score"><span>{companyDetails[0]["D"]}</span><span>/100</span></div>
+                                        <div className="Description-score"><span>{companyDetails[0]["Dscore"]}</span><span>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
