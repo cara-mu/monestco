@@ -45,8 +45,7 @@ const companyinfo = [
     SimilarCompany3: "",
     SimilarCompany4: "",
     Subsidiary: "",
-    CompanyID: "",
-    A: 0
+    CompanyID: ""
     }
 ]
 
@@ -572,7 +571,7 @@ function Company ({match, location})  {
                     <div>
                         <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginLeft: '105px'}}>industry average</div>
                         <AiFillCaretDown style={{marginLeft: '155px'}}/>
-                        {companyDetails[0]["SliderLength"]}
+                        {/* {companyDetails[0]["SliderLength"]} */}
                         <div class="horizontalline" style={{width: `${companyDetails[0]["SliderLength"]}px` }}></div>
                         <div class="verticalline"></div>
                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true"/>
@@ -689,7 +688,7 @@ function Company ({match, location})  {
                                     </div>
                                     <div className="brand_inside_text ml-10perc">
                                         <span>50</span>
-                                        <span>/154</span>
+                                        <span>/100</span>
                                     </div>
                                 </div>
                             </div>
@@ -702,7 +701,7 @@ function Company ({match, location})  {
                                     </div>
                                     <div className="brand_inside_text ml-10perc">
                                         <span>42</span>
-                                        <span>/154</span>
+                                        <span>/100</span>
                                     </div>
                                 </div>
                             </div>                        
@@ -728,7 +727,7 @@ function Company ({match, location})  {
                                     </div>
                                     <div className="brand_inside_text ml-10perc">
                                         <span>48</span>
-                                        <span>/154</span>
+                                        <span>/100</span>
                                     </div>
                                 </div>
                             </div>                            
