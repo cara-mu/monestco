@@ -456,8 +456,8 @@ app.post('/citationsNews', function(req, res, next) {
 
 app.post('/companyscores', function(req,res,next) {
   var companyName = req.query['0'];
-  // db.all("SELECT A_scores.A, B_scores.B FROM A_scores, B_scores WHERE ((A_Scores.CompanyID IN (SELECT ID FROM companies WHERE name = ?) AND)", [companyName], (err, row) => {
-  db.all("SELECT A.Ascore, B.Bscore, C.Cscore, D.Dscore FROM A, B, C, D WHERE A.CompanyID IN (SELECT ID FROM Companies WHERE Name = ?) AND B.CompanyID IN (SELECT ID FROM Companies WHERE Name = ?) AND C.CompanyID IN (SELECT ID FROM companies WHERE Name = ?) AND D.CompanyID IN (SELECT ID FROM companies WHERE Name = ?)", [companyName, companyName, companyName, companyName], (err, row) => {
+  console.log(companyName);
+  db.all("SELECT * FROM A, B, C, D WHERE A.CompanyID IN (SELECT ID FROM Companies WHERE Name = ?) AND B.CompanyID IN (SELECT ID FROM Companies WHERE Name = ?) AND C.CompanyID IN (SELECT ID FROM Companies WHERE Name = ?) AND D.CompanyID IN (SELECT ID FROM Companies WHERE Name = ?)", [companyName, companyName, companyName, companyName], (err, row) => {
     if (err) {
       res.status(400).json({ "error": err.message });
       return;
@@ -474,6 +474,20 @@ app.post('/companyscores', function(req,res,next) {
 app.post('/companyname', function(req,res,next){
   var companyName = req.query['0'];
   db.all("SELECT * FROM Companies WHERE Name = ?", [companyName], (err, row) => {
+    if (err) {
+        res.status(400).json({ "error": err.message });
+        return;
+    }
+    if(row){
+      res.status(200).json(row);
+    }
+    next();
+});
+})
+
+app.post('/companypic', function(req,res,next){
+  var companyName = req.query['0'];
+  db.all("SELECT Logo FROM Companies WHERE Name = ?", [companyName], (err, row) => {
     if (err) {
         res.status(400).json({ "error": err.message });
         return;
@@ -536,7 +550,6 @@ app.post('/companydetailsA', (req, res) => {
     }
     if(rows){
       res.status(200).json({ rows });
-      console.log(rows);
     }
   });
 })
@@ -550,7 +563,6 @@ app.post('/companydetailsB', (req, res) => {
     }
     if(rows){
       res.status(200).json({ rows });
-      console.log(rows);
     }
   });
 })
@@ -564,7 +576,6 @@ app.post('/companydetailsC', (req, res) => {
     }
     if(rows){
       res.status(200).json({ rows });
-      console.log(rows);
     }
   });
 })
@@ -578,7 +589,6 @@ app.post('/companydetailsD', (req, res) => {
     }
     if(rows){
       res.status(200).json({ rows });
-      console.log(rows);
     }
   });
 })

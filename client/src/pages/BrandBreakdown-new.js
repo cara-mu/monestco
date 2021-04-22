@@ -6,6 +6,7 @@ import HighlightOffRoundedIcon from '@material-ui/icons/HighlightOffRounded';
 import ExpandMoreSharpIcon from "@material-ui/icons/ExpandMoreSharp";
 import "../styles/BrandBreakdown.css";
 import "../styles/BrandBreakdown-new.css";
+import axios from 'axios';
 
 const field = [
   {
@@ -484,22 +485,56 @@ const Mainfield = ({ item, index }) => {
 
 class BrandBreakdown extends React.Component {
   state = {
-    companyName: ""
+    companyName: "",
+    companyScore: {TotalScore: 0, Ascore: 0, Bscore: 0, Cscore: 0, Dscore: 0},
+    logo: "",
+    dimensions: {}
   }
 
   componentDidMount () {
-    this.setState({companyName: this.props.match.params.companyName})
-    console.log(this.state.companyName);
+    this.setState({companyName: this.props.match.params.companyName});
+    axios.post(
+      '/companyscores',
+      {},
+          {
+              params: this.props.match.params.companyName
+          }
+      ).then((resp) => {
+        console.log(resp.data);
+        // console.log(this.state.companyName);
+        let score = (parseInt(resp.data[0]["Ascore"]) + parseInt(resp.data[0]["Bscore"]) + parseInt(resp.data[0]["Cscore"]) + parseInt(resp.data[0]["Dscore"]))/4;
+        let data = {TotalScore: score, Ascore: resp.data[0]["Ascore"], Bscore: resp.data[0]["Bscore"], Cscore: resp.data[0]["Cscore"], Dscore: resp.data[0]["Dscore"]};
+        this.setState({companyScore: data});
+        console.log(this.state.companyScore);
+        // data[0]["Ascore"] = resp.data[0]["Ascore"];
+        // data[0]["Bscore"] = resp.data[0]["Bscore"];
+        // data[0]["Cscore"] = resp.data[0]["Cscore"];
+        // data[0]["Dscore"] = resp.data[0]["Dscore"];
+        // let ratio = 324*score/100;
+        // data[0]["SliderLength"] = ratio;
+    });
+    axios.post(
+      '/companypic',
+      {},
+        {
+          params: this.props.match.params.companyName
+        }
+    ).then(resp => {
+      this.setState({logo: resp.data[0].Logo})
+    })
   }
 
   render() {
+    const {width, height} = this.state.dimensions;
+    console.log(width);
+    console.log("width");
+
   return (
     <div className="breakdown_container">
-      {/* {props} */}
       <div className="breakdown_logo">
-        <img src={Logo} className="breakdown_logoImage" />
+        <img src={this.state.logo}  className="breakdown_logoImage" />
         <p className="breakdown_logoText">
-          48<span style={{ fontSize: 32 }}>/154</span>
+          {this.state.companyScore.TotalScore}<span style={{ fontSize: 32 }}>/154</span>
         </p>
       </div>
       <div className="breakdown_info-container">

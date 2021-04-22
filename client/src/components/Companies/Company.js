@@ -582,7 +582,7 @@ function Company ({match, location})  {
                             <span className='navy'>{Math.round(companyDetails[0]["TotalScore"], 2)}</span>
                             <span>/100</span>
                         </div>
-                        <Link className='breakDown-link'>Detailed Breakdown</Link>
+                        <Link to={`/brand-breakdown/${companyName}`} className='breakDown-link'>Detailed Breakdown</Link>
                     </div>
                 </div>
             </Grid>

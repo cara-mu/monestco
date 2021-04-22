@@ -16,8 +16,13 @@
 
 .breakdown_logoImage {
     margin-top: 87px;
-    width: 115.67px;
-    height: 115.37px;
+    /* width: 15%; */
+    /* border: none !important; */
+    height: 50%;
+    margin-top: 9%;
+    /* object-fit: cover; */
+    /* resizeMode: cover; */
+    /* background-repeat: no-repeat !important; */
 }
 
 .breakdown_logoText {
