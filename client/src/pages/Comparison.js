@@ -17,7 +17,7 @@ const Comparison = () => {
   const [showList, setShowList] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [selectedCompaniesList, setSelectedCompaniesList] = useState(["","",""]);
-  const [ mobileView, setMobileView ] = useState(window.innerWidth < 600)
+  const [mobileView, setMobileView ] = useState(window.innerWidth < 600)
   const [showSearchMenu, setSearchMenu] = useState(false)
 
   const handleChange = (e) => {

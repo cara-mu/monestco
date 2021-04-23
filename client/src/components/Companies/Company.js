@@ -144,7 +144,7 @@ function Company ({match, location})  {
     
     const [showFact,setShowFact] = useState(false);
     
-    const location6 = useLocation();
+    const findLocation = useLocation();
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
@@ -554,7 +554,7 @@ function Company ({match, location})  {
                             setNews(data);
                             setState(resp.data);
                         })
-    }, [location6]);
+    }, [findLocation]);
 
     const Facts = (factinput) => {
         return Object.entries(factinput[0]['Heading']).map((heading, i) => {
