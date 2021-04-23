@@ -833,6 +833,14 @@ const NestedField = ({ item }) => {
   const [tabView, setTabView] = useState(window.innerWidth < 800);
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
   const [showPopup, setShowPopup] = useState(false);
+  let t = 0;
+
+  function increment(num) {
+    if(num > 2){
+      num = 0
+    }
+    num = num + 1;
+  }
 
   useLayoutEffect(() => {
     function updateSize() {
@@ -904,7 +912,6 @@ const NestedField = ({ item }) => {
                       }}
                     />
                     <span className="info-text-hover">
-                      {v[0]}
                     </span>
                     {showPopup && tabView && (
                       <ComparePopup
