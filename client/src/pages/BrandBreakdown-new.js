@@ -11,67 +11,76 @@ import axios from 'axios';
 const field = [
   {
     mainField: "DIVERSITY & INCLUSION",
-    mainScore: "5.5/22",
+    mainScore: 0,
     subfield: [
       {
         mainNestedField: "Discrimination",
-        mainNestedScore: "3/4",
+        mainNestedScore: 0,
         subNestedField: [
           {
-            title:
+            titles: [
               "Prohibits discrimination throughout all stages of the organization",
-            scores: "5.5/22",
+              "Actively works to identify and respond to discrimination concerns"
+            ],
+            scores: [0, 0],
             texts: [
-              "Prohibits discrimination throughout the organization",
-              "Identifies and addresses discrimination concerns",
+              "",
+              "",
             ],
           },
         ],
       },
       {
         mainNestedField: "Gender Equality",
-        mainNestedScore: "3/4",
+        mainNestedScore: 0,
         subNestedField: [
           {
-            title:
-              "Prohibits discrimination throughout all stages of the organization",
-            scores: "5.5/22",
+            title: [
+              "Commits to increasing gender diversity throughout the organization",
+              "Maintains strong female representation at all levels of leadership",
+              "Ensures equal pay for equal work"
+            ],
+            scores: [0, 0, 0],
             texts: [
-              "Commits to improving gender equality",
-              "Has strong female representation in leadership positions",
-              "Ensures equal pay for equal work",
+              "",
+              "",
+              "",
             ],
           },
         ],
       },
       {
         mainNestedField: "Cultural Diversity",
-        mainNestedScore: "3/4",
+        mainNestedScore: 0,
         subNestedField: [
           {
-            title:
-              "Prohibits discrimination throughout all stages of the organization",
-            scores: "5.5/22",
+            title: [
+              "Commits to increasing cultural diversity throughout the organization",
+              "Maintains diverse ethnic representation at all levels of leadership",
+              "Actively supports BIPOC and underrepresented communities"
+            ],
+            scores: [0, 0, 0],
             texts: [
-              "Commits to increasing cultural diversity",
-              "Has diverse ethnic representation in leadership positions",
-              "Supports BIPOC and marginalized communities",
+              "",
+              "",
+              "",
             ],
           },
         ],
       },
       {
         mainNestedField: "Inclusivity",
-        mainNestedScore: "3/4",
+        mainNestedScore: 0,
         subNestedField: [
           {
-            title:
-              "Prohibits discrimination throughout all stages of the organization",
-            scores: "5.5/22",
+            title: [
+              "Fosters an inclusive workplace culture for all types of people",
+              "Prioritizes the mental health and wellbeing of employees"
+            ],
+            scores: [0, 0],
             texts: [
-              "Fosters an inclusive workplace for LGBTQ+ employees",
-              "Supports the growth of employees with disabilities",
-              "Promotes body positivity and inclusivity to consumers",
+              "",
+              ""
             ],
           },
         ],
@@ -80,71 +89,88 @@ const field = [
   },
   {
     mainField: "WORKER EXPLOITATION",
-    mainScore: "5.5/22",
+    mainScore: 0,
     subfield: [
       {
         mainNestedField: "Child Labour",
-        mainNestedScore: "3/4",
+        mainNestedScore: 0,
         subNestedField: [
           {
-            title:
-              "Prohibits discrimination throughout all stages of the organization",
-            scores: "5.5/22",
+            title: [
+              "Prohibits the use of child labour throughout the value chain",
+              "Actively works to identify and prevent child labour violations",
+              "Enrolls child labour victims in school after discovering violations"
+            ],
+            scores: [0, 0, 0],
             texts: [
-              "Prohibits the use of child labour",
-              "Identifies and prevents child labour violations",
-              "Enrolls child labour victims in educational programs",
+              "",
+              "",
+              "",
             ],
           },
         ],
       },
       {
         mainNestedField: "Forced Labour",
-        mainNestedScore: "3/4",
+        mainNestedScore: 0,
         subNestedField: [
           {
-            title:
-              "Prohibits discrimination throughout all stages of the organization",
-            scores: "5.5/22",
+            title: [
+              "Prohibits the use of forced labour throughout the value chain",
+              "Actively works to identify and prevent forced labour violations",
+              "Supports the recovery of forced labour victims after discovering violations"
+            ],
+            scores: [0, 0, 0],
             texts: [
-              "Prohibits the use of forced labour",
-              "Identifies and prevents forced labour violations",
-              "Supports the recovery of forced labour victims",
+              "",
+              "",
+              "",
             ],
           },
         ],
       },
       {
         mainNestedField: "Living Wage",
-        mainNestedScore: "3/4",
+        mainNestedScore: 0,
         subNestedField: [
           {
-            title:
-              "Prohibits discrimination throughout all stages of the organization",
-            scores: "5.5/22",
+            title: [
+              "Ensures all factory workers are paid a living wage",
+              "Works to (prioritizes) improve wages throughout the value chain",
+              "Ensures wages and benefits are being paid on time and in full",
+              "Guarantees the right to freedom of association and collective bargaining",
+              "Advocates for wage progression and fair compensation in the industry"
+            ],
+            scores: [0, 0, 0, 0, 0],
             texts: [
-              "Pays all factory workers a living wage",
-              "Commits to fair compensation and higher wages",
-              "Pays wages and benefits on time and in full",
-              "Guarantees the right to freedom of association",
+              "",
+              "",
+              "",
+              "",
+              ""
             ],
           },
         ],
       },
       {
         mainNestedField: "Working Conditions",
-        mainNestedScore: "3/4",
+        mainNestedScore: 0,
         subNestedField: [
           {
-            title:
-              "Prohibits discrimination throughout all stages of the organization",
-            scores: "5.5/22",
+            title: [
+              "Works to (prioritizes) improve factory health and safety conditions",
+              "Ensures workers are not forced to work excessive hours",
+              "Prohibits all forms of harassment or abuse towards workers",
+              "Actively works to identify and prevent mistreatment of workers",
+              "Compensates mistreated workers after discovering violations"
+            ],
+            scores: [0, 0, 0, 0, 0],
             texts: [
-              "Prioritizes factory health and safety conditions",
-              "Prohibits excessive work hours",
-              "Prohibits all forms of harassment or abuse",
-              "Identifies and prevents mistreatment of workers",
-              "Compensates and supports mistreated workers",
+              "",
+              "",
+              "",
+              "",
+              "",
             ],
           },
         ],
@@ -153,72 +179,88 @@ const field = [
   },
   {
     mainField: "WASTE & POLLUTION",
-    mainScore: "5.5/22",
+    mainScore: 0,
     subfield: [
       {
         mainNestedField: "Air Pollution",
-        mainNestedScore: "3/4",
+        mainNestedScore: 0,
         subNestedField: [
           {
-            title:
-              "Prohibits discrimination throughout all stages of the organization",
-            scores: "5.5/22",
-            texts: [
-              "Commits to reducing energy consumption",
-              "Commits to reducing greenhouse gas emissions",
+            title: [
+              "Commits to using less energy throughout the value chain",
+              "Commits to reducing greenhouse gas emissions throughout the value chain",
               "Works towards reducing the operational carbon footprint",
-              "Works with suppliers to reduce manufacturing pollution",
+              "Works with suppliers to reduce manufacturing carbon footprints"
+            ],
+            scores: [0, 0, 0, 0],
+            texts: [
+              "",
+              "",
+              "",
+              "",
             ],
           },
         ],
       },
       {
         mainNestedField: "Water Pollution & Wastes",
-        mainNestedScore: "3/4",
+        mainNestedScore: 0,
         subNestedField: [
           {
-            title:
-              "Prohibits discrimination throughout all stages of the organization",
-            scores: "5.5/22",
+            title: [
+              "Commits to using less water throughout the value chain",
+              "Works with suppliers to recycle water and reduce usage",
+              "Eliminates use of toxic chemicals in the production of products",
+              "Filters wastewater to avoid contaminating fresh water"
+            ],
+            scores: [0, 0, 0, 0],
             texts: [
-              "Commits to reducing water consumption",
-              "Works with suppliers to reduce water waste",
-              "Eliminates use of hazardous chemicals in products",
-              "Filters wastewater to prevent freshwater pollution",
+              "",
+              "",
+              "",
+              "",
             ],
           },
         ],
       },
       {
         mainNestedField: "Packaging Waste",
-        mainNestedScore: "3/4",
+        mainNestedScore: 0,
         subNestedField: [
           {
-            title:
-              "Prohibits discrimination throughout all stages of the organization",
-            scores: "5.5/22",
+            title: [
+              "Reduces use of plastic packaging and shopping bags",
+              "Uses recycled plastics and paper packaging materials",
+              "Ensures all used packaging can be reused, recycled or composted",
+              "Works with suppliers to reduce, reuse and recycle all packaging waste"
+            ],
+            scores: [0, 0, 0, 0],
             texts: [
-              "Does not use plastic bags and packaging",
-              "Uses recycled packaging materials",
-              "Ensures packaging is reused, recycled or composted",
-              "Works with suppliers to reduce packaging waste",
+              "",
+              "",
+              "",
+              "",
             ],
           },
         ],
       },
       {
         mainNestedField: "Material Waste",
-        mainNestedScore: "3/4",
+        mainNestedScore: 0,
         subNestedField: [
           {
-            title:
-              "Prohibits discrimination throughout all stages of the organization",
-            scores: "5.5/22",
+            title: [
+              "Uses recycled materials in the production of products",
+              "Repurposes or donates damaged and excess products",
+              "Offers an effective take-back or repair program for customers",
+              "Works with suppliers to reduce, reuse and recycle all material waste"
+            ],
+            scores: [0, 0, 0, 0],
             texts: [
-              "Uses recycled materials in products",
-              "Repurposes damaged and excess products",
-              "Offers consumer take-back or repair programs",
-              "Works with suppliers to reduce material waste",
+              "",
+              "",
+              "",
+              "",
             ],
           },
         ],
@@ -227,53 +269,63 @@ const field = [
   },
   {
     mainField: "ETHICAL SOURCING",
-    mainScore: "5.5/22",
+    mainScore: 0,
     subfield: [
       {
         mainNestedField: "Cotton Farming",
-        mainNestedScore: "3/4",
+        mainNestedScore: 0,
         subNestedField: [
           {
-            title:
-              "Prohibits discrimination throughout all stages of the organization",
-            scores: "5.5/22",
+            title: [
+              "Sources sustainable cotton from certified farms",
+              "Actively works to prevent unethical cotton farming practices"
+            ],
+            scores: [0, 0],
             texts: [
-              "Sources sustainably produced cotton",
-              "Advocates against unethical farming practices",
+              "",
+              "",
             ],
           },
         ],
       },
       {
         mainNestedField: "Deforestation",
-        mainNestedScore: "3/4",
+        mainNestedScore: 0,
         subNestedField: [
           {
-            title:
-              "Prohibits discrimination throughout all stages of the organization",
-            scores: "5.5/22",
+            title: [
+              "Sources sustainable forest-based fabrics from certified suppliers",
+              "Uses paper packaging materials from sustainable sources",
+              "Actively works to protect forests and stop deforestation"
+            ],
+            scores: [0, 0 ,0],
             texts: [
-              "Sources sustainably produced forest-based fabrics",
-              "Uses paper materials from sustainable sources",
-              "Protects forests from deforestation",
+              "",
+              "",
+              "",
             ],
           },
         ],
       },
       {
         mainNestedField: "Animal Welfare",
-        mainNestedScore: "3/4",
+        mainNestedScore: 0,
         subNestedField: [
           {
-            title:
-              "Prohibits discrimination throughout all stages of the organization",
-            scores: "5.5/22",
+            title: [
+              "Prohibits the inhumane treatment of animals throughout the value chain",
+              "Sources sustainable leather or prohibits use",
+              "Sources sustainable fur or prohibits use",
+              "Sources sustainable wool from non-mulesed sheep",
+              "Sources sustainable down from birds that were never force fed or live plucked"
+            ],
+            scores: [0, 0, 0, 0, 0],
             texts: [
-              "Prohibits animal cruelty",
-              "Sources sustainably produced leather",
-              "Sources sustainably produced fur",
-              "Sources sustainably produced wool",
-              "Sources sustainably produced down",
+              "",
+              "",
+              "",
+              "",
+              ""
             ],
           },
         ],
@@ -305,7 +357,7 @@ const Popup = ({item, closePopup}) => {
     )
 };
 
-const NestedField = ({ item }) => {
+const NestedField = ({ index, item }) => {
   const [tabView, setTabView] = useState(window.innerWidth < 800);
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
   const [showInfo, setShowInfo] = useState(false);
@@ -334,15 +386,16 @@ const NestedField = ({ item }) => {
 
   if (!tabView && !mobileView) {
     //Web-View
-    return (
-      <div className="breakdown_nestedField">
-        <div className="breakdown_nestedField-title">{item.title}</div>
-        <div className="breakdown_nestedField-score">{item.scores}</div>
+    console.log(item);
+    return item.scores.map((score, i)=> {
+      return <div className="breakdown_nestedField">
+        <div className="breakdown_nestedField-title">{item.title} lol</div>
+        <div className="breakdown_nestedField-score">{score}</div>
         <div style={{position:'relative'}}>
           {item.texts.map((text, index) => {
             return (
               <span key={index}>
-                {text}{" "}
+                {text}hixw
               </span>
             );
           })}
@@ -350,7 +403,7 @@ const NestedField = ({ item }) => {
           <span className="breakdown_citation-hover">Fast Retailing Annual Report 2019, Fast Retailing, 2019, pages 25 responsibility.aldogroup.com/indicators/people/diversity/diversity_philosophy</span>
         </div>
       </div>
-    );
+    });
   } else if (tabView && !mobileView) {
     //tab view
     return (
@@ -487,7 +540,12 @@ class BrandBreakdown extends React.Component {
   state = {
     companyName: "",
     companyScore: {TotalScore: 0, Ascore: 0, Bscore: 0, Cscore: 0, Dscore: 0},
+    A: {A1score: 0, A11score: 0, A11text: "", A12score: 0, A12text: "", A2score: 0, A21score: 0, A21text: "", A22score: 0, A22text: "", A23score: 0, A23text: "", A3score: 0, A31score: 0, A31text: "", A32score: 0, A32text: "", A33score: 0, A33text: "", A4score: 0, A41score: 0, A41text: "", A42score: 0, A42text: "", A43score: 0, A43text: ""},
+    B: {Bscore: 0, B1score: 0, B11score: 0, B11text: "", B12score: 0, B12text: "", B13score: 0, B13text: "", B2score: 0, B21score: 0, B21text: "", B22score: 0, B22text: "", B23score: 0, B23text: "", B3score: 0, B31score: 0, B31text: "", B32score: 0, B32text: "", B33score: 0, B33text: "", B34score: 0, B34text: "", B4score: 0, B41score: 0, B41text: "", B42score: 0, B42text: "", B43score: 0, B43text: "", B44score: 0, B44text: ""},
+    C: {C1score: 0, C11score: 0, C11text: "", C12score: 0, C12text: "", C13score: 0, C13text: "", C14score: 0, C14text: "", C2score: 0, C21score: 0, C21text: "", C22score: 0, C22text: "", C23score: 0, C23text: "", C24score: 0, C24text: "", C3score: 0, C31score: 0, C31text: "", C32score: 0, C32text: "", C33score: 0, C33text: "", C34score: 0, C34text: "", C4score: 0, C41score: 0, C41score: 0, C41text: "", C42score: 0, C42text: "", C43score: 0, C43text: "", C44score: 0, C44text: ""},
+    D: {D1score: 0, D11score: 0, D11text: "", D12score: 0, D12text: "", D2score: 0, D21score: 0, D21text: "", D22score: 0, D22text: "", D23score: 0, D23text: "", D3score: 0, D31score: 0, D31text: "", D32score: 0, D32text: "", D33score: 0, D33text: "", D34score: 0, D34text: "", D35score: 0, D35text: ""},
     logo: "",
+    subsidiary: "",
     dimensions: {}
   }
 
@@ -500,27 +558,125 @@ class BrandBreakdown extends React.Component {
               params: this.props.match.params.companyName
           }
       ).then((resp) => {
+        console.log("here");
         console.log(resp.data);
         // console.log(this.state.companyName);
         let score = (parseInt(resp.data[0]["Ascore"]) + parseInt(resp.data[0]["Bscore"]) + parseInt(resp.data[0]["Cscore"]) + parseInt(resp.data[0]["Dscore"]))/4;
         let data = {TotalScore: score, Ascore: resp.data[0]["Ascore"], Bscore: resp.data[0]["Bscore"], Cscore: resp.data[0]["Cscore"], Dscore: resp.data[0]["Dscore"]};
-        this.setState({companyScore: data});
-        console.log(this.state.companyScore);
-        // data[0]["Ascore"] = resp.data[0]["Ascore"];
-        // data[0]["Bscore"] = resp.data[0]["Bscore"];
-        // data[0]["Cscore"] = resp.data[0]["Cscore"];
-        // data[0]["Dscore"] = resp.data[0]["Dscore"];
-        // let ratio = 324*score/100;
-        // data[0]["SliderLength"] = ratio;
+        let dataA = {A1score: resp.data[0]["A1score"], A11score: resp.data[0]["A1.1score"], A11text: resp.data[0]["A1.1long"], A12score: resp.data[0]["A1.2score"], A12text: resp.data[0]["A1.2long"], A2score: resp.data[0]["A2score"], A21score: resp.data[0]["A2.1score"], A21text: resp.data[0]["A2.1long"], A22score: resp.data[0]["A2.2score"], A22text: resp.data[0]["A2.2long"], A23score: resp.data[0]["A2.3score"], A3score: resp.data[0]["A3score"], A31score: resp.data[0]["A3.1score"], A31text: resp.data[0]["A3.1long"], A32score: resp.data[0]["A3.2score"], A32text: resp.data[0]["A3.2long"], A33score: resp.data[0]["A3.3score"], A33text: resp.data[0]["A3.3long"], A4score: resp.data[0]["A4score"], A41score: resp.data[0]["A4.1score"], A41text: resp.data[0]["A4.1long"], A42score: resp.data[0]["A4.2score"], A42text: resp.data[0]["A4.2long"], A43score: resp.data[0]["A4.3score"], A43text: resp.data[0]["A4.3long"]};
+        let dataB = {B1score: resp.data[0]["B1score"], B11score: resp.data[0]["B1.1score"], B11text: resp.data[0]["B1.1long"], B12score: resp.data[0]["B1.2score"], B12text: resp.data[0]["B1.2long"], B13score: resp.data[0]["B1.3score"], B13text: resp.data[0]["B1.3long"], B2score: resp.data[0]["B2score"], B21score: resp.data[0]["B2.1score"], B21text: resp.data[0]["B2.1long"], B22score: resp.data[0]["B2.2score"], B22text: resp.data[0]["B2.2long"], B23score: resp.data[0]["B2.3score"], B3score: resp.data[0]["B3score"], B31score: resp.data[0]["B3.1score"], B31text: resp.data[0]["B3.1long"], B32score: resp.data[0]["A3.2score"], B32text: resp.data[0]["B3.2long"], B33score: resp.data[0]["B3.3score"], B33text: resp.data[0]["B3.3long"], B34score: resp.data[0]["B3.4score"], B34text: resp.data[0]["B3.4long"], B4score: resp.data[0]["B4score"], B41score: resp.data[0]["B4.1score"], B41text: resp.data[0]["B4.1long"], B42score: resp.data[0]["B4.2score"], B42text: resp.data[0]["A4.2long"], B43score: resp.data[0]["B4.3score"], B43text: resp.data[0]["B4.3long"], B44score: resp.data[0]["B4.4score"], B44text: resp.data[0]["B4.4long"]};
+        let dataC = {C1score: resp.data[0]["C1score"], C11score: resp.data[0]["C1.1score"], C11text: resp.data[0]["C1.1long"], C12score: resp.data[0]["C1.2score"], C12text: resp.data[0]["C1.2long"], C13score: resp.data[0]["C1.3score"], C13text: resp.data[0]["C1.3long"], C14score: resp.data[0]["C1.4score"], C14text: resp.data[0]["C1.4long"], C2score: resp.data[0]["C2score"], C21score: resp.data[0]["C2.1score"], C21text: resp.data[0]["C2.1long"], C22score: resp.data[0]["C2.2score"], C22text: resp.data[0]["C2.2long"], C23score: resp.data[0]["C2.3score"], C23text: resp.data[0]["C2.3long"], C24score: resp.data[0]["C2.4score"], C24text: resp.data[0]["C2.4long"], C3score: resp.data[0]["C3score"], C31score: resp.data[0]["C3.1score"], C31text: resp.data[0]["C3.1long"], C32score: resp.data[0]["C3.2score"], C32text: resp.data[0]["C3.2long"], C33score: resp.data[0]["C3.3score"], C33text: resp.data[0]["C3.3long"], C34score: resp.data[0]["C3.4score"], C34text: resp.data[0]["C3.4long"], C4score: resp.data[0]["C4score"], C41score: resp.data[0]["C4.1score"], C41text: resp.data[0]["C4.1long"], C42score: resp.data[0]["C4.2score"], C42text: resp.data[0]["C4.2long"], C43score: resp.data[0]["C4.3score"], C43text: resp.data[0]["C4.3long"], C44score: resp.data[0]["C4.4score"], C44text: resp.data[0]["C4.4long"]};
+        let dataD = {D1score: resp.data[0]["D1score"], D11score: resp.data[0]["D1.1score"], C11text: resp.data[0]["D1.1long"], D12score: resp.data[0]["D1.2score"], D12text: resp.data[0]["D1.2long"], D2score: resp.data[0]["D2score"], D21text: resp.data[0]["D2.1long"], D22score: resp.data[0]["D2.2score"], D22text: resp.data[0]["D2.2long"], D23score: resp.data[0]["D2.3score"], D23text: resp.data[0]["D2.3long"], D3score: resp.data[0]["D3score"], D31score: resp.data[0]["D3.1score"], D31text: resp.data[0]["D3.1long"], D32score: resp.data[0]["D3.2score"], D32text: resp.data[0]["D3.2long"], D33score: resp.data[0]["D3.3score"], D33text: resp.data[0]["D3.3long"], D34score: resp.data[0]["D3.4score"], D34text: resp.data[0]["D3.4long"], D35score: resp.data[0]["D3.5score"], D35text: resp.data[0]["D3.5long"]};
+        this.setState({
+          companyScore: data,
+          A: dataA,
+          B: dataB,
+          C: dataC,
+          D: dataD
+        });
+        console.log(field);
+        field[0].mainScore = resp.data[0]["Ascore"];
+        field[0].subfield[0].mainNestedScore = resp.data[0]["A1score"];
+        field[0].subfield[1].mainNestedScore = resp.data[0]["A2score"];
+        field[0].subfield[2].mainNestedScore = resp.data[0]["A3score"];
+        field[0].subfield[3].mainNestedScore = resp.data[0]["A4score"];
+
+        field[0].subfield[0].subNestedField[0].scores[0] = resp.data[0]["A1.1score"];
+        field[0].subfield[0].subNestedField[0].scores[1] = resp.data[0]["A1.2score"];
+
+        field[0].subfield[1].subNestedField[0].scores[0] = resp.data[0]["A2.1score"];
+        field[0].subfield[1].subNestedField[0].scores[1] = resp.data[0]["A2.2score"];
+        field[0].subfield[1].subNestedField[0].scores[2] = resp.data[0]["A2.3score"];
+
+        field[0].subfield[2].subNestedField[0].scores[0] = resp.data[0]["A3.1score"];
+        field[0].subfield[2].subNestedField[0].scores[1] = resp.data[0]["A3.2score"];
+        field[0].subfield[2].subNestedField[0].scores[2] = resp.data[0]["A3.3score"];
+
+        field[0].subfield[3].subNestedField[0].scores[0] = resp.data[0]["A4.1score"];
+        field[0].subfield[3].subNestedField[0].scores[1] = resp.data[0]["A4.2score"];
+
+        field[1].mainScore = resp.data[0]["Bscore"];
+        field[1].subfield[0].mainNestedScore = resp.data[0]["B1score"];
+        field[1].subfield[1].mainNestedScore = resp.data[0]["B2score"];
+        field[1].subfield[2].mainNestedScore = resp.data[0]["B3score"];
+        field[1].subfield[3].mainNestedScore = resp.data[0]["B4score"];
+
+        field[1].subfield[0].subNestedField[0].scores[0] = resp.data[0]["B1.1score"];
+        field[1].subfield[0].subNestedField[0].scores[1] = resp.data[0]["B1.2score"];
+        field[1].subfield[0].subNestedField[0].scores[2] = resp.data[0]["B1.3score"];
+
+        field[1].subfield[1].subNestedField[0].scores[0] = resp.data[0]["B2.1score"];
+        field[1].subfield[1].subNestedField[0].scores[1] = resp.data[0]["B2.2score"];
+        field[1].subfield[1].subNestedField[0].scores[2] = resp.data[0]["B2.3score"];
+
+        field[1].subfield[2].subNestedField[0].scores[0] = resp.data[0]["B3.1score"];
+        field[1].subfield[2].subNestedField[0].scores[1] = resp.data[0]["B3.2score"];
+        field[1].subfield[2].subNestedField[0].scores[2] = resp.data[0]["B3.3score"];
+        field[1].subfield[2].subNestedField[0].scores[3] = resp.data[0]["B3.4score"];
+        field[1].subfield[2].subNestedField[0].scores[4] = resp.data[0]["B3.5score"];
+
+        field[1].subfield[3].subNestedField[0].scores[0] = resp.data[0]["B4.1score"];
+        field[1].subfield[3].subNestedField[0].scores[1] = resp.data[0]["B4.2score"];
+        field[1].subfield[3].subNestedField[0].scores[2] = resp.data[0]["B4.3score"];
+        field[1].subfield[3].subNestedField[0].scores[3] = resp.data[0]["B4.4score"];
+        field[1].subfield[3].subNestedField[0].scores[4] = resp.data[0]["B4.5score"];
+
+        field[2].mainScore = resp.data[0]["Cscore"];
+        field[2].subfield[0].mainNestedScore = resp.data[0]["C1score"];
+        field[2].subfield[1].mainNestedScore = resp.data[0]["C2score"];
+        field[2].subfield[2].mainNestedScore = resp.data[0]["C3score"];
+        field[2].subfield[3].mainNestedScore = resp.data[0]["C4score"];
+
+        field[2].subfield[0].subNestedField[0].scores[0] = resp.data[0]["C1.1score"];
+        field[2].subfield[0].subNestedField[0].scores[1] = resp.data[0]["C1.2score"];
+        field[2].subfield[0].subNestedField[0].scores[2] = resp.data[0]["C1.3score"];
+        field[2].subfield[0].subNestedField[0].scores[3] = resp.data[0]["C1.4score"];
+
+        field[2].subfield[1].subNestedField[0].scores[0] = resp.data[0]["C2.1score"];
+        field[2].subfield[1].subNestedField[0].scores[1] = resp.data[0]["C2.2score"];
+        field[2].subfield[1].subNestedField[0].scores[2] = resp.data[0]["C2.3score"];
+        field[2].subfield[1].subNestedField[0].scores[3] = resp.data[0]["C2.4score"];
+
+        field[2].subfield[2].subNestedField[0].scores[0] = resp.data[0]["C3.1score"];
+        field[2].subfield[2].subNestedField[0].scores[1] = resp.data[0]["C3.2score"];
+        field[2].subfield[2].subNestedField[0].scores[2] = resp.data[0]["C3.3score"];
+        field[2].subfield[2].subNestedField[0].scores[3] = resp.data[0]["C3.4score"];
+
+        field[2].subfield[3].subNestedField[0].scores[0] = resp.data[0]["C4.1score"];
+        field[2].subfield[3].subNestedField[0].scores[1] = resp.data[0]["C4.2score"];
+        field[2].subfield[3].subNestedField[0].scores[2] = resp.data[0]["C4.3score"];
+        field[2].subfield[3].subNestedField[0].scores[3] = resp.data[0]["C4.4score"];
+
+        field[3].mainScore = resp.data[0]["Dscore"];
+        field[3].subfield[0].mainNestedScore = resp.data[0]["D1score"];
+        field[3].subfield[1].mainNestedScore = resp.data[0]["D2score"];
+        field[3].subfield[2].mainNestedScore = resp.data[0]["D3score"];
+
+        field[3].subfield[0].subNestedField[0].scores[0] = resp.data[0]["D1.1score"];
+        field[3].subfield[0].subNestedField[0].scores[1] = resp.data[0]["D1.2score"];
+
+        field[3].subfield[1].subNestedField[0].scores[0] = resp.data[0]["D2.1score"];
+        field[3].subfield[1].subNestedField[0].scores[1] = resp.data[0]["D2.2score"];
+        field[3].subfield[1].subNestedField[0].scores[2] = resp.data[0]["D2.3score"];
+
+        field[3].subfield[2].subNestedField[0].scores[0] = resp.data[0]["D3.1score"];
+        field[3].subfield[2].subNestedField[0].scores[1] = resp.data[0]["D3.2score"];
+        field[3].subfield[2].subNestedField[0].scores[2] = resp.data[0]["D3.3score"];
+        field[3].subfield[2].subNestedField[0].scores[3] = resp.data[0]["D3.4score"];
+        field[3].subfield[2].subNestedField[0].scores[4] = resp.data[0]["D3.5score"];
     });
     axios.post(
-      '/companypic',
+      '/companypicandsub',
       {},
         {
           params: this.props.match.params.companyName
         }
     ).then(resp => {
-      this.setState({logo: resp.data[0].Logo})
+      console.log(resp.data);
+      this.setState({
+        logo: resp.data[0].Logo,
+        subsidiary: resp.data[0].Subsidiary
+      })
     })
   }
 
@@ -537,15 +693,15 @@ class BrandBreakdown extends React.Component {
           {this.state.companyScore.TotalScore}<span style={{ fontSize: 32 }}>/154</span>
         </p>
       </div>
-      <div className="breakdown_info-container">
+      {this.state.subsidiary != null && <div className="breakdown_info-container">
         <InfoIcon style={{fontSize:'15px', fill:'#3D3E3F', marginRight:'4px'}}/>
         <span className="breakdown_info-container-text">
-          As the parent company, Fast Retailing manages and oversees Uniqlo.
+          As the parent company, {this.state.subsidiary} manages and oversees Uniqlo.
         </span>
-      </div>
+      </div>}
       <div className="breakdown_data-container">
         {field.map((item, index) => (
-          <Mainfield key={index} item={item} index={index} />
+          <Mainfield key={index} item={item} index={index} A1score={this.state.A.A1score} />
         ))}
       </div>
     </div>

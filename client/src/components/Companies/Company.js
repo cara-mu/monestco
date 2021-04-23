@@ -458,7 +458,7 @@ function Company ({match, location})  {
                 params: companyName
             }
         ).then((resp) =>{
-            // console.log(resp.data);
+            console.log(resp.data);
             let data = companyDetails;
             data[0]["company3Ascore"] = resp.data[0]["Ascore"];
             data[0]["company3Bscore"] = resp.data[0]["Bscore"];

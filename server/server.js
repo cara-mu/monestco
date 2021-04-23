@@ -463,9 +463,7 @@ app.post('/similarCompany1', function(req,res,next) {
       return;
     }
     if(row){
-      console.log(row);
       res.status(200).json(row);
-      console.log(res.data);
     }
     next();
   })
@@ -480,9 +478,9 @@ app.post('/similarCompany2', function(req,res,next) {
       return;
     }
     if(row){
-      console.log(row);
+      // console.log(row);
+      // console.log("this works");
       res.status(200).json(row);
-      console.log(res.data);
     }
     next();
   })
@@ -491,15 +489,15 @@ app.post('/similarCompany2', function(req,res,next) {
 app.post('/similarCompany3', function(req,res,next) {
   var companyName = req.query['0'];
   // db.all("SELECT A_scores.A, B_scores.B FROM A_scores, B_scores WHERE ((A_Scores.CompanyID IN (SELECT ID FROM companies WHERE name = ?) AND)", [companyName], (err, row) => {
-  db.all("SELECT A.Ascore, B.Bscore, C.Cscore, D.Dscore FROM A, B, C, D WHERE A.CompanyID IN (SELECT  ID FROM companies WHERE Name IN (SELECT SimilarCompany3 FROM companies WHERE Name = ?)) AND  B.CompanyID IN (SELECT  ID FROM companies WHERE Name IN (SELECT SimilarCompany3 FROM companies WHERE Name = ?)) AND C.CompanyID IN (SELECT  ID FROM companies WHERE Name IN (SELECT SimilarCompany3 FROM companies WHERE Name = ?)) AND D.CompanyID IN (SELECT  ID FROM companies WHERE Name IN (SELECT SimilarCompany3 FROM companies WHERE Name = ?))", [companyName, companyName, companyName, companyName], (err, row) => {
+  db.all("SELECT A.Ascore, B.Bscore, C.Cscore, D.Dscore FROM A, B, C, D WHERE A.CompanyID IN (SELECT ID FROM Companies WHERE Name IN (SELECT SimilarCompany3 FROM Companies WHERE Name = ?)) AND B.CompanyID IN (SELECT ID FROM Companies WHERE Name IN (SELECT SimilarCompany3 FROM Companies WHERE Name = ?)) AND C.CompanyID IN (SELECT ID FROM Companies WHERE Name IN (SELECT SimilarCompany3 FROM Companies WHERE Name = ?)) AND D.CompanyID IN (SELECT ID FROM Companies WHERE Name IN (SELECT SimilarCompany3 FROM Companies WHERE Name = ?))", [companyName, companyName, companyName, companyName], (err, row) => {
     if (err) {
       res.status(400).json({ "error": err.message });
       return;
     }
     if(row){
+      console.log("simcomp");
       console.log(row);
       res.status(200).json(row);
-      console.log(res.data);
     }
     next();
   })
@@ -514,9 +512,7 @@ app.post('/similarCompany4', function(req,res,next) {
       return;
     }
     if(row){
-      console.log(row);
       res.status(200).json(row);
-      console.log(res.data);
     }
     next();
   })
@@ -524,14 +520,12 @@ app.post('/similarCompany4', function(req,res,next) {
 
 app.post('/companyscores', function(req,res,next) {
   var companyName = req.query['0'];
-  console.log(companyName);
   db.all("SELECT * FROM A, B, C, D WHERE A.CompanyID IN (SELECT ID FROM Companies WHERE Name = ?) AND B.CompanyID IN (SELECT ID FROM Companies WHERE Name = ?) AND C.CompanyID IN (SELECT ID FROM Companies WHERE Name = ?) AND D.CompanyID IN (SELECT ID FROM Companies WHERE Name = ?)", [companyName, companyName, companyName, companyName], (err, row) => {
     if (err) {
       res.status(400).json({ "error": err.message });
       return;
     }
     if(row){
-      console.log(row);
       res.status(200).json(row);
     }
     next();
@@ -554,9 +548,9 @@ app.post('/companyname', function(req,res,next){
 });
 })
 
-app.post('/companypic', function(req,res,next){
+app.post('/companypicandsub', function(req,res,next){
   var companyName = req.query['0'];
-  db.all("SELECT Logo FROM Companies WHERE Name = ?", [companyName], (err, row) => {
+  db.all("SELECT Logo, Subsidiary FROM Companies WHERE Name = ?", [companyName], (err, row) => {
     if (err) {
         res.status(400).json({ "error": err.message });
         return;
