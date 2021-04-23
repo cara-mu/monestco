@@ -552,9 +552,9 @@ body{
     .sign-up-text {
         display: block;
     }
-    .sign_up-form-container {
+    /* .sign_up-form-container {
         grid-template-columns: 55% 45%;
-    }
+    } */
     .main_image {
         width: 100%;
         height: 100%;
@@ -621,7 +621,7 @@ body{
     }
 
     .Sign-Up-Positioning {
-        justify-self: start;
+        /* justify-self: start; */
         margin-right: 0;
         width: 90%;
     }
@@ -639,7 +639,7 @@ body{
     }
 
     .sign_up-form-container {
-        /* width: 80%; */
+        width: 90%;
         align-self: flex-start;
         margin: 0 auto;
         grid-template-columns: 1fr;
@@ -648,6 +648,9 @@ body{
         justify-self: start;
         margin: 15px 0 0 5%;
         width: 100%;
+    }
+    .sign_up-form-container .main_image {
+        margin-left: 0;
     }
 
     .window_logo-container {
