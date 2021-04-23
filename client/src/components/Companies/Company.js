@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Grid from '@material-ui/core/Grid';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, withRouter, useLocation } from 'react-router-dom';
 import '../../styles/Companies.css';
 import DiversityImg from '../../assets/diversity.png';
 import WorkerExploitImg from '../../assets/workerexploit.png';
@@ -137,13 +137,14 @@ function rand() {
 
 
 function Company ({match, location})  {
+    
         const {
             params: { companyName }
         } = match;
     
     const [showFact,setShowFact] = useState(false);
     
-
+    const location6 = useLocation();
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
@@ -553,7 +554,7 @@ function Company ({match, location})  {
                             setNews(data);
                             setState(resp.data);
                         })
-    }, []);
+    }, [location6]);
 
     const Facts = (factinput) => {
         return Object.entries(factinput[0]['Heading']).map((heading, i) => {
@@ -654,7 +655,7 @@ function Company ({match, location})  {
                             <span className='navy'>{Math.round(companyDetails[0]["TotalScore"], 2)}</span>
                             <span>/100</span>
                         </div>
-                        <Link to = {'/brand-breakdown/' + companyName} className='breakDown-link'>Detailed Breakdown</Link>
+                        <Link to={`/brand-breakdown/${companyName}`} className='breakDown-link'>Detailed Breakdown</Link>
                     </div>
                 </div>
             </Grid>
@@ -817,4 +818,4 @@ function Company ({match, location})  {
     }
 // }
 
-export default Company;
+export default Company
