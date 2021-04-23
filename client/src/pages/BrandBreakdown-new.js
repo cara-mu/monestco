@@ -1,5 +1,6 @@
 import React, { useState, useLayoutEffect, useEffect } from "react";
 import Logo from "../assets/brandBreakdown.svg";
+import { useParams } from "react-router";
 import InfoIcon from "@material-ui/icons/Info";
 import CancelIcon from "@material-ui/icons/Cancel";
 import HighlightOffRoundedIcon from '@material-ui/icons/HighlightOffRounded';
@@ -26,6 +27,15 @@ const field = [
             texts: [
               "",
               "",
+            ],
+          },
+          {
+            title:
+              "Prohibits discrimination throughout all stages of the organization",
+            scores: "5.5/22",
+            texts: [
+              "Prohibits discrimination throughout the organization",
+              "Identifies and addresses discrimination concerns",
             ],
           },
         ],
@@ -335,7 +345,7 @@ const field = [
 ];
 
 const Popup = ({item, closePopup}) => {
-
+  
     return (
         <div className="popup">
           <div className='popup-content'>
@@ -690,7 +700,7 @@ class BrandBreakdown extends React.Component {
       <div className="breakdown_logo">
         <img src={this.state.logo}  className="breakdown_logoImage" />
         <p className="breakdown_logoText">
-          {this.state.companyScore.TotalScore}<span style={{ fontSize: 32 }}>/154</span>
+          {Math.round(this.state.companyScore.TotalScore, 2)}<span style={{ fontSize: 32 }}>/154</span>
         </p>
       </div>
       {this.state.subsidiary != null && <div className="breakdown_info-container">
@@ -706,7 +716,8 @@ class BrandBreakdown extends React.Component {
       </div>
     </div>
   );
-  }
-};
+}
+}
+
 
 export default BrandBreakdown;

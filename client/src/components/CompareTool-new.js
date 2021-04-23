@@ -828,6 +828,7 @@ const ScoreContainer = ({
 };
 
 const NestedField = ({ item }) => {
+  let v = ["he", "she"]
   const [show, setShow] = useState(false);
   const [tabView, setTabView] = useState(window.innerWidth < 800);
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
@@ -903,7 +904,7 @@ const NestedField = ({ item }) => {
                       }}
                     />
                     <span className="info-text-hover">
-                      Vulputate sit condimentum nulla eget placerat tincidunt.
+                      {v[0]}
                     </span>
                     {showPopup && tabView && (
                       <ComparePopup
