@@ -408,6 +408,22 @@
     margin-left: 162px;
 }
 
+.similarverticalline {
+    border-left: 2px solid #333333;
+    height: 30px;
+    position: absolute;
+    margin-left: 10%;
+    margin-top: 8.5px;
+    margin-left: 12%;
+}
+
+.similarhorizontalline {
+    border: 5px solid #333333;
+    position: absolute;
+    margin-top: 19px;
+    margin-left: 3%;
+}
+
 .horizontalline {
     border: 5px solid #333333;
     position: absolute;
@@ -525,6 +541,11 @@
     .brand_inside_text>span:first-of-type {
         color: #26385A;
         transform: rotate(-0.6deg);
+    }
+    
+    .similarhorizontalline{
+        margin-left: 8.5%;
+        margin-bottom: 3%;
     }
 }
 

@@ -1,11 +1,14 @@
 import React, { useState, useLayoutEffect, useEffect } from "react";
 import Logo from "../assets/brandBreakdown.svg";
+import { useParams } from "react-router";
 import InfoIcon from "@material-ui/icons/Info";
 import CancelIcon from "@material-ui/icons/Cancel";
 import HighlightOffRoundedIcon from '@material-ui/icons/HighlightOffRounded';
 import ExpandMoreSharpIcon from "@material-ui/icons/ExpandMoreSharp";
 import "../styles/BrandBreakdown.css";
 import "../styles/BrandBreakdown-new.css";
+import axios from 'axios';
+
 
 const field = [
   {
@@ -282,7 +285,7 @@ const field = [
 ];
 
 const Popup = ({item, closePopup}) => {
-
+  
     return (
         <div className="popup">
           <div className='popup-content'>
@@ -482,21 +485,30 @@ const Mainfield = ({ item, index }) => {
   );
 };
 
-class BrandBreakdown extends React.Component {
-  state = {
-    companyName: ""
-  }
+function BrandBreakdown({match, location})  {
+  const {
+      params: { companyName }
+  } = match;
 
-  componentDidMount () {
-    this.setState({companyName: this.props.match.params.companyName})
-    console.log(this.state.companyName);
-  }
+  useEffect(() => {
+    // setLoading(true);
+    // let data = companyDetails;
+    axios.post(
+        '/brandinfo',
+        {},
+            {
+                params: companyName
+            }
+    ).then((resp) => {
+        console.log(resp.data);
+    });
+}, []);
 
-  render() {
   return (
     <div className="breakdown_container">
       {/* {props} */}
       <div className="breakdown_logo">
+      {/* <h1>{companyName}</h1> */}
         <img src={Logo} className="breakdown_logoImage" />
         <p className="breakdown_logoText">
           48<span style={{ fontSize: 32 }}>/154</span>
@@ -515,7 +527,7 @@ class BrandBreakdown extends React.Component {
       </div>
     </div>
   );
-  }
-};
+}
+
 
 export default BrandBreakdown;

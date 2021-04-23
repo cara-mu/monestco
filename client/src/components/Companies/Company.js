@@ -27,6 +27,7 @@ import { AiFillCaretDown } from 'react-icons/ai';
 
 import BrandLogo from '../../assets/brandBreakdown.svg';
 import { pink } from '@material-ui/core/colors';
+import BrandBreakdown from '../../pages/BrandBreakdown-new';
 
 const companyinfo = [
     {
@@ -399,10 +400,10 @@ function Company ({match, location})  {
             .then((resp) => {
                 console.log(resp.data);
                 let data = companyDetails;
-                data[0]["A_ID"] = resp.data[0]["A_ID"];
-                data[0]["B_ID"] = resp.data[0]["B_ID"];
-                data[0]["C_ID"] = resp.data[0]["C_ID"];
-                data[0]["D_ID"] = resp.data[0]["D_ID"];
+                // data[0]["A_ID"] = resp.data[0]["A_ID"];
+                // data[0]["B_ID"] = resp.data[0]["B_ID"];
+                // data[0]["C_ID"] = resp.data[0]["C_ID"];
+                // data[0]["D_ID"] = resp.data[0]["D_ID"];
                 data[0]["Category"] = resp.data[0]["Category"];
                 data[0]["Description"] = resp.data[0]["Description"];
                 data[0]["IndustryStandardsID"] = resp.data[0]["IndustryStandardsID"];
@@ -432,6 +433,8 @@ function Company ({match, location})  {
             data[0]["company1Dscore"] = resp.data[0]["Dscore"];
             let company1TotalScore = (parseInt(data[0]["company1Ascore"]) + parseInt(data[0]["company1Bscore"]) + parseInt(data[0]["company1Cscore"]) + parseInt(data[0]["company1Dscore"]))/4;
             data[0]["company1TotalScore"] = company1TotalScore;
+            let ratio = 324*company1TotalScore/100;
+            data[0]["Sim1Slider"] = ratio;
             // console.log(company1TotalScore);
         })
         axios.post(
@@ -651,7 +654,7 @@ function Company ({match, location})  {
                             <span className='navy'>{Math.round(companyDetails[0]["TotalScore"], 2)}</span>
                             <span>/100</span>
                         </div>
-                        <Link className='breakDown-link'>Detailed Breakdown</Link>
+                        <Link to = {'/brand-breakdown/' + companyName} className='breakDown-link'>Detailed Breakdown</Link>
                     </div>
                 </div>
             </Grid>
@@ -670,7 +673,7 @@ function Company ({match, location})  {
                                     DIVERSITY & INCLUSION
                                     <div className = 'Description'>
                                         <div className='Description-text'>
-                                            Discrimination, Gender Equality, Culture Diversity, Inclusivity
+                                            Discrimination, Gender Equality, Cultural Diversity, Inclusivity
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {DiversityImg}/>
@@ -706,7 +709,7 @@ function Company ({match, location})  {
                                     ETHICAL SOURCING
                                     <div className = 'Description'>
                                         <div className='Description-text'>
-                                            Animal Welfare, Cotton Farming, Deforestation
+                                            Cotton Farming, Deforestation, Animal Welfare
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {SustainableImg}/>
@@ -755,6 +758,7 @@ function Company ({match, location})  {
                                 {/* <div>{companyDetails[0]["SimilarCompany1"]}</div> */}
                                 <div className='brand_box'> 
                                     <div className="d-flex justify-content-center">
+                                        
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
                                     </div>
                                     <div className="brand_inside_text ml-10perc">
@@ -768,6 +772,7 @@ function Company ({match, location})  {
                                 {/* <div>{companyDetails[0]["SimilarCompany2"]}</div> */}
                                 <div className='brand_box'>
                                     <div className="d-flex justify-content-center">
+                                        
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
                                     </div>
                                     <div className="brand_inside_text ml-10perc">
@@ -780,12 +785,12 @@ function Company ({match, location})  {
                                 <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany3"]}>{companyDetails[0]["SimilarCompany3"]}</Link> 
                                 {/* <div>{companyDetails[0]["SimilarCompany3"]}</div> */}
                                 <div className='brand_box'>
-                                    <div className="d-flex justify-content-center">
+                                <div className="d-flex justify-content-center">
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
-                                    </div>
+                                </div>
                                     <div className="brand_inside_text ml-10perc">
                                         <span>{Math.round(companyDetails[0]["company3TotalScore"], 2)}</span>
-                                        <span>/154</span>
+                                        <span>/100</span>
                                     </div>
                                 </div>
                             </div>
