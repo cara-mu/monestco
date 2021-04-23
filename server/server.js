@@ -548,9 +548,9 @@ app.post('/companyname', function(req,res,next){
 });
 })
 
-app.post('/companypicandsub', function(req,res,next){
+app.post('/somecompanyinfo', function(req,res,next){
   var companyName = req.query['0'];
-  db.all("SELECT Logo, Subsidiary FROM Companies WHERE Name = ?", [companyName], (err, row) => {
+  db.all("SELECT Logo, Subsidiary, TotalScore FROM Companies WHERE Name = ?", [companyName], (err, row) => {
     if (err) {
         res.status(400).json({ "error": err.message });
         return;
