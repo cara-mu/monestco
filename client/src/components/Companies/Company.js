@@ -167,10 +167,10 @@ function Company ({match, location})  {
     }
 
     const handleOpen = (k, ID) => {
-        axios.post('/citationsNews',
+        axios.post('/citations',
             {},
             {
-                params: [companyName, ID]
+                params: [companyName, ID, 'N']
             }
         ).then(resp => {
             let data = citations;
