@@ -674,6 +674,10 @@ body{
 }
 
 @media screen and (max-width:650px) {
+    .Career-Positioning {
+        margin: 0 auto;
+        width: 90%;
+    }
     .Career-Positioning h1 {
         display: block;
         text-align: center;
