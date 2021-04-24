@@ -943,8 +943,7 @@ const NestedField = ({ item }) => {
   );
 };
 
-const Subfield = ({ item }) => {
-  const [show, setShow] = useState(false);
+const Subfield = ({indexKey, item, showSubField, setShowSubField }) => {  
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
 
   useLayoutEffect(() => {
@@ -989,13 +988,13 @@ const Subfield = ({ item }) => {
         })}
         {item.subfield.length > 0 && (
           <ExpandMoreSharpIcon
-            onClick={() => setShow(!show)}
-            className={show ? "circle-new-close" : "circle-new"}
+            onClick={() => showSubField === indexKey ? setShowSubField(null) : setShowSubField(indexKey)}
+            className={showSubField === indexKey ? "circle-new-close" : "circle-new"}
           />
         )}
       </div>
-      <div className={`animate-field ${show ? "animate" : ""}`}>
-        {show &&
+      <div className={`animate-field ${showSubField === indexKey ? "animate" : ""}`}>
+        {showSubField === indexKey &&
           item.subfield.map((item, index) => {
             return <NestedField key={index} item={item} />;
           })}
@@ -1013,6 +1012,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
   const [listBrandTwo, setListBrandTwo] = useState(false);
   const [listBrandThree, setListBrandThree] = useState(false);
   const [fieldData, setFieldData] = useState(field);
+  const [showSubField, setShowSubField] = useState(null);
 
   const handleChangeOne = (e) => {
     setInputBrandOne(e.target.value);
@@ -1603,7 +1603,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
         })}
       </div>
       {fieldData.map((item, index) => (
-        <Subfield key={index} item={item} />
+        <Subfield key={index} indexKey={index} item={item} showSubField={showSubField} setShowSubField={(key) => setShowSubField(key)} />
       ))}
     </div>
   );
