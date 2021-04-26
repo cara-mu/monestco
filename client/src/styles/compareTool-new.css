@@ -1,0 +1,730 @@
+.compare__tool-container {
+    display: flex;
+    flex-direction: column;   
+    margin-bottom: 10rem; 
+}
+
+.compare-input-container {
+    margin: 4rem 0 2rem 13.5rem;
+    display: grid;
+    grid-template-columns: repeat( 3, minmax( 6rem, 13rem ) );
+    column-gap: 1.5rem;
+    
+}
+
+.compare-input-container>input {
+    outline: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    padding-bottom: 0.5rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #3D3E3F;
+    border-bottom: 2px solid #BDBDBD;
+}
+
+.compare-companyList-container {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat( 3, 13rem );
+    column-gap: 1.5rem;
+}
+
+.compare-companyList {
+    margin-top: 3rem;
+    background-color: white;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
+    border-radius: 15px;
+    line-height: 28px;    
+    color: #4F4F4F;
+    padding: 11px;
+    box-sizing: border-box;
+}
+
+.compare-companyList>div {
+    cursor: pointer;
+}
+
+.compare-companyList>div:hover {
+    background-color: #F2F2F2;
+}
+
+.list-1 {
+    grid-column: 1 / 2;
+}
+
+.list-2 {
+    grid-column: 2 / 3;
+}
+
+.list-3 {
+    grid-column: 3 / 4;
+}
+
+.compare__tool-mainField {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4rem;
+}
+
+.mainField-container {
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-between; */
+    width: min-content;
+    display: grid;
+    grid-template-columns: 12rem repeat( 3, 13rem ) 3rem;
+    grid-template-rows: 6rem;
+    column-gap: 1.5rem;
+    align-items: center;
+    border-bottom: 3px solid #F2F2F2;
+}
+
+.mainField-title {
+    /* white-space: nowrap; */
+    font-family: DM Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 34px;
+    color: #3D3E3F;    
+}
+
+.subField-container {
+    display: grid;
+    grid-template-columns: 12rem repeat( 3, 13rem ) 3rem;
+    grid-template-rows: 6rem;
+    column-gap: 1.5rem;
+    align-items: center;
+    border-bottom: 1px solid #F2F2F2;
+
+}
+
+.subField-title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 34px;
+
+    color: #3D3E3F;
+    padding-left: 1rem;
+}
+
+.nestedField-container {
+    display: grid;
+    grid-template-columns: 12rem repeat( 3, 13rem ) 3rem;
+    grid-template-rows: 12rem;
+    column-gap: 1.5rem;
+    align-items: center;
+    border-bottom: 1px solid #F2F2F2;
+
+}
+
+.nestedField-title {
+    font-family: DM Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 34px;
+
+    color: #000;
+    padding-left: 1.8rem;
+}
+
+.compare__tool-scoreContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    align-items: center;    
+}
+
+.border {
+    border-radius: 25px 25px 0 0;
+}
+
+.greensquare {
+    background-color: #93CE8F;
+}
+
+.greensquare1 {
+    background-color: #BBDEB5;
+}
+
+.greensquare2 {
+    background-color: #DDEFD8;
+}
+
+.yellowsquare {
+    background-color: #FFEB84;
+}
+
+.yellowsquare1 {
+    background-color: #FFF3B5;
+}
+
+.yellowsquare2 {
+    background-color: #FFF9DA;
+}
+
+.orangesquare {
+    background-color: #FBB178;
+}
+
+.orangesquare1 {
+    background-color: #FCCCA7;
+}
+
+.orangesquare2 {
+    background-color: #FEE8D7;
+}
+
+.graysquare {
+    background-color: rgba(196, 196, 196, 0.3);
+}
+
+.circle-new {   
+    border-radius: 50%; 
+    background-color: #26385A;
+    fill: #ffffff !important;
+    font-size: 26px !important;
+    transition: all 0.5s ease !important;
+}
+
+.circle-new-close {
+    border-radius: 50%; 
+    background-color: #FAF7F2;
+    fill: #26385A !important;
+    font-size: 26px !important;
+    transition: all 0.5s ease !important;
+    transform: rotate(180deg);
+}
+
+/* .arrowdown-new {
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 4px;
+    transition: all 0.5s;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.arrowdown-new-close {
+    border: solid #26385A;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 4px;
+    transition: all 0.5s;
+    transform: rotate(225deg);
+    -webkit-transform: rotate(225deg);
+} */
+
+.brand-button-container {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-name {
+    padding: 5px 9px;
+    border: 1px solid #333333;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 13px;
+    margin-left: 10px;
+}
+
+.brand-name-placeholder {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #bdbdbd;
+    text-align: center;
+}
+
+.brand-button-close {
+    font-size: 1.5rem;
+    color: #797979;
+}
+
+.diplay-none {
+    display: none;
+}
+
+.info-text-hover {
+    position: absolute;
+    display: none;
+    top: 26px;
+    left: 0;
+    background-color: #f2f2f2;
+    width: 237px;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 16px;
+    line-height: 28px;
+    color: #3d3e3f;
+}
+
+.animate-field {
+    /* position: relative;
+    z-index: 1; */
+    height: auto;
+    max-height: 0;
+    /* overflow: hidden;     */
+    transition: all 2s ease;
+    visibility: hidden;    
+}
+
+.animate {
+    max-height: 5000px; 
+    visibility: visible;
+}
+
+.compare-info-icon:hover + .info-text-hover {
+    display: block;
+}
+
+.compare-popup {
+    position: fixed;
+    opacity: 1;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: rgb(224, 224, 224, 0.5);
+    z-index: 10;
+}
+
+.compare-popup-content {
+    position: fixed;
+    background-color: #FAF7F2;;
+    color: #3D3E3F;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    bottom: 0;
+    height: minmax( min-content, 17vh);
+    width: 100vw;
+    left: 0;
+    z-index: 10;
+    padding: 30px;
+    border-radius: 20px 20px 0 0;
+    font-size: 14px;
+    opacity: 1;
+    animation: moveUp 0.5s;
+}
+
+.compare-popup-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 2px;    
+    margin-bottom: 23px;
+}
+
+.compare-popup-text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+}
+
+.compare-learn-more {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;    
+    color: #9A9B9C;    
+    cursor: pointer;
+}
+
+.compare-card-container {    
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.card-front {    
+    /* backface-visibility: hidden;     */
+    animation: rotateCard 0.5s ease;
+}
+
+.card-back {        
+    width: 90%;
+    margin: 0 auto;
+    color: #3D3E3F;
+    /* backface-visibility: hidden;     */
+    transition: all 0.5s;
+    animation: rotateCard 0.5s ease;
+}
+
+@keyframes rotateCard {
+    0% {
+        transform: rotateY(90deg);  
+        opacity: 0;      
+    }    
+    100% {
+        transform: rotateY(0deg); 
+        opacity: 1;       
+    }
+}
+
+@keyframes slideCard {
+    0% {
+        transform: translateX(100px);       
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+@media screen and (max-width:1450px) {
+    .mainField-title {
+        font-size: 17px;
+    }
+}
+
+@media screen and (max-width:1350px) {
+
+    .compare-input-container {
+        grid-template-columns: repeat( 3, minmax( 6rem, 12rem ) );
+        margin-left: 12.5rem;
+    }
+
+    .compare-companyList-container {
+        grid-template-columns: repeat( 3, 12rem );
+    }
+ 
+    .mainField-container {
+        grid-template-columns: 11rem repeat( 3, 12rem ) 3rem;
+    }
+
+    .subField-container {
+        grid-template-columns: 11rem repeat( 3, 12rem ) 3rem;
+
+    }
+
+    .nestedField-container {
+        grid-template-columns: 11rem repeat( 3, 12rem ) 3rem;
+    }
+    .mainField-title {
+        line-height: 26px;
+    }
+
+    .nestedField-title {
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
+
+@media screen and (max-width:1250px) {
+
+    .compare-input-container {
+        grid-template-columns: repeat( 3, minmax( 6rem, 10rem ) );
+        margin-left: 11.5rem;
+    }
+
+    .compare-companyList-container {
+        grid-template-columns: repeat( 3, 10rem );
+    }
+
+    .mainField-container {
+        grid-template-columns: 10rem repeat( 3, 10rem ) 3rem;
+        grid-template-rows: 5rem;
+    }
+
+    .subField-container {
+        grid-template-columns: 10rem repeat( 3, 10rem ) 3rem;
+        grid-template-rows: 5rem;
+
+    }
+
+    .nestedField-container {
+        grid-template-columns: 10rem repeat( 3, 10rem ) 3rem;
+        /* grid-template-rows: 5rem; */
+    }
+
+    .subField-title {
+        font-size: 16px;
+        line-height: 24px;
+        padding-left: 0;
+    }
+
+    .nestedField-title {
+        padding-left: 1rem;
+    }
+}
+
+@media screen and (max-width:1100px) {
+
+    .compare-input-container {
+        grid-template-columns: repeat( 3, minmax( 6rem, 8rem ) );
+        margin-left: 9.5rem;
+    }
+
+    .compare-companyList-container {
+        grid-template-columns: repeat( 3, 8rem );
+    }
+
+    .mainField-container {
+        grid-template-columns: 8rem repeat( 3, 8rem ) 2rem;
+        grid-template-rows: 4rem;
+    }
+
+    .subField-container {
+        grid-template-columns: 8rem repeat( 3, 8rem ) 2rem;
+        grid-template-rows: 4rem;
+
+    }
+
+    .nestedField-container {
+        grid-template-columns: 8rem repeat( 3, 8rem ) 2rem;
+        grid-template-rows: 10rem;
+    }
+
+}
+
+@media screen and (max-width:900px) {
+
+    .compare__tool-container {
+        margin:0 auto;
+    }
+
+    .compare-input-container>input {
+        display: none;
+    }
+
+    .brand-button-container {
+        display: flex;
+    }
+
+    .compare-input-container {
+        grid-template-columns: repeat( 3, 10rem );
+        margin-left: 11.5rem;
+    }
+
+    .compare-companyList-container {
+        grid-template-columns: repeat( 3, 10rem );
+    }
+
+    .mainField-container {
+        grid-template-columns: 10rem repeat( 3, 10rem ) 2rem;
+        grid-template-rows: 4rem;
+    }
+
+    .subField-container {
+        grid-template-columns: 10rem repeat( 3, 10rem ) 2rem;
+        grid-template-rows: 4rem;
+
+    }
+
+    .nestedField-container {
+        grid-template-columns: 10rem repeat( 3, 10rem ) 2rem;
+        /* grid-template-rows: 5rem; */
+    }
+
+}
+
+@media screen and (max-width:800px) {
+
+    /* .compare-input-container>input {
+        display: none;
+    }
+
+    .brand-button-container {
+        display: flex;
+    } */
+
+    .compare-input-container {
+        grid-template-columns: repeat( 3, 8rem );
+        margin: 4rem 0 1rem 9.5rem;
+    }
+
+    .mainField-container {
+        grid-template-columns: 8rem repeat( 3, 8rem ) 2rem;
+        grid-template-rows: 4rem;
+    }
+
+    .subField-container {
+        grid-template-columns: 8rem repeat( 3, 8rem ) 2rem;
+        grid-template-rows: 4rem;
+
+    }
+
+    .nestedField-container {
+        grid-template-columns: 8rem repeat( 3, 8rem ) 2rem;
+        /* grid-template-rows: 5rem; */
+    }
+
+    .mainField-title {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .subField-title {
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 400;
+    }
+    .nestedField-title {
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    .circle-new {    
+        font-size: 24px !important;
+    }
+    
+    .circle-new-close {
+        font-size: 24px !important;
+    }
+
+    .compare-info-icon:hover + .info-text-hover {
+        display: none;
+    }
+
+    .compare-learn-more>svg {
+        display: none;
+    }
+    
+    .compare-learn-more {
+        text-decoration: underline;
+    }
+
+}
+
+@media screen and (max-width:700px) {
+
+    .compare-input-container {
+        grid-template-columns: repeat( 3, 6rem );
+    }
+
+    .brand-name{
+        margin-left: 5px;
+    }
+
+    .mainField-container {
+        grid-template-columns: 8rem repeat( 3, 6rem ) 2rem;
+        grid-template-rows: 3rem;
+    }
+
+    .subField-container {
+        grid-template-columns: 8rem repeat( 3, 6rem ) 2rem;
+        grid-template-rows: 4rem;
+
+    }
+
+    .nestedField-container {
+        grid-template-columns: 8rem repeat( 3, 6rem ) 2rem;
+        /* grid-template-rows: 5rem; */
+    }
+
+}
+
+@media screen and (max-width:600px) {
+
+    .compare-input-container {
+        grid-template-columns: repeat( 2, 6rem );
+    }
+
+    .mainField-container {
+        grid-template-columns: 8rem repeat( 2, 6rem ) 2rem;
+        grid-template-rows: 4rem;
+    }
+
+    .subField-container {
+        grid-template-columns: 8rem repeat( 2, 6rem ) 2rem;
+        grid-template-rows: 4rem;
+
+    }
+
+    .nestedField-container {
+        grid-template-columns: 8rem repeat( 2, 6rem ) 2rem;
+        grid-template-rows: 105px;
+    }
+
+    .mainField-title {
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .subField-title {
+        font-size: 13px;
+        line-height: 17px;
+    }
+    .nestedField-title {
+        font-size: 12px;
+        line-height: 15.5px;
+        padding-left: 1rem;
+    }
+
+    .circle-new {    
+        font-size: 20px !important;
+    }
+    
+    .circle-new-close {
+        font-size: 20px !important;
+    }
+    .compare__tool-mainField {
+        margin-bottom: 2rem;
+    }
+    .compare-popup-content {
+        width: 100%;
+        left: 0;
+    }
+    .compare-popup-title {
+        font-size: 16px;
+        line-height: 20px;        
+    }
+    .compare-popup-text {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+    }
+
+    .compare-learn-more {
+        font-size: 11px;
+        line-height: 13px;
+        text-decoration: underline;
+        color: #3D3E3F;
+        display: flex;
+        justify-content: center;
+    }
+
+}
+
+@media screen and (max-width:500px) {
+
+    .compare-input-container {
+        grid-template-columns: repeat( 2, 5rem );
+        margin: 4rem 0 1rem 6.7rem;
+    }
+
+    .mainField-container {
+        grid-template-columns: 6rem repeat( 2, 5rem ) 2rem;
+        grid-template-rows: 3rem;
+        column-gap: 1rem;
+    }
+
+    .subField-container {
+        grid-template-columns: 6rem repeat( 2, 5rem ) 2rem;
+        grid-template-rows: 4rem;
+        column-gap: 1rem;
+    }
+
+    .subField-title {
+        padding-left: 0;
+    }
+
+    .nestedField-container {
+        grid-template-columns: 6rem repeat( 2, 5rem ) 2rem;
+        grid-template-rows: 8rem;
+        column-gap: 1rem;
+    }
+
+    .nestedField-title {
+        padding-left: 0;
+    }
+
+}

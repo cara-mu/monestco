@@ -4,7 +4,9 @@ import  EducateImg from '../../assets/educate.png'
 import  EmpowerImg from '../../assets/empower.png'
 import '../../styles/HomePage.css';
 import * as emailjs from "emailjs-com";
-import WindowLogo from '../../assets/window.svg';
+import WindowLogo from '../../assets/window.jpg';
+import CareerImg from '../../assets/career.png';
+
 
 function HomePage(){
     function sendEmail(e) {
@@ -24,56 +26,89 @@ function HomePage(){
     }
 
         return(
-        <div>
-            <div className = 'About-Us row d-flex'>
-                <div className="body">
-                <div className="col-12 d-md-none">
-                    <img style = {{marginLeft: '5%'}} className="main_image" src = {MonestSketch} alt = 'browser sketch'></img>
-                </div>
-                <div className="col-12 col-md-5">
-                    <div style = {{marginTop: '5%', marginLeft: '8%'}} className = 'About-Us-Positioning'>
+        <Fragment>
+            <div className = 'About-Us'>
+                    <div className = 'About-Us-Positioning'>
                     <h1>Monest provides consumers <br></br> 
                         with the information they <br></br>
                         need to make responsible <br></br>
-                        purchasing decisions.</h1>
-                        <br></br>
+                        purchasing decisions.</h1>         
+                        <label for="fetched_email">Join our Chrome Extension waitlist!</label>               
                         <form id="form" onClick = {sendEmail}>
-                            <div class="field">
-                                <label for="fetched_email">Join our Chrome Extension waitlist!</label>
-                                <br></br>
-                                <input type="text" name="fetched_email" id="fetched_email"></input>
+                            <div class="field" style={{display:'flex', alignItems:'center', flexWrap:'nowrap'}}>                                                                
+                                <input type="text" name="fetched_email" id="fetched_email" placeholder="Your email address"></input>
                                 <input type="submit" id="button" value="Sign Up" ></input>
                             </div>
                         </form>
+                    </div>                
+                    <div className="main_image-container">
+                        <img className="main_image" src = {MonestSketch} alt = 'browser sketch'></img>
                     </div>
-                </div>
-                <div className="col-12 col-md-6 d-md-flex d-none">
-                    <img className="main_image" src = {MonestSketch} alt = 'browser sketch'></img>
-                </div>
-                </div>
             </div>
 
-            <div className = 'Goals'> 
-            <div className="body">
-                <h1 style = {{marginTop: '3%'}} >Our Goal</h1></div>
+            <div className = 'Goals'>  
+                <h1>Our Goal</h1>
             </div>
-            <div style = {{marginLeft: '3%'}} className = 'Goal-Positioning row'>
-            <div className="body">
-                <div className = 'Goal-Panel col-10 col-sm-5 '>
-                    <img style = {{marginTop:'8%'}} src = {EducateImg}></img>
-                    <h1 style = {{marginLeft:'3%'}}>Educate</h1>
-                    <p style = {{ marginLeft:'3%'}}>consumers on the social and environmental impacts of leading brands across a variety of industries. </p>
+            <div className = 'Goal-Positioning'>
+                <div className = 'Goal-Panel'>
+                    <img src = {EducateImg} style={{width:'60px', height:'58px'}}></img>
+                    <h1>Educate</h1>
+                    <p>consumers on the social and environmental impacts of leading brands across a variety of industries. </p>
                 </div>
-                <div className = 'Goal-Panel col-10 col-sm-5 ml-sm-2'>
-                    <img style = {{marginTop:'8%'}} src = {EmpowerImg}></img>
-                    <h1 style = {{marginLeft:'3%'}}>Empower</h1>
-                    <p style = {{marginLeft:'3%'}}>consumers to vote with their dollars, and support brands with values that align to their own.</p>
+                <div className = 'Goal-Panel'>
+                    <img src = {EmpowerImg} style={{width:'60px', height:'53px', marginBottom:'5px'}}></img>
+                    <h1>Empower</h1>
+                    <p>consumers to vote with their dollars, and support brands with values that align to their own.</p>
                 </div>
                 </div>
             </div>
-                {/* sorry i got lazy with positioning */}
-                <br></br><br></br><br></br><br></br><br></br>
+                {/* sorry i got lazy with positioning => don't be a lazy, enjoy the work */}
+                {/* <br></br><br></br><br></br><br></br><br></br> */}
             <div className = 'Video d-flex justify-content-center'>
+                <div className="embed-responsive embed-responsive-21by9 Video-image">
+                    <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowFullScreen></iframe>
+                </div>
+            </div>           
+
+
+            <div className="sign_up_section">
+                <div className="window_header_text">Make your purchases more purposeful</div>
+                <div className = 'sign_up-form-container'>
+                    <div className="main_image-container">
+                        <img className="main_image" src = {WindowLogo} alt = 'browser sketch'></img>
+                    </div>
+                    <div className = 'Sign-Up-Positioning'>
+                    {/* <h1 className='sign-up-text-web'>
+                        We help empower you to hold corporations<br></br> 
+                        to higher ethical standards.<br></br>
+                        Understand and compare brands’ impact<br></br>
+                        at a glance with Monest                        
+                        </h1>  */}
+                        <h1 className='sign-up-text-web'>
+                        We help empower you to hold <br></br> 
+                        corporations to higher ethical <br></br>
+                        standards. Understand and  <br></br>
+                        compare brands’ impact at a <br></br>
+                        glance with Monest                    
+                        </h1>         
+                        {/* <h1 className='sign-up-text'>
+                        We help empower you to hold <br></br> 
+                        corporations to higher ethical <br></br>
+                        standards. Understand and  <br></br>
+                        compare brands’ impact at a <br></br>
+                        glance with Monest                        
+                        </h1> */}
+                        <label for="fetched_email">Join our Chrome Extension waitlist!</label>               
+                        <form id="form" onClick = {sendEmail}>
+                            <div class="field" style={{display:'flex', alignItems:'center', flexWrap:'nowrap'}}>                                                                
+                                <input type="text" name="fetched_email" id="fetched_email" placeholder="Your email address" ></input>
+                                <input type="submit" id="button" value="Sign Up" ></input>
+                            </div>
+                        </form>
+                    </div>            
+                </div>
+                {/* <div className="sign_up-container">
+                    <div className="window_logo-container">
             <div className="body">
                 <div className="embed-responsive embed-responsive-21by9" style={{width:600,height:400}}>
                     <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowFullScreen></iframe>
@@ -87,20 +122,48 @@ function HomePage(){
                     <div className="col-12 col-md-6 d-flex justify-content-center">
                         <img src={WindowLogo} className="window_logo"/>
                     </div>
-                    <div className="col-12 col-md-6">
+                    <div className="sign_up-form-container">
                             <p className="text_window">We help empower you to hold<br/> corporations to higher ethical<br/> standards. Understand and <br/>compare brands’ impact at a <br/>glance with Monest
                             </p>
-                            <p className="sign_up_text">Join our Chrome extension waitlist</p>
-                            <form className="form-inline">
-                                <div className="form-group mx-sm-3 mb-2">
-                                    <label for="email" className="sr-only">Email</label>
-                                    <input type="email" className="form-control input_sign_up" id="email" placeholder="Email"/>
+                            <label for="fetched_email">Join our Chrome Extension waitlist!</label>               
+                            <form id="form" onClick = {sendEmail}>
+                                <div class="field" style={{display:'flex', alignItems:'center', flexWrap:'nowrap'}}>                                                                
+                                    <input type="text" name="fetched_email" id="fetched_email" placeholder="Your email address"></input>
+                                    <input type="submit" id="button" value="Sign Up" ></input>
                                 </div>
-                                <button type="submit" className="btn btn-primary mb-2 sign_up_button">Sign Up</button>
-                                </form>
+                            </form>
+                            <p className="sign_up_text">Join our Chrome extension waitlist</p>
+                            <form id="form" onClick = {sendEmail}>
+                                <div class="field" style={{display:'flex', alignItems:'center', flexWrap:'nowrap'}}>                                                                
+                                    <input type="text" name="fetched_email" id="fetched_email" placeholder="Your email address"></input>
+                                    <input type="submit" id="button" value="Sign Up" ></input>
+                                </div>
+                            </form>
+                            <div style={{display:'flex'}}>
+                                <input type="email" placeholder='Your email address' className="input_sign_up" id="email"/>
+                                <button type="submit" className="btn btn-primary sign_up_button">Sign Up</button>
+                            </div>
+                            <form className="form-inline">
+                                <div className="form-group">
+                                    <label for="email" className="sr-only">Email</label>
+                                </div>
+                            </form>
+                    </div> 
+                </div> */}
+            </div>
+            <div className = "Career">
+                <div className = "Career-Positioning">
+                    {/*<img src = {CareerImg} style={{width:'350px', height:'250px', marginLeft:'40%'}}></img>*/}
+                    <h1>We're hiring</h1>
+                    <h2>Research Analysts!</h2>
+                    {/* <br></br> */}
+                    <img className="carrer_image-2" src = {CareerImg} alt = 'browser sketch'></img>
+                    <div className="career-btn-container">
+                        <p style={{whiteSpace:'nowrap', marginBottom:'0'}}>Are you interested in working with us?</p>
+                        <input type="submit" id="button" value="Career" className="career-btn" ></input>
                     </div>
                 </div>
-                </div>
+                <img className="carrer_image" src = {CareerImg} alt = 'browser sketch'></img>
             </div>
         </div>)
 }
