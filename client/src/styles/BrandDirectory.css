@@ -1,0 +1,230 @@
+.brand_directory {
+    width: 70%;
+    /* max-width: 1192px;   */
+    margin: 10rem auto 6rem; 
+}
+
+
+.greyed_color {
+    color: #9A9B9C !important;
+}
+
+.black_color {
+    color: #26385A !important;
+}
+
+.brand_directory_title p {
+    width: 291px;
+    height: 38px;
+}
+.brand_directory_title {
+    display: flex;
+    justify-content: center;
+    /* margin-top: 141px; */
+    margin-bottom: 25px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 38px;
+    color: #26385A;
+}
+
+.brand_directory_wholeList {
+    padding-bottom: 301px;
+}
+
+
+.brand_directory_list {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(30px, 1fr) );
+    grid-column-gap: 3px;
+    grid-row-gap: 8px;
+    margin-bottom: 2rem;
+    /* display: flex;
+    justify-content: space-between; */
+}
+
+.brand-name-container {
+    display: grid;
+    grid-template-columns: repeat( 3, 250px );
+    grid-template-rows: min-content;
+    /* width: 100%; */
+    margin: 0 auto;
+    grid-row-gap: 15px;
+    align-content: center;
+}
+
+
+.hr {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.brand_directory_title p {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 38px;
+    color: #3D3E3F;
+}
+
+
+.brand_directory_list a{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 38px;
+    width: 13px;
+    color: #26385A;
+    /* margin-bottom: 23.5px; */
+}
+
+hr {
+    margin: 0 90px !important;
+}
+
+.brand_directory_eachRow{
+    /* min-height: 70px; */
+    margin: 24px 0;
+}
+
+
+.row {
+    width: 100%;
+}
+
+
+
+.brand_directory_eachRow .letter {
+    width: 154px;
+    height: 34px;
+    margin: 0 30px 0 60px;
+    /* margin-left: 60px;
+    margin-right: 30px; */
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 34px;
+    color: #3D3E3F;
+}
+
+
+.list_letter {
+    margin: 0;
+    /* margin: 0 121px 0 0; */
+    max-width: 154px !important;
+    min-width: 154px !important;
+    height: 28px;
+    padding: 0% !important;
+}
+
+
+.brand_directory_eachRow .row p {
+    font-family: DM Sans;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 28px;
+color: #3D3E3F;
+}
+
+
+html {
+scroll-behavior: smooth;
+}
+
+@media only screen and (min-width:1500px) {
+
+    .brand_directory_list {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media only screen and (max-width:1370px) {
+
+    .brand-name-container {
+        grid-template-columns: repeat( 3, 210px );
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:1200px) {
+
+    .brand_directory {
+        width: 75%;
+    }
+
+    .brand-name-container {
+        grid-template-columns: repeat( 3, minmax(200px, 1fr) );
+    }
+}
+
+@media only screen and (max-width:1100px) {
+
+    .brand_directory {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width:800px) {
+    .brand_directory {
+        margin-top: 6rem;
+    }
+    .brand_directory_title>p {
+        font-size: 25px;
+        line-height: 32px;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width:767px) {
+
+    .letter {
+        margin: 0 0 21px 0 !important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .brand_directory {
+        margin-top: 5rem;
+    }
+
+    .brand_directory_title {
+        justify-content: start;
+    }
+
+    .brand_directory_title>p {
+        font-size: 24px;
+        text-align: start;
+    }
+    .brand_directory_list a{
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    hr{
+        margin: 0% !important;
+    }
+
+    .break {
+        display: block;
+        }
+
+    .brand-name-container {
+        grid-template-columns: repeat( auto-fit, minmax(160px, 1fr) );
+        line-height: 28px;
+    }
+}
+
+@media only screen and (max-width:350px) {
+
+    .brand_directory_title {
+        margin-bottom: 2rem;
+    }
+}

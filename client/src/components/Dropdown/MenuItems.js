@@ -3,215 +3,131 @@ TO REPLICATE TO PROTOTYPE */
 
 export const MenuItems = [
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Uniqlo',
+        path: '/companies/Uniqlo',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Zara',
+        path: '/companies/Zara',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'H&M',
+        path: '/companies/H&M',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Levis',
+        path: '/companies/Levis',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Aritzia',
+        path: '/companies/Aritzia',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Boohoo',
+        path: '/companies/Boohoo',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Victoria Secret',
+        path: '/companies/Victoria Secret',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Nasty Gal',
+        path: '/companies/Banana Republic',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Nike',
+        path: '/companies/Nike',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Adidas',
+        path: '/companies/Adidas',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Under Armour',
+        path: '/companies/Under Armour',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Lululemon',
+        path: '/companies/Lululemon',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Vans',
+        path: '/companies/Vans',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Converse',
+        path: '/companies/Converse',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Aldo',
+        path: '/companies/Aldo',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
+        title: 'Steve Madden',
+        path: '/companies/Steve Madden ',
         cName: 'nav-links'
     },
     {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
+        title: 'Gucci',
+        cName: 'nav-links-gray'
     },
     {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
+        title: 'Hermes',
+        cName: 'nav-links-gray'
     },
     {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
+        title: 'Louis Vuitton',
+        cName: 'nav-links-gray'
     },
     {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Brand x',
-        path: '#',
-        cName: 'nav-links'
-    },
+        title: 'Hugo Boss',
+        cName: 'nav-links-gray'
+    }
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // },
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // },
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // },
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // },
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // },
+    // {
+    //     title: 'Patagonia',
+    //     path: '/companies/Patagonia',
+    //     cName: 'nav-links'
+    // }
 ]
 
 /* ALL THE DROPDOWN COMPONENTS USE THE SAME MENUITEM.JS FILE CURRENTLY, SO CSS CHANGES MADE TO EACH LINK IN INDIVIDUAL

@@ -1,0 +1,250 @@
+
+
+.breakdown_page{
+    height: 100%;
+    width: 100%;
+    padding-left: 277px !important;
+    padding-right: 277px !important;
+}
+
+
+
+.breakdown_logo{
+    display: flex;
+    justify-content: center;
+}
+
+.breakdown_logoImage {
+    margin-top: 87px;
+    /* width: 15%; */
+    /* border: none !important; */
+    height: 50%;
+    margin-top: 9%;
+    /* object-fit: cover; */
+    /* resizeMode: cover; */
+    /* background-repeat: no-repeat !important; */
+}
+
+.breakdown_logoText {
+    margin-top: 118px;
+    margin-left:100px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 66px;
+    color: #3D3E3F;
+}
+
+
+.table_column{
+    margin-left: 50px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 34px;
+    color: #3D3E3F;
+}
+
+.table_column_up {
+    margin-left: 85px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 34px;
+    text-align: center;
+    color: #FAF7F2;
+}
+
+.table_column_inner {
+    margin-left: 80px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 34px;
+    text-align: center;
+    color: black;
+}
+
+
+
+.innerheading {
+    font-size: 15px;
+    color:"black";
+    width: 300px;
+    margin-left: 15px;
+}
+
+.upper_border {
+    width: 800px;
+}
+
+.inside_border {
+    width: 650px;
+}
+@media only screen and (min-width: 1800px) {
+    .upper_border {width: 1336px !important;
+    }
+    
+    .inside_border {width: 1336px !important;
+    }    
+
+    .breakdown_page{
+        height: 100%;
+        width: 100%;
+    }
+    .breakdown_accordian{
+        display: flex;
+        justify-content: center;
+    } 
+}
+
+
+
+@media only screen and (min-width: 1400px) and (max-width:1800px) {
+    .upper_border {
+        width: 1106px !important;
+    }
+    
+    .inside_border {
+        width: 1106px !important;
+    }    
+
+    .breakdown_page{
+        height: 100%;
+        width: 100%;
+        padding-left: 277px !important;
+        padding-right: 277px !important;
+    }
+}
+
+
+@media only screen and (min-width: 1100px) and (max-width:1400px) {
+    .upper_border {
+        width: 750px;
+    }
+    
+    .inside_border {
+        width: 750px;
+    }    
+    .breakdown_page{
+        height: 100%;
+        width: 100%;
+        padding-left: 200px !important;
+    }
+}
+
+
+
+
+@media only screen and (max-width: 1100px) {
+    .upper_border {
+        width: 550px;
+    }
+    
+    .inside_border {
+        width: 550px;
+    }    
+    .breakdown_page{
+        height: 100%;
+        width: 100%;
+        padding-left: 150px !important;
+    }
+}
+
+
+@media only screen and (max-width: 800px) {
+    .upper_border {
+        width: 550px;
+    }
+    
+    .inside_border {
+        width: 550px;
+    }    
+    .breakdown_page{
+        height: 100%;
+        width: 100%;
+        padding-left: 100px !important;
+    }
+    .breakdown_logoText {
+        margin-left: 22px;
+    }
+}
+@media only screen and (max-width: 650px) {  
+    .breakdown_page{
+        height: 100%;
+        width: 100%;
+        padding-left: 50px !important;
+    }
+}
+
+@media only screen and (max-width: 555px) {
+    .upper_border {
+        width: 350px;
+    }
+    
+    .inside_border {
+        width: 350px;
+    }  
+    .innerheading {
+        font-size: 10px;
+        color:"black";
+        width: 100px;
+        margin-left: 15px;
+    }
+    .table_column_inner {
+        margin-left: 30px;
+        font-family: DM Sans;
+        font-style: normal;
+        font-size: 10px;
+        text-align: center;
+        color: black;
+    }
+    .breakdown_logoText {
+        margin-left: 50px;
+    }
+}
+
+@media only screen and (max-width: 400px) {  
+    .upper_border {
+        width: 250px;
+    }
+    .breakdown_logo{
+        display: flex;
+        justify-content: center;
+        width: 60;
+        height: 60;
+    }
+    
+    
+    .inside_border {
+        width: 250px;
+    } 
+    .breakdown_page{
+        height: 100%;
+        width: 100%;
+        padding-left:30px !important;
+    }
+    .table_column_inner {
+        margin-left: 10px;
+        font-family: DM Sans;
+        font-style: normal;
+        font-size: 10px;
+        text-align: center;
+        color: black;
+    }
+}
+
+@media only screen and (max-width: 300px) {  
+    .breakdown_page{
+        height: 100%;
+        width: 100%;
+        padding-left:0px !important;
+    }
+}
+.MuiAccordion-rounded:last-child{
+    box-shadow: none;
+    width: auto !important;
+}

@@ -1,0 +1,828 @@
+.About-Us{
+    /* display: flex;
+    justify-content: flex-start; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 70px 0;
+    background: #F5F4F2;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+.About-Us>h1{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 47px;
+    color: #26385A;
+}
+
+.About-Us h3 {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #9A9B9C;
+}
+
+.About-Us-Positioning {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 10%;
+}
+
+.About-Us-Positioning>h1 {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 47px;
+    color: #26385A;
+    margin-bottom: 35px;
+}
+
+#form {
+    width: 100%;
+}
+
+/* .About-Us>img{
+    height: 90%;
+    width: 90%;
+} */
+
+.Goals{
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.Goals>h1{
+    color: #26385A;
+    text-align: center;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 38px;
+    line-height: 34px;
+    margin: 6rem 0 4rem 0;
+}
+
+.Goal-Panel {
+    width: 400px;
+    height: 208px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
+    padding: 15px;
+}
+
+.Goal-Panel:not(:last-of-type) {
+    margin-right: 15px;
+}
+
+.Goal-Panel:not(:first-of-type) {
+    margin-left: 15px;
+}
+
+.Goal-Panel>h1 {
+    color: #26385A;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    margin-left: 7px;
+}
+
+.Goal-Panel>p{
+    font-family: DM Sans;
+    font-style: normal;
+    /* font-weight: bold; */
+    color: #3D3E3F, 100%;
+    font-size:16px;
+    margin-left: 7px;
+}
+
+.Goal-Panel img {
+    width: 60px;
+    height: 58px;
+}
+
+.Goal-Positioning{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 70px;
+}
+
+.Video{
+    background: #F5F4F2;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.Video-image {
+    width: 600px !important;
+    height: 400px !important;
+}
+
+.About-Us-Positioning label{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+
+    color: #9A9B9C;
+}
+
+#button{
+    width: 94px;
+    height: 40px;
+    font-family: DM Sans;
+    font-style: normal;
+    border-style: none;
+    border-radius: 13px;
+    background-color: #26385A;
+    color: #ffffff;
+    margin-left: 5%;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0;
+}
+
+#button:hover {
+    background-color: #FED170 !important;
+    color: #26385A !important;
+    transition: all 0.2s;
+}
+
+#fetched_email{
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box; 
+    border-radius: 13px;
+    /* width: 50%; */
+    width: 256px;
+    padding: 6px 15px;
+}
+
+
+.sign_up_section{
+    width: 100%;
+    margin: 100px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.window_logo{
+    width: 90%;
+    height: 98%;
+}
+
+.text_window {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 50px;
+}
+
+.main_image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 3%;
+}
+
+.sign_up-form-container .main_image {
+    width: 100%;
+    margin-left: 13%;
+    /* height: 90%; */
+    /* max-width: 627px;
+    max-height: 435px; */
+}
+
+.window_header_text {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 38px;
+    line-height: 34px;
+    color: #26385A;
+    width: 80%;
+    text-align: center;
+}
+
+.sign_up-container {
+    width: 100%;
+    margin-top: 6rem;
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+.window_logo-container {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-right: 4rem;
+}
+
+.sign_up-form-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    align-items: center;
+    padding: 100px 0;
+    background: #fff;
+    align-self: center;
+}
+
+.sign_up_text {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+    color: #9A9B9C;
+}
+
+.input_sign_up {
+    background: #FFFFFF !important;
+    border: 1px solid #BDBDBD !important;
+    box-sizing: border-box !important;
+    border-radius: 13px !important;
+    /* width: 368px !important; */
+    width: 60%;
+    height: 40px !important;
+}
+
+.sign_up_button {
+    background: #26385A !important;
+    border-radius: 13px !important;
+    border-color: transparent !important;
+    margin-left: 38px;
+}
+
+.sign_up_button:hover {
+    background-color: #FED170 !important;
+    color: #26385A !important;
+    transition: all 0.2s;
+}
+
+.Sign-Up-Positioning {
+        margin-right: 13%;
+        justify-self: end;
+        width: 73%;    
+}
+.Sign-Up-Positioning>label {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+
+    color: #9A9B9C;
+}
+
+.Sign-Up-Positioning>h1 {
+    font-family: DM Sans;
+    font-style: normal;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 42px;
+    color: #3D3E3F;
+    margin-bottom: 35px;
+    white-space: nowrap;
+}
+.Career{
+    width: 100%;
+    padding-block: 50px;
+    background: #F5F4F2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.CareerImg-Positioning{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 4rem;
+    margin-left: 6%;
+}
+
+.Career-Positioning {
+    margin-left: 5%;
+    width: 100%;
+}
+.Career-Positioning h1{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 76px;
+
+    letter-spacing: 2px;
+
+    /* monest navy */
+    color: #26385A;
+}
+
+.Career-Positioning h2{
+    /* or 106% */
+    letter-spacing: 2px;
+    font-size: 64px;
+    line-height: 76px;
+    margin-bottom: 60px;
+    color: #ABD4B7
+}
+
+.Career-Positioning p{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 34px;
+
+    /* identical to box height, or 113% */
+
+    /* dark gray */
+    color: #3D3E3F;
+}
+
+.carrer_image {
+    width: 400px;
+    height: 100%;
+    margin-right: 16%;
+}
+
+.carrer_image-2 {
+    display: none;
+}
+
+.sign-up-text {
+    display: none;
+    font-family: DM Sans;
+    font-style: normal;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 42px;
+    color: #3D3E3F;
+    margin-bottom: 35px;
+    white-space: nowrap;
+}
+
+.career-btn-container {
+    display: flex;        
+    width: 100%;
+}
+
+.About-Us>.main_image-container>.main_image {
+    width: 90%;
+    height: 90%;
+}
+
+@media screen and (max-width:1700px) {
+    .text_window {
+        font-size: 25px;
+        line-height: 40px;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .carrer_image {        
+        margin-right: 7%;
+    }   
+    .Career-Positioning {
+        margin-left: 7%;
+    }
+    .sign_up-form-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    /* .Career-Positioning h1{
+        font-size: 60px;
+        line-height: 72px;
+    }
+    
+    .Career-Positioning h2{
+        font-size: 60px;
+        line-height: 72px;
+        margin-bottom: 56px;
+    }
+    
+    .Career-Positioning p{
+        font-size: 28px;        
+    } */
+    .Sign-Up-Positioning>h1 {
+        font-size: 25px;
+        line-height: 38px;
+    }
+}
+
+@media screen and (max-width: 1450px) {
+    .Sign-Up-Positioning>h1 {
+        font-size: 24px;
+    }
+
+    .Career-Positioning h1{
+        font-size: 40px;
+        line-height: 50px;
+    }
+    
+    .Career-Positioning h2{
+        font-size: 40px;
+        line-height: 50px;
+        margin-bottom: 30px;
+    }
+    
+    .Career-Positioning p{
+        font-size: 18px;
+    }
+    .sign_up-form-container .main_image {
+        margin-left: 33%;
+    }    
+    .Sign-Up-Positioning {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width:1100px) {
+
+    .text_window {
+        font-size: 23px;
+        line-height: 34px;
+    }
+
+    .carrer_image {
+        width: 300px;
+    }
+    .Sign-Up-Positioning>h1 {
+        font-size: 20px;
+        line-height: 34px;
+    }
+    .sign_up-form-container .main_image {
+        /* width: 100%; */
+        margin-left: 13%;
+    }    
+    .Sign-Up-Positioning {
+        margin-right: 13%;
+    }
+}
+
+@media screen and (max-width:1050px) {
+    .About-Us-Positioning {
+        margin-left: 5%;
+    }
+    .About-Us-Positioning>h1 {
+        font-size: 32px;
+        line-height: 43px;
+    }
+    /* .Sign-Up-Positioning>h1 {
+        font-size: 28px;
+        line-height: 34px;
+    } */
+    /* .Career-Positioning {
+        margin-left: 3%;
+    } */
+}
+
+@media screen and (max-width:950px) {
+    .Career-Positioning h1{
+        font-size: 34px;
+        line-height: 37px;
+    }
+    
+    .Career-Positioning h2{
+        font-size: 34px;
+        line-height: 37px;
+        margin-bottom: 30px;
+    }
+    
+    .Career-Positioning p{
+        font-size: 20px;
+        line-height: 34px;
+    }
+    .carrer_image {
+        width: 231px;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .Goal-Panel {
+        width: 45%;
+    }
+    .About-Us-Positioning>h1 {
+        font-size: 28px;
+        line-height: 39px;
+    }
+    .sign_up_button {
+        margin-left: 25px;
+    }
+    .window_logo-container {
+        margin-right: 2rem;
+    }
+    .Sign-Up-Positioning>h1 {
+        font-size: 20px;
+        line-height: 28px;
+        margin-bottom: 27px;
+    }
+}
+
+@media screen and (max-width:850px) {
+
+    .career-btn-container {
+        flex-direction: column;
+    }
+    .career-btn {
+        margin-left: 0 !important;
+    }    
+    .sign-up-text {
+        display: block;
+    }
+    /* .sign_up-form-container {
+        grid-template-columns: 55% 45%;
+    } */
+    .main_image {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width:800px) {
+
+    .Goal-Panel {
+        width: 40%;
+    }
+
+    .Goal-Panel:not(:last-of-type) {
+        margin-right: 50px;
+    }
+
+    .Video-image {
+        width: 88% !important;
+        height: 54% !important;
+    }
+
+    .Goals>h1{
+        font-size: 26px;
+        margin: 66px 0 44px 0;
+    }
+
+    .About-Us-Positioning>h1 {
+        font-size: 26px;
+        line-height: 34px;
+        margin-bottom: 27px;
+    }
+
+    #button {
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    .window_header_text {
+        font-size: 26px;
+        line-height: 34px;
+    }
+
+    .text_window {
+        font-size: 20px;
+        line-height: 28px;
+    }
+    .sign_up_text {
+        margin-bottom: 10px;
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .sign_up_button {
+        margin-left: 16px;
+    }
+
+    .window_logo-container {
+        margin-right: 1rem;
+    }
+
+    .About-Us-Positioning label {
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .Sign-Up-Positioning {
+        /* justify-self: start; */
+        margin-right: 0;
+        width: 90%;
+    }
+
+}
+
+@media screen and (max-width:730px) {
+    .sign_up-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .window_logo-container {
+        justify-content: center;
+    }
+
+    .sign_up-form-container {
+        width: 90%;
+        align-self: flex-start;
+        margin: 0 auto;
+        grid-template-columns: 1fr;
+    }
+    .Sign-Up-Positioning {
+        justify-self: start;
+        margin: 15px 0 0 5%;
+        width: 100%;
+    }
+    .sign_up-form-container .main_image {
+        margin-left: 0;
+    }
+
+    .window_logo-container {
+        margin-right: 0;
+    }    
+    .Sign-Up-Positioning #fetched_email {
+        width: 255px !important;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .About-Us-Positioning>h1 {
+        font-size: 22px;
+        line-height: 30px;
+    }
+}
+
+@media screen and (max-width:750px) {
+    
+    
+}
+
+@media screen and (max-width:650px) {
+    .Career-Positioning h1 {
+        display: block;
+        text-align: center;
+    }
+    .Career-Positioning h2 {
+        text-align: center;
+    }
+    .carrer_image {
+        display: none;
+    }
+    .carrer_image-2 {
+        display: block;
+        width: 219px;
+        height: 100%;
+        margin: 50px auto;
+    }
+    .career-btn-container {
+        flex-direction: row;
+        justify-content: center;
+    }
+    .career-btn {
+        margin-left: 5% !important;
+    }
+    .Video-image {
+        width: 90% !important;
+        height: 45% !important;
+    }
+}
+
+@media screen and (max-width:600px) {
+
+    .About-Us {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .About-Us-Positioning {
+        width: auto;
+        align-self: flex-start;
+        margin: 35px 0 0 10%;
+    }
+
+    #fetched_email {
+        width: 75%;
+        height: 32px;
+        border-radius: 9px;
+    }
+
+    #button {
+        height: 32px;
+        width: 68px;
+        border-radius: 9px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .Goals>h1{
+        font-size: 32px;
+        line-height: 36px;
+        margin:70px 0 30px 0;
+    }
+
+    .Goal-Positioning {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+    .Goal-Panel {
+        margin: 0 0 30px 0 !important;
+        width: 88%;
+    }
+    .Goal-Panel:last-of-type {
+        margin: 0 0 50px 0 !important;
+    }
+
+    .About-Us-Positioning>h1 {
+        font-size: 26px;
+        line-height: 34px;
+        margin-bottom: 23px;
+    }
+
+    .About-Us-Positioning label{
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .window_header_text {
+        font-size: 32px;
+    }
+
+    .sign_up_text {
+        font-size: 12px;
+        line-height: 15px;
+        font-weight: 400;
+    }
+
+    .sign_up_section {
+        margin-top: 70px;
+    }
+
+    .sign_up-container {
+        margin-top: 50px;
+    }
+
+    .sign_up-form-container {
+        margin-top: 30px;
+    }
+
+    .text_window {
+        font-size: 20px;
+        line-height: 26px;
+        margin-bottom: 23px;
+    }
+
+    .Career-Positioning h1{
+        font-size: 32px;
+        line-height: 34px;
+    }
+    
+    .Career-Positioning h2{
+        font-size: 32px;
+        line-height: 34px;
+        margin-bottom: 50px;
+    }      
+
+}
+
+@media screen and (max-width:500px) {
+    .career-btn-container {
+        flex-direction: column;
+    }
+    .Career-Positioning p {
+        text-align: start;
+    }
+    .career-btn {
+        margin-left: 0 !important;
+    }
+    .career-btn-container {
+        width: max-content;
+        margin-left: 2%;
+    }
+}
+
+@media screen and (max-width: 420px) {
+
+    .About-Us-Positioning {
+        width: auto;
+        align-self: flex-start;
+        margin: 35px 0 0 7%;
+    }
+}

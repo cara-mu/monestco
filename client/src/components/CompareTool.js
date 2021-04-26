@@ -1443,7 +1443,6 @@ class CompareTool extends React.Component {
                 </Grid>
             </div>
         )
-    }
-}
+}}
 
 export default CompareTool;
