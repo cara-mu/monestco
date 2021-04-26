@@ -6,8 +6,15 @@
     align-items: center;
     padding: 70px 0;
     background: #F5F4F2;
+    
 }
 
+.body {
+    display: flex;
+    justify-content: center;
+    max-width: 1192px;
+    margin: auto;
+}
 body{
     overflow-x: hidden;
 }
