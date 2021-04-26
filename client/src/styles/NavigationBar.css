@@ -6,219 +6,76 @@
     font-size: 1.2rem;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
   }
   
   .nav-links{
     font-size: 14px;
-    color: #3D3E3F;
-    text-decoration: none;
-  }
-
-  .nav-links-gray{
-    font-size: 14px;
-    color: #9A9B9C;
-    text-decoration: none;
-  }
-  .nav-links-gray:hover{
-    font-size: 14px;
-    color: #9A9B9C;
-    text-decoration: none;
-  }
-  .nav-links:hover{    
-    transition: all 0.2s ease-out;
-    color: #ABD4B7;
+    color: black;
     text-decoration: none;
   }
 
   .Navigation-Menu {
-    /* right: 50%;
+    right: 20%;
     display: grid;
-    grid-template-columns: repeat(6, auto); */
-    grid-gap: 15px;
-
-    display: flex;
-    height: 100%;
-    align-items: center;
-    margin: 0 1rem 0 0;
+    grid-template-columns: repeat(5, auto);
+    grid-gap: 80px;
 
     list-style: none;
     text-align: center;
     width: 70vw;
-    justify-content:flex-end;
-    white-space: nowrap;
-    padding: 0;
-    margin-right: 4.5%;
+    justify-content: end;
+    margin-right: 2rem;
   }
   
   .Menu-Item {
-    font-size: 16px;
-    line-height: 36px;
-    color: #26385A;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: 700;
     font-family: 'DM Sans', sans-serif;
 
     display: flex;
     align-items: center;
-    margin-right: 3%;
+    height: 80px;
   }
   
   .Navigation-Link {
-    color: #26385A;
+    color: rgb(0, 0, 0);
     text-decoration: none;
-    /* line-height: 50%;
-    padding: 0.5rem 1rem; */
+    padding: 0.5rem 1rem;
   }
   
-  .Navigation-Link:hover {    
+  .Navigation-Link:hover {
+    background-color: #ecf1f7;
     transition: all 0.2s ease-out;
-    color: #26385A;
-    text-decoration: none;
   }
   
   .nav-links-mobile {
     display: none;
   }
   
-  .Mobile-Hamburger-Menu {
+  .menu-icon {
     display: none;
   }
 
-  .Compare-Button {
+  .Compare-Button{
     display: block;
     text-align: center;
-    padding: 2px 9px;
-    /* margin: 2rem auto; */
+    padding: 0.75rem;
+    margin: 2rem auto;
 
-    border: 2px solid #26385A;
+    border: 3px solid #4F4F4F;
     border-radius: 15px;
-    width: 100%;
+    width: 80%;
 
     text-decoration: none;
-    color: #26385A;
-    font-size: 15px;
-    line-height: 38px;
-    font-weight: 700;
-}
-.Compare-Button:hover {
-    text-decoration: none;
-    color: #26385A;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
 }
 
 /* CSS Styling was not working when using the logo's class name, resorted to using img tag instead */
-.Navigation-Bar>a {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin-left: 4.5%;
-}
-
-img.logo {
+img {
   width: 150px;
   height: 150px;
 }
-
-.mobile-search-icon {
-  display: none;
-  position: absolute;
-  right: 30px;
-  cursor: pointer;
-}
-
-.search-input>.MuiInput-underline::before {
-  border-color: #BDBDBD !important;
-  transition: none !important;
-}
-
-.search-input>.MuiInput-underline::after {
-  border-color: #BDBDBD !important;
-  transition: none !important;
-}
-
-.seach-input-2>.MuiInput-underline::before {
-  border-bottom: none !important;
-}
-.seach-input-2>.MuiInput-underline::after {
-  border-bottom: none !important;
-}
-.seach-input-2>div {
-  box-shadow: 0px 2px 9px 3px rgb(152 165 177 / 12%);
-  border-radius: 6px;
-}
-
-
-/* Responsive Design */
-@media screen and (max-width: 1200px){
-  .Menu-Item {
-    margin-right: 2%;
-  }
-}
-
-@media screen and (max-width: 1050px){
-  .Menu-Item {
-    margin-right: 1%;
-  }
-  .Navigation-Bar>a {    
-    margin-left: 1.5%;
-  }
-}
-
-@media screen and (max-width: 850px){
-  /* hides the navigation bar and displays it under the hamburger menu */
-  .Navigation-Menu{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 90vh;
-    position: absolute;
-    top: 100px;
-    left: -100%;
-    z-index: 100;
-  }
-
-  .Navigation-Bar {
-    justify-content: space-around;
-  }
-
-  .Navigation-Bar>a {
-    margin-left: 0;
-  }
-
-  .Navigation-Link{
-    width: 80%;
-    line-height: 60px;
-    border-bottom: 1px solid #000;
-  }
   
-  .Nav-Menu.active {
-    background-color: #ffffff;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
-    height: 100%;
-    width: 300px;
-    position: absolute;
-    left: 0%;
-    top: 80px;
-    transition: all 0.5s ease;
-    z-index: 100;
-}
-  
-  .Mobile-Hamburger-Menu{
-    display: block;
-    position: absolute;
-    top: 25px;
-    left: 20px;
-    font-size: 1.8rem;
-    cursor: pointer;
-  }
-
-  .Menu-Item-search.search-input {
-    display: none;
-    margin-right: 0;
-  }
-
-  .mobile-search-icon {
-    display: block;
-  }
-}
-

@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { MenuItems } from './MenuItems';
 import { Link } from 'react-router-dom';
-import '../../styles/TechDropdown.css';
 
-
-function TechDropdown({enterTechDropdown, exitTechDropdown}) {
+function TechDropdown() {
   {/* Functions handling click */}
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -12,14 +10,11 @@ function TechDropdown({enterTechDropdown, exitTechDropdown}) {
   return (
       <ul
         onClick={handleClick}
-        className={`coming-soon-section ${click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'}`}
-        onMouseEnter={enterTechDropdown} 
-        onMouseLeave={exitTechDropdown}
-        >  
+        className={click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'} >  
         
         {/* First launch will not include */}
 
-        <h1 className="coming-soon-text" style={{justifyContent:'center'}}>coming soon!</h1>
+        <h1>coming soon!</h1>
         
       </ul>
   );

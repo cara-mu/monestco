@@ -1,24 +1,20 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
-import ExpandMoreSharpIcon from "@material-ui/icons/ExpandMoreSharp";
-import HelpOutlineTwoToneIcon from "@material-ui/icons/HelpOutlineTwoTone";
-import HighlightOffRoundedIcon from "@material-ui/icons/HighlightOffRounded";
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import "../styles/compareTool-new.css";
 import axios from "axios";
 
 const field = [
   {
     mainField: "DIVERSITY & INCLUSION",
-    mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-    industrialStandard: [],
+    mainScore: [{ score: "" }, { score: "" }, { score: "" }],
+    industrialStandard: "",
     subfield: [
       {
         mainNestedField: "Discrimination",
         subNestedField: [
           {
             title: "Prohibits discrimination throughout the organization",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "a11 stuff" },
               { text: "a11 stuff" },
@@ -27,8 +23,8 @@ const field = [
           },
           {
             title: "Actively identifies and addresses discrimination",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "a12 stuff" },
               { text: "a12 stuff" },
@@ -36,8 +32,8 @@ const field = [
             ],
           },
         ],
-        mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
+        mainNestedScore: [{ score: "" }, { score: "" }, { score: "" }],
+        industrialStandard: "",
       },
       {
         mainNestedField: "Gender Equality",
@@ -45,8 +41,8 @@ const field = [
           {
             title:
               "Commits to increasing gender diversity throughout the organization",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "a21 stuff" },
               { text: "a21 stuff" },
@@ -56,8 +52,8 @@ const field = [
           {
             title:
               "Maintains strong female representation at all levels of leadership",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "a22 stuff" },
               { text: "a22 stuff" },
@@ -66,8 +62,8 @@ const field = [
           },
           {
             title: "Ensures equal pay for equal work",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "a23 stuff" },
               { text: "a23 stuff" },
@@ -75,8 +71,8 @@ const field = [
             ],
           },
         ],
-        mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
+        mainNestedScore: [{ score: "" }, { score: "" }, { score: "" }],
+        industrialStandard: "",
       },
       {
         mainNestedField: "Cultural Diversity",
@@ -84,8 +80,8 @@ const field = [
           {
             title:
               "Commits to increasing gender diversity throughout the organization",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "a31 stuff" },
               { text: "a31 stuff" },
@@ -95,8 +91,8 @@ const field = [
           {
             title:
               "Maintains diverse ethnic representation at all levels of leadership",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "a32 stuff" },
               { text: "a32 stuff" },
@@ -105,8 +101,8 @@ const field = [
           },
           {
             title: "Actively supports BIPOC and under represented communities",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "a33 stuff" },
               { text: "a33 stuff" },
@@ -114,8 +110,8 @@ const field = [
             ],
           },
         ],
-        mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
+        mainNestedScore: [{ score: "" }, { score: "" }, { score: "" }],
+        industrialStandard: "",
       },
       {
         mainNestedField: "Inclusivity",
@@ -123,8 +119,8 @@ const field = [
           {
             title:
               "Fosters an inclusive workplace culture for all types of people",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "a41 stuff" },
               { text: "a41 stuff" },
@@ -133,8 +129,8 @@ const field = [
           },
           {
             title: "Prioritizes the mental health and wellbeing of employees",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "a42 stuff" },
               { text: "a42 stuff" },
@@ -142,15 +138,15 @@ const field = [
             ],
           },
         ],
-        mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
+        mainNestedScore: [{ score: "" }, { score: "" }, { score: "" }],
+        industrialStandard: "",
       },
     ],
   },
   {
     mainField: "WORKER EXPLOITATION",
-    mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-    industrialStandard: [],
+    mainScore: [{ score: "" }, { score: "" }, { score: "" }],
+    industrialStandard: "",
     subfield: [
       {
         mainNestedField: "Child Labour",
@@ -158,8 +154,8 @@ const field = [
           {
             title:
               "Prohibits the use of child labour throughout the value chain",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "b11 stuff" },
               { text: "b11 stuff" },
@@ -169,8 +165,8 @@ const field = [
           {
             title:
               "Actively works to identify and prevent child labour violations",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "b12 stuff" },
               { text: "b12 stuff" },
@@ -180,8 +176,8 @@ const field = [
           {
             title:
               "Enrolls child labour victims in school after discovering violations",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "b13 stuff" },
               { text: "b13 stuff" },
@@ -189,8 +185,8 @@ const field = [
             ],
           },
         ],
-        mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
+        mainNestedScore: [{ score: "" }, { score: "" }, { score: "" }],
+        industrialStandard: "",
       },
       {
         mainNestedField: "Forced Labour",
@@ -198,8 +194,8 @@ const field = [
           {
             title:
               "Prohibits the use of child labour throughout the value chain",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "b21 stuff" },
               { text: "b21 stuff" },
@@ -209,8 +205,8 @@ const field = [
           {
             title:
               "Actively works to identify and prevent child labour violations",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "b22 stuff" },
               { text: "b22 stuff" },
@@ -220,8 +216,8 @@ const field = [
           {
             title:
               "Supports the recovery of forced labour victims after discovering violations",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "b23 stuff" },
               { text: "b23 stuff" },
@@ -229,16 +225,16 @@ const field = [
             ],
           },
         ],
-        mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
+        mainNestedScore: [{ score: "" }, { score: "" }, { score: "" }],
+        industrialStandard: "",
       },
       {
         mainNestedField: "Living Wage",
         subNestedField: [
           {
             title: "Ensures all factory workers are paid a living wage",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "b31 stuff" },
               { text: "b31 stuff" },
@@ -248,8 +244,8 @@ const field = [
           {
             title:
               "Works to (prioritizes) improve wages throughout the value chain",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "b32 stuff" },
               { text: "b32 stuff" },
@@ -259,8 +255,8 @@ const field = [
           {
             title:
               "Ensures wages and benefits are being paid on time and in full",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "b33 stuff" },
               { text: "b33 stuff" },
@@ -270,8 +266,8 @@ const field = [
           {
             title:
               "Guarantees the right to freedom of association and collective bargaining",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "b34 stuff" },
               { text: "b34 stuff" },
@@ -281,8 +277,8 @@ const field = [
           {
             title:
               "Advocates for wage progression and fair compensation in the industry",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "b35 stuff" },
               { text: "b35 stuff" },
@@ -290,8 +286,8 @@ const field = [
             ],
           },
         ],
-        mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
+        mainNestedScore: [{ score: "" }, { score: "" }, { score: "" }],
+        industrialStandard: "",
       },
       {
         mainNestedField: "Working Conditions",
@@ -299,8 +295,8 @@ const field = [
           {
             title:
               "Works to (prioritizes) improve factory health and safety conditions",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "b41 stuff" },
               { text: "b41 stuff" },
@@ -309,8 +305,8 @@ const field = [
           },
           {
             title: "Ensures workers are not forced to work excessive hours",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "b42 stuff" },
               { text: "b42 stuff" },
@@ -319,8 +315,8 @@ const field = [
           },
           {
             title: "Prohibits all forms of harassment or abuse towards workers",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "b43 stuff" },
               { text: "b43 stuff" },
@@ -330,43 +326,43 @@ const field = [
           {
             title:
               "Actively works to identify and prevent mistreatment of workers",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "b44 stuff" },
               { text: "b44 stuff" },
               { text: "b44 stuff" },
             ],
           },
-          // {
-          //   title:
-          //     "Compensates mistreated workers after discovering violations",
-          //   scores: [{ score: "" }, { score: "" }, { score: "" }],
-          //   industrialStandard: "",
-          //   texts: [
-          //     { text: "b45 stuff" },
-          //     { text: "b45 stuff" },
-          //     { text: "b45 stuff" },
-          //   ],
-          // },
+          {
+            title:
+              "Compensates mistreated workers after discovering violations",
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
+            texts: [
+              { text: "b45 stuff" },
+              { text: "b45 stuff" },
+              { text: "b45 stuff" },
+            ],
+          },
         ],
-        mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
+        mainNestedScore: [{ score: "" }, { score: "" }, { score: "" }],
+        industrialStandard: "",
       },
     ],
   },
   {
     mainField: "WASTE & POLLUTION",
-    mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-    industrialStandard: [],
+    mainScore: [{ score: "" }, { score: "" }, { score: "" }],
+    industrialStandard: "",
     subfield: [
       {
         mainNestedField: "Air Pollution (GHGs)",
         subNestedField: [
           {
             title: "Commits to using less energy throughout the value chain",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "c11 stuff" },
               { text: "c11 stuff" },
@@ -376,8 +372,8 @@ const field = [
           {
             title:
               "Commits to reducing greenhouse gas emissions throughout the value chain",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "c12 stuff" },
               { text: "c12 stuff" },
@@ -386,8 +382,8 @@ const field = [
           },
           {
             title: "Works towards reducing the operational carbon footprint",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "c13 stuff" },
               { text: "c13 stuff" },
@@ -397,8 +393,8 @@ const field = [
           {
             title:
               "Works with suppliers to reduce manufacturing carbon footprints",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "c14 stuff" },
               { text: "c14 stuff" },
@@ -406,16 +402,16 @@ const field = [
             ],
           },
         ],
-        mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
+        mainNestedScore: [{ score: "" }, { score: "" }, { score: "" }],
+        industrialStandard: "",
       },
       {
         mainNestedField: "Water Pollution & Wastes",
         subNestedField: [
           {
             title: "Commits to using less water throughout the value chain",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "c21 stuff" },
               { text: "c21 stuff" },
@@ -424,8 +420,8 @@ const field = [
           },
           {
             title: "Works with suppliers to recycle water and reduce usage",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "c22 stuff" },
               { text: "c22 stuff" },
@@ -435,8 +431,8 @@ const field = [
           {
             title:
               "Eliminates use of toxic chemicals in the production of products",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "c23 stuff" },
               { text: "c23 stuff" },
@@ -445,8 +441,8 @@ const field = [
           },
           {
             title: "Filters wastewater to avoid contaminating fresh water",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "c24 stuff" },
               { text: "c24 stuff" },
@@ -454,16 +450,16 @@ const field = [
             ],
           },
         ],
-        mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
+        mainNestedScore: [{ score: "" }, { score: "" }, { score: "" }],
+        industrialStandard: "",
       },
       {
         mainNestedField: "Packaging Waste",
         subNestedField: [
           {
             title: "Reduces use of plastic packaging and shopping bags",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "c31 stuff" },
               { text: "c31 stuff" },
@@ -472,8 +468,8 @@ const field = [
           },
           {
             title: "Uses recycled plastics and paper packaging materials",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "c32 stuff" },
               { text: "c32 stuff" },
@@ -483,8 +479,8 @@ const field = [
           {
             title:
               "Ensures all used packaging can be reused, recycled or composted",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "c33 stuff" },
               { text: "c33 stuff" },
@@ -494,8 +490,8 @@ const field = [
           {
             title:
               "Works with suppliers to reduce, reuse and recycle all packaging waste",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "c34 stuff" },
               { text: "c34 stuff" },
@@ -503,16 +499,16 @@ const field = [
             ],
           },
         ],
-        mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
+        mainNestedScore: [{ score: "" }, { score: "" }, { score: "" }],
+        industrialStandard: "",
       },
       {
         mainNestedField: "Material Waste",
         subNestedField: [
           {
             title: "Uses recycled materials in the production of products",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "c41 stuff" },
               { text: "c41 stuff" },
@@ -521,8 +517,8 @@ const field = [
           },
           {
             title: "Repurposes or donates damaged and excess products",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "c42 stuff" },
               { text: "c42 stuff" },
@@ -532,8 +528,8 @@ const field = [
           {
             title:
               "Offers an effective take-back or repair program for customers",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "c43 stuff" },
               { text: "c43 stuff" },
@@ -543,8 +539,8 @@ const field = [
           {
             title:
               "Works with suppliers to reduce, reuse and recycle all material waste",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            scores: [{ score: "" }, { score: "" }, { score: "" }],
+            industrialStandard: "",
             texts: [
               { text: "c44 stuff" },
               { text: "c44 stuff" },
@@ -552,269 +548,84 @@ const field = [
             ],
           },
         ],
-        mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
+        mainNestedScore: [{ score: "" }, { score: "" }, { score: "" }],
+        industrialStandard: "",
       },
     ],
   },
   {
-    mainField: "ETHICAL SOURCING",
-    mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-    industrialStandard: [],
+    mainField: "SUSTAINABLE MATERIALS",
+    mainScore: [{ score: "" }, { score: "" }, { score: "" }],
+    industrialStandard: "",
     subfield: [
       {
         mainNestedField: "Cotton Farming",
-        subNestedField: [
-          {
-            title: "Sources sustainable cotton from certified farms",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-            texts: [
-              {text: "d11 stuff"},
-              {text: "d11"},
-              {text: "d11"}
-            ]
-          },
-          {
-            title: "Actively works to prevent unethical cotton farming practices",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-            texts: [
-              {text: "d12 stuff"},
-              {text: "d12"},
-              {text: "d12"}
-            ]
-          },
-        ],
-        mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
+        subNestedField: [],
+        mainNestedScore: [{ score: "" }, { score: "" }, { score: "" }],
+        industrialStandard: "",
       },
       {
         mainNestedField: "Deforestation",
-        subNestedField: [
-          {
-            title: "Sources sustainable forest-based fabrics from certified suppliers",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-            texts: [
-              {text: "d21 stuff"},
-              {text: "d21"},
-              {text: "d21"}
-            ]
-          },
-          {
-            title: "Uses paper packaging materials from sustainable sources",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-            texts: [
-              {text: "d22 stuff"},
-              {text: "d22"},
-              {text: "d22"}
-            ]
-          },
-          {
-            title: "Actively works to protect forests and stop deforestation",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-            texts: [
-              {text: "d23 stuff"},
-              {text: "d23"},
-              {text: "d23"}
-            ]
-          }
-        ],
-        mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
+        subNestedField: [],
+        mainNestedScore: [{ score: "" }, { score: "" }, { score: "" }],
+        industrialStandard: "",
       },
       {
         mainNestedField: "Animal Welfare",
-        subNestedField: [
-          {
-            title: "Prohibits the inhumane treatment of animals throughout the value chain",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-            texts: [
-              {text: "d31 stuff"},
-              {text: "d31"},
-              {text: "d31"}
-            ]
-          },
-          {
-            title: "Sources sustainable leather or prohibits use",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-            texts: [
-              {text: "d32 stuff"},
-              {text: "d32"},
-              {text: "d32"}
-            ]
-          },
-          {
-            title: "Sources sustainable fur or prohibits use",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-            texts: [
-              {text: "d33 stuff"},
-              {text: "d33"},
-              {text: "d33"}
-            ]
-          },
-          {
-            title: "Sources sustainable wool from non-mulesed sheep",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-            texts: [
-              {text: "d34 stuff"},
-              {text: "d34"},
-              {text: "d34"}
-            ]
-          },
-          {
-            title: "Sources sustainable down from birds that were never force fed or live plucked",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-            texts: [
-              {text: "d35 stuff"},
-              {text: "d35"},
-              {text: "d35"}
-            ]
-          },
-        ],
-        mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
+        subNestedField: [],
+        mainNestedScore: [{ score: "" }, { score: "" }, { score: "" }],
+        industrialStandard: "",
       },
     ],
   },
 ];
 
-const ComparePopup = ({ title, handleClose }) => {
-  return (
-    <div className="compare-popup">
-      <div className="compare-popup-content">
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            marginBottom: "50px"            
-          }}
-        >
-          <div className="compare-popup-title">{title}</div>
-          <div className="compare-popup-text">
-            Vulputate sit condimentum nulla eget placerat tincidunt. Vulputate
-            sit condimentum nulla eget placerat tincidunt.
-          </div>
-        </div>
-        <HighlightOffRoundedIcon
-          onClick={handleClose}
-          className="popup-close-icon"
-        />
-      </div>
-    </div>
-  );
-};
-
-const LearnMorePopup = () => {
-  const [showPopup, setShowPopup] = useState(false);
-  const [tabView, setTabView] = useState(false);
-
-  useLayoutEffect(() => {
-    function updateSize() {      
-      if (window.innerWidth > 800) {
-        setTabView(false);        
-      } else {
-        setTabView(true);
-      }
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-
-  return (
-    <>
-    <div className="compare-learn-more" onClick={() => setShowPopup(true)}>
-      Learn More
-      <ChevronRightIcon /> 
-    </div>
-      {tabView && showPopup && <ComparePopup title="Learn More" handleClose={() => setShowPopup(false)}/>}
-    </>
-  )
-};
-
 const ScoreContainer = ({
   score,
-  industrialStandard,
+  industrialStandard,  
   firstLayer,
-  secondLayer,
+  secondLayer,  
 }) => {
-
-  const [tabView, setTabView] = useState(false);
-  const [showInfo, setShoInfo] = useState(false);
-
-  useLayoutEffect(() => {
-    function updateSize() {      
-      if (window.innerWidth > 800) {
-        setTabView(false);
-        console.log('hree')
-      } else {
-        setTabView(true);
-      }
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-
-  if (score >=0) {
-    // console.log(score);
-    if (score > industrialStandard[1]) {
+  if (score) {
+    if(score > industrialStandard) {      
       return (
         <div
           className={
-            firstLayer
-              ? "compare__tool-scoreContainer greensquare border"
-              : secondLayer
-              ? "compare__tool-scoreContainer greensquare1"
-              : "compare__tool-scoreContainer greensquare2"
+            firstLayer ? "compare__tool-scoreContainer greensquare border" :
+            (secondLayer ? "compare__tool-scoreContainer greensquare1" :
+            "compare__tool-scoreContainer greensquare2")
           }
         >
           {score}/100
-          {!firstLayer && !secondLayer && <LearnMorePopup tabView={tabView} />}
-        </div>        
-      );
-    } else if (score < industrialStandard[1] && score > industrialStandard[0]) {
-      return (
-        <div
-          className={
-            firstLayer
-              ? "compare__tool-scoreContainer yellowsquare border"
-              : secondLayer
-              ? "compare__tool-scoreContainer yellowsquare1"
-              : "compare__tool-scoreContainer yellowsquare2"
-          }
-        >
-          {score}/100
-          {!firstLayer && !secondLayer && <LearnMorePopup tabView />}
         </div>
       );
-    } else {
+    } else if(score === industrialStandard) {
       return (
         <div
-          className={
-            firstLayer
-              ? "compare__tool-scoreContainer orangesquare border"
-              : secondLayer
-              ? "compare__tool-scoreContainer orangesquare1"
-              : "compare__tool-scoreContainer orangesquare2"
-          }
+        className={
+          firstLayer ? "compare__tool-scoreContainer yellowsquare border" :
+          (secondLayer ? "compare__tool-scoreContainer yellowsquare1" :
+          "compare__tool-scoreContainer yellowsquare2")
+        }
         >
           {score}/100
-          {!firstLayer && !secondLayer && <LearnMorePopup tabView />}
+        </div>
+      );
+
+    } else {            
+      return (
+        <div
+        className={
+          firstLayer ? "compare__tool-scoreContainer orangesquare border" :
+          (secondLayer ? "compare__tool-scoreContainer orangesquare1" :
+          "compare__tool-scoreContainer orangesquare2")
+        }
+        >
+          {score}/100
         </div>
       );
     }
   } else {
-    console.log(score);
     return (
       <div
         className={
@@ -828,36 +639,20 @@ const ScoreContainer = ({
 };
 
 const NestedField = ({ item }) => {
-  let v = ["he", "she"]
   const [show, setShow] = useState(false);
-  const [tabView, setTabView] = useState(window.innerWidth < 800);
-  const [mobileView, setMobileView] = useState(window.innerWidth < 600);
-  const [showPopup, setShowPopup] = useState(false);
-  let t = 0;
-
-  function increment(num) {
-    if(num > 2){
-      num = 0
-    }
-    num = num + 1;
-  }
+  const [ mobileView, setMobileView ] = useState(window.innerWidth < 600)
 
   useLayoutEffect(() => {
     function updateSize() {
-      if (window.innerWidth > 600) {
-        setMobileView(false);
+      if(window.innerWidth > 600) {
+        setMobileView(false)
       } else {
-        setMobileView(true);
-      }
-      if (window.innerWidth > 800) {
-        setTabView(false);
-      } else {
-        setTabView(true);
+        setMobileView(true)
       }
     }
-    window.addEventListener("resize", updateSize);
+    window.addEventListener('resize', updateSize);
     updateSize();
-    return () => window.removeEventListener("resize", updateSize);
+    return () => window.removeEventListener('resize', updateSize);
   }, []);
 
   return (
@@ -865,7 +660,7 @@ const NestedField = ({ item }) => {
       <div onClick={() => setShow(!show)} className="subField-container">
         <div className="subField-title">{item.mainNestedField}</div>
         {item.mainNestedScore.map((element, index) => {
-          if (mobileView && index < 2) {
+          if(mobileView && index < 2) {
             return (
               <ScoreContainer
                 key={index}
@@ -875,7 +670,7 @@ const NestedField = ({ item }) => {
               />
             );
           }
-          if (!mobileView) {
+          if(!mobileView) {
             return (
               <ScoreContainer
                 key={index}
@@ -885,86 +680,65 @@ const NestedField = ({ item }) => {
               />
             );
           }
-          return null;
+          return null
         })}
         {item.subNestedField.length > 0 && (
-          <ExpandMoreSharpIcon
-            onClick={() => setShow(!show)}
+          <div
             className={show ? "circle-new-close" : "circle-new"}
-          />
+            onClick={() => setShow(!show)}
+          >
+            <i className={show ? "arrowdown-new-close" : "arrowdown-new"}></i>
+          </div>
         )}
       </div>
-      <div className={`animate-field ${show ? "animate" : ""}`}>
-        {show &&
-          item.subNestedField.map((item, index) => {
-            return (
-              <div key={index} className="nestedField-container">
-                <span className="nestedField-title">
-                  {item.title}
-                  <span style={{ position: "relative", zIndex: "1" }}>
-                    <HelpOutlineTwoToneIcon
-                      className="compare-info-icon"
-                      onClick={() => setShowPopup(true)}
-                      style={{
-                        fontSize: "18px",
-                        marginLeft: "5px",
-                        fill: "#26385A",
-                      }}
+      {show &&
+        item.subNestedField.map((item, index) => {
+          return (
+            <div key={index} className="nestedField-container">
+              <div className="nestedField-title">{item.title}</div>
+              {item.scores.map((element, index) => {
+                if(mobileView && index < 2) {
+                  return (
+                    <ScoreContainer
+                    key={index}
+                    score={element.score}
+                    industrialStandard={item.industrialStandard}                    
                     />
-                    <span className="info-text-hover">
-                    </span>
-                    {showPopup && tabView && (
-                      <ComparePopup
-                        title={item.title}
-                        handleClose={() => setShowPopup(false)}
-                      />
-                    )}
-                  </span>
-                </span>
-                {item.scores.map((element, index) => {
-                  if (mobileView && index < 2) {
-                    return (
-                      <ScoreContainer
-                        key={index}
-                        score={element.score}
-                        industrialStandard={item.industrialStandard}
-                      />
                     );
                   }
-                  if (!mobileView) {
-                    return (
-                      <ScoreContainer
-                        key={index}
-                        score={element.score}
-                        industrialStandard={item.industrialStandard}
-                      />
+                if(!mobileView) {
+                  return (
+                    <ScoreContainer
+                    key={index}
+                    score={element.score}
+                    industrialStandard={item.industrialStandard}                    
+                    />
                     );
-                  }
-                  return null;
-                })}
-              </div>
-            );
-          })}
-      </div>
+                }
+                return null
+              })}
+            </div>
+          );
+        })}
     </div>
   );
 };
 
 const Subfield = ({ item }) => {
   const [show, setShow] = useState(false);
-  const [mobileView, setMobileView] = useState(window.innerWidth < 600);
+  const [ mobileView, setMobileView ] = useState(window.innerWidth < 600)
 
   useLayoutEffect(() => {
     function updateSize() {
-      if (window.innerWidth > 600) {
-        setMobileView(false);
+      if(window.innerWidth > 600) {
+        setMobileView(false)
       } else {
-        setMobileView(true);
+        setMobileView(true)
       }
     }
-    window.addEventListener("resize", updateSize);
+    window.addEventListener('resize', updateSize);
     updateSize();
-    return () => window.removeEventListener("resize", updateSize);
+    return () => window.removeEventListener('resize', updateSize);
   }, []);
 
   return (
@@ -972,36 +746,38 @@ const Subfield = ({ item }) => {
       <div className="mainField-container">
         <div className="mainField-title">{item.mainField}</div>
         {item.mainScore.map((element, index) => {
-          if (mobileView && index < 2) {
+          if(mobileView && index < 2) {
             return (
               <ScoreContainer
                 key={index}
                 score={element.score}
-                industrialStandard={item.industrialStandard}
+                industrialStandard={item.industrialStandard}              
                 firstLayer
               />
             );
           }
-          if (!mobileView) {
+          if(!mobileView) {
             return (
               <ScoreContainer
                 key={index}
                 score={element.score}
-                industrialStandard={item.industrialStandard}
+                industrialStandard={item.industrialStandard}              
                 firstLayer
               />
             );
           }
-          return null;
+          return null
         })}
         {item.subfield.length > 0 && (
-          <ExpandMoreSharpIcon
-            onClick={() => setShow(!show)}
+          <div
             className={show ? "circle-new-close" : "circle-new"}
-          />
+            onClick={() => setShow(!show)}
+          >
+            <i className={show ? "arrowdown-new-close" : "arrowdown-new"}></i>
+          </div>
         )}
       </div>
-      <div className={`animate-field ${show ? "animate" : ""}`}>
+      <div>
         {show &&
           item.subfield.map((item, index) => {
             return <NestedField key={index} item={item} />;
@@ -1011,7 +787,9 @@ const Subfield = ({ item }) => {
   );
 };
 
-const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
+
+
+const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
   const [companiesList, setCompaniesList] = useState([]);
   const [inputBrandOne, setInputBrandOne] = useState("");
   const [inputBrandTwo, setInputBrandTwo] = useState("");
@@ -1048,59 +826,59 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
         }
       )
       .then((resp) => {
-        data[0].mainScore[inputIndex].score = resp.data.rows[0]["Ascore"];
+        data[0].mainScore[inputIndex].score = resp.data.rows[0]["A"];
 
         data[0].subfield[0].mainNestedScore[inputIndex].score =
-          resp.data.rows[0]["A1score"];
+          resp.data.rows[0]["A1"];
         data[0].subfield[0].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["A1.1short"];
+          resp.data.rows[0]["A11_text"];
         data[0].subfield[0].subNestedField[0].scores[inputIndex].score =
-          resp.data.rows[0]["A1.1score"];
+          resp.data.rows[0]["A11_score"];
         data[0].subfield[0].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["A1.2short"];
+          resp.data.rows[0]["A12_text"];
         data[0].subfield[0].subNestedField[1].scores[inputIndex].score =
-          resp.data.rows[0]["A1.2score"];
+          resp.data.rows[0]["A12_score"];
 
         data[0].subfield[1].mainNestedScore[inputIndex].score =
-          resp.data.rows[0]["A2score"];
+          resp.data.rows[0]["A2"];
         data[0].subfield[1].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["A2.1short"];
+          resp.data.rows[0]["A21_text"];
         data[0].subfield[1].subNestedField[0].scores[inputIndex].score =
-          resp.data.rows[0]["A2.1score"];
+          resp.data.rows[0]["A21_score"];
         data[0].subfield[1].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["A2.2short"];
+          resp.data.rows[0]["A22_text"];
         data[0].subfield[1].subNestedField[1].scores[inputIndex].score =
-          resp.data.rows[0]["A2.2score"];
+          resp.data.rows[0]["A22_score"];
         data[0].subfield[1].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["A2.3short"];
+          resp.data.rows[0]["A23_text"];
         data[0].subfield[1].subNestedField[2].scores[inputIndex].score =
-          resp.data.rows[0]["A2.3score"];
+          resp.data.rows[0]["A23_score"];
 
         data[0].subfield[2].mainNestedScore[inputIndex].score =
-          resp.data.rows[0]["A3score"];
+          resp.data.rows[0]["A3"];
         data[0].subfield[2].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["A3.1short"];
+          resp.data.rows[0]["A31_text"];
         data[0].subfield[2].subNestedField[0].scores[inputIndex].score =
-          resp.data.rows[0]["A3.1score"];
+          resp.data.rows[0]["A31_score"];
         data[0].subfield[2].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["A3.2short"];
+          resp.data.rows[0]["A32_text"];
         data[0].subfield[2].subNestedField[1].scores[inputIndex].score =
-          resp.data.rows[0]["A3.2score"];
+          resp.data.rows[0]["A32_score"];
         data[0].subfield[2].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["A3.3short"];
+          resp.data.rows[0]["A33_text"];
         data[0].subfield[2].subNestedField[2].scores[inputIndex].score =
-          resp.data.rows[0]["A3.3score"];
+          resp.data.rows[0]["A33_score"];
 
         data[0].subfield[3].mainNestedScore[inputIndex].score =
-          resp.data.rows[0]["A4score"];
+          resp.data.rows[0]["A4"];
         data[0].subfield[3].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["A4.1short"];
+          resp.data.rows[0]["A41_text"];
         data[0].subfield[3].subNestedField[0].scores[inputIndex].score =
-          resp.data.rows[0]["A4.1score"];
+          resp.data.rows[0]["A41_score"];
         data[0].subfield[3].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["A4.2short"];
+          resp.data.rows[0]["A42_text"];
         data[0].subfield[3].subNestedField[1].scores[inputIndex].score =
-          resp.data.rows[0]["A4.2score"];
+          resp.data.rows[0]["A42_score"];
       });
 
     await axios
@@ -1112,83 +890,83 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
         }
       )
       .then((resp) => {
-        data[1].mainScore[inputIndex].score = resp.data.rows[0]["Bscore"];
+        data[1].mainScore[inputIndex].score = resp.data.rows[0]["B"];
 
         data[1].subfield[0].mainNestedScore[inputIndex].score =
-          resp.data.rows[0]["B1score"];
+          resp.data.rows[0]["B1"];
         data[1].subfield[0].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["B1.1short"];
+          resp.data.rows[0]["B11_text"];
         data[1].subfield[0].subNestedField[0].scores[inputIndex].score =
-          resp.data.rows[0]["B1.1score"];
+          resp.data.rows[0]["B11_score"];
         data[1].subfield[0].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["B1.2short"];
+          resp.data.rows[0]["B12_text"];
         data[1].subfield[0].subNestedField[1].scores[inputIndex].score =
-          resp.data.rows[0]["B1.2score"];
+          resp.data.rows[0]["B12_score"];
         data[1].subfield[0].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["B1.3short"];
+          resp.data.rows[0]["B13_text"];
         data[1].subfield[0].subNestedField[2].scores[inputIndex].score =
-          resp.data.rows[0]["B1.3score"];
+          resp.data.rows[0]["B13_score"];
 
         data[1].subfield[1].mainNestedScore[inputIndex].score =
-          resp.data.rows[0]["B2score"];
+          resp.data.rows[0]["B2"];
         data[1].subfield[1].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["B2.1short"];
+          resp.data.rows[0]["B21_text"];
         data[1].subfield[1].subNestedField[0].scores[inputIndex].score =
-          resp.data.rows[0]["B2.1score"];
+          resp.data.rows[0]["B21_score"];
         data[1].subfield[1].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["B2.2short"];
+          resp.data.rows[0]["B22_text"];
         data[1].subfield[1].subNestedField[1].scores[inputIndex].score =
-          resp.data.rows[0]["B2.2score"];
+          resp.data.rows[0]["B22_score"];
         data[1].subfield[1].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["B2.3short"];
+          resp.data.rows[0]["B23_text"];
         data[1].subfield[1].subNestedField[2].scores[inputIndex].score =
-          resp.data.rows[0]["B2.3score"];
+          resp.data.rows[0]["B23_score"];
 
         data[1].subfield[2].mainNestedScore[inputIndex].score =
-          resp.data.rows[0]["B3score"];
+          resp.data.rows[0]["B3"];
         data[1].subfield[2].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["B3.1short"];
+          resp.data.rows[0]["B31_text"];
         data[1].subfield[2].subNestedField[0].scores[inputIndex].score =
-          resp.data.rows[0]["B3.1score"];
+          resp.data.rows[0]["B31_score"];
         data[1].subfield[2].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["B3.2short"];
+          resp.data.rows[0]["B32_text"];
         data[1].subfield[2].subNestedField[1].scores[inputIndex].score =
-          resp.data.rows[0]["B3.2score"];
+          resp.data.rows[0]["B32_score"];
         data[1].subfield[2].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["B3.3short"];
+          resp.data.rows[0]["B33_text"];
         data[1].subfield[2].subNestedField[2].scores[inputIndex].score =
-          resp.data.rows[0]["B3.3score"];
+          resp.data.rows[0]["B33_score"];
         data[1].subfield[2].subNestedField[3].texts[inputIndex].text =
-          resp.data.rows[0]["B3.4short"];
+          resp.data.rows[0]["B34_text"];
         data[1].subfield[2].subNestedField[3].scores[inputIndex].score =
-          resp.data.rows[0]["B3.4score"];
+          resp.data.rows[0]["B34_score"];
         data[1].subfield[2].subNestedField[4].texts[inputIndex].text =
-          resp.data.rows[0]["B3.5short"];
+          resp.data.rows[0]["B35_text"];
         data[1].subfield[2].subNestedField[4].scores[inputIndex].score =
-          resp.data.rows[0]["B3.5score"];
+          resp.data.rows[0]["B35_score"];
 
         data[1].subfield[3].mainNestedScore[inputIndex].score =
-          resp.data.rows[0]["B4score"];
+          resp.data.rows[0]["B4"];
         data[1].subfield[3].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["B4.1short"];
+          resp.data.rows[0]["B41_text"];
         data[1].subfield[3].subNestedField[0].scores[inputIndex].score =
-          resp.data.rows[0]["B4.1score"];
+          resp.data.rows[0]["B41_score"];
         data[1].subfield[3].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["B4.2short"];
+          resp.data.rows[0]["B42_text"];
         data[1].subfield[3].subNestedField[1].scores[inputIndex].score =
-          resp.data.rows[0]["B4.2score"];
+          resp.data.rows[0]["B42_score"];
         data[1].subfield[3].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["B4.3short"];
+          resp.data.rows[0]["B43_text"];
         data[1].subfield[3].subNestedField[2].scores[inputIndex].score =
-          resp.data.rows[0]["B4.3score"];
+          resp.data.rows[0]["B43_score"];
         data[1].subfield[3].subNestedField[3].texts[inputIndex].text =
-          resp.data.rows[0]["B4.4short"];
+          resp.data.rows[0]["B44_text"];
         data[1].subfield[3].subNestedField[3].scores[inputIndex].score =
-          resp.data.rows[0]["B4.4score"];
-        // data[1].subfield[3].subNestedField[4].texts[inputIndex].text =
-        //   resp.data.rows[0]["B45short"];
-        // data[1].subfield[3].subNestedField[4].scores[inputIndex].score =
-        //   resp.data.rows[0]["B45_score"];
+          resp.data.rows[0]["B44_score"];
+        data[1].subfield[3].subNestedField[4].texts[inputIndex].text =
+          resp.data.rows[0]["B45_text"];
+        data[1].subfield[3].subNestedField[4].scores[inputIndex].score =
+          resp.data.rows[0]["B45_score"];
       });
 
     await axios
@@ -1200,83 +978,83 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
         }
       )
       .then((resp) => {
-        data[2].mainScore[inputIndex].score = resp.data.rows[0]["Cscore"];
+        data[2].mainScore[inputIndex].score = resp.data.rows[0]["C"];
 
         data[2].subfield[0].mainNestedScore[inputIndex].score =
-          resp.data.rows[0]["C1score"];
+          resp.data.rows[0]["C1"];
         data[2].subfield[0].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["C1.1short"];
+          resp.data.rows[0]["C11_text"];
         data[2].subfield[0].subNestedField[0].scores[inputIndex].score =
-          resp.data.rows[0]["C1.1score"];
+          resp.data.rows[0]["C11_score"];
         data[2].subfield[0].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["C1.2short"];
+          resp.data.rows[0]["C12_text"];
         data[2].subfield[0].subNestedField[1].scores[inputIndex].score =
-          resp.data.rows[0]["C1.2score"];
+          resp.data.rows[0]["C12_score"];
         data[2].subfield[0].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["C1.3short"];
+          resp.data.rows[0]["C13_text"];
         data[2].subfield[0].subNestedField[2].scores[inputIndex].score =
-          resp.data.rows[0]["C1.3score"];
+          resp.data.rows[0]["C13_score"];
         data[2].subfield[0].subNestedField[3].texts[inputIndex].text =
-          resp.data.rows[0]["C1.4short"];
+          resp.data.rows[0]["C14_text"];
         data[2].subfield[0].subNestedField[3].scores[inputIndex].score =
-          resp.data.rows[0]["C1.4score"];
+          resp.data.rows[0]["C14_score"];
 
         data[2].subfield[1].mainNestedScore[inputIndex].score =
-          resp.data.rows[0]["C2score"];
+          resp.data.rows[0]["C2"];
         data[2].subfield[1].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["C2.1short"];
+          resp.data.rows[0]["C21_text"];
         data[2].subfield[1].subNestedField[0].scores[inputIndex].score =
-          resp.data.rows[0]["C2.1score"];
+          resp.data.rows[0]["C21_score"];
         data[2].subfield[1].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["C2.2short"];
+          resp.data.rows[0]["C22_text"];
         data[2].subfield[1].subNestedField[1].scores[inputIndex].score =
-          resp.data.rows[0]["C2.2score"];
+          resp.data.rows[0]["C22_score"];
         data[2].subfield[1].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["C2.3short"];
+          resp.data.rows[0]["C23_text"];
         data[2].subfield[1].subNestedField[2].scores[inputIndex].score =
-          resp.data.rows[0]["C2.3score"];
+          resp.data.rows[0]["C23_score"];
         data[2].subfield[1].subNestedField[3].texts[inputIndex].text =
-          resp.data.rows[0]["C2.4short"];
+          resp.data.rows[0]["C24_text"];
         data[2].subfield[1].subNestedField[3].scores[inputIndex].score =
-          resp.data.rows[0]["C2.4score"];
+          resp.data.rows[0]["C24_score"];
 
         data[2].subfield[2].mainNestedScore[inputIndex].score =
-          resp.data.rows[0]["C3score"];
+          resp.data.rows[0]["C3"];
         data[2].subfield[2].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["C3.1short"];
+          resp.data.rows[0]["C31_text"];
         data[2].subfield[2].subNestedField[0].scores[inputIndex].score =
-          resp.data.rows[0]["C3.1score"];
+          resp.data.rows[0]["C31_score"];
         data[2].subfield[2].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["C3.2short"];
+          resp.data.rows[0]["C32_text"];
         data[2].subfield[2].subNestedField[1].scores[inputIndex].score =
-          resp.data.rows[0]["C3.2score"];
+          resp.data.rows[0]["C32_score"];
         data[2].subfield[2].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["C3.3short"];
+          resp.data.rows[0]["C33_text"];
         data[2].subfield[2].subNestedField[2].scores[inputIndex].score =
-          resp.data.rows[0]["C3.3score"];
+          resp.data.rows[0]["C33_score"];
         data[2].subfield[2].subNestedField[3].texts[inputIndex].text =
-          resp.data.rows[0]["C3.4short"];
+          resp.data.rows[0]["C34_text"];
         data[2].subfield[2].subNestedField[3].scores[inputIndex].score =
-          resp.data.rows[0]["C3.4score"];
+          resp.data.rows[0]["C34_score"];
 
         data[2].subfield[3].mainNestedScore[inputIndex].score =
-          resp.data.rows[0]["C4score"];
+          resp.data.rows[0]["C4"];
         data[2].subfield[3].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["C4.1short"];
+          resp.data.rows[0]["C41_text"];
         data[2].subfield[3].subNestedField[0].scores[inputIndex].score =
-          resp.data.rows[0]["C4.1score"];
+          resp.data.rows[0]["C41_score"];
         data[2].subfield[3].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["C4.2short"];
+          resp.data.rows[0]["C42_text"];
         data[2].subfield[3].subNestedField[1].scores[inputIndex].score =
-          resp.data.rows[0]["C4.2score"];
+          resp.data.rows[0]["C42_score"];
         data[2].subfield[3].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["C4.3short"];
+          resp.data.rows[0]["C43_text"];
         data[2].subfield[3].subNestedField[2].scores[inputIndex].score =
-          resp.data.rows[0]["C4.3score"];
+          resp.data.rows[0]["C43_score"];
         data[2].subfield[3].subNestedField[3].texts[inputIndex].text =
-          resp.data.rows[0]["C4.4short"];
+          resp.data.rows[0]["C44_text"];
         data[2].subfield[3].subNestedField[3].scores[inputIndex].score =
-          resp.data.rows[0]["C4.4score"];
+          resp.data.rows[0]["C44_score"];
       });
 
     await axios
@@ -1288,60 +1066,19 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
         }
       )
       .then((resp) => {
-        data[3].mainScore[inputIndex].score = resp.data.rows[0]["Dscore"];
+        data[3].mainScore[inputIndex].score = resp.data.rows[0]["D"];
 
         data[3].subfield[0].mainNestedScore[inputIndex].score =
-          resp.data.rows[0]["D1score"];
-        data[3].subfield[0].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["D1.1short"];
-        data[3].subfield[0].subNestedField[0].scores[inputIndex].score =
-          resp.data.rows[0]["D1.1score"];
-        data[3].subfield[0].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["D1.2short"];
-        data[3].subfield[0].subNestedField[1].scores[inputIndex].score =
-          resp.data.rows[0]["D1.2score"];        
+          resp.data.rows[0]["D1"];
 
         data[3].subfield[1].mainNestedScore[inputIndex].score =
-          resp.data.rows[0]["D2score"];
-        data[3].subfield[1].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["D2.1short"];
-        data[3].subfield[1].subNestedField[0].scores[inputIndex].score =
-          resp.data.rows[0]["D2.1score"];  
-        data[3].subfield[1].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["D2.2short"];
-        data[3].subfield[1].subNestedField[1].scores[inputIndex].score =
-          resp.data.rows[0]["D2.2score"];
-        data[3].subfield[1].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["D2.3short"];
-        data[3].subfield[1].subNestedField[2].scores[inputIndex].score =
-          resp.data.rows[0]["D2.3score"];
+          resp.data.rows[0]["D2"];
 
         data[3].subfield[2].mainNestedScore[inputIndex].score =
-          resp.data.rows[0]["D3score"];
-        data[3].subfield[2].subNestedField[0].texts[inputIndex].text =
-          resp.data.rows[0]["D3.1short"];
-        data[3].subfield[2].subNestedField[0].scores[inputIndex].score =
-          resp.data.rows[0]["D3.1score"]; 
-        data[3].subfield[2].subNestedField[1].texts[inputIndex].text =
-          resp.data.rows[0]["D3.2short"];
-        data[3].subfield[2].subNestedField[1].scores[inputIndex].score =
-          resp.data.rows[0]["D3.2score"]; 
-        data[3].subfield[2].subNestedField[2].texts[inputIndex].text =
-          resp.data.rows[0]["D3.3short"];
-        data[3].subfield[2].subNestedField[2].scores[inputIndex].score =
-          resp.data.rows[0]["D3.3score"]; 
-        data[3].subfield[2].subNestedField[3].texts[inputIndex].text =
-          resp.data.rows[0]["D3.4short"];
-        data[3].subfield[2].subNestedField[3].scores[inputIndex].score =
-          resp.data.rows[0]["D3.4score"]; 
-        data[3].subfield[2].subNestedField[4].texts[inputIndex].text =
-          resp.data.rows[0]["D3.5short"];
-        data[3].subfield[2].subNestedField[4].scores[inputIndex].score =
-          resp.data.rows[0]["D3.5score"]; 
+          resp.data.rows[0]["D3"];
       });
 
     setFieldData(data);
-    console.log(fieldData);
     if (inputIndex === 0) {
       setInputBrandOne(company);
       setListBrandOne(false);
@@ -1356,11 +1093,12 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
     }
   }
 
-  useEffect(() => {
+  useEffect(() => {    
+    
     axios.get("/allcompanies").then((resp) => {
       const allcompanies = [];
       for (var i = 0; i < resp.data.rows.length; i++) {
-        allcompanies.push(resp.data.rows[i].Name);
+        allcompanies.push(resp.data.rows[i].name);
       }
       setCompaniesList(allcompanies);
       fetchBrand(allcompanies);
@@ -1369,176 +1107,133 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
     axios.get("/industry").then((resp) => {
       let data = fieldData;
 
-      data[0].industrialStandard.push(resp.data.rows[0]["Alow"]);
-      data[0].industrialStandard.push(resp.data.rows[0]["Ahigh"]);
-      data[1].industrialStandard.push(resp.data.rows[0]["Blow"]);
-      data[1].industrialStandard.push(resp.data.rows[0]["Blow"]);
-      data[2].industrialStandard.push(resp.data.rows[0]["C"]);
-      data[2].industrialStandard.push(resp.data.rows[0]["C"]);
-      data[3].industrialStandard.push(resp.data.rows[0]["Dlow"]);
-      data[3].industrialStandard.push(resp.data.rows[0]["Dhigh"]);
+      data[0].industrialStandard = resp.data.rows[0]["A"];
+      data[1].industrialStandard = resp.data.rows[0]["B"];
+      data[2].industrialStandard = resp.data.rows[0]["C"];
+      data[3].industrialStandard = resp.data.rows[0]["D"];
 
-      data[0].subfield[0].industrialStandard.push(resp.data.rows[0]["A1low"]);
-      data[0].subfield[0].industrialStandard.push(resp.data.rows[0]["A1high"]);
-      data[0].subfield[1].industrialStandard.push(resp.data.rows[0]["A2low"]);
-      data[0].subfield[1].industrialStandard.push(resp.data.rows[0]["A2high"]);
-      data[0].subfield[2].industrialStandard.push(resp.data.rows[0]["A3low"]);
-      data[0].subfield[2].industrialStandard.push(resp.data.rows[0]["A3high"]);
-      data[0].subfield[3].industrialStandard.push(resp.data.rows[0]["A4low"]);
-      data[0].subfield[3].industrialStandard.push(resp.data.rows[0]["A4high"]);
+      data[0].subfield[0].industrialStandard = resp.data.rows[0]["A1"];
+      data[0].subfield[1].industrialStandard = resp.data.rows[0]["A2"];
+      data[0].subfield[2].industrialStandard = resp.data.rows[0]["A3"];
+      data[0].subfield[3].industrialStandard = resp.data.rows[0]["A4"];
 
-      data[0].subfield[0].subNestedField[0].industrialStandard.push(resp.data.rows[0]["A1.1low"]);
-      data[0].subfield[0].subNestedField[0].industrialStandard.push(resp.data.rows[0]["A1.1high"]);
-      data[0].subfield[0].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A1.2low"]);
-      data[0].subfield[0].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A1.2high"]);
-      data[0].subfield[1].subNestedField[0].industrialStandard.push(resp.data.rows[0]["A2.1low"]);
-      data[0].subfield[1].subNestedField[0].industrialStandard.push(resp.data.rows[0]["A2.1high"]);
-      data[0].subfield[1].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A2.2low"]);
-      data[0].subfield[1].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A2.2high"]);
-      data[0].subfield[1].subNestedField[2].industrialStandard.push(resp.data.rows[0]["A2.3low"]);
-      data[0].subfield[1].subNestedField[2].industrialStandard.push(resp.data.rows[0]["A2.3high"]);
-      data[0].subfield[2].subNestedField[0].industrialStandard.push(resp.data.rows[0]["A3.1low"]);
-      data[0].subfield[2].subNestedField[0].industrialStandard.push(resp.data.rows[0]["A3.1high"]);
-      data[0].subfield[2].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A3.2low"]);
-      data[0].subfield[2].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A3.2high"]);
-      data[0].subfield[2].subNestedField[2].industrialStandard.push(resp.data.rows[0]["A3.3low"]);
-      data[0].subfield[2].subNestedField[2].industrialStandard.push(resp.data.rows[0]["A3.3high"]);
-      data[0].subfield[3].subNestedField[0].industrialStandard.push(resp.data.rows[0]["A4.1low"]);
-      data[0].subfield[3].subNestedField[0].industrialStandard.push(resp.data.rows[0]["A4.1high"]);
-      data[0].subfield[3].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A4.2low"]);
-      data[0].subfield[3].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A4.2high"]);
+      data[0].subfield[0].subNestedField[0].industrialStandard =
+        resp.data.rows[0]["A11"];
+      data[0].subfield[0].subNestedField[1].industrialStandard =
+        resp.data.rows[0]["A12"];
+      data[0].subfield[1].subNestedField[0].industrialStandard =
+        resp.data.rows[0]["A21"];
+      data[0].subfield[1].subNestedField[1].industrialStandard =
+        resp.data.rows[0]["A22"];
+      data[0].subfield[1].subNestedField[2].industrialStandard =
+        resp.data.rows[0]["A23"];
+      data[0].subfield[2].subNestedField[0].industrialStandard =
+        resp.data.rows[0]["A31"];
+      data[0].subfield[2].subNestedField[1].industrialStandard =
+        resp.data.rows[0]["A32"];
+      data[0].subfield[2].subNestedField[2].industrialStandard =
+        resp.data.rows[0]["A33"];
+      data[0].subfield[3].subNestedField[0].industrialStandard =
+        resp.data.rows[0]["A41"];
+      data[0].subfield[3].subNestedField[1].industrialStandard =
+        resp.data.rows[0]["A42"];
 
-      data[1].subfield[0].industrialStandard.push(resp.data.rows[0]["B1low"]);
-      data[1].subfield[0].industrialStandard.push(resp.data.rows[0]["B1high"]);
-      data[1].subfield[1].industrialStandard.push(resp.data.rows[0]["B2low"]);
-      data[1].subfield[1].industrialStandard.push(resp.data.rows[0]["B2high"]);
-      data[1].subfield[2].industrialStandard.push(resp.data.rows[0]["B3low"]);
-      data[1].subfield[2].industrialStandard.push(resp.data.rows[0]["B3high"]);
-      data[1].subfield[3].industrialStandard.push(resp.data.rows[0]["B4low"]);
-      data[1].subfield[3].industrialStandard.push(resp.data.rows[0]["B4high"]);
+      data[1].subfield[0].industrialStandard = resp.data.rows[0]["B1"];
+      data[1].subfield[1].industrialStandard = resp.data.rows[0]["B2"];
+      data[1].subfield[2].industrialStandard = resp.data.rows[0]["B3"];
+      data[1].subfield[3].industrialStandard = resp.data.rows[0]["B4"];
 
-      data[1].subfield[0].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B1.1low"]);
-      data[1].subfield[0].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B1.1high"]);
-      data[1].subfield[0].subNestedField[1].industrialStandard.push(resp.data.rows[0]["B1.2low"]);
-      data[1].subfield[0].subNestedField[1].industrialStandard.push(resp.data.rows[0]["B1.2high"]);
-      data[1].subfield[0].subNestedField[2].industrialStandard.push(resp.data.rows[0]["B1.3low"]);
-      data[1].subfield[0].subNestedField[2].industrialStandard.push(resp.data.rows[0]["B1.3high"]);
+      data[1].subfield[0].subNestedField[0].industrialStandard =
+        resp.data.rows[0]["B11"];
+      data[1].subfield[0].subNestedField[1].industrialStandard =
+        resp.data.rows[0]["B12"];
+      data[1].subfield[0].subNestedField[2].industrialStandard =
+        resp.data.rows[0]["B13"];
 
-      data[1].subfield[1].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B2.1low"]);
-      data[1].subfield[1].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B2.1high"]);
-      data[1].subfield[1].subNestedField[1].industrialStandard.push(resp.data.rows[0]["B2.2low"]);
-      data[1].subfield[1].subNestedField[1].industrialStandard.push(resp.data.rows[0]["B2.2high"]);
-      data[1].subfield[1].subNestedField[2].industrialStandard.push(resp.data.rows[0]["B2.3low"]);
-      data[1].subfield[1].subNestedField[2].industrialStandard.push(resp.data.rows[0]["B2.3high"]);
+      data[1].subfield[1].subNestedField[0].industrialStandard =
+        resp.data.rows[0]["B21"];
+      data[1].subfield[1].subNestedField[1].industrialStandard =
+        resp.data.rows[0]["B22"];
+      data[1].subfield[1].subNestedField[2].industrialStandard =
+        resp.data.rows[0]["B23"];
 
-      data[1].subfield[2].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B3.1low"]);
-      data[1].subfield[2].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B3.1high"]);
-      data[1].subfield[2].subNestedField[1].industrialStandard.push(resp.data.rows[0]["B3.2low"]);
-      data[1].subfield[2].subNestedField[1].industrialStandard.push(resp.data.rows[0]["B3.2high"]);
-      data[1].subfield[2].subNestedField[2].industrialStandard.push(resp.data.rows[0]["B3.3low"]);
-      data[1].subfield[2].subNestedField[2].industrialStandard.push(resp.data.rows[0]["B3.3high"]);
-      data[1].subfield[2].subNestedField[3].industrialStandard.push(resp.data.rows[0]["B3.4low"]);
-      data[1].subfield[2].subNestedField[3].industrialStandard.push(resp.data.rows[0]["B3.4high"]);
-      data[1].subfield[2].subNestedField[4].industrialStandard.push(resp.data.rows[0]["B3.5low"]);
-      data[1].subfield[2].subNestedField[4].industrialStandard.push(resp.data.rows[0]["B3.5high"]);
+      data[1].subfield[2].subNestedField[0].industrialStandard =
+        resp.data.rows[0]["B31"];
+      data[1].subfield[2].subNestedField[1].industrialStandard =
+        resp.data.rows[0]["B32"];
+      data[1].subfield[2].subNestedField[2].industrialStandard =
+        resp.data.rows[0]["B33"];
+      data[1].subfield[2].subNestedField[3].industrialStandard =
+        resp.data.rows[0]["B34"];
+      data[1].subfield[2].subNestedField[4].industrialStandard =
+        resp.data.rows[0]["B35"];
 
-      data[1].subfield[3].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B4.1low"]);
-      data[1].subfield[3].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B4.1high"]);
-      data[1].subfield[3].subNestedField[1].industrialStandard.push(resp.data.rows[0]["B4.2low"]);
-      data[1].subfield[3].subNestedField[1].industrialStandard.push(resp.data.rows[0]["B4.2high"]);
-      data[1].subfield[3].subNestedField[2].industrialStandard.push(resp.data.rows[0]["B4.3low"]);
-      data[1].subfield[3].subNestedField[2].industrialStandard.push(resp.data.rows[0]["B4.3high"]);
-      data[1].subfield[3].subNestedField[3].industrialStandard.push(resp.data.rows[0]["B4.4low"]);
-      data[1].subfield[3].subNestedField[3].industrialStandard.push(resp.data.rows[0]["B4.4high"]);
-      // data[1].subfield[3].subNestedField[4].industrialStandard =
-      //   resp.data.rows[0]["B45"];
+      data[1].subfield[3].subNestedField[0].industrialStandard =
+        resp.data.rows[0]["B41"];
+      data[1].subfield[3].subNestedField[1].industrialStandard =
+        resp.data.rows[0]["B42"];
+      data[1].subfield[3].subNestedField[2].industrialStandard =
+        resp.data.rows[0]["B43"];
+      data[1].subfield[3].subNestedField[3].industrialStandard =
+        resp.data.rows[0]["B44"];
+      data[1].subfield[3].subNestedField[4].industrialStandard =
+        resp.data.rows[0]["B45"];
 
-      data[2].subfield[0].industrialStandard.push(resp.data.rows[0]["C1low"]);
-      data[2].subfield[0].industrialStandard.push(resp.data.rows[0]["C1high"]);
-      data[2].subfield[1].industrialStandard.push(resp.data.rows[0]["C2low"]);
-      data[2].subfield[1].industrialStandard.push(resp.data.rows[0]["C2high"]);
-      data[2].subfield[2].industrialStandard.push(resp.data.rows[0]["C3low"]);
-      data[2].subfield[2].industrialStandard.push(resp.data.rows[0]["C3high"]);
-      data[2].subfield[3].industrialStandard.push(resp.data.rows[0]["C4low"]);
-      data[2].subfield[3].industrialStandard.push(resp.data.rows[0]["C4high"]);
+      data[2].subfield[0].industrialStandard = resp.data.rows[0]["C1"];
+      data[2].subfield[1].industrialStandard = resp.data.rows[0]["C2"];
+      data[2].subfield[2].industrialStandard = resp.data.rows[0]["C3"];
+      data[2].subfield[3].industrialStandard = resp.data.rows[0]["C4"];
 
-      data[2].subfield[0].subNestedField[0].industrialStandard.push(resp.data.rows[0]["C1.1low"]);
-      data[2].subfield[0].subNestedField[0].industrialStandard.push(resp.data.rows[0]["C1.1high"]);
-      data[2].subfield[0].subNestedField[1].industrialStandard.push(resp.data.rows[0]["C1.2low"]);
-      data[2].subfield[0].subNestedField[1].industrialStandard.push(resp.data.rows[0]["C1.2high"]);
-      data[2].subfield[0].subNestedField[2].industrialStandard.push(resp.data.rows[0]["C1.3low"]);
-      data[2].subfield[0].subNestedField[2].industrialStandard.push(resp.data.rows[0]["C1.3high"]);
-      data[2].subfield[0].subNestedField[3].industrialStandard.push(resp.data.rows[0]["C1.4low"]);
-      data[2].subfield[0].subNestedField[3].industrialStandard.push(resp.data.rows[0]["C1.4high"]);
+      data[2].subfield[0].subNestedField[0].industrialStandard =
+        resp.data.rows[0]["C11"];
+      data[2].subfield[0].subNestedField[1].industrialStandard =
+        resp.data.rows[0]["C12"];
+      data[2].subfield[0].subNestedField[2].industrialStandard =
+        resp.data.rows[0]["C13"];
+      data[2].subfield[0].subNestedField[3].industrialStandard =
+        resp.data.rows[0]["C14"];
 
-      data[2].subfield[1].subNestedField[0].industrialStandard.push(resp.data.rows[0]["C2.1low"]);
-      data[2].subfield[1].subNestedField[0].industrialStandard.push(resp.data.rows[0]["C2.1high"]);
-      data[2].subfield[1].subNestedField[1].industrialStandard.push(resp.data.rows[0]["C2.2low"]);
-      data[2].subfield[1].subNestedField[1].industrialStandard.push(resp.data.rows[0]["C2.2high"]);
-      data[2].subfield[1].subNestedField[2].industrialStandard.push(resp.data.rows[0]["C2.3low"]);
-      data[2].subfield[1].subNestedField[2].industrialStandard.push(resp.data.rows[0]["C2.3high"]);
-      data[2].subfield[1].subNestedField[3].industrialStandard.push(resp.data.rows[0]["C2.4low"]);
-      data[2].subfield[1].subNestedField[3].industrialStandard.push(resp.data.rows[0]["C2.4high"]);
+      data[2].subfield[1].subNestedField[0].industrialStandard =
+        resp.data.rows[0]["C21"];
+      data[2].subfield[1].subNestedField[1].industrialStandard =
+        resp.data.rows[0]["C22"];
+      data[2].subfield[1].subNestedField[2].industrialStandard =
+        resp.data.rows[0]["C23"];
+      data[2].subfield[1].subNestedField[3].industrialStandard =
+        resp.data.rows[0]["C24"];
 
-      data[2].subfield[2].subNestedField[0].industrialStandard.push(resp.data.rows[0]["C3.1low"]);
-      data[2].subfield[2].subNestedField[0].industrialStandard.push(resp.data.rows[0]["C3.1high"]);
-      data[2].subfield[2].subNestedField[1].industrialStandard.push(resp.data.rows[0]["C3.2low"]);
-      data[2].subfield[2].subNestedField[1].industrialStandard.push(resp.data.rows[0]["C3.2high"]);
-      data[2].subfield[2].subNestedField[2].industrialStandard.push(resp.data.rows[0]["C3.3low"]);
-      data[2].subfield[2].subNestedField[2].industrialStandard.push(resp.data.rows[0]["C3.3high"]);
-      data[2].subfield[2].subNestedField[3].industrialStandard.push(resp.data.rows[0]["C3.4low"]);
-      data[2].subfield[2].subNestedField[3].industrialStandard.push(resp.data.rows[0]["C3.4high"]);
+      data[2].subfield[2].subNestedField[0].industrialStandard =
+        resp.data.rows[0]["C31"];
+      data[2].subfield[2].subNestedField[1].industrialStandard =
+        resp.data.rows[0]["C32"];
+      data[2].subfield[2].subNestedField[2].industrialStandard =
+        resp.data.rows[0]["C33"];
+      data[2].subfield[2].subNestedField[3].industrialStandard =
+        resp.data.rows[0]["C34"];
 
-      data[2].subfield[3].subNestedField[0].industrialStandard.push(resp.data.rows[0]["C4.1low"]);
-      data[2].subfield[3].subNestedField[0].industrialStandard.push(resp.data.rows[0]["C4.1high"]);
-      data[2].subfield[3].subNestedField[1].industrialStandard.push(resp.data.rows[0]["C4.2low"]);
-      data[2].subfield[3].subNestedField[1].industrialStandard.push(resp.data.rows[0]["C4.2high"]);
-      data[2].subfield[3].subNestedField[2].industrialStandard.push(resp.data.rows[0]["C4.3low"]);
-      data[2].subfield[3].subNestedField[2].industrialStandard.push(resp.data.rows[0]["C4.3high"]);
-      data[2].subfield[3].subNestedField[3].industrialStandard.push(resp.data.rows[0]["C4.4low"]);
-      data[2].subfield[3].subNestedField[3].industrialStandard.push(resp.data.rows[0]["C4.4high"]);
+      data[2].subfield[3].subNestedField[0].industrialStandard =
+        resp.data.rows[0]["C41"];
+      data[2].subfield[3].subNestedField[1].industrialStandard =
+        resp.data.rows[0]["C42"];
+      data[2].subfield[3].subNestedField[2].industrialStandard =
+        resp.data.rows[0]["C43"];
+      data[2].subfield[3].subNestedField[3].industrialStandard =
+        resp.data.rows[0]["C44"];
 
-      data[3].subfield[0].industrialStandard.push(resp.data.rows[0]["D1low"]);
-      data[3].subfield[0].industrialStandard.push(resp.data.rows[0]["D1high"]);
-      data[3].subfield[1].industrialStandard.push(resp.data.rows[0]["D2low"]);
-      data[3].subfield[1].industrialStandard.push(resp.data.rows[0]["D2high"]);
-      data[3].subfield[2].industrialStandard.push(resp.data.rows[0]["D3low"]);
-      data[3].subfield[2].industrialStandard.push(resp.data.rows[0]["D3high"]);
-
-      data[3].subfield[0].subNestedField[0].industrialStandard.push(resp.data.rows[0]["D1.1low"]);
-      data[3].subfield[0].subNestedField[0].industrialStandard.push(resp.data.rows[0]["D1.1high"]);
-      data[3].subfield[0].subNestedField[1].industrialStandard.push(resp.data.rows[0]["D1.2low"]);
-      data[3].subfield[0].subNestedField[1].industrialStandard.push(resp.data.rows[0]["D1.2high"]);
-
-      data[3].subfield[1].subNestedField[0].industrialStandard.push(resp.data.rows[0]["D2.1low"]);
-      data[3].subfield[1].subNestedField[0].industrialStandard.push(resp.data.rows[0]["D2.1high"]);
-      data[3].subfield[1].subNestedField[1].industrialStandard.push(resp.data.rows[0]["D2.2low"]);
-      data[3].subfield[1].subNestedField[1].industrialStandard.push(resp.data.rows[0]["D2.2high"]);
-      data[3].subfield[1].subNestedField[2].industrialStandard.push(resp.data.rows[0]["D2.3low"]);
-      data[3].subfield[1].subNestedField[2].industrialStandard.push(resp.data.rows[0]["D2.3high"]);
-
-      data[3].subfield[2].subNestedField[0].industrialStandard.push(resp.data.rows[0]["D3.1low"]);
-      data[3].subfield[2].subNestedField[0].industrialStandard.push(resp.data.rows[0]["D3.1high"]);
-      data[3].subfield[2].subNestedField[1].industrialStandard.push(resp.data.rows[0]["D3.2low"]);
-      data[3].subfield[2].subNestedField[1].industrialStandard.push(resp.data.rows[0]["D3.2high"]);
-      data[3].subfield[2].subNestedField[2].industrialStandard.push(resp.data.rows[0]["D3.3low"]);
-      data[3].subfield[2].subNestedField[2].industrialStandard.push(resp.data.rows[0]["D3.3high"]);
-      data[3].subfield[2].subNestedField[3].industrialStandard.push(resp.data.rows[0]["D3.4low"]);
-      data[3].subfield[2].subNestedField[3].industrialStandard.push(resp.data.rows[0]["D3.4high"]);
-      data[3].subfield[2].subNestedField[4].industrialStandard.push(resp.data.rows[0]["D3.5low"]);
-      data[3].subfield[2].subNestedField[4].industrialStandard.push(resp.data.rows[0]["D3.5high"]);
-      
+      data[3].subfield[0].industrialStandard = resp.data.rows[0]["D1"];
+      data[3].subfield[1].industrialStandard = resp.data.rows[0]["D1"];
+      data[3].subfield[2].industrialStandard = resp.data.rows[0]["D1"];
     });
   }, []);
 
   useEffect(() => {
     selectedCompaniesList.forEach((item, index) => {
-      item && renderData(item, index + 1);
-    });
-  }, [selectedCompaniesList]);
-
+      item && renderData(item, index+1)
+    })
+  }, [selectedCompaniesList])
+  
   return (
-    <div className="compare__tool-container">
+    <div className="compare__tool-container">        
       <div className="compare-input-container">
         <input
           placeholder="Type the brand"
@@ -1558,60 +1253,53 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
           onChange={handleChangeThree}
           onBlur={() => setTimeout(() => setListBrandThree(false), 200)}
         />
-        <div className="compare-companyList-container">
-          {listBrandOne && (
-            <div className="compare-companyList list-1">
-              {companiesList.map((item, index) => {
-                return (
-                  <div key={index} onClick={() => renderData(item, 1)}>
-                    {item}
-                  </div>
-                );
-              })}
-            </div>
-          )}
-          {listBrandTwo && (
-            <div className="compare-companyList list-2">
-              {companiesList.map((item, index) => {
-                return (
-                  <div key={index} onClick={() => renderData(item, 2)}>
-                    {item}
-                  </div>
-                );
-              })}
-            </div>
-          )}
-          {listBrandThree && (
-            <div className="compare-companyList list-3">
-              {companiesList.map((item, index) => {
-                return (
-                  <div key={index} onClick={() => renderData(item, 3)}>
-                    {item}
-                  </div>
-                );
-              })}
-            </div>
-          )}
+        <div className='compare-companyList-container'>
+        {listBrandOne && (
+          <div className="compare-companyList list-1">
+            {companiesList.map((item, index) => {
+              return (
+                <div key={index} onClick={() => renderData(item, 1)}>
+                  {item}
+                </div>
+              );
+            })}
+          </div>
+        )}
+        {listBrandTwo && (
+          <div className="compare-companyList list-2">
+            {companiesList.map((item, index) => {
+              return (
+                <div key={index} onClick={() => renderData(item, 2)}>
+                  {item}
+                </div>
+              );
+            })}
+          </div>
+        )}
+        {listBrandThree && (
+          <div className="compare-companyList list-3">
+            {companiesList.map((item, index) => {
+              return (
+                <div key={index} onClick={() => renderData(item, 3)}>
+                  {item}
+                </div>
+              );
+            })}
+          </div>
+        )}
         </div>
-        {selectedCompaniesList.map((item, index) => {
-          return (
-            <div key={index} className="brand-button-container">
-              <span
-                className={item ? "brand-button-close" : "diplay-none"}
-                onClick={() => removeBrand(index)}
-              >
-                &#10006;
-              </span>
-              <span className={item ? "brand-name" : "brand-name-placeholder"}>
-                {item ? item : "Select the brand"}
-              </span>
-            </div>
-          );
-        })}
+        {
+          selectedCompaniesList.map( (item, index) => {
+            return(
+              <div key={index} className='brand-button-container'>    
+                <span className={item ? 'brand-button-close' : 'diplay-none'} onClick={() => removeBrand(index)}>&#10006;</span>
+                <span className={item ? 'brand-name' : 'brand-name-placeholder'}>{item ? item : 'Select the brand'}</span>
+              </div>
+            )
+          })
+        }
       </div>
-      {fieldData.map((item, index) => (
-        <Subfield key={index} item={item} />
-      ))}
+      {fieldData.map((item, index) => <Subfield key={index} item={item} /> )}
     </div>
   );
 };

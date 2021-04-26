@@ -6,20 +6,7 @@
     top: 60px;
     list-style: none;
     text-align: start;
-    height: 185px;
-    /* display: flex;
-    justify-content: center; */
   }
-  .coming-soon-section {
-    display: flex;
-    justify-content: center;
-  }
-  .coming-soon-text {
-    align-items: center;
-  }
-  /* .Dropdown-Menu>h1 {
-    align-items: center;
-  } */
   
   .Dropdown-Menu li {
     background: #ffffff;

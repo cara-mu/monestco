@@ -1,186 +1,75 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import LogoTransparent from '../assets/logo_transparent.png'
 import ApparelDropdown from './Dropdown/ApparelDropdown.js'
-import TechDropdown from './Dropdown/TechDropdown.js'
 import FastFoodDropdown from './Dropdown/FastFoodDropdown.js'
-import ComparisonDropdown from './Dropdown/ComparisonDropdown.js';
-import TextField from '@material-ui/core/TextField';
-import SearchIcon from '@material-ui/icons/Search';
-import InputAdornment from '@material-ui/core/InputAdornment';
+import TechDropdown from './Dropdown/TechDropdown.js'
+import LogoTransparent from '../assets/logo_transparent.png'
 import '../styles/NavigationBar.css';
-import BrandDirectory from '../pages/BrandDirectory';
-
-const useStyles = makeStyles((theme) => ({
-  searchInput: {
-    position:'fixed',
-    left:'0',
-    top:'80px',
-    width:'100%',
-    backgroundColor:'#fff',
-    boxShadow: '0px 2px 9px 3px rgb(152 165 177 / 12%)',    
-    padding:'16px 24px',    
-  }
-}));
-
-
 function NavigationBar() {
   {/* Declare variables that will change state when clicked */ }
   {/* Set to false by default, when a component is triggered, will set to respective state */}
   const [click, setClick] = useState(false);
-  const [showSearch, setShowSearch] = useState(false);
-  const state = { clicked: false }
-  const classes = useStyles();
 
   {/* Declare additional variables to change state when dropdown menu is triggered*/}
   {/* Need to define for each navigation item (apparel, tech, etc..) */}
-  const [appDropdownLink, setAppDropdownLink] = useState(false);
   const [appDropdown, setAppDropdown] = useState(false);
-
-  const [foodDropdownLink, setFoodDropdownLink] = useState(false);
   const [foodDropdown, setFoodDropdown] = useState(false);
-
-  const [techDropdownLink, setTechDropdownLink] = useState(false);
   const [techDropdown, setTechDropdown] = useState(false);
-
-  const [compareDropdownLink, setCompareDropdownLink] = useState(false);
-  const [compareDropdown, setCompareDropdown] = useState(false);
 
   {/* Closes menu when navigated away */}
   const closeMenu = () => setClick(false);
-  const handleClick = () => setClick(!click);
-
-  const minWidth = 850;
-  const timeLimit = 400;
 
   {/* Manage apparel dropdown menu*/}
   const enterAppDropdown = () => {
-    if (window.innerWidth > minWidth) {    
-      setAppDropdown(true);    
+    if (window.innerWidth < 960) {
+      setAppDropdown(false);
+    } else {
+      setAppDropdown(true);
     }
   };
 
   const exitAppDropdown = () => {
-    if (window.innerWidth > minWidth) { 
-      setTimeout(() => {      
-        setAppDropdown(false);      
-      }, timeLimit)
-    }
-  };
-
-  const enterAppDropdownLink = () => { 
-    if (window.innerWidth > minWidth) { 
-      setAppDropdownLink(true);
-    }
-  };
-
-  const exitAppDropdownLink = () => {
-    if (window.innerWidth > minWidth) {
-    setTimeout(() => {      
-        setAppDropdownLink(false);
-    }, timeLimit)
+    if (window.innerWidth < 960) {
+      setAppDropdown(false);
+    } else {
+      setAppDropdown(false);
     }
   };
 
   {/* Manage fast food dropdown menu */}
   const enterFoodDropdown = () => {
-    if (window.innerWidth > minWidth) {
+    if (window.innerWidth < 960) {
+      setFoodDropdown(false);
+    } else {
       setFoodDropdown(true);
     }
   };
 
   const exitFoodDropdown = () => {
-    if (window.innerWidth > minWidth) {
-      setTimeout(() => {      
-        setFoodDropdown(false);   
-      }, timeLimit)
-    }
-  };
-
-  const enterFoodDropdownLink = () => {
-    if (window.innerWidth > minWidth) {
-      setFoodDropdownLink(true);
-    }
-  };
-
-  const exitFoodDropdownLink = () => {
-    if (window.innerWidth > minWidth) {
-      setTimeout(() => {      
-        setFoodDropdownLink(false);   
-      }, timeLimit)      
+    if (window.innerWidth < 960) {
+      setFoodDropdown(false);
+    } else {
+      setFoodDropdown(false);
     }
   };
 
   {/* Manage tech dropdown menu */}
-  const enterTechDropdownLink = () => {
-    if (window.innerWidth > minWidth) {      
-      setTechDropdownLink(true);
-    }
-  };
-
-  const exitTechDropdownLink = () => {
-    if (window.innerWidth > minWidth) {
-      setTimeout(() => {      
-        setTechDropdownLink(false);   
-      }, timeLimit)      
-    }
-  };
-
   const enterTechDropdown = () => {
-    if (window.innerWidth > minWidth) {      
+    if (window.innerWidth < 960) {
+      setTechDropdown(false);
+    } else {
       setTechDropdown(true);
     }
   };
 
   const exitTechDropdown = () => {
-    if (window.innerWidth > minWidth) {
-      setTimeout(() => {      
-        setTechDropdown(false);   
-      }, timeLimit)      
+    if (window.innerWidth < 960) {
+      setTechDropdown(false);
+    } else {
+      setTechDropdown(false);
     }
   };
 
-    {/* Manage compare dropdown menu */}
-  const enterCompareDropdownLink = () => {
-    if (window.innerWidth > minWidth) {      
-      setCompareDropdownLink(true);
-    }
-  };
-
-  const exitCompareDropdownLink = () => {
-    if (window.innerWidth > minWidth) {
-      setTimeout(() => {      
-        setCompareDropdownLink(false);   
-      }, timeLimit)       
-    }
-  };
-
-  const enterCompareDropdown = () => {
-    if (window.innerWidth > minWidth) {      
-      setCompareDropdown(true);
-    }
-  };
-
-  const exitCompareDropdown = () => {
-    if (window.innerWidth > minWidth) {
-      setTimeout(() => {      
-        setCompareDropdown(false);   
-      }, timeLimit)       
-    }
-  };
-
-  useLayoutEffect(() => {
-    function updateSize() {
-      if (window.innerWidth > minWidth) {
-        setClick(false)
-      }
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-  
   return (
       <nav className = 'Navigation-Bar' >
           {/* Monest Logo */}
@@ -189,115 +78,66 @@ function NavigationBar() {
             to='/' 
             className='Logo' 
             onClick={closeMenu}>
-                <img src = {LogoTransparent} alt = "logo" class="logo"/>
+                <img src = {LogoTransparent} alt = "logo"/>
         </Link>
 
-        {/* Hamburger menu appears when screen size is smaller/mobile */}
-
-        <div className = "Mobile-Hamburger-Menu" onClick = {handleClick}>
-          {/* Retrieved from Font Awesome CDN */}
-          <i className = {click ? 'fas fa-times' : 'fas fa-bars'}></i>
-        </div>
         {/* Begin Navigation Menu */}
 
-        <ul className = {click ? 'Nav-Menu active' : 'Navigation-Menu'}>
+        <ul className = {click ? 'nav-menu active' : 'Navigation-Menu'}>
             {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
+          <li className='Menu-Item' onMouseEnter={enterAppDropdown} onMouseLeave={exitAppDropdown} >
             <Link 
-                to='/brand-directory'
+                to='/' 
                 className='Navigation-Link' 
-                onClick={closeMenu}
-                >
+                onClick={closeMenu}>
                     Apparel
             </Link>
-            {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
+            {appDropdown && <ApparelDropdown />}
           </li>
 
           {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={enterTechDropdownLink} onMouseLeave={exitTechDropdownLink} >
+          <li className='Menu-Item' onMouseEnter={enterTechDropdown} onMouseLeave={exitTechDropdown} >
             <Link
               to='/'
               className='Navigation-Link'
               onClick={closeMenu} >
                  Tech
             </Link>
-            {(techDropdownLink || techDropdown) && <TechDropdown enterTechDropdown={enterTechDropdown} exitTechDropdown={exitTechDropdown}  />}
+            {techDropdown && <TechDropdown />}
           </li>
 
            {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={enterFoodDropdownLink} onMouseLeave={exitFoodDropdownLink} >
+          <li className='Menu-Item' onMouseEnter={enterFoodDropdown} onMouseLeave={exitFoodDropdown} >
             <Link
               to='/'
               className='Navigation-Link'
               onClick={closeMenu} >
                  Fast Food 
             </Link>
-            {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
+            {foodDropdown && <FastFoodDropdown />}
           </li>
 
           {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={enterFoodDropdownLink} onMouseLeave={exitFoodDropdownLink} >
+          <li className='Menu-Item' onMouseEnter={enterFoodDropdown} onMouseLeave={exitFoodDropdown} >
             <Link
               to='/'
               className='Navigation-Link'
               onClick={closeMenu} >
                  Beauty 
             </Link>
-            {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
+            {foodDropdown && <FastFoodDropdown />}
           </li>
 
-          {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' >
-            <Link
-              to='/methodology'
-              className='Navigation-Link'
-              onClick={closeMenu} >
-                 Methodology
-            </Link>
-          </li>
-
-          {/* Compare button had unique css styling but still has hover dropdown, denoted by having two classNames */}
-          <li className='Menu-Item' onMouseEnter={enterCompareDropdownLink} onMouseLeave={exitCompareDropdownLink}>
+          {/* Compare button had unique css styling and does not include hover option */}
+          <li className='Menu-Item'>
             <Link
               to='/comparison'
               className='Compare-Button'
               onClick={closeMenu} >
                 Compare
             </Link>
-            {(compareDropdownLink || compareDropdown) && <ComparisonDropdown enterCompareDropdown={enterCompareDropdown} exitCompareDropdown={exitCompareDropdown} />}
-          </li>
-
-          <li className='Menu-Item Menu-Item-search' >
-            <TextField 
-              id="standard-basic" 
-              placeholder="Search"
-              className="search-input"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon style={{fill:'rgba(50,50,50,0.5)'}} />
-                  </InputAdornment>
-                ),
-              }}
-               />               
           </li>
         </ul>
-        <div className='mobile-search-icon'>
-          <SearchIcon onClick={() => setShowSearch(!showSearch)} style={{fill:'rgb(50,50,50)', fontSize:'25px'}} />
-          {showSearch &&
-           <TextField 
-              id="search-dropdown" 
-              placeholder="Search for the brand"
-              className={`${classes.searchInput} seach-input-2` }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon style={{fill:'rgba(50,50,50,0.5)'}} />
-                  </InputAdornment>
-                ),
-              }}
-               />}
-        </div>
       </nav>
   );
 }
