@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import CancelIcon from "@material-ui/icons/Cancel";
 import "../styles/ModalBody.css";
 
@@ -51,11 +52,13 @@ export default function ModalBody({ handleClose, i, title, summary, issueAdd, is
             {showCitation ? (
               citID.map((key, i) => {
                 return <div>
-                   "{pubgroup[i]}" {cittitle[i]} -
-                   {pubgroup[i]}
-                   {date[i]}
-                   {pages[i]}
-                   {url[i]}
+                  {author[i] != null && author[i] + '  ' }
+                  {cittitle[i] != null && cittitle[i] + '  '}
+                   <em>{pubgroup[i]!= null && pubgroup[i] + '  '}</em>
+                   {date[i] != null && date[i] + '  '}
+                   {pages[i] != null && pages[i] + '  '}
+                   <a href = {url[i]}>{url[i]}</a>
+                   <br></br>
               </div>
               })
             ) : null}

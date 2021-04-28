@@ -229,7 +229,7 @@ function rand() {
 
     const body = (
           <ModalBody handleClose={handleClose} i={openID} title={news[0]["Title"]} summary={news[0]["Summary"]}
-          issueAdd={news[0]["IssueAddressed"]} issueAddExp={news[0]["IssueAddressedExplanation"]} respTake={news[0]["ResponsibilityTaken"]} respTakenExp = {news[0]["ResponsibilityTakenExplanation"]} newsID={news[0]["ID"]} citID={citations[0]["RelationalID"]} author={citations[0]["RelationalID"]} cittitle={citations[0]["Title"]} pubgroup = {citations[0]["PublishingGroup"]} date = {citations[0]["Date"]} pages = {citations[0]["Pages"]} url = {citations[0]["URL"]} />
+          issueAdd={news[0]["IssueAddressed"]} issueAddExp={news[0]["IssueAddressedExplanation"]} respTake={news[0]["ResponsibilityTaken"]} respTakenExp = {news[0]["ResponsibilityTakenExplanation"]} newsID={news[0]["ID"]} citID={citations[0]["RelationalID"]} author={citations[0]["Author"]} cittitle={citations[0]["Title"]} pubgroup = {citations[0]["PublishingGroup"]} date = {citations[0]["Date"]} pages = {citations[0]["Pages"]} url = {citations[0]["URL"]} />
       );
 
     const Popup = ({handleCloseInfo}) => {
@@ -639,8 +639,8 @@ function rand() {
                         newsinput[0]["IssueAddressed"][i] == "Yes" &&
                             <span style={{color:'#28a745', marginLeft:'5px'}}>{newsinput[0]["IssueAddressed"][i]}</span>
                         || 
-                        newsinput[0]["ResponsibilityTaken"][i] == "Maybe" &&
-                            <span style={{color:'#F29A72', marginLeft:'5px'}}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
+                        newsinput[0]["IssueAddressed"][i] == "Maybe" &&
+                            <span style={{color:'#F29A72', marginLeft:'5px'}}>{newsinput[0]["IssueAddressed"][i]}</span>
                         }
                         <button className='News-read-more-btn' onClick={() => handleOpen(i, news[0]["ID"][i])}>Read more</button>
                     </div>
