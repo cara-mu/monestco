@@ -3,7 +3,7 @@ import { MenuItems } from './MenuItems';
 import { Link } from 'react-router-dom';
 import '../../styles/FastFoodDropdown.css';
 
-function FastFoodDropdown() {
+function FastFoodDropdown({enterFoodDropdown, exitFoodDropdown}) {
   {/* Functions handling click */}
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -11,11 +11,14 @@ function FastFoodDropdown() {
   return (
       <ul
         onClick={handleClick}
-        className={click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'} >  
+        className={`coming-soon-section ${click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'}`}
+        onMouseEnter={enterFoodDropdown} 
+        onMouseLeave={exitFoodDropdown}
+        >  
 
          {/* First launch will not include */}
          
-         <h1>coming soon!</h1>
+         <h1 className="coming-soon-text" style={{justifyContent:'center'}}>coming soon!</h1>
 
       </ul>
   );

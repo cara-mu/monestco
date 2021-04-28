@@ -27,7 +27,7 @@
       justify-content: space-around;
   }
 
-  h1{
+  .Apparel h1{
     display: flex;
     justify-content: flex-start;
     font-size: 16px;
@@ -42,7 +42,14 @@
   }
   
   .Apparel{
-    background: #E3F0FD;
+    background:  #F2F2F2;
+  }
+
+  .Apparel:hover{
+    background-color:  #E1ECF7;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
+    width: 350px;
+    height: 155px;
   }
 
   .Tech{
