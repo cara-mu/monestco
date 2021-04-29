@@ -505,7 +505,7 @@ line-height: 35px;
 }
 
 
-@media only screen and (max-width:414px) {
+@media only screen and (max-width: 414px) {
     .methodology_heading {
         margin-left: 24px;
         font-style:  normal;
@@ -513,12 +513,12 @@ line-height: 35px;
         color: #3D3E3F;
         font-family:"DM Sans";
         margin-top:40px;
-        font-weight:bold
+        font-weight:bold;
     }
     .method_page{
         margin-left : 19px;
         margin-top: 10px;
-        max-width: 1192px;
+        max-width: 2000px;
     }
 }
 

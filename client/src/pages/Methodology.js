@@ -98,12 +98,14 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     [theme.breakpoints.between(600,1300) ]: {
-        marginTop:10,
+        marginTop: 10,
         background:"transparent",
+    },
+    [theme.breakpoints.down(414) ]: {
     },
     [theme.breakpoints.up('sm')]: {
         marginTop:10,
-        background:"transparent",
+        background:"transparent"
     },
   },
 }));
