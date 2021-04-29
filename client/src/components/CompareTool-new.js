@@ -3,6 +3,7 @@ import ExpandMoreSharpIcon from "@material-ui/icons/ExpandMoreSharp";
 import HelpOutlineTwoToneIcon from "@material-ui/icons/HelpOutlineTwoTone";
 import HighlightOffRoundedIcon from "@material-ui/icons/HighlightOffRounded";
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import "../styles/compareTool-new.css";
 import axios from "axios";
 
@@ -17,8 +18,9 @@ const field = [
         subNestedField: [
           {
             title: "Prohibits discrimination throughout the organization",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
+            scores: [{ score: 50 }, { score: -1 }, { score: -1 }],
+            industrialStandard: [40],
             texts: [
               { text: "a11 stuff" },
               { text: "a11 stuff" },
@@ -27,6 +29,7 @@ const field = [
           },
           {
             title: "Actively identifies and addresses discrimination",
+            popupText: "Employee hotline channels are offered and actions are taken to address violations.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -45,6 +48,7 @@ const field = [
           {
             title:
               "Commits to increasing gender diversity throughout the organization",
+              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -56,6 +60,7 @@ const field = [
           {
             title:
               "Maintains strong female representation at all levels of leadership",
+              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -66,6 +71,7 @@ const field = [
           },
           {
             title: "Ensures equal pay for equal work",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -84,6 +90,7 @@ const field = [
           {
             title:
               "Commits to increasing gender diversity throughout the organization",
+              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -95,6 +102,7 @@ const field = [
           {
             title:
               "Maintains diverse ethnic representation at all levels of leadership",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -105,6 +113,7 @@ const field = [
           },
           {
             title: "Actively supports BIPOC and under represented communities",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -123,6 +132,7 @@ const field = [
           {
             title:
               "Fosters an inclusive workplace culture for all types of people",
+              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -133,6 +143,7 @@ const field = [
           },
           {
             title: "Prioritizes the mental health and wellbeing of employees",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -158,6 +169,7 @@ const field = [
           {
             title:
               "Prohibits the use of child labour throughout the value chain",
+              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -169,6 +181,7 @@ const field = [
           {
             title:
               "Actively works to identify and prevent child labour violations",
+              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -180,6 +193,7 @@ const field = [
           {
             title:
               "Enrolls child labour victims in school after discovering violations",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -198,6 +212,7 @@ const field = [
           {
             title:
               "Prohibits the use of child labour throughout the value chain",
+              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -209,6 +224,7 @@ const field = [
           {
             title:
               "Actively works to identify and prevent child labour violations",
+              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -220,6 +236,7 @@ const field = [
           {
             title:
               "Supports the recovery of forced labour victims after discovering violations",
+              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -237,6 +254,7 @@ const field = [
         subNestedField: [
           {
             title: "Ensures all factory workers are paid a living wage",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -248,6 +266,7 @@ const field = [
           {
             title:
               "Works to (prioritizes) improve wages throughout the value chain",
+              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -259,6 +278,7 @@ const field = [
           {
             title:
               "Ensures wages and benefits are being paid on time and in full",
+              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -270,6 +290,7 @@ const field = [
           {
             title:
               "Guarantees the right to freedom of association and collective bargaining",
+              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -281,6 +302,7 @@ const field = [
           {
             title:
               "Advocates for wage progression and fair compensation in the industry",
+              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -299,6 +321,7 @@ const field = [
           {
             title:
               "Works to (prioritizes) improve factory health and safety conditions",
+              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -309,6 +332,7 @@ const field = [
           },
           {
             title: "Ensures workers are not forced to work excessive hours",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -319,6 +343,7 @@ const field = [
           },
           {
             title: "Prohibits all forms of harassment or abuse towards workers",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -330,6 +355,7 @@ const field = [
           {
             title:
               "Actively works to identify and prevent mistreatment of workers",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -365,6 +391,7 @@ const field = [
         subNestedField: [
           {
             title: "Commits to using less energy throughout the value chain",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -376,6 +403,7 @@ const field = [
           {
             title:
               "Commits to reducing greenhouse gas emissions throughout the value chain",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -386,6 +414,7 @@ const field = [
           },
           {
             title: "Works towards reducing the operational carbon footprint",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -397,6 +426,7 @@ const field = [
           {
             title:
               "Works with suppliers to reduce manufacturing carbon footprints",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -414,6 +444,7 @@ const field = [
         subNestedField: [
           {
             title: "Commits to using less water throughout the value chain",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -424,6 +455,7 @@ const field = [
           },
           {
             title: "Works with suppliers to recycle water and reduce usage",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -435,6 +467,7 @@ const field = [
           {
             title:
               "Eliminates use of toxic chemicals in the production of products",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -445,6 +478,7 @@ const field = [
           },
           {
             title: "Filters wastewater to avoid contaminating fresh water",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -462,6 +496,7 @@ const field = [
         subNestedField: [
           {
             title: "Reduces use of plastic packaging and shopping bags",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -472,6 +507,7 @@ const field = [
           },
           {
             title: "Uses recycled plastics and paper packaging materials",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -483,6 +519,7 @@ const field = [
           {
             title:
               "Ensures all used packaging can be reused, recycled or composted",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -494,6 +531,7 @@ const field = [
           {
             title:
               "Works with suppliers to reduce, reuse and recycle all packaging waste",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -511,6 +549,7 @@ const field = [
         subNestedField: [
           {
             title: "Uses recycled materials in the production of products",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -521,6 +560,7 @@ const field = [
           },
           {
             title: "Repurposes or donates damaged and excess products",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -532,6 +572,7 @@ const field = [
           {
             title:
               "Offers an effective take-back or repair program for customers",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -543,6 +584,7 @@ const field = [
           {
             title:
               "Works with suppliers to reduce, reuse and recycle all material waste",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -567,6 +609,7 @@ const field = [
         subNestedField: [
           {
             title: "Sources sustainable cotton from certified farms",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -577,6 +620,7 @@ const field = [
           },
           {
             title: "Actively works to prevent unethical cotton farming practices",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -594,6 +638,7 @@ const field = [
         subNestedField: [
           {
             title: "Sources sustainable forest-based fabrics from certified suppliers",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -604,6 +649,7 @@ const field = [
           },
           {
             title: "Uses paper packaging materials from sustainable sources",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -614,6 +660,7 @@ const field = [
           },
           {
             title: "Actively works to protect forests and stop deforestation",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -631,6 +678,7 @@ const field = [
         subNestedField: [
           {
             title: "Prohibits the inhumane treatment of animals throughout the value chain",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -641,6 +689,7 @@ const field = [
           },
           {
             title: "Sources sustainable leather or prohibits use",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -651,6 +700,7 @@ const field = [
           },
           {
             title: "Sources sustainable fur or prohibits use",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -661,6 +711,7 @@ const field = [
           },
           {
             title: "Sources sustainable wool from non-mulesed sheep",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -671,6 +722,7 @@ const field = [
           },
           {
             title: "Sources sustainable down from birds that were never force fed or live plucked",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -687,7 +739,8 @@ const field = [
   },
 ];
 
-const ComparePopup = ({ title, handleClose }) => {
+const ComparePopup = ({ title, popupText, handleClose }) => {
+  
   return (
     <div className="compare-popup">
       <div className="compare-popup-content">
@@ -699,10 +752,7 @@ const ComparePopup = ({ title, handleClose }) => {
           }}
         >
           <div className="compare-popup-title">{title}</div>
-          <div className="compare-popup-text">
-            Vulputate sit condimentum nulla eget placerat tincidunt. Vulputate
-            sit condimentum nulla eget placerat tincidunt.
-          </div>
+          <div className="compare-popup-text">{popupText}</div>
         </div>
         <HighlightOffRoundedIcon
           onClick={handleClose}
@@ -713,10 +763,30 @@ const ComparePopup = ({ title, handleClose }) => {
   );
 };
 
-const LearnMorePopup = () => {
+const LearnMorePopup = ({learnMoreText, tabView, setShowLearnMoreText}) => {
   const [showPopup, setShowPopup] = useState(false);
-  const [tabView, setTabView] = useState(false);
 
+  return (
+    <>
+    <div className="compare-learn-more" onClick={() => tabView ? setShowPopup(true) : setShowLearnMoreText(true) }>
+      Learn More
+      <ChevronRightIcon /> 
+    </div>
+      {tabView && showPopup && <ComparePopup title="Learn More" popupText={learnMoreText.text} handleClose={() => setShowPopup(false)}/>}
+    </>
+  )
+};
+
+const ScoreContainer = ({
+  score,
+  industrialStandard,
+  firstLayer,
+  secondLayer,
+  learnMoreText
+}) => {  
+  const [showLearnMoreText, setShowLearnMoreText] = useState(false);
+  const [tabView, setTabView] = useState(false);
+  
   useLayoutEffect(() => {
     function updateSize() {      
       if (window.innerWidth > 800) {
@@ -730,86 +800,69 @@ const LearnMorePopup = () => {
     return () => window.removeEventListener("resize", updateSize);
   }, []);
 
-  return (
-    <>
-    <div className="compare-learn-more" onClick={() => setShowPopup(true)}>
-      Learn more
-      <ChevronRightIcon /> 
-    </div>
-      {tabView && showPopup && <ComparePopup title="Learn More" handleClose={() => setShowPopup(false)}/>}
-    </>
-  )
-};
-
-const ScoreContainer = ({
-  score,
-  industrialStandard,
-  firstLayer,
-  secondLayer,
-}) => {
-
-  const [tabView, setTabView] = useState(false);
-  const [showInfo, setShoInfo] = useState(false);
-
-  useLayoutEffect(() => {
-    function updateSize() {      
-      if (window.innerWidth > 800) {
-        setTabView(false);
-        console.log('hree')
-      } else {
-        setTabView(true);
-      }
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-
   if (score >=0) {
-    // console.log(score);
+    // console.log(score);]
     if (score > industrialStandard[1]) {
       return (
-        <div
+        <div className="compare-card-container greensquare2">
+        {!showLearnMoreText && <div
           className={
             firstLayer
               ? "compare__tool-scoreContainer greensquare border"
               : secondLayer
               ? "compare__tool-scoreContainer greensquare1"
-              : "compare__tool-scoreContainer greensquare2"
+              : "compare__tool-scoreContainer card-front greensquare2"
           }
         >
           {score}/100
-          {!firstLayer && !secondLayer && <LearnMorePopup tabView={tabView} />}
-        </div>        
+          {!firstLayer && !secondLayer && <LearnMorePopup learnMoreText={learnMoreText} tabView={tabView} setShowLearnMoreText={setShowLearnMoreText} />}
+        </div>}
+        {!firstLayer && !secondLayer && showLearnMoreText && <div className="card-back">
+          <ChevronLeftIcon onClick={() => setShowLearnMoreText(false)} style={{cursor:'pointer'}} />
+         {learnMoreText.text} 
+      </div>}
+      </div>
       );
     } else if (score < industrialStandard[1] && score > industrialStandard[0]) {
       return (
-        <div
+        <div className="compare-card-container yellowsquare2">
+        {!showLearnMoreText && <div
           className={
             firstLayer
               ? "compare__tool-scoreContainer yellowsquare border"
               : secondLayer
               ? "compare__tool-scoreContainer yellowsquare1"
-              : "compare__tool-scoreContainer yellowsquare2"
+              : "compare__tool-scoreContainer card-front yellowsquare2"
           }
         >
           {score}/100
-          {!firstLayer && !secondLayer && <LearnMorePopup tabView />}
+          {!firstLayer && !secondLayer && <LearnMorePopup learnMoreText={learnMoreText} tabView={tabView} setShowLearnMoreText={setShowLearnMoreText} />}
+        </div>}
+        {!firstLayer && !secondLayer && showLearnMoreText && <div className="card-back">
+          <ChevronLeftIcon onClick={() => setShowLearnMoreText(false)} style={{cursor:'pointer'}} />
+         {learnMoreText.text} 
+        </div>}
         </div>
       );
     } else {
       return (
-        <div
+        <div className="compare-card-container orangesquare2">
+        {!showLearnMoreText && <div
           className={
             firstLayer
               ? "compare__tool-scoreContainer orangesquare border"
               : secondLayer
               ? "compare__tool-scoreContainer orangesquare1"
-              : "compare__tool-scoreContainer orangesquare2"
+              : "compare__tool-scoreContainer card-front orangesquare2"
           }
         >
           {score}/100
-          {!firstLayer && !secondLayer && <LearnMorePopup tabView />}
+          {!firstLayer && !secondLayer && <LearnMorePopup learnMoreText={learnMoreText} tabView={tabView} setShowLearnMoreText={setShowLearnMoreText} />}
+        </div>}
+        {!firstLayer && !secondLayer && showLearnMoreText && <div className="card-back">
+          <ChevronLeftIcon onClick={() => setShowLearnMoreText(false)} style={{cursor:'pointer'}} />
+         {learnMoreText.text} 
+        </div>}
         </div>
       );
     }
@@ -827,12 +880,68 @@ const ScoreContainer = ({
   }
 };
 
+const SubNestedField = ({item, tabView, mobileView}) => {
+  const [showPopup, setShowPopup] = useState(false);  
+  
+  return (
+    <div className="nestedField-container">
+      <span className="nestedField-title">
+        {item.title}
+        <span style={{ position: "relative" }}>
+          <HelpOutlineTwoToneIcon
+            className="compare-info-icon"
+            onClick={() => tabView && setShowPopup(true)}
+            style={{
+              fontSize: "18px",
+              marginLeft: "5px",
+              fill: "#26385A",
+            }}
+          />
+          <span className="info-text-hover">
+            {item.popupText}
+          </span>
+          {showPopup && tabView && (
+            <ComparePopup              
+              title={item.title}
+              popupText={item.popupText}
+              handleClose={() => setShowPopup(false)}
+            />
+          )}
+        </span>
+      </span>
+      {item.scores.map((element, index) => {
+        if (mobileView && index < 2) {
+          return (
+            <ScoreContainer
+              key={index}
+              score={element.score}
+              industrialStandard={item.industrialStandard}
+              learnMoreText={item.texts[index]}
+            />
+          );
+        }
+        if (!mobileView) {
+          return (
+            <ScoreContainer
+              key={index}
+              score={element.score}
+              industrialStandard={item.industrialStandard}
+              learnMoreText={item.texts[index]}
+            />
+          );
+        }
+        return null;
+      })}
+    </div>
+  );
+
+}
+
 const NestedField = ({ item }) => {
-  let v = ["he", "she"]
-  const [show, setShow] = useState(false);
-  const [tabView, setTabView] = useState(window.innerWidth < 800);
+  // let v = ["he", "she"]
+  const [show, setShow] = useState(false);  
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
-  const [showPopup, setShowPopup] = useState(false);
+  const [tabView, setTabView] = useState(window.innerWidth < 800);
 
   useLayoutEffect(() => {
     function updateSize() {
@@ -851,7 +960,7 @@ const NestedField = ({ item }) => {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-
+  
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <div onClick={() => setShow(!show)} className="subField-container">
@@ -889,62 +998,14 @@ const NestedField = ({ item }) => {
       <div className={`animate-field ${show ? "animate" : ""}`}>
         {show &&
           item.subNestedField.map((item, index) => {
-            return (
-              <div key={index} className="nestedField-container">
-                <span className="nestedField-title">
-                  {item.title}
-                  <span style={{ position: "relative", zIndex: "1" }}>
-                    <HelpOutlineTwoToneIcon
-                      className="compare-info-icon"
-                      onClick={() => setShowPopup(true)}
-                      style={{
-                        fontSize: "18px",
-                        marginLeft: "5px",
-                        fill: "#26385A",
-                      }}
-                    />
-                    <span className="info-text-hover">
-                      {v[0]}
-                    </span>
-                    {showPopup && tabView && (
-                      <ComparePopup
-                        title={item.title}
-                        handleClose={() => setShowPopup(false)}
-                      />
-                    )}
-                  </span>
-                </span>
-                {item.scores.map((element, index) => {
-                  if (mobileView && index < 2) {
-                    return (
-                      <ScoreContainer
-                        key={index}
-                        score={element.score}
-                        industrialStandard={item.industrialStandard}
-                      />
-                    );
-                  }
-                  if (!mobileView) {
-                    return (
-                      <ScoreContainer
-                        key={index}
-                        score={element.score}
-                        industrialStandard={item.industrialStandard}
-                      />
-                    );
-                  }
-                  return null;
-                })}
-              </div>
-            );
+            return <SubNestedField key={index} item={item} tabView={tabView} mobileView={mobileView} />
           })}
       </div>
     </div>
   );
 };
 
-const Subfield = ({ item }) => {
-  const [show, setShow] = useState(false);
+const Subfield = ({indexKey, item, showSubField, setShowSubField }) => {  
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
 
   useLayoutEffect(() => {
@@ -989,13 +1050,13 @@ const Subfield = ({ item }) => {
         })}
         {item.subfield.length > 0 && (
           <ExpandMoreSharpIcon
-            onClick={() => setShow(!show)}
-            className={show ? "circle-new-close" : "circle-new"}
+            onClick={() => showSubField === indexKey ? setShowSubField(null) : setShowSubField(indexKey)}
+            className={showSubField === indexKey ? "circle-new-close" : "circle-new"}
           />
         )}
       </div>
-      <div className={`animate-field ${show ? "animate" : ""}`}>
-        {show &&
+      <div className={`animate-field ${showSubField === indexKey ? "animate" : ""}`}>
+        {showSubField === indexKey &&
           item.subfield.map((item, index) => {
             return <NestedField key={index} item={item} />;
           })}
@@ -1013,6 +1074,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
   const [listBrandTwo, setListBrandTwo] = useState(false);
   const [listBrandThree, setListBrandThree] = useState(false);
   const [fieldData, setFieldData] = useState(field);
+  const [showSubField, setShowSubField] = useState(null);
 
   const handleChangeOne = (e) => {
     setInputBrandOne(e.target.value);
@@ -1603,7 +1665,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
         })}
       </div>
       {fieldData.map((item, index) => (
-        <Subfield key={index} item={item} />
+        <Subfield key={index} indexKey={index} item={item} showSubField={showSubField} setShowSubField={(key) => setShowSubField(key)} />
       ))}
     </div>
   );

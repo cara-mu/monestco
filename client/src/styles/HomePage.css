@@ -6,8 +6,15 @@
     align-items: center;
     padding: 70px 0;
     background: #F5F4F2;
+    
 }
 
+.body {
+    display: flex;
+    justify-content: center;
+    max-width: 1192px;
+    margin: auto;
+}
 body{
     overflow-x: hidden;
 }
@@ -674,6 +681,10 @@ body{
 }
 
 @media screen and (max-width:650px) {
+    .Career-Positioning {
+        margin: 0 auto;
+        width: 90%;
+    }
     .Career-Positioning h1 {
         display: block;
         text-align: center;
