@@ -115,7 +115,7 @@ const Comparison = () => {
                 fontSize: "14px",
               }}
             >
-              Type or click the brands that you want to learn more about
+              Type or click the brands that you want to learn more about.
             </p>
             <CompareSearch />
           {/* </div> */}
