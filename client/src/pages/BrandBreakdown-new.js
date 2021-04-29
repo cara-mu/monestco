@@ -597,22 +597,20 @@ const field = [
   },
 ];
 
-const Popup = ({item, closePopup}) => {
-  
+const Popup = ({item, i, closePopup}) => {
+  console.log(item);
     return (
         <div className="popup">
           <div className='popup-content'>
           <div style={{display:'flex', flexDirection:'row', marginTop:'1rem'}}>
             <div style={{color: '#FED170', marginRight:'5px'}}>[1]</div>
+            {/* {item.citations.map((citation, i) => {
+              console.log(citation); */}
             <div>
-            {item.texts.map((text, index) => {
-              return (
-                <div key={index}>
-                  {text}
-                </div>
-              );
-            })}
+              <i>{item.citations[i].title}</i>, {item.citations[i].restofcit}
             </div>
+              {/* );
+            })} */}
           </div>
           <HighlightOffRoundedIcon onClick={closePopup} className="popup-close-icon"/>
           </div>
@@ -623,11 +621,11 @@ const Popup = ({item, closePopup}) => {
 const NestedField = ({ index, item }) => {
   const [tabView, setTabView] = useState(window.innerWidth < 800);
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
-  const [showInfo, setShowInfo] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
+  const [showInfo, setShowInfo] = useState(-1);
+  const [showPopup, setShowPopup] = useState(-1);
 
   const closePopup = () => {
-    setShowPopup(false);
+    setShowPopup(-1);
   }
 
   useLayoutEffect(() => {
@@ -649,8 +647,6 @@ const NestedField = ({ index, item }) => {
 
   if (!tabView && !mobileView) {
     //Web-View
-    console.log("herelol");
-    console.log(item);
     return item.scores.map((score, i)=> {
       return <div className="breakdown_nestedField">
         <div className="breakdown_nestedField-title">{item.title[i]}</div>
@@ -667,80 +663,74 @@ const NestedField = ({ index, item }) => {
     });
   } else if (tabView && !mobileView) {
     //tab view
-    return (
-      <div
+    return item.scores.map((score, i) => {
+      return (<div
         className={
-          showInfo ? "breakdown_nestedField selected" : "breakdown_nestedField"
+          showInfo==i ? "breakdown_nestedField selected" : "breakdown_nestedField"
         }
       >
-        {showInfo ? (
+        {showInfo==i ? (
           <div>
-            {item.texts.map((text, index) => {
-              return (
-                <span key={index}>
-                  {text}
-                </span>
-              );
-            })}
-            <sup className="citation-sup" onClick={() => setShowPopup(true)}>[1]</sup>
+            <span>
+              {item.texts[i]}
+            </span>
+            <sup className="citation-sup" onClick={() => setShowPopup(i)}>[1]</sup>
           </div>
         ) : (
-          <div className="breakdown_nestedField-title">{item.title}</div>
+          <div className="breakdown_nestedField-title">{item.title[i]}</div>
         )}
-        {showInfo ? (
+        {showInfo==i ? (
           <CancelIcon
-            onClick={() => setShowInfo(!showInfo)}
+            onClick={() => setShowInfo(-1)}
             className="breakdown_info-icon"
           />
         ) : (
           <InfoIcon
-            onClick={() => setShowInfo(!showInfo)}
+            onClick={() => setShowInfo(i)}
             className="breakdown_info-icon"
           />
         )}
-        {showPopup && <Popup item={item} closePopup={closePopup} />}
+        {showPopup==i && <Popup item={item} i={i} closePopup={closePopup} />}
       </div>
-    );
+    )})
   } else {
     //mobile-view
-    return (
-      <div
-        className={
-          showInfo ? "breakdown_nestedField selected" : "breakdown_nestedField"
-        }
-      >
-        {!showInfo && (
-          <div className="breakdown_nestedField-title">{item.title}</div>
-        )}
-        {!showInfo && (
-          <div className="breakdown_nestedField-score">{item.scores}</div>
-        )}
-        {showInfo && (
-          <div style={{ gridColumnEnd: "span 2" }}>
-            {item.texts.map((text, index) => {
-              return (
-                <span key={index}>
-                  {text}
-                </span>
-              );
-            })}
-            <sup className="citation-sup" onClick={() => setShowPopup(true)}>[1]</sup>
-          </div>
-        )}
-        {showInfo ? (
-          <CancelIcon
-            onClick={() => setShowInfo(!showInfo)}
-            className="breakdown_info-icon"
-          />
-        ) : (
-          <InfoIcon
-            onClick={() => setShowInfo(!showInfo)}
-            className="breakdown_info-icon"
-          />
-        )}
-        {showPopup && <Popup item={item} closePopup={closePopup} />}
-      </div>
-    );
+    return item.scores.map((score, i) => {
+      return (
+        <div
+          className={
+            showInfo==i ? "breakdown_nestedField selected" : "breakdown_nestedField"
+          }
+        >
+          {showInfo!=i && (
+            <div className="breakdown_nestedField-title">{item.title[i]}</div>
+          )}
+          {showInfo!=i && (
+            <div className="breakdown_nestedField-score">{item.scores[i]}/{item.total[i]}</div>
+          )}
+          {showInfo==i && (
+            <div style={{ gridColumnEnd: "span 2"}}>
+                  <span>
+                    {item.texts[i]}
+                  </span>
+              )
+              <sup className="citation-sup" onClick={() => setShowPopup(i)}>[1]</sup>
+            </div>
+          )}
+          {showInfo==i ? (
+            <CancelIcon
+              onClick={() => setShowInfo(-1)}
+              className="breakdown_info-icon"
+            />
+          ) : (
+            <InfoIcon
+              onClick={() => setShowInfo(i)}
+              className="breakdown_info-icon"
+            />
+          )}
+          {showPopup==i && <Popup item={item} i={i} closePopup={closePopup} />}
+        </div>
+    )})
   }
 };
 
