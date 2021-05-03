@@ -2,12 +2,28 @@
 
 .breakdown_page{
     height: 100%;
-    width: 100%;
-    padding-left: 277px !important;
-    padding-right: 277px !important;
+    width: auto;
+    max-width: 1192px;
+    display: flex;
+    margin-top: 75px !important;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
 }
 
+body {
+    padding-bottom: 200px;
+}
 
+.text_war {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 34px;
+    color: #3D3E3F;
+    margin-bottom: 0%;
+}
 
 .breakdown_logo{
     display: flex;
@@ -59,13 +75,17 @@
 }
 
 .table_column_inner {
-    margin-left: 80px;
+    margin-left: 90px;
     font-family: DM Sans;
     font-style: normal;
     font-size: 15px;
     line-height: 34px;
     text-align: center;
     color: black;
+}
+
+.inner_paragraph {
+    margin-left: 80px !important;
 }
 
 
@@ -237,14 +257,11 @@
     }
 }
 
-@media only screen and (max-width: 300px) {  
-    .breakdown_page{
-        height: 100%;
-        width: 100%;
-        padding-left:0px !important;
-    }
-}
 .MuiAccordion-rounded:last-child{
     box-shadow: none;
     width: auto !important;
+}
+
+.MuiTypography-body1 {
+    width: 100%;
 }

@@ -60,6 +60,7 @@ function HomePage(){
                     <h1>Empower</h1>
                     <p>consumers to vote with their dollars, and support brands with values that align to their own.</p>
                 </div>
+                </div>
             </div>
                 {/* sorry i got lazy with positioning => don't be a lazy, enjoy the work */}
                 {/* <br></br><br></br><br></br><br></br><br></br> */}
@@ -108,6 +109,17 @@ function HomePage(){
                 </div>
                 {/* <div className="sign_up-container">
                     <div className="window_logo-container">
+            <div className="body">
+                <div className="embed-responsive embed-responsive-21by9" style={{width:600,height:400}}>
+                    <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowFullScreen></iframe>
+                </div>
+                </div>
+            </div>
+            <div className="sign_up_section mt-5">
+            <div className="body" style={{flexDirection:"column"}}>
+                <div className="d-flex justify-content-center"><p className="window_header_text">Make your purchases more purposeful</p></div>
+                <div className="row ">
+                    <div className="col-12 col-md-6 d-flex justify-content-center">
                         <img src={WindowLogo} className="window_logo"/>
                     </div>
                     <div className="sign_up-form-container">
@@ -153,7 +165,7 @@ function HomePage(){
                 </div>
                 <img className="carrer_image" src = {CareerImg} alt = 'browser sketch'></img>
             </div>
-        </Fragment>)
+        </div>)
 }
 
 export default HomePage;
