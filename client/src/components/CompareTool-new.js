@@ -1018,16 +1018,6 @@ const ScoreContainer = ({
 
 const SubNestedField = ({ item, tabView, mobileView }) => {
   const [showPopup, setShowPopup] = useState(false);
-<<<<<<< HEAD
-  let t = 0;
-
-  function increment(num) {
-    if(num > 2){
-      num = 0
-    }
-    num = num + 1;
-  }
-=======
   
   return (
     <div className="nestedField-container">
@@ -1087,7 +1077,6 @@ const NestedField = ({ item, subIndexKey, show, setShow }) => {
 
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
   const [tabView, setTabView] = useState(window.innerWidth < 800);
->>>>>>> d05b5740479bd9b559d7c98276e18183236b3b3e
 
   useLayoutEffect(() => {
     function updateSize() {
@@ -1150,60 +1139,12 @@ const NestedField = ({ item, subIndexKey, show, setShow }) => {
           item.subNestedField.map((item, index) => {
             console.log(show);
             return (
-<<<<<<< HEAD
-              <div key={index} className="nestedField-container">
-                <span className="nestedField-title">
-                  {item.title}
-                  <span style={{ position: "relative", zIndex: "1" }}>
-                    <HelpOutlineTwoToneIcon
-                      className="compare-info-icon"
-                      onClick={() => setShowPopup(true)}
-                      style={{
-                        fontSize: "18px",
-                        marginLeft: "5px",
-                        fill: "#26385A",
-                      }}
-                    />
-                    <span className="info-text-hover">
-                    </span>
-                    {showPopup && tabView && (
-                      <ComparePopup
-                        title={item.title}
-                        handleClose={() => setShowPopup(false)}
-                      />
-                    )}
-                  </span>
-                </span>
-                {item.scores.map((element, index) => {
-                  if (mobileView && index < 2) {
-                    return (
-                      <ScoreContainer
-                        key={index}
-                        score={element.score}
-                        industrialStandard={item.industrialStandard}
-                      />
-                    );
-                  }
-                  if (!mobileView) {
-                    return (
-                      <ScoreContainer
-                        key={index}
-                        score={element.score}
-                        industrialStandard={item.industrialStandard}
-                      />
-                    );
-                  }
-                  return null;
-                })}
-              </div>
-=======
               <SubNestedField
                 key={index}
                 item={item}
                 tabView={tabView}
                 mobileView={mobileView}
               />
->>>>>>> d05b5740479bd9b559d7c98276e18183236b3b3e
             );
           })}
       </div>
