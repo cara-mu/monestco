@@ -11,7 +11,6 @@
     max-width: max-content;
     margin-bottom: 10px;
 }
-
 #filterbutton, #filterbutton1, #filterbutton2, #filterbutton3, #filterbutton4,
 #filterbutton5, span:hover {
     cursor: pointer;
@@ -437,6 +436,7 @@ x
     display: none;
     position: relative;
     width: 90%;
+    z-index: 10;
 }
 
 .mobile-search-box>input {
@@ -448,6 +448,7 @@ x
     color: #3D3E3F;
     border: 2px solid #BDBDBD;
     margin-top: 0%;
+    z-index: 100;
 }
 
 .mobile-search-box-arrow {
@@ -465,6 +466,7 @@ x
 }
 
 .mobile-search-companyList {
+    z-index: 100;
     position: absolute;
     width: 100%;
     top: 44px;
@@ -504,14 +506,17 @@ x
     color: #9A9B9C;
 }
 
-.compare-search-category-menu {
-    position: absolute;
+.content-category-dropdown{
+    text-decoration: none;
+    color: #3D3E3F;
     display: grid;
-    grid-template-columns: repeat( 4, max-content);
+    grid-template-columns: repeat( 2, max-content);
     grid-gap: 10px 15px;
     grid-auto-flow: dense;
     font-size: 14px;
-    color: #3D3E3F;
+}
+.compare-search-category-menu {
+    position: absolute;
     padding: 15px;
     background-color: #f2f2f2;
     top: 37px;

@@ -199,89 +199,88 @@ function NavigationBar() {
           <i className = {click ? 'fas fa-times' : 'fas fa-bars'}></i>
         </div>
         {/* Begin Navigation Menu */}
-
         <ul className = {click ? 'Nav-Menu active' : 'Navigation-Menu'}>
             {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
-            <Link 
-                to='/brand-directory'
-                className='Navigation-Link' 
-                onClick={closeMenu}
-                >
-                    Apparel
-            </Link>
-            {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
-          </li>
+            
+            <li className='Menu-Item' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
+              <Link 
+                  to='/brand-directory'
+                  className='Navigation-Link' 
+                  onClick={closeMenu}
+                  >
+                      Apparel
+              </Link>
+              {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
+            </li>
 
-          {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={enterTechDropdownLink} onMouseLeave={exitTechDropdownLink} >
-            <Link
-              to='/'
-              className='Navigation-Link'
-              onClick={closeMenu} >
-                 Tech
-            </Link>
-            {(techDropdownLink || techDropdown) && <TechDropdown enterTechDropdown={enterTechDropdown} exitTechDropdown={exitTechDropdown}  />}
-          </li>
+            {/* onMouseEnter denotes hover-over */}
+            <li className='Menu-Item' onMouseEnter={enterTechDropdownLink} onMouseLeave={exitTechDropdownLink} >
+              <Link
+                to='/'
+                className='Navigation-Link'
+                onClick={closeMenu} >
+                  Tech
+              </Link>
+              {(techDropdownLink || techDropdown) && <TechDropdown enterTechDropdown={enterTechDropdown} exitTechDropdown={exitTechDropdown}  />}
+            </li>
 
-           {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={enterFoodDropdownLink} onMouseLeave={exitFoodDropdownLink} >
-            <Link
-              to='/'
-              className='Navigation-Link'
-              onClick={closeMenu} >
-                 Fast Food 
-            </Link>
-            {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
-          </li>
+            {/* onMouseEnter denotes hover-over */}
+            <li className='Menu-Item' onMouseEnter={enterFoodDropdownLink} onMouseLeave={exitFoodDropdownLink} >
+              <Link
+                to='/'
+                className='Navigation-Link'
+                onClick={closeMenu} >
+                  Fast Food 
+              </Link>
+              {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
+            </li>
 
-          {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' onMouseEnter={enterFoodDropdownLink} onMouseLeave={exitFoodDropdownLink} >
-            <Link
-              to='/'
-              className='Navigation-Link'
-              onClick={closeMenu} >
-                 Beauty 
-            </Link>
-            {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
-          </li>
+            {/* onMouseEnter denotes hover-over */}
+            <li className='Menu-Item' onMouseEnter={enterFoodDropdownLink} onMouseLeave={exitFoodDropdownLink} >
+              <Link
+                to='/'
+                className='Navigation-Link'
+                onClick={closeMenu} >
+                  Beauty 
+              </Link>
+              {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
+            </li>
 
-          {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' >
-            <Link
-              to='/methodology'
-              className='Navigation-Link'
-              onClick={closeMenu} >
-                 Methodology
-            </Link>
-          </li>
+            {/* onMouseEnter denotes hover-over */}
+            <li className='Menu-Item' >
+              <Link
+                to='/methodology'
+                className='Navigation-Link'
+                onClick={closeMenu} >
+                  Methodology
+              </Link>
+            </li>
 
-          {/* Compare button had unique css styling but still has hover dropdown, denoted by having two classNames */}
-          <li className='Menu-Item' onMouseEnter={enterCompareDropdownLink} onMouseLeave={exitCompareDropdownLink}>
-            <Link
-              to='/comparison'
-              className='Compare-Button'
-              onClick={closeMenu} >
-                Compare
-            </Link>
-            {(compareDropdownLink || compareDropdown) && <ComparisonDropdown enterCompareDropdown={enterCompareDropdown} exitCompareDropdown={exitCompareDropdown} />}
-          </li>
+            {/* Compare button had unique css styling but still has hover dropdown, denoted by having two classNames */}
+            <li className='Menu-Item' onMouseEnter={enterCompareDropdownLink} onMouseLeave={exitCompareDropdownLink}>
+              <Link
+                className='Compare-Button'
+                onClick={closeMenu} >
+                  Compare
+              </Link>
+              {(compareDropdownLink || compareDropdown) && <ComparisonDropdown enterCompareDropdown={enterCompareDropdown} exitCompareDropdown={exitCompareDropdown} />}
+            </li>
 
-          <li className='Menu-Item Menu-Item-search' >
-            <TextField 
-              id="standard-basic" 
-              placeholder="Search"
-              className="search-input"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon style={{fill:'rgba(50,50,50,0.5)'}} />
-                  </InputAdornment>
-                ),
-              }}
-               />               
-          </li>
-        </ul>
+            <li className='Menu-Item Menu-Item-search' >
+              <TextField 
+                id="standard-basic" 
+                placeholder="Search"
+                className="search-input"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon style={{fill:'rgba(50,50,50,0.5)'}} />
+                    </InputAdornment>
+                  ),
+                }}
+                />               
+            </li>
+          </ul>
         <div className='mobile-search-icon'>
           <SearchIcon onClick={() => setShowSearch(!showSearch)} style={{fill:'rgb(50,50,50)', fontSize:'25px'}} />
           {showSearch &&

@@ -323,12 +323,14 @@
     line-height: 22px;
     letter-spacing: 2px;    
     margin-bottom: 23px;
+    z-index: 100%;
 }
 
 .compare-popup-text {
     font-size: 16px;
     font-weight: 500;
     line-height: 22px;
+    z-index: 100%;
 }
 
 .compare-learn-more {
@@ -354,6 +356,7 @@
 .card-back {        
     width: 90%;
     margin: 0 auto;
+    text-align: center;
     color: #3D3E3F;
     /* backface-visibility: hidden;     */
     transition: all 0.5s;
@@ -421,6 +424,10 @@
 
 @media screen and (max-width:1250px) {
 
+    .compare-learn-more{
+        text-decoration: none;
+        margin-right: 9px;
+    }
     .compare-input-container {
         grid-template-columns: repeat( 3, minmax( 6rem, 10rem ) );
         margin-left: 11.5rem;
@@ -459,6 +466,11 @@
 
 @media screen and (max-width:1100px) {
 
+    .compare-learn-more{
+        text-decoration: none;
+        margin-right: 9px;
+    }
+
     .compare-input-container {
         grid-template-columns: repeat( 3, minmax( 6rem, 8rem ) );
         margin-left: 9.5rem;
@@ -487,6 +499,11 @@
 }
 
 @media screen and (max-width:900px) {
+
+    .compare-learn-more{
+        text-decoration: none;
+        margin-right: 9px;
+    }
 
     .compare__tool-container {
         margin:0 auto;
@@ -528,6 +545,11 @@
 }
 
 @media screen and (max-width:800px) {
+
+    .compare-learn-more{
+        text-decoration: none;
+        margin-right: 9px;
+    }
 
     /* .compare-input-container>input {
         display: none;
@@ -597,6 +619,11 @@
 
 @media screen and (max-width:700px) {
 
+    .compare-learn-more{
+        text-decoration: none;
+        margin-right: 9px;
+    }
+
     .compare-input-container {
         grid-template-columns: repeat( 3, 6rem );
     }
@@ -624,6 +651,10 @@
 }
 
 @media screen and (max-width:600px) {
+
+    .compare-learn-more{
+        text-decoration: none;
+    }
 
     .compare-input-container {
         grid-template-columns: repeat( 2, 6rem );
@@ -695,6 +726,11 @@
 }
 
 @media screen and (max-width:500px) {
+
+    .compare-learn-more{
+        text-decoration: none;
+        margin-right: 9px;
+    }
 
     .compare-input-container {
         grid-template-columns: repeat( 2, 5rem );

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import companies from '../data/companies.json';
 import { CSSTransition } from 'react-transition-group';
+import { Link } from 'react-router-dom';
 
 var filterBy = [
     'Clothing', 'Sportswear', 'Shoes', 'All'
@@ -34,34 +35,83 @@ class CompareSearch extends React.Component {
     toggleClassUnisex() {
         const currentState = this.state.unisex;
         this.setState({unisex: !currentState});
+        const unisexCompanies = []
+        companies.companies.map(company => {
+            console.log(company.name)
+            if(company.category === "Unisex"){
+                unisexCompanies.push(company.name);
+            }
+        });
+        console.log("unisex companies->");
+        console.log(unisexCompanies);
+        this.setState({foundCompanies: unisexCompanies})
+        // this.renderCompanies(foundCompanies)
     }
     toggleClassWomen() {
         const currentState = this.state.women;
         this.setState({women: !currentState});
+        const womenCompanies = []
+        companies.companies.map(company => {
+            if(company.category === "Women"){
+                womenCompanies.push(company.name);
+            }
+        });
+        this.setState({foundCompanies: womenCompanies})
     }
     toggleClassSportswear() {
         const currentState = this.state.sportswear;
         this.setState({sportswear: !currentState});
+        const sportCompanies = []
+        companies.companies.map(company => {
+            if(company.category === "Sportswear"){
+                sportCompanies.push(company.name);
+            }
+        });
+        this.setState({foundCompanies: sportCompanies})
     }
     toggleClassShoes() {
         const currentState = this.state.shoes;
         this.setState({shoes: !currentState});
+        const shoeCompanies = []
+        companies.companies.map(company => {
+            if(company.category === "Shoes"){
+                shoeCompanies.push(company.name);
+            }
+        });
+        this.setState({foundCompanies: shoeCompanies})
     }
     toggleClassLuxury() {
         const currentState = this.state.luxury;
         this.setState({luxury: !currentState});
+        const luxuryCompanies = []
+        companies.companies.map(company => {
+            if(company.category === "Luxury"){
+                luxuryCompanies.push(company.name);
+            }
+        });
+        this.setState({foundCompanies: luxuryCompanies})
     }
     toggleClassAll() {
         const currentState = !this.state.all;
         this.setState({all: !currentState});
+        const allCompanies = []
+        companies.companies.map(company => {
+            allCompanies.push(company.name);
+        });
+        this.setState({foundCompanies: allCompanies})
     }
 
     handleChange() {
         console.log("handlechange");
         var search = document.getElementById("categorysearch").value.toLowerCase();
+        console.log("Search first letter")
+        console.log(search.charAt(0));
+        if(search.charAt(0) == ''){
+            return null;
+        }
         const comps = this.mapCompanies(companies);
         const foundCompanies = comps.filter(comp => {
-            return comp.toLowerCase().match(search);
+            return comp.toLowerCase().startsWith(search)
         })
         this.setState({ 
             foundCompanies: foundCompanies,
@@ -77,15 +127,15 @@ class CompareSearch extends React.Component {
     }
 
     renderCompanies = (companies) => {
-        console.log("rendercompanies");
         return companies.map((company, i) => {
             return <CSSTransition timeout={300}>
                         <div key={i} className={this.state.changehandled ? 'rendercompanies' : null}>
-                            {company}
+                            <Link style = {{textDecoration: 'none', color: '#26385A', fontWeight: '500', fontSize: '18px'}}to = {'/companies/'+ company}>{company}</Link>
                         </div>  
                     </CSSTransition>              
         })
     }
+
 
     render() {   
         return (

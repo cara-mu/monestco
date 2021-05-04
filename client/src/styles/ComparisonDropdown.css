@@ -13,6 +13,10 @@
     cursor: pointer;
   }
   
+  .text{
+    margin-top:40px;
+    margin-left: 30px;
+  }
   .Dropdown-Menu li:hover {
     background: rgb(255, 255, 255);
   }
@@ -29,6 +33,59 @@
 
   .Apparel h1{
     display: flex;
+    font-weight: 600;
+    justify-content: flex-start;
+    font-size: 16px;
+    color: #3D3E3F;
+  }
+
+  .Apparel h2{
+    display: flex;
+    justify-content: flex-start;
+    font-size: 16px;
+    color: #3D3E3F;
+  }
+
+  .Tech h2{
+    display: flex;
+    justify-content: flex-start;
+    font-size: 16px;
+    color: #3D3E3F;
+  }
+
+  .Fast-Food h2{
+    display: flex;
+    justify-content: flex-start;
+    font-size: 16px;
+    color: #3D3E3F;
+  }
+
+  .Beauty h2{
+    display: flex;
+    justify-content: flex-start;
+    font-size: 16px;
+    color: #3D3E3F;
+  }
+
+  .Tech h1{
+    display: flex;
+    font-weight: 600;
+    justify-content: flex-start;
+    font-size: 16px;
+    color: #3D3E3F;
+  }
+
+  .Beauty h1{
+    display: flex;
+    font-weight: 600;
+    justify-content: flex-start;
+    font-size: 16px;
+    color: #3D3E3F;
+  }
+
+  .Fast-Food h1{
+    display: flex;
+    font-weight: 600;
     justify-content: flex-start;
     font-size: 16px;
     color: #3D3E3F;
@@ -37,29 +94,27 @@
   .Selection-Box{  
     width: 330px;
     height: 150px;
-    background: aqua;
     border-radius: 7px;
   }
   
-  .Apparel{
+  .Apparel:hover {
+    margin-top: -20px;
+    background-color:  #E1ECF7;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  .Apparel {
     background:  #F2F2F2;
   }
 
-  .Apparel:hover{
-    background-color:  #E1ECF7;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
-    width: 350px;
-    height: 155px;
-  }
-
   .Tech{
-      background:#D3D8E1;
+      background:#F2F2F2;
   }
 
   .Fast-Food{
-      background: #FAD8BE; 
+      background: #F2F2F2;
   }
 
   .Beauty{
-      background: #D9ECDF;
+      background: #F2F2F2;
   }

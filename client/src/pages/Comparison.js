@@ -9,8 +9,9 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import CloseSharpIcon from '@material-ui/icons/CloseSharp';
 //import CompareTool from '../components/CompareTool';
 import CompareTool from "../components/CompareTool-new";
-
+import companies from '../data/companies.json';
 import CompareSearch from "../components/CompareSearch";
+import { Link } from 'react-router-dom';
 
 const Comparison = () => {
   const [companyList, setCompanyList] = useState([]);
@@ -18,7 +19,10 @@ const Comparison = () => {
   const [inputValue, setInputValue] = useState("");
   const [selectedCompaniesList, setSelectedCompaniesList] = useState(["","",""]);
   const [mobileView, setMobileView ] = useState(window.innerWidth < 600)
-  const [showSearchMenu, setSearchMenu] = useState(false)
+  const [showSportMenu, setSportMenu] = useState(false)
+  const [showUnisexMenu, setUnisexMenu] = useState(false)
+  const [showWomenMenu, setWomenMenu] = useState(false)
+  const [showShoeMenu, setShoeMenu] = useState(false)
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -79,20 +83,90 @@ const Comparison = () => {
     }
     }, [mobileView, selectedCompaniesList])
 
-  const SearchMenu = () => {
+  // const renderArr = (arr) => {
+  //   console.log("yes")
+  //   {arr.map((companies, i) => {
+  //     <div key = {i}>
+  //       <span>{companies}</span>
+  //     </div>
+  //    })}
+  // }
+  const WomenMenu = () => {
+    const arr = []
+    companies.companies.map(company => {
+        if(company.category === "Women")
+          arr.push(company.name);
+      }
+    )
 
     return(
       <div className='compare-search-category-menu'>
-        <span>Adidas</span>
-        <span>Nike</span>
-        <span>Ribok</span>
-        <span>Puma</span>
-        <span>Brand <CloseSharpIcon style={{fontSize:'24px', fill:'#3D3E3F'}} /> </span>
-        <span>Adidas</span>
-        <span>Nike</span>
-        <span>Ribok</span>
-        <span>Puma</span>
-        <span>Brand <CloseSharpIcon style={{fontSize:'24px', fill:'#3D3E3F'}} /> </span>
+        <CloseSharpIcon style = {{marginLeft: '-5%', width: '8%'}}/>
+        <div className = 'content-category-dropdown'>
+         {arr.map((companies, i) => {
+           return <Link style = {{color: '#3D3E3F', textDecoration: 'none'}}to = {'/companies/' + companies}key = {i}>{companies}</Link>
+         })}
+         </div>
+      </div>
+    )
+  }
+
+  const ShoeMenu = () => {
+    const arr = []
+    companies.companies.map(company => {
+        if(company.category === "Shoes")
+          arr.push(company.name);
+      }
+    )
+
+    return(
+      <div className='compare-search-category-menu'>
+        <CloseSharpIcon style = {{marginLeft: '-5%', width: '8%'}}/>
+        <div className = 'content-category-dropdown'>
+         {arr.map((companies, i) => {
+           return <Link style = {{color: '#3D3E3F', textDecoration: 'none'}}to = {'/companies/' + companies}key = {i}>{companies}</Link>
+         })}
+         </div>
+      </div>
+    )
+  }
+
+  const UnisexMenu = () => {
+    const arr = []
+    companies.companies.map(company => {
+        if(company.category === "Unisex")
+          arr.push(company.name);
+      }
+    )
+
+    return(
+      <div className='compare-search-category-menu'>
+        <CloseSharpIcon style = {{marginLeft: '-5%', width: '8%'}}/>
+        <div className = 'content-category-dropdown'>
+         {arr.map((companies, i) => {
+           return <Link style = {{color: '#3D3E3F', textDecoration: 'none'}}to = {'/companies/' + companies}key = {i}>{companies}</Link>
+         })}
+         </div>
+      </div>
+    )
+  }
+
+  const SportsMenu = () => {
+    const arr = []
+    companies.companies.map(company => {
+        if(company.category === "Sportswear")
+          arr.push(company.name);
+      }
+    )
+
+    return(
+      <div className='compare-search-category-menu'>
+        <CloseSharpIcon style = {{marginLeft: '-5%', width: '8%'}}/>
+        <div className = 'content-category-dropdown'>
+         {arr.map((companies, i) => {
+           return <Link style = {{color: '#3D3E3F', textDecoration: 'none'}}to = {'/companies/' + companies}key = {i}>{companies}</Link>
+         })}
+         </div>
       </div>
     )
   }
@@ -187,15 +261,27 @@ const Comparison = () => {
               </div>
             )}
             <div className='compare-search-category-container' >
-                <div onClick={() => setSearchMenu(!showSearchMenu)}  className='compare-search-category'>
+                <div onClick={() => setSportMenu(!showSportMenu)}  className='compare-search-category'>
                   Sportswear 
                   <ArrowDropDownIcon/>
-                  {showSearchMenu && <SearchMenu />}
+                  {showSportMenu && <SportsMenu />}
                 </div>
-                <span className='compare-search-category'>Unisex <ArrowDropDownIcon/></span>
-                <span className='compare-search-category'>Women <ArrowDropDownIcon/></span>
-                <span className='compare-search-category'>Shoes & Accessories <ArrowDropDownIcon/></span>
-                <span className='compare-search-category compare-search-category-inactive'>Luxury <ArrowDropDownIcon/></span>
+                <div onClick = {() => setUnisexMenu(!showUnisexMenu)}  className='compare-search-category'>
+                  Unisex
+                  <ArrowDropDownIcon/>
+                  {showUnisexMenu && <UnisexMenu />}
+                  </div>
+                <div onClick = {() => setWomenMenu(!showWomenMenu)} className='compare-search-category'>
+                  Women 
+                  <ArrowDropDownIcon/>
+                  {showWomenMenu && <WomenMenu />}
+                  </div>
+                <div onClick = {() => setShoeMenu(!showShoeMenu)} className='compare-search-category'>
+                  Shoes & Accessories 
+                  <ArrowDropDownIcon/>
+                  {showShoeMenu && <ShoeMenu />}
+                  </div>
+                <div className='compare-search-category compare-search-category-inactive'>Luxury <ArrowDropDownIcon/></div>
             </div>
           </div>
           <CompareTool
