@@ -68,12 +68,16 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-function BrandBreakdown() {
+  const BrandBreakdown = ({match, location}) => {
+    const {
+        params: { companyName }
+    } = match;
     const classes = useStyles();
 
     return (
     <div>
         <div className="breakdown_logo">   
+                <h1>{companyName}</h1>
                 <img src={Logo} className="breakdown_logoImage"/>
                 <p className="breakdown_logoText">48/<span style={{fontSize:32}}>154</span></p>
             </div>

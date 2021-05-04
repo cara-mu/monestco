@@ -1163,6 +1163,9 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
   const [inputBrandOne, setInputBrandOne] = useState("");
   const [inputBrandTwo, setInputBrandTwo] = useState("");
   const [inputBrandThree, setInputBrandThree] = useState("");
+  const [returnedComp1, setReturnedComp1] = useState([]);
+  const [returnedComp2, setReturnedComp2] = useState([]);
+  const [returnedComp3, setReturnedComp3] = useState([]);
   const [listBrandOne, setListBrandOne] = useState(false);
   const [listBrandTwo, setListBrandTwo] = useState(false);
   const [listBrandThree, setListBrandThree] = useState(false);
@@ -1171,18 +1174,30 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
   // const [state, setState] = useState([])
   const [showSubField, setShowSubField] = useState(null);
 
+  const handleAllChanges = (comp) => {
+    return companiesList.filter(company => {
+      return company.toLowerCase().match(comp.toLowerCase());
+    })
+  }
+
   const handleChangeOne = (e) => {
     setInputBrandOne(e.target.value);
+    const returnedCompanies = handleAllChanges(inputBrandOne);
+    setReturnedComp1(returnedCompanies);
     setListBrandOne(true);
   };
 
   const handleChangeTwo = (e) => {
     setInputBrandTwo(e.target.value);
+    const returnedCompanies = handleAllChanges(inputBrandTwo);
+    setReturnedComp2(returnedCompanies);
     setListBrandTwo(true);
   };
 
   const handleChangeThree = (e) => {
     setInputBrandThree(e.target.value);
+    const returnedCompanies = handleAllChanges(inputBrandThree);
+    setReturnedComp3(returnedCompanies);
     setListBrandThree(true);
   };
 
@@ -1508,10 +1523,12 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
 
   useEffect(() => {
     axios.get("/allcompanies").then((resp) => {
+      // console.log(resp.data);
       const allcompanies = [];
       for (var i = 0; i < resp.data.rows.length; i++) {
         allcompanies.push(resp.data.rows[i].Name);
       }
+      console.log(allcompanies);
       setCompaniesList(allcompanies);
       fetchBrand(allcompanies);
     });
@@ -1782,7 +1799,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
         <div className="compare-companyList-container">
           {listBrandOne && (
             <div className="compare-companyList list-1">
-              {companiesList.map((item, index) => {
+              {returnedComp1.map((item, index) => {
                 return (
                   <div key={index} onClick={() => renderData(item, 1)}>
                     {item}
@@ -1793,7 +1810,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
           )}
           {listBrandTwo && (
             <div className="compare-companyList list-2">
-              {companiesList.map((item, index) => {
+              {returnedComp2.map((item, index) => {
                 return (
                   <div key={index} onClick={() => renderData(item, 2)}>
                     {item}
@@ -1804,7 +1821,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
           )}
           {listBrandThree && (
             <div className="compare-companyList list-3">
-              {companiesList.map((item, index) => {
+              {returnedComp3.map((item, index) => {
                 return (
                   <div key={index} onClick={() => renderData(item, 3)}>
                     {item}
