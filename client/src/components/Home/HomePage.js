@@ -60,7 +60,6 @@ function HomePage(){
                     <h1>Empower</h1>
                     <p>consumers to vote with their dollars, and support brands with values that align to their own.</p>
                 </div>
-                </div>
             </div>
                 {/* sorry i got lazy with positioning => don't be a lazy, enjoy the work */}
                 {/* <br></br><br></br><br></br><br></br><br></br> */}
@@ -165,7 +164,8 @@ function HomePage(){
                 </div>
                 <img className="carrer_image" src = {CareerImg} alt = 'browser sketch'></img>
             </div>
-        </div>)
+        </Fragment>
+        )
 }
 
 export default HomePage;
