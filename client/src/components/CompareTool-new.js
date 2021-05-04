@@ -13,6 +13,7 @@ const field = [
     mainField: "DIVERSITY & INCLUSION",
     mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
     industrialStandard: [],
+    totalScore: 100,
     subfield: [
       {
         mainNestedField: "Discrimination",
@@ -23,6 +24,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: 50 }, { score: -1 }, { score: -1 }],
             industrialStandard: [40],
+            totalScore: 6,
             texts: [
               { text: "a11 stuff" },
               { text: "a11 stuff" },
@@ -35,6 +37,7 @@ const field = [
               "Employee hotline channels are offered and actions are taken to address violations.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [
               { text: "a12 stuff" },
               { text: "a12 stuff" },
@@ -44,6 +47,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 16,
       },
       {
         mainNestedField: "Gender Equality",
@@ -55,6 +59,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "a21 stuff" },
               { text: "a21 stuff" },
@@ -68,6 +73,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 16,
             texts: [
               { text: "a22 stuff" },
               { text: "a22 stuff" },
@@ -80,6 +86,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [
               { text: "a23 stuff" },
               { text: "a23 stuff" },
@@ -89,6 +96,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 32,
       },
       {
         mainNestedField: "Cultural Diversity",
@@ -100,6 +108,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [
               { text: "a31 stuff" },
               { text: "a31 stuff" },
@@ -113,6 +122,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 14,
             texts: [
               { text: "a32 stuff" },
               { text: "a32 stuff" },
@@ -125,6 +135,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [
               { text: "a33 stuff" },
               { text: "a33 stuff" },
@@ -134,6 +145,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 32,
       },
       {
         mainNestedField: "Inclusivity",
@@ -145,6 +157,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "a41 stuff" },
               { text: "a41 stuff" },
@@ -157,6 +170,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [
               { text: "a42 stuff" },
               { text: "a42 stuff" },
@@ -166,6 +180,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 20,
       },
     ],
   },
@@ -173,6 +188,7 @@ const field = [
     mainField: "WORKER EXPLOITATION",
     mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
     industrialStandard: [],
+    totalScore: 100,
     subfield: [
       {
         mainNestedField: "Child Labour",
@@ -184,6 +200,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 4,
             texts: [
               { text: "b11 stuff" },
               { text: "b11 stuff" },
@@ -197,6 +214,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [
               { text: "b12 stuff" },
               { text: "b12 stuff" },
@@ -210,6 +228,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "b13 stuff" },
               { text: "b13 stuff" },
@@ -219,6 +238,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 18,
       },
       {
         mainNestedField: "Forced Labour",
@@ -230,6 +250,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 4,
             texts: [
               { text: "b21 stuff" },
               { text: "b21 stuff" },
@@ -243,6 +264,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [
               { text: "b22 stuff" },
               { text: "b22 stuff" },
@@ -256,6 +278,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "b23 stuff" },
               { text: "b23 stuff" },
@@ -265,6 +288,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 18,
       },
       {
         mainNestedField: "Living Wage",
@@ -275,6 +299,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [
               { text: "b31 stuff" },
               { text: "b31 stuff" },
@@ -288,6 +313,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 14,
             texts: [
               { text: "b32 stuff" },
               { text: "b32 stuff" },
@@ -301,6 +327,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "b33 stuff" },
               { text: "b33 stuff" },
@@ -314,6 +341,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 4,
             texts: [
               { text: "b34 stuff" },
               { text: "b34 stuff" },
@@ -327,6 +355,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 1,
             texts: [
               { text: "b35 stuff" },
               { text: "b35 stuff" },
@@ -336,6 +365,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 34,
       },
       {
         mainNestedField: "Working Conditions",
@@ -347,6 +377,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [
               { text: "b41 stuff" },
               { text: "b41 stuff" },
@@ -359,6 +390,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [
               { text: "b42 stuff" },
               { text: "b42 stuff" },
@@ -371,6 +403,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 4,
             texts: [
               { text: "b43 stuff" },
               { text: "b43 stuff" },
@@ -384,6 +417,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "b44 stuff" },
               { text: "b44 stuff" },
@@ -404,6 +438,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 30,
       },
     ],
   },
@@ -411,6 +446,7 @@ const field = [
     mainField: "WASTE & POLLUTION",
     mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
     industrialStandard: [],
+    totalScore: 100,
     subfield: [
       {
         mainNestedField: "Air Pollution (GHGs)",
@@ -421,6 +457,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "c11 stuff" },
               { text: "c11 stuff" },
@@ -434,6 +471,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [
               { text: "c12 stuff" },
               { text: "c12 stuff" },
@@ -446,6 +484,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [
               { text: "c13 stuff" },
               { text: "c13 stuff" },
@@ -459,6 +498,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "c14 stuff" },
               { text: "c14 stuff" },
@@ -468,6 +508,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 28,
       },
       {
         mainNestedField: "Water Pollution & Wastes",
@@ -478,6 +519,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "c21 stuff" },
               { text: "c21 stuff" },
@@ -490,6 +532,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 4,
             texts: [
               { text: "c22 stuff" },
               { text: "c22 stuff" },
@@ -503,6 +546,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "c23 stuff" },
               { text: "c23 stuff" },
@@ -515,6 +559,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "c24 stuff" },
               { text: "c24 stuff" },
@@ -524,6 +569,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 22,
       },
       {
         mainNestedField: "Packaging Waste",
@@ -534,6 +580,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "c31 stuff" },
               { text: "c31 stuff" },
@@ -546,6 +593,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [
               { text: "c32 stuff" },
               { text: "c32 stuff" },
@@ -559,6 +607,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 4,
             texts: [
               { text: "c33 stuff" },
               { text: "c33 stuff" },
@@ -572,6 +621,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 4,
             texts: [
               { text: "c34 stuff" },
               { text: "c34 stuff" },
@@ -581,6 +631,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 22,
       },
       {
         mainNestedField: "Material Waste",
@@ -591,6 +642,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [
               { text: "c41 stuff" },
               { text: "c41 stuff" },
@@ -603,6 +655,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "c42 stuff" },
               { text: "c42 stuff" },
@@ -616,6 +669,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 4,
             texts: [
               { text: "c43 stuff" },
               { text: "c43 stuff" },
@@ -629,6 +683,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [
               { text: "c44 stuff" },
               { text: "c44 stuff" },
@@ -638,6 +693,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 28,
       },
     ],
   },
@@ -645,6 +701,7 @@ const field = [
     mainField: "ETHICAL SOURCING",
     mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
     industrialStandard: [],
+    totalScore: 100,
     subfield: [
       {
         mainNestedField: "Cotton Farming",
@@ -655,6 +712,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 18,
             texts: [{ text: "d11 stuff" }, { text: "d11" }, { text: "d11" }],
           },
           {
@@ -664,11 +722,13 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [{ text: "d12 stuff" }, { text: "d12" }, { text: "d12" }],
           },
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 26,
       },
       {
         mainNestedField: "Deforestation",
@@ -680,6 +740,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 12,
             texts: [{ text: "d21 stuff" }, { text: "d21" }, { text: "d21" }],
           },
           {
@@ -688,6 +749,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [{ text: "d22 stuff" }, { text: "d22" }, { text: "d22" }],
           },
           {
@@ -696,11 +758,13 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [{ text: "d23 stuff" }, { text: "d23" }, { text: "d23" }],
           },
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 28,
       },
       {
         mainNestedField: "Animal Welfare",
@@ -712,6 +776,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [{ text: "d31 stuff" }, { text: "d31" }, { text: "d31" }],
           },
           {
@@ -720,6 +785,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [{ text: "d32 stuff" }, { text: "d32" }, { text: "d32" }],
           },
           {
@@ -728,6 +794,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [{ text: "d33 stuff" }, { text: "d33" }, { text: "d33" }],
           },
           {
@@ -736,6 +803,7 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [{ text: "d34 stuff" }, { text: "d34" }, { text: "d34" }],
           },
           {
@@ -745,11 +813,13 @@ const field = [
               "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [{ text: "d35 stuff" }, { text: "d35" }, { text: "d35" }],
           },
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 46,
       },
     ],
   },
@@ -806,13 +876,14 @@ const LearnMorePopup = ({ learnMoreText, tabView, setShowLearnMoreText }) => {
 const ScoreContainer = ({
   score,
   industrialStandard,
+  totalScore,
   firstLayer,
   secondLayer,
   learnMoreText,
 }) => {
   const [showLearnMoreText, setShowLearnMoreText] = useState(false);
   const [tabView, setTabView] = useState(false);
-
+  
   useLayoutEffect(() => {
     function updateSize() {
       if (window.innerWidth > 800) {
@@ -841,7 +912,7 @@ const ScoreContainer = ({
                   : "compare__tool-scoreContainer card-front greensquare2"
               }
             >
-              {score}/100
+              {score}/{totalScore}
               {!firstLayer && !secondLayer && (
                 <LearnMorePopup
                   learnMoreText={learnMoreText}
@@ -875,7 +946,7 @@ const ScoreContainer = ({
                   : "compare__tool-scoreContainer card-front yellowsquare2"
               }
             >
-              {score}/100
+              {score}/{totalScore}
               {!firstLayer && !secondLayer && (
                 <LearnMorePopup
                   learnMoreText={learnMoreText}
@@ -909,7 +980,7 @@ const ScoreContainer = ({
                   : "compare__tool-scoreContainer card-front orangesquare2"
               }
             >
-              {score}/100
+              {score}/{totalScore}
               {!firstLayer && !secondLayer && (
                 <LearnMorePopup
                   learnMoreText={learnMoreText}
@@ -947,7 +1018,7 @@ const ScoreContainer = ({
 
 const SubNestedField = ({ item, tabView, mobileView }) => {
   const [showPopup, setShowPopup] = useState(false);
-
+  
   return (
     <div className="nestedField-container">
       <span className="nestedField-title">
@@ -979,6 +1050,7 @@ const SubNestedField = ({ item, tabView, mobileView }) => {
               key={index}
               score={element.score}
               industrialStandard={item.industrialStandard}
+              totalScore={item.totalScore}
               learnMoreText={item.texts[index]}
             />
           );
@@ -989,6 +1061,7 @@ const SubNestedField = ({ item, tabView, mobileView }) => {
               key={index}
               score={element.score}
               industrialStandard={item.industrialStandard}
+              totalScore={item.totalScore}
               learnMoreText={item.texts[index]}
             />
           );
@@ -1034,6 +1107,7 @@ const NestedField = ({ item, subIndexKey, show, setShow }) => {
                 key={index}
                 score={element.score}
                 industrialStandard={item.industrialStandard}
+                totalScore={item.totalScore}
                 secondLayer
               />
             );
@@ -1044,6 +1118,7 @@ const NestedField = ({ item, subIndexKey, show, setShow }) => {
                 key={index}
                 score={element.score}
                 industrialStandard={item.industrialStandard}
+                totalScore={item.totalScore}
                 secondLayer
               />
             );
@@ -1080,7 +1155,7 @@ const NestedField = ({ item, subIndexKey, show, setShow }) => {
 const Subfield = ({ indexKey, item, showSubField, setShowSubField }) => {
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
   const [show, setShow] = useState(null);
-
+  
   useLayoutEffect(() => {
     function updateSize() {
       if (window.innerWidth > 600) {
@@ -1105,6 +1180,7 @@ const Subfield = ({ indexKey, item, showSubField, setShowSubField }) => {
                 key={index}
                 score={element.score}
                 industrialStandard={item.industrialStandard}
+                totalScore={item.totalScore}
                 firstLayer
               />
             );
@@ -1115,6 +1191,7 @@ const Subfield = ({ indexKey, item, showSubField, setShowSubField }) => {
                 key={index}
                 score={element.score}
                 industrialStandard={item.industrialStandard}
+                totalScore={item.totalScore}
                 firstLayer
               />
             );
