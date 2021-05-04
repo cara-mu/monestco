@@ -30,6 +30,16 @@ const field = [
               "",
               "",
             ],
+            citations: [
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              }
+            ]
           },
         ],
       },
@@ -51,6 +61,20 @@ const field = [
               "",
               "",
             ],
+            citations: [
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              }
+            ]
           },
         ],
       },
@@ -72,6 +96,20 @@ const field = [
               "",
               "",
             ],
+            citations: [
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              }
+            ]
           },
         ],
       },
@@ -93,6 +131,20 @@ const field = [
               "",
               ""
             ],
+            citations: [
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              }
+            ]
           },
         ],
       },
@@ -120,6 +172,20 @@ const field = [
               "",
               "",
             ],
+            citations: [
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              }
+            ]
           },
         ],
       },
@@ -141,6 +207,20 @@ const field = [
               "",
               "",
             ],
+            citations: [
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              }
+            ]
           },
         ],
       },
@@ -163,8 +243,25 @@ const field = [
               "",
               "",
               "",
-
             ],
+            citations: [
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              }
+            ]
           },
         ],
       },
@@ -188,6 +285,24 @@ const field = [
               "",
               ""
             ],
+            citations: [
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              }
+            ]
           },
         ],
       },
@@ -217,6 +332,24 @@ const field = [
               "",
               "",
             ],
+            citations: [
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              }
+            ]
           },
         ],
       },
@@ -240,6 +373,24 @@ const field = [
               "",
               "",
             ],
+            citations: [
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              }
+            ]
           },
         ],
       },
@@ -263,6 +414,24 @@ const field = [
               "",
               "",
             ],
+            citations: [
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              }
+            ]
           },
         ],
       },
@@ -286,6 +455,24 @@ const field = [
               "",
               "",
             ],
+            citations: [
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              }
+            ]
           },
         ],
       },
@@ -311,6 +498,16 @@ const field = [
               "",
               "",
             ],
+            citations: [
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              }
+            ]
           },
         ],
       },
@@ -332,6 +529,20 @@ const field = [
               "",
               "",
             ],
+            citations: [
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              }
+            ]
           },
         ],
       },
@@ -357,6 +568,28 @@ const field = [
               "",
               ""
             ],
+            citations: [
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              },
+              {
+                title: "",
+                restofcit: ""
+              }
+            ]
           },
         ],
       },
@@ -423,15 +656,12 @@ const NestedField = ({ index, item }) => {
         <div className="breakdown_nestedField-title">{item.title[i]}</div>
         <div className="breakdown_nestedField-score">{score}/{item.total[i]}</div>
         <div style={{position:'relative', margin: 15}}>
-          {/* {item.texts.map((text, index) => {
-            return ( */}
-              {/* <span key={index}> */}
-                {item.texts[i]}
-              {/* </span> */}
-            {/* );
-          })} */}
-          <sup className="citation-sup">[1]</sup>
-          <span className="breakdown_citation-hover">Fast Retailing Annual Report 2019, Fast Retailing, 2019, pages 25 responsibility.aldogroup.com/indicators/people/diversity/diversity_philosophy</span>
+          {item.texts[i]}
+          {item.citations[i].title != "" && 
+          <span>
+            <sup className="citation-sup">[1]</sup>
+            <span className="breakdown_citation-hover"><i>{item.citations[i].title}</i>, {item.citations[i].restofcit}</span>
+          </span>}
         </div>
       </div>
     });
@@ -583,6 +813,75 @@ class BrandBreakdown extends React.Component {
 
   componentDidMount () {
     this.setState({companyName: this.props.match.params.companyName});
+    axios.post(
+      '/citationsLong',
+      {},
+      {
+        params: [this.props.match.params.companyName]
+      }
+    ).then(resp => {
+      for (var i = 0; i < resp.data.length; i++) {
+        if (resp.data[i].Type == "A1.1") {
+          field[0].subfield[0].subNestedField[0].citations[0] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+          console.log("hi");
+        }
+        if (resp.data[i].Type == "A1.2") field[0].subfield[0].subNestedField[0].citations[1] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "A2.1") field[0].subfield[1].subNestedField[0].citations[0] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "A2.2") field[0].subfield[1].subNestedField[0].citations[1] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "A2.3") field[0].subfield[1].subNestedField[0].citations[2] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "A3.1") field[0].subfield[2].subNestedField[0].citations[0] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "A3.2") field[0].subfield[2].subNestedField[0].citations[1] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "A3.3") field[0].subfield[2].subNestedField[0].citations[2] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "A4.1") field[0].subfield[3].subNestedField[0].citations[0] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "A4.2") field[0].subfield[3].subNestedField[0].citations[1] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "A4.3") field[0].subfield[3].subNestedField[0].citations[2] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+
+        if (resp.data[i].Type == "B1.1") field[1].subfield[0].subNestedField[0].citations[0] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "B1.2") field[1].subfield[0].subNestedField[0].citations[1] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "B1.3") field[1].subfield[0].subNestedField[0].citations[2] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "B2.1") field[1].subfield[1].subNestedField[0].citations[0] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "B2.2") field[1].subfield[1].subNestedField[0].citations[1] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "B2.3") field[1].subfield[1].subNestedField[0].citations[2] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "B3.1") field[1].subfield[2].subNestedField[0].citations[0] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "B3.2") field[1].subfield[2].subNestedField[0].citations[1] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "B3.3") field[1].subfield[2].subNestedField[0].citations[2] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "B3.4") field[1].subfield[2].subNestedField[0].citations[3] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "B4.1") field[1].subfield[3].subNestedField[0].citations[0] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "B4.2") field[1].subfield[3].subNestedField[0].citations[1] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "B4.3") field[1].subfield[3].subNestedField[0].citations[2] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "B4.4") field[1].subfield[3].subNestedField[0].citations[3] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+
+        if (resp.data[i].Type == "C1.1") field[2].subfield[0].subNestedField[0].citations[0] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "C1.2") field[2].subfield[0].subNestedField[0].citations[1] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "C1.3") field[2].subfield[0].subNestedField[0].citations[2] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "C1.4") field[2].subfield[0].subNestedField[0].citations[3] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "C2.1") field[2].subfield[1].subNestedField[0].citations[0] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "C2.2") field[2].subfield[1].subNestedField[0].citations[1] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "C2.3") field[2].subfield[1].subNestedField[0].citations[2] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "C2.4") field[2].subfield[1].subNestedField[0].citations[3] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "C3.1") field[2].subfield[2].subNestedField[0].citations[0] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "C3.2") field[2].subfield[2].subNestedField[0].citations[1] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "C3.3") field[2].subfield[2].subNestedField[0].citations[2] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "C3.4") field[2].subfield[2].subNestedField[0].citations[3] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "C4.1") field[2].subfield[3].subNestedField[0].citations[0] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "C4.2") field[2].subfield[3].subNestedField[0].citations[1] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "C4.3") field[2].subfield[3].subNestedField[0].citations[2] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "C4.4") field[2].subfield[3].subNestedField[0].citations[3] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+
+        if (resp.data[i].Type == "D1.1") field[3].subfield[0].subNestedField[0].citations[0] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "D1.2") field[3].subfield[0].subNestedField[0].citations[1] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "D2.1") field[3].subfield[1].subNestedField[0].citations[0] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "D2.2") field[3].subfield[1].subNestedField[0].citations[1] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "D2.3") field[3].subfield[1].subNestedField[0].citations[2] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "D3.1") field[3].subfield[2].subNestedField[0].citations[0] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "D3.2") field[3].subfield[2].subNestedField[0].citations[1] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "D3.3") field[3].subfield[2].subNestedField[0].citations[2] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "D3.4") field[3].subfield[2].subNestedField[0].citations[3] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+        if (resp.data[i].Type == "D3.5") field[3].subfield[2].subNestedField[0].citations[4] = {title: resp.data[i]["Title"], restofcit: resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]};
+
+      }
+      console.log(field);
+    })
     axios.post(
       '/companyscores',
       {},
@@ -853,7 +1152,7 @@ class BrandBreakdown extends React.Component {
       <div className="breakdown_logo">
         <img src={this.state.logo}  className="breakdown_logoImage" />
         <p className="breakdown_logoText">
-          {Math.round(this.state.totalscore, 2)}<span style={{ fontSize: 32 }}>/154</span>
+          {Math.round(this.state.totalscore, 2)}<span style={{ fontSize: 32 }}>/100</span>
         </p>
       </div>
       {this.state.subsidiary != null && <div className="breakdown_info-container">

@@ -51,8 +51,7 @@ export default function ModalBody({ handleClose, i, title, summary, issueAdd, is
             {showCitation ? (
               citID.map((key, i) => {
                 return <div>
-                   "{pubgroup[i]}" {cittitle[i]} -
-                   {pubgroup[i]}
+                   {author[i]}. "{pubgroup[i]}" {cittitle[i]} {pubgroup[i]}
                    {date[i]}
                    {pages[i]}
                    {url[i]}

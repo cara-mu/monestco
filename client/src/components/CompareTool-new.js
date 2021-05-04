@@ -2,23 +2,29 @@ import React, { useState, useEffect, useLayoutEffect } from "react";
 import ExpandMoreSharpIcon from "@material-ui/icons/ExpandMoreSharp";
 import HelpOutlineTwoToneIcon from "@material-ui/icons/HelpOutlineTwoTone";
 import HighlightOffRoundedIcon from "@material-ui/icons/HighlightOffRounded";
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import "../styles/compareTool-new.css";
 import axios from "axios";
+import { SignalCellularNull } from "@material-ui/icons";
 
 const field = [
   {
     mainField: "DIVERSITY & INCLUSION",
     mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
     industrialStandard: [],
+    totalScore: 100,
     subfield: [
       {
         mainNestedField: "Discrimination",
         subNestedField: [
           {
             title: "Prohibits discrimination throughout the organization",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
+            scores: [{ score: 50 }, { score: -1 }, { score: -1 }],
+            industrialStandard: [40],
+            totalScore: 6,
             texts: [
               { text: "a11 stuff" },
               { text: "a11 stuff" },
@@ -27,8 +33,11 @@ const field = [
           },
           {
             title: "Actively identifies and addresses discrimination",
+            popupText:
+              "Employee hotline channels are offered and actions are taken to address violations.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [
               { text: "a12 stuff" },
               { text: "a12 stuff" },
@@ -38,6 +47,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 16,
       },
       {
         mainNestedField: "Gender Equality",
@@ -45,8 +55,11 @@ const field = [
           {
             title:
               "Commits to increasing gender diversity throughout the organization",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "a21 stuff" },
               { text: "a21 stuff" },
@@ -56,8 +69,11 @@ const field = [
           {
             title:
               "Maintains strong female representation at all levels of leadership",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 16,
             texts: [
               { text: "a22 stuff" },
               { text: "a22 stuff" },
@@ -66,8 +82,11 @@ const field = [
           },
           {
             title: "Ensures equal pay for equal work",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [
               { text: "a23 stuff" },
               { text: "a23 stuff" },
@@ -77,6 +96,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 32,
       },
       {
         mainNestedField: "Cultural Diversity",
@@ -84,8 +104,11 @@ const field = [
           {
             title:
               "Commits to increasing gender diversity throughout the organization",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [
               { text: "a31 stuff" },
               { text: "a31 stuff" },
@@ -95,8 +118,11 @@ const field = [
           {
             title:
               "Maintains diverse ethnic representation at all levels of leadership",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 14,
             texts: [
               { text: "a32 stuff" },
               { text: "a32 stuff" },
@@ -105,8 +131,11 @@ const field = [
           },
           {
             title: "Actively supports BIPOC and under represented communities",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [
               { text: "a33 stuff" },
               { text: "a33 stuff" },
@@ -116,6 +145,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 32,
       },
       {
         mainNestedField: "Inclusivity",
@@ -123,8 +153,11 @@ const field = [
           {
             title:
               "Fosters an inclusive workplace culture for all types of people",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "a41 stuff" },
               { text: "a41 stuff" },
@@ -133,8 +166,11 @@ const field = [
           },
           {
             title: "Prioritizes the mental health and wellbeing of employees",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [
               { text: "a42 stuff" },
               { text: "a42 stuff" },
@@ -144,6 +180,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 20,
       },
     ],
   },
@@ -151,6 +188,7 @@ const field = [
     mainField: "WORKER EXPLOITATION",
     mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
     industrialStandard: [],
+    totalScore: 100,
     subfield: [
       {
         mainNestedField: "Child Labour",
@@ -158,8 +196,11 @@ const field = [
           {
             title:
               "Prohibits the use of child labour throughout the value chain",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 4,
             texts: [
               { text: "b11 stuff" },
               { text: "b11 stuff" },
@@ -169,8 +210,11 @@ const field = [
           {
             title:
               "Actively works to identify and prevent child labour violations",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [
               { text: "b12 stuff" },
               { text: "b12 stuff" },
@@ -180,8 +224,11 @@ const field = [
           {
             title:
               "Enrolls child labour victims in school after discovering violations",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "b13 stuff" },
               { text: "b13 stuff" },
@@ -191,6 +238,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 18,
       },
       {
         mainNestedField: "Forced Labour",
@@ -198,8 +246,11 @@ const field = [
           {
             title:
               "Prohibits the use of child labour throughout the value chain",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 4,
             texts: [
               { text: "b21 stuff" },
               { text: "b21 stuff" },
@@ -209,8 +260,11 @@ const field = [
           {
             title:
               "Actively works to identify and prevent child labour violations",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [
               { text: "b22 stuff" },
               { text: "b22 stuff" },
@@ -220,8 +274,11 @@ const field = [
           {
             title:
               "Supports the recovery of forced labour victims after discovering violations",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "b23 stuff" },
               { text: "b23 stuff" },
@@ -231,14 +288,18 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 18,
       },
       {
         mainNestedField: "Living Wage",
         subNestedField: [
           {
             title: "Ensures all factory workers are paid a living wage",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [
               { text: "b31 stuff" },
               { text: "b31 stuff" },
@@ -248,8 +309,11 @@ const field = [
           {
             title:
               "Works to (prioritizes) improve wages throughout the value chain",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 14,
             texts: [
               { text: "b32 stuff" },
               { text: "b32 stuff" },
@@ -259,8 +323,11 @@ const field = [
           {
             title:
               "Ensures wages and benefits are being paid on time and in full",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "b33 stuff" },
               { text: "b33 stuff" },
@@ -270,8 +337,11 @@ const field = [
           {
             title:
               "Guarantees the right to freedom of association and collective bargaining",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 4,
             texts: [
               { text: "b34 stuff" },
               { text: "b34 stuff" },
@@ -281,8 +351,11 @@ const field = [
           {
             title:
               "Advocates for wage progression and fair compensation in the industry",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 1,
             texts: [
               { text: "b35 stuff" },
               { text: "b35 stuff" },
@@ -292,6 +365,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 34,
       },
       {
         mainNestedField: "Working Conditions",
@@ -299,8 +373,11 @@ const field = [
           {
             title:
               "Works to (prioritizes) improve factory health and safety conditions",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [
               { text: "b41 stuff" },
               { text: "b41 stuff" },
@@ -309,8 +386,11 @@ const field = [
           },
           {
             title: "Ensures workers are not forced to work excessive hours",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [
               { text: "b42 stuff" },
               { text: "b42 stuff" },
@@ -319,8 +399,11 @@ const field = [
           },
           {
             title: "Prohibits all forms of harassment or abuse towards workers",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 4,
             texts: [
               { text: "b43 stuff" },
               { text: "b43 stuff" },
@@ -330,8 +413,11 @@ const field = [
           {
             title:
               "Actively works to identify and prevent mistreatment of workers",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "b44 stuff" },
               { text: "b44 stuff" },
@@ -352,6 +438,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 30,
       },
     ],
   },
@@ -359,14 +446,18 @@ const field = [
     mainField: "WASTE & POLLUTION",
     mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
     industrialStandard: [],
+    totalScore: 100,
     subfield: [
       {
         mainNestedField: "Air Pollution (GHGs)",
         subNestedField: [
           {
             title: "Commits to using less energy throughout the value chain",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "c11 stuff" },
               { text: "c11 stuff" },
@@ -376,8 +467,11 @@ const field = [
           {
             title:
               "Commits to reducing greenhouse gas emissions throughout the value chain",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [
               { text: "c12 stuff" },
               { text: "c12 stuff" },
@@ -386,8 +480,11 @@ const field = [
           },
           {
             title: "Works towards reducing the operational carbon footprint",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [
               { text: "c13 stuff" },
               { text: "c13 stuff" },
@@ -397,8 +494,11 @@ const field = [
           {
             title:
               "Works with suppliers to reduce manufacturing carbon footprints",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "c14 stuff" },
               { text: "c14 stuff" },
@@ -408,14 +508,18 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 28,
       },
       {
         mainNestedField: "Water Pollution & Wastes",
         subNestedField: [
           {
             title: "Commits to using less water throughout the value chain",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "c21 stuff" },
               { text: "c21 stuff" },
@@ -424,8 +528,11 @@ const field = [
           },
           {
             title: "Works with suppliers to recycle water and reduce usage",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 4,
             texts: [
               { text: "c22 stuff" },
               { text: "c22 stuff" },
@@ -435,8 +542,11 @@ const field = [
           {
             title:
               "Eliminates use of toxic chemicals in the production of products",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "c23 stuff" },
               { text: "c23 stuff" },
@@ -445,8 +555,11 @@ const field = [
           },
           {
             title: "Filters wastewater to avoid contaminating fresh water",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "c24 stuff" },
               { text: "c24 stuff" },
@@ -456,14 +569,18 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 22,
       },
       {
         mainNestedField: "Packaging Waste",
         subNestedField: [
           {
             title: "Reduces use of plastic packaging and shopping bags",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "c31 stuff" },
               { text: "c31 stuff" },
@@ -472,8 +589,11 @@ const field = [
           },
           {
             title: "Uses recycled plastics and paper packaging materials",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [
               { text: "c32 stuff" },
               { text: "c32 stuff" },
@@ -483,8 +603,11 @@ const field = [
           {
             title:
               "Ensures all used packaging can be reused, recycled or composted",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 4,
             texts: [
               { text: "c33 stuff" },
               { text: "c33 stuff" },
@@ -494,8 +617,11 @@ const field = [
           {
             title:
               "Works with suppliers to reduce, reuse and recycle all packaging waste",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 4,
             texts: [
               { text: "c34 stuff" },
               { text: "c34 stuff" },
@@ -505,14 +631,18 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 22,
       },
       {
         mainNestedField: "Material Waste",
         subNestedField: [
           {
             title: "Uses recycled materials in the production of products",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 10,
             texts: [
               { text: "c41 stuff" },
               { text: "c41 stuff" },
@@ -521,8 +651,11 @@ const field = [
           },
           {
             title: "Repurposes or donates damaged and excess products",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "c42 stuff" },
               { text: "c42 stuff" },
@@ -532,8 +665,11 @@ const field = [
           {
             title:
               "Offers an effective take-back or repair program for customers",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 4,
             texts: [
               { text: "c43 stuff" },
               { text: "c43 stuff" },
@@ -543,8 +679,11 @@ const field = [
           {
             title:
               "Works with suppliers to reduce, reuse and recycle all material waste",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 8,
             texts: [
               { text: "c44 stuff" },
               { text: "c44 stuff" },
@@ -554,6 +693,7 @@ const field = [
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 28,
       },
     ],
   },
@@ -561,133 +701,131 @@ const field = [
     mainField: "ETHICAL SOURCING",
     mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
     industrialStandard: [],
+    totalScore: 100,
     subfield: [
       {
         mainNestedField: "Cotton Farming",
         subNestedField: [
           {
             title: "Sources sustainable cotton from certified farms",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
-            texts: [
-              {text: "d11 stuff"},
-              {text: "d11"},
-              {text: "d11"}
-            ]
+            totalScore: 18,
+            texts: [{ text: "d11 stuff" }, { text: "d11" }, { text: "d11" }],
           },
           {
-            title: "Actively works to prevent unethical cotton farming practices",
+            title:
+              "Actively works to prevent unethical cotton farming practices",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
-            texts: [
-              {text: "d12 stuff"},
-              {text: "d12"},
-              {text: "d12"}
-            ]
+            totalScore: 8,
+            texts: [{ text: "d12 stuff" }, { text: "d12" }, { text: "d12" }],
           },
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 26,
       },
       {
         mainNestedField: "Deforestation",
         subNestedField: [
           {
-            title: "Sources sustainable forest-based fabrics from certified suppliers",
+            title:
+              "Sources sustainable forest-based fabrics from certified suppliers",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
-            texts: [
-              {text: "d21 stuff"},
-              {text: "d21"},
-              {text: "d21"}
-            ]
+            totalScore: 12,
+            texts: [{ text: "d21 stuff" }, { text: "d21" }, { text: "d21" }],
           },
           {
             title: "Uses paper packaging materials from sustainable sources",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
-            texts: [
-              {text: "d22 stuff"},
-              {text: "d22"},
-              {text: "d22"}
-            ]
+            totalScore: 8,
+            texts: [{ text: "d22 stuff" }, { text: "d22" }, { text: "d22" }],
           },
           {
             title: "Actively works to protect forests and stop deforestation",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
-            texts: [
-              {text: "d23 stuff"},
-              {text: "d23"},
-              {text: "d23"}
-            ]
-          }
+            totalScore: 8,
+            texts: [{ text: "d23 stuff" }, { text: "d23" }, { text: "d23" }],
+          },
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 28,
       },
       {
         mainNestedField: "Animal Welfare",
         subNestedField: [
           {
-            title: "Prohibits the inhumane treatment of animals throughout the value chain",
+            title:
+              "Prohibits the inhumane treatment of animals throughout the value chain",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
-            texts: [
-              {text: "d31 stuff"},
-              {text: "d31"},
-              {text: "d31"}
-            ]
+            totalScore: 6,
+            texts: [{ text: "d31 stuff" }, { text: "d31" }, { text: "d31" }],
           },
           {
             title: "Sources sustainable leather or prohibits use",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
-            texts: [
-              {text: "d32 stuff"},
-              {text: "d32"},
-              {text: "d32"}
-            ]
+            totalScore: 10,
+            texts: [{ text: "d32 stuff" }, { text: "d32" }, { text: "d32" }],
           },
           {
             title: "Sources sustainable fur or prohibits use",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
-            texts: [
-              {text: "d33 stuff"},
-              {text: "d33"},
-              {text: "d33"}
-            ]
+            totalScore: 10,
+            texts: [{ text: "d33 stuff" }, { text: "d33" }, { text: "d33" }],
           },
           {
             title: "Sources sustainable wool from non-mulesed sheep",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
-            texts: [
-              {text: "d34 stuff"},
-              {text: "d34"},
-              {text: "d34"}
-            ]
+            totalScore: 10,
+            texts: [{ text: "d34 stuff" }, { text: "d34" }, { text: "d34" }],
           },
           {
-            title: "Sources sustainable down from birds that were never force fed or live plucked",
+            title:
+              "Sources sustainable down from birds that were never force fed or live plucked",
+            popupText:
+              "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
-            texts: [
-              {text: "d35 stuff"},
-              {text: "d35"},
-              {text: "d35"}
-            ]
+            totalScore: 10,
+            texts: [{ text: "d35 stuff" }, { text: "d35" }, { text: "d35" }],
           },
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
+        totalScore: 46,
       },
     ],
   },
 ];
 
-const ComparePopup = ({ title, handleClose }) => {
+const ComparePopup = ({ title, popupText, handleClose }) => {
   return (
     <div className="compare-popup">
       <div className="compare-popup-content">
@@ -695,14 +833,11 @@ const ComparePopup = ({ title, handleClose }) => {
           style={{
             display: "flex",
             flexDirection: "column",
-            marginBottom: "50px"            
+            marginBottom: "50px",
           }}
         >
           <div className="compare-popup-title">{title}</div>
-          <div className="compare-popup-text">
-            Vulputate sit condimentum nulla eget placerat tincidunt. Vulputate
-            sit condimentum nulla eget placerat tincidunt.
-          </div>
+          <div className="compare-popup-text">{popupText}</div>
         </div>
         <HighlightOffRoundedIcon
           onClick={handleClose}
@@ -713,49 +848,46 @@ const ComparePopup = ({ title, handleClose }) => {
   );
 };
 
-const LearnMorePopup = () => {
+const LearnMorePopup = ({ learnMoreText, tabView, setShowLearnMoreText }) => {
   const [showPopup, setShowPopup] = useState(false);
-  const [tabView, setTabView] = useState(false);
-
-  useLayoutEffect(() => {
-    function updateSize() {      
-      if (window.innerWidth > 800) {
-        setTabView(false);        
-      } else {
-        setTabView(true);
-      }
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
 
   return (
     <>
-    <div className="compare-learn-more" onClick={() => setShowPopup(true)}>
-      Learn More
-      <ChevronRightIcon /> 
-    </div>
-      {tabView && showPopup && <ComparePopup title="Learn More" handleClose={() => setShowPopup(false)}/>}
+      <div
+        className="compare-learn-more"
+        onClick={() =>
+          tabView ? setShowPopup(true) : setShowLearnMoreText(true)
+        }
+      >
+        Learn More
+        <ChevronRightIcon />
+      </div>
+      {tabView && showPopup && (
+        <ComparePopup
+          title="Learn More"
+          popupText={learnMoreText.text}
+          handleClose={() => setShowPopup(false)}
+        />
+      )}
     </>
-  )
+  );
 };
 
 const ScoreContainer = ({
   score,
   industrialStandard,
+  totalScore,
   firstLayer,
   secondLayer,
+  learnMoreText,
 }) => {
-
+  const [showLearnMoreText, setShowLearnMoreText] = useState(false);
   const [tabView, setTabView] = useState(false);
-  const [showInfo, setShoInfo] = useState(false);
-
+  
   useLayoutEffect(() => {
-    function updateSize() {      
+    function updateSize() {
       if (window.innerWidth > 800) {
         setTabView(false);
-        console.log('hree')
       } else {
         setTabView(true);
       }
@@ -765,51 +897,108 @@ const ScoreContainer = ({
     return () => window.removeEventListener("resize", updateSize);
   }, []);
 
-  if (score >=0) {
-    // console.log(score);
+  if (score >= 0) {
+    // console.log(score);]
     if (score > industrialStandard[1]) {
       return (
-        <div
-          className={
-            firstLayer
-              ? "compare__tool-scoreContainer greensquare border"
-              : secondLayer
-              ? "compare__tool-scoreContainer greensquare1"
-              : "compare__tool-scoreContainer greensquare2"
-          }
-        >
-          {score}/100
-          {!firstLayer && !secondLayer && <LearnMorePopup tabView={tabView} />}
-        </div>        
+        <div className="compare-card-container greensquare2">
+          {!showLearnMoreText && (
+            <div
+              className={
+                firstLayer
+                  ? "compare__tool-scoreContainer greensquare border"
+                  : secondLayer
+                  ? "compare__tool-scoreContainer greensquare1"
+                  : "compare__tool-scoreContainer card-front greensquare2"
+              }
+            >
+              {score}/{totalScore}
+              {!firstLayer && !secondLayer && (
+                <LearnMorePopup
+                  learnMoreText={learnMoreText}
+                  tabView={tabView}
+                  setShowLearnMoreText={setShowLearnMoreText}
+                />
+              )}
+            </div>
+          )}
+          {!firstLayer && !secondLayer && showLearnMoreText && (
+            <div className="card-back">
+              <ChevronLeftIcon
+                onClick={() => setShowLearnMoreText(false)}
+                style={{ cursor: "pointer" }}
+              />
+              {learnMoreText.text}
+            </div>
+          )}
+        </div>
       );
     } else if (score < industrialStandard[1] && score > industrialStandard[0]) {
       return (
-        <div
-          className={
-            firstLayer
-              ? "compare__tool-scoreContainer yellowsquare border"
-              : secondLayer
-              ? "compare__tool-scoreContainer yellowsquare1"
-              : "compare__tool-scoreContainer yellowsquare2"
-          }
-        >
-          {score}/100
-          {!firstLayer && !secondLayer && <LearnMorePopup tabView />}
+        <div className="compare-card-container yellowsquare2">
+          {!showLearnMoreText && (
+            <div
+              className={
+                firstLayer
+                  ? "compare__tool-scoreContainer yellowsquare border"
+                  : secondLayer
+                  ? "compare__tool-scoreContainer yellowsquare1"
+                  : "compare__tool-scoreContainer card-front yellowsquare2"
+              }
+            >
+              {score}/{totalScore}
+              {!firstLayer && !secondLayer && (
+                <LearnMorePopup
+                  learnMoreText={learnMoreText}
+                  tabView={tabView}
+                  setShowLearnMoreText={setShowLearnMoreText}
+                />
+              )}
+            </div>
+          )}
+          {!firstLayer && !secondLayer && showLearnMoreText && (
+            <div className="card-back">
+              <ChevronLeftIcon
+                onClick={() => setShowLearnMoreText(false)}
+                style={{ cursor: "pointer" }}
+              />
+              {learnMoreText.text}
+            </div>
+          )}
         </div>
       );
     } else {
       return (
-        <div
-          className={
-            firstLayer
-              ? "compare__tool-scoreContainer orangesquare border"
-              : secondLayer
-              ? "compare__tool-scoreContainer orangesquare1"
-              : "compare__tool-scoreContainer orangesquare2"
-          }
-        >
-          {score}/100
-          {!firstLayer && !secondLayer && <LearnMorePopup tabView />}
+        <div className="compare-card-container orangesquare2">
+          {!showLearnMoreText && (
+            <div
+              className={
+                firstLayer
+                  ? "compare__tool-scoreContainer orangesquare border"
+                  : secondLayer
+                  ? "compare__tool-scoreContainer orangesquare1"
+                  : "compare__tool-scoreContainer card-front orangesquare2"
+              }
+            >
+              {score}/{totalScore}
+              {!firstLayer && !secondLayer && (
+                <LearnMorePopup
+                  learnMoreText={learnMoreText}
+                  tabView={tabView}
+                  setShowLearnMoreText={setShowLearnMoreText}
+                />
+              )}
+            </div>
+          )}
+          {!firstLayer && !secondLayer && showLearnMoreText && (
+            <div className="card-back">
+              <ChevronLeftIcon
+                onClick={() => setShowLearnMoreText(false)}
+                style={{ cursor: "pointer" }}
+              />
+              {learnMoreText.text}
+            </div>
+          )}
         </div>
       );
     }
@@ -827,12 +1016,9 @@ const ScoreContainer = ({
   }
 };
 
-const NestedField = ({ item }) => {
-  let v = ["he", "she"]
-  const [show, setShow] = useState(false);
-  const [tabView, setTabView] = useState(window.innerWidth < 800);
-  const [mobileView, setMobileView] = useState(window.innerWidth < 600);
+const SubNestedField = ({ item, tabView, mobileView }) => {
   const [showPopup, setShowPopup] = useState(false);
+<<<<<<< HEAD
   let t = 0;
 
   function increment(num) {
@@ -841,6 +1027,67 @@ const NestedField = ({ item }) => {
     }
     num = num + 1;
   }
+=======
+  
+  return (
+    <div className="nestedField-container">
+      <span className="nestedField-title">
+        {item.title}
+        <span style={{ position: "relative" }}>
+          <HelpOutlineTwoToneIcon
+            className="compare-info-icon"
+            onClick={() => tabView && setShowPopup(true)}
+            style={{
+              fontSize: "18px",
+              marginLeft: "5px",
+              fill: "#26385A",
+            }}
+          />
+          <span className="info-text-hover">{item.popupText}</span>
+          {showPopup && tabView && (
+            <ComparePopup
+              title={item.title}
+              popupText={item.popupText}
+              handleClose={() => setShowPopup(false)}
+            />
+          )}
+        </span>
+      </span>
+      {item.scores.map((element, index) => {
+        if (mobileView && index < 2) {
+          return (
+            <ScoreContainer
+              key={index}
+              score={element.score}
+              industrialStandard={item.industrialStandard}
+              totalScore={item.totalScore}
+              learnMoreText={item.texts[index]}
+            />
+          );
+        }
+        if (!mobileView) {
+          return (
+            <ScoreContainer
+              key={index}
+              score={element.score}
+              industrialStandard={item.industrialStandard}
+              totalScore={item.totalScore}
+              learnMoreText={item.texts[index]}
+            />
+          );
+        }
+        return null;
+      })}
+    </div>
+  );
+};
+
+const NestedField = ({ item, subIndexKey, show, setShow }) => {
+  // let v = ["he", "she"]
+
+  const [mobileView, setMobileView] = useState(window.innerWidth < 600);
+  const [tabView, setTabView] = useState(window.innerWidth < 800);
+>>>>>>> d05b5740479bd9b559d7c98276e18183236b3b3e
 
   useLayoutEffect(() => {
     function updateSize() {
@@ -862,7 +1109,7 @@ const NestedField = ({ item }) => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <div onClick={() => setShow(!show)} className="subField-container">
+      <div className="subField-container">
         <div className="subField-title">{item.mainNestedField}</div>
         {item.mainNestedScore.map((element, index) => {
           if (mobileView && index < 2) {
@@ -871,6 +1118,7 @@ const NestedField = ({ item }) => {
                 key={index}
                 score={element.score}
                 industrialStandard={item.industrialStandard}
+                totalScore={item.totalScore}
                 secondLayer
               />
             );
@@ -881,6 +1129,7 @@ const NestedField = ({ item }) => {
                 key={index}
                 score={element.score}
                 industrialStandard={item.industrialStandard}
+                totalScore={item.totalScore}
                 secondLayer
               />
             );
@@ -889,15 +1138,19 @@ const NestedField = ({ item }) => {
         })}
         {item.subNestedField.length > 0 && (
           <ExpandMoreSharpIcon
-            onClick={() => setShow(!show)}
-            className={show ? "circle-new-close" : "circle-new"}
+            onClick={() =>
+              show === subIndexKey ? setShow(null) : setShow(subIndexKey)
+            }
+            className={show === subIndexKey ? "circle-new-close" : "circle-new"}
           />
         )}
       </div>
-      <div className={`animate-field ${show ? "animate" : ""}`}>
-        {show &&
+      <div className={`animate-field ${show === subIndexKey ? "animate" : ""}`}>
+        {show === subIndexKey &&
           item.subNestedField.map((item, index) => {
+            console.log(show);
             return (
+<<<<<<< HEAD
               <div key={index} className="nestedField-container">
                 <span className="nestedField-title">
                   {item.title}
@@ -943,6 +1196,14 @@ const NestedField = ({ item }) => {
                   return null;
                 })}
               </div>
+=======
+              <SubNestedField
+                key={index}
+                item={item}
+                tabView={tabView}
+                mobileView={mobileView}
+              />
+>>>>>>> d05b5740479bd9b559d7c98276e18183236b3b3e
             );
           })}
       </div>
@@ -950,10 +1211,10 @@ const NestedField = ({ item }) => {
   );
 };
 
-const Subfield = ({ item }) => {
-  const [show, setShow] = useState(false);
+const Subfield = ({ indexKey, item, showSubField, setShowSubField }) => {
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
-
+  const [show, setShow] = useState(null);
+  
   useLayoutEffect(() => {
     function updateSize() {
       if (window.innerWidth > 600) {
@@ -978,6 +1239,7 @@ const Subfield = ({ item }) => {
                 key={index}
                 score={element.score}
                 industrialStandard={item.industrialStandard}
+                totalScore={item.totalScore}
                 firstLayer
               />
             );
@@ -988,6 +1250,7 @@ const Subfield = ({ item }) => {
                 key={index}
                 score={element.score}
                 industrialStandard={item.industrialStandard}
+                totalScore={item.totalScore}
                 firstLayer
               />
             );
@@ -996,15 +1259,37 @@ const Subfield = ({ item }) => {
         })}
         {item.subfield.length > 0 && (
           <ExpandMoreSharpIcon
-            onClick={() => setShow(!show)}
-            className={show ? "circle-new-close" : "circle-new"}
+            onClick={() => {
+              if (showSubField === indexKey) {
+                setShow(null);
+                setShowSubField(null);
+              } else {
+                setShow(null);
+                setShowSubField(indexKey);
+              }
+            }}
+            className={
+              showSubField === indexKey ? "circle-new-close" : "circle-new"
+            }
           />
         )}
       </div>
-      <div className={`animate-field ${show ? "animate" : ""}`}>
-        {show &&
+      <div
+        className={`animate-field ${
+          showSubField === indexKey ? "animate" : ""
+        }`}
+      >
+        {showSubField === indexKey &&
           item.subfield.map((item, index) => {
-            return <NestedField key={index} item={item} />;
+            return (
+              <NestedField
+                key={index}
+                item={item}
+                subIndexKey={index}
+                show={show}
+                setShow={(key) => setShow(key)}
+              />
+            );
           })}
       </div>
     </div>
@@ -1020,6 +1305,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
   const [listBrandTwo, setListBrandTwo] = useState(false);
   const [listBrandThree, setListBrandThree] = useState(false);
   const [fieldData, setFieldData] = useState(field);
+  const [showSubField, setShowSubField] = useState(null);
 
   const handleChangeOne = (e) => {
     setInputBrandOne(e.target.value);
@@ -1299,14 +1585,14 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
         data[3].subfield[0].subNestedField[1].texts[inputIndex].text =
           resp.data.rows[0]["D1.2short"];
         data[3].subfield[0].subNestedField[1].scores[inputIndex].score =
-          resp.data.rows[0]["D1.2score"];        
+          resp.data.rows[0]["D1.2score"];
 
         data[3].subfield[1].mainNestedScore[inputIndex].score =
           resp.data.rows[0]["D2score"];
         data[3].subfield[1].subNestedField[0].texts[inputIndex].text =
           resp.data.rows[0]["D2.1short"];
         data[3].subfield[1].subNestedField[0].scores[inputIndex].score =
-          resp.data.rows[0]["D2.1score"];  
+          resp.data.rows[0]["D2.1score"];
         data[3].subfield[1].subNestedField[1].texts[inputIndex].text =
           resp.data.rows[0]["D2.2short"];
         data[3].subfield[1].subNestedField[1].scores[inputIndex].score =
@@ -1321,23 +1607,23 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
         data[3].subfield[2].subNestedField[0].texts[inputIndex].text =
           resp.data.rows[0]["D3.1short"];
         data[3].subfield[2].subNestedField[0].scores[inputIndex].score =
-          resp.data.rows[0]["D3.1score"]; 
+          resp.data.rows[0]["D3.1score"];
         data[3].subfield[2].subNestedField[1].texts[inputIndex].text =
           resp.data.rows[0]["D3.2short"];
         data[3].subfield[2].subNestedField[1].scores[inputIndex].score =
-          resp.data.rows[0]["D3.2score"]; 
+          resp.data.rows[0]["D3.2score"];
         data[3].subfield[2].subNestedField[2].texts[inputIndex].text =
           resp.data.rows[0]["D3.3short"];
         data[3].subfield[2].subNestedField[2].scores[inputIndex].score =
-          resp.data.rows[0]["D3.3score"]; 
+          resp.data.rows[0]["D3.3score"];
         data[3].subfield[2].subNestedField[3].texts[inputIndex].text =
           resp.data.rows[0]["D3.4short"];
         data[3].subfield[2].subNestedField[3].scores[inputIndex].score =
-          resp.data.rows[0]["D3.4score"]; 
+          resp.data.rows[0]["D3.4score"];
         data[3].subfield[2].subNestedField[4].texts[inputIndex].text =
           resp.data.rows[0]["D3.5short"];
         data[3].subfield[2].subNestedField[4].scores[inputIndex].score =
-          resp.data.rows[0]["D3.5score"]; 
+          resp.data.rows[0]["D3.5score"];
       });
 
     setFieldData(data);
@@ -1387,26 +1673,66 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
       data[0].subfield[3].industrialStandard.push(resp.data.rows[0]["A4low"]);
       data[0].subfield[3].industrialStandard.push(resp.data.rows[0]["A4high"]);
 
-      data[0].subfield[0].subNestedField[0].industrialStandard.push(resp.data.rows[0]["A1.1low"]);
-      data[0].subfield[0].subNestedField[0].industrialStandard.push(resp.data.rows[0]["A1.1high"]);
-      data[0].subfield[0].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A1.2low"]);
-      data[0].subfield[0].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A1.2high"]);
-      data[0].subfield[1].subNestedField[0].industrialStandard.push(resp.data.rows[0]["A2.1low"]);
-      data[0].subfield[1].subNestedField[0].industrialStandard.push(resp.data.rows[0]["A2.1high"]);
-      data[0].subfield[1].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A2.2low"]);
-      data[0].subfield[1].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A2.2high"]);
-      data[0].subfield[1].subNestedField[2].industrialStandard.push(resp.data.rows[0]["A2.3low"]);
-      data[0].subfield[1].subNestedField[2].industrialStandard.push(resp.data.rows[0]["A2.3high"]);
-      data[0].subfield[2].subNestedField[0].industrialStandard.push(resp.data.rows[0]["A3.1low"]);
-      data[0].subfield[2].subNestedField[0].industrialStandard.push(resp.data.rows[0]["A3.1high"]);
-      data[0].subfield[2].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A3.2low"]);
-      data[0].subfield[2].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A3.2high"]);
-      data[0].subfield[2].subNestedField[2].industrialStandard.push(resp.data.rows[0]["A3.3low"]);
-      data[0].subfield[2].subNestedField[2].industrialStandard.push(resp.data.rows[0]["A3.3high"]);
-      data[0].subfield[3].subNestedField[0].industrialStandard.push(resp.data.rows[0]["A4.1low"]);
-      data[0].subfield[3].subNestedField[0].industrialStandard.push(resp.data.rows[0]["A4.1high"]);
-      data[0].subfield[3].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A4.2low"]);
-      data[0].subfield[3].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A4.2high"]);
+      data[0].subfield[0].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["A1.1low"]
+      );
+      data[0].subfield[0].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["A1.1high"]
+      );
+      data[0].subfield[0].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["A1.2low"]
+      );
+      data[0].subfield[0].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["A1.2high"]
+      );
+      data[0].subfield[1].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["A2.1low"]
+      );
+      data[0].subfield[1].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["A2.1high"]
+      );
+      data[0].subfield[1].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["A2.2low"]
+      );
+      data[0].subfield[1].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["A2.2high"]
+      );
+      data[0].subfield[1].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["A2.3low"]
+      );
+      data[0].subfield[1].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["A2.3high"]
+      );
+      data[0].subfield[2].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["A3.1low"]
+      );
+      data[0].subfield[2].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["A3.1high"]
+      );
+      data[0].subfield[2].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["A3.2low"]
+      );
+      data[0].subfield[2].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["A3.2high"]
+      );
+      data[0].subfield[2].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["A3.3low"]
+      );
+      data[0].subfield[2].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["A3.3high"]
+      );
+      data[0].subfield[3].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["A4.1low"]
+      );
+      data[0].subfield[3].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["A4.1high"]
+      );
+      data[0].subfield[3].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["A4.2low"]
+      );
+      data[0].subfield[3].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["A4.2high"]
+      );
 
       data[1].subfield[0].industrialStandard.push(resp.data.rows[0]["B1low"]);
       data[1].subfield[0].industrialStandard.push(resp.data.rows[0]["B1high"]);
@@ -1417,39 +1743,99 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
       data[1].subfield[3].industrialStandard.push(resp.data.rows[0]["B4low"]);
       data[1].subfield[3].industrialStandard.push(resp.data.rows[0]["B4high"]);
 
-      data[1].subfield[0].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B1.1low"]);
-      data[1].subfield[0].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B1.1high"]);
-      data[1].subfield[0].subNestedField[1].industrialStandard.push(resp.data.rows[0]["B1.2low"]);
-      data[1].subfield[0].subNestedField[1].industrialStandard.push(resp.data.rows[0]["B1.2high"]);
-      data[1].subfield[0].subNestedField[2].industrialStandard.push(resp.data.rows[0]["B1.3low"]);
-      data[1].subfield[0].subNestedField[2].industrialStandard.push(resp.data.rows[0]["B1.3high"]);
+      data[1].subfield[0].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["B1.1low"]
+      );
+      data[1].subfield[0].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["B1.1high"]
+      );
+      data[1].subfield[0].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["B1.2low"]
+      );
+      data[1].subfield[0].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["B1.2high"]
+      );
+      data[1].subfield[0].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["B1.3low"]
+      );
+      data[1].subfield[0].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["B1.3high"]
+      );
 
-      data[1].subfield[1].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B2.1low"]);
-      data[1].subfield[1].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B2.1high"]);
-      data[1].subfield[1].subNestedField[1].industrialStandard.push(resp.data.rows[0]["B2.2low"]);
-      data[1].subfield[1].subNestedField[1].industrialStandard.push(resp.data.rows[0]["B2.2high"]);
-      data[1].subfield[1].subNestedField[2].industrialStandard.push(resp.data.rows[0]["B2.3low"]);
-      data[1].subfield[1].subNestedField[2].industrialStandard.push(resp.data.rows[0]["B2.3high"]);
+      data[1].subfield[1].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["B2.1low"]
+      );
+      data[1].subfield[1].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["B2.1high"]
+      );
+      data[1].subfield[1].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["B2.2low"]
+      );
+      data[1].subfield[1].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["B2.2high"]
+      );
+      data[1].subfield[1].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["B2.3low"]
+      );
+      data[1].subfield[1].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["B2.3high"]
+      );
 
-      data[1].subfield[2].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B3.1low"]);
-      data[1].subfield[2].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B3.1high"]);
-      data[1].subfield[2].subNestedField[1].industrialStandard.push(resp.data.rows[0]["B3.2low"]);
-      data[1].subfield[2].subNestedField[1].industrialStandard.push(resp.data.rows[0]["B3.2high"]);
-      data[1].subfield[2].subNestedField[2].industrialStandard.push(resp.data.rows[0]["B3.3low"]);
-      data[1].subfield[2].subNestedField[2].industrialStandard.push(resp.data.rows[0]["B3.3high"]);
-      data[1].subfield[2].subNestedField[3].industrialStandard.push(resp.data.rows[0]["B3.4low"]);
-      data[1].subfield[2].subNestedField[3].industrialStandard.push(resp.data.rows[0]["B3.4high"]);
-      data[1].subfield[2].subNestedField[4].industrialStandard.push(resp.data.rows[0]["B3.5low"]);
-      data[1].subfield[2].subNestedField[4].industrialStandard.push(resp.data.rows[0]["B3.5high"]);
+      data[1].subfield[2].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["B3.1low"]
+      );
+      data[1].subfield[2].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["B3.1high"]
+      );
+      data[1].subfield[2].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["B3.2low"]
+      );
+      data[1].subfield[2].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["B3.2high"]
+      );
+      data[1].subfield[2].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["B3.3low"]
+      );
+      data[1].subfield[2].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["B3.3high"]
+      );
+      data[1].subfield[2].subNestedField[3].industrialStandard.push(
+        resp.data.rows[0]["B3.4low"]
+      );
+      data[1].subfield[2].subNestedField[3].industrialStandard.push(
+        resp.data.rows[0]["B3.4high"]
+      );
+      data[1].subfield[2].subNestedField[4].industrialStandard.push(
+        resp.data.rows[0]["B3.5low"]
+      );
+      data[1].subfield[2].subNestedField[4].industrialStandard.push(
+        resp.data.rows[0]["B3.5high"]
+      );
 
-      data[1].subfield[3].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B4.1low"]);
-      data[1].subfield[3].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B4.1high"]);
-      data[1].subfield[3].subNestedField[1].industrialStandard.push(resp.data.rows[0]["B4.2low"]);
-      data[1].subfield[3].subNestedField[1].industrialStandard.push(resp.data.rows[0]["B4.2high"]);
-      data[1].subfield[3].subNestedField[2].industrialStandard.push(resp.data.rows[0]["B4.3low"]);
-      data[1].subfield[3].subNestedField[2].industrialStandard.push(resp.data.rows[0]["B4.3high"]);
-      data[1].subfield[3].subNestedField[3].industrialStandard.push(resp.data.rows[0]["B4.4low"]);
-      data[1].subfield[3].subNestedField[3].industrialStandard.push(resp.data.rows[0]["B4.4high"]);
+      data[1].subfield[3].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["B4.1low"]
+      );
+      data[1].subfield[3].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["B4.1high"]
+      );
+      data[1].subfield[3].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["B4.2low"]
+      );
+      data[1].subfield[3].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["B4.2high"]
+      );
+      data[1].subfield[3].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["B4.3low"]
+      );
+      data[1].subfield[3].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["B4.3high"]
+      );
+      data[1].subfield[3].subNestedField[3].industrialStandard.push(
+        resp.data.rows[0]["B4.4low"]
+      );
+      data[1].subfield[3].subNestedField[3].industrialStandard.push(
+        resp.data.rows[0]["B4.4high"]
+      );
       // data[1].subfield[3].subNestedField[4].industrialStandard =
       //   resp.data.rows[0]["B45"];
 
@@ -1462,41 +1848,105 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
       data[2].subfield[3].industrialStandard.push(resp.data.rows[0]["C4low"]);
       data[2].subfield[3].industrialStandard.push(resp.data.rows[0]["C4high"]);
 
-      data[2].subfield[0].subNestedField[0].industrialStandard.push(resp.data.rows[0]["C1.1low"]);
-      data[2].subfield[0].subNestedField[0].industrialStandard.push(resp.data.rows[0]["C1.1high"]);
-      data[2].subfield[0].subNestedField[1].industrialStandard.push(resp.data.rows[0]["C1.2low"]);
-      data[2].subfield[0].subNestedField[1].industrialStandard.push(resp.data.rows[0]["C1.2high"]);
-      data[2].subfield[0].subNestedField[2].industrialStandard.push(resp.data.rows[0]["C1.3low"]);
-      data[2].subfield[0].subNestedField[2].industrialStandard.push(resp.data.rows[0]["C1.3high"]);
-      data[2].subfield[0].subNestedField[3].industrialStandard.push(resp.data.rows[0]["C1.4low"]);
-      data[2].subfield[0].subNestedField[3].industrialStandard.push(resp.data.rows[0]["C1.4high"]);
+      data[2].subfield[0].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["C1.1low"]
+      );
+      data[2].subfield[0].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["C1.1high"]
+      );
+      data[2].subfield[0].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["C1.2low"]
+      );
+      data[2].subfield[0].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["C1.2high"]
+      );
+      data[2].subfield[0].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["C1.3low"]
+      );
+      data[2].subfield[0].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["C1.3high"]
+      );
+      data[2].subfield[0].subNestedField[3].industrialStandard.push(
+        resp.data.rows[0]["C1.4low"]
+      );
+      data[2].subfield[0].subNestedField[3].industrialStandard.push(
+        resp.data.rows[0]["C1.4high"]
+      );
 
-      data[2].subfield[1].subNestedField[0].industrialStandard.push(resp.data.rows[0]["C2.1low"]);
-      data[2].subfield[1].subNestedField[0].industrialStandard.push(resp.data.rows[0]["C2.1high"]);
-      data[2].subfield[1].subNestedField[1].industrialStandard.push(resp.data.rows[0]["C2.2low"]);
-      data[2].subfield[1].subNestedField[1].industrialStandard.push(resp.data.rows[0]["C2.2high"]);
-      data[2].subfield[1].subNestedField[2].industrialStandard.push(resp.data.rows[0]["C2.3low"]);
-      data[2].subfield[1].subNestedField[2].industrialStandard.push(resp.data.rows[0]["C2.3high"]);
-      data[2].subfield[1].subNestedField[3].industrialStandard.push(resp.data.rows[0]["C2.4low"]);
-      data[2].subfield[1].subNestedField[3].industrialStandard.push(resp.data.rows[0]["C2.4high"]);
+      data[2].subfield[1].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["C2.1low"]
+      );
+      data[2].subfield[1].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["C2.1high"]
+      );
+      data[2].subfield[1].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["C2.2low"]
+      );
+      data[2].subfield[1].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["C2.2high"]
+      );
+      data[2].subfield[1].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["C2.3low"]
+      );
+      data[2].subfield[1].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["C2.3high"]
+      );
+      data[2].subfield[1].subNestedField[3].industrialStandard.push(
+        resp.data.rows[0]["C2.4low"]
+      );
+      data[2].subfield[1].subNestedField[3].industrialStandard.push(
+        resp.data.rows[0]["C2.4high"]
+      );
 
-      data[2].subfield[2].subNestedField[0].industrialStandard.push(resp.data.rows[0]["C3.1low"]);
-      data[2].subfield[2].subNestedField[0].industrialStandard.push(resp.data.rows[0]["C3.1high"]);
-      data[2].subfield[2].subNestedField[1].industrialStandard.push(resp.data.rows[0]["C3.2low"]);
-      data[2].subfield[2].subNestedField[1].industrialStandard.push(resp.data.rows[0]["C3.2high"]);
-      data[2].subfield[2].subNestedField[2].industrialStandard.push(resp.data.rows[0]["C3.3low"]);
-      data[2].subfield[2].subNestedField[2].industrialStandard.push(resp.data.rows[0]["C3.3high"]);
-      data[2].subfield[2].subNestedField[3].industrialStandard.push(resp.data.rows[0]["C3.4low"]);
-      data[2].subfield[2].subNestedField[3].industrialStandard.push(resp.data.rows[0]["C3.4high"]);
+      data[2].subfield[2].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["C3.1low"]
+      );
+      data[2].subfield[2].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["C3.1high"]
+      );
+      data[2].subfield[2].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["C3.2low"]
+      );
+      data[2].subfield[2].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["C3.2high"]
+      );
+      data[2].subfield[2].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["C3.3low"]
+      );
+      data[2].subfield[2].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["C3.3high"]
+      );
+      data[2].subfield[2].subNestedField[3].industrialStandard.push(
+        resp.data.rows[0]["C3.4low"]
+      );
+      data[2].subfield[2].subNestedField[3].industrialStandard.push(
+        resp.data.rows[0]["C3.4high"]
+      );
 
-      data[2].subfield[3].subNestedField[0].industrialStandard.push(resp.data.rows[0]["C4.1low"]);
-      data[2].subfield[3].subNestedField[0].industrialStandard.push(resp.data.rows[0]["C4.1high"]);
-      data[2].subfield[3].subNestedField[1].industrialStandard.push(resp.data.rows[0]["C4.2low"]);
-      data[2].subfield[3].subNestedField[1].industrialStandard.push(resp.data.rows[0]["C4.2high"]);
-      data[2].subfield[3].subNestedField[2].industrialStandard.push(resp.data.rows[0]["C4.3low"]);
-      data[2].subfield[3].subNestedField[2].industrialStandard.push(resp.data.rows[0]["C4.3high"]);
-      data[2].subfield[3].subNestedField[3].industrialStandard.push(resp.data.rows[0]["C4.4low"]);
-      data[2].subfield[3].subNestedField[3].industrialStandard.push(resp.data.rows[0]["C4.4high"]);
+      data[2].subfield[3].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["C4.1low"]
+      );
+      data[2].subfield[3].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["C4.1high"]
+      );
+      data[2].subfield[3].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["C4.2low"]
+      );
+      data[2].subfield[3].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["C4.2high"]
+      );
+      data[2].subfield[3].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["C4.3low"]
+      );
+      data[2].subfield[3].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["C4.3high"]
+      );
+      data[2].subfield[3].subNestedField[3].industrialStandard.push(
+        resp.data.rows[0]["C4.4low"]
+      );
+      data[2].subfield[3].subNestedField[3].industrialStandard.push(
+        resp.data.rows[0]["C4.4high"]
+      );
 
       data[3].subfield[0].industrialStandard.push(resp.data.rows[0]["D1low"]);
       data[3].subfield[0].industrialStandard.push(resp.data.rows[0]["D1high"]);
@@ -1505,29 +1955,68 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
       data[3].subfield[2].industrialStandard.push(resp.data.rows[0]["D3low"]);
       data[3].subfield[2].industrialStandard.push(resp.data.rows[0]["D3high"]);
 
-      data[3].subfield[0].subNestedField[0].industrialStandard.push(resp.data.rows[0]["D1.1low"]);
-      data[3].subfield[0].subNestedField[0].industrialStandard.push(resp.data.rows[0]["D1.1high"]);
-      data[3].subfield[0].subNestedField[1].industrialStandard.push(resp.data.rows[0]["D1.2low"]);
-      data[3].subfield[0].subNestedField[1].industrialStandard.push(resp.data.rows[0]["D1.2high"]);
+      data[3].subfield[0].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["D1.1low"]
+      );
+      data[3].subfield[0].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["D1.1high"]
+      );
+      data[3].subfield[0].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["D1.2low"]
+      );
+      data[3].subfield[0].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["D1.2high"]
+      );
 
-      data[3].subfield[1].subNestedField[0].industrialStandard.push(resp.data.rows[0]["D2.1low"]);
-      data[3].subfield[1].subNestedField[0].industrialStandard.push(resp.data.rows[0]["D2.1high"]);
-      data[3].subfield[1].subNestedField[1].industrialStandard.push(resp.data.rows[0]["D2.2low"]);
-      data[3].subfield[1].subNestedField[1].industrialStandard.push(resp.data.rows[0]["D2.2high"]);
-      data[3].subfield[1].subNestedField[2].industrialStandard.push(resp.data.rows[0]["D2.3low"]);
-      data[3].subfield[1].subNestedField[2].industrialStandard.push(resp.data.rows[0]["D2.3high"]);
+      data[3].subfield[1].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["D2.1low"]
+      );
+      data[3].subfield[1].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["D2.1high"]
+      );
+      data[3].subfield[1].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["D2.2low"]
+      );
+      data[3].subfield[1].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["D2.2high"]
+      );
+      data[3].subfield[1].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["D2.3low"]
+      );
+      data[3].subfield[1].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["D2.3high"]
+      );
 
-      data[3].subfield[2].subNestedField[0].industrialStandard.push(resp.data.rows[0]["D3.1low"]);
-      data[3].subfield[2].subNestedField[0].industrialStandard.push(resp.data.rows[0]["D3.1high"]);
-      data[3].subfield[2].subNestedField[1].industrialStandard.push(resp.data.rows[0]["D3.2low"]);
-      data[3].subfield[2].subNestedField[1].industrialStandard.push(resp.data.rows[0]["D3.2high"]);
-      data[3].subfield[2].subNestedField[2].industrialStandard.push(resp.data.rows[0]["D3.3low"]);
-      data[3].subfield[2].subNestedField[2].industrialStandard.push(resp.data.rows[0]["D3.3high"]);
-      data[3].subfield[2].subNestedField[3].industrialStandard.push(resp.data.rows[0]["D3.4low"]);
-      data[3].subfield[2].subNestedField[3].industrialStandard.push(resp.data.rows[0]["D3.4high"]);
-      data[3].subfield[2].subNestedField[4].industrialStandard.push(resp.data.rows[0]["D3.5low"]);
-      data[3].subfield[2].subNestedField[4].industrialStandard.push(resp.data.rows[0]["D3.5high"]);
-      
+      data[3].subfield[2].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["D3.1low"]
+      );
+      data[3].subfield[2].subNestedField[0].industrialStandard.push(
+        resp.data.rows[0]["D3.1high"]
+      );
+      data[3].subfield[2].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["D3.2low"]
+      );
+      data[3].subfield[2].subNestedField[1].industrialStandard.push(
+        resp.data.rows[0]["D3.2high"]
+      );
+      data[3].subfield[2].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["D3.3low"]
+      );
+      data[3].subfield[2].subNestedField[2].industrialStandard.push(
+        resp.data.rows[0]["D3.3high"]
+      );
+      data[3].subfield[2].subNestedField[3].industrialStandard.push(
+        resp.data.rows[0]["D3.4low"]
+      );
+      data[3].subfield[2].subNestedField[3].industrialStandard.push(
+        resp.data.rows[0]["D3.4high"]
+      );
+      data[3].subfield[2].subNestedField[4].industrialStandard.push(
+        resp.data.rows[0]["D3.5low"]
+      );
+      data[3].subfield[2].subNestedField[4].industrialStandard.push(
+        resp.data.rows[0]["D3.5high"]
+      );
     });
   }, []);
 
@@ -1610,7 +2099,13 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
         })}
       </div>
       {fieldData.map((item, index) => (
-        <Subfield key={index} item={item} />
+        <Subfield
+          key={index}
+          indexKey={index}
+          item={item}
+          showSubField={showSubField}
+          setShowSubField={(key) => setShowSubField(key)}
+        />
       ))}
     </div>
   );

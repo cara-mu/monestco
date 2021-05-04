@@ -439,10 +439,25 @@ app.get('/', (req, res) => {
   res.status(200).send('Monest Home Page!')
 })
 
-app.post('/citationsNews', function(req, res, next) {
+app.post('/citationsLong', function(req, res, next) {
+  var companyName = req.query['0'];
+  db.all("SELECT * FROM Citations WHERE Type!='F' AND Type!='N' AND RelationalID IN (SELECT ID FROM A WHERE CompanyID IN (SELECT ID FROM Companies WHERE Name = ?)) AND RelationalID IN (SELECT ID FROM B WHERE CompanyID IN (SELECT ID FROM Companies WHERE Name = ?)) AND RelationalID IN (SELECT ID FROM C WHERE CompanyID IN (SELECT ID FROM Companies WHERE Name = ?)) AND RelationalID IN (SELECT ID FROM D WHERE CompanyID IN (SELECT ID FROM Companies WHERE Name = ?))", [companyName, companyName, companyName, companyName], (err, row) => {
+    if (err) {
+      res.status(400).json({ "error": err.message });
+      return;
+    }
+    if(row){
+      res.status(200).json(row);
+    }
+    next();
+  })
+})
+
+app.post('/citations', function(req, res, next) {
   var companyName = req.query['0'];
   var ID = req.query['1'];
-  db.all("SELECT * FROM Citations WHERE Type='N' AND RelationalID=? AND RelationalID IN (SELECT ID FROM News WHERE CompanyID IN (SELECT ID FROM companies WHERE Name = ?))", [ID, companyName], (err, row) => {
+  var type = req.query['2'];
+  db.all("SELECT * FROM Citations WHERE Type=? AND RelationalID=? AND RelationalID IN (SELECT ID FROM News WHERE CompanyID IN (SELECT ID FROM companies WHERE Name = ?))", [type, ID, companyName], (err, row) => {
     if (err) {
       res.status(400).json({ "error": err.message });
       return;
