@@ -7,19 +7,92 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import "../styles/compareTool-new.css";
 import axios from "axios";
 
+const scoreInfo = [
+  {
+    A_1 : 0,
+    A1_1 : 0,
+    A1_2 : 0,
+    A_2: 0,
+    A2_1 : 0,
+    A2_2: 0,
+    A2_3: 0,
+    A_3 : 0,
+    A3_1 : 0,
+    A3_2: 0,
+    A3_3 : 0,
+    A_4 : 0,
+    A4_1 : 0,
+    A4_2: 0,
+    A4_3 : 0,
+    B_1 : 0,
+    B1_1 : 0,
+    B1_2: 0,
+    B1_3 : 0,
+    B_2: 0,
+    B2_1 : 0,
+    B2_2: 0,
+    B2_3 : 0,
+    B_3 : 0,
+    B3_1 : 0,
+    B3_2: 0,
+    B3_3 : 0,
+    B3_4 : 0,
+    B_4 : 0,
+    B4_1 : 0,
+    B4_2: 0,
+    B4_3 : 0,
+    B4_4 : 0,
+    C_1 : 0,
+    C1_1 : 0,
+    C1_2: 0,
+    C1_3 : 0,
+    C1_4 : 0,
+    C_2: 0,
+    C2_1 : 0,
+    C2_2: 0,
+    C2_3 : 0,
+    C2_4 : 0,
+    C_3 : 0,
+    C3_1 : 0,
+    C3_2: 0,
+    C3_3 : 0,
+    C3_4 : 0,
+    C_4 : 0,
+    C4_1 : 0,
+    C4_2: 0,
+    C4_3 : 0,
+    C4_4 : 0,
+    D_1 : 0,
+    D1_1 : 0,
+    D1_2: 0,
+    D_2: 0,
+    D2_1 : 0,
+    D2_2: 0,
+    D2_3 : 0,
+    D_3 : 0,
+    D3_1 : 0,
+    D3_2: 0, 
+    D3_3 : 0,
+    D3_4 : 0,
+    D3_5 : 0
+  }
+]
 const field = [
   {
     mainField: "DIVERSITY & INCLUSION",
     mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
+    scoreDenominator: 100,
     industrialStandard: [],
     subfield: [
       {
         mainNestedField: "Discrimination",
+        scoreDenominator : 16,
         subNestedField: [
           {
             title: "Prohibits discrimination throughout the organization",
             popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
+            scoreDenominator : 6,
             industrialStandard: [40],
             texts: [
               { text: "a11 stuff" },
@@ -31,6 +104,7 @@ const field = [
             title: "Actively identifies and addresses discrimination",
             popupText: "Employee hotline channels are offered and actions are taken to address violations.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
+            scoreDenominator : 10,
             industrialStandard: [],
             texts: [
               { text: "a12 stuff" },
@@ -44,12 +118,14 @@ const field = [
       },
       {
         mainNestedField: "Gender Equality",
+        scoreDenominator : 32,
         subNestedField: [
           {
             title:
               "Commits to increasing gender diversity throughout the organization",
               popupText: "Goals are set and initiatives are taken to increase female recruitment, retention and advancement.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
+            scoreDenominator : 6,
             industrialStandard: [],
             texts: [
               { text: "a21 stuff" },
@@ -62,6 +138,7 @@ const field = [
               "Maintains strong female representation at all levels of leadership",
               popupText: "Senior management, executive, and board committee positions are filled with a strong representation of women.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
+            scoreDenominator : 16,
             industrialStandard: [],
             texts: [
               { text: "a22 stuff" },
@@ -73,6 +150,7 @@ const field = [
             title: "Ensures equal pay for equal work",
             popupText: "Actions are taken to achieve pay parity and progress is published on current gender wage gaps for hourly and bonus pay.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
+            scoreDenominator : 10,
             industrialStandard: [],
             texts: [
               { text: "a23 stuff" },
@@ -86,6 +164,7 @@ const field = [
       },
       {
         mainNestedField: "Cultural Diversity",
+        scoreDenominator : 16,
         subNestedField: [
           {
             title:
@@ -789,6 +868,7 @@ const LearnMorePopup = ({learnMoreText, tabView, setShowLearnMoreText}) => {
 };
 
 const ScoreContainer = ({
+  denominator,
   score,
   industrialStandard,
   firstLayer,
@@ -847,7 +927,7 @@ const ScoreContainer = ({
               : "compare__tool-scoreContainer card-front yellowsquare2"
           }
         >
-          {score}/100
+          {score}/10
           {!firstLayer && !secondLayer && <LearnMorePopup learnMoreText={learnMoreText} tabView={tabView} setShowLearnMoreText={setShowLearnMoreText} />}
         </div>}
         {!firstLayer && !secondLayer && showLearnMoreText && <div className="card-back">
@@ -1043,6 +1123,7 @@ const Subfield = ({indexKey, item, showSubField, setShowSubField }) => {
               <ScoreContainer
                 key={index}
                 score={element.score}
+                scoreDenominator = {element.denominator}
                 industrialStandard={item.industrialStandard}
                 firstLayer
               />
@@ -1085,7 +1166,9 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
   const [listBrandOne, setListBrandOne] = useState(false);
   const [listBrandTwo, setListBrandTwo] = useState(false);
   const [listBrandThree, setListBrandThree] = useState(false);
+  // const [scoreDenominator, setScoreDenominator] = useState(scoreInfo);
   const [fieldData, setFieldData] = useState(field);
+  // const [state, setState] = useState([])
   const [showSubField, setShowSubField] = useState(null);
 
   const handleChangeOne = (e) => {
@@ -1432,6 +1515,77 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
       setCompaniesList(allcompanies);
       fetchBrand(allcompanies);
     });
+
+    // axios.get("/scoredenominator").then((resp) => {
+    //   let data = scoreDenominator
+    //   data[0]["A_1"] = resp.data.rows[0]["A1total"]
+    //   data[0]["A_2"] = resp.data.rows[0]["A2total"]
+    //   data[0]["A_3"] = resp.data.rows[0]["A3total"]
+    //   data[0]["A_4"] = resp.data.rows[0]["A4total"]
+    //   data[0]["A1_1"] = resp.data.rows[0]["A1.1total"]
+    //   data[0]["A1_2"] = resp.data.rows[0]["A1.2total"]
+    //   data[0]["A2_1"] = resp.data.rows[0]["A2.1total"]
+    //   data[0]["A2_2"] = resp.data.rows[0]["A2.2total"]
+    //   data[0]["A2_3"] = resp.data.rows[0]["A2.3total"]
+    //   data[0]["A3_1"] = resp.data.rows[0]["A3.1total"]
+    //   data[0]["A3_2"] = resp.data.rows[0]["A3.2total"]
+    //   data[0]["A3_3"] = resp.data.rows[0]["A3.3total"]
+    //   data[0]["A4_1"] = resp.data.rows[0]["A4.1total"]
+    //   data[0]["A4_2"] = resp.data.rows[0]["A4.2total"]
+    //   data[0]["A4_3"] = resp.data.rows[0]["A4.3total"]
+    //   data[0]["B_1"] = resp.data.rows[0]["B1total"]
+    //   data[0]["B_2"] = resp.data.rows[0]["B2total"]
+    //   data[0]["B_3"] = resp.data.rows[0]["B3total"]
+    //   data[0]["B_4"] = resp.data.rows[0]["B4total"]
+    //   data[0]["C_1"] = resp.data.rows[0]["C1total"]
+    //   data[0]["C_2"] = resp.data.rows[0]["C2total"]
+    //   data[0]["C_3"] = resp.data.rows[0]["C3total"]
+    //   data[0]["C_4"] = resp.data.rows[0]["C4total"]
+    //   data[0]["D_1"] = resp.data.rows[0]["D1total"]
+    //   data[0]["D_2"] = resp.data.rows[0]["D2total"]
+    //   data[0]["D_3"] = resp.data.rows[0]["D3total"]
+    //   data[0]["B1_1"] = resp.data.rows[0]["B1.1total"]
+    //   data[0]["B1_2"] = resp.data.rows[0]["B1.2total"]
+    //   data[0]["B1_3"] = resp.data.rows[0]["B1.3total"]
+    //   data[0]["B2_1"] = resp.data.rows[0]["B2.1total"]
+    //   data[0]["B2_2"] = resp.data.rows[0]["B2.2total"]
+    //   data[0]["B2_3"] = resp.data.rows[0]["B2.3total"]
+    //   data[0]["B3_1"] = resp.data.rows[0]["B3.1total"]
+    //   data[0]["B3_2"] = resp.data.rows[0]["B3.2total"]
+    //   data[0]["B3_3"] = resp.data.rows[0]["B3.3total"]
+    //   data[0]["B3_4"] = resp.data.rows[0]["B3.4total"]
+    //   data[0]["B4_1"] = resp.data.rows[0]["B4.1total"]
+    //   data[0]["B4_2"] = resp.data.rows[0]["B4.2total"]
+    //   data[0]["B4_3"] = resp.data.rows[0]["B4.3total"]
+    //   data[0]["C1_1"] = resp.data.rows[0]["C1.1total"]
+    //   data[0]["C1_2"] = resp.data.rows[0]["C1.2total"]
+    //   data[0]["C1_3"] = resp.data.rows[0]["C1.3total"]
+    //   data[0]["C2_1"] = resp.data.rows[0]["C2.1total"]
+    //   data[0]["C2_2"] = resp.data.rows[0]["C2.2total"]
+    //   data[0]["C2_3"] = resp.data.rows[0]["C2.3total"]
+    //   data[0]["C2_4"] = resp.data.rows[0]["C2.4total"]
+    //   data[0]["C3_1"] = resp.data.rows[0]["C3.1total"]
+    //   data[0]["C3_2"] = resp.data.rows[0]["C3.2total"]
+    //   data[0]["C3_3"] = resp.data.rows[0]["C3.3total"]
+    //   data[0]["C3_4"] = resp.data.rows[0]["C3.4total(integer"]
+    //   data[0]["C4_1"] = resp.data.rows[0]["C4.1total"]
+    //   data[0]["C4_2"] = resp.data.rows[0]["C4.2total"]
+    //   data[0]["C4_3"] = resp.data.rows[0]["C4.3total"]
+    //   data[0]["C4_4"] = resp.data.rows[0]["C4.4total"]
+    //   data[0]["D1_1"] = resp.data.rows[0]["D1.1total"]
+    //   data[0]["D1_2"] = resp.data.rows[0]["D1.2total"]
+    //   data[0]["D2_1"] = resp.data.rows[0]["D2.1total"]
+    //   data[0]["D2_2"] = resp.data.rows[0]["D2.2total"]
+    //   data[0]["D2_3"] = resp.data.rows[0]["D2.3total"]
+    //   data[0]["D3_1"] = resp.data.rows[0]["D3.1total"]
+    //   data[0]["D3_2"] = resp.data.rows[0]["D3.2total"]
+    //   data[0]["D3_3"] = resp.data.rows[0]["D3.3total"]
+    //   data[0]["D3_4"] = resp.data.rows[0]["D3.4total"]
+    //   data[0]["D3_5"] = resp.data.rows[0]["D3.5total"]
+    //   // console.log("DA DATA")
+    //   // console.log(resp.data)
+    //   setScoreDenominator(data);
+    // })
 
     axios.get("/industry").then((resp) => {
       let data = fieldData;
