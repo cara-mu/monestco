@@ -834,6 +834,7 @@ const ScoreContainer = ({
       </div>}
       </div>
       );
+      // g
     } else if (score < industrialStandard[1] && score > industrialStandard[0]) {
       return (
         <div className="compare-card-container yellowsquare2">
