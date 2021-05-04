@@ -24,7 +24,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { AiFillCaretDown } from 'react-icons/ai';
 import TextTruncate from 'react-text-truncate';
-
+import Resizer from "react-image-file-resizer";
 
 import BrandLogo from '../../assets/brandBreakdown.svg';
 import { pink } from '@material-ui/core/colors';
@@ -446,9 +446,9 @@ function rand() {
             data[0]["company1Cscore"] = resp.data[0]["Cscore"];
             data[0]["company1Dscore"] = resp.data[0]["Dscore"];
             let company1TotalScore = (parseInt(data[0]["company1Ascore"]) + parseInt(data[0]["company1Bscore"]) + parseInt(data[0]["company1Cscore"]) + parseInt(data[0]["company1Dscore"]))/4;
+            let comp1SliderLength = 324*company1TotalScore/100
             data[0]["company1TotalScore"] = company1TotalScore;
-            let ratio = 324*company1TotalScore/100;
-            data[0]["Sim1Slider"] = ratio;
+            data[0]["comp1SliderLength"] = comp1SliderLength;
             // console.log(company1TotalScore);
         })
         axios.post(
@@ -465,7 +465,9 @@ function rand() {
             data[0]["company2Cscore"] = resp.data[0]["Cscore"];
             data[0]["company2Dscore"] = resp.data[0]["Dscore"];
             let company2TotalScore = (parseInt(data[0]["company2Ascore"]) + parseInt(data[0]["company2Bscore"]) + parseInt(data[0]["company2Cscore"]) + parseInt(data[0]["company2Dscore"]))/4;
+            let comp2SliderLength = 324*company2TotalScore/100
             data[0]["company2TotalScore"] = company2TotalScore;
+            data[0]["comp2SliderLength"] = comp2SliderLength;
             // console.log(company2TotalScore);
         })
         axios.post(
@@ -482,9 +484,9 @@ function rand() {
             data[0]["company3Cscore"] = resp.data[0]["Cscore"];
             data[0]["company3Dscore"] = resp.data[0]["Dscore"];
             let company3TotalScore = (parseInt(data[0]["company3Ascore"]) + parseInt(data[0]["company3Bscore"]) + parseInt(data[0]["company3Cscore"]) + parseInt(data[0]["company3Dscore"]))/4;
+            let comp3SliderLength = 324*company3TotalScore/100
             data[0]["company3TotalScore"] = company3TotalScore;
-            console.log(company3TotalScore);
-            console.log('3');
+            data[0]["comp3SliderLength"] = comp3SliderLength;
         })
         axios.post(
             '/similarCompany4',
@@ -500,8 +502,9 @@ function rand() {
             data[0]["company4Cscore"] = resp.data[0]["Cscore"];
             data[0]["company4Dscore"] = resp.data[0]["Dscore"];
             let company4TotalScore = (parseInt(data[0]["company4Ascore"]) + parseInt(data[0]["company4Bscore"]) + parseInt(data[0]["company4Cscore"]) + parseInt(data[0]["company4Dscore"]))/4;
+            let comp4SliderLength = 324*company4TotalScore/100
             data[0]["company4TotalScore"] = company4TotalScore;
-            // console.log(company4TotalScore);
+            data[0]["comp4SliderLength"] = comp4SliderLength;
         })
                 axios.post(
                     '/facts', 
@@ -597,7 +600,7 @@ function rand() {
             //console.log(newsinput[0]["Title"][i]);
             return <div>
             <div className='news-card'>
-                <img style={{background:`url("${newsinput[0]["Photo"][i]}") rgba(87, 114, 104, 0.5)`, objectFit: 'scale-down'}} />
+                <img src={newsinput[0]["Photo"][i]} style={{background: 'rgba(87, 114, 104, 0.5)'}} />
                 <div className='news-category'>
                     <span className='news-category-title'>{category[1]}</span>
                     <span className='news-category-year'>{newsinput[0]["Year"][i]}</span>
@@ -780,9 +783,12 @@ function rand() {
                                 <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany1"]}>{companyDetails[0]["SimilarCompany1"]}</Link> 
                                 {/* <div>{companyDetails[0]["SimilarCompany1"]}</div> */}
                                 <div className='brand_box'> 
-                                    <div className="d-flex justify-content-center">
-                                        
-                                        <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
+                                    <div className="d-fledx justify-content-center">
+                                    <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
+                                        <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div>
+                                        <div class="horizontalline2" style={{width: `${companyDetails[0]["comp1SliderLength"]}px` }}></div>
+                                        <div class="verticalline2"></div> 
+                                        <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>     
                                     </div>
                                     <div className="brand_inside_text ml-10perc">
                                         <span>{Math.round(companyDetails[0]["company1TotalScore"], 2)}</span>
@@ -794,8 +800,11 @@ function rand() {
                                 <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany2"]}>{companyDetails[0]["SimilarCompany2"]}</Link> 
                                 {/* <div>{companyDetails[0]["SimilarCompany2"]}</div> */}
                                 <div className='brand_box'>
-                                    <div className="d-flex justify-content-center">
-                                        
+                                    <div className="d-fldex justify-content-center">
+                                    <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
+                                        <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div>
+                                        <div class="horizontalline2" style={{width: `${companyDetails[0]["comp2SliderLength"]}px` }}></div>
+                                        <div class="verticalline2"></div> 
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
                                     </div>
                                     <div className="brand_inside_text ml-10perc">
@@ -808,8 +817,12 @@ function rand() {
                                 <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany3"]}>{companyDetails[0]["SimilarCompany3"]}</Link> 
                                 {/* <div>{companyDetails[0]["SimilarCompany3"]}</div> */}
                                 <div className='brand_box'>
-                                <div className="d-flex justify-content-center">
-                                        <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
+                                <div className="d-fldex justify-content-center">
+                                <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
+                                    <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div>
+                                    <div class="horizontalline2" style={{width: `${companyDetails[0]["comp3SliderLength"]}px` }}></div>
+                                    <div class="verticalline2"></div> 
+                                    <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
                                 </div>
                                     <div className="brand_inside_text ml-10perc">
                                         <span>{Math.round(companyDetails[0]["company3TotalScore"], 2)}</span>
@@ -821,7 +834,11 @@ function rand() {
                                 <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany4"]}>{companyDetails[0]["SimilarCompany4"]}</Link> 
                                 {/* <div>{companyDetails[0]["SimilarCompany4"]}</div> */}
                                 <div className='brand_box'>
-                                    <div className="d-flex justify-content-center">
+                                    <div className="d-fldex justify-content-center"> 
+                                    <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
+                                        <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div>
+                                        <div class="horizontalline2" style={{width: `${companyDetails[0]["comp4SliderLength"]}px` }}></div>
+                                        <div class="verticalline2"></div> 
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
                                     </div>
                                     <div className="brand_inside_text ml-10perc">

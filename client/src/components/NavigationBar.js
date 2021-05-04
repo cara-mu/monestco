@@ -202,6 +202,16 @@ function NavigationBar() {
 
         <ul className = {click ? 'Nav-Menu active' : 'Navigation-Menu'}>
             {/* onMouseEnter denotes hover-over */}
+            <li className='Menu-Item' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
+            <Link 
+                to='/brand-directory'
+                className='Navigation-Link' 
+                onClick={closeMenu}
+                >
+                    Compare
+            </Link>
+            {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
+          </li>
           <li className='Menu-Item' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
             <Link 
                 to='/brand-directory'

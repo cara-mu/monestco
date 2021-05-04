@@ -28,7 +28,7 @@ const field = [
             ],
           },
           {
-            title: "Actively identifies and addresses discrimination",
+            title: "Actively works to identify and respond to discrimination concerns ",
             popupText: "Employee hotline channels are offered and actions are taken to address violations.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
@@ -70,7 +70,7 @@ const field = [
             ],
           },
           {
-            title: "Ensures equal pay for equal work",
+            title: "Ensures employees are receiving equal pay for equal work",
             popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
@@ -112,7 +112,7 @@ const field = [
             ],
           },
           {
-            title: "Actively supports BIPOC and under represented communities",
+            title: "Actively supports BIPOC and underrepresented communities",
             popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
@@ -131,7 +131,7 @@ const field = [
         subNestedField: [
           {
             title:
-              "Fosters an inclusive workplace culture for all types of people",
+              "Fosters an inclusive workplace culture for LGBTQ+ employees",
               popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
@@ -142,7 +142,7 @@ const field = [
             ],
           },
           {
-            title: "Prioritizes the mental health and wellbeing of employees",
+            title: "Fosters an inclusive workplace culture for employees with disabilities",
             popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
@@ -150,6 +150,17 @@ const field = [
               { text: "a42 stuff" },
               { text: "a42 stuff" },
               { text: "a42 stuff" },
+            ],
+          },
+          {
+            title: "Promotes body positivity and messages of inclusivity to consumers",
+            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
+            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
+            industrialStandard: [],
+            texts: [
+              { text: "a43 stuff" },
+              { text: "a43 stuff" },
+              { text: "a43 stuff" },
             ],
           },
         ],
@@ -192,7 +203,7 @@ const field = [
           },
           {
             title:
-              "Enrolls child labour victims in school after discovering violations",
+              "Enrolls child labour victims in educational programs after discovering violations",
             popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
@@ -223,7 +234,7 @@ const field = [
           },
           {
             title:
-              "Actively works to identify and prevent child labour violations",
+              "Actively works to identify and prevent forced labour violations",
               popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
@@ -265,7 +276,7 @@ const field = [
           },
           {
             title:
-              "Works to (prioritizes) improve wages throughout the value chain",
+              "Works to increase wages and advocate for fair compensation in the industry",
               popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
@@ -299,18 +310,18 @@ const field = [
               { text: "b34 stuff" },
             ],
           },
-          {
-            title:
-              "Advocates for wage progression and fair compensation in the industry",
-              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-            scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-            texts: [
-              { text: "b35 stuff" },
-              { text: "b35 stuff" },
-              { text: "b35 stuff" },
-            ],
-          },
+          // {
+          //   title:
+          //     "Advocates for wage progression and fair compensation in the industry",
+          //     popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
+          //   scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
+          //   industrialStandard: [],
+          //   texts: [
+          //     { text: "b35 stuff" },
+          //     { text: "b35 stuff" },
+          //     { text: "b35 stuff" },
+          //   ],
+          // },
         ],
         mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
         industrialStandard: [],
@@ -320,7 +331,7 @@ const field = [
         subNestedField: [
           {
             title:
-              "Works to (prioritizes) improve factory health and safety conditions",
+              "Actively works to improve factory health and safety conditions",
               popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
@@ -354,7 +365,7 @@ const field = [
           },
           {
             title:
-              "Actively works to identify and prevent mistreatment of workers",
+              "Compensates mistreated workers after discovering violations ",
             popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
@@ -1081,7 +1092,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
 
   const handleAllChanges = (comp) => {
     return companiesList.filter(company => {
-      return company.toLowerCase().match(comp.toLowerCase());
+      return company.toLowerCase().startsWith(comp.toLowerCase());
     })
   }
 
@@ -1171,6 +1182,10 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
           resp.data.rows[0]["A4.2short"];
         data[0].subfield[3].subNestedField[1].scores[inputIndex].score =
           resp.data.rows[0]["A4.2score"];
+        data[0].subfield[3].subNestedField[2].texts[inputIndex].text =
+          resp.data.rows[0]["A4.3short"];
+        data[0].subfield[3].subNestedField[2].scores[inputIndex].score =
+          resp.data.rows[0]["A4.3score"];
       });
 
     await axios
@@ -1232,10 +1247,6 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
           resp.data.rows[0]["B3.4short"];
         data[1].subfield[2].subNestedField[3].scores[inputIndex].score =
           resp.data.rows[0]["B3.4score"];
-        data[1].subfield[2].subNestedField[4].texts[inputIndex].text =
-          resp.data.rows[0]["B3.5short"];
-        data[1].subfield[2].subNestedField[4].scores[inputIndex].score =
-          resp.data.rows[0]["B3.5score"];
 
         data[1].subfield[3].mainNestedScore[inputIndex].score =
           resp.data.rows[0]["B4score"];
@@ -1479,6 +1490,8 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
       data[0].subfield[3].subNestedField[0].industrialStandard.push(resp.data.rows[0]["A4.1high"]);
       data[0].subfield[3].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A4.2low"]);
       data[0].subfield[3].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A4.2high"]);
+      data[0].subfield[3].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A4.3low"]);
+      data[0].subfield[3].subNestedField[1].industrialStandard.push(resp.data.rows[0]["A4.3high"]);
 
       data[1].subfield[0].industrialStandard.push(resp.data.rows[0]["B1low"]);
       data[1].subfield[0].industrialStandard.push(resp.data.rows[0]["B1high"]);
@@ -1511,8 +1524,6 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
       data[1].subfield[2].subNestedField[2].industrialStandard.push(resp.data.rows[0]["B3.3high"]);
       data[1].subfield[2].subNestedField[3].industrialStandard.push(resp.data.rows[0]["B3.4low"]);
       data[1].subfield[2].subNestedField[3].industrialStandard.push(resp.data.rows[0]["B3.4high"]);
-      data[1].subfield[2].subNestedField[4].industrialStandard.push(resp.data.rows[0]["B3.5low"]);
-      data[1].subfield[2].subNestedField[4].industrialStandard.push(resp.data.rows[0]["B3.5high"]);
 
       data[1].subfield[3].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B4.1low"]);
       data[1].subfield[3].subNestedField[0].industrialStandard.push(resp.data.rows[0]["B4.1high"]);
