@@ -202,13 +202,66 @@ function NavigationBar() {
 
         <ul className = {click ? 'Nav-Menu active' : 'Navigation-Menu'}>
             {/* onMouseEnter denotes hover-over */}
-            <li className='Menu-Item' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
+            <li className='Menu-Item Menu-Title only-mobile' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
+            <Link 
+                to='/brand-directory'
+                className='Navigation-Link Nav-Title' 
+                onClick={closeMenu}
+                >
+                    Compare
+            </Link>
+            {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
+          </li>
+          <li className='Menu-Item only-mobile' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
             <Link 
                 to='/brand-directory'
                 className='Navigation-Link' 
                 onClick={closeMenu}
                 >
-                    Compare
+                    Apparel
+            </Link>
+            {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
+          </li>
+
+          {/* onMouseEnter denotes hover-over */}
+          <li className='Menu-Item only-mobile' onMouseEnter={enterTechDropdownLink} onMouseLeave={exitTechDropdownLink} >
+            <Link
+              to='/'
+              className='Navigation-Link'
+              onClick={closeMenu} >
+                 Tech
+            </Link>
+            {(techDropdownLink || techDropdown) && <TechDropdown enterTechDropdown={enterTechDropdown} exitTechDropdown={exitTechDropdown}  />}
+          </li>
+
+           {/* onMouseEnter denotes hover-over */}
+          <li className='Menu-Item only-mobile' onMouseEnter={enterFoodDropdownLink} onMouseLeave={exitFoodDropdownLink} >
+            <Link
+              to='/'
+              className='Navigation-Link'
+              onClick={closeMenu} >
+                 Fast Food 
+            </Link>
+            {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
+          </li>
+
+          {/* onMouseEnter denotes hover-over */}
+          <li className='Menu-Item only-mobile' onMouseEnter={enterFoodDropdownLink} onMouseLeave={exitFoodDropdownLink} >
+            <Link
+              to='/'
+              className='Navigation-Link'
+              onClick={closeMenu} >
+                 Beauty 
+            </Link>
+            {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
+          </li>
+          <li className='Menu-Item Menu-Title only-mobile' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
+            <Link 
+                to='/brand-directory'
+                className='Navigation-Link Nav-Title' 
+                onClick={closeMenu}
+                >
+                    Brands
             </Link>
             {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
           </li>
@@ -266,8 +319,8 @@ function NavigationBar() {
             </Link>
           </li>
 
-          {/* Compare button had unique css styling but still has hover dropdown, denoted by having two classNames */}
-          <li className='Menu-Item' onMouseEnter={enterCompareDropdownLink} onMouseLeave={exitCompareDropdownLink}>
+          {/* Compare button had unique css styling but still has hover dropdown, denoted by having two classNames  */}
+          <li className='Menu-Item only-desktop' onMouseEnter={enterCompareDropdownLink} onMouseLeave={exitCompareDropdownLink}>
             <Link
               to='/comparison'
               className='Compare-Button'
