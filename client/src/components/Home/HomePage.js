@@ -60,7 +60,9 @@ function HomePage(){
                     <h1>Empower</h1>
                     <p>consumers to vote with their dollars, and support brands with values that align to their own.</p>
                 </div>
-                </div>
+            </div>
+                {/* sorry i got lazy with positioning => don't be a lazy, enjoy the work */}
+                {/* <br></br><br></br><br></br><br></br><br></br> */}
             <div className = 'Video d-flex justify-content-center'>
                 <div className="embed-responsive embed-responsive-21by9 Video-image">
                     <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/ZYUF8eLC56Y" allowFullScreen></iframe>
@@ -163,7 +165,7 @@ function HomePage(){
                 <img className="carrer_image" src = {CareerImg} alt = 'browser sketch'></img>
             </div>
         </Fragment>
-    )
+        )
 }
 
 export default HomePage;

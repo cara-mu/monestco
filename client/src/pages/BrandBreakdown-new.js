@@ -1142,7 +1142,7 @@ class BrandBreakdown extends React.Component {
       <div className="breakdown_logo">
         <img src={this.state.logo}  className="breakdown_logoImage" />
         <p className="breakdown_logoText">
-          {Math.round(this.state.totalscore, 2)}<span style={{ fontSize: 32 }}>/154</span>
+          {Math.round(this.state.totalscore, 2)}<span style={{ fontSize: 32 }}>/100</span>
         </p>
       </div>
       {this.state.subsidiary != null && <div className="breakdown_info-container">
