@@ -68,11 +68,6 @@
     margin-right: 3%;
   }
 
-  .Menu-Title {
-    font-weight: bold;
-    color: #26385A;
-  }
-
   .disabled {
     cursor: default;
   }
@@ -185,6 +180,7 @@ img.logo {
   .nav-arrow {
     color: white;
   }
+
 }
 
 /* Responsive Design */
@@ -260,6 +256,11 @@ img.logo {
 
   .only-desktop {
     display: none;
+  }
+
+  .Menu-Title {
+    font-weight: bold;
+    color: #26385A;
   }
 
   .disabled {

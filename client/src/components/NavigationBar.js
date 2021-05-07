@@ -50,14 +50,21 @@ function NavigationBar() {
   const [compareDropdown, setCompareDropdown] = useState(false);
 
   const [keepNav, setKeepNav] = useState(true);
-  const [specificBrands, setSpecificBrands] = useState("");
+  const [specificBrands, setSpecificBrands] = useState(false);
+
+  const [showBrands, setShowBrands] = useState([]);
 
   {/* Closes menu when navigated away */}
   const closeMenu = () => {
     setClick(false);
     setKeepNav(true);
+    setSpecificBrands(false);
   }
-  const handleClick = () => setClick(!click);
+  const handleClick = () => {
+    setClick(!click);
+    setKeepNav(true);
+    setSpecificBrands(false);
+  }
 
   const minWidth = 850;
   const timeLimit = 400;
@@ -170,19 +177,37 @@ function NavigationBar() {
     }
   };
 
+  const findBrands = (brand) => {
+    setSpecificBrands(true);
+    console.log(brand);
+    axios.post('/brandsbycategory',
+            {},
+            {
+                params: [brand]
+            }
+        ).then(resp => {
+            let names = []
+            resp.data.rows.map(name => {
+              names.push(name.Name);
+            })
+            setShowBrands(names);
+        })
+  }
+
   const NavBrands = () => {
-    return (
-      <li className='Menu-Item only-mobile' onMouseEnter={enterTechDropdownLink} onMouseLeave={exitTechDropdownLink} >
+    console.log(showBrands);
+    return showBrands.map( brand => {
+      return (<li className='Menu-Item only-mobile' onMouseEnter={enterTechDropdownLink} onMouseLeave={exitTechDropdownLink} >
             <Link
-              // to='/'
-              className='Navigation-Link disabled'
+              to={'/companies/'+brand}
+              className='Navigation-Link nav-hover'
               onClick={closeMenu} >
-                 Tech
+                 {brand}
             </Link>
-            <AiOutlineRight className="nav-arrow"/>
+            <AiOutlineRight className="nav-arrow arrow-apparel"/>
             {(techDropdownLink || techDropdown) && <TechDropdown enterTechDropdown={enterTechDropdown} exitTechDropdown={exitTechDropdown}  />}
       </li>
-    )
+    )})
   }
 
   const exitCompareDropdown = () => {
@@ -201,15 +226,6 @@ function NavigationBar() {
     }
     window.addEventListener("resize", updateSize);
     updateSize();
-    axios.post('/brandsbycategory',
-            {},
-            {
-                params: [specificBrands]
-            }
-        ).then(resp => {
-            console.log(resp.data);
-            console.log("brands");
-        })
     return () => window.removeEventListener("resize", updateSize);
   }, []);
   
@@ -235,12 +251,12 @@ function NavigationBar() {
         <ul className = {click ? 'Nav-Menu active' : 'Navigation-Menu'}>
             {/* onMouseEnter denotes hover-over */}
             <>
-            {keepNav && specificBrands=="" && <>
+            {keepNav && !specificBrands && <>
             <li className='Menu-Item Menu-Title only-mobile' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
             <Link 
-                to='/comparison'
+                // to='/comparison'
                 className='Navigation-Link Nav-Title' 
-                onClick={closeMenu}
+                // onClick={closeMenu}
                 >
                     Compare
             </Link>
@@ -248,7 +264,7 @@ function NavigationBar() {
           </li>
           <li className='Menu-Item only-mobile' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
             <Link 
-                to='/brand-directory'
+                to='/comparison'
                 className='Navigation-Link nav-hover' 
                 onClick={closeMenu}
                 >
@@ -263,7 +279,8 @@ function NavigationBar() {
             <Link
               // to='/'
               className='Navigation-Link disabled'
-              onClick={closeMenu} >
+              // onClick={closeMenu} 
+            >
                  Tech
             </Link>
             <AiOutlineRight className="nav-arrow"/>
@@ -275,7 +292,8 @@ function NavigationBar() {
             <Link
               // to='/'
               className='Navigation-Link disabled'
-              onClick={closeMenu} >
+              // onClick={closeMenu} 
+            >
                  Fast Food 
             </Link>
             <AiOutlineRight className="nav-arrow"/>
@@ -287,7 +305,8 @@ function NavigationBar() {
             <Link
               // to='/'
               className='Navigation-Link disabled'
-              onClick={closeMenu} >
+              // onClick={closeMenu} 
+            >
                  Beauty 
             </Link>
             <AiOutlineRight className="nav-arrow"/>
@@ -295,10 +314,10 @@ function NavigationBar() {
           </li>
           <li className='Menu-Item Menu-Title only-mobile' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
             <Link 
-                to='/brand-directory'
+                // to='/brand-directory'
                 className='Navigation-Link Nav-Title' 
-                onClick={() =>setKeepNav(false)}
-                >
+                // onClick={closeMenu}
+              >
                     Brands
             </Link>
             {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
@@ -307,7 +326,7 @@ function NavigationBar() {
             <Link 
                 to='/brand-directory'
                 className='Navigation-Link nav-hover' 
-                onClick={closeMenu}
+                onClick={() =>setKeepNav(false)}
                 >
                     Apparel
             </Link>
@@ -320,7 +339,8 @@ function NavigationBar() {
             <Link
               to='/'
               className='Navigation-Link disabled'
-              onClick={closeMenu} >
+              // onClick={closeMenu} 
+            >
                  Tech
             </Link>
             <AiOutlineRight className="nav-arrow"/>
@@ -332,7 +352,8 @@ function NavigationBar() {
             <Link
               to='/'
               className='Navigation-Link disabled'
-              onClick={closeMenu} >
+              // onClick={closeMenu} 
+            >
                  Fast Food 
             </Link>
             <AiOutlineRight className="nav-arrow"/>
@@ -344,7 +365,8 @@ function NavigationBar() {
             <Link
               to='/'
               className='Navigation-Link disabled'
-              onClick={closeMenu} >
+              // onClick={closeMenu} 
+            >
                  Beauty 
             </Link>
             <AiOutlineRight className="nav-arrow"/>
@@ -352,11 +374,12 @@ function NavigationBar() {
           </li>
 
           {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' >
+          <li className='Menu-Item Menu-Title' >
             <Link
               to='/methodology'
               className='Navigation-Link Nav-Title nav-hover'
-              onClick={closeMenu} >
+              onClick={closeMenu} 
+            >
                  Methodology
             </Link>
           </li>
@@ -366,13 +389,14 @@ function NavigationBar() {
             <Link
               to='/comparison'
               className='Compare-Button'
-              onClick={closeMenu} >
+              onClick={closeMenu} 
+            >
                 Compare
             </Link>
             {(compareDropdownLink || compareDropdown) && <ComparisonDropdown enterCompareDropdown={enterCompareDropdown} exitCompareDropdown={exitCompareDropdown} />}
           </li>
 
-          <li className='Menu-Item Menu-Item-search' >
+          {/* <li className='Menu-Item Menu-Item-search' >
             <TextField 
               id="standard-basic" 
               placeholder="Search"
@@ -385,11 +409,11 @@ function NavigationBar() {
                 ),
               }}
                />               
-          </li>
+          </li> */}
           </>}
           </>
           <>
-          {!keepNav && specificBrands=="" && <><li className='Menu-Item Menu-Title only-mobile' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
+          {!keepNav && !specificBrands && <><li className='Menu-Item Menu-Title only-mobile' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
             <Link 
                 to='/comparison'
                 className='Navigation-Link Nav-Title' 
@@ -413,7 +437,7 @@ function NavigationBar() {
             <Link 
                 // to='/brand-directory'
                 className='Navigation-Link nav-hover only-mobile' 
-                onClick={() => setSpecificBrands("Unisex")}
+                onClick={() => findBrands("Unisex")}
                 >
                   Unisex
             </Link>
@@ -424,7 +448,7 @@ function NavigationBar() {
             <Link 
                 to='/brand-directory'
                 className='Navigation-Link nav-hover only-mobile' 
-                onClick={() => setSpecificBrands("Women")}
+                onClick={() => findBrands("Women")}
                 >
                   Women
             </Link>
@@ -435,7 +459,7 @@ function NavigationBar() {
             <Link 
                 to='/brand-directory'
                 className='Navigation-Link nav-hover only-mobile' 
-                onClick={() => setSpecificBrands("Sportswear")}
+                onClick={() => findBrands("Sportswear")}
                 >
                   Sportswear
             </Link>
@@ -446,7 +470,7 @@ function NavigationBar() {
             <Link 
                 to='/brand-directory'
                 className='Navigation-Link nav-hover only-mobile' 
-                onClick={() => setSpecificBrands("Shoes & Accessories")}
+                onClick={() => findBrands("Shoes & Accessories")}
                 >
                   Shoes & Accessories
             </Link>

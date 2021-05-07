@@ -687,9 +687,9 @@ app.get('/allcompanies', (req, res) => {
 
 });
 
-app.get('/brandsbycategory', (req, res) => {
+app.post('/brandsbycategory', (req, res) => {
   const category = req.query['0'];
-  db.all("SELECT Category FROM Companies", [category], (err, rows) => {
+  db.all("SELECT Name FROM Companies WHERE Category = ?", [category], (err, rows) => {
     if (err) {
       res.status(400).json({ "error": err.message });
       return;
