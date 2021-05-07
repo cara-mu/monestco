@@ -11,6 +11,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import '../styles/NavigationBar.css';
 import BrandDirectory from '../pages/BrandDirectory';
+import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   searchInput: {
@@ -47,9 +49,22 @@ function NavigationBar() {
   const [compareDropdownLink, setCompareDropdownLink] = useState(false);
   const [compareDropdown, setCompareDropdown] = useState(false);
 
+  const [keepNav, setKeepNav] = useState(true);
+  const [specificBrands, setSpecificBrands] = useState(false);
+
+  const [showBrands, setShowBrands] = useState([]);
+
   {/* Closes menu when navigated away */}
-  const closeMenu = () => setClick(false);
-  const handleClick = () => setClick(!click);
+  const closeMenu = () => {
+    setClick(false);
+    setKeepNav(true);
+    setSpecificBrands(false);
+  }
+  const handleClick = () => {
+    setClick(!click);
+    setKeepNav(true);
+    setSpecificBrands(false);
+  }
 
   const minWidth = 850;
   const timeLimit = 400;
@@ -162,6 +177,39 @@ function NavigationBar() {
     }
   };
 
+  const findBrands = (brand) => {
+    setSpecificBrands(true);
+    console.log(brand);
+    axios.post('/brandsbycategory',
+            {},
+            {
+                params: [brand]
+            }
+        ).then(resp => {
+            let names = []
+            resp.data.rows.map(name => {
+              names.push(name.Name);
+            })
+            setShowBrands(names);
+        })
+  }
+
+  const NavBrands = () => {
+    console.log(showBrands);
+    return showBrands.map( brand => {
+      return (<li className='Menu-Item only-mobile' onMouseEnter={enterTechDropdownLink} onMouseLeave={exitTechDropdownLink} >
+            <Link
+              to={'/companies/'+brand}
+              className='Navigation-Link nav-hover'
+              onClick={closeMenu} >
+                 {brand}
+            </Link>
+            <AiOutlineRight className="nav-arrow arrow-apparel"/>
+            {(techDropdownLink || techDropdown) && <TechDropdown enterTechDropdown={enterTechDropdown} exitTechDropdown={exitTechDropdown}  />}
+      </li>
+    )})
+  }
+
   const exitCompareDropdown = () => {
     if (window.innerWidth > minWidth) {
       setTimeout(() => {      
@@ -202,11 +250,13 @@ function NavigationBar() {
 
         <ul className = {click ? 'Nav-Menu active' : 'Navigation-Menu'}>
             {/* onMouseEnter denotes hover-over */}
+            <>
+            {keepNav && !specificBrands && <>
             <li className='Menu-Item Menu-Title only-mobile' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
             <Link 
-                to='/brand-directory'
+                // to='/comparison'
                 className='Navigation-Link Nav-Title' 
-                onClick={closeMenu}
+                // onClick={closeMenu}
                 >
                     Compare
             </Link>
@@ -214,53 +264,60 @@ function NavigationBar() {
           </li>
           <li className='Menu-Item only-mobile' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
             <Link 
-                to='/brand-directory'
-                className='Navigation-Link' 
+                to='/comparison'
+                className='Navigation-Link nav-hover' 
                 onClick={closeMenu}
                 >
-                    Apparel
+                    Apparel 
             </Link>
+            <AiOutlineRight className="nav-arrow arrow-apparel" />
             {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
           </li>
 
           {/* onMouseEnter denotes hover-over */}
           <li className='Menu-Item only-mobile' onMouseEnter={enterTechDropdownLink} onMouseLeave={exitTechDropdownLink} >
             <Link
-              to='/'
-              className='Navigation-Link'
-              onClick={closeMenu} >
+              // to='/'
+              className='Navigation-Link disabled'
+              // onClick={closeMenu} 
+            >
                  Tech
             </Link>
+            <AiOutlineRight className="nav-arrow"/>
             {(techDropdownLink || techDropdown) && <TechDropdown enterTechDropdown={enterTechDropdown} exitTechDropdown={exitTechDropdown}  />}
           </li>
 
            {/* onMouseEnter denotes hover-over */}
           <li className='Menu-Item only-mobile' onMouseEnter={enterFoodDropdownLink} onMouseLeave={exitFoodDropdownLink} >
             <Link
-              to='/'
-              className='Navigation-Link'
-              onClick={closeMenu} >
+              // to='/'
+              className='Navigation-Link disabled'
+              // onClick={closeMenu} 
+            >
                  Fast Food 
             </Link>
+            <AiOutlineRight className="nav-arrow"/>
             {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
           </li>
 
           {/* onMouseEnter denotes hover-over */}
           <li className='Menu-Item only-mobile' onMouseEnter={enterFoodDropdownLink} onMouseLeave={exitFoodDropdownLink} >
             <Link
-              to='/'
-              className='Navigation-Link'
-              onClick={closeMenu} >
+              // to='/'
+              className='Navigation-Link disabled'
+              // onClick={closeMenu} 
+            >
                  Beauty 
             </Link>
+            <AiOutlineRight className="nav-arrow"/>
             {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
           </li>
           <li className='Menu-Item Menu-Title only-mobile' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
             <Link 
-                to='/brand-directory'
+                // to='/brand-directory'
                 className='Navigation-Link Nav-Title' 
-                onClick={closeMenu}
-                >
+                // onClick={closeMenu}
+              >
                     Brands
             </Link>
             {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
@@ -268,11 +325,12 @@ function NavigationBar() {
           <li className='Menu-Item' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
             <Link 
                 to='/brand-directory'
-                className='Navigation-Link' 
-                onClick={closeMenu}
+                className='Navigation-Link nav-hover' 
+                onClick={() =>setKeepNav(false)}
                 >
                     Apparel
             </Link>
+            <AiOutlineRight className="nav-arrow arrow-apparel"/>
             {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
           </li>
 
@@ -280,10 +338,12 @@ function NavigationBar() {
           <li className='Menu-Item' onMouseEnter={enterTechDropdownLink} onMouseLeave={exitTechDropdownLink} >
             <Link
               to='/'
-              className='Navigation-Link'
-              onClick={closeMenu} >
+              className='Navigation-Link disabled'
+              // onClick={closeMenu} 
+            >
                  Tech
             </Link>
+            <AiOutlineRight className="nav-arrow"/>
             {(techDropdownLink || techDropdown) && <TechDropdown enterTechDropdown={enterTechDropdown} exitTechDropdown={exitTechDropdown}  />}
           </li>
 
@@ -291,10 +351,12 @@ function NavigationBar() {
           <li className='Menu-Item' onMouseEnter={enterFoodDropdownLink} onMouseLeave={exitFoodDropdownLink} >
             <Link
               to='/'
-              className='Navigation-Link'
-              onClick={closeMenu} >
+              className='Navigation-Link disabled'
+              // onClick={closeMenu} 
+            >
                  Fast Food 
             </Link>
+            <AiOutlineRight className="nav-arrow"/>
             {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
           </li>
 
@@ -302,19 +364,22 @@ function NavigationBar() {
           <li className='Menu-Item' onMouseEnter={enterFoodDropdownLink} onMouseLeave={exitFoodDropdownLink} >
             <Link
               to='/'
-              className='Navigation-Link'
-              onClick={closeMenu} >
+              className='Navigation-Link disabled'
+              // onClick={closeMenu} 
+            >
                  Beauty 
             </Link>
+            <AiOutlineRight className="nav-arrow"/>
             {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
           </li>
 
           {/* onMouseEnter denotes hover-over */}
-          <li className='Menu-Item' >
+          <li className='Menu-Item Menu-Title' >
             <Link
               to='/methodology'
-              className='Navigation-Link'
-              onClick={closeMenu} >
+              className='Navigation-Link Nav-Title nav-hover'
+              onClick={closeMenu} 
+            >
                  Methodology
             </Link>
           </li>
@@ -324,13 +389,14 @@ function NavigationBar() {
             <Link
               to='/comparison'
               className='Compare-Button'
-              onClick={closeMenu} >
+              onClick={closeMenu} 
+            >
                 Compare
             </Link>
             {(compareDropdownLink || compareDropdown) && <ComparisonDropdown enterCompareDropdown={enterCompareDropdown} exitCompareDropdown={exitCompareDropdown} />}
           </li>
 
-          <li className='Menu-Item Menu-Item-search' >
+          {/* <li className='Menu-Item Menu-Item-search' >
             <TextField 
               id="standard-basic" 
               placeholder="Search"
@@ -343,7 +409,100 @@ function NavigationBar() {
                 ),
               }}
                />               
+          </li> */}
+          </>}
+          </>
+          <>
+          {!keepNav && !specificBrands && <><li className='Menu-Item Menu-Title only-mobile' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
+            <Link 
+                to='/comparison'
+                className='Navigation-Link Nav-Title' 
+                onClick={closeMenu}
+                >
+                    Brands
+            </Link>
+            {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
           </li>
+          <li className='Menu-Item' onMouseEnter={enterFoodDropdownLink} onMouseLeave={exitFoodDropdownLink} >
+            <Link
+              // to='/'
+              className='Navigation-Link nav-hover nav-back only-mobile'
+              onClick={() => setKeepNav(true)} >
+                <AiOutlineLeft className="nav-arrow-back nav-back"/>
+                 Back 
+            </Link>
+            {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
+          </li>
+          <li className='Menu-Item' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
+            <Link 
+                // to='/brand-directory'
+                className='Navigation-Link nav-hover only-mobile' 
+                onClick={() => findBrands("Unisex")}
+                >
+                  Unisex
+            </Link>
+            <AiOutlineRight className="nav-arrow arrow-apparel"/>
+            {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
+          </li>
+          <li className='Menu-Item' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
+            <Link 
+                to='/brand-directory'
+                className='Navigation-Link nav-hover only-mobile' 
+                onClick={() => findBrands("Women")}
+                >
+                  Women
+            </Link>
+            <AiOutlineRight className="nav-arrow arrow-apparel"/>
+            {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
+          </li>
+          <li className='Menu-Item' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
+            <Link 
+                to='/brand-directory'
+                className='Navigation-Link nav-hover only-mobile' 
+                onClick={() => findBrands("Sportswear")}
+                >
+                  Sportswear
+            </Link>
+            <AiOutlineRight className="nav-arrow arrow-apparel"/>
+            {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
+          </li>
+          <li className='Menu-Item' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
+            <Link 
+                to='/brand-directory'
+                className='Navigation-Link nav-hover only-mobile' 
+                onClick={() => findBrands("Shoes & Accessories")}
+                >
+                  Shoes & Accessories
+            </Link>
+            <AiOutlineRight className="nav-arrow arrow-apparel"/>
+            {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
+          </li>
+          <li className='Menu-Item' onMouseEnter={enterFoodDropdownLink} onMouseLeave={exitFoodDropdownLink} >
+            <Link
+              to='/'
+              className='Navigation-Link disabled only-mobile'
+              onClick={closeMenu} >
+                 Luxury 
+            </Link>
+            <AiOutlineRight className="nav-arrow"/>
+            {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
+          </li>
+          <li className='Menu-Item' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
+            <Link 
+                to='/brand-directory'
+                className='Navigation-Link nav-hover only-mobile' 
+                onClick={closeMenu}
+                >
+                  Brands A-Z
+            </Link>
+            <AiOutlineRight className="nav-arrow arrow-apparel"/>
+            {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
+          </li></>}
+          </>
+          <>{!keepNav && specificBrands != "" && <>
+          <NavBrands />
+        </>
+        }</>
         </ul>
         <div className='mobile-search-icon'>
           <SearchIcon onClick={() => setShowSearch(!showSearch)} style={{fill:'rgb(50,50,50)', fontSize:'25px'}} />
