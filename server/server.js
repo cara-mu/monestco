@@ -687,6 +687,19 @@ app.get('/allcompanies', (req, res) => {
 
 });
 
+app.get('/brandsbycategory', (req, res) => {
+  const category = req.query['0'];
+  db.all("SELECT Category FROM Companies", [category], (err, rows) => {
+    if (err) {
+      res.status(400).json({ "error": err.message });
+      return;
+    }
+    if(rows){
+      res.status(200).json({ rows });
+    }
+  });
+});
+
 app.get('/industry', (req, res) => {
   var industryID = 1;
   db.all("SELECT * FROM IndustryStandards WHERE ID = ?", [industryID], (err, rows) => {
