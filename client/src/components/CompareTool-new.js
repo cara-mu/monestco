@@ -1647,7 +1647,6 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
       for (var i = 0; i < resp.data.rows.length; i++) {
         allcompanies.push(resp.data.rows[i].Name);
       }
-      console.log(allcompanies);
       setCompaniesList(allcompanies);
       fetchBrand(allcompanies);
     });

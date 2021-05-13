@@ -10,6 +10,9 @@
 
   .compare-dropDown-container {
     padding: 24px 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .Dropdown-Menu li {
@@ -30,11 +33,11 @@
   }
 
   .Comparison-Options {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      margin-left: 73px;
-      width: 88.4%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-column-gap: 20px;
+      justify-content: center;      
+      width: 90%;
   }
 
   .Apparel h1{
@@ -98,11 +101,9 @@
   }
 
   .Selection-Box{  
-    width: 24%;
-    /* width: 290px; */
+    width: 100%;    
     height: 150px;
-    border-radius: 7px;
-    /* margin-right: 10px; */
+    border-radius: 7px;    
   }
   
   .Apparel:hover {
@@ -125,4 +126,14 @@
 
   .Beauty{
       background: #F2F2F2;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .Comparison-Options {
+      grid-column-gap: 5px;
+      width: 96%;
+    }
+    .Selection-Box .text {
+      margin-left: 10px;
+    }
   }

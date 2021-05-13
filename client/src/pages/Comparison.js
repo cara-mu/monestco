@@ -27,8 +27,8 @@ const Comparison = () => {
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
-    const searchLi = companyList.filter(company => company.toLowerCase().includes(e.target.value.toLowerCase()))    
-    setSearchList(searchLi)
+    const sortList = companyList.filter(company => company.slice(0,e.target.value.length).toLowerCase() === e.target.value.toLowerCase())    
+    setSearchList(sortList)
     setShowList(true);
   };
 
@@ -70,6 +70,10 @@ const Comparison = () => {
     updateSize();
     return () => window.removeEventListener('resize', updateSize);
   }, []);
+
+  useEffect(() => {
+    setSearchList(companyList);    
+  },[companyList])
 
   useEffect(() => {
     if(mobileView && selectedCompaniesList.length >= 3) {
@@ -258,6 +262,7 @@ const Comparison = () => {
               placeholder="Search All Brands"
               value={inputValue}
               onChange={handleChange}
+              onFocus={() => setShowList(true)}
               onBlur={() => setTimeout(() => setShowList(false), 200)}
             />
             <i
