@@ -1,3 +1,15 @@
+.main-Compare-Container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1650px;
+    margin: 0 auto;
+}
+
+.Layout {
+    max-width: 1650px;
+    margin: 0 auto;
+}
+
 .Layout h1{
     font-family: DM Sans;
     font-style: normal;

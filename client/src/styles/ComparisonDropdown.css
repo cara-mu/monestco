@@ -38,6 +38,7 @@
       grid-column-gap: 20px;
       justify-content: center;      
       width: 90%;
+      max-width: 1650px;
   }
 
   .Apparel h1{

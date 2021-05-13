@@ -1,13 +1,18 @@
+.Navigation-Bar-Container {
+  background: #ffffff;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
+}
+
 .Navigation-Bar {
     background: #ffffff;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
-
     height: 80px;
     font-size: 1.2rem;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1650px;
+    margin: 0 auto;
     /* position: sticky;
     top: 0; */
   }
@@ -286,6 +291,7 @@ img.logo {
     transition: all 0.5s ease;
     z-index: 100;
     bottom: 40%;
+    overflow-y: scroll;
 }
   
   .Mobile-Hamburger-Menu{

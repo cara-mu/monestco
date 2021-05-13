@@ -191,7 +191,7 @@ const Comparison = () => {
   }
 
   return (
-    <div style={{display:'flex', flexDirection:'row'}}>
+    <div className="main-Compare-Container">
       {/* <Grid container> */}
         {/* <Grid item xs={4} style={{border: 'solid'}}> */}
         <div className="row-1" >

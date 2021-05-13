@@ -32,6 +32,7 @@ function NavigationBar() {
   {/* Set to false by default, when a component is triggered, will set to respective state */}
   const [click, setClick] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [tabView, setTabView] = useState(false);
   const state = { clicked: false }
   const classes = useStyles();
 
@@ -222,6 +223,9 @@ function NavigationBar() {
     function updateSize() {
       if (window.innerWidth > minWidth) {
         setClick(false)
+        setTabView(false)
+      } else {
+        setTabView(true)
       }
     }
     window.addEventListener("resize", updateSize);
@@ -230,6 +234,7 @@ function NavigationBar() {
   }, []);
   
   return (
+    <div className = 'Navigation-Bar-Container'>
       <nav className = 'Navigation-Bar' >
           {/* Monest Logo */}
 
@@ -325,7 +330,7 @@ function NavigationBar() {
             <Link 
                 to='/brand-directory'
                 className='Navigation-Link nav-hover' 
-                onClick={() =>setKeepNav(false)}
+                onClick={() => tabView && setKeepNav(false)}
                 >
                     Apparel
             </Link>
@@ -520,6 +525,7 @@ function NavigationBar() {
                />}
         </div>
       </nav>
+      </div>
   );
 }
 
