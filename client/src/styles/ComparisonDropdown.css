@@ -106,11 +106,16 @@
     height: 150px;
     border-radius: 7px;    
   }
+
+  .Selection-Box a:hover {
+    text-decoration: none;
+  }
   
   .Apparel:hover {
-    margin-top: -20px;
+    margin-top: -10px;
     background-color:  #E1ECF7;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
+    transition: all 0.5s;
   }
 
   .Apparel {

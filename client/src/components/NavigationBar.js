@@ -55,6 +55,33 @@ function NavigationBar() {
 
   const [showBrands, setShowBrands] = useState([]);
 
+  const [companiesList, setCompaniesList] = useState([]);
+  const [searchList, setSearchList] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+  const [showList, setShowList] = useState(false);
+
+  axios.get("/allcompanies").then((resp) => {
+    // console.log(resp.data);
+    const allcompanies = [];
+    for (var i = 0; i < resp.data.rows.length; i++) {
+      allcompanies.push(resp.data.rows[i].Name);
+    }
+    setCompaniesList(allcompanies);
+  });
+
+  const handleChange = (e) => {
+    if(e.target.value !== "") {
+      setInputValue(e.target.value);
+      const sortList = companiesList.filter(company => company.slice(0,e.target.value.length).toLowerCase() === e.target.value.toLowerCase())    
+      setSearchList(sortList)
+      setShowList(true);
+    } else {
+      setInputValue("");
+      setSearchList([]);
+      setShowList(false);
+    }
+  };
+
   {/* Closes menu when navigated away */}
   const closeMenu = () => {
     setClick(false);
@@ -399,21 +426,38 @@ function NavigationBar() {
             </Link>
             {(compareDropdownLink || compareDropdown) && <ComparisonDropdown enterCompareDropdown={enterCompareDropdown} exitCompareDropdown={exitCompareDropdown} />}
           </li>
+          <div style={{position:"relative"}}>
+            <li className='Menu-Item Menu-Item-search' >
+              <TextField 
+                id="standard-basic" 
+                placeholder="Search"
+                className="search-input"
+                value={inputValue}
+                onChange={handleChange}
+                onFocus={() => setShowList(true)}
+                onBlur={() => setTimeout(() => setShowList(false), 200)}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon style={{fill:'rgba(50,50,50,0.5)'}} />
+                    </InputAdornment>
+                  ),
+                }}
+                />               
+            </li>
+              {showList && (
+                <div className="nav-search-company-container">
+                  {searchList.map((item, index) => {
+                    return (
+                      <div key={index}>
+                        {item}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+          </div>
 
-          {/* <li className='Menu-Item Menu-Item-search' >
-            <TextField 
-              id="standard-basic" 
-              placeholder="Search"
-              className="search-input"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon style={{fill:'rgba(50,50,50,0.5)'}} />
-                  </InputAdornment>
-                ),
-              }}
-               />               
-          </li> */}
           </>}
           </>
           <>

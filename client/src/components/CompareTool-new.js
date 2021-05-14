@@ -1301,21 +1301,21 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
 
   const handleChangeOne = (e) => {
     setInputBrandOne(e.target.value);
-    const returnedCompanies = handleAllChanges(inputBrandOne);
+    const returnedCompanies = handleAllChanges(e.target.value);
     setReturnedComp1(returnedCompanies);
     setListBrandOne(true);
   };
 
   const handleChangeTwo = (e) => {
     setInputBrandTwo(e.target.value);
-    const returnedCompanies = handleAllChanges(inputBrandTwo);
+    const returnedCompanies = handleAllChanges(e.target.value);
     setReturnedComp2(returnedCompanies);
     setListBrandTwo(true);
   };
 
   const handleChangeThree = (e) => {
     setInputBrandThree(e.target.value);
-    const returnedCompanies = handleAllChanges(inputBrandThree);
+    const returnedCompanies = handleAllChanges(e.target.value);
     setReturnedComp3(returnedCompanies);
     setListBrandThree(true);
   };
@@ -2044,18 +2044,21 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
           value={inputBrandOne}
           onChange={handleChangeOne}
           onBlur={() => setTimeout(() => setListBrandOne(false), 200)}
+          onFocus={handleChangeOne}
         />
         <input
           placeholder="Type the brand"
           value={inputBrandTwo}
           onChange={handleChangeTwo}
           onBlur={() => setTimeout(() => setListBrandTwo(false), 200)}
+          onFocus={handleChangeTwo}
         />
         <input
           placeholder="Type the brand"
           value={inputBrandThree}
           onChange={handleChangeThree}
           onBlur={() => setTimeout(() => setListBrandThree(false), 200)}
+          onFocus={handleChangeThree}
         />
         <div className="compare-companyList-container">
           {listBrandOne && (
