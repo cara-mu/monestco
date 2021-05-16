@@ -552,7 +552,8 @@
 
     .compare-learn-more{
         text-decoration: none;
-        margin-right: 9px;
+        margin-right: 0;
+        padding-left: 0;
     }
 
     /* .compare-input-container>input {
@@ -625,7 +626,7 @@
 
     .compare-learn-more{
         text-decoration: none;
-        margin-right: 9px;
+        /* margin-right: 9px; */
     }
 
     .compare-input-container {
@@ -742,7 +743,8 @@
 
     .compare-learn-more{
         text-decoration: none;
-        margin-right: 9px;
+        /* margin-right: 9px; */
+        white-space: nowrap;
     }
 
     .compare-input-container {
