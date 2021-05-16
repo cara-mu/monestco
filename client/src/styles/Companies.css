@@ -8,6 +8,7 @@
 .Layout {
     max-width: 1650px;
     margin: 0 auto;
+    overflow-x: hidden;
 }
 
 .Layout h1{
@@ -622,6 +623,9 @@
     }
     .Layout {
         overflow-x: hidden;
+    }
+    .company-popup-content {
+        padding-bottom: 3rem;
     }
 
 }
