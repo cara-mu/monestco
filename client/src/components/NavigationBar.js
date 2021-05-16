@@ -453,7 +453,7 @@ function NavigationBar() {
                   {searchList.map((item, index) => {
                     return (
                       <div key={index}>
-                        <Link to={'/companies/'+ item} >
+                        <Link to={'/companies/'+ item} onClick={() => setShowList(false)} >
                           {item}
                         </Link>
                       </div>
@@ -567,7 +567,7 @@ function NavigationBar() {
               className={`${classes.searchInput} seach-input-2` }
               value={inputValue}
               onChange={handleChange}
-              // onFocus={() => setShowList(true)}
+              onFocus={() => inputValue && setShowList(true)}
               onBlur={() => setTimeout(() => setShowList(false), 200)}
               InputProps={{
                 startAdornment: (
@@ -582,7 +582,7 @@ function NavigationBar() {
                   {searchList.map((item, index) => {
                     return (
                       <div key={index}>
-                        <Link to={'/companies/'+ item} >
+                        <Link to={'/companies/'+ item} onClick={() => setShowSearch(false)} >
                           {item}
                         </Link>
                       </div>

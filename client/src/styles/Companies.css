@@ -8,7 +8,6 @@
 .Layout {
     max-width: 1650px;
     margin: 0 auto;
-    overflow-x: hidden;
 }
 
 .Layout h1{
@@ -620,6 +619,9 @@
 
     .Description-score:last-child {
         font-size: 20px;
+    }
+    .Layout {
+        overflow-x: hidden;
     }
 
 }
