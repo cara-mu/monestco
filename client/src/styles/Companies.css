@@ -625,6 +625,7 @@
         overflow-x: hidden;
     }
     .company-popup-content {
+        width: 90vw;
         padding-bottom: 4rem;
     }
 
