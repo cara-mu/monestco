@@ -239,7 +239,7 @@ function rand() {
                 <div className='company-popup-content'>
                     <div style={{display:'flex', flexDirection:'column', marginTop:'1rem'}}>
                         <div>Brand Performance</div>
-                        <div style={{fontSize:'16px', fontWeight:'500'}}>
+                        <div style={{fontSize:'16px', fontWeight:'500', lineHeight:'25px'}}>
                             Mobile Vulputate sit condimentum nulla eget placerat tincidunt.
                         </div>
                     </div>
