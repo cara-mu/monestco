@@ -362,7 +362,7 @@
     flex-direction: column;
     background: #FFFFFF;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.24);
-    margin-top: 2rem;
+    margin-top: 16px;
     /* padding-bottom: 3rem; */
 }
 
@@ -380,7 +380,9 @@
     font-weight: bold;
     font-size: 64px;
     line-height: 66px;
-    color: #3D3E3F;
+    color: #26385A;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .ml-10perc {
@@ -431,7 +433,7 @@
     border-left: 2px solid #333333;
     height: 30px;
     position: absolute;
-    margin-top: 8.5px;
+    margin-top: 10.5px;
     margin-left: 206px;
 }
 
@@ -473,8 +475,10 @@
 .horizontalline2 {
     border: 5px solid #333333;
     position: absolute;
-    margin-top: 19px;
-    margin-left: 41.25px;
+    margin-top: 21px;
+    margin-left: 10%;
+    border-start-end-radius: 1em;
+    border-end-end-radius: 1em;
 }
 
 .company-popup-content {
@@ -495,6 +499,16 @@
     font-weight: 700;
     opacity: 1;
     /* animation: moveUp 0.5s; */
+}
+
+.performing-Container {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgb(79, 79, 79);
+    font-weight: 400;
+    margin: 0 auto;
 }
 
 @media only screen and (max-width: 1120px) {
@@ -560,6 +574,12 @@
     .brand_inside_text>span:last-of-type {
         font-size: 24px;
     }
+    .horizontalline2 {
+        margin-top: 15px;
+    }
+    .verticalline2 {
+        margin-top: 4.5px;
+    }
 }
 
 @media only screen and (max-width: 700px) {
@@ -582,7 +602,7 @@
     }
 
     .brand_box {
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
 
     .brand_inside_text>span:first-of-type {
@@ -628,6 +648,12 @@
         width: 90vw;
         padding-bottom: 2rem;
     }
+    .horizontalline2 {
+        margin-top: 17px;
+    }
+    .verticalline2 {
+        margin-top: 6.5px;
+    }
 
 }
 
@@ -645,5 +671,17 @@
         font-size: 48px;
         line-height: 66px;
         color: #3D3E3F;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .Layout {
+        overflow-x: hidden;
+    }
+    .horizontalline2 {
+        margin-top: 15px;
+    }
+    .verticalline2 {
+        margin-top: 4.5px;
     }
 }
