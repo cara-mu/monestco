@@ -8,7 +8,7 @@
 .Layout {
     max-width: 1650px;
     margin: 0 auto;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 .Layout h1{
@@ -622,7 +622,7 @@
         font-size: 20px;
     }
     .Layout {
-        overflow-x: hidden;
+        /* overflow-x: auto; */
     }
     .company-popup-content {
         width: 90vw;
