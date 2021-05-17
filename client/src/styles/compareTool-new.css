@@ -6,9 +6,9 @@
 
 .compare-input-container {
     margin: 4rem 0 2rem 13.5rem;
-    display: grid;
-    grid-template-columns: repeat( 3, minmax( 6rem, 13rem ) );
-    column-gap: 1.5rem;
+    /* display: grid; */
+    grid-template-columns: repeat( 3, minmax( 5rem, 12rem ) );
+    /* column-gap: 1.5rem; */
     
 }
 
@@ -22,6 +22,7 @@
     font-size: 1rem;
     font-weight: 400;
     color: #3D3E3F;
+    /* margin-left: 3%; */
     border-bottom: 2px solid #BDBDBD;
 }
 
@@ -397,7 +398,7 @@
 
     .compare-input-container {
         grid-template-columns: repeat( 3, minmax( 6rem, 12rem ) );
-        margin-left: 12.5rem;
+        /* margin-left: 12.5rem; */
     }
 
     .compare-companyList-container {
