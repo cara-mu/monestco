@@ -1,8 +1,7 @@
 .Navigation-Bar-Container {
   background: #ffffff;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
-  /* position: sticky;
-  top: 0; */
+  z-index: 1000;
 }
 
 .Navigation-Bar {
@@ -246,6 +245,11 @@ img.logo {
     color: white;
   }
 
+  .Navigation-Bar-Container {
+    position: sticky;
+    top: 0;
+  }
+
 }
 
 /* Responsive Design */
@@ -354,6 +358,11 @@ img.logo {
     left: 20px;
     font-size: 1.8rem;
     cursor: pointer;
+  }
+
+  .Navigation-Bar-Container {
+    /* position: sticky;
+    top: 0; */
   }
 
   .Menu-Item-search.search-input {
