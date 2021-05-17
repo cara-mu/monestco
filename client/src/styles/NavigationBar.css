@@ -1,6 +1,6 @@
 .Navigation-Bar {
     background: #ffffff;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 10px 20px rgba(190, 179, 179, 0.12);
 
     height: 80px;
     font-size: 1.2rem;
@@ -8,6 +8,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
   }
   
   .nav-links{
@@ -65,7 +66,7 @@
 
     display: flex;
     align-items: center;
-    margin-right: 3%;
+    /* margin-right: 3%; */
   }
 
   .disabled {
@@ -237,8 +238,8 @@ img.logo {
   }
 
   .Navigation-Link{
-    width: 80%;
-    line-height: 60px;
+    width: 85%;
+    line-height: 54px;
     border-bottom: 1px solid #E0E0E0;
     /* color: #BDBDBD; */
   }
@@ -295,6 +296,10 @@ img.logo {
 
   .mobile-search-icon {
     display: block;
+  }
+
+  .only-mobile {
+
   }
 }
 

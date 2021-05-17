@@ -54,8 +54,9 @@ const companyinfo = [
 const companyFacts = [
     {
         CompanyID: 0,
-        Heading: "",
-        Summary: ""
+        Heading: [],
+        Summary: [],
+        ID: []
     }
 ]
 
@@ -581,18 +582,30 @@ function rand() {
         const [showCitation, setShowCitation] = useState(false);
 
         const FactCitations = (i) => {
+            console.log(factCitation);
+            // let arr = factCitation.replace('[', '')
+            // arr = arr.replace(']', '')
+            // arr = JSON.parse(arr)
+            // console.log(typeof arr);
             if (factCitation.length != 0) {
-                console.log(factCitation);
-                return factCitation[0]["Date"].map((date, k) => {
-                    return <div><i>{factCitation[0]["Title"][i]}</i>, {factCitation[0]["PublishingGroup"][i]}, {factCitation[0]["Date"][i]}, {factCitation[0]["Pages"][i]}</div>
-                })
+                // console.log(factCitation);
+                // // return factCitation[0]["Date"].map((date, k) => {
+                // //     return <div><i>{factCitation[0]["Title"][k]}</i>, {factCitation[0]["PublishingGroup"][k]}, {factCitation[0]["Date"][k]}, {factCitation[0]["Pages"][k]}</div>
+                // // })
+                // return factCitation[i]
+                // console.log(typeof JSON.parse(factCitation))
+                // return JSON.parse(factCitation)[0]["Author"].map((author, i) => {
+                    return <div><i>{JSON.parse(factCitation)[0]["Title"][i]}</i>, {JSON.parse(factCitation)[0]["Author"][i]}{JSON.parse(factCitation)[0]["Author"][i] && <span>,</span>} {JSON.parse(factCitation)[0]["PublishingGroup"][i]}, {JSON.parse(factCitation)[0]["Date"][i]}{JSON.parse(factCitation)[0]["Pages"][i] && <span>,</span>} {JSON.parse(factCitation)[0]["Pages"][i]}</div>
+                // })
             }
         }
 
-        const showCitations = (i, j) => {
-            console.log(showCitation);
+        const showCitations = async () => {
             if (showCitation == false) setShowCitation(true);
             if (showCitation == true) setShowCitation(false);
+            // console.log(showCitation);
+            // if (showCitation == false) setShowCitation(true);
+            // if (showCitation == true) setShowCitation(false);
             // if (showCitation == -1) {
             //     setShowCitation(j);
             //     console.log(showCitation);
@@ -601,40 +614,70 @@ function rand() {
             //     setShowCitation(-1);
             //     console.log(showCitation);
             // }
-                axios.post('/citationsFacts',
+            let citationsarr = [];
+            let relidarr = [];
+            let authorarr = [];
+            let datearr = [];
+            let pubarr = [];
+            let titlearr = [];
+            let urlarr = [];
+            let pagesarr = [];
+            console.log("poo");
+            console.log(factinput[0]['ID']);
+            if (factinput[0]['Heading'].length != 0) {
+                Promise.all(Object.entries(factinput[0]['Heading']).map((heading, i) => 
+                    axios.post('/citationsFacts',
                     {},
                     {
-                        params: [companyName, i, 'F']
+                        params: [companyName, factinput[0]["ID"][i], 'F']
                     }
                 ).then(resp => {
-                    let data = citations;
-                    let relidarr = [];
-                    let authorarr = [];
-                    let datearr = [];
-                    let pubarr = [];
-                    let titlearr = [];
-                    let urlarr = [];
-                    let pagesarr = [];
-                    resp.data.map(citation => {
-                        relidarr.push(citation["RelationalID"]);
-                        authorarr.push(citation["Author"]);
-                        datearr.push(citation["Date"]);
-                        pubarr.push(citation["PublishingGroup"]);
-                        titlearr.push(citation["Title"]);
-                        urlarr.push(citation["URL"]);
-                        pagesarr.push(citation["Pages"]);
-                    })
-                    data[0]["RelationalID"] = relidarr;
-                    data[0]["Author"] = authorarr;
-                    data[0]["Date"] = datearr;
-                    data[0]["PublishingGroup"] = pubarr;
-                    data[0]["Title"] = titlearr;
-                    data[0]["URL"] = urlarr;
-                    data[0]["Pages"] = pagesarr;
-                    setFactCitation(data);
-                    console.log(factCitation);
-                })
+                    if (resp.data.length!= 0) {
+                        console.log(resp.data);
+                        let data = citations;
+                        if (citationsarr.length != 0) {
+                            console.log(citationsarr[0][0]["RelationalID"]);
+                            relidarr = citationsarr[0][0]["RelationalID"];
+                            authorarr = citationsarr[0][0]["Author"];
+                            datearr = citationsarr[0][0]["Date"];
+                            pubarr = citationsarr[0][0]["PublishingGroup"];
+                            titlearr = citationsarr[0][0]["Title"];
+                            urlarr = citationsarr[0][0]["URL"];
+                            pagesarr = citationsarr[0][0]["Pages"];
+                        } 
+                        console.log(resp.data);
+                        resp.data.map(citation => {
+                            console.log(relidarr);
+                            relidarr.push(citation["RelationalID"]);
+                            authorarr.push(citation["Author"]);
+                            datearr.push(citation["Date"]);
+                            pubarr.push(citation["PublishingGroup"]);
+                            titlearr.push(citation["Title"]);
+                            urlarr.push(citation["URL"]);
+                            pagesarr.push(citation["Pages"]);
+                            // console.log("end of map");
+                        })
+                        console.log(datearr);
+                        data[0]["Author"] = authorarr;
+                        data[0]["Date"] = datearr;
+                        data[0]["PublishingGroup"] = pubarr;
+                        data[0]["Title"] = titlearr;
+                        data[0]["RelationalID"] = relidarr;
+                        data[0]["URL"] = urlarr;
+                        data[0]["Pages"] = pagesarr;
+                        citationsarr.push(data);
+                        console.log(data[0]["Date"]);
+                        console.log(citationsarr[0][0]);
+                        console.log("i");
+                        console.log(i);
+                }})
+                )).then(() => {
+                    console.log(citationsarr);
+                    setFactCitation(JSON.stringify(citationsarr[0]))
+                });
+            }
         }
+
         return Object.entries(factinput[0]['Heading']).map((heading, i) => {
             console.log(factCitation);
             return <div>
@@ -655,7 +698,7 @@ function rand() {
             >
               Citation 
               <i
-                onClick={() => showCitations(factinput[0]["ID"][i], i)}
+                onClick={() => showCitations()}
                 style={{ borderColor: "#323232" }}
                 className={`Fun-Fact-arrowdown ${showCitation ? "Fun-Fact-arrowdown-rotate" : ""}`}
               ></i>
