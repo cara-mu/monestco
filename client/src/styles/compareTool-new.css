@@ -20,7 +20,7 @@
     padding-bottom: 0.5rem;
     text-align: center;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 400;
     color: #3D3E3F;
     /* margin-left: 3%; */
     border-bottom: 2px solid #BDBDBD;
@@ -233,7 +233,7 @@
 .brand-name {
     padding: 5px 9px;
     border: 1px solid #333333;
-    font-size: 1rem;
+    font-size: 14px;
     font-weight: 700;
     border-radius: 13px;
     margin-left: 10px;
@@ -247,7 +247,7 @@
 }
 
 .brand-button-close {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     color: #797979;
 }
 
@@ -324,12 +324,14 @@
     line-height: 22px;
     letter-spacing: 2px;    
     margin-bottom: 23px;
+    z-index: 100%;
 }
 
 .compare-popup-text {
     font-size: 16px;
     font-weight: 500;
     line-height: 22px;
+    z-index: 100%;
 }
 
 .compare-learn-more {
@@ -338,6 +340,7 @@
     line-height: 24px;    
     color: #9A9B9C;    
     cursor: pointer;
+    padding-left: 20px;
 }
 
 .compare-card-container {    
@@ -352,9 +355,13 @@
     animation: rotateCard 0.5s ease;
 }
 
-.card-back {        
+.card-back {      
+    display: flex;  
     width: 90%;
+    height: 100%;
+    padding-top: 36px;
     margin: 0 auto;
+    text-align: center;
     color: #3D3E3F;
     /* backface-visibility: hidden;     */
     transition: all 0.5s;
@@ -422,6 +429,10 @@
 
 @media screen and (max-width:1250px) {
 
+    .compare-learn-more{
+        text-decoration: none;
+        margin-right: 9px;
+    }
     .compare-input-container {
         grid-template-columns: repeat( 3, minmax( 6rem, 10rem ) );
         margin-left: 11.5rem;
@@ -460,6 +471,11 @@
 
 @media screen and (max-width:1100px) {
 
+    .compare-learn-more{
+        text-decoration: none;
+        margin-right: 9px;
+    }
+
     .compare-input-container {
         grid-template-columns: repeat( 3, minmax( 6rem, 8rem ) );
         margin-left: 9.5rem;
@@ -488,6 +504,11 @@
 }
 
 @media screen and (max-width:900px) {
+
+    .compare-learn-more{
+        text-decoration: none;
+        margin-right: 9px;
+    }
 
     .compare__tool-container {
         margin:0 auto;
@@ -529,6 +550,12 @@
 }
 
 @media screen and (max-width:800px) {
+
+    .compare-learn-more{
+        text-decoration: none;
+        margin-right: 0;
+        padding-left: 0;
+    }
 
     /* .compare-input-container>input {
         display: none;
@@ -598,12 +625,18 @@
 
 @media screen and (max-width:700px) {
 
+    .compare-learn-more{
+        text-decoration: none;
+        /* margin-right: 9px; */
+    }
+
     .compare-input-container {
         grid-template-columns: repeat( 3, 6rem );
     }
 
     .brand-name{
         margin-left: 5px;
+        font-size: 12px;
     }
 
     .mainField-container {
@@ -625,6 +658,10 @@
 }
 
 @media screen and (max-width:600px) {
+
+    .compare-learn-more{
+        text-decoration: none;
+    }
 
     .compare-input-container {
         grid-template-columns: repeat( 2, 6rem );
@@ -693,9 +730,23 @@
         justify-content: center;
     }
 
+    .brand-button-container>.brand-button-close {
+        font-size: 14px;
+    }
+
+    .brand-name{
+        font-size: 12px;
+    }
+
 }
 
 @media screen and (max-width:500px) {
+
+    .compare-learn-more{
+        text-decoration: none;
+        /* margin-right: 9px; */
+        white-space: nowrap;
+    }
 
     .compare-input-container {
         grid-template-columns: repeat( 2, 5rem );
@@ -728,4 +779,14 @@
         padding-left: 0;
     }
 
+    .brand-name {
+        padding: 5px 3px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .brand-name {
+        margin-left: 0px;
+        font-weight: 400;
+    }
 }

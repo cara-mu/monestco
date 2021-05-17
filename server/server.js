@@ -696,6 +696,18 @@ app.post('/companydetailsD', (req, res) => {
   });
 })
 
+app.get('/scoredenominator', (req, res) => {
+  db.all("SELECT A1total, `A1.1total`,  `A1.2total`, A2total, `A2.1total`, `A2.2total`, `A2.3total`, A3total, `A3.1total`, `A3.2total`, `A3.3total`, A4total, `A4.1total`, `A4.2total`, `A4.3total`, B1total, `B1.1total`, `B1.2total`, `B1.3total`, B2total, `B2.1total`, `B2.2total`,  `B2.3total`, B3total, `B3.1total`, `B3.2total`, `B3.3total`, `B3.4total`, B4total, `B4.1total`, `B4.2total`, `B4.3total`,  `B4.4total` C1total, `C1.1total`, `C1.2total`, `C1.3total`, `C1.4total` C2total, `C2.1total`, `C2.2total`, `C2.3total`, `C2.4total`, C3total, `C3.1total`, `C3.2total`, `C3.3total`, `C3.4total(integer`, C4total, `C4.1total`,  `C4.2total`, `C4.3total`, `C4.4total`, D1total, `D1.1total`, `D1.2total`, D2total, `D2.1total`, `D2.2total`, `D2.3total`, D3total, `D3.1total`, `D3.2total`, `D3.3total`, `D3.4total`, `D3.5total` FROM IndustryStandards", (err, rows) => {
+    if (err) {
+      res.status(400).json({ "error": err.message });
+      return;
+    }
+    if(rows){
+      res.status(200).json({ rows });
+    }
+  })
+})
+
 app.get('/allcompanies', (req, res) => {
   db.all("SELECT Name FROM Companies", [], (err, rows) => {
     if (err) {

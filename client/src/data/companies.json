@@ -18,61 +18,141 @@
     "companies":
         [
             {
-                "name": "Nike",
-                "industry": "apparel",
-                "categories": [
-                    "shoes", "sportswear"
-                ],
-                "description": "just do it??.",
-                "fun facts": [
-                    "Nike headquarters are in beaverton??", "air forces", "knight"
-                ],
-                "diversityandinclusion": 40,
-                "workerexploitation": 50,
-                "wasteandpollution": 60,
-                "sustainablematerials": 50
-            }, {
+                "name": "Abercrombie & Fitch",
+                "category": "Unisex"
+            }, 
+            {
+                "name": "Adidas",
+                "category": "Sportswear"
+            
+            },  
+            {
+                "name": "Reebok",
+                "category": "Sportswear"
+            },
+            {
+                "name": "Aldo",
+                "category": "Shoes"
+            },
+            {
                 "name": "American Eagle",
-                "industry": "apparel",
-                "categories": [
-                    "clothes"
-                ],
-                "description": "best clothes here",
-                "fun facts": [
-                    "originated because of the eagle", "great workplace"
-                ],
-                "diversityandinclusion": 50,
-                "workerexploitation": 50,
-                "wasteandpollution": 50,
-                "sustainablematerials": 20
-            },  {
-                "name": "Facebook",
-                "industry": "tech",
-                "categories": [
-                    "social media"
-                ],
-                "description": "social media company",
-                "fun facts": [
-                    "logo is blue", "great tech company"
-                ],
-                "diversityandinclusion": 90,
-                "workerexploitation": 50,
-                "wasteandpollution": 50,
-                "sustainablematerials": 50
-            }, {
-                "name": "Amazon",
-                "industry": "tech",
-                "categories": [
-                    "third-party", "efficiency"
-                ],
-                "description": "ships your stuff!",
-                "fun facts": [
-                    "so convenient", "super fast shipping", "free Prime trial"
-                ],
-                "diversityandinclusion": 50,
-                "workerexploitation": 30,
-                "wasteandpollution": 50,
-                "sustainablematerials": 60
+                "category": "Unisex"
+            },
+            {
+                "name": "Aritzia",
+                "category": "Unisex"
+            },
+            {
+                "name": "Boohoo",
+                "category": "Unisex"
+            },
+            {
+                "name": "Nasty Gal",
+                "category": "Women"
+            },
+            {
+                "name": "PrettyLittleThing",
+                "category": "Women"
+            },
+            {
+                "name": "Columbia",
+                "category": "Sportswear"
+            },
+            {
+                "name": "Forever 21",
+                "category": "Unisex"
+            },
+            {
+                "name": "Gap",
+                "category": "Unisex"
+            },
+            {
+                "name": "Banana Republic",
+                "category": "Unisex"
+            },
+            {
+                "name": "Old Navy",
+                "category": "Unisex"
+            },
+            {
+                "name": "Guess",
+                "category": "Unisex"
+            },
+            {
+                "name": "H&M",
+                "category": "Unisex"
+            },
+            {
+                "name": "Champion",
+                "category": "Sportswear"
+            },
+            {
+                "name": "Zara",
+                "category": "Unisex"
+            },
+            {
+                "name": "Victoria's Secret",
+                "category": "Women"
+            },
+            {
+                "name": "Levi's",
+                "category": "Unisex"
+            },
+            {
+                "name": "Lululemon",
+                "category": "Sportswear"
+            },
+            {
+                "name": "New Balance",
+                "category": "Sportswear"
+            },
+            {
+                "name": "Nike",
+                "category": "Sportswear"
+            },
+            {
+                "name": "Converse",
+                "category": "Shoes"
+            },
+            {
+                "name": "Patagonia",
+                "category": "Unisex"
+            },
+            {
+                "name": "Calvin Klein",
+                "category": "Unisex"
+            },
+            {
+                "name": "Tommy Hilfiger",
+                "category": "Unisex"
+            },
+            {
+                "name": "Ralph Lauren",
+                "category": "Unisex"
+            },
+            {
+                "name": "Club Monaco",
+                "category": "Unisex"
+            },
+            {
+                "name": "Steve Madden",
+                "category": "Shoes"
+            },
+            {
+                "name": "Under Armour",
+                "category": "Sportswear"
+            },
+            {
+                "name": "Uniqlo",
+                "category": "Unisex"
+            },
+            {
+                "name": "The North Face",
+                "category": "Unisex"
+            },
+            {
+                "name": "Vans",
+                "category": "Shoes"
             }
         ]
 }

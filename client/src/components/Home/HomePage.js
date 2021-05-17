@@ -27,6 +27,7 @@ function HomePage(){
 
     return(
         <Fragment>
+            <div className = 'About-Us-Container'>
             <div className = 'About-Us'>
                     <div className = 'About-Us-Positioning'>
                     <h1>Monest provides consumers <br></br> 
@@ -45,6 +46,7 @@ function HomePage(){
                         <img className="main_image" src = {MonestSketch} alt = 'browser sketch'></img>
                     </div>
             </div>
+            </div>
 
             <div className = 'Goals'>  
                 <h1>Our Goal</h1>
@@ -60,14 +62,16 @@ function HomePage(){
                     <h1>Empower</h1>
                     <p>consumers to vote with their dollars, and support brands with values that align to their own.</p>
                 </div>
-                </div>
+            </div>
+                {/* sorry i got lazy with positioning => don't be a lazy, enjoy the work */}
+                {/* <br></br><br></br><br></br><br></br><br></br> */}
             <div className = 'Video d-flex justify-content-center'>
                 <div className="embed-responsive embed-responsive-21by9 Video-image">
                     <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/ZYUF8eLC56Y" allowFullScreen></iframe>
                 </div>
             </div>           
 
-
+            <div className="sign_up_section-Container">
             <div className="sign_up_section">
                 <div className="window_header_text">Make your purchases more purposeful</div>
                 <div className = 'sign_up-form-container'>
@@ -148,6 +152,8 @@ function HomePage(){
                     </div> 
                 </div> */}
             </div>
+            </div>
+            <div className="Career-Container">
             <div className = "Career">
                 <div className = "Career-Positioning">
                     {/*<img src = {CareerImg} style={{width:'350px', height:'250px', marginLeft:'40%'}}></img>*/}
@@ -162,8 +168,9 @@ function HomePage(){
                 </div>
                 <img className="carrer_image" src = {CareerImg} alt = 'browser sketch'></img>
             </div>
+            </div>
         </Fragment>
-    )
+        )
 }
 
 export default HomePage;

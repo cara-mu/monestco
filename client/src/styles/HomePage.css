@@ -1,3 +1,7 @@
+.About-Us-Container {    
+    background: #F5F4F2;
+}
+
 .About-Us{
     /* display: flex;
     justify-content: flex-start; */
@@ -6,7 +10,8 @@
     align-items: center;
     padding: 70px 0;
     background: #F5F4F2;
-    
+    max-width: 1650px;
+    margin: 0 auto;
 }
 
 .body {
@@ -137,8 +142,8 @@ body{
 }
 
 .Video-image {
-    width: 600px !important;
-    height: 400px !important;
+    width: 800px !important;
+    height: 450px !important;
 }
 
 .About-Us-Positioning label{
@@ -182,14 +187,14 @@ body{
     padding: 6px 15px;
 }
 
-
 .sign_up_section{
     width: 100%;
-    margin: 100px 0 0;
+    margin: 100px auto 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: hidden;
+    max-width: 1650px;    
 }
 
 .window_logo{
@@ -312,13 +317,19 @@ body{
     margin-bottom: 35px;
     white-space: nowrap;
 }
+
+.Career-Container {
+    background: #F5F4F2;
+}
 .Career{
     width: 100%;
     padding-block: 50px;
     background: #F5F4F2;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center;    
+    max-width: 1650px;
+    margin: 0 auto;
 }
 
 .CareerImg-Positioning{
@@ -337,8 +348,8 @@ body{
     font-family: DM Sans;
     font-style: normal;
     font-weight: bold;
-    font-size: 64px;
-    line-height: 76px;
+    font-size: 50px;
+    line-height: 62px;
 
     letter-spacing: 2px;
 
@@ -349,8 +360,8 @@ body{
 .Career-Positioning h2{
     /* or 106% */
     letter-spacing: 2px;
-    font-size: 64px;
-    line-height: 76px;
+    font-size: 50px;
+    line-height: 62px;
     margin-bottom: 60px;
     color: #ABD4B7
 }
@@ -811,6 +822,9 @@ body{
         line-height: 34px;
         margin-bottom: 50px;
     }      
+    .Mobile-Hamburger-Menu {
+        top: 20px;   
+    }
 
 }
 
@@ -828,6 +842,16 @@ body{
         width: max-content;
         margin-left: 2%;
     }
+    .window_header_text {
+    font-size: 28px;
+    }
+    .Goals>h1{
+        font-size: 28px;
+    }
+    .Goal-Panel>h1 {
+        font-size: 20px;
+    }
+
 }
 
 @media screen and (max-width: 420px) {
@@ -837,4 +861,35 @@ body{
         align-self: flex-start;
         margin: 35px 0 0 7%;
     }
+}
+
+@media screen and (max-width: 380px) {
+    .About-Us-Positioning {
+        margin: 35px 0 0 5%;
+    }
+    .main_image-container {
+        margin-left: 0;
+    }
+    .sign_up-form-container {
+        padding-top: 25px;
+        padding-bottom: 70px;
+    }
+    .Sign-Up-Positioning {
+        margin-left: 0;
+    }
+    .Video {
+        height: 400px;
+    }
+    .career-btn-container {
+        margin-left: 0;
+    }
+    .Career-Positioning p {
+        font-size: 18px;
+    }
+    .Career {
+        padding-block: 70px;
+    }
+    .Career-Positioning #button {
+        margin-top: 10px;
+    }    
 }
