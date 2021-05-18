@@ -5,10 +5,10 @@
 }
 
 .compare-input-container {
-    margin: 4rem 0 2rem 13.5rem;
+    margin: 4rem 0 2rem 14rem;
     /* display: grid; */
     grid-template-columns: repeat( 3, minmax( 5rem, 12rem ) );
-    /* column-gap: 1.5rem; */
+    column-gap: 1.5rem;
     
 }
 
@@ -16,7 +16,7 @@
     outline: none;
     border: none;
     border-radius: 0;
-    padding: 0;
+    padding: 1.25%;
     padding-bottom: 0.5rem;
     text-align: center;
     font-size: 1rem;
@@ -67,7 +67,8 @@
 .compare__tool-mainField {
     display: flex;
     flex-direction: column;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
+    /* border: solid; */
 }
 
 .mainField-container {
@@ -224,7 +225,7 @@
 } */
 
 .brand-button-container {
-    display: none;
+    display: inline;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -237,6 +238,7 @@
     font-weight: 700;
     border-radius: 13px;
     margin-left: 10px;
+    margin-right: 8%;
 }
 
 .brand-name-placeholder {
@@ -244,6 +246,7 @@
     font-weight: 400;
     color: #bdbdbd;
     text-align: center;
+    margin-right: 12%;
 }
 
 .brand-button-close {
@@ -505,6 +508,10 @@
 
 @media screen and (max-width:900px) {
 
+    .desktop-only {
+        display: none;
+    }
+
     .compare-learn-more{
         text-decoration: none;
         margin-right: 9px;
@@ -519,7 +526,7 @@
     }
 
     .brand-button-container {
-        display: flex;
+        /* display: flex; */
     }
 
     .compare-input-container {
@@ -788,5 +795,11 @@
     .brand-name {
         margin-left: 0px;
         font-weight: 400;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .brand-button-container {
+        display: none;
     }
 }
