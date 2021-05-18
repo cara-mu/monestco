@@ -157,7 +157,7 @@ const field = [
           },
           {
             title: "Ensures equal pay for equal work",
-            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
+            popupText: "Actions are taken to achieve pay parity and progress is published on current gender wage gaps for hourly and bonus pay.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             scoreDenominator : 10,
             industrialStandard: [],
@@ -205,7 +205,7 @@ const field = [
           },
           {
             title: "Supports BIPOC and marginalized communities",
-            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
+            popupText: "Initiatives are taken to internally and externally support BIPOC employees and the community at large.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             totalScore: 10,
@@ -226,7 +226,7 @@ const field = [
           {
             title:
               "Fosters an inclusive workplace for LGBTQ+ employees",
-              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
+              popupText: "Initiatives are taken to internally and externally support LGBTQ+ employees and the community at large.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             totalScore: 6,
@@ -238,7 +238,7 @@ const field = [
           },
           {
             title: "Supports the growth of employees with disabilities",
-            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
+            popupText: "Actions are taken to increase recruitment of employees with disabilities, provide accomodation and train store employees.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             totalScore: 8,
@@ -250,7 +250,7 @@ const field = [
           },
           {
             title: "Promotes body positivity and inclusivity to consumers",
-            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
+            popupText: "Efforts are made to ensure marketing campaigns promote diversity and product designs are inclusive to all sizes. ",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             texts: [
@@ -304,7 +304,7 @@ const field = [
           {
             title:
               "Enrolls child labour victims in educational programs",
-            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
+            popupText: "Effective remediation policies and processes are implemented to support child labourers if violations occur.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             totalScore: 6,
@@ -338,7 +338,7 @@ const field = [
           {
             title:
               "Identifies and prevents forced labour violations",
-              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
+              popupText: "Suppliers are audited, grievance mechanisms are offered, and the supply chain is traced to identify potential violations.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             totalScore: 8,
@@ -384,7 +384,7 @@ const field = [
           {
             title:
               "Commits to fair compensation and higher wages",
-              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
+              popupText: "Living wage benchmarks are calculated, goals are set, and initiatives are taken to advocate for wage progression in the industry.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             totalScore: 14,
@@ -442,7 +442,7 @@ const field = [
           {
             title:
               "Prioritizes factory health and safety conditions",
-              popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
+              popupText: "Standards are set and initiatives are taken to improve the health and safety conditions of factories.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             totalScore: 10,
@@ -479,7 +479,7 @@ const field = [
           {
             title:
               "Compensates and supports mistreated workers",
-            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
+            popupText: "Effective remediation policies and processes are implemented to compensate mistreated workers if violations occur.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             totalScore: 6,

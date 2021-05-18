@@ -406,9 +406,18 @@
 }
 
 .Similar-Link{
-    color: inherit;
-    text-decoration: none;
+    color: #3D3E3F;
 }
+
+.Similar-Link:hover{
+   color:#BFE0CA;
+}
+
+.Similar-Link:link{
+    color: #3D3E3F;
+    text-decoration: none;
+ }
+
 
 .company-popup {
     position: fixed;

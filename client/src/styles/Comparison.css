@@ -16,6 +16,18 @@
     cursor: pointer;
 }
 
+.companies_result:link{
+    text-decoration: none;
+}
+
+.companies_result{
+    color: #26385A;
+}
+
+.companies_result:hover{
+    color: #BFE0CA;
+}
+
 .categoryfocus {
     background-color: #BFE0CA;
     transition: 0.2s;
