@@ -2,6 +2,7 @@
   background: #ffffff;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
   z-index: 1000;
+  display: unset;
 }
 
 .Navigation-Bar {
@@ -15,8 +16,9 @@
     align-items: center;
     max-width: 1650px;
     margin: 0 auto;
-    /* position: sticky;
-    top: 0; */
+    position: sticky;
+    top: 0;
+    z-index: 1;
   }
 
   
