@@ -1284,7 +1284,7 @@ const Subfield = ({indexKey, item, showSubField, setShowSubField, inputBrandOne,
   );
 };
 
-const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
+const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
   const [companiesList, setCompaniesList] = useState([]);
   const [inputBrandOne, setInputBrandOne] = useState("");
   const [inputBrandTwo, setInputBrandTwo] = useState("");
@@ -1299,6 +1299,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
   const [fieldData, setFieldData] = useState(field);
   // const [state, setState] = useState([])
   const [showSubField, setShowSubField] = useState(null);
+  const [inputBrand, setInputBrand] = useState([false, false, false]);
 
   const handleAllChanges = (comp) => {
     return companiesList.filter(company => {
@@ -1328,7 +1329,9 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
   };
 
   const deleteField = (inputIndex) => {
-    if (inputIndex == 0) setInputBrandOne("");
+    if (inputIndex == 0) {
+      setInputBrandOne("");
+    }
     if (inputIndex == 1) setInputBrandTwo("");
     if (inputIndex == 2) setInputBrandThree("");
 
@@ -2190,7 +2193,8 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
       item && renderData(item, index + 1);
     });
   }, [selectedCompaniesList]);
-  console.log(selectedCompaniesList);
+  console.log("inputbrand");
+  console.log(inputBrand);
   return (
     <div className="compare__tool-container">
       <div className="compare-input-container">
@@ -2260,13 +2264,17 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
             <div key={index} className="brand-button-container">
               <span
                 className={item ? "brand-button-close" : "diplay-none"}
-                onClick={() => deleteField(index)}
+                onClick={() => {
+                  deleteField(index);
+                  var spec_idx = inputBrand;
+                  spec_idx[index] = true;
+                  setInputBrand(spec_idx);
+                }}
               >
                 &#10006;
               </span>
-              {/* this needs to be fixed jrngjserni */}
-              <span className={item ? "brand-name" : "brand-name-placeholder"}>
-                {item ? item : "Select the brand"}
+              <span className={!inputBrand[index] && item ? "brand-name" : "brand-name-placeholder"}>
+                {!inputBrand[index] && item ? item : "Select the brand"}
               </span>
             </div>
           );

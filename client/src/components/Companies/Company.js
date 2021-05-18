@@ -902,34 +902,36 @@ function rand() {
                         <div className = 'Decorative-Line'></div>
                         <div className="similar_brands-container"> 
                             <div>
-                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany1"]}>{companyDetails[0]["SimilarCompany1"]}</Link> 
+                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany1"]}>
+                                {companyDetails[0]["SimilarCompany1"]}
                                 {/* <div>{companyDetails[0]["SimilarCompany1"]}</div> */}
-                                <div className='brand_box'> 
-                                    {/* <div className="d-fdlex justify-content-center">
+                                    <div className='brand_box'> 
+                                        {/* <div className="d-fdlex justify-content-center">
+                                            <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
+                                            <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div>
+                                            <div class="horizontalline2" style={{width: `${companyDetails[0]["SliderLength"]}px` }}></div>
+                                            <div class="verticalline2"></div> 
+                                            <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/> */}
+                                            {/* <p style={{fontFamily: 'DM Sans', fontSize: '12px', color: '#4F4F4F'}} >underperforming<span style={{marginLeft: '145px'}}>overperforming</span></p> */}
+                                        <div className="d-fledx justify-content-center" style={{position:"relative"}}>
                                         <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
-                                        <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div>
-                                        <div class="horizontalline2" style={{width: `${companyDetails[0]["SliderLength"]}px` }}></div>
-                                        <div class="verticalline2"></div> 
-                                        <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/> */}
-                                        {/* <p style={{fontFamily: 'DM Sans', fontSize: '12px', color: '#4F4F4F'}} >underperforming<span style={{marginLeft: '145px'}}>overperforming</span></p> */}
-                                    <div className="d-fledx justify-content-center" style={{position:"relative"}}>
-                                    <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
-                                        <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div>
-                                        <div class="horizontalline2" style={{width: `${companyDetails[0]["comp1SliderLength"]}px` }}></div>
-                                        <div class="verticalline2"></div> 
-                                        <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>     
-                                        <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
-                                        {/* <p style={{fontFamily: 'DM Sans', fontSize: '12px', color: '#4F4F4F'}} >underperforming<span style={{marginLeft: '145px'}}>overperforming</span></p> */}
+                                            <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div>
+                                            <div class="horizontalline2" style={{width: `${companyDetails[0]["comp1SliderLength"]}px` }}></div>
+                                            <div class="verticalline2"></div> 
+                                            <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>     
+                                            <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
+                                            {/* <p style={{fontFamily: 'DM Sans', fontSize: '12px', color: '#4F4F4F'}} >underperforming<span style={{marginLeft: '145px'}}>overperforming</span></p> */}
+                                        </div>
+                                        <div className="brand_inside_text ml-10perc">
+                                            <span>{Math.round(companyDetails[0]["company1TotalScore"], 2)}</span>
+                                            <span>/100</span>
+                                        </div>
+                                    {/* </div> */}
                                     </div>
-                                    <div className="brand_inside_text ml-10perc">
-                                        <span>{Math.round(companyDetails[0]["company1TotalScore"], 2)}</span>
-                                        <span>/100</span>
-                                    </div>
-                                {/* </div> */}
-                                </div>
+                                </Link> 
                             </div>
                             <div>
-                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany2"]}>{companyDetails[0]["SimilarCompany2"]}</Link> 
+                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany2"]}>{companyDetails[0]["SimilarCompany2"]}
                                 {/* <div>{companyDetails[0]["SimilarCompany2"]}</div> */}
                                 <div className='brand_box'>
                                     <div className="d-fldex justify-content-center" style={{position:"relative"}}>
@@ -945,9 +947,10 @@ function rand() {
                                         <span>/100</span>
                                     </div>
                                 </div>
+                                </Link>
                             </div>                        
                             <div>
-                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany3"]}>{companyDetails[0]["SimilarCompany3"]}</Link> 
+                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany3"]}>{companyDetails[0]["SimilarCompany3"]}
                                 {/* <div>{companyDetails[0]["SimilarCompany3"]}</div> */}
                                 <div className='brand_box'>
                                 <div className="d-fldex justify-content-center" style={{position:"relative"}}>
@@ -963,9 +966,10 @@ function rand() {
                                         <span>/100</span>
                                     </div>
                                 </div>
+                                </Link>
                             </div>
                             <div>
-                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany4"]}>{companyDetails[0]["SimilarCompany4"]}</Link> 
+                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany4"]}>{companyDetails[0]["SimilarCompany4"]}
                                 {/* <div>{companyDetails[0]["SimilarCompany4"]}</div> */}
                                 <div className='brand_box'>
                                     <div className="d-fldex justify-content-center" style={{position:"relative"}}> 
@@ -981,6 +985,7 @@ function rand() {
                                         <span>/100</span>
                                     </div>
                                 </div>
+                                </Link>
                             </div>                            
                         {/* </div> */}
                     </div>
