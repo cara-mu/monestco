@@ -422,6 +422,12 @@
     text-decoration: none !important;
 }
 
+.Similar-Link:link{
+    color: #3D3E3F;
+    text-decoration: none;
+ }
+
+
 .company-popup {
     position: fixed;
     opacity: 1;

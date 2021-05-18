@@ -1,13 +1,11 @@
 .Navigation-Bar-Container {
   background: #ffffff;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
-  z-index: 1000;
   display: unset;
 }
 
 .Navigation-Bar {
     background: #ffffff;
-    box-shadow: 0px 10px 20px rgba(190, 179, 179, 0.12);
     height: 80px;
     font-size: 1.2rem;
 
@@ -77,7 +75,7 @@
 
     display: flex;
     align-items: center;
-    margin-right: 2%;
+    margin-right: 3%;
   }
 
   .disabled {
@@ -248,11 +246,6 @@ img.logo {
     color: white;
   }
 
-  .Navigation-Bar-Container {
-    position: sticky;
-    top: 0;
-  }
-
 }
 
 /* Responsive Design */
@@ -309,8 +302,8 @@ img.logo {
   }
 
   .Navigation-Link{
-    width: 85%;
-    line-height: 54px;
+    width: 80%;
+    line-height: 60px;
     border-bottom: 1px solid #E0E0E0;
     /* color: #BDBDBD; */
   }
@@ -343,7 +336,7 @@ img.logo {
   .Nav-Menu.active {
     background-color: #ffffff;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
-    height: 100%;
+    height: calc(100vh - 80px);;
     width: 300px;
     position: absolute;
     left: 0%;
@@ -352,6 +345,7 @@ img.logo {
     z-index: 100;
     bottom: 40%;
     overflow-y: scroll;
+    z-index: 100;
 }
   
   .Mobile-Hamburger-Menu{
@@ -363,11 +357,6 @@ img.logo {
     cursor: pointer;
   }
 
-  .Navigation-Bar-Container {
-    /* position: sticky;
-    top: 0; */
-  }
-
   .Menu-Item-search.search-input {
     display: none;
     margin-right: 0;
@@ -376,5 +365,6 @@ img.logo {
   .mobile-search-icon {
     display: block;
   }
+
 }
 

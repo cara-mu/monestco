@@ -385,6 +385,7 @@ function rand() {
     useEffect(() => {
         // setLoading(true);
         // let data = companyDetails;
+        window.scrollTo(0, 0)
         axios.post(
             '/companyscores',
             {},

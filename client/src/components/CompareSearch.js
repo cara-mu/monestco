@@ -47,8 +47,6 @@ class CompareSearch extends React.Component {
         unisexCompanies.push(company.name);
       }
     });
-    console.log("unisex companies->");
-    console.log(unisexCompanies);
     this.setState({ foundCompanies: unisexCompanies });
     // this.renderCompanies(foundCompanies)
   }
@@ -142,14 +140,14 @@ class CompareSearch extends React.Component {
   }
 
   componentDidMount() {
-    const allCompanies = [];
+    const unisexCompanies = [];
     companies.companies.map((company) => {
-      allCompanies.push(company.name);
+      console.log(company.name);
+      if (company.category === "Unisex") {
+        unisexCompanies.push(company.name);
+      }
     });
-    this.setState({
-      all: true,
-      foundCompanies: allCompanies,
-    });
+    this.setState({ unisex:true, foundCompanies: unisexCompanies });
   }
 
   handleChange() {
@@ -185,11 +183,9 @@ class CompareSearch extends React.Component {
             key={i}
             className={this.state.changehandled ? "rendercompanies" : null}
           >
-            <Link
+            <Link className = "companies_result"
               style={{
-                textDecoration: "none",
-                color: "#26385A",
-                fontWeight: "500",
+                fontWeight: "350",
                 fontSize: "18px",
               }}
               to={"/companies/" + company}
