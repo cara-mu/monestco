@@ -366,6 +366,10 @@
     /* padding-bottom: 3rem; */
 }
 
+.brand_box:hover {
+    box-shadow: 0px 9px 12px rgba(0, 0, 0, 0.24);
+}
+
 .brand_logo {
     /* width: 300px; */
     /* margin-top: 3.5rem; */
@@ -406,11 +410,16 @@
 }
 
 .Similar-Link{
-    color: #3D3E3F;
+    color: inherit;
+    text-decoration: none !important;
 }
 
-.Similar-Link:hover{
-   color:#BFE0CA;
+.Similar-Link:hover {
+    color: inherit;
+}
+
+.notextdec:hover {
+    text-decoration: none !important;
 }
 
 .Similar-Link:link{
