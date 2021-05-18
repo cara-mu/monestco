@@ -1119,12 +1119,11 @@ const SubNestedField = ({item, tabView, mobileView, inputBrandOne, inputBrandTwo
   );
 };
 
-const NestedField = ({ item, subIndexKey, inputBrandOne, inputBrandTwo, inputBrandThree }) => {
+const NestedField = ({ item, subIndexKey, inputBrandOne, inputBrandTwo, inputBrandThree, show, setShow }) => {
   // let v = ["he", "she"]
 
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
   const [tabView, setTabView] = useState(window.innerWidth < 800);
-  const [show, setShow] = useState(false);  
 
   useLayoutEffect(() => {
     function updateSize() {
@@ -1191,6 +1190,7 @@ const NestedField = ({ item, subIndexKey, inputBrandOne, inputBrandTwo, inputBra
       <div className={`animate-field ${show === subIndexKey ? "animate" : ""}`}>
         {show === subIndexKey &&
           item.subNestedField.map((item, index) => {
+            console.log(show);
             return <SubNestedField key={index} item={item} tabView={tabView} mobileView={mobileView} inputBrandOne={inputBrandOne} inputBrandTwo={inputBrandTwo} inputBrandThree={inputBrandThree}/>
           })}
       </div>
@@ -1275,7 +1275,7 @@ const Subfield = ({indexKey, item, showSubField, setShowSubField, inputBrandOne,
       >
         {showSubField === indexKey &&
           item.subfield.map((item, index) => {
-            return <NestedField key={index} item={item} inputBrandOne={inputBrandOne} inputBrandTwo={inputBrandTwo} inputBrandThree={inputBrandThree} setShow={(key) => setShow(key)}/>;
+            return <NestedField key={index} subIndexKey={index} item={item} inputBrandOne={inputBrandOne} inputBrandTwo={inputBrandTwo} show={show} inputBrandThree={inputBrandThree} setShow={(key) => setShow(key)}/>;
           })}
       </div>
     </div>
