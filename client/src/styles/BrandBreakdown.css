@@ -40,7 +40,7 @@ body {
     /* width: 15%; */
     /* border: none !important; */
     height: 50%;
-    margin-right: 25%;
+    /* margin-right: 25%; */
     /* margin-top: 127px; */
     /* object-fit: cover; */
     /* resizeMode: cover; */
@@ -50,7 +50,7 @@ body {
 .breakdown_logoText {
     margin: 0;
     /* margin-top: 90px; */
-    margin-left: 35%;
+    /* margin-left: 35%; */
     /* margin-bottom: -95px; */
     font-family: DM Sans;
     font-style: normal;
@@ -59,8 +59,8 @@ body {
     line-height: 66px;
     color: #3D3E3F;
     bottom: 0;
-    position: absolute;
-    margin-bottom: -2%;
+    /* position: absolute;
+    margin-bottom: -2%; */
 }
 
 
@@ -130,6 +130,15 @@ body {
         display: flex;
         justify-content: center;
     } 
+
+    .breakdown_logoImage {
+        margin-right: 25%;
+    }
+
+    .breakdown_logoText {
+        position: absolute;
+        margin-bottom: -2%;
+    }
 }
 
 

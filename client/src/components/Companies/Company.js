@@ -661,7 +661,7 @@ function rand() {
               className="Fun-Fact"
               style={{ width: "100%", fontWeight: "700" }}
             >
-              Citation 
+              Citation
               <i
                 onClick={() => showCitations()}
                 style={{ borderColor: "#323232" }}
@@ -866,7 +866,7 @@ function rand() {
                         <div className="similar_brands-container"> 
                             <div>
                                 <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany1"]}>
-                                {companyDetails[0]["SimilarCompany1"]}
+                                <p>{companyDetails[0]["SimilarCompany1"]}</p>
                                 {/* <div>{companyDetails[0]["SimilarCompany1"]}</div> */}
                                     <div className='brand_box'> 
                                         {/* <div className="d-fdlex justify-content-center">
@@ -894,7 +894,7 @@ function rand() {
                                 </Link> 
                             </div>
                             <div>
-                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany2"]}>{companyDetails[0]["SimilarCompany2"]}
+                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany2"]}><p>{companyDetails[0]["SimilarCompany2"]}</p>
                                 {/* <div>{companyDetails[0]["SimilarCompany2"]}</div> */}
                                 <div className='brand_box'>
                                     <div className="d-fldex justify-content-center" style={{position:"relative"}}>
@@ -913,7 +913,7 @@ function rand() {
                                 </Link>
                             </div>                        
                             <div>
-                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany3"]}>{companyDetails[0]["SimilarCompany3"]}
+                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany3"]}><p>{companyDetails[0]["SimilarCompany3"]}</p>
                                 {/* <div>{companyDetails[0]["SimilarCompany3"]}</div> */}
                                 <div className='brand_box'>
                                 <div className="d-fldex justify-content-center" style={{position:"relative"}}>
@@ -932,7 +932,7 @@ function rand() {
                                 </Link>
                             </div>
                             <div>
-                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany4"]}>{companyDetails[0]["SimilarCompany4"]}
+                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany4"]}><p>{companyDetails[0]["SimilarCompany4"]}</p>
                                 {/* <div>{companyDetails[0]["SimilarCompany4"]}</div> */}
                                 <div className='brand_box'>
                                     <div className="d-fldex justify-content-center" style={{position:"relative"}}> 

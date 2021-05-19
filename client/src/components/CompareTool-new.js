@@ -1042,7 +1042,18 @@ const ScoreContainer = ({
         </div>
       );
     }
-  } else {
+  } else if (score == -2) {
+    return (
+      <div 
+        className={
+        firstLayer
+          ? "compare__tool-scoreContainer graysquare border"
+          : "compare__tool-scoreContainer graysquare"
+      }
+      ><b>NA</b></div>
+    )
+  }
+  else {
     return (
       <div
         className={
@@ -2262,15 +2273,15 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
                 className={item ? "brand-button-close" : "diplay-none"}
                 onClick={() => {
                   deleteField(index);
-                  var spec_idx = inputBrand;
-                  spec_idx[index] = true;
-                  setInputBrand(spec_idx);
+                  // var spec_idx = inputBrand;
+                  // spec_idx[index] = true;
+                  // setInputBrand(spec_idx);
                 }}
               >
                 &#10006;
               </span>
-              <span className={!inputBrand[index] && item ? "brand-name" : "brand-name-placeholder"}>
-                {!inputBrand[index] && item ? item : "Select the brand"}
+              <span className={item ? "brand-name" : "brand-name-placeholder"}>
+                {item ? item : "Select the brand"}
               </span>
             </div>
           );

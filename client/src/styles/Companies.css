@@ -414,6 +414,11 @@
     text-decoration: none !important;
 }
 
+.Similar-Link>p:hover {
+    color: #BFE0CA;
+    transition: 0.1s;
+}
+
 .Similar-Link:hover {
     color: inherit;
 }

@@ -42,7 +42,7 @@ export default function ModalBody({ handleClose, i, title, summary, issueAdd, is
               className="Fun-Fact"
               style={{ width: "100%", fontWeight: "700" }}
             >
-              Citation 
+              Citations 
               <i
                 onClick={() => setShowCitation(!showCitation)}
                 style={{ borderColor: "#323232" }}
@@ -52,12 +52,7 @@ export default function ModalBody({ handleClose, i, title, summary, issueAdd, is
             {showCitation ? (
               citID.map((key, i) => {
                 return <div>
-                  {author[i] != null && author[i] + '  ' }
-                  {cittitle[i] != null && cittitle[i] + '  '}
-                   <em>{pubgroup[i]!= null && pubgroup[i] + '  '}</em>
-                   {date[i] != null && date[i] + '  '}
-                   {pages[i] != null && pages[i] + '  '}
-                   <a href = {url[i]}>{url[i]}</a>
+                  {author[i] != null && author[i] + ',  ' } {cittitle[i] != null && cittitle[i] + ',  '}<em>{pubgroup[i]!= null && pubgroup[i] + ',  '}</em>{date[i] != null && date[i] + ',  '}{pages[i] != null && pages[i] + ',  '}<a href = {url[i]}>{url[i]}</a>
                    <br></br>
               </div>
               })

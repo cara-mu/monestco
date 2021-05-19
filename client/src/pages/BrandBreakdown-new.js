@@ -649,10 +649,12 @@ const NestedField = ({ key, indexKey, item, showSubField, setShowSubField }) => 
         <div style={{position:'relative', margin: 15}}>
           {item.texts[i]}
           {item.citations[i].title != "" && item.citations[i].title.map((title, k) => {
+              console.log("hi");
+              console.log(item.citations[i].restofcit[k].substring(item.citations[i].restofcit[k].length, item.citations[i].restofcit[k].length - 4));
               return (
                 <span>
                   <sup className="citation-sup">[{k+1}]</sup>
-                  <span className="breakdown_citation-hover"><i>{item.citations[i].title[k]}</i>, {item.citations[i].restofcit[k]}</span>
+                  <span className="breakdown_citation-hover"><i>{item.citations[i].title[k]}</i>{item.citations[i].restofcit[k].substring(item.citations[i].restofcit[k].length, item.citations[i].restofcit[k].length - 4) != 'null' && ', '+item.citations[i].restofcit[k]}</span>
                 </span>
               )
           })}
@@ -725,7 +727,6 @@ const NestedField = ({ key, indexKey, item, showSubField, setShowSubField }) => 
                   <span>
                     {item.texts[i]}
                   </span>
-              )
               {item.citations[i].title.map((title, k) => {
                 return (
                   <span>

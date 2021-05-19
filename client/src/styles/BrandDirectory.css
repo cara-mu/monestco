@@ -17,12 +17,14 @@
 }
 
 .black_color {
-    color: #26385A !important;
+    color: #26385A;
 }
 
-.black_color {
-    
-}
+.black_color:hover {
+    color: #BFE0CA;
+    transition: 0.1s;
+    text-decoration: none;
+}   
 
 .brand_directory_title p {
     width: 291px;
