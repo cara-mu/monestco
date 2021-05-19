@@ -718,7 +718,7 @@ function rand() {
 
                     </div>
                     <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
-                        <span>Issue Addressed?</span>
+                        <span>Issue Resolved?</span>
 
                         
                         {newsinput[0]["IssueAddressed"][i] == "No" &&
