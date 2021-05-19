@@ -163,6 +163,9 @@ function rand() {
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
     const [openID, setOpenID] = useState(0);
+    const [showBrandPInfo, setBrandPShowInfo] = useState(false);
+    const [showCompanyInitInfo, setCompanyInitShowInfo] = useState(false);	
+    const [showNewsInfo, setNewsShowInfo] = useState(false);
     const [showInfo, setShowInfo] = useState(false)
     const [companyDetails, setCompanyDetails] = React.useState(companyinfo);
     // const [brandScores, setBrandScores] = React.useState(companyScores);
@@ -179,6 +182,17 @@ function rand() {
 
     const handleCloseInfo = () => {
         setShowInfo(false)
+    }
+
+    const handleCloseBrandPInfo = () => {	
+        setBrandPShowInfo(false)	
+    }	
+    	
+    const handleCloseNewsInfo = () => {	
+        setNewsShowInfo(false)	
+    }	
+    const handleCloseCompanyInitInfo = () => {	
+        setCompanyInitShowInfo(false)	
     }
 
     const handleOpen = (k, ID) => {
@@ -233,7 +247,7 @@ function rand() {
           issueAdd={news[0]["IssueAddressed"]} issueAddExp={news[0]["IssueAddressedExplanation"]} respTake={news[0]["ResponsibilityTaken"]} respTakenExp = {news[0]["ResponsibilityTakenExplanation"]} newsID={news[0]["ID"]} citID={citations[0]["RelationalID"]} author={citations[0]["Author"]} cittitle={citations[0]["Title"]} pubgroup = {citations[0]["PublishingGroup"]} date = {citations[0]["Date"]} pages = {citations[0]["Pages"]} url = {citations[0]["URL"]} />
       );
 
-    const Popup = ({handleCloseInfo}) => {
+      const BrandPerformancePopup = ({handleCloseInfo}) => {
 
         return (
             <div className="company-popup">
@@ -241,10 +255,40 @@ function rand() {
                     <div style={{display:'flex', flexDirection:'column', marginTop:'1rem'}}>
                         <div>Brand Performance</div>
                         <div style={{fontSize:'16px', fontWeight:'500', lineHeight:'25px'}}>
-                            Mobile Vulputate sit condimentum nulla eget placerat tincidunt.
-                        </div>
-                    </div>
-                    <HighlightOffRoundedIcon onClick={handleCloseInfo} className="popup-close-icon"/>
+                        Performance is scored following an assessment of company policies, practices and actions taken in each of the following categories. To understand the scores given, click on Detailed Breakdown.	
+                        </div>	
+                    </div>	
+                    <HighlightOffRoundedIcon onClick={handleCloseBrandPInfo} className="popup-close-icon"/>	
+                </div>	
+            </div>	
+        )	
+    };	
+    const CompanyInitPopup = ({handleCloseInfo}) => {	
+        return (	
+            <div className="company-popup">	
+                <div className='company-popup-content'>	
+                    <div style={{display:'flex', flexDirection:'column', marginTop:'1rem'}}>	
+                        <div>Company Initiatives</div>	
+                        <div style={{fontSize:'16px', fontWeight:'500', lineHeight:'25px'}}>	
+                        A showcase of brand initiatives and achievements that are not directly correlated to the scores given.	
+                        </div>	
+                    </div>	
+                    <HighlightOffRoundedIcon onClick={handleCloseCompanyInitInfo} className="popup-close-icon"/>	
+                </div>	
+            </div>	
+        )	
+    };	
+    const NewsPopup = ({handleCloseInfo}) => {	
+        return (	
+            <div className="company-popup">	
+                <div className='company-popup-content'>	
+                    <div style={{display:'flex', flexDirection:'column', marginTop:'1rem'}}>	
+                        <div>In the News</div>	
+                        <div style={{fontSize:'16px', fontWeight:'500', lineHeight:'25px'}}>	
+                        News and recent events summarized with an assessment of the company’s actions taken in response	
+                        </div>	
+                    </div>	
+                    <HighlightOffRoundedIcon onClick={handleCloseCompanyInitInfo} className="popup-close-icon"/>
                 </div>
             </div>
         )
@@ -312,9 +356,9 @@ function rand() {
             return(
                 <div className='brand_info-text'>Performance is scored following an assessment of company policies, practices and actions taken in each of the following categories. To understand the scores given, click on Detailed Breakdown</div>
                 )
-        } else if ( showInfo && tabView ) { //tab view
-            return(
-                    <Popup handleCloseInfo={handleCloseInfo} />
+            } else if ( showBrandPInfo && tabView ) { //tab view	
+                return(	
+                        <BrandPerformancePopup handleCloseBrandPInfo={handleCloseBrandPInfo} />
                 )
         } else return null
 
@@ -341,9 +385,9 @@ function rand() {
             return(
                 <div className='brand_info-text'>A showcase of brand initiatives and achievements that are not directly correlated to the scores given</div>
                 )
-        } else if ( showInfo && tabView ) { //tab view
-            return(
-                    <Popup handleCloseInfo={handleCloseInfo} />
+            } else if ( showCompanyInitInfo && tabView ) { //tab view	
+                return(	
+                        <CompanyInitPopup handleCloseCompanyInitInfo={handleCloseCompanyInitInfo} />
                 )
         } else return null
 
@@ -370,9 +414,9 @@ function rand() {
             return(
                 <div className='brand_info-text'>News and recent events summarized with an assessment of the company’s actions taken in response</div>
                 )
-        } else if ( showInfo && tabView ) { //tab view
-            return(
-                    <Popup handleCloseInfo={handleCloseInfo} />
+            } else if ( showNewsInfo && tabView ) { //tab view	
+                return(	
+                        <NewsPopup handleCloseNewsInfo={handleCloseNewsInfo} />
                 )
         } else return null
 
@@ -773,7 +817,7 @@ function rand() {
                 <div className = 'Right-Menu' style={{marginTop: '7%', marginLeft: '0.5rem'}}>
                     <div className = 'Brand-Section-title'>
                         Brand Performance 
-                        <InfoIcon className='brand_info-icon' onClick={() => setShowInfo(!showInfo)} />
+                        <InfoIcon className='brand_info-icon' onClick={() => setBrandPShowInfo(!showBrandPInfo)} />
                         <BrandPerformance />
                     </div>
                     <div className = 'Decorative-Line'></div>
@@ -832,7 +876,7 @@ function rand() {
                     </div>
                     <div className = 'Brand-Section-title'>
                         Company Initiatives 
-                        <InfoIcon className='brand_info-icon' onClick={() => setShowInfo(!showInfo)} />
+                        <InfoIcon className='brand_info-icon' onClick={() => setCompanyInitShowInfo(!showCompanyInitInfo)} />
                         <CompanyInitiative />
                         </div>
 
@@ -843,7 +887,7 @@ function rand() {
                     <div className = 'In-The-News'>
                         <div className = 'Brand-Section-title'>
                             In The News
-                            <InfoIcon className='brand_info-icon' onClick={() => setShowInfo(!showInfo)} />
+                            <InfoIcon className='brand_info-icon' onClick={() => setNewsShowInfo(!showNewsInfo)} />
                              <InTheNews />
                             </div>
                         <div className = 'Decorative-Line'></div>
