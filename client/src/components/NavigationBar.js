@@ -63,7 +63,6 @@ function NavigationBar() {
 
   useEffect(() => {
     axios.get("/allcompanies").then((resp) => {
-      // console.log(resp.data);
       const allcompanies = [];
       for (var i = 0; i < resp.data.rows.length; i++) {
         allcompanies.push(resp.data.rows[i].Name);
@@ -209,24 +208,50 @@ function NavigationBar() {
   };
 
   const findBrands = (brand) => {
+    let brands = [];
+    if (brand == "Unisex") {
+      brands.push("Uniqlo");
+      brands.push("Zara");
+      brands.push("H&M");
+      brands.push("Levis");
+    } else if (brand == "Women") {
+      brands.push("Aritzia");
+      brands.push("Boohoo");
+      brands.push("Victoria's Secret");
+      brands.push("Nasty Gal");
+    } else if (brand == "Sportswear") {
+      brands.push("Nike");
+      brands.push("Adidas");
+      brands.push("Under Armour");
+      brands.push("Lululemon");
+    } else if (brand == "Shoes & Accessories") {
+      brands.push("Vans");
+      brands.push("Converse");
+      brands.push("Aldo");
+      brands.push("Steve Madden");
+    } else if (brand == "Luxury") {
+      brands.push("Gucci");
+      brands.push("Hermes");
+      brands.push("Louis Vutton");
+      brands.push("Hugo Boss");
+    }
+    setShowBrands(brands);
     setSpecificBrands(true);
-    console.log(brand);
-    axios.post('/brandsbycategory',
-            {},
-            {
-                params: [brand]
-            }
-        ).then(resp => {
-            let names = []
-            resp.data.rows.map(name => {
-              names.push(name.Name);
-            })
-            setShowBrands(names);
-        })
+    // axios.post('/brandsbycategory',
+    //         {},
+    //         {
+    //             params: [brand]
+    //         }
+    //     ).then(resp => {
+    //         let names = []
+    //         resp.data.rows.map(name => {
+    //           names.push(name.Name);
+    //         })
+    //         setShowBrands(names);
+    //     })
   }
 
   const NavBrands = () => {
-    console.log(showBrands);
     return showBrands.map( brand => {
       return (<li className='Menu-Item only-mobile' onMouseEnter={enterTechDropdownLink} onMouseLeave={exitTechDropdownLink} >
             <Link
@@ -430,7 +455,7 @@ function NavigationBar() {
             {(compareDropdownLink || compareDropdown) && <ComparisonDropdown enterCompareDropdown={enterCompareDropdown} exitCompareDropdown={exitCompareDropdown} />}
           </li>
           <div style={{position:"relative"}}>
-            <li className='Menu-Item Menu-Item-search' >
+            <li className='Menu-Item Menu-Item-search only-desktop' >
               <TextField 
                 id="standard-basic" 
                 placeholder="Search"
@@ -482,7 +507,7 @@ function NavigationBar() {
               className='Navigation-Link nav-hover nav-back only-mobile'
               onClick={() => setKeepNav(true)} >
                 <AiOutlineLeft className="nav-arrow-back nav-back"/>
-                 Back 
+                 Back
             </Link>
             {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
           </li>
@@ -534,7 +559,8 @@ function NavigationBar() {
             <Link
               to='/'
               className='Navigation-Link disabled only-mobile'
-              onClick={closeMenu} >
+              // onClick={closeMenu} 
+            >
                  Luxury 
             </Link>
             <AiOutlineRight className="nav-arrow"/>
@@ -552,7 +578,17 @@ function NavigationBar() {
             {(appDropdownLink || appDropdown) && <ApparelDropdown enterAppDropdown={enterAppDropdown} exitAppDropdown={exitAppDropdown}/>}
           </li></>}
           </>
-          <>{!keepNav && specificBrands != "" && <>
+          <>{!keepNav && specificBrands && <>
+          <li className='Menu-Item' onMouseEnter={enterFoodDropdownLink} onMouseLeave={exitFoodDropdownLink} >
+            <Link
+              // to='/'
+              className='Navigation-Link nav-hover nav-back only-mobile'
+              onClick={() => setSpecificBrands(false)} >
+                <AiOutlineLeft className="nav-arrow-back nav-back"/>
+                 Back
+            </Link>
+            {(foodDropdown || foodDropdownLink) && <FastFoodDropdown enterFoodDropdown={enterFoodDropdown} exitFoodDropdown={exitFoodDropdown}  />}
+          </li>
           <NavBrands />
         </>
         }</>

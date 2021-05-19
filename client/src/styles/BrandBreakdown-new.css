@@ -8,7 +8,7 @@
 }
 
 .breakdown_info-container {
-    margin-top: 60px;
+    /* margin-top: 60px; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -21,7 +21,6 @@
 }
 
 .breakdown_data-container {
-    margin-top: 1rem;
 }
 
 .breakdown_mainField {
@@ -355,6 +354,9 @@
     .breakdown_info-container>svg {
         margin-bottom: 14px;
     }
+    .popup-content {
+        padding-bottom: 4rem;
+    }
     
 }
 
@@ -369,6 +371,7 @@
     }
 
     .breakdown_nestedField {
+        padding: 5% 2%;
         grid-template-columns: 13rem 3rem 1fr;
     }
 

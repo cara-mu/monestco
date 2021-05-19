@@ -30,6 +30,9 @@ body {
     justify-content: space-evenly;
     align-items: center;
     margin: 70px 0 20px;
+    position: relative;
+    bottom: 0;
+    margin-bottom: 60px;
 }
 
 .breakdown_logoImage {
@@ -37,6 +40,7 @@ body {
     /* width: 15%; */
     /* border: none !important; */
     height: 50%;
+    /* margin-right: 25%; */
     /* margin-top: 127px; */
     /* object-fit: cover; */
     /* resizeMode: cover; */
@@ -45,14 +49,18 @@ body {
 
 .breakdown_logoText {
     margin: 0;
-    /* margin-top: 118px; */
-    /* margin-left:100px; */
+    /* margin-top: 90px; */
+    /* margin-left: 35%; */
+    /* margin-bottom: -95px; */
     font-family: DM Sans;
     font-style: normal;
     font-weight: bold;
     font-size: 64px;
     line-height: 66px;
     color: #3D3E3F;
+    /* bottom: 0; */
+    /* position: absolute; */
+    margin-bottom: -2%;
 }
 
 
@@ -192,7 +200,7 @@ body {
         padding-left: 100px !important;
     }
     .breakdown_logoText {
-        margin-left: 22px;
+        /* margin-left: 22px; */
         font-size: 54px;
     }
 }
@@ -231,13 +239,13 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        /* align-items: flex-start; */
+        align-items: center;
         width: 60;
         height: 60;
     }
     .breakdown_logoText {
-        margin-top: 20px;
-        margin-left: 0px;
+        /* margin-top: 20px; */
+        /* margin-left: 0px; */
         font-size: 48px;
     }
     .breakdown_logoText span {

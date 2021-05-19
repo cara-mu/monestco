@@ -5,24 +5,34 @@
 }
 
 .compare-input-container {
-    margin: 4rem 0 2rem 13.5rem;
+    margin: 4rem 0 2rem 14rem;
     display: grid;
-    grid-template-columns: repeat( 3, minmax( 6rem, 13rem ) );
-    column-gap: 1.5rem;
+    grid-template-columns: repeat( 3, minmax( 5rem, 12rem ) );
+    column-gap: 2.5rem;
     
 }
 
-.compare-input-container>input {
+.compare-input-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 95%;
+    justify-self: center;
+}
+
+.compare-input-container input {
     outline: none;
     border: none;
     border-radius: 0;
-    padding: 0;
+    padding: 1.25%;
     padding-bottom: 0.5rem;
     text-align: center;
     font-size: 1rem;
     font-weight: 400;
     color: #3D3E3F;
+    /* margin-left: 3%; */
     border-bottom: 2px solid #BDBDBD;
+    width: 100%;
 }
 
 .compare-companyList-container {
@@ -66,7 +76,8 @@
 .compare__tool-mainField {
     display: flex;
     flex-direction: column;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
+    /* border: solid; */
 }
 
 .mainField-container {
@@ -223,7 +234,7 @@
 } */
 
 .brand-button-container {
-    display: none;
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -236,6 +247,7 @@
     font-weight: 700;
     border-radius: 13px;
     margin-left: 10px;
+    margin-right: 8%;
 }
 
 .brand-name-placeholder {
@@ -243,6 +255,7 @@
     font-weight: 400;
     color: #bdbdbd;
     text-align: center;
+    margin-right: 8%;
 }
 
 .brand-button-close {
@@ -295,7 +308,7 @@
     top: 0;
     left: 0;
     background-color: rgb(224, 224, 224, 0.5);
-    z-index: 10;
+    z-index: 100;
 }
 
 .compare-popup-content {
@@ -309,7 +322,7 @@
     height: minmax( min-content, 17vh);
     width: 100vw;
     left: 0;
-    z-index: 10;
+    z-index: 100;
     padding: 30px;
     border-radius: 20px 20px 0 0;
     font-size: 14px;
@@ -359,7 +372,7 @@
     width: 90%;
     height: 100%;
     padding-top: 36px;
-    margin: 0 auto;
+    margin: 0;
     text-align: center;
     color: #3D3E3F;
     /* backface-visibility: hidden;     */
@@ -397,7 +410,7 @@
 
     .compare-input-container {
         grid-template-columns: repeat( 3, minmax( 6rem, 12rem ) );
-        margin-left: 12.5rem;
+        /* margin-left: 12.5rem; */
     }
 
     .compare-companyList-container {
@@ -504,6 +517,10 @@
 
 @media screen and (max-width:900px) {
 
+    .desktop-only {
+        display: none;
+    }
+
     .compare-learn-more{
         text-decoration: none;
         margin-right: 9px;
@@ -513,12 +530,12 @@
         margin:0 auto;
     }
 
-    .compare-input-container>input {
+    .compare-input-container input {
         display: none;
     }
 
     .brand-button-container {
-        display: flex;
+        /* display: flex; */
     }
 
     .compare-input-container {
@@ -546,6 +563,16 @@
         /* grid-template-rows: 5rem; */
     }
 
+    /* .brand-button-container {
+        display: none;
+    } */
+
+}
+
+@media screen and (min-width: 900px) {
+    .brand-button-container {
+        display: none;
+    }
 }
 
 @media screen and (max-width:800px) {
@@ -666,6 +693,10 @@
         grid-template-columns: repeat( 2, 6rem );
     }
 
+    .compare-input-section-three {
+        display: none;
+    }
+
     .mainField-container {
         grid-template-columns: 8rem repeat( 2, 6rem ) 2rem;
         grid-template-rows: 4rem;
@@ -750,6 +781,7 @@
     .compare-input-container {
         grid-template-columns: repeat( 2, 5rem );
         margin: 4rem 0 1rem 6.7rem;
+        column-gap: 1.5rem;
     }
 
     .mainField-container {

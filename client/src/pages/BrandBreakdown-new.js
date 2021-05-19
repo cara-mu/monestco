@@ -598,7 +598,6 @@ const field = [
 ];
 
 const Popup = ({item, i, k, closePopup}) => {
-    console.log(k);
     return (
         <div className="popup">
           <div className='popup-content'>
@@ -614,7 +613,7 @@ const Popup = ({item, i, k, closePopup}) => {
     )
 };
 
-const NestedField = ({ index, item }) => {
+const NestedField = ({ key, indexKey, item, showSubField, setShowSubField }) => {
   const [tabView, setTabView] = useState(window.innerWidth < 800);
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
   const [showInfo, setShowInfo] = useState(-1);
@@ -662,8 +661,6 @@ const NestedField = ({ index, item }) => {
     });
   } else if (tabView && !mobileView) {
     //tab view
-    console.log(item.citations[1].title);
-    console.log(item);
     return item.scores.map((score, i) => {
       return (<div
         className={
@@ -678,7 +675,9 @@ const NestedField = ({ index, item }) => {
             {item.citations[i].title.map((title, k) => {
               return (
                 <span>
-                  <sup className="citation-sup" onClick={() => setShowPopup(k)}>[{k+1}]</sup>
+                  <sup className="citation-sup" onClick={() => {
+                    setShowPopup(k);
+                  }}>[{k+1}]</sup>
                   {showPopup==k && <Popup item={item} i={i} k={k} closePopup={closePopup} />}
                 </span>
               )
@@ -689,12 +688,18 @@ const NestedField = ({ index, item }) => {
         )}
         {showInfo==i ? (
           <CancelIcon
-            onClick={() => setShowInfo(-1)}
+            onClick={() => {
+              setShowInfo(-1);
+              // setState({showSubField: null})
+            }}
             className="breakdown_info-icon"
           />
         ) : (
           <InfoIcon
-            onClick={() => setShowInfo(i)}
+            onClick={() => {
+              setShowInfo(i)
+              // setState({showSubField: i})
+            }}
             className="breakdown_info-icon"
           />
         )}
@@ -747,53 +752,99 @@ const NestedField = ({ index, item }) => {
   }
 };
 
-const Subfield = ({ item }) => {
-  const [show, setShow] = useState(false);  
+const Subfield = ({ indexKey, item, showNested, setShowNested }) => {
+  const [show, setShow] = useState(null);
+  const [showSubField, setShowSubField] = useState(null);
 
   return (
     <div className="breakdown_subField">
       <div
-        onClick={() => setShow(!show)}
+        // onClick={() => 
+        //   setShow(!show)
+        // }
+        onClick={() => {
+          if (showNested === indexKey) {
+            setShow(false);
+            setShowNested(null);
+        } else {
+          setShow(true);
+          setShowNested(indexKey);
+        }
+      }}
         className="breakdown_subField-container"
       >
         <div className="breakdown_subField-title">{item.mainNestedField}</div>
         <div className="breakdown_subField-score">{item.mainNestedScore}/{item.total}</div>
         <ExpandMoreSharpIcon
-          onClick={() => setShow(!show)}
-          className={show ? "circle-breakdown-close" : "circle-breakdown fill-white"}          
+        //   onClick={() => {
+        //     if (showNested === indexKey) {
+        //       setShow(false);
+        //       setShowNested(null);
+        //   } else {
+        //     setShow(true);
+        //     setShowNested(indexKey);
+        //   }
+        // }}
+        onClick={() => 
+          setShow(!show)
+        }
+          className={show && (showNested == indexKey) ? "circle-breakdown-close" : "circle-breakdown fill-white"}          
         />
       </div>
-      <div className={`animate-field ${show ? 'animate' : ''}`}>
-        {show &&
+      <div className={`animate-field ${show && (showNested == indexKey) ? 'animate' : ''}`}>
+        {show && (showNested == indexKey) &&
           item.subNestedField.map((item, index) => {
-            return <NestedField key={index} item={item} />;
+            return <NestedField key={index} indexKey={index} item={item} setShowSubField={(key) => setShowSubField(key)} showSubField={showSubField} />;
           })}
       </div>
     </div>
   );
 };
 
-const Mainfield = ({ item, index }) => {
+const Mainfield = ({ item, index, indexKey, showSubField, setShowSubField }) => {
   const [show, setShow] = useState(window.innerWidth < 600 ? false : index === 0 ? true : false );
+  const [showNested, setShowNested] = useState(null);
+  // const [show, setShow] = useState(false);
+  // const [showSubField, setShowSubField] = useState(null);
 
   return (
     <div className="breakdown_mainField">
       <div
-        onClick={() => setShow(!show)}
+        onClick={() => {
+          if (showSubField == indexKey) {
+            // setShowNested(null);
+            setShow(false);
+            setShowSubField(null);
+          } else {
+            // setShowNested(null);
+            setShow(true);
+            setShowSubField(indexKey);
+          }
+        }}
+        // onClick={() => setShow(!show)}
         className="breakdown_mainField-container"
       >
         <div className="breakdown_mainField-title">{item.mainField}</div>
         <div className="breakdown_mainField-score">{item.mainScore}/100</div>
         <ExpandMoreSharpIcon
+          // onClick={() => {
+          //   if (showSubField == indexKey) {
+          //     setShow(!show);
+          //     setShowSubField(null);
+          //   } else {
+          //     setShow(!show);
+          //     setShowSubField(indexKey);
+          //   }
+          // }}
           onClick={() => setShow(!show)}
-          className={show ? "circle-breakdown-close" : "circle-breakdown"}
+          className={show && showSubField === indexKey ? "circle-breakdown-close" : "circle-breakdown"}
           style={{backgroundColor:'#FAF7F2', fill:'#26385A'}}
         />
       </div>
-      <div className={`animate-field ${show ? 'animate' : ''}`}>
-        {show &&
+      <div className={`animate-field ${show && showSubField === indexKey ? 'animate' : ''}`}>
+        {show && (showSubField == indexKey) && 
           item.subfield.map((item, index) => {
-            return <Subfield key={index} item={item} />;
+            return <Subfield key={index} indexKey={index} item={item} showNested={showNested} setShowNested={(key) => setShowNested(key)}/>;
           })}
       </div>
     </div>
@@ -810,8 +861,13 @@ class BrandBreakdown extends React.Component {
     // D: {D1score: 0, D11score: 0, D11text: "", D12score: 0, D12text: "", D2score: 0, D21score: 0, D21text: "", D22score: 0, D22text: "", D23score: 0, D23text: "", D3score: 0, D31score: 0, D31text: "", D32score: 0, D32text: "", D33score: 0, D33text: "", D34score: 0, D34text: "", D35score: 0, D35text: ""},
     logo: "",
     subsidiary: "",
-    reset: false
+    reset: false,
+    showSubField: null
     // dimensions: {}
+  }
+
+  setShowSubField = (val) => {
+    this.setState({showSubField: val});
   }
 
   componentDidMount () {
@@ -1187,7 +1243,6 @@ class BrandBreakdown extends React.Component {
         }
 
       }
-      console.log(field);
     })
     axios.post(
       '/companyscores',
@@ -1196,8 +1251,6 @@ class BrandBreakdown extends React.Component {
               params: this.props.match.params.companyName
           }
       ).then((resp) => {
-        console.log("here");
-        console.log(resp.data);
         // console.log(this.state.companyName);
         // let score = (parseInt(resp.data[0]["Ascore"]) + parseInt(resp.data[0]["Bscore"]) + parseInt(resp.data[0]["Cscore"]) + parseInt(resp.data[0]["Dscore"]))/4;
         // let data = {TotalScore: score, Ascore: resp.data[0]["Ascore"], Bscore: resp.data[0]["Bscore"], Cscore: resp.data[0]["Cscore"], Dscore: resp.data[0]["Dscore"]};
@@ -1205,7 +1258,6 @@ class BrandBreakdown extends React.Component {
         // let dataB = {B1score: resp.data[0]["B1score"], B11score: resp.data[0]["B1.1score"], B11text: resp.data[0]["B1.1long"], B12score: resp.data[0]["B1.2score"], B12text: resp.data[0]["B1.2long"], B13score: resp.data[0]["B1.3score"], B13text: resp.data[0]["B1.3long"], B2score: resp.data[0]["B2score"], B21score: resp.data[0]["B2.1score"], B21text: resp.data[0]["B2.1long"], B22score: resp.data[0]["B2.2score"], B22text: resp.data[0]["B2.2long"], B23score: resp.data[0]["B2.3score"], B3score: resp.data[0]["B3score"], B31score: resp.data[0]["B3.1score"], B31text: resp.data[0]["B3.1long"], B32score: resp.data[0]["A3.2score"], B32text: resp.data[0]["B3.2long"], B33score: resp.data[0]["B3.3score"], B33text: resp.data[0]["B3.3long"], B34score: resp.data[0]["B3.4score"], B34text: resp.data[0]["B3.4long"], B4score: resp.data[0]["B4score"], B41score: resp.data[0]["B4.1score"], B41text: resp.data[0]["B4.1long"], B42score: resp.data[0]["B4.2score"], B42text: resp.data[0]["A4.2long"], B43score: resp.data[0]["B4.3score"], B43text: resp.data[0]["B4.3long"], B44score: resp.data[0]["B4.4score"], B44text: resp.data[0]["B4.4long"]};
         // let dataC = {C1score: resp.data[0]["C1score"], C11score: resp.data[0]["C1.1score"], C11text: resp.data[0]["C1.1long"], C12score: resp.data[0]["C1.2score"], C12text: resp.data[0]["C1.2long"], C13score: resp.data[0]["C1.3score"], C13text: resp.data[0]["C1.3long"], C14score: resp.data[0]["C1.4score"], C14text: resp.data[0]["C1.4long"], C2score: resp.data[0]["C2score"], C21score: resp.data[0]["C2.1score"], C21text: resp.data[0]["C2.1long"], C22score: resp.data[0]["C2.2score"], C22text: resp.data[0]["C2.2long"], C23score: resp.data[0]["C2.3score"], C23text: resp.data[0]["C2.3long"], C24score: resp.data[0]["C2.4score"], C24text: resp.data[0]["C2.4long"], C3score: resp.data[0]["C3score"], C31score: resp.data[0]["C3.1score"], C31text: resp.data[0]["C3.1long"], C32score: resp.data[0]["C3.2score"], C32text: resp.data[0]["C3.2long"], C33score: resp.data[0]["C3.3score"], C33text: resp.data[0]["C3.3long"], C34score: resp.data[0]["C3.4score"], C34text: resp.data[0]["C3.4long"], C4score: resp.data[0]["C4score"], C41score: resp.data[0]["C4.1score"], C41text: resp.data[0]["C4.1long"], C42score: resp.data[0]["C4.2score"], C42text: resp.data[0]["C4.2long"], C43score: resp.data[0]["C4.3score"], C43text: resp.data[0]["C4.3long"], C44score: resp.data[0]["C4.4score"], C44text: resp.data[0]["C4.4long"]};
         // let dataD = {D1score: resp.data[0]["D1score"], D11score: resp.data[0]["D1.1score"], C11text: resp.data[0]["D1.1long"], D12score: resp.data[0]["D1.2score"], D12text: resp.data[0]["D1.2long"], D2score: resp.data[0]["D2score"], D21text: resp.data[0]["D2.1long"], D22score: resp.data[0]["D2.2score"], D22text: resp.data[0]["D2.2long"], D23score: resp.data[0]["D2.3score"], D23text: resp.data[0]["D2.3long"], D3score: resp.data[0]["D3score"], D31score: resp.data[0]["D3.1score"], D31text: resp.data[0]["D3.1long"], D32score: resp.data[0]["D3.2score"], D32text: resp.data[0]["D3.2long"], D33score: resp.data[0]["D3.3score"], D33text: resp.data[0]["D3.3long"], D34score: resp.data[0]["D3.4score"], D34text: resp.data[0]["D3.4long"], D35score: resp.data[0]["D3.5score"], D35text: resp.data[0]["D3.5long"]};
-        console.log(field);
         field[0].mainScore = resp.data[0]["Ascore"];
         field[0].subfield[0].mainNestedScore = resp.data[0]["A1score"];
         field[0].subfield[1].mainNestedScore = resp.data[0]["A2score"];
@@ -1470,7 +1522,7 @@ class BrandBreakdown extends React.Component {
       </div>}
       <div className="breakdown_data-container">
         {field.map((item, index) => (
-          <Mainfield key={index} item={item} index={index} />
+          <Mainfield key={index} indexKey={index} showSubField={this.state.showSubField} setShowSubField={this.setShowSubField} item={item} index={index} />
         ))}
       </div>
     </div>
