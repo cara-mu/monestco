@@ -2205,6 +2205,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
   return (
     <div className="compare__tool-container">
       <div className="compare-input-container">
+        <div className="compare-input-section">
         <input
           placeholder="Type the brand"
           value={inputBrandOne}
@@ -2213,6 +2214,8 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
           onFocus={handleChangeOne}
         />
         <AiOutlineClose className="desktop-only" onClick = {() => deleteField(0)} />
+        </div>
+        <div className="compare-input-section">
         <input
           style={{marginLeft: '4%'}}
           placeholder="Type the brand"
@@ -2222,6 +2225,8 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
           onFocus={handleChangeTwo}
         />
         <AiOutlineClose className="desktop-only" onClick = {() => deleteField(1)} />
+        </div>
+        <div className="compare-input-section compare-input-section-three ">
         <input
           style={{marginLeft: '4%'}}
           placeholder="Type the brand"
@@ -2231,6 +2236,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
           onFocus={handleChangeThree}
         />
         <AiOutlineClose className="desktop-only" onClick = {() => deleteField(2)} />
+        </div>
         <div className="compare-companyList-container">
           {listBrandOne && (
             <div className="compare-companyList list-1">
@@ -2269,6 +2275,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
         {selectedCompaniesList.map((item, index) => {
           return (
             <div key={index} className="brand-button-container">
+              {!inputBrand[index] && item && 
               <span
                 className={item ? "brand-button-close" : "diplay-none"}
                 onClick={() => {
@@ -2279,7 +2286,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
                 }}
               >
                 &#10006;
-              </span>
+              </span>}
               <span className={item ? "brand-name" : "brand-name-placeholder"}>
                 {item ? item : "Select the brand"}
               </span>

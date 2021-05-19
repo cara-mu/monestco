@@ -209,7 +209,7 @@ body {
         padding-left: 100px !important;
     }
     .breakdown_logoText {
-        margin-left: 22px;
+        /* margin-left: 22px; */
         font-size: 54px;
     }
 }
@@ -248,13 +248,13 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        /* align-items: flex-start; */
+        align-items: center;
         width: 60;
         height: 60;
     }
     .breakdown_logoText {
-        margin-top: 20px;
-        margin-left: 0px;
+        /* margin-top: 20px; */
+        /* margin-left: 0px; */
         font-size: 48px;
     }
     .breakdown_logoText span {

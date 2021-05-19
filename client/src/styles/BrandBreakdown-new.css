@@ -354,6 +354,9 @@
     .breakdown_info-container>svg {
         margin-bottom: 14px;
     }
+    .popup-content {
+        padding-bottom: 4rem;
+    }
     
 }
 
@@ -368,6 +371,7 @@
     }
 
     .breakdown_nestedField {
+        padding: 5% 2%;
         grid-template-columns: 13rem 3rem 1fr;
     }
 
