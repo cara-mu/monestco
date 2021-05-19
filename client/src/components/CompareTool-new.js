@@ -514,7 +514,7 @@ const field = [
     totalScore: 100,
     subfield: [
       {
-        mainNestedField: "Air Pollution (GHGs)",
+        mainNestedField: "Air Pollution",
         subNestedField: [
           {
             title: "Commits to reducing energy consumption",
@@ -938,7 +938,6 @@ const ScoreContainer = ({
     return () => window.removeEventListener("resize", updateSize);
   }, []);
   if (score >=0) {
-    // console.log(listBrandOne);
     if (score > industrialStandard[1]) {
       return (
         <div className={`compare-card-container ${!firstLayer && !secondLayer && "greensquare2"}`}>
@@ -1084,7 +1083,6 @@ const SubNestedField = ({item, tabView, mobileView, inputBrandOne, inputBrandTwo
         </span>
       </span>
       {item.scores.map((element, index) => {
-        console.log(index);
         if (mobileView && index < 2) {
           return (
             <ScoreContainer
@@ -1190,7 +1188,6 @@ const NestedField = ({ item, subIndexKey, inputBrandOne, inputBrandTwo, inputBra
       <div className={`animate-field ${show === subIndexKey ? "animate" : ""}`}>
         {show === subIndexKey &&
           item.subNestedField.map((item, index) => {
-            console.log(show);
             return <SubNestedField key={index} item={item} tabView={tabView} mobileView={mobileView} inputBrandOne={inputBrandOne} inputBrandTwo={inputBrandTwo} inputBrandThree={inputBrandThree}/>
           })}
       </div>
@@ -1201,8 +1198,6 @@ const NestedField = ({ item, subIndexKey, inputBrandOne, inputBrandTwo, inputBra
 const Subfield = ({indexKey, item, showSubField, setShowSubField, inputBrandOne, inputBrandTwo, inputBrandThree }) => {  
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
   const [show, setShow] = useState(null);
-  console.log("show");
-  console.log(show);
   
   useLayoutEffect(() => {
     function updateSize() {
@@ -1783,7 +1778,6 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
       });
 
     setFieldData(data);
-    console.log(fieldData);
     if (inputIndex === 0) {
       setInputBrandOne(company);
       setListBrandOne(false);
@@ -1880,6 +1874,8 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
     // })
 
     axios.get("/industry").then((resp) => {
+      console.log("respat");
+      console.log(resp.data);
       let data = fieldData;
 
       data[0].industrialStandard.push(resp.data.rows[0]["Alow"]);
@@ -2184,17 +2180,17 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
       data[3].subfield[2].subNestedField[4].industrialStandard.push(
         resp.data.rows[0]["D3.5high"]
       );
+      console.log("data");
+      console.log(data);
     });
   }, []);
 
   useEffect(() => {
-    // console.log(selectedCompaniesList);
     selectedCompaniesList.forEach((item, index) => {
       item && renderData(item, index + 1);
     });
   }, [selectedCompaniesList]);
-  console.log("inputbrand");
-  console.log(inputBrand);
+
   return (
     <div className="compare__tool-container">
       <div className="compare-input-container">

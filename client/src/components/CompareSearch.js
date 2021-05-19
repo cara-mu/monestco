@@ -42,7 +42,6 @@ class CompareSearch extends React.Component {
     });
     const unisexCompanies = [];
     companies.companies.map((company) => {
-      console.log(company.name);
       if (company.category === "Unisex") {
         unisexCompanies.push(company.name);
       }
@@ -142,7 +141,6 @@ class CompareSearch extends React.Component {
   componentDidMount() {
     const unisexCompanies = [];
     companies.companies.map((company) => {
-      console.log(company.name);
       if (company.category === "Unisex") {
         unisexCompanies.push(company.name);
       }
@@ -151,10 +149,7 @@ class CompareSearch extends React.Component {
   }
 
   handleChange() {
-    console.log("handlechange");
     var search = document.getElementById("categorysearch").value.toLowerCase();
-    console.log("Search first letter");
-    console.log(search.charAt(0));
     if (search.charAt(0) == "") {
       return null;
     }
@@ -169,7 +164,6 @@ class CompareSearch extends React.Component {
   }
 
   mapCompanies = (companies) => {
-    console.log("mapcompanies");
     return companies.companies.map((company) => {
       return company.name;
     });

@@ -214,7 +214,6 @@ function rand() {
             data[0]["Pages"] = pagesarr;
             setCitations(data);
             setState(resp.data);
-            console.log(citations);
         })
         setOpenID(k);
         setOpen(true);
@@ -393,7 +392,6 @@ function rand() {
                     params: companyName
                 }
         ).then((resp) => {
-            console.log(resp.data);
             let data = companyDetails;
             let score = (parseInt(resp.data[0]["Ascore"]) + parseInt(resp.data[0]["Bscore"]) + parseInt(resp.data[0]["Cscore"]) + parseInt(resp.data[0]["Dscore"]))/4;
             data[0]["TotalScore"] = score;
@@ -415,7 +413,6 @@ function rand() {
                 }
             )
             .then((resp) => {
-                console.log(resp.data);
                 let data = companyDetails;
                 // data[0]["A_ID"] = resp.data[0]["A_ID"];
                 // data[0]["B_ID"] = resp.data[0]["B_ID"];
@@ -431,7 +428,6 @@ function rand() {
                 data[0]["SimilarCompany3"] = resp.data[0]["SimilarCompany3"];
                 data[0]["SimilarCompany4"] = resp.data[0]["SimilarCompany4"];
                 data[0]["Subsidiary"] = resp.data[0]["Subsidiary"];
-                console.log(data[0]["Subsidiary"]);
                 setCompanyDetails(data);
                 setState(resp.data);
             })
@@ -442,7 +438,6 @@ function rand() {
                 params: companyName
             }
         ).then((resp) =>{
-            // console.log(resp.data);
             let data = companyDetails;
             data[0]["company1Ascore"] = resp.data[0]["Ascore"];
             data[0]["company1Bscore"] = resp.data[0]["Bscore"];
@@ -452,7 +447,6 @@ function rand() {
             let comp1SliderLength = 324*company1TotalScore/100
             data[0]["company1TotalScore"] = company1TotalScore;
             data[0]["comp1SliderLength"] = comp1SliderLength;
-            // console.log(company1TotalScore);
         })
         axios.post(
             '/similarCompany2',
@@ -461,7 +455,6 @@ function rand() {
                 params: companyName
             }
         ).then((resp) =>{
-            // console.log(resp.data);
             let data = companyDetails;
             data[0]["company2Ascore"] = resp.data[0]["Ascore"];
             data[0]["company2Bscore"] = resp.data[0]["Bscore"];
@@ -471,7 +464,6 @@ function rand() {
             let comp2SliderLength = 324*company2TotalScore/100
             data[0]["company2TotalScore"] = company2TotalScore;
             data[0]["comp2SliderLength"] = comp2SliderLength;
-            // console.log(company2TotalScore);
         })
         axios.post(
             '/similarCompany3',
@@ -480,7 +472,6 @@ function rand() {
                 params: companyName
             }
         ).then((resp) =>{
-            console.log(resp.data);
             let data = companyDetails;
             data[0]["company3Ascore"] = resp.data[0]["Ascore"];
             data[0]["company3Bscore"] = resp.data[0]["Bscore"];
@@ -498,7 +489,6 @@ function rand() {
                 params: companyName
             }
         ).then((resp) =>{
-            // console.log(resp.data);
             let data = companyDetails;
             data[0]["company4Ascore"] = resp.data[0]["Ascore"];
             data[0]["company4Bscore"] = resp.data[0]["Bscore"];
@@ -583,21 +573,8 @@ function rand() {
         const [showCitation, setShowCitation] = useState(false);
 
         const FactCitations = (i) => {
-            console.log(factCitation);
-            // let arr = factCitation.replace('[', '')
-            // arr = arr.replace(']', '')
-            // arr = JSON.parse(arr)
-            // console.log(typeof arr);
             if (factCitation.length != 0) {
-                // console.log(factCitation);
-                // // return factCitation[0]["Date"].map((date, k) => {
-                // //     return <div><i>{factCitation[0]["Title"][k]}</i>, {factCitation[0]["PublishingGroup"][k]}, {factCitation[0]["Date"][k]}, {factCitation[0]["Pages"][k]}</div>
-                // // })
-                // return factCitation[i]
-                // console.log(typeof JSON.parse(factCitation))
-                // return JSON.parse(factCitation)[0]["Author"].map((author, i) => {
-                    return <div><i>{JSON.parse(factCitation)[0]["Title"][i]}</i>, {JSON.parse(factCitation)[0]["Author"][i]}{JSON.parse(factCitation)[0]["Author"][i] && <span>,</span>} {JSON.parse(factCitation)[0]["PublishingGroup"][i]}, {JSON.parse(factCitation)[0]["Date"][i]}{JSON.parse(factCitation)[0]["Pages"][i] && <span>,</span>} {JSON.parse(factCitation)[0]["Pages"][i]}</div>
-                // })
+                return <div><i>{JSON.parse(factCitation)[0]["Title"][i]}</i>, {JSON.parse(factCitation)[0]["Author"][i]}{JSON.parse(factCitation)[0]["Author"][i] && <span>,</span>} {JSON.parse(factCitation)[0]["PublishingGroup"][i]}, {JSON.parse(factCitation)[0]["Date"][i]}{JSON.parse(factCitation)[0]["Pages"][i] && <span>,</span>} {JSON.parse(factCitation)[0]["Pages"][i]}</div>
             }
         }
 
@@ -623,8 +600,6 @@ function rand() {
             let titlearr = [];
             let urlarr = [];
             let pagesarr = [];
-            console.log("poo");
-            console.log(factinput[0]['ID']);
             if (factinput[0]['Heading'].length != 0) {
                 Promise.all(Object.entries(factinput[0]['Heading']).map((heading, i) => 
                     axios.post('/citationsFacts',
@@ -634,10 +609,8 @@ function rand() {
                     }
                 ).then(resp => {
                     if (resp.data.length!= 0) {
-                        console.log(resp.data);
                         let data = citations;
                         if (citationsarr.length != 0) {
-                            console.log(citationsarr[0][0]["RelationalID"]);
                             relidarr = citationsarr[0][0]["RelationalID"];
                             authorarr = citationsarr[0][0]["Author"];
                             datearr = citationsarr[0][0]["Date"];
@@ -646,9 +619,7 @@ function rand() {
                             urlarr = citationsarr[0][0]["URL"];
                             pagesarr = citationsarr[0][0]["Pages"];
                         } 
-                        console.log(resp.data);
                         resp.data.map(citation => {
-                            console.log(relidarr);
                             relidarr.push(citation["RelationalID"]);
                             authorarr.push(citation["Author"]);
                             datearr.push(citation["Date"]);
@@ -656,9 +627,7 @@ function rand() {
                             titlearr.push(citation["Title"]);
                             urlarr.push(citation["URL"]);
                             pagesarr.push(citation["Pages"]);
-                            // console.log("end of map");
                         })
-                        console.log(datearr);
                         data[0]["Author"] = authorarr;
                         data[0]["Date"] = datearr;
                         data[0]["PublishingGroup"] = pubarr;
@@ -667,20 +636,14 @@ function rand() {
                         data[0]["URL"] = urlarr;
                         data[0]["Pages"] = pagesarr;
                         citationsarr.push(data);
-                        console.log(data[0]["Date"]);
-                        console.log(citationsarr[0][0]);
-                        console.log("i");
-                        console.log(i);
                 }})
                 )).then(() => {
-                    console.log(citationsarr);
                     setFactCitation(JSON.stringify(citationsarr[0]))
                 });
             }
         }
 
         return Object.entries(factinput[0]['Heading']).map((heading, i) => {
-            console.log(factCitation);
             return <div>
                 <Accordion className = {classes.dropdown}>
                     <AccordionSummary
@@ -718,9 +681,7 @@ function rand() {
     }
 
     const News = (newsinput) => {
-        // console.log(factCitation);
         return Object.entries(newsinput[0]['Category']).map((category, i) => {
-            //console.log(newsinput[0]["Title"][i]);
             return <div>
             <div className='news-card'>
                 <img src={newsinput[0]["Photo"][i]} style={{background: 'rgba(87, 114, 104, 0.5)'}} />

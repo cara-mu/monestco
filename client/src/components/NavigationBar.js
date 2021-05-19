@@ -63,7 +63,6 @@ function NavigationBar() {
 
   useEffect(() => {
     axios.get("/allcompanies").then((resp) => {
-      // console.log(resp.data);
       const allcompanies = [];
       for (var i = 0; i < resp.data.rows.length; i++) {
         allcompanies.push(resp.data.rows[i].Name);
@@ -238,8 +237,6 @@ function NavigationBar() {
     }
     setShowBrands(brands);
     setSpecificBrands(true);
-    console.log(keepNav);
-    console.log(specificBrands);
     // axios.post('/brandsbycategory',
     //         {},
     //         {
@@ -255,7 +252,6 @@ function NavigationBar() {
   }
 
   const NavBrands = () => {
-    console.log(showBrands);
     return showBrands.map( brand => {
       return (<li className='Menu-Item only-mobile' onMouseEnter={enterTechDropdownLink} onMouseLeave={exitTechDropdownLink} >
             <Link
