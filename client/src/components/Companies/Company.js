@@ -571,6 +571,7 @@ function rand() {
     const Facts = (factinput) => {
         const [factCitation, setFactCitation] = useState([]);
         const [showCitation, setShowCitation] = useState(false);
+        console.log(factinput);
 
         const FactCitations = (i) => {
             if (factCitation.length != 0) {

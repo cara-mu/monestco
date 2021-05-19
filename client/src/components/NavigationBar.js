@@ -455,7 +455,7 @@ function NavigationBar() {
             {(compareDropdownLink || compareDropdown) && <ComparisonDropdown enterCompareDropdown={enterCompareDropdown} exitCompareDropdown={exitCompareDropdown} />}
           </li>
           <div style={{position:"relative"}}>
-            {/* <li className='Menu-Item Menu-Item-search' >
+            <li className='Menu-Item Menu-Item-search only-desktop' >
               <TextField 
                 id="standard-basic" 
                 placeholder="Search"
@@ -472,7 +472,7 @@ function NavigationBar() {
                   ),
                 }}
                 />               
-            </li> */}
+            </li>
               {showList && !tabView && (
                 <div className="nav-search-company-container">
                   {searchList.map((item, index) => {
