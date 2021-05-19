@@ -1050,7 +1050,7 @@ const ScoreContainer = ({
           ? "compare__tool-scoreContainer graysquare border"
           : "compare__tool-scoreContainer graysquare"
       }
-      ><b>NA</b></div>
+      >NA</div>
     )
   }
   else {

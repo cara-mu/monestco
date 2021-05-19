@@ -209,7 +209,7 @@ const Comparison = () => {
                 fontSize: "14px",
               }}
             >
-              Use the chart compare brand overviews or search the brand below to learn more.
+              Use the chart to compare brand overviews or search the brand below to learn more.
             </p>
             <CompareSearch />
           {/* </div> */}

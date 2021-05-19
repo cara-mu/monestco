@@ -604,7 +604,7 @@ const Popup = ({item, i, k, closePopup}) => {
           <div style={{display:'flex', flexDirection:'row', marginTop:'1rem'}}>
                 <div style={{color: '#FED170', marginRight:'5px'}}>[{k+1}]</div>
                 <div>
-                  <i>{item.citations[i].title[k]}</i>, {item.citations[i].restofcit[k]}
+                  <i>{item.citations[i].title[k]}</i>{item.citations[i].restofcit[k].substring(item.citations[i].restofcit[k].length, item.citations[i].restofcit[k].length - 4) != 'null' ? ', '+item.citations[i].restofcit[k] : ', '+item.citations[i].restofcit[k].substring(0, item.citations[i].restofcit[k].length - 6)}
                 </div>
               </div>
               <HighlightOffRoundedIcon onClick={closePopup} className="popup-close-icon"/>
@@ -654,7 +654,7 @@ const NestedField = ({ key, indexKey, item, showSubField, setShowSubField }) => 
               return (
                 <span>
                   <sup className="citation-sup">[{k+1}]</sup>
-                  <span className="breakdown_citation-hover"><i>{item.citations[i].title[k]}</i>{item.citations[i].restofcit[k].substring(item.citations[i].restofcit[k].length, item.citations[i].restofcit[k].length - 4) != 'null' ? ', '+item.citations[i].restofcit[k] : ', '+item.citations[i].restofcit[k].substring(0, item.citations[i].restofcit[k].length - 5)}</span>
+                  <span className="breakdown_citation-hover"><i>{item.citations[i].title[k]}</i>{item.citations[i].restofcit[k].substring(item.citations[i].restofcit[k].length, item.citations[i].restofcit[k].length - 4) != 'null' ? ', '+item.citations[i].restofcit[k] : ', '+item.citations[i].restofcit[k].substring(0, item.citations[i].restofcit[k].length - 6)}</span>
                 </span>
               )
           })}
