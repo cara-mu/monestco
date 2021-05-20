@@ -42,7 +42,7 @@ const Methodology = () => {
     const { height } = ele.getBoundingClientRect();
     const offsetTop = ele.offsetTop;
     const offsetBottom = offsetTop + height;
-  
+    
     return {
       height,
       offsetTop,
@@ -91,11 +91,33 @@ const Methodology = () => {
   const MethodologyNav = () => {
 
     const scrollTo = ele => {
-      setShowNav(false);
-      ele.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
+      const element = document.getElementById(ele.current.id);
+      const offset = 120;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
       });
+  
+      // var element = document.getElementById(ele.current.id);
+      // var headerOffset = 80;
+    	// var elementPosition = element.getBoundingClientRect().top;
+      // var offsetPosition = elementPosition - headerOffset;
+      
+      // window.scrollTo({
+      //     top: offsetPosition,
+      //     behavior: "smooth"
+      // });   
+
+      setShowNav(false);
+      // ele.current.scrollIntoView({
+      //   behavior: "smooth",
+      //   block: "start",
+      // });
     };
 
     return(

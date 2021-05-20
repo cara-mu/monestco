@@ -58,9 +58,9 @@ body {
     font-size: 64px;
     line-height: 66px;
     color: #3D3E3F;
-    /* bottom: 0; */
-    /* position: absolute; */
-    margin-bottom: -2%;
+    bottom: 0;
+    /* position: absolute;
+    margin-bottom: -2%; */
 }
 
 
@@ -130,6 +130,15 @@ body {
         display: flex;
         justify-content: center;
     } 
+
+    .breakdown_logoImage {
+        margin-right: 25%;
+    }
+
+    .breakdown_logoText {
+        position: absolute;
+        margin-bottom: -2%;
+    }
 }
 
 

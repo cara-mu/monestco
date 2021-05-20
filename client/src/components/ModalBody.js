@@ -25,14 +25,14 @@ export default function ModalBody({ handleClose, i, title, summary, issueAdd, is
               {newsID[i]}
             </div>        
             <div style={{ fontSize: "14px", marginTop: "1rem" }}>
-              <span style={{ fontWeight: "700" }}>Issue Addressed?</span>
-              {issueAdd[i] == 'Yes' && <span style={{ color: "#28a745", marginLeft: "5px" }}>{issueAdd[i]}</span> || issueAdd[i] == 'No' &&  <span style={{ color: "#E94921", marginLeft: "5px" }}>{respTake[i]}</span> || issueAdd[i] == 'Maybe' &&  <span style={{ color: "#F29A72", marginLeft: "5px" }}>{respTake[i]}</span>}
+              <span style={{ fontWeight: "700" }}>Responsibility Taken?</span>
+              {issueAdd[i] == 'Yes' && <span style={{ color: "#28a745", marginLeft: "5px" }}>{issueAdd[i]}</span> || issueAdd[i] == 'No' &&  <span style={{ color: "#E94921", marginLeft: "5px" }}>{issueAdd[i]}</span> || issueAdd[i] == 'Maybe' &&  <span style={{ color: "#F29A72", marginLeft: "5px" }}>{issueAdd[i]}</span>}
             </div>
             <div>
               {issueAddExp[i]}
             </div>
             <div style={{ fontSize: "14px", marginTop: "1rem" }}>
-              <span style={{ fontWeight: "700" }}>Responsibility Taken?</span>
+              <span style={{ fontWeight: "700" }}>Issue Resolved?</span>
               {respTake[i] == 'Yes' && <span style={{ color: "#28a745", marginLeft: "5px" }}>{respTake[i]}</span> || respTake[i] == 'No' && <span style={{ color: "#E94921", marginLeft: "5px" }}>{respTake[i]}</span> || respTake[i] == 'Maybe' &&  <span style={{ color: "#F29A72", marginLeft: "5px" }}>{respTake[i]}</span>}
             </div>
             <div>
@@ -42,7 +42,7 @@ export default function ModalBody({ handleClose, i, title, summary, issueAdd, is
               className="Fun-Fact"
               style={{ width: "100%", fontWeight: "700" }}
             >
-              Citation 
+              Citations 
               <i
                 onClick={() => setShowCitation(!showCitation)}
                 style={{ borderColor: "#323232" }}
@@ -52,12 +52,7 @@ export default function ModalBody({ handleClose, i, title, summary, issueAdd, is
             {showCitation ? (
               citID.map((key, i) => {
                 return <div>
-                  {author[i] != null && author[i] + '  ' }
-                  {cittitle[i] != null && cittitle[i] + '  '}
-                   <em>{pubgroup[i]!= null && pubgroup[i] + '  '}</em>
-                   {date[i] != null && date[i] + '  '}
-                   {pages[i] != null && pages[i] + '  '}
-                   <a href = {url[i]}>{url[i]}</a>
+                  {author[i] != null && author[i] + ',  ' } {cittitle[i] != null && cittitle[i] + ',  '}<em>{pubgroup[i]!= null && pubgroup[i] + ',  '}</em>{date[i] != null && date[i] + ',  '}{pages[i] != null && pages[i] + ',  '}<a href = {url[i]}>{url[i]}</a>
                    <br></br>
               </div>
               })

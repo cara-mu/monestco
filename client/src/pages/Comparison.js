@@ -209,7 +209,7 @@ const Comparison = () => {
                 fontSize: "14px",
               }}
             >
-              Type or click the brands that you want to learn more about.
+              Use the chart to compare brand overviews or search the brand below to learn more.
             </p>
             <CompareSearch />
           {/* </div> */}
@@ -228,14 +228,13 @@ const Comparison = () => {
             >
               <p id="apparel">Apparel Comparison Chart</p>
               <p style={{ lineHeight: "28px" }} className='text-1'>
-              The scores reflect brands’ commitment towards addressing each issue
+              The scores reflect the brand's performance toward addressing each issue.
               </p>
               {/* <p>
               The colours represent the brand’s performance benchmarked to industry standards
               </p> */}
               <p style={{ lineHeight: "38px" }} className="text-1">
-                The colors represent the brand's performance benchmarked to
-                industry standards.
+                The colours represent the brand's scores relative to industry standards.
               </p>
             </div>
             <div className="avg-container">
@@ -281,9 +280,9 @@ const Comparison = () => {
                 })}
               </div>
             )}
-            <div className='compare-search-category-container' >
+            {/* <div className='compare-search-category-container' >
                 <div onClick={() => setSportMenu(!showSportMenu)}  className='compare-search-category'>
-                  Sportswear 
+                  Sportswear
                   <ArrowDropDownIcon/>
                   {showSportMenu && <SportsMenu />}
                 </div>
@@ -303,7 +302,7 @@ const Comparison = () => {
                   {showShoeMenu && <ShoeMenu />}
                   </div>
                 <div className='compare-search-category compare-search-category-inactive'>Luxury <ArrowDropDownIcon/></div>
-            </div>
+            </div> */}
           </div>
           <CompareTool
             inputBrand={inputBrand}
