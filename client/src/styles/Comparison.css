@@ -419,7 +419,7 @@ x
 .row-1 {
     height: min-content;
     position: sticky;
-    top: 50px;
+    top: 120px;
     margin-left: 5%; 
     width: 20%;
     max-width: 230px; 
