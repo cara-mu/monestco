@@ -1806,6 +1806,9 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
   useEffect(() => {
     axios.get("/allcompanies").then((resp) => {
       const allcompanies = [];
+      console.log("before all comp");
+      console.log(resp.data);
+      console.log("after all comp");
       for (var i = 0; i < resp.data.rows.length; i++) {
         allcompanies.push(resp.data.rows[i].Name);
       }
