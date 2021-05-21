@@ -64,6 +64,7 @@ function NavigationBar() {
   useEffect(() => {
     axios.get("/allcompanies").then((resp) => {
       const allcompanies = [];
+      console.log(resp.data)
       for (var i = 0; i < resp.data.rows.length; i++) {
         allcompanies.push(resp.data.rows[i].Name);
       }
