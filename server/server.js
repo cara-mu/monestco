@@ -719,12 +719,15 @@ app.get('/scoredenominator', (req, res) => {
 })
 
 app.get('/allcompanies', (req, res) => {
+  console.log("first all comp success");
   db.all("SELECT Name FROM Companies", [], (err, rows) => {
     if (err) {
+      console.log("oopsie error");
       res.status(400).json({ "error": err.message });
       return;
     }
     if(rows){
+      console.log("second all comp success");
       res.status(200).json({ rows });
     }
   });
