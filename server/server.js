@@ -435,9 +435,19 @@ const db = new sqlite3.Database('./database.db', sqlite3.OPEN_READONLY, (err) =>
     }
 });
 
-app.get('/', (req, res) => {
-  res.status(200).send('Monest Home Page!')
-})
+const path = require('path');
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, '../client/build')));
+// Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  });
+}
+
+// app.get('/', (req, res) => {
+//   res.status(200).send('Monest Home Page!')
+// })
 
 app.post('/citationsLong', function(req, res, next) {
   var companyName = req.query['0'];
@@ -779,15 +789,7 @@ app.get('/comparison/:companyID1/:companyID2/:companyID3', function(req,res,next
 // });
 
 // Error page
-const path = require('path');
-if (process.env.NODE_ENV === 'production') {
-  // Serve any static files
-  app.use(express.static(path.join(__dirname, '../client/build')));
-// Handle React routing, return all requests to React app
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-  });
-}
+
 
 app.get('*', function(req, res) {
   res.status(404).send("Error Page")
