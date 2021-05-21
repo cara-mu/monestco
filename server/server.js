@@ -445,6 +445,10 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+// app.get('*', function(req, res) {
+//   res.status(404).send("Error Page")
+// })
+
 // app.get('/', (req, res) => {
 //   res.status(200).send('Monest Home Page!')
 // })
@@ -793,10 +797,6 @@ app.get('/comparison/:companyID1/:companyID2/:companyID3', function(req,res,next
 
 // Error page
 
-
-app.get('*', function(req, res) {
-  res.status(404).send("Error Page")
-})
 
 app.listen(port, () => {
   console.log(`Server is listening on`, port)
