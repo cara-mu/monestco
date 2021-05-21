@@ -1893,8 +1893,8 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
       data[0].industrialStandard.push(resp.data.rows[0]["Ahigh"]);
       data[1].industrialStandard.push(resp.data.rows[0]["Blow"]);
       data[1].industrialStandard.push(resp.data.rows[0]["Blow"]);
-      data[2].industrialStandard.push(resp.data.rows[0]["C"]);
-      data[2].industrialStandard.push(resp.data.rows[0]["C"]);
+      data[2].industrialStandard.push(resp.data.rows[0]["Clow"]);
+      data[2].industrialStandard.push(resp.data.rows[0]["Chigh"]);
       data[3].industrialStandard.push(resp.data.rows[0]["Dlow"]);
       data[3].industrialStandard.push(resp.data.rows[0]["Dhigh"]);
 
