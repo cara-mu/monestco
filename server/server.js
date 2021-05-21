@@ -6,6 +6,8 @@ const sqlite3 = require('sqlite3');
 var cors = require("cors");
 app.use(cors());
 
+// const path = require('path');
+
 const db = new sqlite3.Database('./database.db', sqlite3.OPEN_READONLY, (err) => {
   if (err) {
       console.error("Error opening database " + err.message);
@@ -783,6 +785,6 @@ app.get('*', function(req, res) {
   res.status(404).send("Error Page")
 })
 
-app.listen(port, () => {
-  console.log(`Server is listening on`, port)
+app.listen(port || PORT, () => {
+  console.log(`Server is listening on ${PORT}`)
 })
