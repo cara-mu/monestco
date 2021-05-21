@@ -1,5 +1,5 @@
 {"scripts": {
-    "start": "cd server && nodemon ./server.js localhost 3000",
+    "start": "cd server && npm install && nodemon ./server.js localhost 3000",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   }
 }
