@@ -646,9 +646,9 @@ app.post('/companydetailsA_specific', function(req,res,next){
     next();
 });
 })
-app.get('/', (req, res) => {
-  res.status(200).send('Monest Home Page!')
-})
+// app.get('/', (req, res) => {
+//   res.status(200).send('Monest Home Page!')
+// })
 
 app.post('/companydetailsA', (req, res) => {
   const companyName = req.query['0'];
