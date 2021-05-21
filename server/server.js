@@ -779,7 +779,7 @@ app.get('/comparison/:companyID1/:companyID2/:companyID3', function(req,res,next
 // });
 
 // Error page
-
+const path = require('path');
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
   app.use(express.static(path.join(__dirname, '../client/build')));
