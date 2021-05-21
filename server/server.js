@@ -785,6 +785,6 @@ app.get('*', function(req, res) {
   res.status(404).send("Error Page")
 })
 
-app.listen(port || PORT, () => {
-  console.log(`Server is listening on ${PORT}`)
+app.listen(port, () => {
+  console.log(`Server is listening on port`)
 })
