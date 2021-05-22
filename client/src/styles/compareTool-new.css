@@ -739,8 +739,8 @@
         margin-bottom: 2rem;
     }
     .compare-popup-content {
-        width: 100%;
-        left: 0;
+        width: 90%;
+        left: 4.5%;
     }
     .compare-popup-title {
         font-size: 16px;
