@@ -358,16 +358,16 @@ const Methodology = () => {
         </div>
 
         <div className="logo-container">
-            <img src={logo1}></img>
-            <img src={logo2}></img>
-            <img src={logo3}></img>
-            <img src={logo7}></img>            
-            <img src={logo6}></img>
-            <img src={logo5}></img>
-            <img src={logo8}></img>
-            <img src={logo9}></img>
-            <img src={logo10} style={{width: '90%'}}></img>        
-            <img src={logo4}></img>          
+            <img src={logo1} alt="logo" ></img>
+            <img src={logo2} alt="logo"></img>
+            <img src={logo3} alt="logo"></img>
+            <img src={logo7} alt="logo"></img>            
+            <img src={logo6} alt="logo"></img>
+            <img src={logo5} alt="logo"></img>
+            <img src={logo8} alt="logo"></img>
+            <img src={logo9} alt="logo"></img>
+            <img src={logo10} style={{width: '90%'}} alt="logo"></img>        
+            <img src={logo4} alt="logo"></img>          
         </div>
       </div>
     </div>

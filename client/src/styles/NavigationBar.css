@@ -12,7 +12,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1650px;
+    /* max-width: 1650px; */
     margin: 0 auto;
     position: sticky;
     top: 0;
