@@ -323,7 +323,9 @@ body{
 }
 .Career{
     width: 100%;
-    padding-block: 50px;
+    /* padding-block: 50px; */
+    padding-top: 50px;
+    padding-bottom: 50px;
     background: #F5F4F2;
     display: flex;
     justify-content: space-between;
@@ -740,7 +742,7 @@ body{
     }
 
     #fetched_email {
-        width: 75%;
+        width: 255px;
         height: 32px;
         border-radius: 9px;
     }
@@ -887,9 +889,15 @@ body{
         font-size: 18px;
     }
     .Career {
-        padding-block: 70px;
+        /* padding-block: 70px; */
+        padding-top: 70px;
+        padding-bottom: 70px;
     }
     .Career-Positioning #button {
         margin-top: 10px;
     }    
+    .About-Us-Positioning>h1 {
+        font-size: 24px;
+        white-space: nowrap;
+    }
 }
