@@ -194,7 +194,8 @@
 
 .logo-container>img {
     width: 70%;
-    height: 100%;
+    align-self: center;
+    /* height: 100%; */
 }
 
 /* @media screen and (max-width:1250px) {   
