@@ -896,4 +896,8 @@ body{
     .Career-Positioning #button {
         margin-top: 10px;
     }    
+    .About-Us-Positioning>h1 {
+        font-size: 24px;
+        white-space: nowrap;
+    }
 }
