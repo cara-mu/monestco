@@ -370,6 +370,9 @@
         margin-top: 7rem;
     }
 
+    .Methodology-left { 
+        height: max-content;
+    }
 
     /* .title-selected.Methodology-table-title {
         font-weight: 700;
