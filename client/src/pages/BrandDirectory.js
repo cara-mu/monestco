@@ -31,6 +31,23 @@ export default function BrandDirectory() {
         'Y':[],
         'Z':["Zara"]
     }
+    const scrollToBrand = (ele) => {        
+        const element = document.getElementById(ele);
+
+        if(element) {
+            const offset = 120;
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    }
+
     const setId = (key) => {        
         if(key.charCodeAt(0) < 90) {
             for(let i=1; i < 26; i++ ) {                
@@ -49,7 +66,7 @@ export default function BrandDirectory() {
             <div className="brand_directory_list">
                 {
                     Object.keys(letterArray).map((key)=>(
-                        <a href={`#${key}`}><span  className={key === "E"  ||  key === "I" || key=== "Q" || key=== "W"||key=== "X"||key=== "Y"  ? "greyed_color":"black_color"} style={{marginLeft:1, marginRight:2}}>{key}</span></a>
+                        <a id={`#${key}Link`} onClick={() => scrollToBrand(key)}><span  className={key === "E"  ||  key === "I" || key=== "Q" || key=== "W"||key=== "X"||key=== "Y"  ? "greyed_color":"black_color"} style={{marginLeft:1, marginRight:2}}>{key}</span></a>
                     ))
                 }
             </div>

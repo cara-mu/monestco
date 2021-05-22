@@ -111,5 +111,15 @@ color: #3D3E3F;
         top: 0;
         left: 0;
         transform: none;
+    }    
+}
+
+@media screen and (max-width:600px) {
+    .model-title {
+        width: 100vw;
     }
+    .model-description {
+        width: 100vw;
+    }
+
 }
