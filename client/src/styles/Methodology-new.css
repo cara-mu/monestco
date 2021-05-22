@@ -193,8 +193,9 @@
 }
 
 .logo-container>img {
-    width: 100%;
-    height: 100%;
+    width: 70%;
+    align-self: center;
+    /* height: 100%; */
 }
 
 /* @media screen and (max-width:1250px) {   
@@ -359,6 +360,18 @@
         left: -26px;
         border-radius: 12.5px 12.5px 0 0;
         padding: 8px 13px;
+    }
+
+    .Methodology-table-sub-title {
+        margin-bottom: 20px;
+    }
+
+    .logo-container {
+        margin-top: 7rem;
+    }
+
+    .Methodology-left { 
+        height: max-content;
     }
 
     /* .title-selected.Methodology-table-title {

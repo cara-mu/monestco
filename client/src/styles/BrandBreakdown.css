@@ -132,11 +132,11 @@ body {
     } 
 
     .breakdown_logoImage {
-        margin-right: 25%;
+        /* margin-right: 25%; */
     }
 
     .breakdown_logoText {
-        position: absolute;
+        /* position: absolute; */
         margin-bottom: -2%;
     }
 }
