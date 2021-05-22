@@ -142,7 +142,7 @@ function Methodology(props) {
                  >Overview</Typography>} />
             </ListItem>
             
-            <ListItem button key="Scope of Brand" component="a" href="#scope_of_brand" onClick={()=>setMobileOpen(false)} >
+            <ListItem button key="Scope of Brands" component="a" href="#scope_of_brand" onClick={()=>setMobileOpen(false)} >
                 <ListItemText primary={<Typography style={{ 
                     fontFamily: "DM Sans",
                     fontStyle: "normal",
@@ -152,7 +152,7 @@ function Methodology(props) {
                     color: "#000000",
                     marginLeft:10,
                  }} 
-                 className="text">Scope of Brand</Typography>} />
+                 className="text">Scope of Brands</Typography>} />
             </ListItem>
             <ListItem button key="Research Principles" component="a" href="#research_prinicple" onClick={()=>setMobileOpen(false)}>
                 <ListItemText primary={<Typography style={{ 

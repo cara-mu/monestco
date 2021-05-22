@@ -18,8 +18,8 @@ export const MenuItems = [
         cName: 'nav-links'
     },
     {
-        title: 'Levis',
-        path: '/companies/Levis',
+        title: "Levi's",
+        path: "/companies/Levi's",
         cName: 'nav-links'
     },
     {
@@ -33,13 +33,13 @@ export const MenuItems = [
         cName: 'nav-links'
     },
     {
-        title: 'Victoria Secret',
-        path: '/companies/Victoria Secret',
+        title: "Victoria's Secret",
+        path: "/companies/Victoria's Secret",
         cName: 'nav-links'
     },
     {
         title: 'Nasty Gal',
-        path: '/companies/Banana Republic',
+        path: '/companies/Nasty Gal',
         cName: 'nav-links'
     },
     {

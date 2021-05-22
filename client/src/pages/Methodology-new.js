@@ -123,7 +123,7 @@ const Methodology = () => {
     return(
         <div className={`Methodology-left`}>
           <div onClick={() => scrollTo(overViewRef)} className={`Methodology-table-title ${visibleSection === 'overView' ? "title-selected" : ""}`}>Overview</div>
-          <div onClick={() => scrollTo(scopeOfBrandRef)} className={`Methodology-table-sub-title ${visibleSection === 'scopeOfBrand' ? "title-selected" : ""} `}>Scope of Brand</div>
+          <div onClick={() => scrollTo(scopeOfBrandRef)} className={`Methodology-table-sub-title ${visibleSection === 'scopeOfBrand' ? "title-selected" : ""} `}>Scope of Brands</div>
           <div onClick={() => scrollTo(researchPrinciplesRef)} className={`Methodology-table-sub-title ${visibleSection === 'researchPrinciples' ? "title-selected" : ""} `}>Research Principles</div>
           <div onClick={() => scrollTo(researchMethodologyRef)} className={`Methodology-table-title ${visibleSection === 'researchMethodology' ? "title-selected" : ""}`}>Research Methodology</div>
           <div onClick={() => scrollTo(diversityInclusionRef)} className={`Methodology-table-sub-title ${visibleSection === 'diversityInclusion' ? "title-selected" : ""} `}>Diversity & Inclusion</div>
@@ -167,7 +167,7 @@ const Methodology = () => {
           best practices by reducing consumption and shopping second hand when
           possible.
         </div>
-        <div id='scopeOfBrand' ref={scopeOfBrandRef} className="Methodology-sub-title">Scope of Brand</div>
+        <div id='scopeOfBrand' ref={scopeOfBrandRef} className="Methodology-sub-title">Scope of Brands</div>
         <div className="Methodology-paragraph black-text">
           Monest assesses brands at the forefront of the apparel industry with
           the power and influence to become catalysts for social and

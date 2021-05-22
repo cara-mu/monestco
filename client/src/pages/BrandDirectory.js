@@ -17,7 +17,7 @@ export default function BrandDirectory() {
         'K':["Kate Spade"],
         'L':["Lacoste","Lululemon","Levis","Louis Vuitton"],
         'M':["Mango","Marc Jacobs","Michael Kors"],
-        'N':["NastyGal","New Balance","Nike"],
+        'N':["Nasty Gal","New Balance","Nike"],
         'O':["Old Navy"],
         'P':["Patagonia","Prada","PrettyLittleThing"],
         'Q':[],
