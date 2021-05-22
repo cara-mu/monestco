@@ -366,7 +366,7 @@ const Methodology = () => {
             <img src={logo5} alt="logo"></img>
             <img src={logo8} alt="logo"></img>
             <img src={logo9} alt="logo"></img>
-            <img src={logo10} style={{width: '90%'}} alt="logo"></img>        
+            <img src={logo10} style={{width: '70%'}} alt="logo"></img>        
             <img src={logo4} alt="logo"></img>          
         </div>
       </div>
