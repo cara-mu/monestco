@@ -362,6 +362,15 @@
         padding: 8px 13px;
     }
 
+    .Methodology-table-sub-title {
+        margin-bottom: 25px;
+    }
+
+    .logo-container {
+        margin-top: 7rem;
+    }
+
+
     /* .title-selected.Methodology-table-title {
         font-weight: 700;
         color: #ABD4B7 !important;
