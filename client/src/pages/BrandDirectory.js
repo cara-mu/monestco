@@ -59,6 +59,7 @@ export default function BrandDirectory() {
         }
     }
     return (
+        
         <div className="brand_directory">
             <div className="brand_directory_title">
                 <p>All Brands - Apparel</p>
