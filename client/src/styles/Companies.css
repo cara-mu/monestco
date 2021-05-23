@@ -700,7 +700,7 @@
 
 @media only screen and (max-width: 500px) {
     .Layout {
-        overflow-x: hidden;
+        overflow-x: clip;
     }
     /* .horizontalline2 {
         margin-top: 15px;

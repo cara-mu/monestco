@@ -288,7 +288,7 @@ function rand() {
                         News and recent events summarized with an assessment of the company’s actions taken in response	
                         </div>	
                     </div>	
-                    <HighlightOffRoundedIcon onClick={handleCloseCompanyInitInfo} className="popup-close-icon"/>
+                    <HighlightOffRoundedIcon onClick={() => setNewsShowInfo(false)} className="popup-close-icon"/>
                 </div>
             </div>
         )
