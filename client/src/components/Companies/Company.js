@@ -832,7 +832,7 @@ function rand() {
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {DiversityImg}/>
-                                        <div className="Description-score"><span>{companyDetails[0]["Ascore"]}</span><span>/100</span></div>
+                                        <div className="Description-score"><span style={{cursor:'default'}}>{companyDetails[0]["Ascore"]}</span><span style={{cursor:'default'}}>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -844,7 +844,7 @@ function rand() {
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {WorkerExploitImg}/>
-                                        <div className="Description-score"><span>{companyDetails[0]["Bscore"]}</span><span>/100</span></div>
+                                        <div className="Description-score"><span style={{cursor:'default'}}>{companyDetails[0]["Bscore"]}</span><span style={{cursor:'default'}}>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -856,7 +856,7 @@ function rand() {
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {WasteImg}/>
-                                        <div className="Description-score"><span>{companyDetails[0]["Cscore"]}</span><span>/100</span></div>
+                                        <div className="Description-score"><span style={{cursor:'default'}}>{companyDetails[0]["Cscore"]}</span><span style={{cursor:'default'}}>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -868,7 +868,7 @@ function rand() {
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {SustainableImg}/>
-                                        <div className="Description-score"><span>{companyDetails[0]["Dscore"]}</span><span>/100</span></div>
+                                        <div className="Description-score"><span style={{cursor:'default'}}>{companyDetails[0]["Dscore"]}</span><span style={{cursor:'default'}}>/100</span></div>
                                         </div>
                                     </div>
                                 </div>

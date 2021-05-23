@@ -219,6 +219,7 @@
     transition: all 0.5s;
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
+    cursor: pointer;
 }
 
 .Fun-Fact-arrowdown-rotate {
