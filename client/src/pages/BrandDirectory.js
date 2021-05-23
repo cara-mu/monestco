@@ -4,7 +4,7 @@ import '../styles/BrandDirectory.css';
 
 export default function BrandDirectory() {
     const letterArray = {
-        'A':["Abercrombie & Fitch","Aldo","Aritiza","Adidas","American Eagle"],
+        'A':["Abercrombie & Fitch","Aldo","Aritizia","Adidas","American Eagle"],
         'B':["Banana Republic","Burberry","Boohoo","Balenciaga"],
         'C':["Canada Goose","Chanel","Converse","Calvin Klein","Christian Dior","Columbia","Champion","Club Monaco", "Coach"],
         'D':["Dynamite"],
@@ -15,7 +15,7 @@ export default function BrandDirectory() {
         'I':[],
         'J':["J.Crew"],
         'K':["Kate Spade"],
-        'L':["Lacoste","Lululemon","Levis","Louis Vuitton"],
+        'L':["Lacoste","Lululemon","Levi's","Louis Vuitton"],
         'M':["Mango","Marc Jacobs","Michael Kors"],
         'N':["Nasty Gal","New Balance","Nike"],
         'O':["Old Navy"],
