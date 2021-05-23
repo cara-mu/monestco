@@ -410,7 +410,8 @@
 
     .compare-input-container {
         grid-template-columns: repeat( 3, minmax( 6rem, 12rem ) );
-        /* margin-left: 12.5rem; */
+        margin-left: 12.5rem;
+        column-gap: 1.5rem;
     }
 
     .compare-companyList-container {

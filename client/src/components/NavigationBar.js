@@ -384,7 +384,7 @@ function NavigationBar() {
           </li>
           <li className='Menu-Item' onMouseEnter={enterAppDropdownLink} onMouseLeave={exitAppDropdownLink}>
             <Link 
-                to='/brand-directory'
+                // to='/brand-directory'
                 className='Navigation-Link nav-hover' 
                 onClick={() => tabView && setKeepNav(false)}
                 >

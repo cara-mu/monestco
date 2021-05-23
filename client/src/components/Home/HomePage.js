@@ -158,13 +158,14 @@ function HomePage(){
             <div className = "Career">
                 <div className = "Career-Positioning">
                     {/*<img src = {CareerImg} style={{width:'350px', height:'250px', marginLeft:'40%'}}></img>*/}
-                    <h1>We're hiring</h1>
-                    <h2>Research Analysts!</h2>
+                    <h1>We want to hear from you!</h1>
                     {/* <br></br> */}
                     <img className="carrer_image-2" src = {CareerImg} alt = 'browser sketch'></img>
                     <div className="career-btn-container">
-                        <p style={{whiteSpace:'nowrap', marginBottom:'0'}}>Are you interested in working with us?</p>
-                        <input type="submit" id="button" value="Career" className="career-btn" ></input>
+                        <p style={{whiteSpace:'nowrap', marginBottom:'0'}}>It’ll only take 2 minutes, we promise.</p>
+                        <form style = {{marginLeft: '8%'}}action = "https://contactmonest.typeform.com/to/VTHTJ0vy">
+                        <input type="submit" id="button" value="Start" className="career-btn" ></input>
+                        </form>
                     </div>
                 </div>
                 <img className="carrer_image" src = {CareerImg} alt = 'browser sketch'></img>

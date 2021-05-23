@@ -4,7 +4,7 @@ import '../styles/BrandDirectory.css';
 
 export default function BrandDirectory() {
     const letterArray = {
-        'A':["Abercrombie & Fitch","Aldo","Aritiza","Adidas","American Eagle"],
+        'A':["Abercrombie & Fitch","Aldo","Aritzia","Adidas","American Eagle"],
         'B':["Banana Republic","Burberry","Boohoo","Balenciaga"],
         'C':["Canada Goose","Chanel","Converse","Calvin Klein","Christian Dior","Columbia","Champion","Club Monaco", "Coach"],
         'D':["Dynamite"],
@@ -15,9 +15,9 @@ export default function BrandDirectory() {
         'I':[],
         'J':["J.Crew"],
         'K':["Kate Spade"],
-        'L':["Lacoste","Lululemon","Levis","Louis Vuitton"],
+        'L':["Lacoste","Lululemon","Levi's","Louis Vuitton"],
         'M':["Mango","Marc Jacobs","Michael Kors"],
-        'N':["NastyGal","New Balance","Nike"],
+        'N':["Nasty Gal","New Balance","Nike"],
         'O':["Old Navy"],
         'P':["Patagonia","Prada","PrettyLittleThing"],
         'Q':[],
@@ -25,12 +25,29 @@ export default function BrandDirectory() {
         'S':["Skechers","Steve Madden"],
         'T':["Ted Baker","The North Face","Tommy Hilfiger"],
         'U':["Under Armour","Uniqlo","Urban Outfitters"],
-        'V':["Vans","Versace","Victoria’s Secret"],
+        'V':["Vans","Versace","Victoria's Secret"],
         'W':[],
         'X':[],
         'Y':[],
         'Z':["Zara"]
     }
+    const scrollToBrand = (ele) => {        
+        const element = document.getElementById(ele);
+
+        if(element) {
+            const offset = 120;
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    }
+
     const setId = (key) => {        
         if(key.charCodeAt(0) < 90) {
             for(let i=1; i < 26; i++ ) {                
@@ -42,6 +59,7 @@ export default function BrandDirectory() {
         }
     }
     return (
+        
         <div className="brand_directory">
             <div className="brand_directory_title">
                 <p>All Brands - Apparel</p>
@@ -49,7 +67,7 @@ export default function BrandDirectory() {
             <div className="brand_directory_list">
                 {
                     Object.keys(letterArray).map((key)=>(
-                        <a href={`#${key}`}><span  className={key === "E"  ||  key === "I" || key=== "Q" || key=== "W"||key=== "X"||key=== "Y"  ? "greyed_color":"black_color"} style={{marginLeft:1, marginRight:2}}>{key}</span></a>
+                        <a id={`#${key}Link`} onClick={() => scrollToBrand(key)}><span  className={key === "E"  ||  key === "I" || key=== "Q" || key=== "W"||key=== "X"||key=== "Y"  ? "greyed_color":"black_color"} style={{marginLeft:1, marginRight:2}}>{key}</span></a>
                     ))
                 }
             </div>

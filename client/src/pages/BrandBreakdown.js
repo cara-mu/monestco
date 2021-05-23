@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
                 <p className="breakdown_logoText">48/<span style={{fontSize:32}}>154</span></p>
             </div>
         <div className="breakdown_page">
-            <p className="text_war"><span><InfoIcon/></span> As the parent company, Fast Retailing manages and oversees Uniqlo.</p>
+            <p className="text_war"><span><InfoIcon/></span> As the parent company, Fast Retailing manages and oversees `${Subsidiary}`.</p>
             <div className={`breakdown_accordian ${classes.root} `} style={{marginTop:0}}>
                 <Accordion>
                     <AccordionSummary

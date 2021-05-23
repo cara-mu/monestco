@@ -937,7 +937,10 @@ const ScoreContainer = ({
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
+
   if (score >=0) {
+    console.log("indstand");
+    console.log(industrialStandard);
     if (score > industrialStandard[1]) {
       return (
         <div className={`compare-card-container ${!firstLayer && !secondLayer && "greensquare2"}`}>
@@ -1094,6 +1097,7 @@ const SubNestedField = ({item, tabView, mobileView, inputBrandOne, inputBrandTwo
         </span>
       </span>
       {item.scores.map((element, index) => {
+        console.log("tf");
         if (mobileView && index < 2) {
           return (
             <ScoreContainer
@@ -1482,6 +1486,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
     data[3].subfield[2].subNestedField[4].scores[inputIndex].score = -1
 
     setFieldData(data);
+    removeBrand(inputIndex);
   }
 
   async function renderData(company, inputIndex) {
@@ -1815,6 +1820,9 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
       setCompaniesList(allcompanies);
       fetchBrand(allcompanies);
     });
+    deleteField(0);
+    deleteField(1);
+    deleteField(2);
 
     // axios.get("/scoredenominator").then((resp) => {
     //   let data = scoreDenominator
@@ -2276,6 +2284,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
           )}
         </div>
         {selectedCompaniesList.map((item, index) => {
+          console.log(item);
           return (
             <div key={index} className="brand-button-container">
               {!inputBrand[index] && item && 

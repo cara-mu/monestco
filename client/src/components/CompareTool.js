@@ -595,6 +595,7 @@ class CompareTool extends React.Component {
     }
 
     compareStandards(industrystandard, companystandard) {
+        console.log("sss");
         if (companystandard == -1 || companystandard == undefined) return "graysquare";
         if (companystandard == industrystandard) return "yellowsquare";
         if (companystandard > industrystandard) return "greensquare";

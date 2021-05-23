@@ -56,7 +56,7 @@ color: #3D3E3F;
     opacity: 1;
     animation: moveUp 0.5s;
     top: 50%;
-    left: 63.2%;
+    left: 59.2%;
     transform: translate(-50%, -50%);
     animation: auto;
     max-width: 1025px;
@@ -75,6 +75,7 @@ color: #3D3E3F;
     top: 10px;
     right: 10px;
     color: #26385A;
+    cursor: pointer;
 }
 
 .model-description {
@@ -86,11 +87,17 @@ color: #3D3E3F;
     display: none;
 }
 
+@media screen and (max-width:1650px) {
+    .model-body-content {
+        left: 63.2%;
+    }
+}
+
 @media screen and (max-width:1050px) {
 
     .model-body-content {
         width: 57%;
-        left: 63.7%;
+        left: 64.8%
     }
 }
 
@@ -111,5 +118,15 @@ color: #3D3E3F;
         top: 0;
         left: 0;
         transform: none;
+    }    
+}
+
+@media screen and (max-width:600px) {
+    .model-title {
+        width: 100vw;
     }
+    .model-description {
+        width: 100vw;
+    }
+
 }

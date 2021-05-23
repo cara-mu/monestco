@@ -22,7 +22,7 @@ export default function ModalBody({ handleClose, i, title, summary, issueAdd, is
           <div className="model-description">
             <div>
               {summary[i]}
-              {newsID[i]}
+              
             </div>        
             <div style={{ fontSize: "14px", marginTop: "1rem" }}>
               <span style={{ fontWeight: "700" }}>Responsibility Taken?</span>
@@ -40,7 +40,7 @@ export default function ModalBody({ handleClose, i, title, summary, issueAdd, is
             </div>
             <div
               className="Fun-Fact"
-              style={{ width: "100%", fontWeight: "700" }}
+              style={{ width: "100%", fontWeight: "700", fontSize: "1px" }}
             >
               Citations 
               <i

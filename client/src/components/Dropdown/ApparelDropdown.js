@@ -23,7 +23,7 @@ function ApparelDropdown({enterAppDropdown, exitAppDropdown}) {
             <h2>Sportswear</h2>
             <h2>Shoes & Accessories</h2>
             <h2 style = {{color:'#9A9B9C'}}>Luxury</h2>
-            <h2 style={{cursor:'pointer'}} onClick={() => window.location.href="/brand-directory"}>All Brands A-Z</h2>
+            <h2 className="allBrandsAZ" onClick={() => window.location.href="/brand-directory"}>All Brands A-Z</h2>
         </div>
         
         <div className = 'Companies'>

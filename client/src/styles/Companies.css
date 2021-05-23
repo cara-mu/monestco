@@ -219,6 +219,7 @@
     transition: all 0.5s;
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
+    cursor: pointer;
 }
 
 .Fun-Fact-arrowdown-rotate {
@@ -669,7 +670,7 @@
         /* overflow-x: auto; */
     }
     .company-popup-content {
-        width: 90vw;
+        width: 100vw;
         padding-bottom: 2rem;
     }
     /* .horizontalline2 {
@@ -700,7 +701,7 @@
 
 @media only screen and (max-width: 500px) {
     .Layout {
-        overflow-x: hidden;
+        overflow-x: clip;
     }
     /* .horizontalline2 {
         margin-top: 15px;

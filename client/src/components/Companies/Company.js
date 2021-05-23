@@ -288,7 +288,7 @@ function rand() {
                         News and recent events summarized with an assessment of the company’s actions taken in response	
                         </div>	
                     </div>	
-                    <HighlightOffRoundedIcon onClick={handleCloseCompanyInitInfo} className="popup-close-icon"/>
+                    <HighlightOffRoundedIcon onClick={() => setNewsShowInfo(false)} className="popup-close-icon"/>
                 </div>
             </div>
         )
@@ -764,7 +764,6 @@ function rand() {
                     <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
                         <span>Issue Resolved?</span>
 
-                        
                         {newsinput[0]["IssueAddressed"][i] == "No" &&
                             <span style={{color:'#E94921', marginLeft:'5px'}}>{newsinput[0]["IssueAddressed"][i]}</span>
                         || 
@@ -832,7 +831,7 @@ function rand() {
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {DiversityImg}/>
-                                        <div className="Description-score"><span>{companyDetails[0]["Ascore"]}</span><span>/100</span></div>
+                                        <div className="Description-score"><span style={{cursor:'default'}}>{companyDetails[0]["Ascore"]}</span><span style={{cursor:'default'}}>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -844,7 +843,7 @@ function rand() {
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {WorkerExploitImg}/>
-                                        <div className="Description-score"><span>{companyDetails[0]["Bscore"]}</span><span>/100</span></div>
+                                        <div className="Description-score"><span style={{cursor:'default'}}>{companyDetails[0]["Bscore"]}</span><span style={{cursor:'default'}}>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -856,7 +855,7 @@ function rand() {
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {WasteImg}/>
-                                        <div className="Description-score"><span>{companyDetails[0]["Cscore"]}</span><span>/100</span></div>
+                                        <div className="Description-score"><span style={{cursor:'default'}}>{companyDetails[0]["Cscore"]}</span><span style={{cursor:'default'}}>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -868,7 +867,7 @@ function rand() {
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {SustainableImg}/>
-                                        <div className="Description-score"><span>{companyDetails[0]["Dscore"]}</span><span>/100</span></div>
+                                        <div className="Description-score"><span style={{cursor:'default'}}>{companyDetails[0]["Dscore"]}</span><span style={{cursor:'default'}}>/100</span></div>
                                         </div>
                                     </div>
                                 </div>

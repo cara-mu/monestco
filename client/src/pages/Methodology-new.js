@@ -42,13 +42,21 @@ const Methodology = () => {
     const { height } = ele.getBoundingClientRect();
     const offsetTop = ele.offsetTop;
     const offsetBottom = offsetTop + height;
-  
+    
     return {
       height,
       offsetTop,
       offsetBottom,
     };
   };
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
+  },[]);
 
 
   useEffect(() => {
@@ -91,17 +99,39 @@ const Methodology = () => {
   const MethodologyNav = () => {
 
     const scrollTo = ele => {
-      setShowNav(false);
-      ele.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
+      const element = document.getElementById(ele.current.id);
+      const offset = 120;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
       });
+  
+      // var element = document.getElementById(ele.current.id);
+      // var headerOffset = 80;
+    	// var elementPosition = element.getBoundingClientRect().top;
+      // var offsetPosition = elementPosition - headerOffset;
+      
+      // window.scrollTo({
+      //     top: offsetPosition,
+      //     behavior: "smooth"
+      // });   
+
+      setShowNav(false);
+      // ele.current.scrollIntoView({
+      //   behavior: "smooth",
+      //   block: "start",
+      // });
     };
 
     return(
         <div className={`Methodology-left`}>
           <div onClick={() => scrollTo(overViewRef)} className={`Methodology-table-title ${visibleSection === 'overView' ? "title-selected" : ""}`}>Overview</div>
-          <div onClick={() => scrollTo(scopeOfBrandRef)} className={`Methodology-table-sub-title ${visibleSection === 'scopeOfBrand' ? "title-selected" : ""} `}>Scope of Brand</div>
+          <div onClick={() => scrollTo(scopeOfBrandRef)} className={`Methodology-table-sub-title ${visibleSection === 'scopeOfBrand' ? "title-selected" : ""} `}>Scope of Brands</div>
           <div onClick={() => scrollTo(researchPrinciplesRef)} className={`Methodology-table-sub-title ${visibleSection === 'researchPrinciples' ? "title-selected" : ""} `}>Research Principles</div>
           <div onClick={() => scrollTo(researchMethodologyRef)} className={`Methodology-table-title ${visibleSection === 'researchMethodology' ? "title-selected" : ""}`}>Research Methodology</div>
           <div onClick={() => scrollTo(diversityInclusionRef)} className={`Methodology-table-sub-title ${visibleSection === 'diversityInclusion' ? "title-selected" : ""} `}>Diversity & Inclusion</div>
@@ -145,7 +175,7 @@ const Methodology = () => {
           best practices by reducing consumption and shopping second hand when
           possible.
         </div>
-        <div id='scopeOfBrand' ref={scopeOfBrandRef} className="Methodology-sub-title">Scope of Brand</div>
+        <div id='scopeOfBrand' ref={scopeOfBrandRef} className="Methodology-sub-title">Scope of Brands</div>
         <div className="Methodology-paragraph black-text">
           Monest assesses brands at the forefront of the apparel industry with
           the power and influence to become catalysts for social and
@@ -336,16 +366,16 @@ const Methodology = () => {
         </div>
 
         <div className="logo-container">
-            <img src={logo1}></img>
-            <img src={logo2}></img>
-            <img src={logo3}></img>
-            <img src={logo7}></img>            
-            <img src={logo6}></img>
-            <img src={logo5}></img>
-            <img src={logo8}></img>
-            <img src={logo9}></img>
-            <img src={logo10} style={{width: '90%'}}></img>        
-            <img src={logo4}></img>          
+            <img src={logo1} alt="logo" ></img>
+            <img src={logo2} alt="logo"></img>
+            <img src={logo3} alt="logo"></img>
+            <img src={logo7} alt="logo"></img>            
+            <img src={logo6} alt="logo"></img>
+            <img src={logo5} alt="logo"></img>
+            <img src={logo8} alt="logo"></img>
+            <img src={logo9} alt="logo"></img>
+            <img src={logo10} style={{width: '70%'}} alt="logo"></img>        
+            <img src={logo4} alt="logo"></img>          
         </div>
       </div>
     </div>

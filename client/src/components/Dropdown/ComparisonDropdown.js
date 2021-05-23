@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import  ApparelImg from '../../assets/compare_apparel.svg'
 import  TechImg from '../../assets/compare_tech.svg'
 import  FoodImg from '../../assets/compare_food.svg'
-import  BeautyImg from '../../assets/compare_beauty.svg'
+import  BeautyImg from '../../assets/compare_beauty.png'
 import '../../styles/ComparisonDropdown.css';
 
 function ComparisonDropdown({enterCompareDropdown, exitCompareDropdown}) {
