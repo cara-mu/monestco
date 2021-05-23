@@ -185,7 +185,8 @@
 }
 
 .logo-container {
-    margin-top: 10rem;
+    /*margin-top: 10rem;*/
+    margin-top: 60px;
     width: 100%;
     display: grid;
     grid-template-columns: repeat( 3, 29%);
@@ -367,7 +368,8 @@
     }
 
     .logo-container {
-        margin-top: 7rem;
+        /*margin-top: 7rem;*/
+        margin-top: 60px;
     }
 
     .Methodology-left { 

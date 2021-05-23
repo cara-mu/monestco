@@ -64,6 +64,14 @@
   display: none;
 }
 
+.allBrandsAZ {
+  cursor: pointer;
+}
+
+.allBrandsAZ:hover {
+  color: #BFE0CA;
+}
+
 @media screen and (max-width: 1050px){
   .Companies {
     grid-template-columns: repeat( 5, 1fr);
