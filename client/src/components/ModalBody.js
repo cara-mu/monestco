@@ -22,6 +22,7 @@ export default function ModalBody({ handleClose, i, title, summary, issueAdd, is
           <div className="model-description">
             <div>
               {summary[i]}
+              
             </div>        
             <div style={{ fontSize: "14px", marginTop: "1rem" }}>
               <span style={{ fontWeight: "700" }}>Responsibility Taken?</span>
