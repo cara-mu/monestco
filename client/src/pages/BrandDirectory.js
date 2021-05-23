@@ -25,7 +25,7 @@ export default function BrandDirectory() {
         'S':["Skechers","Steve Madden"],
         'T':["Ted Baker","The North Face","Tommy Hilfiger"],
         'U':["Under Armour","Uniqlo","Urban Outfitters"],
-        'V':["Vans","Versace","Victoria’s Secret"],
+        'V':["Vans","Versace","Victoria's Secret"],
         'W':[],
         'X':[],
         'Y':[],
