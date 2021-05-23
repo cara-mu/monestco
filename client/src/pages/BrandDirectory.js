@@ -4,7 +4,7 @@ import '../styles/BrandDirectory.css';
 
 export default function BrandDirectory() {
     const letterArray = {
-        'A':["Abercrombie & Fitch","Aldo","Aritizia","Adidas","American Eagle"],
+        'A':["Abercrombie & Fitch","Aldo","Aritzia","Adidas","American Eagle"],
         'B':["Banana Republic","Burberry","Boohoo","Balenciaga"],
         'C':["Canada Goose","Chanel","Converse","Calvin Klein","Christian Dior","Columbia","Champion","Club Monaco", "Coach"],
         'D':["Dynamite"],
