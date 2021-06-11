@@ -304,7 +304,7 @@ const useStyles = makeStyles((theme) => ({
                             id="panel1a-header"
                             className={`${classes.border1} inside_border`}
                             >
-                            <Typography className={classes.heading1}>Water Pollution & Waste</Typography><span className="table_column">3/4</span>
+                            <Typography className={classes.heading1}>Water Pollution & Wastes</Typography><span className="table_column">3/4</span>
                             </AccordionSummary>
                             <AccordionDetails>
                              <p className="innerheading">Prohibits discrimination throughout all stages of the organization</p> <span className="table_column_inner" >5.5/22</span>

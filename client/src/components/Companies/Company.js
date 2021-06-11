@@ -851,7 +851,7 @@ function rand() {
                                     WASTE & POLLUTION
                                     <div className = 'Description'>
                                         <div className='Description-text'>
-                                            Air Pollution, Water Pollution & Waste, <br></br> Packaging Waste, Material Waste
+                                            Air Pollution, Water Pollution & Wastes, <br></br> Packaging Waste, Material Waste
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {WasteImg}/>
