@@ -354,7 +354,7 @@ const field = [
         ],
       },
       {
-        mainNestedField: "Water Pollution & Wastes",
+        mainNestedField: "Water Pollution & Waste",
         mainNestedScore: 0,
         total: 0,
         subNestedField: [

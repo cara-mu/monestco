@@ -572,7 +572,7 @@ const field = [
         totalScore: 28,
       },
       {
-        mainNestedField: "Water Pollution & Wastes",
+        mainNestedField: "Water Pollution & Waste",
         subNestedField: [
           {
             title: "Commits to reducing water consumption",
@@ -939,8 +939,9 @@ const ScoreContainer = ({
   }, []);
 
   if (score >=0) {
-    console.log("indstand");
-    console.log(industrialStandard);
+    console.log(score);
+    console.log(industrialStandard[0]);
+    console.log(industrialStandard[1]);
     if (score > industrialStandard[1]) {
       return (
         <div className={`compare-card-container ${!firstLayer && !secondLayer && "greensquare2"}`}>
@@ -1903,7 +1904,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
       data[0].industrialStandard.push(resp.data.rows[0]["Alow"]);
       data[0].industrialStandard.push(resp.data.rows[0]["Ahigh"]);
       data[1].industrialStandard.push(resp.data.rows[0]["Blow"]);
-      data[1].industrialStandard.push(resp.data.rows[0]["Blow"]);
+      data[1].industrialStandard.push(resp.data.rows[0]["Bhigh"]);
       data[2].industrialStandard.push(resp.data.rows[0]["Clow"]);
       data[2].industrialStandard.push(resp.data.rows[0]["Chigh"]);
       data[3].industrialStandard.push(resp.data.rows[0]["Dlow"]);
