@@ -163,7 +163,7 @@ function HomePage(){
                     <img className="carrer_image-2" src = {CareerImg} alt = 'browser sketch'></img>
                     <div className="career-btn-container">
                         <p style={{whiteSpace:'nowrap', marginBottom:'0'}}>It’ll only take 2 minutes, we promise.</p>
-                        <form style = {{marginLeft: '8%'}}action = "https://contactmonest.typeform.com/to/VTHTJ0vy">
+                        <form style = {{marginLeft: '8%'}}action = "https://contactmonest.typeform.com/to/VTHTJ0vy" target = "_blank">
                         <input type="submit" id="button" value="Start" className="career-btn" ></input>
                         </form>
                     </div>
