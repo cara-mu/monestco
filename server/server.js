@@ -777,7 +777,114 @@ app.get('/comparison/:companyID1/:companyID2/:companyID3', function(req,res,next
 });
 })
 
- // Serve any static files
+
+
+
+/*
+Convert ranking preferences into weight for ranking
+ */
+function ranking_weight(preference) {
+  let weight = 1;
+  switch (preference) {
+    case 'low':
+      weight = 0.5;
+      break;
+    case 'medium':
+      weight = 1;
+      break;
+    case 'high':
+      weight = 1.5;
+  }
+
+  return weight;
+}
+
+/*
+rank companies according to their scores
+ */
+function rank_companies(companies, company_scores){
+  companies.sort( function(a, b) {
+    return  company_scores.get(b) - company_scores.get(a);
+  })
+}
+
+
+/*
+APIs
+Get Industry Ranking
+URI: /api/v1/ranking
+Parameters:
+  brand: brand name
+  ranking preference: (low,  medium, high)
+    di: Diversity & Inclusion,
+    we: Worker Exploitation,
+    wp:  Waster & Pollution,
+    es: Ethical Sourcing
+Return:
+  Industry Ranking
+ */
+app.get('/api/v1/ranking', function (req, res){
+  let brand =  req.query['brand'];
+  let di = req.query['di'] || 'medium';
+  let we = req.query['we'] || 'medium';
+  let wp = req.query['wp'] || 'medium';
+  let es = req.query['es'] || 'medium';
+  console.log("/api/v1/ranking");
+  console.log(req.query);
+  let di_weight = ranking_weight(di);
+  let we_weight = ranking_weight(we);
+  let wp_weight = ranking_weight(wp);
+  let es_weight = ranking_weight(es);
+
+  try{
+    let companies_array =  [];
+    let company_scores = new Map();
+    db.all("SELECT name from companies where category = (SELECT category from companies where name = ?)", [brand], (err, companies) => {
+      if (err) {
+        console.log(err)
+        res.status(400).json({ "error": err.message });
+      }
+      if(companies.length) {
+        let item_processed = 0;
+
+        companies.forEach( (value) => {
+          let company = value['Name'];
+          companies_array.push(company);
+          db.all("SELECT Ascore,Bscore,Cscore,Dscore FROM A, B, C, D WHERE A.CompanyID IN (SELECT ID FROM Companies WHERE Name = ?) AND B.CompanyID IN (SELECT ID FROM Companies WHERE Name = ?) AND C.CompanyID IN (SELECT ID FROM Companies WHERE Name = ?) AND D.CompanyID IN (SELECT ID FROM Companies WHERE Name = ?)", [company, company, company, company], (err, scores) => {
+            if (err) {
+              console.log(err)
+              res.status(400).json({ "error": err.message });
+            }
+            if(scores){
+              let weighted_score = scores[0].Ascore * di_weight + scores[0].Bscore * we_weight + scores[0].Cscore * wp_weight + scores[0].Dscore * es_weight;
+              company_scores.set(company, weighted_score);
+              item_processed++;
+              if(item_processed === companies.length){
+                console.log(company_scores);
+                rank_companies(companies_array, company_scores);
+                console.log(companies_array);
+                res.status(200).json(companies_array);
+              }
+            }
+          })
+        })
+      }
+      else{
+        console.log('Company does not exist');
+        res.status(404).json({ "error": 'Company does not exist' });
+      }
+    })
+  }
+  catch (err){
+    res.status(400).json({ "error": err.message });
+  }
+})
+
+
+
+
+
+// Serve any static files
  app.use(express.static(path.join(__dirname, '../client/build')));
  // Handle React routing, return all requests to React app
    app.get('*', function(req, res) {
@@ -797,6 +904,7 @@ app.get('/comparison/:companyID1/:companyID2/:companyID3', function(req,res,next
 // });
 
 // Error page
+
 
 
 app.listen(port, () => {
