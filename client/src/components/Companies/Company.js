@@ -29,6 +29,8 @@ import Resizer from "react-image-file-resizer";
 import BrandLogo from '../../assets/brandBreakdown.svg';
 import { pink } from '@material-ui/core/colors';
 import BrandBreakdown from '../../pages/BrandBreakdown-new';
+import PoliticalAssociationChart from '../PoliticalAssociationChart';
+import "../../styles/PoliticalAssociationChart.css";
 
 const companyinfo = [
     {
@@ -165,6 +167,7 @@ function rand() {
     const [openID, setOpenID] = useState(0);
     const [showBrandPInfo, setBrandPShowInfo] = useState(false);
     const [showCompanyInitInfo, setCompanyInitShowInfo] = useState(false);	
+    const [showPoliticalAssociationInfo, setPoliticalAssociationShowInfo] = useState(false);
     const [showNewsInfo, setNewsShowInfo] = useState(false);
     const [showInfo, setShowInfo] = useState(false)
     const [companyDetails, setCompanyDetails] = React.useState(companyinfo);
@@ -781,6 +784,47 @@ function rand() {
         })
     }
 
+    const convertToChartDataFormat = (data) => {
+        return data.data.map(({ year, rep, dem}) => {
+           return { "name": year,
+                    "Democrats": rep,
+                    "Republicans": dem
+                  }
+        })
+    }
+
+    let test_data = {
+          "data": [{
+                   "year": 2016,
+                   "rep": 23750,
+                   "dem": 1744,
+                   "indi": 1
+               },
+                   {
+                   "year": 2018,
+                   "rep": 63227,
+                   "dem": 917,
+                   "indi": 0.95
+               },
+                   {
+                    "year": 2020,
+                   "rep": 254474,
+                   "dem": 19394,
+                   "indi": 0.96
+               }
+           ],
+           "citation": [{
+               "arthor": "none",
+               "title": "J Crew Group",
+               "publihser": "OpenSecrets",
+               "pages": "34",
+               "date": "none",
+               "url": "https://www.opensecrets.org/orgs/h-m-co/summary?id=D000042667"
+           }]
+       }
+       
+       
+
     return(
         <div className = 'Layout'>
         <Grid container spacing={3}>
@@ -893,6 +937,25 @@ function rand() {
                             <div className='In-The-News-container'>
                                 {News(news)}
                             </div>
+                            <Modal
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="simple-modal-title"
+                                aria-describedby="simple-modal-description"
+                            >
+                                {body}
+                            </Modal>
+                    
+                    </div>
+
+                    <div>
+                        <div className = 'Brand-Section-title'>
+                            Political Association
+                            <InfoIcon className='brand_info-icon' onClick={() => setPoliticalAssociationShowInfo(!showPoliticalAssociationInfo)} />
+                             <InTheNews />
+                            </div>
+                        <div className = 'Decorative-Line'></div>
+                            <PoliticalAssociationChart data={convertToChartDataFormat(test_data)}/>
                             <Modal
                                 open={open}
                                 onClose={handleClose}

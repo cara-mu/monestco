@@ -1,0 +1,12 @@
+.chart-container {
+    background-color: #F2F2F2;
+    width: 685px;
+    height: 339px;
+}
+
+.chart {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 50px;
+
+}
