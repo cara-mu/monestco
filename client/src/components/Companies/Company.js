@@ -952,7 +952,6 @@ function rand() {
                         <div className = 'Brand-Section-title'>
                             Political Association
                             <InfoIcon className='brand_info-icon' onClick={() => setPoliticalAssociationShowInfo(!showPoliticalAssociationInfo)} />
-                             <InTheNews />
                             </div>
                         <div className = 'Decorative-Line'></div>
                             <PoliticalAssociationChart data={convertToChartDataFormat(test_data)}/>
