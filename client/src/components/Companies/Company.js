@@ -30,6 +30,7 @@ import BrandLogo from '../../assets/brandBreakdown.svg';
 import { pink } from '@material-ui/core/colors';
 import BrandBreakdown from '../../pages/BrandBreakdown-new';
 import PoliticalAssociationChart from '../PoliticalAssociationChart';
+import InTheNews from '../CompanySections/InTheNews';
 import "../../styles/PoliticalAssociationChart.css";
 
 const companyinfo = [
@@ -164,7 +165,6 @@ function rand() {
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
-    const [openID, setOpenID] = useState(0);
     const [showBrandPInfo, setBrandPShowInfo] = useState(false);
     const [showCompanyInitInfo, setCompanyInitShowInfo] = useState(false);	
     const [showPoliticalAssociationInfo, setPoliticalAssociationShowInfo] = useState(false);
@@ -947,6 +947,8 @@ function rand() {
                             </Modal>
                     
                     </div>
+
+                    <InTheNews data={news} />
 
                     <div>
                         <div className = 'Brand-Section-title'>
