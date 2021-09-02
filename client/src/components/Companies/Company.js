@@ -823,7 +823,13 @@ function rand() {
            }]
        }
        
-       
+    let testPollAssocSumm = {
+        "rep": 10000,
+        "dem": 20000
+    }
+
+    let demDonation = testPollAssocSumm.dem;
+    let repDonation = testPollAssocSumm.rep;
 
     return(
         <div className = 'Layout'>
@@ -952,10 +958,32 @@ function rand() {
                         <div className = 'Brand-Section-title'>
                             Political Association
                             <InfoIcon className='brand_info-icon' onClick={() => setPoliticalAssociationShowInfo(!showPoliticalAssociationInfo)} />
-                             <InTheNews />
                             </div>
                         <div className = 'Decorative-Line'></div>
-                            <PoliticalAssociationChart data={convertToChartDataFormat(test_data)}/>
+                            <div>
+                <Accordion className = {classes.dropdown}>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon className = 'circle-new'/>}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                    >
+                        <Typography> {`From 2016 to 2020, ${companyName} donated $${demDonation} to the democratic
+                        party and $${repDonation} to the Republican party for a total of $${demDonation + repDonation} 
+                        in donations` } </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails style={{backgroundColor: '#F2F2F2'}}>
+                                <Typography className = {classes.expandMenu}>
+                                    <div
+                    className="Fun-Fact"
+                    style={{ width: "100%", fontWeight: "700" }}
+                    >
+                        <PoliticalAssociationChart data={convertToChartDataFormat(test_data)}/>
+                    </div>
+                                </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                <div className = 'FunFact-Decorative-Line'></div>
+            </div>
                             <Modal
                                 open={open}
                                 onClose={handleClose}
