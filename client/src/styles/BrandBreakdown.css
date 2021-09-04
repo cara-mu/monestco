@@ -293,11 +293,6 @@ body {
     }    
 }
 
-.MuiAccordion-rounded:last-child{
-    box-shadow: none;
-    width: auto !important;
-}
-
 .MuiTypography-body1 {
     width: 100%;
 }

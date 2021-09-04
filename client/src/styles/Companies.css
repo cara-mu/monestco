@@ -536,6 +536,10 @@
     margin: 0 auto;
 }
 
+.political_association {
+    margin-bottom: 106px;
+}
+
 @media only screen and (max-width: 1120px) {
 
     .Description-score>span:first-of-type {

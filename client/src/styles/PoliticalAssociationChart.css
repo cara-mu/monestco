@@ -1,7 +1,7 @@
 .chart-container {
     background-color: #F2F2F2;
-    width: 685px;
     height: 339px;
+    width: 100%;
 }
 
 .chart {

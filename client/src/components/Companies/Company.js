@@ -34,22 +34,22 @@ import "../../styles/PoliticalAssociationChart.css";
 
 const companyinfo = [
     {
-    A_ID: 0,
-    B_ID: 0,
-    C_ID: 0,
-    D_ID: 0,
-    TotalScore: 0,
-    Category: "",
-    Description: "",
-    IndustryStandardsID: 0,
-    Logo: 0,
-    Name: "",
-    SimilarCompany1: "",
-    SimilarCompany2: "",
-    SimilarCompany3: "",
-    SimilarCompany4: "",
-    Subsidiary: "",
-    CompanyID: ""
+        A_ID: 0,
+        B_ID: 0,
+        C_ID: 0,
+        D_ID: 0,
+        TotalScore: 0,
+        Category: "",
+        Description: "",
+        IndustryStandardsID: 0,
+        Logo: 0,
+        Name: "",
+        SimilarCompany1: "",
+        SimilarCompany2: "",
+        SimilarCompany3: "",
+        SimilarCompany4: "",
+        Subsidiary: "",
+        CompanyID: ""
     }
 ]
 
@@ -90,53 +90,32 @@ const companyCit = [
 
 function rand() {
     return Math.round(Math.random() * 20) - 10;
-  }
-  
-  function getModalStyle() {
+}
+
+function getModalStyle() {
     const top = 50;
     const left = 50;
-  
+
     return {
-      top: `${top}%`,
-      left: `${left}%`,
-      transform: `translate(-${top}%, -${left}%)`,
+        top: `${top}%`,
+        left: `${left}%`,
+        transform: `translate(-${top}%, -${left}%)`,
     };
-  }
-  
-  const useStyles = makeStyles((theme) => ({
-    dropdown:{ 
-        width: '90%',
+}
+
+const useStyles = makeStyles((theme) => ({
+    dropdown: {
+        width: '685px',
         boxShadow: 'none'
     },
-    heading:{
+    heading: {
         fontFamily: 'DM Sans',
         color: '#3D3E3F',
         fontSize: '16px'
     },
-    expandMenu:{
+    expandMenu: {
         backgroundColor: '#F2F2F2'
     },
-    paper: {
-      position: 'absolute',
-      width: 900,
-      backgroundColor: theme.palette.background.paper,
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
-    },
-    dropdown:{ 
-        width: '90%',
-        boxShadow: 'none',
-    },
-    heading:{
-        fontFamily: 'DM Sans',
-        color: '#3D3E3F',
-        fontSize: '16px'
-    },
-    expandMenu:{
-        fontFamily: 'DM Sans',
-        fontWeight: 'normal',
-        fontSize: '16px'
-     },
     paper: {
         position: 'absolute',
         width: 900,
@@ -144,29 +123,63 @@ function rand() {
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
     },
+    dropdown: {
+        width: '90%',
+        boxShadow: 'none',
+        paddingLeft: '0px',
+        paddingRight: '0px'
+
+    },
+    heading: {
+        fontFamily: 'DM Sans',
+        color: '#3D3E3F',
+        fontSize: '16px'
+    },
+    expandMenu: {
+        fontFamily: 'DM Sans',
+        fontWeight: 'normal',
+        fontSize: '16px'
+    },
+    paper: {
+        position: 'absolute',
+        width: 900,
+        backgroundColor: theme.palette.background.paper,
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    },
+    politicalAssociationSummary: {
+        paddingLeft: '0px',
+        paddingRight: '0px',
+    },
+    politicalAssociation: {
+        width: '100%'
+    },
+    politicalAssociationAccordionDetails: {
+        padding: '0px'
+    }
 }));
 
-  function useForceUpdate(){
+function useForceUpdate() {
     const [value, setValue] = useState(0); // integer state
     return () => setValue(value => value + 1); // update the state to force render
 }
 
 
-  function Company ({match, location})  {
+function Company({ match, location }) {
     const {
         params: { companyName }
     } = match;
 
-    
-    const [showFact,setShowFact] = useState(false);
-    
+
+    const [showFact, setShowFact] = useState(false);
+
     const findLocation = useLocation();
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
     const [openID, setOpenID] = useState(0);
     const [showBrandPInfo, setBrandPShowInfo] = useState(false);
-    const [showCompanyInitInfo, setCompanyInitShowInfo] = useState(false);	
+    const [showCompanyInitInfo, setCompanyInitShowInfo] = useState(false);
     const [showPoliticalAssociationInfo, setPoliticalAssociationShowInfo] = useState(false);
     const [showNewsInfo, setNewsShowInfo] = useState(false);
     const [showInfo, setShowInfo] = useState(false)
@@ -175,27 +188,27 @@ function rand() {
     const [fact, setFact] = React.useState(companyFacts);
     const [news, setNews] = React.useState(companyNews);
     const [citations, setCitations] = React.useState(companyCit);
-    const {loading, setLoading} = useState(false);
+    const { loading, setLoading } = useState(false);
     const [state, setState] = useState([])
     const [A, setA] = useState(0);
     const [B, setB] = useState(0);
     const [C, setC] = useState(0);
     const [D, setD] = useState(0);
-    
+
 
     const handleCloseInfo = () => {
         setShowInfo(false)
     }
 
-    const handleCloseBrandPInfo = () => {	
-        setBrandPShowInfo(false)	
-    }	
-    	
-    const handleCloseNewsInfo = () => {	
-        setNewsShowInfo(false)	
-    }	
-    const handleCloseCompanyInitInfo = () => {	
-        setCompanyInitShowInfo(false)	
+    const handleCloseBrandPInfo = () => {
+        setBrandPShowInfo(false)
+    }
+
+    const handleCloseNewsInfo = () => {
+        setNewsShowInfo(false)
+    }
+    const handleCloseCompanyInitInfo = () => {
+        setCompanyInitShowInfo(false)
     }
 
     const handleOpen = (k, ID) => {
@@ -234,105 +247,105 @@ function rand() {
         })
         setOpenID(k);
         setOpen(true);
-    };    
+    };
 
     const handleClose = () => {
         setOpen(false);
     };
 
 
-    const toggleFact = ()=> {
+    const toggleFact = () => {
         setShowFact(!showFact)
     }
 
     const body = (
-          <ModalBody handleClose={handleClose} i={openID} title={news[0]["Title"]} summary={news[0]["Summary"]}
-          issueAdd={news[0]["IssueAddressed"]} issueAddExp={news[0]["IssueAddressedExplanation"]} respTake={news[0]["ResponsibilityTaken"]} respTakenExp = {news[0]["ResponsibilityTakenExplanation"]} newsID={news[0]["ID"]} citID={citations[0]["RelationalID"]} author={citations[0]["Author"]} cittitle={citations[0]["Title"]} pubgroup = {citations[0]["PublishingGroup"]} date = {citations[0]["Date"]} pages = {citations[0]["Pages"]} url = {citations[0]["URL"]} />
-      );
+        <ModalBody handleClose={handleClose} i={openID} title={news[0]["Title"]} summary={news[0]["Summary"]}
+            issueAdd={news[0]["IssueAddressed"]} issueAddExp={news[0]["IssueAddressedExplanation"]} respTake={news[0]["ResponsibilityTaken"]} respTakenExp={news[0]["ResponsibilityTakenExplanation"]} newsID={news[0]["ID"]} citID={citations[0]["RelationalID"]} author={citations[0]["Author"]} cittitle={citations[0]["Title"]} pubgroup={citations[0]["PublishingGroup"]} date={citations[0]["Date"]} pages={citations[0]["Pages"]} url={citations[0]["URL"]} />
+    );
 
-      const BrandPerformancePopup = ({handleCloseInfo}) => {
+    const BrandPerformancePopup = ({ handleCloseInfo }) => {
 
         return (
             <div className="company-popup">
                 <div className='company-popup-content'>
-                    <div style={{display:'flex', flexDirection:'column', marginTop:'1rem'}}>
+                    <div style={{ display: 'flex', flexDirection: 'column', marginTop: '1rem' }}>
                         <div>Brand Performance</div>
-                        <div style={{fontSize:'16px', fontWeight:'500', lineHeight:'25px'}}>
-                        Performance is scored following an assessment of company policies, practices and actions taken in each of the following categories. To understand the scores given, click on Detailed Breakdown.	
-                        </div>	
-                    </div>	
-                    <HighlightOffRoundedIcon onClick={handleCloseBrandPInfo} className="popup-close-icon"/>	
-                </div>	
-            </div>	
-        )	
-    };	
-    const CompanyInitPopup = ({handleCloseInfo}) => {	
-        return (	
-            <div className="company-popup">	
-                <div className='company-popup-content'>	
-                    <div style={{display:'flex', flexDirection:'column', marginTop:'1rem'}}>	
-                        <div>Company Initiatives</div>	
-                        <div style={{fontSize:'16px', fontWeight:'500', lineHeight:'25px'}}>	
-                        A showcase of brand initiatives and achievements that are not directly correlated to the scores given.	
-                        </div>	
-                    </div>	
-                    <HighlightOffRoundedIcon onClick={handleCloseCompanyInitInfo} className="popup-close-icon"/>	
-                </div>	
-            </div>	
-        )	
-    };	
-    const NewsPopup = ({handleCloseInfo}) => {	
-        return (	
-            <div className="company-popup">	
-                <div className='company-popup-content'>	
-                    <div style={{display:'flex', flexDirection:'column', marginTop:'1rem'}}>	
-                        <div>In the News</div>	
-                        <div style={{fontSize:'16px', fontWeight:'500', lineHeight:'25px'}}>	
-                        News and recent events summarized with an assessment of the company’s actions taken in response	
-                        </div>	
-                    </div>	
-                    <HighlightOffRoundedIcon onClick={() => setNewsShowInfo(false)} className="popup-close-icon"/>
+                        <div style={{ fontSize: '16px', fontWeight: '500', lineHeight: '25px' }}>
+                            Performance is scored following an assessment of company policies, practices and actions taken in each of the following categories. To understand the scores given, click on Detailed Breakdown.
+                        </div>
+                    </div>
+                    <HighlightOffRoundedIcon onClick={handleCloseBrandPInfo} className="popup-close-icon" />
+                </div>
+            </div>
+        )
+    };
+    const CompanyInitPopup = ({ handleCloseInfo }) => {
+        return (
+            <div className="company-popup">
+                <div className='company-popup-content'>
+                    <div style={{ display: 'flex', flexDirection: 'column', marginTop: '1rem' }}>
+                        <div>Company Initiatives</div>
+                        <div style={{ fontSize: '16px', fontWeight: '500', lineHeight: '25px' }}>
+                            A showcase of brand initiatives and achievements that are not directly correlated to the scores given.
+                        </div>
+                    </div>
+                    <HighlightOffRoundedIcon onClick={handleCloseCompanyInitInfo} className="popup-close-icon" />
+                </div>
+            </div>
+        )
+    };
+    const NewsPopup = ({ handleCloseInfo }) => {
+        return (
+            <div className="company-popup">
+                <div className='company-popup-content'>
+                    <div style={{ display: 'flex', flexDirection: 'column', marginTop: '1rem' }}>
+                        <div>In the News</div>
+                        <div style={{ fontSize: '16px', fontWeight: '500', lineHeight: '25px' }}>
+                            News and recent events summarized with an assessment of the company’s actions taken in response
+                        </div>
+                    </div>
+                    <HighlightOffRoundedIcon onClick={() => setNewsShowInfo(false)} className="popup-close-icon" />
                 </div>
             </div>
         )
     };
 
-    const RenderFact = ({item}) => {
+    const RenderFact = ({ item }) => {
         const [showFact, setShowFact] = useState(false);
         const [showCitation, setShowCitation] = useState(false);
 
         useEffect(() => {
-            if(showFact === false) {
+            if (showFact === false) {
                 setShowCitation(false)
             }
         }, [showFact])
-        
-        return(
+
+        return (
             <div>
-                <div className = 'Fun-Fact'>{item.title}
+                <div className='Fun-Fact'>{item.title}
                     <div
                         className={showFact ? "Fun-Fact-circle-close" : "Fun-Fact-circle"}
                         onClick={() => setShowFact(!showFact)}
-                        >
+                    >
                         <i className={showFact ? "Fun-Fact-arrowdown-close" : "Fun-Fact-arrowdown"}></i>
                     </div>
                 </div>
-                <div className = {`fact-animate-field ${showFact ? 'fact-animate' : ''}`}>
-                {
-                    showFact ? 
-                        <div className = "Fun-Fact-Dropdown">
-                            {item.discription}
-                            <div className = 'Fun-Fact-Citation' style={{width:'100%', fontWeight:'700'}}>
-                                Citation
-                                <i onClick={() => setShowCitation(!showCitation)} style={{borderColor:'#323232'}} className={showCitation ? "Fun-Fact-arrowdown-close" : "Fun-Fact-arrowdown"}></i>
-                            </div>
-                            {
-                                showCitation ? <div>{item.citation}</div> : null
-                            }
-                        </div> : null
-                }
+                <div className={`fact-animate-field ${showFact ? 'fact-animate' : ''}`}>
+                    {
+                        showFact ?
+                            <div className="Fun-Fact-Dropdown">
+                                {item.discription}
+                                <div className='Fun-Fact-Citation' style={{ width: '100%', fontWeight: '700' }}>
+                                    Citation
+                                <i onClick={() => setShowCitation(!showCitation)} style={{ borderColor: '#323232' }} className={showCitation ? "Fun-Fact-arrowdown-close" : "Fun-Fact-arrowdown"}></i>
+                                </div>
+                                {
+                                    showCitation ? <div>{item.citation}</div> : null
+                                }
+                            </div> : null
+                    }
                 </div>
-                <div className = 'FunFact-Decorative-Line'></div>
+                <div className='FunFact-Decorative-Line'></div>
             </div>
         )
 
@@ -341,28 +354,28 @@ function rand() {
     const BrandPerformance = () => {
 
         const [tabView, setTabView] = useState(window.innerWidth < 800);
-        
+
         useLayoutEffect(() => {
             function updateSize() {
-              if (window.innerWidth > 800) {
-                setTabView(false);
-              } else {
-                setTabView(true);
-              }
+                if (window.innerWidth > 800) {
+                    setTabView(false);
+                } else {
+                    setTabView(true);
+                }
             }
             window.addEventListener("resize", updateSize);
             updateSize();
             return () => window.removeEventListener("resize", updateSize);
-          }, []);
+        }, []);
 
-        if(!tabView) { //web view
-            return(
+        if (!tabView) { //web view
+            return (
                 <div className='brand_info-text'>Performance is scored following an assessment of company policies, practices and actions taken in each of the following categories. To understand the scores given, click on Detailed Breakdown</div>
-                )
-            } else if ( showBrandPInfo && tabView ) { //tab view	
-                return(	
-                        <BrandPerformancePopup handleCloseBrandPInfo={handleCloseBrandPInfo} />
-                )
+            )
+        } else if (showBrandPInfo && tabView) { //tab view	
+            return (
+                <BrandPerformancePopup handleCloseBrandPInfo={handleCloseBrandPInfo} />
+            )
         } else return null
 
     }
@@ -370,28 +383,28 @@ function rand() {
     const CompanyInitiative = () => {
 
         const [tabView, setTabView] = useState(window.innerWidth < 800);
-        
+
         useLayoutEffect(() => {
             function updateSize() {
-              if (window.innerWidth > 800) {
-                setTabView(false);
-              } else {
-                setTabView(true);
-              }
+                if (window.innerWidth > 800) {
+                    setTabView(false);
+                } else {
+                    setTabView(true);
+                }
             }
             window.addEventListener("resize", updateSize);
             updateSize();
             return () => window.removeEventListener("resize", updateSize);
-          }, []);
+        }, []);
 
-        if(!tabView) { //web view
-            return(
+        if (!tabView) { //web view
+            return (
                 <div className='brand_info-text'>A showcase of brand initiatives and achievements that are not directly correlated to the scores given</div>
-                )
-            } else if ( showCompanyInitInfo && tabView ) { //tab view	
-                return(	
-                        <CompanyInitPopup handleCloseCompanyInitInfo={handleCloseCompanyInitInfo} />
-                )
+            )
+        } else if (showCompanyInitInfo && tabView) { //tab view	
+            return (
+                <CompanyInitPopup handleCloseCompanyInitInfo={handleCloseCompanyInitInfo} />
+            )
         } else return null
 
     }
@@ -399,28 +412,28 @@ function rand() {
     const InTheNews = () => {
 
         const [tabView, setTabView] = useState(window.innerWidth < 800);
-        
+
         useLayoutEffect(() => {
             function updateSize() {
-              if (window.innerWidth > 800) {
-                setTabView(false);
-              } else {
-                setTabView(true);
-              }
+                if (window.innerWidth > 800) {
+                    setTabView(false);
+                } else {
+                    setTabView(true);
+                }
             }
             window.addEventListener("resize", updateSize);
             updateSize();
             return () => window.removeEventListener("resize", updateSize);
-          }, []);
+        }, []);
 
-        if(!tabView) { //web view
-            return(
+        if (!tabView) { //web view
+            return (
                 <div className='brand_info-text'>News and recent events summarized with an assessment of the company’s actions taken in response</div>
-                )
-            } else if ( showNewsInfo && tabView ) { //tab view	
-                return(	
-                        <NewsPopup handleCloseNewsInfo={handleCloseNewsInfo} />
-                )
+            )
+        } else if (showNewsInfo && tabView) { //tab view	
+            return (
+                <NewsPopup handleCloseNewsInfo={handleCloseNewsInfo} />
+            )
         } else return null
 
     }
@@ -435,30 +448,30 @@ function rand() {
         axios.post(
             '/companyscores',
             {},
-                {
-                    params: companyName
-                }
+            {
+                params: companyName
+            }
         ).then((resp) => {
             let data = companyDetails;
-            let score = (parseInt(resp.data[0]["Ascore"]) + parseInt(resp.data[0]["Bscore"]) + parseInt(resp.data[0]["Cscore"]) + parseInt(resp.data[0]["Dscore"]))/4;
+            let score = (parseInt(resp.data[0]["Ascore"]) + parseInt(resp.data[0]["Bscore"]) + parseInt(resp.data[0]["Cscore"]) + parseInt(resp.data[0]["Dscore"])) / 4;
             data[0]["TotalScore"] = score;
             data[0]["Ascore"] = resp.data[0]["Ascore"];
             data[0]["Bscore"] = resp.data[0]["Bscore"];
             data[0]["Cscore"] = resp.data[0]["Cscore"];
             data[0]["Dscore"] = resp.data[0]["Dscore"];
-            let ratio = 324*score/100;
+            let ratio = 324 * score / 100;
             data[0]["SliderLength"] = ratio;
             setCompanyDetails(data);
             setState(resp.data);
         });
 
         axios.post(
-            '/companyname', 
+            '/companyname',
             {},
-                {
-                    params: companyName
-                }
-            )
+            {
+                params: companyName
+            }
+        )
             .then((resp) => {
                 let data = companyDetails;
                 // data[0]["A_ID"] = resp.data[0]["A_ID"];
@@ -484,14 +497,14 @@ function rand() {
             {
                 params: companyName
             }
-        ).then((resp) =>{
+        ).then((resp) => {
             let data = companyDetails;
             data[0]["company1Ascore"] = resp.data[0]["Ascore"];
             data[0]["company1Bscore"] = resp.data[0]["Bscore"];
             data[0]["company1Cscore"] = resp.data[0]["Cscore"];
             data[0]["company1Dscore"] = resp.data[0]["Dscore"];
-            let company1TotalScore = (parseInt(data[0]["company1Ascore"]) + parseInt(data[0]["company1Bscore"]) + parseInt(data[0]["company1Cscore"]) + parseInt(data[0]["company1Dscore"]))/4;
-            let comp1SliderLength = 324*company1TotalScore/100
+            let company1TotalScore = (parseInt(data[0]["company1Ascore"]) + parseInt(data[0]["company1Bscore"]) + parseInt(data[0]["company1Cscore"]) + parseInt(data[0]["company1Dscore"])) / 4;
+            let comp1SliderLength = 324 * company1TotalScore / 100
             data[0]["company1TotalScore"] = company1TotalScore;
             data[0]["comp1SliderLength"] = comp1SliderLength;
         })
@@ -501,14 +514,14 @@ function rand() {
             {
                 params: companyName
             }
-        ).then((resp) =>{
+        ).then((resp) => {
             let data = companyDetails;
             data[0]["company2Ascore"] = resp.data[0]["Ascore"];
             data[0]["company2Bscore"] = resp.data[0]["Bscore"];
             data[0]["company2Cscore"] = resp.data[0]["Cscore"];
             data[0]["company2Dscore"] = resp.data[0]["Dscore"];
-            let company2TotalScore = (parseInt(data[0]["company2Ascore"]) + parseInt(data[0]["company2Bscore"]) + parseInt(data[0]["company2Cscore"]) + parseInt(data[0]["company2Dscore"]))/4;
-            let comp2SliderLength = 324*company2TotalScore/100
+            let company2TotalScore = (parseInt(data[0]["company2Ascore"]) + parseInt(data[0]["company2Bscore"]) + parseInt(data[0]["company2Cscore"]) + parseInt(data[0]["company2Dscore"])) / 4;
+            let comp2SliderLength = 324 * company2TotalScore / 100
             data[0]["company2TotalScore"] = company2TotalScore;
             data[0]["comp2SliderLength"] = comp2SliderLength;
         })
@@ -518,14 +531,14 @@ function rand() {
             {
                 params: companyName
             }
-        ).then((resp) =>{
+        ).then((resp) => {
             let data = companyDetails;
             data[0]["company3Ascore"] = resp.data[0]["Ascore"];
             data[0]["company3Bscore"] = resp.data[0]["Bscore"];
             data[0]["company3Cscore"] = resp.data[0]["Cscore"];
             data[0]["company3Dscore"] = resp.data[0]["Dscore"];
-            let company3TotalScore = (parseInt(data[0]["company3Ascore"]) + parseInt(data[0]["company3Bscore"]) + parseInt(data[0]["company3Cscore"]) + parseInt(data[0]["company3Dscore"]))/4;
-            let comp3SliderLength = 324*company3TotalScore/100
+            let company3TotalScore = (parseInt(data[0]["company3Ascore"]) + parseInt(data[0]["company3Bscore"]) + parseInt(data[0]["company3Cscore"]) + parseInt(data[0]["company3Dscore"])) / 4;
+            let comp3SliderLength = 324 * company3TotalScore / 100
             data[0]["company3TotalScore"] = company3TotalScore;
             data[0]["comp3SliderLength"] = comp3SliderLength;
         })
@@ -535,84 +548,84 @@ function rand() {
             {
                 params: companyName
             }
-        ).then((resp) =>{
+        ).then((resp) => {
             let data = companyDetails;
             data[0]["company4Ascore"] = resp.data[0]["Ascore"];
             data[0]["company4Bscore"] = resp.data[0]["Bscore"];
             data[0]["company4Cscore"] = resp.data[0]["Cscore"];
             data[0]["company4Dscore"] = resp.data[0]["Dscore"];
-            let company4TotalScore = (parseInt(data[0]["company4Ascore"]) + parseInt(data[0]["company4Bscore"]) + parseInt(data[0]["company4Cscore"]) + parseInt(data[0]["company4Dscore"]))/4;
-            let comp4SliderLength = 324*company4TotalScore/100
+            let company4TotalScore = (parseInt(data[0]["company4Ascore"]) + parseInt(data[0]["company4Bscore"]) + parseInt(data[0]["company4Cscore"]) + parseInt(data[0]["company4Dscore"])) / 4;
+            let comp4SliderLength = 324 * company4TotalScore / 100
             data[0]["company4TotalScore"] = company4TotalScore;
             data[0]["comp4SliderLength"] = comp4SliderLength;
         })
-                axios.post(
-                    '/facts', 
-                    {},
-                        {
-                            params: companyName
-                        }
-                    )
-                    .then((resp) => {
-                        let data = companyFacts;
-                        let headingsarr = [];
-                        let summaryarr = [];
-                        let idarr = [];
-                        resp.data.map(fact => {
-                            headingsarr.push(fact['Heading']);
-                            summaryarr.push(fact['Summary']);
-                            idarr.push(fact['ID']);
-                        })
-                        data[0]['Heading'] = headingsarr;
-                        data[0]['Summary'] = summaryarr;
-                        data[0]["ID"] = idarr;
-                        setFact(data);
-                        setState(resp.data);
-                    })
-                    axios.post(
-                        '/news', 
-                        {},
-                            {
-                                params: companyName
-                            }
-                        )
-                        .then((resp) => {
-                            let data = companyNews;
-                            let photoarr = [];
-                            let yeararr = [];
-                            let catarr = [];
-                            let titlearr = [];
-                            let summarr = [];
-                            let issueaddarr = [];
-                            let issueexparr = [];
-                            let resptakearr = [];
-                            let respexparr = [];
-                            let idarr = [];
-                            resp.data.map(news => {
-                                photoarr.push(news['Photo']);
-                                yeararr.push(news['Year']);
-                                catarr.push(news['Category']);
-                                titlearr.push(news['Title']);
-                                summarr.push(news['Summary']);
-                                issueaddarr.push(news['IssueAddressed']);
-                                issueexparr.push(news['IssueAddressedExplanation']);
-                                resptakearr.push(news['ResponsibilityTaken']);
-                                respexparr.push(news['ResponsibilityTakenExplanation']);
-                                idarr.push(news['ID']);
-                            })
-                            data[0]["Photo"] = photoarr;
-                            data[0]["Year"] = yeararr;
-                            data[0]["Category"] = catarr;
-                            data[0]["Title"] = titlearr;
-                            data[0]["Summary"] = summarr;
-                            data[0]["IssueAddressed"] = issueaddarr;
-                            data[0]["IssueAddressedExplanation"] = issueexparr;
-                            data[0]["ResponsibilityTaken"] = resptakearr;
-                            data[0]["ResponsibilityTakenExplanation"] = respexparr;
-                            data[0]["ID"] = idarr;
-                            setNews(data);
-                            setState(resp.data);
-                        })
+        axios.post(
+            '/facts',
+            {},
+            {
+                params: companyName
+            }
+        )
+            .then((resp) => {
+                let data = companyFacts;
+                let headingsarr = [];
+                let summaryarr = [];
+                let idarr = [];
+                resp.data.map(fact => {
+                    headingsarr.push(fact['Heading']);
+                    summaryarr.push(fact['Summary']);
+                    idarr.push(fact['ID']);
+                })
+                data[0]['Heading'] = headingsarr;
+                data[0]['Summary'] = summaryarr;
+                data[0]["ID"] = idarr;
+                setFact(data);
+                setState(resp.data);
+            })
+        axios.post(
+            '/news',
+            {},
+            {
+                params: companyName
+            }
+        )
+            .then((resp) => {
+                let data = companyNews;
+                let photoarr = [];
+                let yeararr = [];
+                let catarr = [];
+                let titlearr = [];
+                let summarr = [];
+                let issueaddarr = [];
+                let issueexparr = [];
+                let resptakearr = [];
+                let respexparr = [];
+                let idarr = [];
+                resp.data.map(news => {
+                    photoarr.push(news['Photo']);
+                    yeararr.push(news['Year']);
+                    catarr.push(news['Category']);
+                    titlearr.push(news['Title']);
+                    summarr.push(news['Summary']);
+                    issueaddarr.push(news['IssueAddressed']);
+                    issueexparr.push(news['IssueAddressedExplanation']);
+                    resptakearr.push(news['ResponsibilityTaken']);
+                    respexparr.push(news['ResponsibilityTakenExplanation']);
+                    idarr.push(news['ID']);
+                })
+                data[0]["Photo"] = photoarr;
+                data[0]["Year"] = yeararr;
+                data[0]["Category"] = catarr;
+                data[0]["Title"] = titlearr;
+                data[0]["Summary"] = summarr;
+                data[0]["IssueAddressed"] = issueaddarr;
+                data[0]["IssueAddressedExplanation"] = issueexparr;
+                data[0]["ResponsibilityTaken"] = resptakearr;
+                data[0]["ResponsibilityTakenExplanation"] = respexparr;
+                data[0]["ID"] = idarr;
+                setNews(data);
+                setState(resp.data);
+            })
     }, [findLocation]);
 
     const Facts = (factinput) => {
@@ -649,42 +662,43 @@ function rand() {
             let urlarr = [];
             let pagesarr = [];
             if (factinput[0]['Heading'].length != 0) {
-                Promise.all(Object.entries(factinput[0]['Heading']).map((heading, i) => 
+                Promise.all(Object.entries(factinput[0]['Heading']).map((heading, i) =>
                     axios.post('/citationsFacts',
-                    {},
-                    {
-                        params: [companyName, factinput[0]["ID"][i], 'F']
-                    }
-                ).then(resp => {
-                    if (resp.data.length!= 0) {
-                        let data = citations;
-                        if (citationsarr.length != 0) {
-                            relidarr = citationsarr[0][0]["RelationalID"];
-                            authorarr = citationsarr[0][0]["Author"];
-                            datearr = citationsarr[0][0]["Date"];
-                            pubarr = citationsarr[0][0]["PublishingGroup"];
-                            titlearr = citationsarr[0][0]["Title"];
-                            urlarr = citationsarr[0][0]["URL"];
-                            pagesarr = citationsarr[0][0]["Pages"];
-                        } 
-                        resp.data.map(citation => {
-                            relidarr.push(citation["RelationalID"]);
-                            authorarr.push(citation["Author"]);
-                            datearr.push(citation["Date"]);
-                            pubarr.push(citation["PublishingGroup"]);
-                            titlearr.push(citation["Title"]);
-                            urlarr.push(citation["URL"]);
-                            pagesarr.push(citation["Pages"]);
-                        })
-                        data[0]["Author"] = authorarr;
-                        data[0]["Date"] = datearr;
-                        data[0]["PublishingGroup"] = pubarr;
-                        data[0]["Title"] = titlearr;
-                        data[0]["RelationalID"] = relidarr;
-                        data[0]["URL"] = urlarr;
-                        data[0]["Pages"] = pagesarr;
-                        citationsarr.push(data);
-                }})
+                        {},
+                        {
+                            params: [companyName, factinput[0]["ID"][i], 'F']
+                        }
+                    ).then(resp => {
+                        if (resp.data.length != 0) {
+                            let data = citations;
+                            if (citationsarr.length != 0) {
+                                relidarr = citationsarr[0][0]["RelationalID"];
+                                authorarr = citationsarr[0][0]["Author"];
+                                datearr = citationsarr[0][0]["Date"];
+                                pubarr = citationsarr[0][0]["PublishingGroup"];
+                                titlearr = citationsarr[0][0]["Title"];
+                                urlarr = citationsarr[0][0]["URL"];
+                                pagesarr = citationsarr[0][0]["Pages"];
+                            }
+                            resp.data.map(citation => {
+                                relidarr.push(citation["RelationalID"]);
+                                authorarr.push(citation["Author"]);
+                                datearr.push(citation["Date"]);
+                                pubarr.push(citation["PublishingGroup"]);
+                                titlearr.push(citation["Title"]);
+                                urlarr.push(citation["URL"]);
+                                pagesarr.push(citation["Pages"]);
+                            })
+                            data[0]["Author"] = authorarr;
+                            data[0]["Date"] = datearr;
+                            data[0]["PublishingGroup"] = pubarr;
+                            data[0]["Title"] = titlearr;
+                            data[0]["RelationalID"] = relidarr;
+                            data[0]["URL"] = urlarr;
+                            data[0]["Pages"] = pagesarr;
+                            citationsarr.push(data);
+                        }
+                    })
                 )).then(() => {
                     setFactCitation(JSON.stringify(citationsarr[0]))
                 });
@@ -693,37 +707,37 @@ function rand() {
 
         return Object.entries(factinput[0]['Heading']).map((heading, i) => {
             return <div>
-                <Accordion className = {classes.dropdown}>
+                <Accordion className={classes.dropdown}>
                     <AccordionSummary
-                        expandIcon={<ExpandMoreIcon className = 'circle-new'/>}
+                        expandIcon={<ExpandMoreIcon className='circle-new' />}
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                     >
                         <Typography className={classes.heading}>{heading[1]}</Typography>
                     </AccordionSummary>
-                    <AccordionDetails style={{backgroundColor: '#F2F2F2'}}>
-                        <Typography className = {classes.expandMenu}>
+                    <AccordionDetails style={{ backgroundColor: '#F2F2F2' }}>
+                        <Typography className={classes.expandMenu}>
                             {factinput[0]['Summary'][i]}
                             <div
-              className="Fun-Fact"
-              style={{ width: "100%", fontWeight: "700" }}
-            >
-              Citation
+                                className="Fun-Fact"
+                                style={{ width: "100%", fontWeight: "700" }}
+                            >
+                                Citation
               <i
-                onClick={() => showCitations()}
-                style={{ borderColor: "#323232" }}
-                className={`Fun-Fact-arrowdown ${showCitation ? "Fun-Fact-arrowdown-rotate" : ""}`}
-              ></i>
-            </div>
-            {showCitation ? 
-            <div>
-                {FactCitations(i)}
-            </div>
-            : null}
+                                    onClick={() => showCitations()}
+                                    style={{ borderColor: "#323232" }}
+                                    className={`Fun-Fact-arrowdown ${showCitation ? "Fun-Fact-arrowdown-rotate" : ""}`}
+                                ></i>
+                            </div>
+                            {showCitation ?
+                                <div>
+                                    {FactCitations(i)}
+                                </div>
+                                : null}
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
-                <div className = 'FunFact-Decorative-Line'></div>
+                <div className='FunFact-Decorative-Line'></div>
             </div>
         })
     }
@@ -731,98 +745,99 @@ function rand() {
     const News = (newsinput) => {
         return Object.entries(newsinput[0]['Category']).map((category, i) => {
             return <div>
-            <div className='news-card'>
-                <img src={newsinput[0]["Photo"][i]} style={{background: 'rgba(87, 114, 104, 0.5)'}} />
-                <div className='news-category'>
-                    <span className='news-category-title'>{category[1]}</span>
-                    <span className='news-category-year'>{newsinput[0]["Year"][i]}</span>
-                </div>
-                <div style={{marginTop: '3%'}} className = 'News-Description'>
-                    <div className = 'News-Description-title'>{newsinput[0]["Title"][i]}</div>
-                    
-                    <TextTruncate
-                        line={3}
-                        containerClassName = 'News-Description-info'
-                        element="div"
-                        truncateText="…"
-                        text={newsinput[0]["Summary"][i]}
-                    />
-
-                    {/* <div className = 'News-Description-info'>{newsinput[0]["Summary"][i]}</div> */}
-                    <div style={{fontSize:'14px'}}>
-                        <span>Responsibility Taken?</span>
-
-                        {newsinput[0]["ResponsibilityTaken"][i] == "No" &&
-                            <span style={{color:'#E94921', marginLeft:'5px'}}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
-                        ||
-                        newsinput[0]["ResponsibilityTaken"][i] == "Yes" &&
-                            <span style={{color:'#28a745', marginLeft:'5px'}}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
-                        ||
-                        newsinput[0]["ResponsibilityTaken"][i] == "Maybe" &&
-                            <span style={{color:'#F29A72', marginLeft:'5px'}}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
-                        }
-
-
+                <div className='news-card'>
+                    <img src={newsinput[0]["Photo"][i]} style={{ background: 'rgba(87, 114, 104, 0.5)' }} />
+                    <div className='news-category'>
+                        <span className='news-category-title'>{category[1]}</span>
+                        <span className='news-category-year'>{newsinput[0]["Year"][i]}</span>
                     </div>
-                    <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
-                        <span>Issue Resolved?</span>
+                    <div style={{ marginTop: '3%' }} className='News-Description'>
+                        <div className='News-Description-title'>{newsinput[0]["Title"][i]}</div>
 
-                        {newsinput[0]["IssueAddressed"][i] == "No" &&
-                            <span style={{color:'#E94921', marginLeft:'5px'}}>{newsinput[0]["IssueAddressed"][i]}</span>
-                        || 
-                        newsinput[0]["IssueAddressed"][i] == "Yes" &&
-                            <span style={{color:'#28a745', marginLeft:'5px'}}>{newsinput[0]["IssueAddressed"][i]}</span>
-                        || 
-                        newsinput[0]["IssueAddressed"][i] == "Maybe" &&
-                            <span style={{color:'#F29A72', marginLeft:'5px'}}>{newsinput[0]["IssueAddressed"][i]}</span>
-                        }
-                        <button className='News-read-more-btn' onClick={() => handleOpen(i, news[0]["ID"][i])}>Read more</button>
+                        <TextTruncate
+                            line={3}
+                            containerClassName='News-Description-info'
+                            element="div"
+                            truncateText="…"
+                            text={newsinput[0]["Summary"][i]}
+                        />
+
+                        {/* <div className = 'News-Description-info'>{newsinput[0]["Summary"][i]}</div> */}
+                        <div style={{ fontSize: '14px' }}>
+                            <span>Responsibility Taken?</span>
+
+                            {newsinput[0]["ResponsibilityTaken"][i] == "No" &&
+                                <span style={{ color: '#E94921', marginLeft: '5px' }}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
+                                ||
+                                newsinput[0]["ResponsibilityTaken"][i] == "Yes" &&
+                                <span style={{ color: '#28a745', marginLeft: '5px' }}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
+                                ||
+                                newsinput[0]["ResponsibilityTaken"][i] == "Maybe" &&
+                                <span style={{ color: '#F29A72', marginLeft: '5px' }}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
+                            }
+
+
+                        </div>
+                        <div style={{ fontSize: '14px', display: 'flex', position: 'relative' }}>
+                            <span>Issue Resolved?</span>
+
+                            {newsinput[0]["IssueAddressed"][i] == "No" &&
+                                <span style={{ color: '#E94921', marginLeft: '5px' }}>{newsinput[0]["IssueAddressed"][i]}</span>
+                                ||
+                                newsinput[0]["IssueAddressed"][i] == "Yes" &&
+                                <span style={{ color: '#28a745', marginLeft: '5px' }}>{newsinput[0]["IssueAddressed"][i]}</span>
+                                ||
+                                newsinput[0]["IssueAddressed"][i] == "Maybe" &&
+                                <span style={{ color: '#F29A72', marginLeft: '5px' }}>{newsinput[0]["IssueAddressed"][i]}</span>
+                            }
+                            <button className='News-read-more-btn' onClick={() => handleOpen(i, news[0]["ID"][i])}>Read more</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         })
     }
 
     const convertToChartDataFormat = (data) => {
-        return data.data.map(({ year, rep, dem}) => {
-           return { "name": year,
-                    "Democrats": rep,
-                    "Republicans": dem
-                  }
+        return data.data.map(({ year, rep, dem }) => {
+            return {
+                "name": year,
+                "Democrats": rep,
+                "Republicans": dem
+            }
         })
     }
 
     let test_data = {
-          "data": [{
-                   "year": 2016,
-                   "rep": 23750,
-                   "dem": 1744,
-                   "indi": 1
-               },
-                   {
-                   "year": 2018,
-                   "rep": 63227,
-                   "dem": 917,
-                   "indi": 0.95
-               },
-                   {
-                    "year": 2020,
-                   "rep": 254474,
-                   "dem": 19394,
-                   "indi": 0.96
-               }
-           ],
-           "citation": [{
-               "arthor": "none",
-               "title": "J Crew Group",
-               "publihser": "OpenSecrets",
-               "pages": "34",
-               "date": "none",
-               "url": "https://www.opensecrets.org/orgs/h-m-co/summary?id=D000042667"
-           }]
-       }
-       
+        "data": [{
+            "year": 2016,
+            "rep": 23750,
+            "dem": 1744,
+            "indi": 1
+        },
+        {
+            "year": 2018,
+            "rep": 63227,
+            "dem": 917,
+            "indi": 0.95
+        },
+        {
+            "year": 2020,
+            "rep": 254474,
+            "dem": 19394,
+            "indi": 0.96
+        }
+        ],
+        "citation": [{
+            "arthor": "none",
+            "title": "J Crew Group",
+            "publihser": "OpenSecrets",
+            "pages": "34",
+            "date": "none",
+            "url": "https://www.opensecrets.org/orgs/h-m-co/summary?id=D000042667"
+        }]
+    }
+
     let testPollAssocSumm = {
         "rep": 10000,
         "dem": 20000
@@ -831,115 +846,115 @@ function rand() {
     let demDonation = testPollAssocSumm.dem;
     let repDonation = testPollAssocSumm.rep;
 
-    return(
-        <div className = 'Layout'>
-        <Grid container spacing={3}>
-            <Grid item xs={12} md={4}>
-                <div className = 'Left-Menu'>                
-                    <div>
-                        <img className='brand-logo' src={`${companyDetails[0]["Logo"]}`} alt={`${companyDetails[0]["Logo"]}`} />
-                        
-                        {/* conditional rendering for subsidiary */}
-                        { companyDetails[0]["Subsidiary"] != null  &&
-                            <div style={{fontSize:'14px', fontWeight:'500', color:'#797979', margin:'10px 0'}}>Subsidiary of {companyDetails[0]["Subsidiary"]}</div>
-                        }
+    return (
+        <div className='Layout'>
+            <Grid container spacing={3}>
+                <Grid item xs={12} md={4}>
+                    <div className='Left-Menu'>
+                        <div>
+                            <img className='brand-logo' src={`${companyDetails[0]["Logo"]}`} alt={`${companyDetails[0]["Logo"]}`} />
 
-                        <p style={{marginTop:"5%", color: '#4F4F4F'}}><b>{companyDetails[0]["Name"]}</b> {companyDetails[0]["Description"]}</p>
-                    </div>
-                    <div>
-                        <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginLeft: '105px'}}>industry average</div>
-                        <AiFillCaretDown style={{marginLeft: '155px'}}/>
-                        {/* {companyDetails[0]["SliderLength"]} */}
-                        <div class="horizontalline" style={{width: `${companyDetails[0]["SliderLength"]}px` }}></div>
-                        <div class="verticalline"></div>
-                        <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true"/>
-                        <p style={{fontFamily: 'DM Sans', fontSize: '12px', color: '#4F4F4F'}} >underperforming<span style={{marginLeft: '145px'}}>overperforming</span></p>
-                        <div className="brand_inside_text">
-                            <span className='navy'>{Math.round(companyDetails[0]["TotalScore"], 2)}</span>
-                            <span>/100</span>
+                            {/* conditional rendering for subsidiary */}
+                            {companyDetails[0]["Subsidiary"] != null &&
+                                <div style={{ fontSize: '14px', fontWeight: '500', color: '#797979', margin: '10px 0' }}>Subsidiary of {companyDetails[0]["Subsidiary"]}</div>
+                            }
+
+                            <p style={{ marginTop: "5%", color: '#4F4F4F' }}><b>{companyDetails[0]["Name"]}</b> {companyDetails[0]["Description"]}</p>
                         </div>
-                        <Link to={`/brand-breakdown/${companyName}`} className='breakDown-link'>Detailed Breakdown</Link>
+                        <div>
+                            <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginLeft: '105px' }}>industry average</div>
+                            <AiFillCaretDown style={{ marginLeft: '155px' }} />
+                            {/* {companyDetails[0]["SliderLength"]} */}
+                            <div class="horizontalline" style={{ width: `${companyDetails[0]["SliderLength"]}px` }}></div>
+                            <div class="verticalline"></div>
+                            <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" />
+                            <p style={{ fontFamily: 'DM Sans', fontSize: '12px', color: '#4F4F4F' }} >underperforming<span style={{ marginLeft: '145px' }}>overperforming</span></p>
+                            <div className="brand_inside_text">
+                                <span className='navy'>{Math.round(companyDetails[0]["TotalScore"], 2)}</span>
+                                <span>/100</span>
+                            </div>
+                            <Link to={`/brand-breakdown/${companyName}`} className='breakDown-link'>Detailed Breakdown</Link>
+                        </div>
                     </div>
-                </div>
-            </Grid>
-            <Grid item xs={12} md={8}>
-                <div className = 'Right-Menu' style={{marginTop: '7%', marginLeft: '0.5rem'}}>
-                    <div className = 'Brand-Section-title'>
-                        Brand Performance 
+                </Grid>
+                <Grid item xs={12} md={8}>
+                    <div className='Right-Menu' style={{ marginTop: '7%', marginLeft: '0.5rem' }}>
+                        <div className='Brand-Section-title'>
+                            Brand Performance
                         <InfoIcon className='brand_info-icon' onClick={() => setBrandPShowInfo(!showBrandPInfo)} />
-                        <BrandPerformance />
-                    </div>
-                    <div className = 'Decorative-Line'></div>
-                
-                    <div className = 'Brand-Performance'>
-                            <div className = 'Brand-Performance-container'>
+                            <BrandPerformance />
+                        </div>
+                        <div className='Decorative-Line'></div>
+
+                        <div className='Brand-Performance'>
+                            <div className='Brand-Performance-container'>
                                 <div>
                                     DIVERSITY & INCLUSION
-                                    <div className = 'Description'>
+                                    <div className='Description'>
                                         <div className='Description-text'>
                                             Discrimination, Gender Equality, <br></br>Cultural Diversity, Inclusivity
                                         </div>
                                         <div className='Description-data'>
-                                        <img src = {DiversityImg}/>
-                                        <div className="Description-score"><span style={{cursor:'default'}}>{companyDetails[0]["Ascore"]}</span><span style={{cursor:'default'}}>/100</span></div>
+                                            <img src={DiversityImg} />
+                                            <div className="Description-score"><span style={{ cursor: 'default' }}>{companyDetails[0]["Ascore"]}</span><span style={{ cursor: 'default' }}>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div>
                                     WORKER EXPLOITATION
-                                    <div className = 'Description'>
+                                    <div className='Description'>
                                         <div className='Description-text'>
                                             Child Labour, Forced Labour, <br></br> Living Wage, Working Conditions
                                         </div>
                                         <div className='Description-data'>
-                                        <img src = {WorkerExploitImg}/>
-                                        <div className="Description-score"><span style={{cursor:'default'}}>{companyDetails[0]["Bscore"]}</span><span style={{cursor:'default'}}>/100</span></div>
+                                            <img src={WorkerExploitImg} />
+                                            <div className="Description-score"><span style={{ cursor: 'default' }}>{companyDetails[0]["Bscore"]}</span><span style={{ cursor: 'default' }}>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div>
                                     WASTE & POLLUTION
-                                    <div className = 'Description'>
+                                    <div className='Description'>
                                         <div className='Description-text'>
                                             Air Pollution, Water Pollution & Wastes, <br></br> Packaging Waste, Material Waste
                                         </div>
                                         <div className='Description-data'>
-                                        <img src = {WasteImg}/>
-                                        <div className="Description-score"><span style={{cursor:'default'}}>{companyDetails[0]["Cscore"]}</span><span style={{cursor:'default'}}>/100</span></div>
+                                            <img src={WasteImg} />
+                                            <div className="Description-score"><span style={{ cursor: 'default' }}>{companyDetails[0]["Cscore"]}</span><span style={{ cursor: 'default' }}>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div>
                                     ETHICAL SOURCING
-                                    <div className = 'Description'>
+                                    <div className='Description'>
                                         <div className='Description-text'>
-                                            Cotton Farming, Deforestation, <br/> Animal Welfare
+                                            Cotton Farming, Deforestation, <br /> Animal Welfare
                                         </div>
                                         <div className='Description-data'>
-                                        <img src = {SustainableImg}/>
-                                        <div className="Description-score"><span style={{cursor:'default'}}>{companyDetails[0]["Dscore"]}</span><span style={{cursor:'default'}}>/100</span></div>
+                                            <img src={SustainableImg} />
+                                            <div className="Description-score"><span style={{ cursor: 'default' }}>{companyDetails[0]["Dscore"]}</span><span style={{ cursor: 'default' }}>/100</span></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                    </div>
-                    <div className = 'Brand-Section-title'>
-                        Company Initiatives 
+                        </div>
+                        <div className='Brand-Section-title'>
+                            Company Initiatives
                         <InfoIcon className='brand_info-icon' onClick={() => setCompanyInitShowInfo(!showCompanyInitInfo)} />
-                        <CompanyInitiative />
+                            <CompanyInitiative />
                         </div>
 
-                        <div className = 'Decorative-Line'></div>
+                        <div className='Decorative-Line'></div>
                         {Facts(fact)}
-    
-                    
-                    <div className = 'In-The-News'>
-                        <div className = 'Brand-Section-title'>
-                            In The News
+
+
+                        <div className='In-The-News'>
+                            <div className='Brand-Section-title'>
+                                In The News
                             <InfoIcon className='brand_info-icon' onClick={() => setNewsShowInfo(!showNewsInfo)} />
-                             <InTheNews />
+                                <InTheNews />
                             </div>
-                        <div className = 'Decorative-Line'></div>
+                            <div className='Decorative-Line'></div>
                             <div className='In-The-News-container'>
                                 {News(news)}
                             </div>
@@ -951,39 +966,34 @@ function rand() {
                             >
                                 {body}
                             </Modal>
-                    
-                    </div>
 
-                    <div>
-                        <div className = 'Brand-Section-title'>
-                            Political Association
+                        </div>
+
+                        {/* Political Association */}
+
+                        <div className="political_association">
+                            <div className='Brand-Section-title'>
+                                Political Association
                             <InfoIcon className='brand_info-icon' onClick={() => setPoliticalAssociationShowInfo(!showPoliticalAssociationInfo)} />
                             </div>
-                        <div className = 'Decorative-Line'></div>
+                            <div className='Decorative-Line'></div>
                             <div>
-                <Accordion className = {classes.dropdown}>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon className = 'circle-new'/>}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                    >
-                        <Typography> {`From 2016 to 2020, ${companyName} donated $${demDonation} to the democratic
-                        party and $${repDonation} to the Republican party for a total of $${demDonation + repDonation} 
-                        in donations` } </Typography>
-                            </AccordionSummary>
-                            <AccordionDetails style={{backgroundColor: '#F2F2F2'}}>
-                                <Typography className = {classes.expandMenu}>
-                                    <div
-                    className="Fun-Fact"
-                    style={{ width: "100%", fontWeight: "700" }}
-                    >
-                        <PoliticalAssociationChart data={convertToChartDataFormat(test_data)}/>
-                    </div>
-                                </Typography>
-                            </AccordionDetails>
-                        </Accordion>
-                <div className = 'FunFact-Decorative-Line'></div>
-            </div>
+                                <Accordion className={classes.dropdown}>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon className='circle-new' />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                        className={classes.politicalAssociationSummary}
+                                    >
+                                        <Typography> {`From 2016 to 2020, ${companyName} donated $${demDonation} to the democratic
+                            party and $${repDonation} to the Republican party for a total of $${demDonation + repDonation} 
+                            in donations` } </Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails className={classes.politicalAssociationAccordionDetails}>
+                                        <PoliticalAssociationChart data={convertToChartDataFormat(test_data)} />
+                                    </AccordionDetails>
+                                </Accordion>
+                            </div>
                             <Modal
                                 open={open}
                                 onClose={handleClose}
@@ -992,107 +1002,111 @@ function rand() {
                             >
                                 {body}
                             </Modal>
-                    
-                    </div>
-                    <div className="similar_brands">
-                        <div className = 'Brand-Section-title'>Similar Brands</div>
-                        <div className = 'Decorative-Line'></div>
-                        <div className="similar_brands-container"> 
-                            <div>
-                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany1"]}>
-                                <p>{companyDetails[0]["SimilarCompany1"]}</p>
-                                {/* <div>{companyDetails[0]["SimilarCompany1"]}</div> */}
-                                    <div className='brand_box'> 
-                                        {/* <div className="d-fdlex justify-content-center">
+                        </div>
+
+
+                        {/* Similar Brands */}
+
+
+                        <div className="similar_brands">
+                            <div className='Brand-Section-title'>Similar Brands</div>
+                            <div className='Decorative-Line'></div>
+                            <div className="similar_brands-container">
+                                <div>
+                                    <Link className='Similar-Link' to={'/companies/' + companyDetails[0]["SimilarCompany1"]}>
+                                        <p>{companyDetails[0]["SimilarCompany1"]}</p>
+                                        {/* <div>{companyDetails[0]["SimilarCompany1"]}</div> */}
+                                        <div className='brand_box'>
+                                            {/* <div className="d-fdlex justify-content-center">
                                             <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
                                             <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div>
                                             <div class="horizontalline2" style={{width: `${companyDetails[0]["SliderLength"]}px` }}></div>
                                             <div class="verticalline2"></div> 
                                             <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/> */}
                                             {/* <p style={{fontFamily: 'DM Sans', fontSize: '12px', color: '#4F4F4F'}} >underperforming<span style={{marginLeft: '145px'}}>overperforming</span></p> */}
-                                        <div className="d-fledx justify-content-center" style={{position:"relative"}}>
-                                        <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
-                                            <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div>
-                                            <div class="horizontalline2" style={{width: `${companyDetails[0]["comp1SliderLength"]}px` }}></div>
-                                            <div class="verticalline2"></div> 
-                                            <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>     
-                                            <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
-                                            {/* <p style={{fontFamily: 'DM Sans', fontSize: '12px', color: '#4F4F4F'}} >underperforming<span style={{marginLeft: '145px'}}>overperforming</span></p> */}
+                                            <div className="d-fledx justify-content-center" style={{ position: "relative" }}>
+                                                <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center' }}>industry average</div>
+                                                <div style={{ textAlign: 'center' }}><AiFillCaretDown style={{}} /></div>
+                                                <div class="horizontalline2" style={{ width: `${companyDetails[0]["comp1SliderLength"]}px` }}></div>
+                                                <div class="verticalline2"></div>
+                                                <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo" />
+                                                <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
+                                                {/* <p style={{fontFamily: 'DM Sans', fontSize: '12px', color: '#4F4F4F'}} >underperforming<span style={{marginLeft: '145px'}}>overperforming</span></p> */}
+                                            </div>
+                                            <div className="brand_inside_text ml-10perc">
+                                                <span>{Math.round(companyDetails[0]["company1TotalScore"], 2)}</span>
+                                                <span>/100</span>
+                                            </div>
+                                            {/* </div> */}
                                         </div>
-                                        <div className="brand_inside_text ml-10perc">
-                                            <span>{Math.round(companyDetails[0]["company1TotalScore"], 2)}</span>
-                                            <span>/100</span>
+                                    </Link>
+                                </div>
+                                <div>
+                                    <Link className='Similar-Link' to={'/companies/' + companyDetails[0]["SimilarCompany2"]}><p>{companyDetails[0]["SimilarCompany2"]}</p>
+                                        {/* <div>{companyDetails[0]["SimilarCompany2"]}</div> */}
+                                        <div className='brand_box'>
+                                            <div className="d-fldex justify-content-center" style={{ position: "relative" }}>
+                                                <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center' }}>industry average</div>
+                                                <div style={{ textAlign: 'center' }}><AiFillCaretDown style={{}} /></div>
+                                                <div class="horizontalline2" style={{ width: `${companyDetails[0]["comp2SliderLength"]}px` }}></div>
+                                                <div class="verticalline2"></div>
+                                                <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo" />
+                                                <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
+                                            </div>
+                                            <div className="brand_inside_text ml-10perc">
+                                                <span>{Math.round(companyDetails[0]["company2TotalScore"], 2)}</span>
+                                                <span>/100</span>
+                                            </div>
                                         </div>
-                                    {/* </div> */}
-                                    </div>
-                                </Link> 
+                                    </Link>
+                                </div>
+                                <div>
+                                    <Link className='Similar-Link' to={'/companies/' + companyDetails[0]["SimilarCompany3"]}><p>{companyDetails[0]["SimilarCompany3"]}</p>
+                                        {/* <div>{companyDetails[0]["SimilarCompany3"]}</div> */}
+                                        <div className='brand_box'>
+                                            <div className="d-fldex justify-content-center" style={{ position: "relative" }}>
+                                                <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center' }}>industry average</div>
+                                                <div style={{ textAlign: 'center' }}><AiFillCaretDown style={{}} /></div>
+                                                <div class="horizontalline2" style={{ width: `${companyDetails[0]["comp3SliderLength"]}px` }}></div>
+                                                <div class="verticalline2"></div>
+                                                <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo" />
+                                                <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
+                                            </div>
+                                            <div className="brand_inside_text ml-10perc">
+                                                <span>{Math.round(companyDetails[0]["company3TotalScore"], 2)}</span>
+                                                <span>/100</span>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </div>
+                                <div>
+                                    <Link className='Similar-Link' to={'/companies/' + companyDetails[0]["SimilarCompany4"]}><p>{companyDetails[0]["SimilarCompany4"]}</p>
+                                        {/* <div>{companyDetails[0]["SimilarCompany4"]}</div> */}
+                                        <div className='brand_box'>
+                                            <div className="d-fldex justify-content-center" style={{ position: "relative" }}>
+                                                <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center' }}>industry average</div>
+                                                <div style={{ textAlign: 'center' }}><AiFillCaretDown style={{}} /></div>
+                                                <div class="horizontalline2" style={{ width: `${companyDetails[0]["comp4SliderLength"]}px` }}></div>
+                                                <div class="verticalline2"></div>
+                                                <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo" />
+                                                <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
+                                            </div>
+                                            <div className="brand_inside_text ml-10perc">
+                                                <span>{Math.round(companyDetails[0]["company4TotalScore"], 2)}</span>
+                                                <span>/100</span>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </div>
+                                {/* </div> */}
                             </div>
-                            <div>
-                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany2"]}><p>{companyDetails[0]["SimilarCompany2"]}</p>
-                                {/* <div>{companyDetails[0]["SimilarCompany2"]}</div> */}
-                                <div className='brand_box'>
-                                    <div className="d-fldex justify-content-center" style={{position:"relative"}}>
-                                    <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
-                                        <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div>
-                                        <div class="horizontalline2" style={{width: `${companyDetails[0]["comp2SliderLength"]}px` }}></div>
-                                        <div class="verticalline2"></div> 
-                                        <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
-                                        <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
-                                    </div>
-                                    <div className="brand_inside_text ml-10perc">
-                                        <span>{Math.round(companyDetails[0]["company2TotalScore"], 2)}</span>
-                                        <span>/100</span>
-                                    </div>
-                                </div>
-                                </Link>
-                            </div>                        
-                            <div>
-                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany3"]}><p>{companyDetails[0]["SimilarCompany3"]}</p>
-                                {/* <div>{companyDetails[0]["SimilarCompany3"]}</div> */}
-                                <div className='brand_box'>
-                                <div className="d-fldex justify-content-center" style={{position:"relative"}}>
-                                <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
-                                    <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div>
-                                    <div class="horizontalline2" style={{width: `${companyDetails[0]["comp3SliderLength"]}px` }}></div>
-                                    <div class="verticalline2"></div> 
-                                    <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
-                                    <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
-                                </div>
-                                    <div className="brand_inside_text ml-10perc">
-                                        <span>{Math.round(companyDetails[0]["company3TotalScore"], 2)}</span>
-                                        <span>/100</span>
-                                    </div>
-                                </div>
-                                </Link>
-                            </div>
-                            <div>
-                                <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany4"]}><p>{companyDetails[0]["SimilarCompany4"]}</p>
-                                {/* <div>{companyDetails[0]["SimilarCompany4"]}</div> */}
-                                <div className='brand_box'>
-                                    <div className="d-fldex justify-content-center" style={{position:"relative"}}> 
-                                    <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
-                                        <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div>
-                                        <div class="horizontalline2" style={{width: `${companyDetails[0]["comp4SliderLength"]}px` }}></div>
-                                        <div class="verticalline2"></div> 
-                                        <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
-                                        <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
-                                    </div>
-                                    <div className="brand_inside_text ml-10perc">
-                                        <span>{Math.round(companyDetails[0]["company4TotalScore"], 2)}</span>
-                                        <span>/100</span>
-                                    </div>
-                                </div>
-                                </Link>
-                            </div>                            
-                        {/* </div> */}
+                        </div>
                     </div>
-            </div>
-            </div>
+                </Grid>
             </Grid>
-        </Grid>
-    </div>
+        </div>
     );
-    }
+}
 // }
 
 export default Company
