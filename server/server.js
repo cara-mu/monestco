@@ -880,6 +880,56 @@ app.get('/api/v1/ranking', function (req, res){
   }
 })
 
+/*
+for frond-end test purpose
+ */
+app.get('/api/v1/pa/summary', function(req, res) {
+  let company =  req.query['company'];
+  console.log(company);
+  res.status(200).json({
+    "rep" : 23750,
+    "dem": 1744
+  })
+})
+
+/*
+for frond-end test purpose
+ */
+app.get('/api/v1/pa/detailed', function(req, res){
+  let company =  req.query['company'];
+  console.log(company);
+  res.status(200).json({
+    "data": [{
+      "year": 2016,
+      "rep": 23750,
+      "dem": 1744,
+      "indi": 1
+    },
+      {
+        "year": 2018,
+        "rep": 63227,
+        "dem": 917,
+        "indi": 0.95
+      },
+      {
+        "year": 2020,
+        "rep": 254474,
+        "dem": 19394,
+        "indi": 0.96
+      }
+    ],
+    "citation": [{
+      "arthor": "none",
+      "title": "J Crew Group",
+      "publihser": "OpenSecrets",
+      "pages": "34",
+      "date": "none",
+      "url": "https://www.opensecrets.org/orgs/h-m-co/summary?id=D000042667"
+    }]
+  })
+})
+
+
 
 
 
