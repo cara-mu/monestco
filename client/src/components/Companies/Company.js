@@ -194,6 +194,14 @@ function Company({ match, location }) {
     const [B, setB] = useState(0);
     const [C, setC] = useState(0);
     const [D, setD] = useState(0);
+    const [politicalAssociationSummaryData, setPoliticalAssociationSummaryData] = useState({});
+
+    useEffect(() => {
+        axios.get(`/api/v1/pa/summary?Company=${companyName}`).then((response) => {
+          console.log(response.data);
+          setPoliticalAssociationSummaryData(response.data);
+        });
+      }, [])
 
 
     const handleCloseInfo = () => {
@@ -631,7 +639,6 @@ function Company({ match, location }) {
     const Facts = (factinput) => {
         const [factCitation, setFactCitation] = useState([]);
         const [showCitation, setShowCitation] = useState(false);
-        console.log(factinput);
 
         const FactCitations = (i) => {
             if (factCitation.length != 0) {
@@ -843,8 +850,13 @@ function Company({ match, location }) {
         "dem": 20000
     }
 
-    let demDonation = testPollAssocSumm.dem;
-    let repDonation = testPollAssocSumm.rep;
+    let demDonation;
+    let repDonation;
+
+    if (politicalAssociationSummaryData) {
+        demDonation = politicalAssociationSummaryData.dem;
+        repDonation = politicalAssociationSummaryData.rep;
+    }  
 
     return (
         <div className='Layout'>
@@ -969,6 +981,7 @@ function Company({ match, location }) {
 
                         </div>
 
+
                         {/* Political Association */}
 
                         <div className="political_association">
@@ -990,7 +1003,7 @@ function Company({ match, location }) {
                             in donations` } </Typography>
                                     </AccordionSummary>
                                     <AccordionDetails className={classes.politicalAssociationAccordionDetails}>
-                                        <PoliticalAssociationChart data={convertToChartDataFormat(test_data)} />
+                                        <PoliticalAssociationChart data={convertToChartDataFormat(test_data)} company={companyName}/>
                                     </AccordionDetails>
                                 </Accordion>
                             </div>
