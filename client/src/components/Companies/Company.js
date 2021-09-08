@@ -973,7 +973,7 @@ function Company({ match, location }) {
 
                         <div className="political_association">
                             <div className='Brand-Section-title'>
-                                Political Association
+                                Political Contributions
                             <InfoIcon className='brand_info-icon' onClick={() => setPoliticalAssociationShowInfo(!showPoliticalAssociationInfo)} />
                             </div>
                             <div className='Decorative-Line'></div>
