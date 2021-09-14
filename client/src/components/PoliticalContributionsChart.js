@@ -26,7 +26,7 @@ export default function Chart(props) {
     return (
       <div className="chart-container">
         <div className="chart">
-          <BarChart width={625} height={291} data={detailedInfo.data}>
+          <BarChart width={625} height={191} data={detailedInfo.data}>
             <CartesianGrid vertical={false} stroke={"#ABD4B7"} />
             <XAxis
               dataKey="year"
