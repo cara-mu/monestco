@@ -918,12 +918,12 @@ app.get('/api/v1/pa/detailed', function(req, res){
         "indi": 0.96
       }
     ],
-    "citation": [{
-      "arthor": "none",
+    "citations": [{
+      "author": "",
       "title": "J Crew Group",
-      "publihser": "OpenSecrets",
+      "publisher": "OpenSecrets",
       "pages": "34",
-      "date": "none",
+      "date": "",
       "url": "https://www.opensecrets.org/orgs/h-m-co/summary?id=D000042667"
     }]
   })

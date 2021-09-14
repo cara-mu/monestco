@@ -1,15 +1,54 @@
 .chart-container {
     background-color: #F2F2F2;
-    height: 339px;
-    width: 100%;
+    height: 450px;
+    width: 850px;
 }
 
 .chart {
-    margin: 36px;
+    margin-left: 138.5px;
+    margin-right: 138.5px;
+    margin-bottom: 170.5px;
+    margin-top: 88.5px;
 }
 
-Legend {
+.citation {
+ 
+    font-family: PT Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    padding-top: 10px;
+    
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+ 
+}
 
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* .yaxis {
+    font-family: PT Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+} */
+
+Legend {
+    padding-left: 36px;
 }
 
 /* .recharts-legend-wrapper {

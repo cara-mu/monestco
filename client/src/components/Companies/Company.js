@@ -29,8 +29,10 @@ import Resizer from "react-image-file-resizer";
 import BrandLogo from '../../assets/brandBreakdown.svg';
 import { pink } from '@material-ui/core/colors';
 import BrandBreakdown from '../../pages/BrandBreakdown-new';
-import PoliticalAssociationChart from '../PoliticalAssociationChart';
+import PoliticalAssociationChart from '../PoliticalContributionsChart';
 import "../../styles/PoliticalAssociationChart.css";
+
+
 
 const companyinfo = [
     {
@@ -104,10 +106,6 @@ function getModalStyle() {
 }
 
 const useStyles = makeStyles((theme) => ({
-    dropdown: {
-        width: '685px',
-        boxShadow: 'none'
-    },
     heading: {
         fontFamily: 'DM Sans',
         color: '#3D3E3F',
@@ -150,12 +148,16 @@ const useStyles = makeStyles((theme) => ({
     politicalAssociationSummary: {
         paddingLeft: '0px',
         paddingRight: '0px',
-    },
-    politicalAssociation: {
         width: '100%'
     },
     politicalAssociationAccordionDetails: {
         padding: '0px'
+    },
+    politicalAssociationDropdown: {
+        boxShadow: 'none',
+        paddingLeft: '0px',
+        paddingRight: '0px'
+
     }
 }));
 
@@ -891,7 +893,7 @@ function Company({ match, location }) {
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <div className='Right-Menu' style={{ marginTop: '7%', marginLeft: '0.5rem' }}>
-                        <div className='Brand-Section-title'>
+                        <div className='Brand-Section-title Right-Menu'>
                             Brand Performance
                         <InfoIcon className='brand_info-icon' onClick={() => setBrandPShowInfo(!showBrandPInfo)} />
                             <BrandPerformance />
@@ -983,22 +985,21 @@ function Company({ match, location }) {
 
 
                         {/* Political Association */}
-
-                        <div className="political_association">
-                            <div className='Brand-Section-title'>
+                        <div className='Brand-Section-title'>
                                 Political Contributions
                             <InfoIcon className='brand_info-icon' onClick={() => setPoliticalAssociationShowInfo(!showPoliticalAssociationInfo)} />
                             </div>
                             <div className='Decorative-Line'></div>
+                        <div className="political_association">
                             <div>
-                                <Accordion className={classes.dropdown}>
+                                <Accordion className={classes.politicalAssociationDropdown}>
                                     <AccordionSummary
                                         expandIcon={<ExpandMoreIcon className='circle-new' />}
                                         aria-controls="panel1a-content"
                                         id="panel1a-header"
                                         className={classes.politicalAssociationSummary}
                                     >
-                                        <Typography> {`From 2016 to 2020, ${companyName} donated $${demDonation} to the democratic
+                                        <Typography className={classes.heading}> {`From 2016 to 2020, ${companyName} donated $${demDonation} to the democratic
                             party and $${repDonation} to the Republican party for a total of $${demDonation + repDonation} 
                             in donations` } </Typography>
                                     </AccordionSummary>
