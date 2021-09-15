@@ -11,26 +11,22 @@
     margin-top: 88.5px;
 }
 
-.citation {
+.citations-container {
  
     font-family: PT Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
     line-height: 16px;
-    padding-top: 10px;
-    
-    position: fixed; /* Sit on top of the page content */
-    display: none; /* Hidden by default */
-    width: 100%; /* Full width (cover the whole page) */
-    height: 100%; /* Full height (cover the whole page) */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
- 
+    width: 444px;
+    margin-left: 229px;
+    position: absolute;
+    bottom: 88.5px;
+
+}
+
+.citation {
+    margin-bottom: 10px;
 }
 
 .centered {

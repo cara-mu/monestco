@@ -47,22 +47,8 @@ export default function Chart(props) {
                 fontFamily: "PT Sans",
                 fontWeight: "normal"
               }}
-              tickCount={7}
-              type="number"
-              domain={[0, 300000]}
+              tickCount={5}
             />
-            {detailedInfo.citations ? (
-              detailedInfo.citations.map(citation => {
-                return (
-                  <div className="citation">
-                    {" "}
-                    {generateCitationString(citation)}{" "}
-                  </div>
-                );
-              })
-            ) : (
-              <p></p>
-            )}
             <Legend
               layout="vertical"
               verticalAlign="middle"
@@ -79,6 +65,19 @@ export default function Chart(props) {
             <Bar name="Republicans" dataKey="rep" fill="#DB4949" barSize={12} />
           </BarChart>
         </div>
+        <div className="citations-container">
+          {detailedInfo.citations ? (
+                detailedInfo.citations.map((citation, i) => {
+                  return (
+                    <div className="citation">
+                      {`[${i + 1}] ${generateCitationString(citation)}`}
+                    </div>
+                  );
+                })
+              ) : (
+                <p></p>
+          )}
+        </div>
       </div>
     );
 
@@ -87,7 +86,9 @@ export default function Chart(props) {
     }
 
     function generateCitationString({title, author, publisher, date, pages, url}) {
-          return `${title}, ${author && <span>,</span>} ${publisher}, ${date && <span>,</span>} ${pages}, ${url}`
+          let citationString = `${title}, ${author && <span>,</span>} ${publisher}, ${date && <span>,</span>} ${pages}, ${url}`;
+          console.log(citationString);
+          return citationString;
     }
 
     function getMaxDonation() {

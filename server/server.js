@@ -925,7 +925,16 @@ app.get('/api/v1/pa/detailed', function(req, res){
       "pages": "34",
       "date": "",
       "url": "https://www.opensecrets.org/orgs/h-m-co/summary?id=D000042667"
-    }]
+    },
+    {
+      "author": "",
+      "title": "J Crew Group",
+      "publisher": "OpenSecrets",
+      "pages": "34",
+      "date": "",
+      "url": "https://www.opensecrets.org/orgs/h-m-co/summary?id=D000042667"
+    }
+    ]
   })
 })
 
