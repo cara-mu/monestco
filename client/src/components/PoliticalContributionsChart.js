@@ -2,24 +2,28 @@ import { useState, useEffect } from 'react';
 import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar, Label } from 'recharts';
 import "../styles/PoliticalAssociationChart.css";
 import axios from 'axios';
-import Citation from "./Citation.js";
-import { fontWeight } from '@material-ui/system';
-
-import { getTickValues, getNiceTickValues } from 'recharts-scale';
 
 export default function Chart(props) {
 
     const [detailedInfo, setDetailedInfo] = useState({});
-    const [ticks, setTicks] = useState([]);
+
+    const CustomTooltip = ({ active, payload, label }) => {
+      if (active && payload && payload.length) {
+        return (
+          <div className="custom-tooltip">
+            <p className="individual-contribution"> Individual Contribution </p>
+            <p className="percentage"> 45% </p>
+          </div>
+        );
+      }
+    
+      return null;
+    };
+    
 
     useEffect(() => {
       axios.get(`/api/v1/pa/detailed?Company=${props.company}`).then((response) => {
         setDetailedInfo(response.data);
-        // let maxDonation = getMaxDonation();
-        // console.log(maxDonation);
-        // let tickValues = getTickValues([0, 300000], 7);
-        // console.log(tickValues);
-        // setTicks(tickValues);
       });
     }, [])
 
@@ -27,6 +31,11 @@ export default function Chart(props) {
       <div className="chart-container">
         <div className="chart">
           <BarChart width={625} height={191} data={detailedInfo.data}>
+            <Tooltip 
+              cursor={{fill: 'transparent'}}
+              allowEscapeViewBox={{x: true}}
+              content={<CustomTooltip />}
+            />
             <CartesianGrid vertical={false} stroke={"#ABD4B7"} />
             <XAxis
               dataKey="year"
@@ -34,8 +43,11 @@ export default function Chart(props) {
               tick={{
                 fontSize: "16px",
                 fontFamily: "PT Sans",
-                fontWeight: "normal"
+                fontWeight: "normal",
               }}
+              stroke="#000000"
+              tickLine={false}
+              dy={10}
             />
             <YAxis
               tickFormatter={DataFormatter}
@@ -70,7 +82,9 @@ export default function Chart(props) {
                 detailedInfo.citations.map((citation, i) => {
                   return (
                     <div className="citation">
-                      {`[${i + 1}] ${generateCitationString(citation)}`}
+                      <span> 
+                        <span className="citation-index">[{i + 1}]</span> {generateCitationString(citation)}
+                      </span>
                     </div>
                   );
                 })
@@ -89,26 +103,6 @@ export default function Chart(props) {
           let citationString = `${title}, ${author && <span>,</span>} ${publisher}, ${date && <span>,</span>} ${pages}, ${url}`;
           console.log(citationString);
           return citationString;
-    }
-
-    function getMaxDonation() {
-      let max = 0;
-      detailedInfo.data.map((dataPoint) => {
-        if (dataPoint.dem > max) {
-          max = dataPoint.dem;
-        }
-
-        if (dataPoint.rep > max) {
-          max = dataPoint.rep;
-        }
-      })
-      return max;
-    }
-
-
-    //return {tickCount, maxValue}
-    function getYAxisTickParameters() {
-
     }
 }
 

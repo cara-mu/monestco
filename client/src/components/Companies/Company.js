@@ -156,7 +156,8 @@ const useStyles = makeStyles((theme) => ({
     politicalAssociationDropdown: {
         boxShadow: 'none',
         paddingLeft: '0px',
-        paddingRight: '0px'
+        paddingRight: '0px',
+        marginTop: '27px'
 
     }
 }));

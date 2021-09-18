@@ -2,12 +2,13 @@
     background-color: #F2F2F2;
     height: 450px;
     width: 100%;
+    margin-top: 54px;
 }
 
 .chart {
     margin-left: 138.5px;
     margin-right: 138.5px;
-    margin-bottom: 170.5px;
+    margin-bottom: 24px;
     margin-top: 88.5px;
 }
 
@@ -21,19 +22,15 @@
     width: 444px;
     margin-left: 229px;
     position: absolute;
-    bottom: 88.5px;
-
+    top: 357.5;
 }
 
 .citation {
     margin-bottom: 10px;
 }
 
-.centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.citation-index {
+    color: #26385A
 }
 
 /* .yaxis {
@@ -45,6 +42,32 @@
 
 Legend {
     padding-left: 36px;
+}
+
+.custom-tooltip {
+    background-image: url('../assets/Rectangle 485.png');
+    width: 104px;
+    height: 72px;
+    font-size: 10px;
+    color: #FFFFFF;
+    text-align: center;
+    padding-top: 11px;
+    padding-left: 27px;
+    padding-right: 27px;
+    padding-bottom: 15px;
+    border-radius: 1.7px;
+    font-family: 'PT Sans';
+}
+
+.percentage {
+    font-size: 12px;
+    margin-top: 0px;
+    font-weight: 700px;
+}
+
+.individual-contribution {
+    margin-bottom: 4px;
+    font-weight: normal;
 }
 
 /* .recharts-legend-wrapper {
