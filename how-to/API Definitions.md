@@ -1,4 +1,4 @@
-#API Definitions
+# API Definitions
 by Justin Hu, 2021/08/31
 
 ---
@@ -63,7 +63,7 @@ Format:
 Notes:
 1. citation may contains multiple items
 
-##Comparisons
+## Comparisons
 
 3. Get Ranking Info
 - URL: /api/v1/ranking
@@ -755,7 +755,7 @@ Notes:
 
 ```
 
-##Citations
+## Citations
 
 13. Get Citation Information for Each Brand in Detailed Breakdowns
 - URL: /citationsLong
@@ -1534,7 +1534,8 @@ Notes:
    }
 ]
 ```
-##Company Details
+
+## Company Details
 
 16. Get All Company Names
 - URL: /allcompanies
