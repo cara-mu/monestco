@@ -63,8 +63,8 @@ Format:
 Notes:
 1. citation may contains multiple items
 
-
 ##Comparisons
+
 3. Get Ranking Info
 - URL: /api/v1/ranking
 - Method: Get
@@ -756,6 +756,7 @@ Notes:
 ```
 
 ##Citations
+
 13. Get Citation Information for Each Brand in Detailed Breakdowns
 - URL: /citationsLong
 - Method: Post
@@ -1534,6 +1535,7 @@ Notes:
 ]
 ```
 ##Company Details
+
 16. Get All Company Names
 - URL: /allcompanies
 - Method: Get
