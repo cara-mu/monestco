@@ -1,5 +1,5 @@
 # API Definitions
-by Justin Hu, 2021/08/31
+Created by Justin Hu, 2021/08/31
 
 ---
 Format:
@@ -17,7 +17,7 @@ Format:
 - Method: Get
 - Params:  ?company='Champion'
 - Return  
-  ```
+  ```json
   {   
       "rep" : 23750,    
       "dem": 1744
@@ -29,7 +29,7 @@ Format:
 - Method: Get
 - Params:  ?company='Champion'
 - Return
-```
+```json
 {
    "data": [{
             "year": 2016,
@@ -65,14 +65,40 @@ Notes:
 
 ## Comparisons
 
-3. Get Ranking Info
+3. Get Ranking Info (for Browser Extension)
 - URL: /api/v1/ranking
 - Method: Get
-- Params: None
-- Return
+- Params:   
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brand: brand name   
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ranking preference:   (low,  medium, high)    
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;di: Diversity & Inclusion,    
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;we: Worker Exploitation,    
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wp:  Waster & Pollution,   
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;es: Ethical Sourcing
+- Return   
+  Industry Ranking according to inputted preference
 
-```
-
+``` json
+[
+    "Patagonia",
+    "H&M",
+    "Tommy Hilfiger",
+    "Calvin Klein",
+    "Gap",
+    "Banana Republic",
+    "Old Navy",
+    "The North Face",
+    "Levi's",
+    "Ralph Lauren",
+    "Club Monaco",
+    "Zara",
+    "Uniqlo",
+    "Abercrombie & Fitch",
+    "American Eagle",
+    "Guess",
+    "Boohoo",
+    "Forever 21"
+]
 ```
 
 4. Get Dimension Data for Comparison Chart to Each Industry
@@ -80,7 +106,7 @@ Notes:
 - Method: Get
 - Params: None
 - Return
-```
+```json
 {
    "rows":[
       {
@@ -315,7 +341,7 @@ Notes:
 - Method: Post
 - Params: ?0=Aritzia
 - Return
-```
+``` json
 [
    {
       "ID":6,
@@ -511,7 +537,7 @@ Notes:
 - Method: Post
 - Params: ?0=Aritzia
 - Return
-```
+``` json
 {
    "rows":[
       {
@@ -566,7 +592,7 @@ Notes:
 - Method: Post
 - Params: ?0=Aritzia
 - Return
-```
+``` json
 {
    "rows":[
       {
@@ -630,7 +656,7 @@ Notes:
 - Method: Post
 - Params: ?0=Aritzia
 - Return
-```
+``` json
 {
    "rows":[
       {
@@ -700,7 +726,7 @@ Notes:
 - Method: Post
 - Params: ?0=Aritzia
 - Return
-```
+``` json
 {
    "rows":[
       {
@@ -762,7 +788,7 @@ Notes:
 - Method: Post
 - Params: ?0=Aritzia
 - Return
-```
+``` json
 [
    {
       "ID":12,
@@ -1476,7 +1502,7 @@ Notes:
 - Method: Post
 - Params: ?0=Aritzia&1=15&2=N
 - Return
-```
+``` json
 [
    {
       "ID":3198,
@@ -1519,7 +1545,7 @@ Notes:
 - Method: Post
 - Params: ?0=Aritzia&1=23&2=F
 - Return
-```
+``` json
 [
    {
       "ID":3036,
@@ -1542,7 +1568,7 @@ Notes:
 - Method: Get
 - Params: None
 - Return
-```
+``` json
   {
    "rows":[
       {
@@ -1656,7 +1682,7 @@ Notes:
 - Method: Post
 - Params: ?0=Aritzia
 - Return
-```
+``` json
 [
    {
       "ID":6,
@@ -1684,7 +1710,7 @@ Notes:
 - Method: Post
 - Params: ?0=Aritzia
 - Return
-```
+``` json
 [
    {
       "Ascore":55,
@@ -1700,7 +1726,7 @@ Notes:
 - Method: Post
 - Params: ?0=Aritzia
 - Return
-```
+``` json
 [
    {
       "Ascore":62,
@@ -1716,7 +1742,7 @@ Notes:
 - Method: Post
 - Params: ?0=Aritzia
 - Return
-```
+``` json
 [
    {
       "Ascore":65,
@@ -1732,7 +1758,7 @@ Notes:
 - Method: Post
 - Params: ?0=Aritzia
 - Return
-```
+``` json
 [
    {
       "Ascore":42,
@@ -1757,7 +1783,7 @@ Notes:
 - Method: Post
 - Params: ?0=Aritzia
 - Return
-```
+``` json
 [
    {
       "ID":23,
@@ -1797,7 +1823,7 @@ Notes:
 - Method: Post
 - Params: ?0=Aritzia
 - Return
-```
+``` json
 [
    {
       "ID":15,
