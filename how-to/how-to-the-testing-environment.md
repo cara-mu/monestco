@@ -14,9 +14,9 @@ of testing new features and fixes.
 3. Deploy your branch to the testing env
    1. login to heorku: https://id.heroku.com/login
    2. Click on the App:  monesttest
-   3. CLick the tab:  Deploy
+   3. Click the tab:  Deploy
    4. Scroll down the bottom part of 'Manual Deploy', then choose
       your testing branch to deploy
 4. Test it
    1. After the deployment is finished, go to https://monesttest.herokuapp.com/
-   to see the testing site.
+   to see the testing site
