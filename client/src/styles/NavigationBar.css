@@ -3,7 +3,8 @@
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
   align-items: center;
   width: 100%;
-  position: fixed;
+  position: sticky;
+  top: 0;
   z-index: 999;
 }
 
@@ -18,7 +19,7 @@
     margin: 0 auto;
     top: 0;
     z-index: 1000;
-    width: 1364.5px;
+    max-width: 1800px
   }
 
   
