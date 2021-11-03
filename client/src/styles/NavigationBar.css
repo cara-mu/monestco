@@ -1,23 +1,24 @@
 .Navigation-Bar-Container {
   background: #ffffff;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
-  display: unset;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
 }
 
 .Navigation-Bar {
     background: #ffffff;
     height: 88px;
     font-size: 1.2rem;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
     /* max-width: 1650px; */
     margin: 0 auto;
-    position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
+    width: 1364.5px;
   }
 
   
@@ -53,7 +54,6 @@
     height: 100%;
     align-items: center;
     margin: 0 1rem 0 0;
-
     list-style: none;
     text-align: center;
     width: 70vw;
