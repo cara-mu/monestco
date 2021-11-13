@@ -1,0 +1,11 @@
+#Packages for the Django Project
+
+Django
+djangorestframework
+django-cors-headers
+asgiref
+psycopg2
+sqlparse
+markdown
+django-filter
+whitenoise
