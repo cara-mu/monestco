@@ -15,9 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# the path for the whole project,  frontend app path:  PROJECT_DIR/'client'
-PROJECT_DIR = Path(__file__).resolve().parent.parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -32,6 +29,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     '.monest.co/',
+    'monest-test-backend.herokuapp.com'
 ]
 
 
@@ -69,7 +67,7 @@ ROOT_URLCONF = 'server_new.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [path.join(PROJECT_DIR, 'client', 'build')],
+        'DIRS': [path.join(BASE_DIR, 'client', 'build')],
         # add the root folder of frontend
         'APP_DIRS': True,
         'OPTIONS': {
@@ -150,14 +148,20 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    (path.join(PROJECT_DIR, 'client', 'build', 'static')),
-    (path.join(PROJECT_DIR, 'client', 'build')),
+    (path.join(BASE_DIR, 'client', 'build', 'static')),
+    (path.join(BASE_DIR, 'client', 'build')),
 ]
 
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# for Heroku Deployment
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())

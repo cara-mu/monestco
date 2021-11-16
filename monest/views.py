@@ -3,12 +3,10 @@ from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
 from monest.serializers import UserSerializer, GroupSerializer
-from rest_framework import status
 from rest_framework.decorators import api_view,permission_classes
 from django.http import JsonResponse
 from monest.models import Company
 from rest_framework.permissions import IsAuthenticated
-from django.contrib.staticfiles.views import serve
 
 # Create your views here.
 

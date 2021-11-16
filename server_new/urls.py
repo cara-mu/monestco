@@ -15,14 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from monest.views import index, all_company_names, manifest, logo192, monest_favicon
+from monest.views import index, all_company_names
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="index"),
-    path('manifest.json', manifest, name='manifest'),
-    path('logo192.png',logo192, name='logo192'),
-    path('monest_favicon.svg', monest_favicon, name='monest_favicon'),
     path('allcompanies', all_company_names, name='all_company_names'),
     path('api/', include('monest.urls'))
 ]
