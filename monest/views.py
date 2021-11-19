@@ -7,6 +7,7 @@ from rest_framework.decorators import api_view,permission_classes
 from django.http import JsonResponse
 from monest.models import Company
 from rest_framework.permissions import IsAuthenticated
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -47,6 +48,56 @@ def all_company_names(request):
     Get all companies
     """
     companies = Company.objects.values_list('name', flat=True)
-    return JsonResponse(list(companies), safe=False)
+    data = []
+    for item in companies:
+        data.append({
+            "Name": item
+        })
+    return JsonResponse({
+        'row': data
+    }, safe=False)
 
+
+@api_view(['GET'])
+def companies(request, company=''):
+    return JsonResponse([], safe=False
+                        )
+
+
+@csrf_exempt
+@api_view(['POST'])
+def company_scores(request):
+    company_name = request.query_params['0']
+    print(company_name)
+    pass
+
+
+@api_view(['POST'])
+def company_name(request):
+    pass
+
+
+@api_view(['POST'])
+def facts(request):
+    pass
+
+@api_view(['POST'])
+def news(request):
+    pass
+
+@api_view(['POST'])
+def similar_company_1(request):
+    pass
+
+@api_view(['POST'])
+def similar_company_2(request):
+    pass
+
+@api_view(['POST'])
+def similar_company_3(request):
+    pass
+
+@api_view(['POST'])
+def similar_company_4(request):
+    pass
 
