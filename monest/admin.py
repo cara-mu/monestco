@@ -16,7 +16,11 @@ class IndustryStandardAdmin(admin.ModelAdmin):
 
 
 class ScoreAdmin(admin.ModelAdmin):
-    list_display = ['id', 'score', 'short_text', 'company', 'metric']
+    list_display = ['id', 'score', 'short_text', 'company', 'metric', 'get_metric_types']
+
+    @admin.display(ordering='metric__types', description='Type',)
+    def get_metric_types(self, obj):
+        return obj.metric.types
 
 
 class FactsAdmin(admin.ModelAdmin):
@@ -32,7 +36,7 @@ class CitationsAdmin(admin.ModelAdmin):
 
 
 class MetricsAdmin(admin.ModelAdmin):
-    list_display = ['name', 'level', 'description', 'parent']
+    list_display = ['name', 'types', 'description', 'parent']
 
 
 admin.site.register(Citations, CitationsAdmin)

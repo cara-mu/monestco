@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from monest.views import index, all_company_names
+from monest.views import index, all_company_names, companies,company_scores
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="index"),
     path('allcompanies', all_company_names, name='all_company_names'),
+    path('companies/<company>', companies, name='companies'),
+    path('companyscores', company_scores, name='company_scores'),
     path('api/', include('monest.urls'))
 ]
