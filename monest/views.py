@@ -5,11 +5,19 @@ from rest_framework import permissions
 from monest.serializers import UserSerializer, GroupSerializer
 from rest_framework.decorators import api_view,permission_classes
 from django.http import JsonResponse
-from monest.models import Company
+from monest.models import Company,Scores, Facts, News
 from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
+# API refactoring(After database refactoring)
+# stage 1:  migrate old APIs, keep everything unchanged(URLs, names, params, methods..etc)
+# Stage 2: optimized APIs, subject them to best practices(require frond-end API call change accordingly)
+# API Optimization directions:
+#   1. remove inappropriate use of POST method
+#   2. better URL design
+#   3. remove redundant APIs(e.g. similarCompany1/2/3/4)
+#   3. remove unnecessary params and return payload
 
 
 @permission_classes([IsAuthenticated])
@@ -65,39 +73,129 @@ def companies(request, company=''):
 
 
 @csrf_exempt
-@api_view(['POST'])
+@api_view(['GET', 'POST'])
 def company_scores(request):
     company_name = request.query_params['0']
-    print(company_name)
-    pass
+    company = Company.objects.get(name=company_name)
+    scores = Scores.objects.all().filter(company=company)
+    res = {}
+    for item in scores:
+        score_key = item.metric.types + 'score'
+        res[score_key] = item.score
+        if item.short_text:
+            short_key = item.metric.types + 'short'
+            long_key = item.metric.types + 'long'
+            res[short_key] = item.short_text
+            res[long_key] = item.long_text
+
+    return JsonResponse([res], safe=False
+                        )
 
 
-@api_view(['POST'])
+@api_view(['GET', 'POST'])
 def company_name(request):
-    pass
+    company_name = request.query_params['0']
+    company = Company.objects.get(name=company_name)
+    res = {}
+    res['Name'] = company.name
+    if company.parent_company:
+        res['Subsidiary'] = company.parent_company
+    else:
+        res['Subsidiary'] = None
+    res['Category'] = company.category
+    res['Description'] = company.description
+    res['Logo'] = company.logo
+    res['SimilarCompany1'] = company.similar_company_1
+    res['SimilarCompany2'] = company.similar_company_2
+    res['SimilarCompany3'] = company.similar_company_3
+    res['SimilarCompany4'] = company.similar_company_4
+    scores = Scores.objects.all().filter(company=company, metric__types__in=['A', 'B', 'C', 'D'])
+    total_score = 0
+    for item in scores:
+        total_score += item.score
+    res['TotalScore'] = round(total_score/4)
+
+    return JsonResponse([res], safe=False)
 
 
-@api_view(['POST'])
+@api_view(['GET', 'POST'])
 def facts(request):
-    pass
+    company_name = request.query_params['0']
+    company = Company.objects.get(name=company_name)
+    fact_items = Facts.objects.all().filter(company=company)
+    res = []
+    for item in fact_items:
+        res.append({
+            'Heading': item.heading,
+            'Summary': item.summary
+        })
 
-@api_view(['POST'])
+    return JsonResponse([res], safe=False)
+
+
+@api_view(['GET', 'POST'])
 def news(request):
-    pass
+    company_name = request.query_params['0']
+    company = Company.objects.get(name=company_name)
+    news_items = News.objects.all().filter(company=company)
+    res = []
+    for item in news_items:
+        res.append({
+            'Photo': item.photo,
+            'Year': item.year,
+            'Category': item.category,
+            'Title': item.title,
+            'Summary': item.summary,
+            'IssueAddressed': item.issue_addressed,
+            'IssueAddressedExplanation': item.issue_addressed_text,
+            'ResponsibilityTaken': item.responsibility_taken,
+            'ResponsibilityTakenExplanation': item.responsibility_taken_text
+        })
 
-@api_view(['POST'])
+    return JsonResponse([res], safe=False)
+
+
+def get_company_score(name: str) -> {}:
+    company = Company.objects.get(name=name)
+    scores = Scores.objects.all().filter(company=company, metric__types__in=['A', 'B', 'C', 'D'])
+    res = {}
+    for item in scores:
+        if item.metric.types == 'A':
+            res['Ascore'] = item.score
+        elif item.metric.types == 'B':
+            res['Bscore'] = item.score
+        elif item.metric.types == 'C':
+            res['Cscore'] = item.score
+        elif item.metric.types == 'D':
+            res['Dscore'] = item.score
+
+    return res
+
+
+@api_view(['GET', 'POST'])
 def similar_company_1(request):
-    pass
+    company_name = request.query_params['0']
+    res = get_company_score(company_name)
+    return JsonResponse([res], safe=False)
 
-@api_view(['POST'])
+
+@api_view(['GET', 'POST'])
 def similar_company_2(request):
-    pass
+    company_name = request.query_params['0']
+    res = get_company_score(company_name)
+    return JsonResponse([res], safe=False)
 
-@api_view(['POST'])
+
+@api_view(['GET', 'POST'])
 def similar_company_3(request):
-    pass
+    company_name = request.query_params['0']
+    res = get_company_score(company_name)
+    return JsonResponse([res], safe=False)
 
-@api_view(['POST'])
+
+@api_view(['GET', 'POST'])
 def similar_company_4(request):
-    pass
+    company_name = request.query_params['0']
+    res = get_company_score(company_name)
+    return JsonResponse([res], safe=False)
 
