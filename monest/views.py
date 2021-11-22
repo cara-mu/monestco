@@ -62,7 +62,7 @@ def all_company_names(request):
             "Name": item
         })
     return JsonResponse({
-        'row': data
+        'rows': data
     }, safe=False)
 
 
@@ -126,12 +126,30 @@ def facts(request):
     res = []
     for item in fact_items:
         res.append({
+            'ID': item.id,
             'Heading': item.heading,
             'Summary': item.summary
         })
 
-    return JsonResponse([res], safe=False)
+    return JsonResponse(res, safe=False)
 
+
+@api_view(['GET', 'POST'])
+def fact_citations(request):
+    fact_id = request.query_params['1']
+    citations = Facts.objects.get(id= fact_id).citation.all()
+    res = []
+    for item in citations:
+        res.append({
+            'ID': item.id,
+            'Author': item.author,
+            'Title': item.title,
+            'PublishingGroup': item.publisher,
+            'Date': item.date,
+            'Pages': item.pages,
+            'URL': item.url
+        })
+    return JsonResponse(res, safe=False)
 
 @api_view(['GET', 'POST'])
 def news(request):
@@ -141,6 +159,7 @@ def news(request):
     res = []
     for item in news_items:
         res.append({
+            'ID': item.id,
             'Photo': item.photo,
             'Year': item.year,
             'Category': item.category,
@@ -152,8 +171,25 @@ def news(request):
             'ResponsibilityTakenExplanation': item.responsibility_taken_text
         })
 
-    return JsonResponse([res], safe=False)
+    return JsonResponse(res, safe=False)
 
+
+@api_view(['GET', 'POST'])
+def news_citations(request):
+    news_id = request.query_params['1']
+    citations = News.objects.get(id= news_id).citation.all()
+    res = []
+    for item in citations:
+        res.append({
+            'ID': item.id,
+            'Author': item.author,
+            'Title': item.title,
+            'PublishingGroup': item.publisher,
+            'Date': item.date,
+            'Pages': item.pages,
+            'URL': item.url
+        })
+    return JsonResponse(res, safe=False)
 
 def get_company_score(name: str) -> {}:
     company = Company.objects.get(name=name)

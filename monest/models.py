@@ -38,6 +38,8 @@ class Metrics(models.Model):
     description = models.CharField(max_length=200, blank=True)
     parent = models.ForeignKey("self", on_delete=models.CASCADE, null=True, blank=True)
 
+    def __str__(self):
+        return self.types + ' ' + self.name
 
 class IndustryStandards(models.Model):
     metric = models.OneToOneField(
@@ -62,6 +64,9 @@ class Citations(models.Model):
     pages = models.CharField(max_length=40, blank=True)
     publisher = models.CharField(max_length=50)
     url = models.URLField(max_length=200, blank=True)
+
+    def __str__(self):
+        return self.title + ', ' + self.pages + ', ' + self.publisher + ', ' + self.date
 
 
 class Scores(models.Model):
@@ -115,7 +120,6 @@ class PoliticalAssociation(models.Model):
                                 on_delete=models.CASCADE,
                                 verbose_name='Belonging to Company')
     citation = models.ManyToManyField(Citations, blank=True)
-
 
 
 

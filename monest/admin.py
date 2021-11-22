@@ -32,7 +32,7 @@ class NewsAdmin(admin.ModelAdmin):
 
 
 class CitationsAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'date', 'author', 'publisher']
+    list_display = ['id', 'title', 'date', 'author', 'publisher','pages']
 
 
 class MetricsAdmin(admin.ModelAdmin):

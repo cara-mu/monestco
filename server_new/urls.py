@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from monest.views import index, all_company_names, companies,company_scores, company_name, similar_company_1
-from monest.views import similar_company_2, similar_company_3, similar_company_4, facts, news
+from monest.views import similar_company_2, similar_company_3, similar_company_4, facts, news, fact_citations, news_citations
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +30,8 @@ urlpatterns = [
     path('similarCompany3', similar_company_3, name='similar_company_3'),
     path('similarCompany4', similar_company_4, name='similar_company_4'),
     path('facts', facts, name='facts'),
+    path('citationsFacts', fact_citations, name='fact_citations'),
+    path('citations', news_citations, name='news_citations'),
     path('news', news, name='news'),
     path('api/', include('monest.urls'))
 ]
