@@ -16,11 +16,7 @@ class IndustryStandardAdmin(admin.ModelAdmin):
 
 
 class ScoreAdmin(admin.ModelAdmin):
-    list_display = ['id', 'score', 'short_text', 'company', 'metric', 'get_metric_types']
-
-    @admin.display(ordering='metric__types', description='Type',)
-    def get_metric_types(self, obj):
-        return obj.metric.types
+    list_display = ['id', 'score', 'short_text', 'company', 'metric']
 
 
 class FactsAdmin(admin.ModelAdmin):

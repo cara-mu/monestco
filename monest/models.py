@@ -41,6 +41,7 @@ class Metrics(models.Model):
     def __str__(self):
         return self.types + ' ' + self.name
 
+
 class IndustryStandards(models.Model):
     metric = models.OneToOneField(
         Metrics,

@@ -5,7 +5,7 @@ from rest_framework import permissions
 from monest.serializers import UserSerializer, GroupSerializer
 from rest_framework.decorators import api_view,permission_classes
 from django.http import JsonResponse
-from monest.models import Company,Scores, Facts, News
+from monest.models import Company,Scores, Facts, News, Industry, IndustryStandards
 from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.csrf import csrf_exempt
 
@@ -17,7 +17,8 @@ from django.views.decorators.csrf import csrf_exempt
 #   1. remove inappropriate use of POST method
 #   2. better URL design
 #   3. remove redundant APIs(e.g. similarCompany1/2/3/4)
-#   3. remove unnecessary params and return payload
+#   4. remove unnecessary params and return payload
+#   5. exception handling
 
 
 @permission_classes([IsAuthenticated])
@@ -93,6 +94,124 @@ def company_scores(request):
 
 
 @api_view(['GET', 'POST'])
+def a_scores(request):
+    company_name = request.query_params['0']
+    company = Company.objects.get(name=company_name)
+    scores = Scores.objects.all().filter(company=company, metric__types__contains='A')
+    res = {}
+    for item in scores:
+        score_key = item.metric.types + 'score'
+        res[score_key] = item.score
+        if item.short_text:
+            short_key = item.metric.types + 'short'
+            long_key = item.metric.types + 'long'
+            res[short_key] = item.short_text
+            res[long_key] = item.long_text
+
+    return JsonResponse({
+        'rows': [res]
+    }, safe=False)
+
+
+@api_view(['GET', 'POST'])
+def b_scores(request):
+    company_name = request.query_params['0']
+    company = Company.objects.get(name=company_name)
+    scores = Scores.objects.all().filter(company=company, metric__types__contains='B')
+    res = {}
+    for item in scores:
+        score_key = item.metric.types + 'score'
+        res[score_key] = item.score
+        if item.short_text:
+            short_key = item.metric.types + 'short'
+            long_key = item.metric.types + 'long'
+            res[short_key] = item.short_text
+            res[long_key] = item.long_text
+
+    return JsonResponse({
+        'rows': [res]
+    }, safe=False)
+
+
+@api_view(['GET', 'POST'])
+def c_scores(request):
+    company_name = request.query_params['0']
+    company = Company.objects.get(name=company_name)
+    scores = Scores.objects.all().filter(company=company, metric__types__contains='C')
+    res = {}
+    for item in scores:
+        score_key = item.metric.types + 'score'
+        res[score_key] = item.score
+        if item.short_text:
+            short_key = item.metric.types + 'short'
+            long_key = item.metric.types + 'long'
+            res[short_key] = item.short_text
+            res[long_key] = item.long_text
+
+    return JsonResponse({
+        'rows': [res]
+    }, safe=False)
+
+
+@api_view(['GET', 'POST'])
+def d_scores(request):
+    company_name = request.query_params['0']
+    company = Company.objects.get(name=company_name)
+    scores = Scores.objects.all().filter(company=company, metric__types__contains='D')
+    res = {}
+    for item in scores:
+        score_key = item.metric.types + 'score'
+        res[score_key] = item.score
+        if item.short_text:
+            short_key = item.metric.types + 'short'
+            long_key = item.metric.types + 'long'
+            res[short_key] = item.short_text
+            res[long_key] = item.long_text
+
+    return JsonResponse({
+        'rows': [res]
+    }, safe=False)
+
+@api_view(['GET', 'POST'])
+def score_citations(request):
+    company_name = request.query_params['0']
+    company = Company.objects.get(name=company_name)
+    scores = Scores.objects.all().filter(company=company)
+    res = []
+    for score in scores:
+        citations = score.citation.all()
+        for item in citations:
+            res.append({
+                'ID': item.id,
+                'Type': score.metric.types,
+                'Author': item.author,
+                'Title': item.title,
+                'PublishingGroup': item.publisher,
+                'Date': item.date,
+                'Pages': item.pages,
+                'URL': item.url
+            })
+    return JsonResponse(res, safe=False)
+
+
+@api_view(['GET', 'POST'])
+def other_company_info(request):
+    company_name = request.query_params['0']
+    company = Company.objects.get(name=company_name)
+    scores = Scores.objects.all().filter(company=company, metric__types__in=['A', 'B', 'C', 'D'])
+    total_score = 0
+    for item in scores:
+        total_score += item.score
+    total_score = round(total_score/4)
+    res = {}
+    res['Logo'] = company.logo
+    res['Subsidiary'] = company.parent_company
+    res['TotalScore'] = total_score
+
+    return JsonResponse([res], safe=False)
+
+
+@api_view(['GET', 'POST'])
 def company_name(request):
     company_name = request.query_params['0']
     company = Company.objects.get(name=company_name)
@@ -137,7 +256,7 @@ def facts(request):
 @api_view(['GET', 'POST'])
 def fact_citations(request):
     fact_id = request.query_params['1']
-    citations = Facts.objects.get(id= fact_id).citation.all()
+    citations = Facts.objects.get(id=fact_id).citation.all()
     res = []
     for item in citations:
         res.append({
@@ -150,6 +269,7 @@ def fact_citations(request):
             'URL': item.url
         })
     return JsonResponse(res, safe=False)
+
 
 @api_view(['GET', 'POST'])
 def news(request):
@@ -210,28 +330,87 @@ def get_company_score(name: str) -> {}:
 
 @api_view(['GET', 'POST'])
 def similar_company_1(request):
-    company_name = request.query_params['0']
-    res = get_company_score(company_name)
-    return JsonResponse([res], safe=False)
+    try:
+        company_name = request.query_params['0']
+        company = Company.objects.get(name=company_name)
+        res = get_company_score(company.similar_company_1)
+        return JsonResponse([res], safe=False)
+    except Company.DoesNotExist:
+        return JsonResponse([{
+            'Ascore': 0,
+            'Bscore': 0,
+            'Cscore': 0,
+            'Dscore': 0
+        }], safe=False)
 
 
 @api_view(['GET', 'POST'])
 def similar_company_2(request):
-    company_name = request.query_params['0']
-    res = get_company_score(company_name)
-    return JsonResponse([res], safe=False)
-
+    try:
+        company_name = request.query_params['0']
+        company = Company.objects.get(name=company_name)
+        res = get_company_score(company.similar_company_2)
+        return JsonResponse([res], safe=False)
+    except Company.DoesNotExist:
+        return JsonResponse([{
+            'Ascore': 0,
+            'Bscore': 0,
+            'Cscore': 0,
+            'Dscore': 0
+        }], safe=False)
 
 @api_view(['GET', 'POST'])
 def similar_company_3(request):
-    company_name = request.query_params['0']
-    res = get_company_score(company_name)
-    return JsonResponse([res], safe=False)
+    try:
+        company_name = request.query_params['0']
+        company = Company.objects.get(name=company_name)
+        res = get_company_score(company.similar_company_3)
+        return JsonResponse([res], safe=False)
+    except Company.DoesNotExist:
+        return JsonResponse([{
+            'Ascore': 0,
+            'Bscore': 0,
+            'Cscore': 0,
+            'Dscore': 0
+        }], safe=False)
 
 
 @api_view(['GET', 'POST'])
 def similar_company_4(request):
-    company_name = request.query_params['0']
-    res = get_company_score(company_name)
-    return JsonResponse([res], safe=False)
+    try:
+        company_name = request.query_params['0']
+        company = Company.objects.get(name=company_name)
+        res = get_company_score(company.similar_company_4)
+        return JsonResponse([res], safe=False)
+    except Company.DoesNotExist:
+        return JsonResponse([{
+            'Ascore': 0,
+            'Bscore': 0,
+            'Cscore': 0,
+            'Dscore': 0
+        }], safe=False)
+
+
+@api_view(['GET', 'POST'])
+def industry_standards(request):
+    """
+    current implementation in Nodejs is hardcoded return Apparel.
+    Need Optimization in stage 2
+    :param request:
+    :return:
+    """
+    standards = IndustryStandards.objects.all().filter(industry='Apparel')
+    res = {}
+    for item in standards:
+        total_key = item.metric.types + 'total'
+        low_key = item.metric.types + 'low'
+        high_key = item.metric.types + 'high'
+        res[total_key] = item.total
+        res[low_key] = item.low
+        res[high_key] = item.high
+
+    return JsonResponse({
+        'rows': [res]
+        }, safe=False)
+
 
