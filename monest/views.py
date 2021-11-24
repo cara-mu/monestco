@@ -5,7 +5,7 @@ from rest_framework import permissions
 from monest.serializers import UserSerializer, GroupSerializer
 from rest_framework.decorators import api_view,permission_classes
 from django.http import JsonResponse
-from monest.models import Company,Scores, Facts, News, Industry, IndustryStandards
+from monest.models import Company,Scores, Facts, News, IndustryStandards, PoliticalAssociation
 from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.csrf import csrf_exempt
 
@@ -79,6 +79,8 @@ def company_scores(request):
     company_name = request.query_params['0']
     company = Company.objects.get(name=company_name)
     scores = Scores.objects.all().filter(company=company)
+    if not scores.count():
+        scores = Scores.objects.all().filter(company=company.parent_company)
     res = {}
     for item in scores:
         score_key = item.metric.types + 'score'
@@ -98,6 +100,9 @@ def a_scores(request):
     company_name = request.query_params['0']
     company = Company.objects.get(name=company_name)
     scores = Scores.objects.all().filter(company=company, metric__types__contains='A')
+    if not scores.count():
+        scores = Scores.objects.all().filter(company=company.parent_company, metric__types__contains='A')
+
     res = {}
     for item in scores:
         score_key = item.metric.types + 'score'
@@ -118,6 +123,9 @@ def b_scores(request):
     company_name = request.query_params['0']
     company = Company.objects.get(name=company_name)
     scores = Scores.objects.all().filter(company=company, metric__types__contains='B')
+    if not scores.count():
+        scores = Scores.objects.all().filter(company=company.parent_company, metric__types__contains='B')
+
     res = {}
     for item in scores:
         score_key = item.metric.types + 'score'
@@ -138,6 +146,8 @@ def c_scores(request):
     company_name = request.query_params['0']
     company = Company.objects.get(name=company_name)
     scores = Scores.objects.all().filter(company=company, metric__types__contains='C')
+    if not scores.count():
+        scores = Scores.objects.all().filter(company=company.parent_company, metric__types__contains='C')
     res = {}
     for item in scores:
         score_key = item.metric.types + 'score'
@@ -158,7 +168,10 @@ def d_scores(request):
     company_name = request.query_params['0']
     company = Company.objects.get(name=company_name)
     scores = Scores.objects.all().filter(company=company, metric__types__contains='D')
+    if not scores.count():
+        scores = Scores.objects.all().filter(company=company.parent_company, metric__types__contains='D')
     res = {}
+
     for item in scores:
         score_key = item.metric.types + 'score'
         res[score_key] = item.score
@@ -172,11 +185,14 @@ def d_scores(request):
         'rows': [res]
     }, safe=False)
 
+
 @api_view(['GET', 'POST'])
 def score_citations(request):
     company_name = request.query_params['0']
     company = Company.objects.get(name=company_name)
     scores = Scores.objects.all().filter(company=company)
+    if not scores.count():
+        scores = Scores.objects.all().filter(company=company.parent_company)
     res = []
     for score in scores:
         citations = score.citation.all()
@@ -199,13 +215,19 @@ def other_company_info(request):
     company_name = request.query_params['0']
     company = Company.objects.get(name=company_name)
     scores = Scores.objects.all().filter(company=company, metric__types__in=['A', 'B', 'C', 'D'])
+    if not scores.count():
+        scores = Scores.objects.all().filter(company=company.parent_company, metric__types__in=['A', 'B', 'C', 'D'])
+
     total_score = 0
     for item in scores:
         total_score += item.score
     total_score = round(total_score/4)
     res = {}
     res['Logo'] = company.logo
-    res['Subsidiary'] = company.parent_company
+    if company.parent_company:
+        res['Subsidiary'] = company.parent_company
+    else:
+        res['Subsidiary'] = None
     res['TotalScore'] = total_score
 
     return JsonResponse([res], safe=False)
@@ -229,10 +251,12 @@ def company_name(request):
     res['SimilarCompany3'] = company.similar_company_3
     res['SimilarCompany4'] = company.similar_company_4
     scores = Scores.objects.all().filter(company=company, metric__types__in=['A', 'B', 'C', 'D'])
+    if not scores.count():
+        scores = Scores.objects.all().filter(company=company.parent_company, metric__types__in=['A', 'B', 'C', 'D'])
     total_score = 0
     for item in scores:
         total_score += item.score
-    res['TotalScore'] = round(total_score/4)
+    res['TotalScore'] = int(total_score/4)
 
     return JsonResponse([res], safe=False)
 
@@ -314,6 +338,8 @@ def news_citations(request):
 def get_company_score(name: str) -> {}:
     company = Company.objects.get(name=name)
     scores = Scores.objects.all().filter(company=company, metric__types__in=['A', 'B', 'C', 'D'])
+    if not scores.count():
+        scores = Scores.objects.all().filter(company=company.parent_company, metric__types__in=['A', 'B', 'C', 'D'])
     res = {}
     for item in scores:
         if item.metric.types == 'A':
@@ -414,3 +440,112 @@ def industry_standards(request):
         }, safe=False)
 
 
+@api_view(['GET'])
+def politital_assocation_summary(request):
+    company = request.query_params['company']
+    records = PoliticalAssociation.objects.all().filter(company=company)
+    dem = 0
+    rep = 0
+    for item in records:
+        dem += item.dem
+        rep += item.rep
+
+    return JsonResponse({
+        'rep': rep,
+        'dem': dem
+    }, safe=False)
+
+
+@api_view(['GET'])
+def political_association_details(request):
+    company = request.query_params['company']
+    records = PoliticalAssociation.objects.all().filter(company=company)
+    data = []
+    citation = []
+    for item in records:
+        data.append({
+            'year': item.year,
+            'rep': item.rep,
+            'dem': item.dem,
+            'indi': item.individual_percentage
+        })
+
+        citations = item.citation.all()
+        for x in citations:
+            citation.append({
+                'title': x.title,
+                'author': x.author,
+                'publisher': x.publisher,
+                'pages': x.pages,
+                'date': x.date,
+                'url': x.url
+            })
+
+    return JsonResponse({
+        'data': data,
+        'citation': citation
+    }, safe=False)
+
+
+ranking_weight = {
+    'low': 0.5,
+    'medium': 1,
+    'high': 1.5
+}
+
+
+def weighted_scores(company: Company, a_weight: float, b_weight: float, c_weight: float, d_weight: float) -> float:
+    scores = Scores.objects.all().filter(company=company, metric__types__in=['A', 'B', 'C', 'D'])
+    if not scores.count():
+        scores = Scores.objects.all().filter(company=company.parent_company, metric__types__in=['A', 'B', 'C', 'D'])
+    score = 0
+    for item in scores:
+        if item.metric.types == 'A':
+            score += item.score * a_weight
+        elif item.metric.types == 'B':
+            score += item.score * b_weight
+        elif item.metric.types == 'C':
+            score += item.score * c_weight
+        else:
+            score += item.score * d_weight
+
+    return score
+
+
+@api_view(['GET'])
+def brands_ranking(request):
+    """
+    URL: /api/v1/ranking
+    Method: Get
+    Params:
+          brand: brand name
+          ranking preference: (low, medium, high)
+              di: Diversity & Inclusion,
+              we: Worker Exploitation,
+              wp: Waster & Pollution,
+              es: Ethical Sourcing
+    Return
+    Industry Ranking according to inputted preference
+    """
+    company = request.query_params['company']
+    di = request.query_params['di']
+    we = request.query_params['we']
+    wp = request.query_params['wp']
+    es = request.query_params['es']
+
+    company = Company.objects.get(name=company)
+    companies = Company.objects.all().filter(industry=company.industry)
+    res = []
+    scores = {}
+    for c in companies:
+        res.append(c.name)
+        scores[c.name] = weighted_scores(c,
+                                         ranking_weight[di],
+                                         ranking_weight[we],
+                                         ranking_weight[wp],
+                                         ranking_weight[es])
+
+    print(scores)
+    res.sort(key=lambda name: scores[name], reverse=True)
+
+    return JsonResponse(res, safe=False)
