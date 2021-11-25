@@ -29,7 +29,7 @@ In the project folder, run
 > What you have to do is build the frontend to static files and serve those static files through Django.  
 > a. build frontend    
 > react-scripts build   
-> b. collect static files
+> b. collect static files  
 > python manage.py collectstatic   
 > c. start Django app  
 > python manage.py runserver 8000
