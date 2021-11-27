@@ -1,0 +1,177 @@
+.smallText {
+    height: 176px;
+    margin-top:46px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 28px;
+    /* or 156% */
+
+
+    /* dark gray */
+
+    color: #3D3E3F;
+
+}
+.smallTextFirst{
+    height: 176px;
+    width: 663px;
+    margin-top:46px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 28px;
+    /* or 156% */
+
+
+    /* dark gray */
+
+    color: #3D3E3F;
+
+}
+
+.smallEmailTextBox {
+    border: 1px solid #BDBDBD;
+    /* white */
+
+    background: #FFFFFF;
+    /* gray 5 */
+
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    border-radius: 13px;
+    width: 368px;
+    height: 40px;
+    padding: 6px 15px;
+}
+
+
+#story {
+    margin-top:50px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 38px;
+    /* identical to box height, or 158% */
+    /* monest navy */
+
+    color: #26385A;
+
+}
+
+#mission {
+    margin-top: 35px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 38px;
+    /* identical to box height, or 158% */
+    /* monest navy */
+
+    color: #26385A;
+
+}
+
+.decorativeLine {
+    margin-top: 44px;
+    border: 3px solid #3D3E3F;
+
+}
+.bigText {
+    margin-top:36px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 50px;
+    width: 502px;
+    /* or 167% */
+
+
+    /* dark gray */
+
+    color: #3D3E3F;
+
+}
+
+.textDivider {
+    height:35px;
+}
+
+.textList {
+    margin-top:60px;
+    display:flex;
+    flex-direction: row;
+}
+
+.listItem {
+    width: 366px;
+    height: 105px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 35px;
+    /* or 194% */
+    color: #000000;
+    margin-left:105px;
+}
+
+.emailContainer{
+    background: #F5F4F2;
+    width:100%;
+    margin-top:86px;
+    padding: 56px;
+    display:block;
+    height:295px;
+}
+
+.bigTextLast{
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0 auto auto;
+    width: 1005px;
+    font-size: 30px;
+    line-height: 50px;
+    color: #3D3E3F;
+}
+
+.emailSignUpButton {
+    background: #26385A;
+    margin-left:38px;
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    border-radius: 18px;
+    margin-left:"38px";
+    width: 94px;
+    height: 40px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 34px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.joinText {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+    color: #9A9B9C;
+}
+
+.inputContainer {
+    
+    width: 500px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right:auto;
+}
