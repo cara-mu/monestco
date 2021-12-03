@@ -918,23 +918,14 @@ app.get('/api/v1/pa/detailed', function(req, res){
         "indi": 0.96
       }
     ],
-    "citations": [{
-      "author": "",
+    "citation": [{
+      "arthor": "none",
       "title": "J Crew Group",
-      "publisher": "OpenSecrets",
+      "publihser": "OpenSecrets",
       "pages": "34",
-      "date": "",
+      "date": "none",
       "url": "https://www.opensecrets.org/orgs/h-m-co/summary?id=D000042667"
-    },
-    {
-      "author": "",
-      "title": "J Crew Group",
-      "publisher": "OpenSecrets",
-      "pages": "34",
-      "date": "",
-      "url": "https://www.opensecrets.org/orgs/h-m-co/summary?id=D000042667"
-    }
-    ]
+    }]
   })
 })
 
