@@ -22,7 +22,7 @@ export default function Chart(props) {
     
 
     useEffect(() => {
-      axios.get(`/api/v1/pa/detailed?Company=${props.company}`).then((response) => {
+      axios.get(`/api/v1/pa/detailed?company=${props.company}`).then((response) => {
         setDetailedInfo(response.data);
       });
     }, [])

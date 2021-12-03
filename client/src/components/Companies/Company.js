@@ -200,7 +200,7 @@ function Company({ match, location }) {
     const [politicalAssociationSummaryData, setPoliticalAssociationSummaryData] = useState({});
 
     useEffect(() => {
-        axios.get(`/api/v1/pa/summary?Company=${companyName}`).then((response) => {
+        axios.get(`/api/v1/pa/summary?company=${companyName}`).then((response) => {
           console.log(response.data);
           setPoliticalAssociationSummaryData(response.data);
         });
