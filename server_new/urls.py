@@ -14,14 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 from monest.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name="index"),
     path('allcompanies', all_company_names, name='all_company_names'),
-    path('companies/<company>', companies, name='companies'),
     path('companyscores', company_scores, name='company_scores'),
     path('companydetailsA', a_scores, name='a_scores'),
     path('companydetailsB', b_scores, name='b_scores'),
@@ -39,5 +37,7 @@ urlpatterns = [
     path('citations', news_citations, name='news_citations'),
     path('news', news, name='news'),
     path('industry', industry_standards, name='industry_standards'),
-    path('api/', include('monest.urls'))
+    path('api/', include('monest.urls')),
+    path('/', index, name="index"),
+    re_path(r'^(?:.*)/?$', index, name='index'),
 ]

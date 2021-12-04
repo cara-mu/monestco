@@ -67,12 +67,6 @@ def all_company_names(request):
     }, safe=False)
 
 
-@api_view(['GET'])
-def companies(request, company=''):
-    return JsonResponse([], safe=False
-                        )
-
-
 @csrf_exempt
 @api_view(['GET', 'POST'])
 def company_scores(request):
