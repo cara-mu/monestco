@@ -9,10 +9,12 @@ export default function Chart(props) {
 
     const CustomTooltip = ({ active, payload, label }) => {
       if (active && payload && payload.length) {
+          console.log(active)
+          console.log(payload)
         return (
           <div className="custom-tooltip">
             <p className="individual-contribution"> Individual Contribution </p>
-            <p className="percentage"> 45% </p>
+            <p className="percentage"> {payload[0].payload['indi']}% </p>
           </div>
         );
       }
@@ -78,12 +80,14 @@ export default function Chart(props) {
           </BarChart>
         </div>
         <div className="citations-container">
-          {detailedInfo.citations ? (
-                detailedInfo.citations.map((citation, i) => {
+          {detailedInfo.citation ? (
+                detailedInfo.citation.map((citation, i) => {
                   return (
                     <div className="citation">
                       <span> 
-                        <span className="citation-index">[{i + 1}]</span> {generateCitationString(citation)}
+                        <span className="citation-index">[{i + 1}]</span>
+                          {generateCitationString(citation)}
+                          <a href = {citation.url} >{citation.url}</a>
                       </span>
                     </div>
                   );
@@ -100,9 +104,17 @@ export default function Chart(props) {
     }
 
     function generateCitationString({title, author, publisher, date, pages, url}) {
-          let citationString = `${title}, ${author && <span>,</span>} ${publisher}, ${date && <span>,</span>} ${pages}, ${url}`;
-          console.log(citationString);
-          return citationString;
+        if (author.length !== 0){
+            author = author + ',';
+        }
+
+        if (pages.length !== 0) {
+            pages = pages + ',';
+        }
+
+        let citationString = `${title}, ${author} ${publisher}, ${date}, ${pages}`;
+        console.log(citationString);
+        return citationString;
     }
 }
 

@@ -808,50 +808,6 @@ function Company({ match, location }) {
         })
     }
 
-    const convertToChartDataFormat = (data) => {
-        return data.data.map(({ year, rep, dem }) => {
-            return {
-                "name": year,
-                "Democrats": rep,
-                "Republicans": dem
-            }
-        })
-    }
-
-    let test_data = {
-        "data": [{
-            "year": 2016,
-            "rep": 23750,
-            "dem": 1744,
-            "indi": 1
-        },
-        {
-            "year": 2018,
-            "rep": 63227,
-            "dem": 917,
-            "indi": 0.95
-        },
-        {
-            "year": 2020,
-            "rep": 254474,
-            "dem": 19394,
-            "indi": 0.96
-        }
-        ],
-        "citation": [{
-            "arthor": "none",
-            "title": "J Crew Group",
-            "publihser": "OpenSecrets",
-            "pages": "34",
-            "date": "none",
-            "url": "https://www.opensecrets.org/orgs/h-m-co/summary?id=D000042667"
-        }]
-    }
-
-    let testPollAssocSumm = {
-        "rep": 10000,
-        "dem": 20000
-    }
 
     let demDonation;
     let repDonation;
@@ -1005,7 +961,7 @@ function Company({ match, location }) {
                             in donations` } </Typography>
                                     </AccordionSummary>
                                     <AccordionDetails className={classes.politicalAssociationAccordionDetails}>
-                                        <PoliticalAssociationChart data={convertToChartDataFormat(test_data)} company={companyName}/>
+                                        <PoliticalAssociationChart company={companyName}/>
                                     </AccordionDetails>
                                 </Accordion>
                             </div>
