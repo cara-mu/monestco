@@ -815,7 +815,11 @@ function Company({ match, location }) {
     if (politicalAssociationSummaryData) {
         demDonation = politicalAssociationSummaryData.dem;
         repDonation = politicalAssociationSummaryData.rep;
-    }  
+    }
+
+    function currencyFormat(num){
+        return '$' + num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    }
 
     return (
         <div className='Layout'>
@@ -956,9 +960,9 @@ function Company({ match, location }) {
                                         id="panel1a-header"
                                         className={classes.politicalAssociationSummary}
                                     >
-                                        <Typography className={classes.heading}> {`From 2016 to 2020, ${companyName} donated $${demDonation} to the democratic
-                            party and $${repDonation} to the Republican party for a total of $${demDonation + repDonation} 
-                            in donations` } </Typography>
+                                        <Typography className={classes.heading}> {`From 2016 to 2020, ${companyName} donated ${currencyFormat(demDonation)} to the democratic
+                            party and ${currencyFormat(repDonation)} to the Republican party for a total of ${currencyFormat(demDonation + repDonation)} 
+                            in donations.` } </Typography>
                                     </AccordionSummary>
                                     <AccordionDetails className={classes.politicalAssociationAccordionDetails}>
                                         <PoliticalAssociationChart company={companyName}/>
