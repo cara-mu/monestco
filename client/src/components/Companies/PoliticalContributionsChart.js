@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar, Label } from 'recharts';
-import "../styles/PoliticalAssociationChart.css";
+import "../../styles/PoliticalAssociationChart.css";
 import axios from 'axios';
 
 export default function Chart(props) {
