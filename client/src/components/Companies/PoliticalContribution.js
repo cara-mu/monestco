@@ -48,7 +48,7 @@ export default function PoliticalContribution(props) {
         axios.get(`/api/v1/pa/summary?company=${props.company}`).then((response) => {
           setPoliticalAssociationSummaryData(response.data);
         });
-      }, []);
+      },[props.company]);
 
     const styles = style();
 

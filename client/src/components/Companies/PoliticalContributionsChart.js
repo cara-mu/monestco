@@ -27,7 +27,7 @@ export default function Chart(props) {
       axios.get(`/api/v1/pa/detailed?company=${props.company}`).then((response) => {
         setDetailedInfo(response.data);
       });
-    }, [])
+    }, [props.company])
 
     return (
       <div className="chart-container">
