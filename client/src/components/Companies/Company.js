@@ -24,14 +24,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { AiFillCaretDown } from 'react-icons/ai';
 import TextTruncate from 'react-text-truncate';
-import Resizer from "react-image-file-resizer";
-
-import BrandLogo from '../../assets/brandBreakdown.svg';
-import { pink } from '@material-ui/core/colors';
-import BrandBreakdown from '../../pages/BrandBreakdown-new';
-import PoliticalAssociationChart from '../PoliticalContributionsChart';
-import "../../styles/PoliticalAssociationChart.css";
-
+import PoliticalContribution from "./PoliticalContribution";
 
 
 const companyinfo = [
@@ -145,21 +138,7 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
     },
-    politicalAssociationSummary: {
-        paddingLeft: '0px',
-        paddingRight: '0px',
-        width: '100%'
-    },
-    politicalAssociationAccordionDetails: {
-        padding: '0px'
-    },
-    politicalAssociationDropdown: {
-        boxShadow: 'none',
-        paddingLeft: '0px',
-        paddingRight: '0px',
-        marginTop: '27px'
 
-    }
 }));
 
 function useForceUpdate() {
@@ -183,11 +162,9 @@ function Company({ match, location }) {
     const [openID, setOpenID] = useState(0);
     const [showBrandPInfo, setBrandPShowInfo] = useState(false);
     const [showCompanyInitInfo, setCompanyInitShowInfo] = useState(false);
-    const [showPoliticalAssociationInfo, setPoliticalAssociationShowInfo] = useState(false);
     const [showNewsInfo, setNewsShowInfo] = useState(false);
     const [showInfo, setShowInfo] = useState(false)
     const [companyDetails, setCompanyDetails] = React.useState(companyinfo);
-    // const [brandScores, setBrandScores] = React.useState(companyScores);
     const [fact, setFact] = React.useState(companyFacts);
     const [news, setNews] = React.useState(companyNews);
     const [citations, setCitations] = React.useState(companyCit);
@@ -197,15 +174,6 @@ function Company({ match, location }) {
     const [B, setB] = useState(0);
     const [C, setC] = useState(0);
     const [D, setD] = useState(0);
-    const [politicalAssociationSummaryData, setPoliticalAssociationSummaryData] = useState({});
-
-    useEffect(() => {
-        axios.get(`/api/v1/pa/summary?company=${companyName}`).then((response) => {
-          console.log(response.data);
-          setPoliticalAssociationSummaryData(response.data);
-        });
-      }, [])
-
 
     const handleCloseInfo = () => {
         setShowInfo(false)
@@ -809,14 +777,6 @@ function Company({ match, location }) {
     }
 
 
-    let demDonation;
-    let repDonation;
-
-    if (politicalAssociationSummaryData) {
-        demDonation = politicalAssociationSummaryData.dem;
-        repDonation = politicalAssociationSummaryData.rep;
-    }  
-
     return (
         <div className='Layout'>
             <Grid container spacing={3}>
@@ -941,39 +901,8 @@ function Company({ match, location }) {
                         </div>
 
 
-                        {/* Political Association */}
-                        <div className='Brand-Section-title'>
-                                Political Contributions
-                            <InfoIcon className='brand_info-icon' onClick={() => setPoliticalAssociationShowInfo(!showPoliticalAssociationInfo)} />
-                            </div>
-                            <div className='Decorative-Line'></div>
-                        <div className="political_association">
-                            <div>
-                                <Accordion className={classes.politicalAssociationDropdown}>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMoreIcon className='circle-new' />}
-                                        aria-controls="panel1a-content"
-                                        id="panel1a-header"
-                                        className={classes.politicalAssociationSummary}
-                                    >
-                                        <Typography className={classes.heading}> {`From 2016 to 2020, ${companyName} donated $${demDonation} to the democratic
-                            party and $${repDonation} to the Republican party for a total of $${demDonation + repDonation} 
-                            in donations` } </Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails className={classes.politicalAssociationAccordionDetails}>
-                                        <PoliticalAssociationChart company={companyName}/>
-                                    </AccordionDetails>
-                                </Accordion>
-                            </div>
-                            <Modal
-                                open={open}
-                                onClose={handleClose}
-                                aria-labelledby="simple-modal-title"
-                                aria-describedby="simple-modal-description"
-                            >
-                                {body}
-                            </Modal>
-                        </div>
+                        {/*Political Association*/}
+                        <PoliticalContribution company = {companyName}/>
 
 
                         {/* Similar Brands */}
