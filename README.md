@@ -7,29 +7,57 @@ need to make responsible
 purchasing decisions.
 
 ## Run locally
+Clone the  repo to your local environment.
 
-### Client
+### Frontend
 
 navigate to client folder,
-run **npm install** to install all packages from package.json, 
-then **npm start** to launch app
+run ***npm install*** to install all node.js packages from package.json, 
+then **_npm start_** to launch app
 > Note that the frontend is a React App.   
-> So when run client via *npm start*, it's runing on top of the default web server provided by React App, which is enough to debug frontend only.  
-> If you want the frontend works with the backend,  you have to configure a proxy to the backend in package.json:   
+> So when run client via *npm start*, it's running on top of the default web server provided by React App, which is enough to debug frontend only.  
+> If you want the frontend works with the backend,  you have to configure a proxy to the backend in _**package.json**_:   
 > 
 > "proxy": "http://localhost:8000", where our backend is run on port:8000
 
 
 ### Serve
-In the project folder, run    
 
-**python manage.py runserver 8000**
+#### Prerequisite:
+1. Has PostgreSQL installed on your environment, please refer to https://www.postgresql.org/
+2. Create a database 
+> you can create a database, then update the database info in the _**~/server_new/settings.py**_ file, line 90 ;  
+> Or when create the database,  use keep the **_db_name, user_name and password_** the same as what is in the **_~/server_new/settings.py_**
 
->Note that backend end is a Python Django app can it also can work independently without running the frontend.
+
+#### Run the serve 
+In the project folder, 
+
+run
+
+**_python manage.py migrate_**
+
+to create tables in the database. 
+
+run  
+**_python manage.py runserver 8000_**
+to start the backend.
+
+#### Create/Import data to database
+There are many way to input data to the database,  here are two:
+1. You can log in to the admin portal(**_localhost:8000/admin_**) to input data manually
+2. You can import some prepared data(**_~monest/migrations/monset.sql_**) to the database
+
+
+### Note
+
+>Note that the backend end is a Python Django app. It can run with the front end or run independently without running the frontend.  
 > What you have to do is build the frontend to static files and serve those static files through Django.  
 > a. build frontend    
-> react-scripts build   
+> **_react-scripts build_**   
 > b. collect static files  
-> python manage.py collectstatic   
+> **_python manage.py collectstatic**_   
 > c. start Django app  
-> python manage.py runserver 8000
+> **_python manage.py runserver 8000_**
+
+
