@@ -11,7 +11,7 @@ router.register(r'groups', views.GroupViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('v1/pa/summary', views.politital_assocation_summary, name='politital_assocation_summary'),
+    path('v1/pa/summary', views.political_association_summary, name='political_association_summary'),
     path('v1/pa/detailed', views.political_association_details, name='political_association_details'),
     path('v1/ranking', views.brands_ranking, name='brands_ranking'),
 ]
