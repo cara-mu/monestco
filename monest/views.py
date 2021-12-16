@@ -3,11 +3,13 @@ from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
 from monest.serializers import UserSerializer, GroupSerializer
-from rest_framework.decorators import api_view,permission_classes
+from rest_framework.decorators import api_view, permission_classes
 from django.http import JsonResponse
-from monest.models import Company,Scores, Facts, News, IndustryStandards, PoliticalAssociation
+from monest.models import Company, Scores, Facts, News, IndustryStandards, PoliticalAssociation
 from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.csrf import csrf_exempt
+from django.db.models import Q
+
 
 # Create your views here.
 # API refactoring(After database refactoring)
@@ -16,7 +18,7 @@ from django.views.decorators.csrf import csrf_exempt
 # API Optimization directions:
 #   1. remove inappropriate use of POST method
 #   2. better URL design
-#   3. remove redundant APIs(e.g. similarCompany1/2/3/4)
+#   3. remove redundant APIs(e.g. similarCompany1/2/3/4)  ---- Done
 #   4. remove unnecessary params and return payload
 #   5. exception handling
 
@@ -67,131 +69,37 @@ def all_company_names(request):
     }, safe=False)
 
 
-@csrf_exempt
-@api_view(['GET', 'POST'])
-def company_scores(request):
-    company_name = request.query_params['0']
-    company = Company.objects.get(name=company_name)
-    scores = Scores.objects.all().filter(company=company)
-    if not scores.count():
-        scores = Scores.objects.all().filter(company=company.parent_company)
-    res = {}
-    for item in scores:
+def update_scores(raw_scores, processed_scores: {}) -> {}:
+    """
+    prepare scores in a dictionary format
+    :param raw_scores:
+    :param processed_scores: queryset object resulting from database query
+    :return:
+    """
+    for item in raw_scores:
         score_key = item.metric.types + 'score'
-        res[score_key] = item.score
+        processed_scores[score_key] = item.score
         if item.short_text:
             short_key = item.metric.types + 'short'
             long_key = item.metric.types + 'long'
-            res[short_key] = item.short_text
-            res[long_key] = item.long_text
-
-    return JsonResponse([res], safe=False
-                        )
+            processed_scores[short_key] = item.short_text
+            processed_scores[long_key] = item.long_text
+    return processed_scores
 
 
-@api_view(['GET', 'POST'])
-def a_scores(request):
-    company_name = request.query_params['0']
-    company = Company.objects.get(name=company_name)
-    scores = Scores.objects.all().filter(company=company, metric__types__contains='A')
-    if not scores.count():
-        scores = Scores.objects.all().filter(company=company.parent_company, metric__types__contains='A')
-
-    res = {}
-    for item in scores:
-        score_key = item.metric.types + 'score'
-        res[score_key] = item.score
-        if item.short_text:
-            short_key = item.metric.types + 'short'
-            long_key = item.metric.types + 'long'
-            res[short_key] = item.short_text
-            res[long_key] = item.long_text
-
-    return JsonResponse({
-        'rows': [res]
-    }, safe=False)
-
-
-@api_view(['GET', 'POST'])
-def b_scores(request):
-    company_name = request.query_params['0']
-    company = Company.objects.get(name=company_name)
-    scores = Scores.objects.all().filter(company=company, metric__types__contains='B')
-    if not scores.count():
-        scores = Scores.objects.all().filter(company=company.parent_company, metric__types__contains='B')
-
-    res = {}
-    for item in scores:
-        score_key = item.metric.types + 'score'
-        res[score_key] = item.score
-        if item.short_text:
-            short_key = item.metric.types + 'short'
-            long_key = item.metric.types + 'long'
-            res[short_key] = item.short_text
-            res[long_key] = item.long_text
-
-    return JsonResponse({
-        'rows': [res]
-    }, safe=False)
-
-
-@api_view(['GET', 'POST'])
-def c_scores(request):
-    company_name = request.query_params['0']
-    company = Company.objects.get(name=company_name)
-    scores = Scores.objects.all().filter(company=company, metric__types__contains='C')
-    if not scores.count():
-        scores = Scores.objects.all().filter(company=company.parent_company, metric__types__contains='C')
-    res = {}
-    for item in scores:
-        score_key = item.metric.types + 'score'
-        res[score_key] = item.score
-        if item.short_text:
-            short_key = item.metric.types + 'short'
-            long_key = item.metric.types + 'long'
-            res[short_key] = item.short_text
-            res[long_key] = item.long_text
-
-    return JsonResponse({
-        'rows': [res]
-    }, safe=False)
-
-
-@api_view(['GET', 'POST'])
-def d_scores(request):
-    company_name = request.query_params['0']
-    company = Company.objects.get(name=company_name)
-    scores = Scores.objects.all().filter(company=company, metric__types__contains='D')
-    if not scores.count():
-        scores = Scores.objects.all().filter(company=company.parent_company, metric__types__contains='D')
-    res = {}
-
-    for item in scores:
-        score_key = item.metric.types + 'score'
-        res[score_key] = item.score
-        if item.short_text:
-            short_key = item.metric.types + 'short'
-            long_key = item.metric.types + 'long'
-            res[short_key] = item.short_text
-            res[long_key] = item.long_text
-
-    return JsonResponse({
-        'rows': [res]
-    }, safe=False)
-
-
-@api_view(['GET', 'POST'])
-def score_citations(request):
-    company_name = request.query_params['0']
-    company = Company.objects.get(name=company_name)
-    scores = Scores.objects.all().filter(company=company)
-    if not scores.count():
-        scores = Scores.objects.all().filter(company=company.parent_company)
-    res = []
-    for score in scores:
+def update_citations(raw_scores, processed_citation: {}) -> {}:
+    """
+    update and prepare citations
+    :param raw_scores:
+    :param processed_citation:
+    :return:
+    """
+    for score in raw_scores:
+        type_key = score.metric.types
         citations = score.citation.all()
+        temp = []
         for item in citations:
-            res.append({
+            temp.append({
                 'ID': item.id,
                 'Type': score.metric.types,
                 'Author': item.author,
@@ -201,38 +109,146 @@ def score_citations(request):
                 'Pages': item.pages,
                 'URL': item.url
             })
+        if len(temp):
+            processed_citation[type_key] = temp
+
+    return processed_citation
+
+
+def get_scores_base(name: str, score_types: [str], include_sub: bool, parse_func) -> {}:
+    """
+    common tool to query scores from database, with the parent-subsidiary logic built in.
+    Let's say two company: A and B,   B is the subsidiary of A.
+    When fetch scores for B from the database,  if there are records for B,  return those records.
+    Otherwise,  return the records of its parent company, aka A.
+    Basically, it's an inheritance relationship.  When we input data to database,  we should put common records under
+    under the parent, and override certain records if subsidiary has different values for those records.
+
+    :param parse_func: a function to update do the actual data parsing that must works for the parent-subsidiary logic
+                    Different types of records require different parse_func.  Right now we have define the following:
+                        update_scores() :  for score query
+                        update_citations():  for citation query
+    :param include_sub:  True to query all subtypes for a type in  score_types
+    :param name:  company name
+    :param score_types:  a list of score types to query, could be any combination between Metrics.Type_Choice.
+        For example:
+           score_types = ['A', 'B'], and include_sub = False,
+                the function will query the score for exactly A and B type.
+           score_types = ['A', 'B'], and include_sub = True,
+                the function will query the scores for A and B, and all their subtypes as well,
+                including A1, A2, A3, A4,  A1.1, A1.2, A1.3.... B1, B2, B3, B4, B1.1, B1,2...etc.
+
+    :return:  a dict of score
+    """
+    if not len(score_types):
+        return {}
+
+    company = Company.objects.get(name=name)
+    condition = Q()
+    if include_sub:
+        for t in score_types:
+            condition |= Q(metric__types__contains=t)
+    else:
+        condition |= Q(metric__types__in=score_types)
+
+    res = {}
+    parent_scores = Scores.objects.filter(Q(company=company.parent_company) & condition)
+    res = parse_func(parent_scores, res)
+    scores = Scores.objects.filter(Q(company=company) & condition)
+    res = parse_func(scores, res)
+    return res
+
+
+def get_scores(name: str, score_types: [str], include_sub: bool) -> {}:
+    return get_scores_base(name, score_types, include_sub, update_scores)
+
+
+def get_total_score(name: str) -> int:
+    scores = get_scores_base(name, ['A', 'B', 'C', 'D'], False, update_scores)
+    total_score = scores['Ascore'] + scores['Bscore'] + scores['Cscore'] + scores['Dscore']
+    total_score = round(total_score / 4)
+    return total_score
+
+
+def get_score_citations(name: str, score_types: [str], include_sub: bool) -> {}:
+    ret = get_scores_base(name, score_types, include_sub, update_citations)
+    res = []
+    for item in ret.values():
+        res += item
+    return res
+
+
+@csrf_exempt
+@api_view(['GET', 'POST'])
+def company_scores(request):
+    name = request.query_params['0']
+    res = get_scores(name, ['A', 'B', 'C', 'D'], True)
+    return JsonResponse([res], safe=False)
+
+
+@api_view(['GET', 'POST'])
+def a_scores(request):
+    name = request.query_params['0']
+    res = get_scores(name, ['A'], True)
+    return JsonResponse({
+        'rows': [res]
+    }, safe=False)
+
+
+@api_view(['GET', 'POST'])
+def b_scores(request):
+    name = request.query_params['0']
+    res = get_scores(name, ['B'], True)
+    return JsonResponse({
+        'rows': [res]
+    }, safe=False)
+
+
+@api_view(['GET', 'POST'])
+def c_scores(request):
+    name = request.query_params['0']
+    res = get_scores(name, ['C'], True)
+    return JsonResponse({
+        'rows': [res]
+    }, safe=False)
+
+
+@api_view(['GET', 'POST'])
+def d_scores(request):
+    name = request.query_params['0']
+    res = get_scores(name, ['D'], True)
+    return JsonResponse({
+        'rows': [res]
+    }, safe=False)
+
+
+@api_view(['GET', 'POST'])
+def score_citations(request):
+    name = request.query_params['0']
+    res = get_score_citations(name, ['A', 'B', 'C', 'D'], True)
     return JsonResponse(res, safe=False)
 
 
 @api_view(['GET', 'POST'])
 def other_company_info(request):
-    company_name = request.query_params['0']
-    company = Company.objects.get(name=company_name)
-    scores = Scores.objects.all().filter(company=company, metric__types__in=['A', 'B', 'C', 'D'])
-    if not scores.count():
-        scores = Scores.objects.all().filter(company=company.parent_company, metric__types__in=['A', 'B', 'C', 'D'])
-
-    total_score = 0
-    for item in scores:
-        total_score += item.score
-    total_score = round(total_score/4)
+    name = request.query_params['0']
     res = {}
+    company = Company.objects.get(name=name)
     res['Logo'] = company.logo
     if company.parent_company:
         res['Subsidiary'] = company.parent_company
     else:
         res['Subsidiary'] = None
-    res['TotalScore'] = total_score
+    res['TotalScore'] = get_total_score(name)
 
     return JsonResponse([res], safe=False)
 
 
 @api_view(['GET', 'POST'])
 def company_name(request):
-    company_name = request.query_params['0']
-    company = Company.objects.get(name=company_name)
-    res = {}
-    res['Name'] = company.name
+    name = request.query_params['0']
+    company = Company.objects.get(name=name)
+    res = {'Name': company.name}
     if company.parent_company:
         res['Subsidiary'] = company.parent_company
     else:
@@ -244,21 +260,15 @@ def company_name(request):
     res['SimilarCompany2'] = company.similar_company_2
     res['SimilarCompany3'] = company.similar_company_3
     res['SimilarCompany4'] = company.similar_company_4
-    scores = Scores.objects.all().filter(company=company, metric__types__in=['A', 'B', 'C', 'D'])
-    if not scores.count():
-        scores = Scores.objects.all().filter(company=company.parent_company, metric__types__in=['A', 'B', 'C', 'D'])
-    total_score = 0
-    for item in scores:
-        total_score += item.score
-    res['TotalScore'] = int(total_score/4)
+    res['TotalScore'] = get_total_score(name)
 
     return JsonResponse([res], safe=False)
 
 
 @api_view(['GET', 'POST'])
 def facts(request):
-    company_name = request.query_params['0']
-    company = Company.objects.get(name=company_name)
+    name = request.query_params['0']
+    company = Company.objects.get(name=name)
     fact_items = Facts.objects.all().filter(company=company)
     res = []
     for item in fact_items:
@@ -291,8 +301,8 @@ def fact_citations(request):
 
 @api_view(['GET', 'POST'])
 def news(request):
-    company_name = request.query_params['0']
-    company = Company.objects.get(name=company_name)
+    name = request.query_params['0']
+    company = Company.objects.get(name=name)
     news_items = News.objects.all().filter(company=company)
     res = []
     for item in news_items:
@@ -315,7 +325,7 @@ def news(request):
 @api_view(['GET', 'POST'])
 def news_citations(request):
     news_id = request.query_params['1']
-    citations = News.objects.get(id= news_id).citation.all()
+    citations = News.objects.get(id=news_id).citation.all()
     res = []
     for item in citations:
         res.append({
@@ -329,86 +339,42 @@ def news_citations(request):
         })
     return JsonResponse(res, safe=False)
 
-def get_company_score(name: str) -> {}:
-    company = Company.objects.get(name=name)
-    scores = Scores.objects.all().filter(company=company, metric__types__in=['A', 'B', 'C', 'D'])
-    if not scores.count():
-        scores = Scores.objects.all().filter(company=company.parent_company, metric__types__in=['A', 'B', 'C', 'D'])
-    res = {}
-    for item in scores:
-        if item.metric.types == 'A':
-            res['Ascore'] = item.score
-        elif item.metric.types == 'B':
-            res['Bscore'] = item.score
-        elif item.metric.types == 'C':
-            res['Cscore'] = item.score
-        elif item.metric.types == 'D':
-            res['Dscore'] = item.score
 
-    return res
+def get_similar_company(request, index):
+    name = request.query_params['0']
+    company = Company.objects.get(name=name)
+    if index == 1:
+        target = company.similar_company_1
+    elif index == 2:
+        target = company.similar_company_2
+    elif index == 3:
+        target = company.similar_company_3
+    elif index == 4:
+        target = company.similar_company_4
+    else:
+        return {}
+    res = get_scores(target, ['A', 'B', 'C', 'D'], False)
+    return JsonResponse([res], safe=False)
 
 
 @api_view(['GET', 'POST'])
 def similar_company_1(request):
-    try:
-        company_name = request.query_params['0']
-        company = Company.objects.get(name=company_name)
-        res = get_company_score(company.similar_company_1)
-        return JsonResponse([res], safe=False)
-    except Company.DoesNotExist:
-        return JsonResponse([{
-            'Ascore': 0,
-            'Bscore': 0,
-            'Cscore': 0,
-            'Dscore': 0
-        }], safe=False)
+    return get_similar_company(request, 1)
 
 
 @api_view(['GET', 'POST'])
 def similar_company_2(request):
-    try:
-        company_name = request.query_params['0']
-        company = Company.objects.get(name=company_name)
-        res = get_company_score(company.similar_company_2)
-        return JsonResponse([res], safe=False)
-    except Company.DoesNotExist:
-        return JsonResponse([{
-            'Ascore': 0,
-            'Bscore': 0,
-            'Cscore': 0,
-            'Dscore': 0
-        }], safe=False)
+    return get_similar_company(request, 2)
+
 
 @api_view(['GET', 'POST'])
 def similar_company_3(request):
-    try:
-        company_name = request.query_params['0']
-        company = Company.objects.get(name=company_name)
-        res = get_company_score(company.similar_company_3)
-        return JsonResponse([res], safe=False)
-    except Company.DoesNotExist:
-        return JsonResponse([{
-            'Ascore': 0,
-            'Bscore': 0,
-            'Cscore': 0,
-            'Dscore': 0
-        }], safe=False)
+    return get_similar_company(request, 3)
 
 
 @api_view(['GET', 'POST'])
 def similar_company_4(request):
-    try:
-        company_name = request.query_params['0']
-        company = Company.objects.get(name=company_name)
-        res = get_company_score(company.similar_company_4)
-        return JsonResponse([res], safe=False)
-    except Company.DoesNotExist:
-        return JsonResponse([{
-            'Ascore': 0,
-            'Bscore': 0,
-            'Cscore': 0,
-            'Dscore': 0
-        }], safe=False)
+    return get_similar_company(request, 4)
 
 
 @api_view(['GET', 'POST'])
@@ -431,11 +397,11 @@ def industry_standards(request):
 
     return JsonResponse({
         'rows': [res]
-        }, safe=False)
+    }, safe=False)
 
 
 @api_view(['GET'])
-def politital_assocation_summary(request):
+def political_association_summary(request):
     company = request.query_params['company']
     records = PoliticalAssociation.objects.all().filter(company=company)
     dem = 0
@@ -488,21 +454,20 @@ ranking_weight = {
 }
 
 
-def weighted_scores(company: Company, a_weight: float, b_weight: float, c_weight: float, d_weight: float) -> float:
-    scores = Scores.objects.all().filter(company=company, metric__types__in=['A', 'B', 'C', 'D'])
-    if not scores.count():
-        scores = Scores.objects.all().filter(company=company.parent_company, metric__types__in=['A', 'B', 'C', 'D'])
-    score = 0
-    for item in scores:
-        if item.metric.types == 'A':
-            score += item.score * a_weight
-        elif item.metric.types == 'B':
-            score += item.score * b_weight
-        elif item.metric.types == 'C':
-            score += item.score * c_weight
-        else:
-            score += item.score * d_weight
+def weighted_scores(name: str, a_weight: float, b_weight: float, c_weight: float, d_weight: float) -> float:
+    scores = get_scores(name, ['A', 'B', 'C', 'D'], False)
 
+    # to handle the case when some scores are missing for certain company
+    score = 0
+    if 'Ascore' in scores:
+        score += scores['Ascore'] * a_weight
+    if 'Bscore' in scores:
+        score += scores['Bscore'] * b_weight
+
+    if 'Cscore' in scores:
+        score += scores['Cscore'] * c_weight
+    if 'Dscore' in scores:
+        score += scores['Dscore'] * d_weight
     return score
 
 
@@ -533,13 +498,12 @@ def brands_ranking(request):
     scores = {}
     for c in companies:
         res.append(c.name)
-        scores[c.name] = weighted_scores(c,
+        scores[c.name] = weighted_scores(c.name,
                                          ranking_weight[di],
                                          ranking_weight[we],
                                          ranking_weight[wp],
                                          ranking_weight[es])
 
-    print(scores)
     res.sort(key=lambda name: scores[name], reverse=True)
 
     return JsonResponse(res, safe=False)
