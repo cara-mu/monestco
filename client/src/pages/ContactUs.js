@@ -114,7 +114,9 @@ function FAQ() {
                     <label className={classes.normalLabel}>Message</label>
                     <br/>
                     <textarea type="textarea" className="bigTextBox"placeholder="I would like to talk about..."></textarea>
+                    <div className="send-button-formatter">
                     <button type="submit" className="sendButton">Send</button>
+                    </div>
                 </form>
 
                 <h1 classname={classes.spacing}></h1>

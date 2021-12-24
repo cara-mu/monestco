@@ -12,11 +12,12 @@ import BrandBreakdown from './pages/BrandBreakdown-new';
 import BrandDirectory from './pages/BrandDirectory';
 import Company from './components/Companies/Company';
 import HomePage from './components/Home/HomePage';
-import FAQ from './components/FAQ';
-import PrivacyPolicy from './components/PrivacyPolicy';
-import ContactUs from './components/ContactUs';
-import ThankYou from './components/ThankYou';
-import AboutUs from './components/AboutUs';
+import Footer from './components/Footer';
+import FAQ from './pages/FAQ';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import ContactUs from './pages/ContactUs';
+import ThankYou from './pages/ThankYou';
+import AboutUs from './pages/AboutUs';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
       <Route path="/ContactUs" exact render={()=><ContactUs/>}/>
       <Route path="/ThankYou" exact render={()=><ThankYou/>}/>
       <Route path="/AboutUs" exact render={()=><AboutUs/>}/>
+      <Footer/>
     </Router>
   );
 }

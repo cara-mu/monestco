@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: "1111px",
         font: "DM Sans",
         fontSize: "18px",
-        lineHeight: "35px"
+        lineHeight: "35px",
     },
 
     textDivider: {
@@ -48,6 +48,10 @@ const useStyles = makeStyles((theme) => ({
 
     bolded: {
         weight: "500"
+    },
+
+    endDivider: {
+        height: "401px"
     }
 
 }));
@@ -222,7 +226,7 @@ function FAQ() {
             <div className={classes.text}>
                 If you have any question regarding this Privacy Policy, you can contact us at: 
             </div>
-
+            <div className={classes.endDivider}></div>
         </div>
     );
 }

@@ -47,7 +47,7 @@ function FAQ() {
                 </div>
                 <div className="decorativeLine"/>
                 <div className="bigText">
-                    Monest aims to best inform consumers in making their purchasing descisions. 
+                    Monest aims to best inform consumers in making their purchasing decisions. 
                 </div>
                 <div className="smallText">
                     While our scoring does not reflect the nature of each brand’s business model, we believe it is important to acknowledge the detrimental impacts of fast fashion brands and excessive consumption.  Inherent to the fast fashion business model, the pressure to reduce costs and speed up production time results in cutting corners at the expense of workers and the environment. To decrease demand for the production of new clothes, we strongly encourage consumers to follow best practices by reducing consumption and shopping second hand when possible. 

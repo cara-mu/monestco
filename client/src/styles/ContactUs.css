@@ -49,3 +49,7 @@ textarea[type="textarea"].bigTextBox::-webkit-input-placeholder {
      font-size: 22px;
      line-height: 29px;
    }
+
+.send-button-formatter {
+    padding-bottom: 111px;
+}

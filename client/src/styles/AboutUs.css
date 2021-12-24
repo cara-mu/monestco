@@ -143,11 +143,10 @@
 
 .emailSignUpButton {
     background: #26385A;
-    margin-left:38px;
+    margin:auto auto auto 38px;
     border: 1px solid #BDBDBD;
     box-sizing: border-box;
     border-radius: 18px;
-    margin-left:"38px";
     width: 94px;
     height: 40px;
     font-family: DM Sans;
@@ -169,7 +168,6 @@
 }
 
 .inputContainer {
-    
     width: 500px;
     margin-top: 20px;
     margin-left: auto;
