@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
     },
     title:{
-        marginTop:"105px",
+        marginTop:"265px",
         font:"DM Sans",
         fontStyle:"normal",
         fontWeight:"bold",
@@ -39,11 +39,14 @@ const useStyles = makeStyles((theme) => ({
         textAlign:"left",
         width:"670px"
     },
+    thankYouPageDivider:{
+        height:"364px"
+    },
     
 
 }));
 
-function FAQ() {
+function ThankYou() {
     const classes = useStyles();
     return (
         <div className={classes.siteContainer}>
@@ -54,8 +57,10 @@ function FAQ() {
                     <br/>
                     <button type="submit" className="sendButton">Go back to home page</button>
             </div>
+            <div className={classes.thankYouPageDivider}></div>
         </div>
+            
     );
 }
 
-export default FAQ
+export default ThankYou

@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function FAQ() {
+function AboutUs() {
     const classes = useStyles();
     return (
         <div>
@@ -81,4 +81,4 @@ function FAQ() {
     );
 }
 
-export default FAQ
+export default AboutUs

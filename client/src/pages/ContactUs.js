@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-function FAQ() {
+function ContactUs() {
     const classes = useStyles();
     return (
         <div className={classes.siteContainer}>
@@ -125,4 +125,4 @@ function FAQ() {
     );
 }
 
-export default FAQ
+export default ContactUs

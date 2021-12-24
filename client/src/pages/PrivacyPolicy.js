@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-function FAQ() {
+function PrivacyPolicy() {
     const classes = useStyles();
     return (
         <div className={classes.siteContainer}>
@@ -231,4 +231,4 @@ function FAQ() {
     );
 }
 
-export default FAQ
+export default PrivacyPolicy

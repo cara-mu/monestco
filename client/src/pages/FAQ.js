@@ -75,6 +75,10 @@ const useStyles = makeStyles((theme) => ({
 
     questionGroup: {
         maxWidth: "1146px"
+    },
+
+    FAQBottomDivider:{
+        height: "184px"
     }
 
 }));
@@ -90,7 +94,7 @@ function FAQ() {
                 Need some help? Our most frequently asked questions are available to support you.
             </div>
             <div class={classes.questionGroup}>
-                <Accordion className={classes.dropdown}>
+                <Accordion className={classes.dropdown} defaultExpanded={true}>
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon className='circle-new' />}
                         aria-controls="panel1a-content"
@@ -227,6 +231,7 @@ function FAQ() {
                 </Accordion>
                 <div className={classes.decorativeLine}></div>
             </div>
+            <div className={classes.FAQBottomDivider}></div>
         </div>
     );
 }
