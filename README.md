@@ -1,5 +1,7 @@
 # Monestco
 
+> Last updated by Justin Hu, 2021/12/26
+
 # About
 > [Monest](https://www.monest.co/) provides consumers
 with the information they
@@ -24,8 +26,11 @@ then **_npm start_** to launch app
 ### Serve
 
 #### Prerequisite:
-1. Has PostgreSQL installed on your environment, please refer to https://www.postgresql.org/
-2. Create a database 
+1. Install Python    
+   Download latest Python release from to https://www.python.org/ and install it.
+2. Install all Python packages defined in **requirements.txt**
+3. Install PostgreSQL, please refer to https://www.postgresql.org/
+4. Create a database 
 > you can create a database, then update the database info in the _**~/server_new/settings.py**_ file, line 90 ;  
 > Or when create the database,  use keep the **_db_name, user_name and password_** the same as what is in the **_~/server_new/settings.py_**
 
@@ -40,7 +45,7 @@ run
 to create tables in the database. 
 
 run  
-**_python manage.py runserver 8000_**
+**_python manage.py runserver 8000_**  
 to start the backend.
 
 #### Create/Import data to database
@@ -56,7 +61,7 @@ There are many way to input data to the database,  here are two:
 > a. build frontend    
 > **_react-scripts build_**   
 > b. collect static files  
-> **_python manage.py collectstatic**_   
+> **_python manage.py collectstatic_**   
 > c. start Django app  
 > **_python manage.py runserver 8000_**
 
