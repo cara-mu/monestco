@@ -35,20 +35,8 @@ function Footer() {
         <div>
             <div className={classes.siteContainer}>
                 <div className="top-list">
-                    <div className="list-upper">
+                <div className = "left-block">
                         <img className="logo-image" src={logo}></img>
-                        <div className="list-list">
-                            <ul className="site-list">
-                                <li className="list-item">About Us</li>
-                                <li className="list-item">Contact</li>
-                                <li className="list-item">FAQ</li>
-                                <li className="list-item">Privacy Policy</li>
-                                <li className="list-item">Terms & Conditions</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="footer-decorative-line" />
-                    <div className="footer-social-media">
                         <ul className="social-media-list">
                             <li className="footer-social-media-list-item">
                                 <img src={logoFacebook}></img>
@@ -66,6 +54,26 @@ function Footer() {
                                 <img src={logoLinkedin}></img>
                             </li>
                         </ul>
+                        <ul className="site-list">
+                            <li className="list-item">About Us</li>
+                            <li className="list-item">Contact</li>
+                            <li className="list-item">FAQ</li>
+                            <li className="list-item">Privacy Policy</li>
+                            <li className="list-item">Donate</li>
+                            <li className="list-item">Terms & Conditions</li>
+                        </ul>
+                        </div>
+                <div className = "right-block">
+                    <div className = "footer-sign-up-text">Stay updated on our newest features!</div>
+                    <form className = "footer-sign-up-form">
+                        <input type="text" className = "footer-sign-up-text-input" value="Your email address" ></input>
+                        <div className = "footer-sign-up-submit-input-div-styling">
+                            <button type="submit" className = "footer-sign-up-submit-input">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+                    </div>
+                    <div className="footer-social-media">
                         <div className="footer-rights">
                             <img src={circleC} ></img>
                             <div className="footer-rights-text"> &ensp; 2021 Monest All rights reserved.</div>
@@ -73,7 +81,6 @@ function Footer() {
                     </div>
                 </div>
             </div>
-        </div>
     );
 }
 

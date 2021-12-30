@@ -1,8 +1,20 @@
 .top-list {
-    padding-top:89px;
+    padding-top:104px;
     margin: auto;
-    width: 1100px;
-    
+    max-width: 1666px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+ul.site-list{
+    padding:0px;
+    margin:0px;
+}
+
+ul.social-media-list{
+    padding:0px;
+    margin:0px;
 }
 
 .list-upper {
@@ -10,21 +22,73 @@
     flex-direction: row;
 }
 
+.left-block {
+    display : flex;
+    flex-direction: column;
+    height: 152px;
+    align-items: left;
+    justify-content: space-between;
+}
+
+.right-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-sign-up-text {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 26px;
+    color: #FAF8F3;
+}
+
+.footer-sign-up-text-input {
+    width: 355px;
+    background: #FFFFFF;
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    border-radius: 13px;
+    padding-left: 16px;
+}
+
+.footer-sign-up-form {
+    padding-top:19px;
+    display:flex;
+    flex-direction: row;
+}
+
+.footer-sign-up-submit-input {
+    background: #8CBBAA;
+    width:94px;
+    border-radius: 13px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 34px;
+    color: #FFFFFF;
+}
+
+.footer-sign-up-submit-input-div-styling {
+    padding-left:23px;
+}
+
 .logo-image{
+    align-self: flex-start;
     display:block;
     height:24px;
 }
 
 .site-list{
-    float: right;
     display: flex;
     flex-direction: row;
-    padding-left: 300px;
     list-style-type: none;
 }
 
 .list-item{
-    padding-left: 64px;
+    padding-right: 29px;
     font-family: DM Sans;
     font-style: normal;
     font-weight: normal;
@@ -33,15 +97,7 @@
     color: #FFFFFF;
 }
 
-.footer-decorative-line {
-    border: 0.5px solid #BDBDBD;
-    margin: 40px auto ;
-    width:1094px;
-}
-
 .social-media-list {
-    margin:auto;
-    width:50%;
     display:flex;
     flex-direction:row;
     list-style-type: none;
@@ -55,7 +111,7 @@
 .footer-rights {
     display:flex;
     flex-direction: row;
-    margin: 40px auto 49px auto;
+    margin: 105px auto 46px auto;
     width: 222px;
     padding-bottom: 49px;
     
