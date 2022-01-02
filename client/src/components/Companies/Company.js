@@ -25,7 +25,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { AiFillCaretDown } from 'react-icons/ai';
 import TextTruncate from 'react-text-truncate';
 import PoliticalContribution from "./PoliticalContribution";
-
+import News from "./News";
 
 const companyinfo = [
     {
@@ -720,62 +720,7 @@ function Company({ match, location }) {
         })
     }
 
-    const News = (newsinput) => {
-        return Object.entries(newsinput[0]['Category']).map((category, i) => {
-            return <div>
-                <div className='news-card'>
-                    <img src={newsinput[0]["Photo"][i]} style={{ background: 'rgba(87, 114, 104, 0.5)' }} />
-                    <div className='news-category'>
-                        <span className='news-category-title'>{category[1]}</span>
-                        <span className='news-category-year'>{newsinput[0]["Year"][i]}</span>
-                    </div>
-                    <div style={{ marginTop: '3%' }} className='News-Description'>
-                        <div className='News-Description-title'>{newsinput[0]["Title"][i]}</div>
-
-                        <TextTruncate
-                            line={3}
-                            containerClassName='News-Description-info'
-                            element="div"
-                            truncateText="…"
-                            text={newsinput[0]["Summary"][i]}
-                        />
-
-                        {/* <div className = 'News-Description-info'>{newsinput[0]["Summary"][i]}</div> */}
-                        <div style={{ fontSize: '14px' }}>
-                            <span>Responsibility Taken?</span>
-
-                            {newsinput[0]["ResponsibilityTaken"][i] == "No" &&
-                                <span style={{ color: '#E94921', marginLeft: '5px' }}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
-                                ||
-                                newsinput[0]["ResponsibilityTaken"][i] == "Yes" &&
-                                <span style={{ color: '#28a745', marginLeft: '5px' }}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
-                                ||
-                                newsinput[0]["ResponsibilityTaken"][i] == "Maybe" &&
-                                <span style={{ color: '#F29A72', marginLeft: '5px' }}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
-                            }
-
-
-                        </div>
-                        <div style={{ fontSize: '14px', display: 'flex', position: 'relative' }}>
-                            <span>Issue Resolved?</span>
-
-                            {newsinput[0]["IssueAddressed"][i] == "No" &&
-                                <span style={{ color: '#E94921', marginLeft: '5px' }}>{newsinput[0]["IssueAddressed"][i]}</span>
-                                ||
-                                newsinput[0]["IssueAddressed"][i] == "Yes" &&
-                                <span style={{ color: '#28a745', marginLeft: '5px' }}>{newsinput[0]["IssueAddressed"][i]}</span>
-                                ||
-                                newsinput[0]["IssueAddressed"][i] == "Maybe" &&
-                                <span style={{ color: '#F29A72', marginLeft: '5px' }}>{newsinput[0]["IssueAddressed"][i]}</span>
-                            }
-                            <button className='News-read-more-btn' onClick={() => handleOpen(i, news[0]["ID"][i])}>Read more</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        })
-    }
-
+  
 
     return (
         <div className='Layout'>
@@ -887,7 +832,10 @@ function Company({ match, location }) {
                             </div>
                             <div className='Decorative-Line'></div>
                             <div className='In-The-News-container'>
-                                {News(news)}
+                                {/* {News(news)} */}
+                                {/*News*/}
+                                <News newsinput = {news}/>
+
                             </div>
                             <Modal
                                 open={open}
@@ -899,7 +847,6 @@ function Company({ match, location }) {
                             </Modal>
 
                         </div>
-
 
                         {/*Political Association*/}
                         <PoliticalContribution company = {companyName}/>
