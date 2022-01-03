@@ -39,6 +39,9 @@ creat a Procfile under root directory
 > $ git push heroku main  
 > (some time has to use -f option for push)
  
+**Note: Deploying from a branch besides main**
+> git push heroku testbranch:main
+
 
 ### Test 
 once all changes are pushed to Heroku, Heroku starts to build the app.  
