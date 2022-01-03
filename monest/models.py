@@ -95,7 +95,8 @@ class News(models.Model):
         ('WE', 'Worker Exploitation'),
         ('Covid', 'Covid-19 Response'),
         ('DI', 'Diversity & Inclusion'),
-        ('ES', 'Ethical Sourcing')
+        ('ES', 'Ethical Sourcing'),
+        ('WP', 'Waste & Pollution')
     )
     title = models.CharField(max_length=100)
     summary = models.CharField(max_length=1000)
