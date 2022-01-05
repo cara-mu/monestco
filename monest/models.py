@@ -59,7 +59,7 @@ class IndustryStandards(models.Model):
 
 
 class Citations(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=200)
     author = models.CharField(max_length=40, blank=True)
     date = models.CharField(max_length=40)
     pages = models.CharField(max_length=40, blank=True)
