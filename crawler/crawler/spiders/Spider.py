@@ -5,13 +5,14 @@ from scrapy.linkextractors import LinkExtractor
 from scrapy_playwright.page import PageCoroutine
 from scrapy.utils.response import open_in_browser
 
-Detail_Page_Rendering_Required = False
+
+Detail_Page_Rendering_Required = True
 
 class MonestSpider(CrawlSpider):
     name = 'MonestSpider'
     start_urls = ['https://www.adidas.com/us/clothing?grid=true',]
 
-    detail_callback = 'sync_parse_detail_page'
+    detail_callback: str = 'sync_parse_detail_page'
     if Detail_Page_Rendering_Required:
         detail_callback = 'async_parse_detail_page'
 
@@ -64,7 +65,7 @@ if __name__ == "__main__":
         settings={
             "TWISTED_REACTOR": "twisted.internet.asyncioreactor.AsyncioSelectorReactor",
             "DOWNLOAD_HANDLERS": {
-                "https": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+                "https": "crawler.crawler.ScrapyPlaywrightDownloadHandlerEnhanced.ScrapyPlaywrightDownloadHandlerEnhanced",
                 # "http": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
             },
             'PLAYWRIGHT_DEFAULT_NAVIGATION_TIMEOUT': 0,
