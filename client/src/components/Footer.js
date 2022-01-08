@@ -66,7 +66,7 @@ function Footer() {
                 <div className = "right-block">
                     <div className = "footer-sign-up-text">Stay updated on our newest features!</div>
                     <form className = "footer-sign-up-form">
-                        <input type="text" className = "footer-sign-up-text-input" value="Your email address" ></input>
+                        <input type="text" className = "footer-sign-up-text-input" placeholder="Your email address" ></input>
                         <div className = "footer-sign-up-submit-input-div-styling">
                             <button type="submit" className = "footer-sign-up-submit-input">Sign Up</button>
                         </div>

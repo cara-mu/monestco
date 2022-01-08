@@ -33,6 +33,7 @@ ul.social-media-list{
 .right-block {
     display: flex;
     flex-direction: column;
+    margin: 14px 0 auto 0;
 }
 
 .footer-sign-up-text {
@@ -57,6 +58,7 @@ ul.social-media-list{
     padding-top:19px;
     display:flex;
     flex-direction: row;
+    align-items: baseline;
 }
 
 .footer-sign-up-submit-input {
