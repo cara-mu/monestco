@@ -16,7 +16,7 @@ class Company(models.Model):
     description = models.CharField(max_length=200)
     parent_company = models.CharField(max_length=30, blank=True)
     category = models.CharField(max_length=10, choices=Category_Type.choices)
-    logo = models.URLField(max_length=200)
+    logo = models.URLField(max_length=300)
     industry = models.ForeignKey(Industry,
                                  on_delete=models.CASCADE,
                                  verbose_name="Belonging to Industry"
@@ -64,7 +64,7 @@ class Citations(models.Model):
     date = models.CharField(max_length=40)
     pages = models.CharField(max_length=40, blank=True)
     publisher = models.CharField(max_length=50)
-    url = models.URLField(max_length=200, blank=True)
+    url = models.URLField(max_length=300, blank=True)
 
     def __str__(self):
         return self.title + ', ' + self.pages + ', ' + self.publisher + ', ' + self.date
@@ -102,7 +102,7 @@ class News(models.Model):
     summary = models.CharField(max_length=1000)
     year = models.IntegerField()
     category = models.CharField(max_length=40, choices=Category_Choice)
-    photo = models.URLField(max_length=200)
+    photo = models.URLField(max_length=300)
     issue_addressed = models.CharField(max_length=5)
     issue_addressed_text = models.CharField(max_length=1000)
     responsibility_taken = models.CharField(max_length=5)
