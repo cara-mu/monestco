@@ -57,12 +57,12 @@ ROBOTSTXT_OBEY = True
 #playwright settings
 
 DOWNLOAD_HANDLERS = {
-    "https": "crawler.crawler.ScrapyPlaywrightDownloadHandlerEnhanced.ScrapyPlaywrightDownloadHandlerEnhanced",
+    "https": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
 }
 
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 
-PLAYWRIGHT_DEFAULT_NAVIGATION_TIMEOUT = 0
+PLAYWRIGHT_DEFAULT_NAVIGATION_TIMEOUT = 60000
 
 #PLAYWRIGHT_LAUNCH_OPTIONS = {
 #    'headless': False,
