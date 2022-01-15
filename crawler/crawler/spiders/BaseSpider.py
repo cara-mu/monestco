@@ -10,7 +10,7 @@ Detail_Page_Rendering_Required = True
 
 class MonestSpider(CrawlSpider):
     name = 'MonestSpider'
-    start_urls = ['https://www.adidas.com/us/clothing?grid=true',]
+    start_urls = ['https://www.adidas.ca/en/clothing',]
 
     detail_callback: str = 'sync_parse_detail_page'
     if Detail_Page_Rendering_Required:
@@ -33,6 +33,8 @@ class MonestSpider(CrawlSpider):
                                   'class*=gl-price-item]::text').get(),
             'category': response.css('div[data-auto-id=product-category] span::text').get(),
             'description': response.css('div#navigation-target-description p::text').get(),
+            'url':  response.url,
+            'photo': response.css('section[data-auto-id=image-viewer] img::attr(src)').extract_first(),
         }
 
     async def async_parse_detail_page(self, response):
@@ -43,6 +45,8 @@ class MonestSpider(CrawlSpider):
                                   'class*=gl-price-item]::text').get(),
             'category': response.css('div[data-auto-id=product-category] span::text').get(),
             'description': response.css('div#navigation-target-description p::text').get(),
+            'url': response.url,
+            'photo': response.css('section[data-auto-id=image-viewer] img::attr(src)').extract_first(),
         }
 
     def process_detail_request(self, request, response):
@@ -68,7 +72,7 @@ if __name__ == "__main__":
                 "https": "crawler.crawler.ScrapyPlaywrightDownloadHandlerEnhanced.ScrapyPlaywrightDownloadHandlerEnhanced",
                 # "http": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
             },
-            'PLAYWRIGHT_DEFAULT_NAVIGATION_TIMEOUT': 0,
+            'PLAYWRIGHT_DEFAULT_NAVIGATION_TIMEOUT': 60000,
         }
     )
     process.crawl(MonestSpider)
