@@ -11,7 +11,7 @@ class TestSpider(Spider):
     """
     name ='testSpider'
 
-    url ='https://www.nike.com/ca/t/sportswear-fleece-hoodie-jXCxJd/DV8191-548'
+    url ='https://www.adidas.ca/en/adicolor-classics-3-stripes-tee/HE9545.html'
 
     def start_requests(self):
         yield Request(TestSpider.url,
@@ -19,18 +19,20 @@ class TestSpider(Spider):
                       meta=dict(
                             playwright=True,
                             playwright_page_coroutines=[
-                                PageCoroutine('wait_for_selector', 'div#RightRail div[class*=description] p'),
+                                PageCoroutine('wait_for_selector', 'div#navigation-target-description p'),
                                 ]
                          ))
 
     async def parse(self, response, **kwargs):
         yield {
-            'title': response.css('div#RightRail h1#pdp_product_title::text').get(),
-            'subtitle': response.css('div#RightRail h2::text').get(),
-            'price': response.css('div#RightRail div[data-test=product-price]::text').get(),
-            'description': response.css('div#RightRail div[class*=description] p::text').get(),
+            'name': response.css('div[class*=sidebar-wrapper] h1[data-auto-id=product-title] span::text').get(),
+            'price': response.css('div[class*=sidebar-wrapper] div[class*=product-price] div['
+                                  'class*=gl-price-item]::text').get(),
+            'category': response.css('div[data-auto-id=product-category] span::text').get(),
+            'color': response.css('div[data-auto-id=color-chooser] h5::text').getall()[1],
+            'description': response.css('div#navigation-target-description p::text').get(),
             'url': response.url,
-            'photo': response.css('div[data-test=browseShell] button[data-sub-type=image] picture img::attr(src)').extract_first(),
+            'photo': response.css('section[data-auto-id=image-viewer] img::attr(src)').extract_first(),
         }
 
 

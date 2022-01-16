@@ -40,10 +40,11 @@ class MonestSpider(CrawlSpider):
     async def async_parse_detail_page(self, response):
         # open_in_browser(response)
         yield {
-            'name': response.css('div[class*=sidebar-wrapper] h1[data-auto-id=product-title] span::text').get(),
+            'title': response.css('div[class*=sidebar-wrapper] h1[data-auto-id=product-title] span::text').get(),
+            'subtitle': response.css('div[data-auto-id=product-category] span::text').get(),
             'price': response.css('div[class*=sidebar-wrapper] div[class*=product-price] div['
                                   'class*=gl-price-item]::text').get(),
-            'category': response.css('div[data-auto-id=product-category] span::text').get(),
+            'color': response.css('div[data-auto-id=color-chooser] h5::text').getall()[1],
             'description': response.css('div#navigation-target-description p::text').get(),
             'url': response.url,
             'photo': response.css('section[data-auto-id=image-viewer] img::attr(src)').extract_first(),
