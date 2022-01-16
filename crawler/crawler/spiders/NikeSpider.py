@@ -27,6 +27,7 @@ class MonestSpider(CrawlSpider):
             'title': response.css('div#RightRail h1#pdp_product_title::text').get(),
             'subtitle': response.css('div#RightRail h2::text').get(),
             'price': response.css('div#RightRail div[data-test=product-price]::text').get(),
+            'color': response.css('div#RightRail li[class*=description-preview__color-description]::text').get(),
             'description': response.css('div#RightRail div[class*=description] p::text').get(),
             'url': response.url,
             'photo': response.css('div[data-test=browseShell] button[data-sub-type=image] picture img::attr(src)').extract_first(),
