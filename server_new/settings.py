@@ -60,6 +60,8 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
+SESSION_COOKIE_AGE = 300
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'server_new.urls'

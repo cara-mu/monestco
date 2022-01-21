@@ -299,6 +299,9 @@ def fact_citations(request):
     return JsonResponse(res, safe=False)
 
 
+News_Category = dict(News.Category_Choice)
+
+
 @api_view(['GET', 'POST'])
 def news(request):
     name = request.query_params['0']
@@ -310,7 +313,7 @@ def news(request):
             'ID': item.id,
             'Photo': item.photo,
             'Year': item.year,
-            'Category': item.category,
+            'Category': News_Category.get(item.category),
             'Title': item.title,
             'Summary': item.summary,
             'IssueAddressed': item.issue_addressed,
