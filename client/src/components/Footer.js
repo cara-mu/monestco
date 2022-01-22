@@ -38,29 +38,28 @@ function Footer() {
                 <div className = "left-block">
                         <img className="logo-image" src={logo}></img>
                         <ul className="social-media-list">
-                            <li className="footer-social-media-list-item">
+                            <a className="footer-social-media-list-item" href="./facebook">
                                 <img src={logoFacebook}></img>
-                            </li>
-                            <li className="footer-social-media-list-item">
+                            </a>
+                            <a className="footer-social-media-list-item" href="./twitter">
                                 <img src={logoTwitter}></img>
-                            </li>
-                            <li className="footer-social-media-list-item">
+                            </a>
+                            <a className="footer-social-media-list-item" href = "./instagram">
                                 <img src={logoInstagram}></img>
-                            </li>
-                            <li className="footer-social-media-list-item">
+                            </a>
+                            <a className="footer-social-media-list-item" href = "./tiktok">
                                 <img src={logoTiktok}></img>
-                            </li>
-                            <li className="footer-social-media-list-item">
+                            </a>
+                            <a className="footer-social-media-list-item" href = "./linkedin">
                                 <img src={logoLinkedin}></img>
-                            </li>
+                            </a>
                         </ul>
                         <ul className="site-list">
-                            <li className="list-item">About Us</li>
-                            <li className="list-item">Contact</li>
-                            <li className="list-item">FAQ</li>
-                            <li className="list-item">Privacy Policy</li>
-                            <li className="list-item">Donate</li>
-                            <li className="list-item">Terms & Conditions</li>
+                            <a className="list-item" href = "./aboutus">About Us</a>
+                            <a className="list-item" href = "./contactus">Contact</a>
+                            <a className="list-item" href = "./faq">FAQ</a>
+                            <a className="list-item" href = "./privacypolicy">Privacy Policy</a>
+                            <a className="list-item" href = "./thankyou">Thank You</a>
                         </ul>
                         </div>
                 <div className = "right-block">
