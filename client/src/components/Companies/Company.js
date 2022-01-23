@@ -5,10 +5,6 @@ import Container from "react-bootstrap/Container";
 import Grid from "@material-ui/core/Grid";
 import { Link, useParams, withRouter, useLocation } from "react-router-dom";
 import "../../styles/Companies.css";
-import DiversityImg from "../../assets/diversity.png";
-import WorkerExploitImg from "../../assets/workerexploit.png";
-import WasteImg from "../../assets/wastepollution.png";
-import SustainableImg from "../../assets/sustainable.png";
 import DropdownButton from "../../assets/dropdownbutton.png";
 import NewsPlaceHolder from "../../assets/news.png";
 import { makeStyles } from "@material-ui/core/styles";
@@ -1036,7 +1032,7 @@ function Company({ match, location }) {
             <div className="Decorative-Line"></div>
 
             {/*Score*/}
-            <Scores score={companyDetails[0]} />
+            <Scores score={companyDetails} />
 
             <div className="Brand-Section-title">
               Company Initiatives
