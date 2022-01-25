@@ -18,6 +18,10 @@
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/server_new/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/httpRequests" />
+      <excludeFolder url="file://$MODULE_DIR$/client/build" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/venv/lib" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.9 (monestco)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

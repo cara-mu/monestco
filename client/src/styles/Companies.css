@@ -41,6 +41,7 @@
     font-weight: bold;
     font-size: 18px;
     color:#3D3E3F;
+    width: 1004px;
 }
 
 .Brand-Section-title {
@@ -535,6 +536,12 @@
     font-weight: 400;
     margin: 0 auto;
 }
+
+.political_association {
+    margin-bottom: 106px;
+    width: 90%;
+}
+
 
 @media only screen and (max-width: 1120px) {
 

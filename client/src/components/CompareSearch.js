@@ -180,7 +180,7 @@ class CompareSearch extends React.Component {
             <Link className = "companies_result"
               style={{
                 fontWeight: "350",
-                fontSize: "18px",
+                fontSize: "20px",
               }}
               to={"/companies/" + company}
             >
@@ -271,8 +271,8 @@ class CompareSearch extends React.Component {
             onChange={this.handleChange}
             placeholder="Search the brand"
             style={{
-              width: "85%",
-              height: "34px",
+              width: "242px",
+              height: "40px",
               border: "2px solid #BDBDBD",
             }}
           />

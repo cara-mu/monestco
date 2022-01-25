@@ -40,7 +40,7 @@ export default function ModalBody({ handleClose, i, title, summary, issueAdd, is
             </div>
             <div
               className="Fun-Fact"
-              style={{ width: "100%", fontWeight: "700", fontSize: "1px" }}
+              style={{ width: "100%", fontWeight: "700", fontSize: "14px" }}
             >
               Citations 
               <i

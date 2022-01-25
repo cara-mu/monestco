@@ -6,7 +6,7 @@
 
 .Navigation-Bar {
     background: #ffffff;
-    height: 80px;
+    height: 88px;
     font-size: 1.2rem;
 
     display: flex;
@@ -69,7 +69,7 @@
   
   .Menu-Item {
     font-size: 16px;
-    line-height: 36px;
+    line-height: 38px;
     color: #BDBDBD;
     font-weight: 500;
     font-family: 'DM Sans', sans-serif;
@@ -147,7 +147,7 @@
 }
 
 img.logo {
-  width: 125px;
+  width: 69px;
   /* height: 150px; */
 }
 
