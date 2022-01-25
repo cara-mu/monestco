@@ -55,7 +55,10 @@ function ThankYou() {
                     <br/>
                     <div className = "subTitle">We’ll get back to you as soon as possible!</div>
                     <br/>
-                    <button type="submit" className="sendButton">Go back to home page</button>
+                    <form action='./'>
+                        <button type="submit" className="sendButton">Go back to home page</button>
+                    </form>
+
             </div>
             <div className={classes.thankYouPageDivider}></div>
         </div>
