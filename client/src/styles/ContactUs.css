@@ -1,0 +1,55 @@
+.smallTextBox {
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    border-radius: 18px;
+    background:#F9F9F9;
+    width: 100%;
+    height:58px;
+    padding: 6px 15px;
+    margin-top: 16px;
+}
+
+.bigTextBox {
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    border-radius: 18px;
+    background:#F9F9F9;
+    width: 100%;
+    height: 273px;
+    padding: 15px 15px;
+    margin-top: 16px;
+}
+
+.sendButton{
+    margin-top:90px;
+    background: #26385A;
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    box-shadow: 1px 2px 4px #888888;
+    border-radius: 18px;
+    width: 287px;
+    height: 80px;
+    color: #FFFFFF;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 36px;
+    text-align: center;
+}
+
+input[type="text"].smallTextBox::-webkit-input-placeholder {
+ /* Chrome/Opera/Safari */
+  font-size: 22px;
+  line-height: 29px;
+}
+
+textarea[type="textarea"].bigTextBox::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+     font-size: 22px;
+     line-height: 29px;
+   }
+
+.send-button-formatter {
+    padding-bottom: 111px;
+}

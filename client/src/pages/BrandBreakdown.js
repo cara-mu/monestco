@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     const classes = useStyles();
 
     return (
-    <div>
+    <div className="bb-site-conatiner">
         <div className="breakdown_logo">   
                 <h1>{companyName}</h1>
                 <img src={Logo} className="breakdown_logoImage"/>
