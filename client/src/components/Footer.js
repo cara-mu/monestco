@@ -38,28 +38,28 @@ function Footer() {
                 <div className = "left-block">
                         <img className="logo-image" src={logo}></img>
                         <ul className="social-media-list">
-                            <a className="footer-social-media-list-item" href="./facebook">
+                            <a className="footer-social-media-list-item" href="/facebook">
                                 <img src={logoFacebook}></img>
                             </a>
-                            <a className="footer-social-media-list-item" href="./twitter">
+                            <a className="footer-social-media-list-item" href="/twitter">
                                 <img src={logoTwitter}></img>
                             </a>
-                            <a className="footer-social-media-list-item" href = "./instagram">
+                            <a className="footer-social-media-list-item" href = "/instagram">
                                 <img src={logoInstagram}></img>
                             </a>
-                            <a className="footer-social-media-list-item" href = "./tiktok">
+                            <a className="footer-social-media-list-item" href = "/tiktok">
                                 <img src={logoTiktok}></img>
                             </a>
-                            <a className="footer-social-media-list-item" href = "./linkedin">
+                            <a className="footer-social-media-list-item" href = "/linkedin">
                                 <img src={logoLinkedin}></img>
                             </a>
                         </ul>
                         <ul className="site-list">
-                            <a className="list-item" href = "./aboutus">About Us</a>
-                            <a className="list-item" href = "./contactus">Contact</a>
-                            <a className="list-item" href = "./faq">FAQ</a>
-                            <a className="list-item" href = "./privacypolicy">Privacy Policy</a>
-                            <a className="list-item" href = "./thankyou">Thank You</a>
+                            <a className="list-item" href = "/aboutus">About Us</a>
+                            <a className="list-item" href = "/contactus">Contact</a>
+                            <a className="list-item" href = "/faq">FAQ</a>
+                            <a className="list-item" href = "/privacypolicy">Privacy Policy</a>
+                            <a className="list-item" href = "/thankyou">Thank You</a>
                         </ul>
                         </div>
                 <div className = "right-block">
