@@ -770,51 +770,50 @@ function Company({ match, location }) {
       let urlarr = [];
       let pagesarr = [];
       if (factinput[0]["Heading"].length != 0) {
-        Promise.all(
-          Object.entries(factinput[0]["Heading"]).map((heading, i) =>
-            axios
-              .post(
-                "/citationsFacts",
-                {},
-                {
-                  params: [companyName, factinput[0]["ID"][i], "F"],
+        for (
+          let i = 0;
+          i < Object.entries(factinput[0]["Heading"]).length;
+          ++i
+        ) {
+          await axios
+            .post(
+              "/citationsFacts",
+              {},
+              { params: [companyName, factinput[0]["ID"][i], "F"] }
+            )
+            .then((resp) => {
+              if (resp.data.length != 0) {
+                let data = citations;
+                if (citationsarr.length != 0) {
+                  relidarr = citationsarr[0][0]["RelationalID"];
+                  authorarr = citationsarr[0][0]["Author"];
+                  datearr = citationsarr[0][0]["Date"];
+                  pubarr = citationsarr[0][0]["PublishingGroup"];
+                  titlearr = citationsarr[0][0]["Title"];
+                  urlarr = citationsarr[0][0]["URL"];
+                  pagesarr = citationsarr[0][0]["Pages"];
                 }
-              )
-              .then((resp) => {
-                if (resp.data.length != 0) {
-                  let data = citations;
-                  if (citationsarr.length != 0) {
-                    relidarr = citationsarr[0][0]["RelationalID"];
-                    authorarr = citationsarr[0][0]["Author"];
-                    datearr = citationsarr[0][0]["Date"];
-                    pubarr = citationsarr[0][0]["PublishingGroup"];
-                    titlearr = citationsarr[0][0]["Title"];
-                    urlarr = citationsarr[0][0]["URL"];
-                    pagesarr = citationsarr[0][0]["Pages"];
-                  }
-                  resp.data.map((citation) => {
-                    relidarr.push(citation["RelationalID"]);
-                    authorarr.push(citation["Author"]);
-                    datearr.push(citation["Date"]);
-                    pubarr.push(citation["PublishingGroup"]);
-                    titlearr.push(citation["Title"]);
-                    urlarr.push(citation["URL"]);
-                    pagesarr.push(citation["Pages"]);
-                  });
-                  data[0]["Author"] = authorarr;
-                  data[0]["Date"] = datearr;
-                  data[0]["PublishingGroup"] = pubarr;
-                  data[0]["Title"] = titlearr;
-                  data[0]["RelationalID"] = relidarr;
-                  data[0]["URL"] = urlarr;
-                  data[0]["Pages"] = pagesarr;
-                  citationsarr.push(data);
-                }
-              })
-          )
-        ).then(() => {
-          setFactCitation(JSON.stringify(citationsarr[0]));
-        });
+                resp.data.map((citation) => {
+                  relidarr.push(citation["RelationalID"]);
+                  authorarr.push(citation["Author"]);
+                  datearr.push(citation["Date"]);
+                  pubarr.push(citation["PublishingGroup"]);
+                  titlearr.push(citation["Title"]);
+                  urlarr.push(citation["URL"]);
+                  pagesarr.push(citation["Pages"]);
+                });
+                data[0]["Author"] = authorarr;
+                data[0]["Date"] = datearr;
+                data[0]["PublishingGroup"] = pubarr;
+                data[0]["Title"] = titlearr;
+                data[0]["RelationalID"] = relidarr;
+                data[0]["URL"] = urlarr;
+                data[0]["Pages"] = pagesarr;
+                citationsarr.push(data);
+              }
+            });
+        }
+        setFactCitation(JSON.stringify(citationsarr[0]));
       }
     };
 
