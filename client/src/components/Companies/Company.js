@@ -636,13 +636,9 @@ function Company({ match, location }) {
             let urlarr = [];
             let pagesarr = [];
             if (factinput[0]['Heading'].length != 0) {
-                Promise.all(Object.entries(factinput[0]['Heading']).map((heading, i) =>
-                    axios.post('/citationsFacts',
-                        {},
-                        {
-                            params: [companyName, factinput[0]["ID"][i], 'F']
-                        }
-                    ).then(resp => {
+                for (let i = 0; i < Object.entries(factinput[0]["Heading"]).length; ++i) {
+                    await axios.post("/citationsFacts", {}, { params: [companyName, factinput[0]["ID"][i], "F"] })
+                    .then((resp) => {
                         if (resp.data.length != 0) {
                             let data = citations;
                             if (citationsarr.length != 0) {
@@ -654,7 +650,7 @@ function Company({ match, location }) {
                                 urlarr = citationsarr[0][0]["URL"];
                                 pagesarr = citationsarr[0][0]["Pages"];
                             }
-                            resp.data.map(citation => {
+                            resp.data.map((citation) => {
                                 relidarr.push(citation["RelationalID"]);
                                 authorarr.push(citation["Author"]);
                                 datearr.push(citation["Date"]);
@@ -662,7 +658,7 @@ function Company({ match, location }) {
                                 titlearr.push(citation["Title"]);
                                 urlarr.push(citation["URL"]);
                                 pagesarr.push(citation["Pages"]);
-                            })
+                            });
                             data[0]["Author"] = authorarr;
                             data[0]["Date"] = datearr;
                             data[0]["PublishingGroup"] = pubarr;
@@ -672,12 +668,11 @@ function Company({ match, location }) {
                             data[0]["Pages"] = pagesarr;
                             citationsarr.push(data);
                         }
-                    })
-                )).then(() => {
-                    setFactCitation(JSON.stringify(citationsarr[0]))
-                });
+                    });
+                }
+                setFactCitation(JSON.stringify(citationsarr[0]));
             }
-        }
+        };
 
         return Object.entries(factinput[0]['Heading']).map((heading, i) => {
             return <div>
