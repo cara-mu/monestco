@@ -5,10 +5,6 @@ import Container from 'react-bootstrap/Container';
 import Grid from '@material-ui/core/Grid';
 import { Link, useParams, withRouter, useLocation } from 'react-router-dom';
 import '../../styles/Companies.css';
-import DiversityImg from '../../assets/diversity.png';
-import WorkerExploitImg from '../../assets/workerexploit.png';
-import WasteImg from '../../assets/wastepollution.png';
-import SustainableImg from '../../assets/sustainable.png';
 import DropdownButton from '../../assets/dropdownbutton.png';
 import NewsPlaceHolder from '../../assets/news.png';
 import { makeStyles } from '@material-ui/core/styles';
@@ -25,7 +21,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { AiFillCaretDown } from 'react-icons/ai';
 import TextTruncate from 'react-text-truncate';
 import PoliticalContribution from "./PoliticalContribution";
-
+import Scores from "./Scores";
 
 const companyinfo = [
     {
@@ -817,58 +813,9 @@ function Company({ match, location }) {
                         </div>
                         <div className='Decorative-Line'></div>
 
-                        <div className='Brand-Performance'>
-                            <div className='Brand-Performance-container'>
-                                <div>
-                                    DIVERSITY & INCLUSION
-                                    <div className='Description'>
-                                        <div className='Description-text'>
-                                            Discrimination, Gender Equality, <br></br>Cultural Diversity, Inclusivity
-                                        </div>
-                                        <div className='Description-data'>
-                                            <img src={DiversityImg} />
-                                            <div className="Description-score"><span style={{ cursor: 'default' }}>{companyDetails[0]["Ascore"]}</span><span style={{ cursor: 'default' }}>/100</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    WORKER EXPLOITATION
-                                    <div className='Description'>
-                                        <div className='Description-text'>
-                                            Child Labour, Forced Labour, <br></br> Living Wage, Working Conditions
-                                        </div>
-                                        <div className='Description-data'>
-                                            <img src={WorkerExploitImg} />
-                                            <div className="Description-score"><span style={{ cursor: 'default' }}>{companyDetails[0]["Bscore"]}</span><span style={{ cursor: 'default' }}>/100</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    WASTE & POLLUTION
-                                    <div className='Description'>
-                                        <div className='Description-text'>
-                                            Air Pollution, Water Pollution & Wastes, <br></br> Packaging Waste, Material Waste
-                                        </div>
-                                        <div className='Description-data'>
-                                            <img src={WasteImg} />
-                                            <div className="Description-score"><span style={{ cursor: 'default' }}>{companyDetails[0]["Cscore"]}</span><span style={{ cursor: 'default' }}>/100</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    ETHICAL SOURCING
-                                    <div className='Description'>
-                                        <div className='Description-text'>
-                                            Cotton Farming, Deforestation, <br /> Animal Welfare
-                                        </div>
-                                        <div className='Description-data'>
-                                            <img src={SustainableImg} />
-                                            <div className="Description-score"><span style={{ cursor: 'default' }}>{companyDetails[0]["Dscore"]}</span><span style={{ cursor: 'default' }}>/100</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {/*Score*/}
+                        <Scores score={companyDetails} />
+
                         <div className='Brand-Section-title'>
                             Company Initiatives
                         <InfoIcon className='brand_info-icon' onClick={() => setCompanyInitShowInfo(!showCompanyInitInfo)} />
