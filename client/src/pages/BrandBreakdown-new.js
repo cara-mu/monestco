@@ -1516,7 +1516,9 @@ class BrandBreakdown extends React.Component {
   return (
     <div className="breakdown_container">
       <div className="breakdown_logo">
-        <img src={this.state.logo}  className="breakdown_logoImage" />
+        <a href={"/companies/" + this.state.companyName}>
+          <img src={this.state.logo}  className="breakdown_logoImage" />
+        </a>
         <p className="breakdown_logoText">
           {Math.round(this.state.totalscore, 2)}<span style={{ fontSize: 32 }}>/100</span>
         </p>
