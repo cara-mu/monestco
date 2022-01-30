@@ -25,6 +25,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { AiFillCaretDown } from 'react-icons/ai';
 import TextTruncate from 'react-text-truncate';
 import PoliticalContribution from "./PoliticalContribution";
+import Facts from "./Facts";
 
 
 const companyinfo = [
@@ -76,7 +77,7 @@ const companyCit = [
     {
         RelationalID: "",
         Author: "",
-        Date: "",
+        Date: 0, /*changed datatype from string to int for listing citations chronologically*/
         PublishingGroup: "",
         Title: "",
         Pages: ""
@@ -292,6 +293,7 @@ function Company({ match, location }) {
     const RenderFact = ({ item }) => {
         const [showFact, setShowFact] = useState(false);
         const [showCitation, setShowCitation] = useState(false);
+        console.log("hi");
 
         useEffect(() => {
             if (showFact === false) {
@@ -607,118 +609,7 @@ function Company({ match, location }) {
             })
     }, [findLocation]);
 
-    const Facts = (factinput) => {
-        const [factCitation, setFactCitation] = useState([]);
-        const [showCitation, setShowCitation] = useState(false);
-
-        const FactCitations = (i) => {
-            if (factCitation.length != 0) {
-                return <div><i>{JSON.parse(factCitation)[0]["Title"][i]}</i>, {JSON.parse(factCitation)[0]["Author"][i]}{JSON.parse(factCitation)[0]["Author"][i] && <span>,</span>} {JSON.parse(factCitation)[0]["PublishingGroup"][i]}, {JSON.parse(factCitation)[0]["Date"][i]}{JSON.parse(factCitation)[0]["Pages"][i] && <span>,</span>} {JSON.parse(factCitation)[0]["Pages"][i]}</div>
-            }
-        }
-
-        const showCitations = async () => {
-            if (showCitation == false) setShowCitation(true);
-            if (showCitation == true) setShowCitation(false);
-            // console.log(showCitation);
-            // if (showCitation == false) setShowCitation(true);
-            // if (showCitation == true) setShowCitation(false);
-            // if (showCitation == -1) {
-            //     setShowCitation(j);
-            //     console.log(showCitation);
-            // }
-            // if (showCitation == j) {
-            //     setShowCitation(-1);
-            //     console.log(showCitation);
-            // }
-            let citationsarr = [];
-            let relidarr = [];
-            let authorarr = [];
-            let datearr = [];
-            let pubarr = [];
-            let titlearr = [];
-            let urlarr = [];
-            let pagesarr = [];
-            if (factinput[0]['Heading'].length != 0) {
-                Promise.all(Object.entries(factinput[0]['Heading']).map((heading, i) =>
-                    axios.post('/citationsFacts',
-                        {},
-                        {
-                            params: [companyName, factinput[0]["ID"][i], 'F']
-                        }
-                    ).then(resp => {
-                        if (resp.data.length != 0) {
-                            let data = citations;
-                            if (citationsarr.length != 0) {
-                                relidarr = citationsarr[0][0]["RelationalID"];
-                                authorarr = citationsarr[0][0]["Author"];
-                                datearr = citationsarr[0][0]["Date"];
-                                pubarr = citationsarr[0][0]["PublishingGroup"];
-                                titlearr = citationsarr[0][0]["Title"];
-                                urlarr = citationsarr[0][0]["URL"];
-                                pagesarr = citationsarr[0][0]["Pages"];
-                            }
-                            resp.data.map(citation => {
-                                relidarr.push(citation["RelationalID"]);
-                                authorarr.push(citation["Author"]);
-                                datearr.push(citation["Date"]);
-                                pubarr.push(citation["PublishingGroup"]);
-                                titlearr.push(citation["Title"]);
-                                urlarr.push(citation["URL"]);
-                                pagesarr.push(citation["Pages"]);
-                            })
-                            data[0]["Author"] = authorarr;
-                            data[0]["Date"] = datearr;
-                            data[0]["PublishingGroup"] = pubarr;
-                            data[0]["Title"] = titlearr;
-                            data[0]["RelationalID"] = relidarr;
-                            data[0]["URL"] = urlarr;
-                            data[0]["Pages"] = pagesarr;
-                            citationsarr.push(data);
-                        }
-                    })
-                )).then(() => {
-                    setFactCitation(JSON.stringify(citationsarr[0]))
-                });
-            }
-        }
-
-        return Object.entries(factinput[0]['Heading']).map((heading, i) => {
-            return <div>
-                <Accordion className={classes.dropdown}>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon className='circle-new' />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                    >
-                        <Typography className={classes.heading}>{heading[1]}</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails style={{ backgroundColor: '#F2F2F2' }}>
-                        <Typography className={classes.expandMenu}>
-                            {factinput[0]['Summary'][i]}
-                            <div
-                                className="Fun-Fact"
-                                style={{ width: "100%", fontWeight: "700" }}
-                            >
-                                Citation
-              <i
-                                    onClick={() => showCitations()}
-                                    style={{ borderColor: "#323232" }}
-                                    className={`Fun-Fact-arrowdown ${showCitation ? "Fun-Fact-arrowdown-rotate" : ""}`}
-                                ></i>
-                            </div>
-                            {showCitation ?
-                                <div>
-                                    {FactCitations(i)}
-                                </div>
-                                : null}
-                        </Typography>
-                    </AccordionDetails>
-                </Accordion>
-                <div className='FunFact-Decorative-Line'></div>
-            </div>
-        })
-    }
+    //<Facts cite = {citations} company = {companyName} />
 
     const News = (newsinput) => {
         return Object.entries(newsinput[0]['Category']).map((category, i) => {
@@ -876,7 +767,8 @@ function Company({ match, location }) {
                         </div>
 
                         <div className='Decorative-Line'></div>
-                        {Facts(fact)}
+                        {/*{Facts(fact)}*/}
+                        <Facts cite = {citations} company = {companyName} companyFacts = {companyFacts}/>
 
 
                         <div className='In-The-News'>
