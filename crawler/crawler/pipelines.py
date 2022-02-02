@@ -11,3 +11,22 @@ from itemadapter import ItemAdapter
 class CrawlerPipeline:
     def process_item(self, item, spider):
         return item
+
+
+class ValidationPipeline:
+    """
+    validate items from crawlers
+    """
+    def process_item(self, item, spider):
+
+
+        return item
+
+
+class TransformPipeline:
+    """
+    1. transform raw data into machine-learning ready data.
+    2. Save data to database
+    """
+    def process_item(self, item, spider):
+        return item
