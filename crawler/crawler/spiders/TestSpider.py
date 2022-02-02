@@ -3,6 +3,20 @@ from scrapy.spiders import CrawlSpider, Rule
 from scrapy.crawler import CrawlerProcess
 from scrapy.linkextractors import LinkExtractor
 from scrapy_playwright.page import PageCoroutine
+from crawler.crawler.items import Product
+from scrapy.loader import ItemLoader
+from itemloaders.processors import TakeFirst, MapCompose, Join, Identity
+from w3lib.html import remove_tags
+
+
+class ProductLoader(ItemLoader):
+    default_input_processor = MapCompose(remove_tags)
+    default_output_processor = Join()
+
+    url_in = Identity()
+    url_out = Identity()
+
+    photo_out = TakeFirst()
 
 
 class TestSpider(Spider):
@@ -24,16 +38,15 @@ class TestSpider(Spider):
                          ))
 
     async def parse(self, response, **kwargs):
-        yield {
-            'name': response.css('div[class*=sidebar-wrapper] h1[data-auto-id=product-title] span::text').get(),
-            'price': response.css('div[class*=sidebar-wrapper] div[class*=product-price] div['
-                                  'class*=gl-price-item]::text').get(),
-            'category': response.css('div[data-auto-id=product-category] span::text').get(),
-            'color': response.css('div[data-auto-id=color-chooser] h5::text').getall()[1],
-            'description': response.css('div#navigation-target-description p::text').get(),
-            'url': response.url,
-            'photo': response.css('section[data-auto-id=image-viewer] img::attr(src)').extract_first(),
-        }
+        l = ProductLoader(item=Product(), response=response)
+        l.add_css('title', 'div[class*=sidebar-wrapper] h1[data-auto-id=product-title] span')
+        l.add_css('subtitle', 'div[data-auto-id=product-category] span')
+        l.add_css('price', 'div[class*=sidebar-wrapper] div[class*=product-price] div['
+                           'class*=gl-price-item]')
+        l.add_css('description', 'div#navigation-target-description p')
+        l.add_value('url', response.url)
+        l.add_css('photo', 'section[data-auto-id=image-viewer] img::attr(src)')
+        return l.load_item()
 
 
 if __name__ == "__main__":
