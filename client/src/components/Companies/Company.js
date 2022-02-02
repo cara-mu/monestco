@@ -77,7 +77,7 @@ const companyCit = [
     {
         RelationalID: "",
         Author: "",
-        Date: 0, /*changed datatype from string to int for listing citations chronologically*/
+        Date: "",
         PublishingGroup: "",
         Title: "",
         Pages: ""
@@ -293,7 +293,6 @@ function Company({ match, location }) {
     const RenderFact = ({ item }) => {
         const [showFact, setShowFact] = useState(false);
         const [showCitation, setShowCitation] = useState(false);
-        console.log("hi");
 
         useEffect(() => {
             if (showFact === false) {
@@ -768,7 +767,7 @@ function Company({ match, location }) {
 
                         <div className='Decorative-Line'></div>
                         {/*{Facts(fact)}*/}
-                        <Facts cite = {citations} company = {companyName} companyFacts = {companyFacts}/>
+                        <Facts cite = {citations} company = {companyName}/>
 
 
                         <div className='In-The-News'>

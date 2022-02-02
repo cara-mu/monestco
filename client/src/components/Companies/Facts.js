@@ -42,15 +42,13 @@ export default function Facts(props) {
     const [state, setState] = useState([])
 
     useEffect(() => {
-        axios.post(
-            '/facts',
-            {},
+        axios.get('/facts',
             {
                 params: props.company
             }
         )
             .then((resp) => {
-                let data = props.companyFacts;
+                let data = companyFacts;
                 let headingsarr = [];
                 let summaryarr = [];
                 let idarr = [];
@@ -64,7 +62,6 @@ export default function Facts(props) {
                 data[0]["ID"] = idarr;
                 setFact(data);
                 setState(resp.data);
-                console.log(props.company)
             })
       },[props.company]);
 
@@ -100,8 +97,7 @@ export default function Facts(props) {
             let pagesarr = [];
             if (fact[0]['Heading'].length != 0) {
                 Promise.all(Object.entries(fact[0]['Heading']).map((heading, i) =>
-                    axios.post('/citationsFacts',
-                        {},
+                    axios.get('/citationsFacts',
                         {
                             params: [props.company, fact[0]["ID"][i], 'F']
                         }
