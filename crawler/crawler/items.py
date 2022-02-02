@@ -13,6 +13,7 @@ class CrawlerItem(scrapy.Item):
 
 
 class Product(scrapy.Item):
+    company = scrapy.Field()
     title = scrapy.Field()
     subtitle = scrapy.Field()
     price = scrapy.Field()
