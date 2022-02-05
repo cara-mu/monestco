@@ -8,27 +8,25 @@ import axios from "axios";
 import BrandPerformance from "./BrandPerformance";
 
 
-const companyTotalScores = [
-  {
+const companyTotalScores = {
     A: 0,
     B: 0,
     C: 0,
     D: 0,
-  }
-]
+}
 
 
 export default function Scores(props) {
   const [TotalScore, setTotalScore] = React.useState(companyTotalScores);
 
   useEffect(()=>{
-    axios.get('/companyTotalScores',{params: props.company}).
+    axios.get('/companyTotalScores', {params: {company : props.company}}).
     then((resp) => {
       let data = TotalScore;
-      data[0]['A'] = resp.data[0]["Ascore"];
-      data[0]['B'] = resp.data[0]["Bscore"];
-      data[0]['C'] = resp.data[0]["Cscore"];
-      data[0]['D'] = resp.data[0]["Dscore"];
+      data['A'] = resp.data[0]["Ascore"];
+      data['B'] = resp.data[0]["Bscore"];
+      data['C'] = resp.data[0]["Cscore"];
+      data['D'] = resp.data[0]["Dscore"];
       setTotalScore(data);
     })
   }, [props.company]);
@@ -41,16 +39,16 @@ export default function Scores(props) {
     <div className="Brand-Performance">
       <div className="Brand-Performance-container">
         <BrandPerformance title = {BrandPerformanceTitle[0]} subtitle1 = {BrandPerformanceSubtitle1[0]} 
-          subtitle2 = {BrandPerformanceSubtitle2[0]} image = {DiversityImg} score = {TotalScore[0]['A']}/>
+          subtitle2 = {BrandPerformanceSubtitle2[0]} image = {DiversityImg} score = {TotalScore['A']}/>
 
         <BrandPerformance title = {BrandPerformanceTitle[1]} subtitle1 = {BrandPerformanceSubtitle1[1]} 
-          subtitle2 = {BrandPerformanceSubtitle2[1]} image = {WorkerExploitImg} score = {TotalScore[0]['B']} />
+          subtitle2 = {BrandPerformanceSubtitle2[1]} image = {WorkerExploitImg} score = {TotalScore['B']} />
 
         <BrandPerformance title = {BrandPerformanceTitle[2]} subtitle1 = {BrandPerformanceSubtitle1[2]} 
-          subtitle2 = {BrandPerformanceSubtitle2[2]} image = {WasteImg} score = {TotalScore[0]['C']}/>
+          subtitle2 = {BrandPerformanceSubtitle2[2]} image = {WasteImg} score = {TotalScore['C']}/>
 
         <BrandPerformance title = {BrandPerformanceTitle[3]} subtitle1 = {BrandPerformanceSubtitle1[3]} 
-          subtitle2 = {BrandPerformanceSubtitle2[3]} image = {SustainableImg} score = {TotalScore[0]['D']}/>
+          subtitle2 = {BrandPerformanceSubtitle2[3]} image = {SustainableImg} score = {TotalScore['D']}/>
       </div>
     </div>
   );

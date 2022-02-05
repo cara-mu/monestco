@@ -188,7 +188,7 @@ def company_scores(request):
 
 @api_view(['GET', 'POST'])
 def company_total_scores(request):
-    name = request.query_params['0']
+    name = request.query_params['company']
     res = get_scores(name, ['A','B','C','D'], False)
     return JsonResponse([res], safe=False)
 
