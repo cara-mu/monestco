@@ -26,7 +26,7 @@ class TestSpider(Spider):
     """
     Test Spider to test selectors
     """
-    name ='Adidas'
+    name ='Test'
 
     url ='https://www.adidas.ca/en/adicolor-classics-3-stripes-tee/HE9545.html'
 
@@ -55,21 +55,13 @@ class TestSpider(Spider):
 
 
 if __name__ == "__main__":
-    process = CrawlerProcess(
-        settings=dict(
-            TWISTED_REACTOR="twisted.internet.asyncioreactor.AsyncioSelectorReactor",
-            DOWNLOAD_HANDLERS={
-            "https": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
-            # "http": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
-            },
-            PLAYWRIGHT_DEFAULT_NAVIGATION_TIMEOUT=60000,
-            ITEM_PIPELINES={
-                    'crawler.crawler.pipelines.ValidationPipeline': 100,
-                    'crawler.crawler.pipelines.TransformPipeline': 200,
-                    'crawler.crawler.pipelines.SaveDBPipeline': 800,
-            },
-        )
-    )
+    from crawler.crawler import settings
+    settings_dict = {}
+    for st in dir(settings):
+        if st.startswith('_'):
+            continue
+        settings_dict[st] = getattr(settings, st)
+    process = CrawlerProcess(settings=settings_dict)
     process.crawl(TestSpider)
     process.start()
 

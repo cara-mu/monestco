@@ -9,8 +9,8 @@
 
 BOT_NAME = 'crawler'
 
-SPIDER_MODULES = ['crawler.spiders']
-NEWSPIDER_MODULE = 'crawler.spiders'
+SPIDER_MODULES = ['crawler.crawler.spiders']
+NEWSPIDER_MODULE = 'crawler.crawler.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -77,9 +77,9 @@ PLAYWRIGHT_DEFAULT_NAVIGATION_TIMEOUT = 60000
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'crawler.pipelines.ValidationPipeline': 100,
-    'crawler.pipelines.TransformPipeline': 200,
-    'crawler.pipelines.SaveDBPipeline': 800,
+    'crawler.crawler.pipelines.ValidationPipeline': 100,
+    'crawler.crawler.pipelines.TransformPipeline': 200,
+    'crawler.crawler.pipelines.SaveDBPipeline': 800,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

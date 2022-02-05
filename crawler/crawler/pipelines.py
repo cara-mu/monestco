@@ -8,15 +8,13 @@
 from itemadapter import ItemAdapter
 import os
 import django
-from recommendation.models import Product
 from asgiref.sync import sync_to_async
 from scrapy.exceptions import DropItem
-
 os.environ.setdefault(
     'DJANGO_SETTINGS_MODULE', 'server_new.settings'
 )
 django.setup()
-
+from recommendation.models import Product
 
 class ValidationPipeline:
     """
