@@ -781,6 +781,22 @@ Notes:
 
 ```
 
+13. Get Company's Total Score
+- URL: /companyTotalScores
+- Method: Get
+- Params: ?company=Uniqlo
+- Return
+```json
+[
+  {
+    "Ascore": 52,
+    "Bscore": 50,
+    "Cscore": 45,
+    "Dscore": 32
+  }
+]
+```
+
 ## Citations
 
 13. Get Citation Information for Each Brand in Detailed Breakdowns
