@@ -76,9 +76,11 @@ PLAYWRIGHT_DEFAULT_NAVIGATION_TIMEOUT = 60000
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'crawler.pipelines.CrawlerPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'crawler.pipelines.ValidationPipeline': 100,
+    'crawler.pipelines.TransformPipeline': 200,
+    'crawler.pipelines.SaveDBPipeline': 800,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
