@@ -67,13 +67,14 @@ class SaveDBPipeline:
     Save data to database
     """
     async def process_item(self, item, spider):
-        p = Product(name=item['company'],
+        p = Product(brand=item['company'],
                     title=item['title'],
-                    sub_title=item['subtitle'],
+                    category=item['subtitle'],
                     price=item['price'],
                     color=item['color'],
                     url=item['url'],
-                    photo=item['photo']
+                    descr = item['description'],
+                    image=item['photo']
                     )
 
         await sync_to_async(p.save)()
