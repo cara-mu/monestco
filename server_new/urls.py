@@ -21,7 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('allcompanies', all_company_names, name='all_company_names'),
     path('companyscores', company_scores, name='company_scores'),
-    path('companyTotalScores', company_total_scores, name = 'company_Total_Scores'),
     path('companydetailsA', a_scores, name='a_scores'),
     path('companydetailsB', b_scores, name='b_scores'),
     path('companydetailsC', c_scores, name='c_scores'),

@@ -20,13 +20,13 @@ export default function Scores(props) {
   const [TotalScore, setTotalScore] = React.useState(companyTotalScores);
 
   useEffect(()=>{
-    axios.get('/companyTotalScores', {params: {company : props.company}}).
+    axios.get(`/api/v1/scores/companyTotalScores?company=${props.company}`).
     then((resp) => {
       let data = TotalScore;
-      data['A'] = resp.data[0]["Ascore"];
-      data['B'] = resp.data[0]["Bscore"];
-      data['C'] = resp.data[0]["Cscore"];
-      data['D'] = resp.data[0]["Dscore"];
+      data['A'] = resp.data["Ascore"];
+      data['B'] = resp.data["Bscore"];
+      data['C'] = resp.data["Cscore"];
+      data['D'] = resp.data["Dscore"];
       setTotalScore(data);
     })
   }, [props.company]);
