@@ -5,10 +5,6 @@ import Container from 'react-bootstrap/Container';
 import Grid from '@material-ui/core/Grid';
 import { Link, useParams, withRouter, useLocation } from 'react-router-dom';
 import '../../styles/Companies.css';
-import DiversityImg from '../../assets/diversity.png';
-import WorkerExploitImg from '../../assets/workerexploit.png';
-import WasteImg from '../../assets/wastepollution.png';
-import SustainableImg from '../../assets/sustainable.png';
 import DropdownButton from '../../assets/dropdownbutton.png';
 import NewsPlaceHolder from '../../assets/news.png';
 import { makeStyles } from '@material-ui/core/styles';
@@ -25,7 +21,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { AiFillCaretDown } from 'react-icons/ai';
 import TextTruncate from 'react-text-truncate';
 import PoliticalContribution from "./PoliticalContribution";
-
+import Scores from "./Scores/Scores";
 
 const companyinfo = [
     {
@@ -434,10 +430,6 @@ function Company({ match, location }) {
             let data = companyDetails;
             let score = (parseInt(resp.data[0]["Ascore"]) + parseInt(resp.data[0]["Bscore"]) + parseInt(resp.data[0]["Cscore"]) + parseInt(resp.data[0]["Dscore"])) / 4;
             data[0]["TotalScore"] = score;
-            data[0]["Ascore"] = resp.data[0]["Ascore"];
-            data[0]["Bscore"] = resp.data[0]["Bscore"];
-            data[0]["Cscore"] = resp.data[0]["Cscore"];
-            data[0]["Dscore"] = resp.data[0]["Dscore"];
             let ratio = 324 * score / 100;
             data[0]["SliderLength"] = ratio;
             setCompanyDetails(data);
@@ -640,13 +632,9 @@ function Company({ match, location }) {
             let urlarr = [];
             let pagesarr = [];
             if (factinput[0]['Heading'].length != 0) {
-                Promise.all(Object.entries(factinput[0]['Heading']).map((heading, i) =>
-                    axios.post('/citationsFacts',
-                        {},
-                        {
-                            params: [companyName, factinput[0]["ID"][i], 'F']
-                        }
-                    ).then(resp => {
+                for (let i = 0; i < Object.entries(factinput[0]["Heading"]).length; ++i) {
+                    await axios.post("/citationsFacts", {}, { params: [companyName, factinput[0]["ID"][i], "F"] })
+                    .then((resp) => {
                         if (resp.data.length != 0) {
                             let data = citations;
                             if (citationsarr.length != 0) {
@@ -658,7 +646,7 @@ function Company({ match, location }) {
                                 urlarr = citationsarr[0][0]["URL"];
                                 pagesarr = citationsarr[0][0]["Pages"];
                             }
-                            resp.data.map(citation => {
+                            resp.data.map((citation) => {
                                 relidarr.push(citation["RelationalID"]);
                                 authorarr.push(citation["Author"]);
                                 datearr.push(citation["Date"]);
@@ -666,7 +654,7 @@ function Company({ match, location }) {
                                 titlearr.push(citation["Title"]);
                                 urlarr.push(citation["URL"]);
                                 pagesarr.push(citation["Pages"]);
-                            })
+                            });
                             data[0]["Author"] = authorarr;
                             data[0]["Date"] = datearr;
                             data[0]["PublishingGroup"] = pubarr;
@@ -676,12 +664,11 @@ function Company({ match, location }) {
                             data[0]["Pages"] = pagesarr;
                             citationsarr.push(data);
                         }
-                    })
-                )).then(() => {
-                    setFactCitation(JSON.stringify(citationsarr[0]))
-                });
+                    });
+                }
+                setFactCitation(JSON.stringify(citationsarr[0]));
             }
-        }
+        };
 
         return Object.entries(factinput[0]['Heading']).map((heading, i) => {
             return <div>
@@ -817,58 +804,9 @@ function Company({ match, location }) {
                         </div>
                         <div className='Decorative-Line'></div>
 
-                        <div className='Brand-Performance'>
-                            <div className='Brand-Performance-container'>
-                                <div>
-                                    DIVERSITY & INCLUSION
-                                    <div className='Description'>
-                                        <div className='Description-text'>
-                                            Discrimination, Gender Equality, <br></br>Cultural Diversity, Inclusivity
-                                        </div>
-                                        <div className='Description-data'>
-                                            <img src={DiversityImg} />
-                                            <div className="Description-score"><span style={{ cursor: 'default' }}>{companyDetails[0]["Ascore"]}</span><span style={{ cursor: 'default' }}>/100</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    WORKER EXPLOITATION
-                                    <div className='Description'>
-                                        <div className='Description-text'>
-                                            Child Labour, Forced Labour, <br></br> Living Wage, Working Conditions
-                                        </div>
-                                        <div className='Description-data'>
-                                            <img src={WorkerExploitImg} />
-                                            <div className="Description-score"><span style={{ cursor: 'default' }}>{companyDetails[0]["Bscore"]}</span><span style={{ cursor: 'default' }}>/100</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    WASTE & POLLUTION
-                                    <div className='Description'>
-                                        <div className='Description-text'>
-                                            Air Pollution, Water Pollution & Wastes, <br></br> Packaging Waste, Material Waste
-                                        </div>
-                                        <div className='Description-data'>
-                                            <img src={WasteImg} />
-                                            <div className="Description-score"><span style={{ cursor: 'default' }}>{companyDetails[0]["Cscore"]}</span><span style={{ cursor: 'default' }}>/100</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    ETHICAL SOURCING
-                                    <div className='Description'>
-                                        <div className='Description-text'>
-                                            Cotton Farming, Deforestation, <br /> Animal Welfare
-                                        </div>
-                                        <div className='Description-data'>
-                                            <img src={SustainableImg} />
-                                            <div className="Description-score"><span style={{ cursor: 'default' }}>{companyDetails[0]["Dscore"]}</span><span style={{ cursor: 'default' }}>/100</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {/*Score*/}
+                        <Scores company={companyName} />
+
                         <div className='Brand-Section-title'>
                             Company Initiatives
                         <InfoIcon className='brand_info-icon' onClick={() => setCompanyInitShowInfo(!showCompanyInitInfo)} />
