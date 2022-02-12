@@ -89,6 +89,17 @@ def update_scores(raw_scores, processed_scores: {}) -> {}:
     return processed_scores
 
 
+def update_pol(raw_scores, processed_scores: {}) -> {}:
+    dem = 0
+    rep = 0
+    for item in raw_scores:
+        dem += item.dem
+        rep += item.rep
+    processed_scores['dem'] = dem
+    processed_scores['rep'] = rep
+    return processed_scores
+
+
 def update_citations(raw_scores, processed_citation: {}) -> {}:
     """
     update and prepare citations
@@ -459,24 +470,24 @@ def industry_standards(request):
 
 @api_view(['GET'])
 def political_association_summary(request):
-    company = request.query_params['company']
+    name = request.query_params['company']
+    company = Company.objects.get(name=name)
+    res = {}
     records = PoliticalAssociation.objects.all().filter(company=company)
-    dem = 0
-    rep = 0
-    for item in records:
-        dem += item.dem
-        rep += item.rep
-
-    return JsonResponse({
-        'rep': rep,
-        'dem': dem
-    }, safe=False)
+    # if empty then parent records instead
+    if not records:
+        records = PoliticalAssociation.objects.all().filter(company=company.parent_company)
+    res = update_pol(records, res)
+    return JsonResponse(res, safe=False)
 
 
 @api_view(['GET'])
 def political_association_details(request):
-    company = request.query_params['company']
+    name = request.query_params['company']
+    company = Company.objects.get(name=name)
     records = PoliticalAssociation.objects.all().filter(company=company)
+    if not records:
+        records = PoliticalAssociation.objects.all().filter(company=company.parent_company)
     data = []
     citation = []
     for item in records:
