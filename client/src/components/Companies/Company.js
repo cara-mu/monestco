@@ -10,7 +10,6 @@ import WorkerExploitImg from '../../assets/workerexploit.png';
 import WasteImg from '../../assets/wastepollution.png';
 import SustainableImg from '../../assets/sustainable.png';
 import DropdownButton from '../../assets/dropdownbutton.png';
-import NewsPlaceHolder from '../../assets/news.png';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal, { ModalManager } from '@material-ui/core/Modal';
 import ModalBody from '../ModalBody';
@@ -25,7 +24,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { AiFillCaretDown } from 'react-icons/ai';
 import TextTruncate from 'react-text-truncate';
 import PoliticalContribution from "./PoliticalContribution";
-import News from "./News";
+import Newx from './Newx';
+import SimilarBrand from './SimilarBrand';
 
 const companyinfo = [
     {
@@ -154,7 +154,6 @@ function Company({ match, location }) {
 
 
     const [showFact, setShowFact] = useState(false);
-
     const findLocation = useLocation();
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
@@ -183,9 +182,7 @@ function Company({ match, location }) {
         setBrandPShowInfo(false)
     }
 
-    const handleCloseNewsInfo = () => {
-        setNewsShowInfo(false)
-    }
+
     const handleCloseCompanyInitInfo = () => {
         setCompanyInitShowInfo(false)
     }
@@ -273,21 +270,7 @@ function Company({ match, location }) {
             </div>
         )
     };
-    const NewsPopup = ({ handleCloseInfo }) => {
-        return (
-            <div className="company-popup">
-                <div className='company-popup-content'>
-                    <div style={{ display: 'flex', flexDirection: 'column', marginTop: '1rem' }}>
-                        <div>In the News</div>
-                        <div style={{ fontSize: '16px', fontWeight: '500', lineHeight: '25px' }}>
-                            News and recent events summarized with an assessment of the company’s actions taken in response
-                        </div>
-                    </div>
-                    <HighlightOffRoundedIcon onClick={() => setNewsShowInfo(false)} className="popup-close-icon" />
-                </div>
-            </div>
-        )
-    };
+
 
     const RenderFact = ({ item }) => {
         const [showFact, setShowFact] = useState(false);
@@ -388,38 +371,6 @@ function Company({ match, location }) {
 
     }
 
-    const InTheNews = () => {
-
-        const [tabView, setTabView] = useState(window.innerWidth < 800);
-
-        useLayoutEffect(() => {
-            function updateSize() {
-                if (window.innerWidth > 800) {
-                    setTabView(false);
-                } else {
-                    setTabView(true);
-                }
-            }
-            window.addEventListener("resize", updateSize);
-            updateSize();
-            return () => window.removeEventListener("resize", updateSize);
-        }, []);
-
-        if (!tabView) { //web view
-            return (
-                <div className='brand_info-text'>News and recent events summarized with an assessment of the company’s actions taken in response</div>
-            )
-        } else if (showNewsInfo && tabView) { //tab view	
-            return (
-                <NewsPopup handleCloseNewsInfo={handleCloseNewsInfo} />
-            )
-        } else return null
-
-    }
-
-    const newsDiscriptionTitle = "Nike allegedly discriminates against women at its corporate headquarters";
-    const newsDiscriptionInfo = "Fed up with feeling marginalized working at the Nike headquarters, a group of female employees began secretly surveying their coworkers on their experiences with gender discrimination....";
-
     useEffect(() => {
         // setLoading(true);
         // let data = companyDetails;
@@ -444,100 +395,8 @@ function Company({ match, location }) {
             setState(resp.data);
         });
 
-        axios.post(
-            '/companyname',
-            {},
-            {
-                params: companyName
-            }
-        )
-            .then((resp) => {
-                let data = companyDetails;
-                // data[0]["A_ID"] = resp.data[0]["A_ID"];
-                // data[0]["B_ID"] = resp.data[0]["B_ID"];
-                // data[0]["C_ID"] = resp.data[0]["C_ID"];
-                // data[0]["D_ID"] = resp.data[0]["D_ID"];
-                data[0]["Category"] = resp.data[0]["Category"];
-                data[0]["Description"] = resp.data[0]["Description"];
-                data[0]["IndustryStandardsID"] = resp.data[0]["IndustryStandardsID"];
-                data[0]["Logo"] = resp.data[0]["Logo"];
-                data[0]["Name"] = resp.data[0]["Name"];
-                data[0]["SimilarCompany1"] = resp.data[0]["SimilarCompany1"];
-                data[0]["SimilarCompany2"] = resp.data[0]["SimilarCompany2"];
-                data[0]["SimilarCompany3"] = resp.data[0]["SimilarCompany3"];
-                data[0]["SimilarCompany4"] = resp.data[0]["SimilarCompany4"];
-                data[0]["Subsidiary"] = resp.data[0]["Subsidiary"];
-                setCompanyDetails(data);
-                setState(resp.data);
-            })
-        axios.post(
-            '/similarCompany1',
-            {},
-            {
-                params: companyName
-            }
-        ).then((resp) => {
-            let data = companyDetails;
-            data[0]["company1Ascore"] = resp.data[0]["Ascore"];
-            data[0]["company1Bscore"] = resp.data[0]["Bscore"];
-            data[0]["company1Cscore"] = resp.data[0]["Cscore"];
-            data[0]["company1Dscore"] = resp.data[0]["Dscore"];
-            let company1TotalScore = (parseInt(data[0]["company1Ascore"]) + parseInt(data[0]["company1Bscore"]) + parseInt(data[0]["company1Cscore"]) + parseInt(data[0]["company1Dscore"])) / 4;
-            let comp1SliderLength = 324 * company1TotalScore / 100
-            data[0]["company1TotalScore"] = company1TotalScore;
-            data[0]["comp1SliderLength"] = comp1SliderLength;
-        })
-        axios.post(
-            '/similarCompany2',
-            {},
-            {
-                params: companyName
-            }
-        ).then((resp) => {
-            let data = companyDetails;
-            data[0]["company2Ascore"] = resp.data[0]["Ascore"];
-            data[0]["company2Bscore"] = resp.data[0]["Bscore"];
-            data[0]["company2Cscore"] = resp.data[0]["Cscore"];
-            data[0]["company2Dscore"] = resp.data[0]["Dscore"];
-            let company2TotalScore = (parseInt(data[0]["company2Ascore"]) + parseInt(data[0]["company2Bscore"]) + parseInt(data[0]["company2Cscore"]) + parseInt(data[0]["company2Dscore"])) / 4;
-            let comp2SliderLength = 324 * company2TotalScore / 100
-            data[0]["company2TotalScore"] = company2TotalScore;
-            data[0]["comp2SliderLength"] = comp2SliderLength;
-        })
-        axios.post(
-            '/similarCompany3',
-            {},
-            {
-                params: companyName
-            }
-        ).then((resp) => {
-            let data = companyDetails;
-            data[0]["company3Ascore"] = resp.data[0]["Ascore"];
-            data[0]["company3Bscore"] = resp.data[0]["Bscore"];
-            data[0]["company3Cscore"] = resp.data[0]["Cscore"];
-            data[0]["company3Dscore"] = resp.data[0]["Dscore"];
-            let company3TotalScore = (parseInt(data[0]["company3Ascore"]) + parseInt(data[0]["company3Bscore"]) + parseInt(data[0]["company3Cscore"]) + parseInt(data[0]["company3Dscore"])) / 4;
-            let comp3SliderLength = 324 * company3TotalScore / 100
-            data[0]["company3TotalScore"] = company3TotalScore;
-            data[0]["comp3SliderLength"] = comp3SliderLength;
-        })
-        axios.post(
-            '/similarCompany4',
-            {},
-            {
-                params: companyName
-            }
-        ).then((resp) => {
-            let data = companyDetails;
-            data[0]["company4Ascore"] = resp.data[0]["Ascore"];
-            data[0]["company4Bscore"] = resp.data[0]["Bscore"];
-            data[0]["company4Cscore"] = resp.data[0]["Cscore"];
-            data[0]["company4Dscore"] = resp.data[0]["Dscore"];
-            let company4TotalScore = (parseInt(data[0]["company4Ascore"]) + parseInt(data[0]["company4Bscore"]) + parseInt(data[0]["company4Cscore"]) + parseInt(data[0]["company4Dscore"])) / 4;
-            let comp4SliderLength = 324 * company4TotalScore / 100
-            data[0]["company4TotalScore"] = company4TotalScore;
-            data[0]["comp4SliderLength"] = comp4SliderLength;
-        })
+     
+          
         axios.post(
             '/facts',
             {},
@@ -561,50 +420,7 @@ function Company({ match, location }) {
                 setFact(data);
                 setState(resp.data);
             })
-        axios.post(
-            '/news',
-            {},
-            {
-                params: companyName
-            }
-        )
-            .then((resp) => {
-                let data = companyNews;
-                let photoarr = [];
-                let yeararr = [];
-                let catarr = [];
-                let titlearr = [];
-                let summarr = [];
-                let issueaddarr = [];
-                let issueexparr = [];
-                let resptakearr = [];
-                let respexparr = [];
-                let idarr = [];
-                resp.data.map(news => {
-                    photoarr.push(news['Photo']);
-                    yeararr.push(news['Year']);
-                    catarr.push(news['Category']);
-                    titlearr.push(news['Title']);
-                    summarr.push(news['Summary']);
-                    issueaddarr.push(news['IssueAddressed']);
-                    issueexparr.push(news['IssueAddressedExplanation']);
-                    resptakearr.push(news['ResponsibilityTaken']);
-                    respexparr.push(news['ResponsibilityTakenExplanation']);
-                    idarr.push(news['ID']);
-                })
-                data[0]["Photo"] = photoarr;
-                data[0]["Year"] = yeararr;
-                data[0]["Category"] = catarr;
-                data[0]["Title"] = titlearr;
-                data[0]["Summary"] = summarr;
-                data[0]["IssueAddressed"] = issueaddarr;
-                data[0]["IssueAddressedExplanation"] = issueexparr;
-                data[0]["ResponsibilityTaken"] = resptakearr;
-                data[0]["ResponsibilityTakenExplanation"] = respexparr;
-                data[0]["ID"] = idarr;
-                setNews(data);
-                setState(resp.data);
-            })
+      
     }, [findLocation]);
 
     const Facts = (factinput) => {
@@ -701,7 +517,7 @@ function Company({ match, location }) {
                                 style={{ width: "100%", fontWeight: "700" }}
                             >
                                 Citation
-              <i
+                                    <i
                                     onClick={() => showCitations()}
                                     style={{ borderColor: "#323232" }}
                                     className={`Fun-Fact-arrowdown ${showCitation ? "Fun-Fact-arrowdown-rotate" : ""}`}
@@ -720,7 +536,6 @@ function Company({ match, location }) {
         })
     }
 
-  
 
     return (
         <div className='Layout'>
@@ -823,131 +638,20 @@ function Company({ match, location }) {
                         <div className='Decorative-Line'></div>
                         {Facts(fact)}
 
+  
+                        {/* figure out how to include this stuff*/}
+                        <Newx company = {companyName}/>
 
-                        <div className='In-The-News'>
-                            <div className='Brand-Section-title'>
-                                In The News
-                            <InfoIcon className='brand_info-icon' onClick={() => setNewsShowInfo(!showNewsInfo)} />
-                                <InTheNews />
-                            </div>
-                            <div className='Decorative-Line'></div>
-                            <div className='In-The-News-container'>
-                                {/* {News(news)} */}
-                                {/*News*/}
-                                <News newsinput = {news}/>
-
-                            </div>
-                            <Modal
-                                open={open}
-                                onClose={handleClose}
-                                aria-labelledby="simple-modal-title"
-                                aria-describedby="simple-modal-description"
-                            >
-                                {body}
-                            </Modal>
-
-                        </div>
+                        {/* put this in newsreadmore or do i have to make a component before news.js and link this to that file which links to news.js */}
 
                         {/*Political Association*/}
                         <PoliticalContribution company = {companyName}/>
 
 
-                        {/* Similar Brands */}
+  {/* Similar Brands */}
+  <SimilarBrand company = {companyName}/>
 
 
-                        <div className="similar_brands">
-                            <div className='Brand-Section-title'>Similar Brands</div>
-                            <div className='Decorative-Line'></div>
-                            <div className="similar_brands-container">
-                                <div>
-                                    <Link className='Similar-Link' to={'/companies/' + companyDetails[0]["SimilarCompany1"]}>
-                                        <p>{companyDetails[0]["SimilarCompany1"]}</p>
-                                        {/* <div>{companyDetails[0]["SimilarCompany1"]}</div> */}
-                                        <div className='brand_box'>
-                                            {/* <div className="d-fdlex justify-content-center">
-                                            <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
-                                            <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div>
-                                            <div class="horizontalline2" style={{width: `${companyDetails[0]["SliderLength"]}px` }}></div>
-                                            <div class="verticalline2"></div> 
-                                            <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/> */}
-                                            {/* <p style={{fontFamily: 'DM Sans', fontSize: '12px', color: '#4F4F4F'}} >underperforming<span style={{marginLeft: '145px'}}>overperforming</span></p> */}
-                                            <div className="d-fledx justify-content-center" style={{ position: "relative" }}>
-                                                <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center' }}>industry average</div>
-                                                <div style={{ textAlign: 'center' }}><AiFillCaretDown style={{}} /></div>
-                                                <div class="horizontalline2" style={{ width: `${companyDetails[0]["comp1SliderLength"]}px` }}></div>
-                                                <div class="verticalline2"></div>
-                                                <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo" />
-                                                <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
-                                                {/* <p style={{fontFamily: 'DM Sans', fontSize: '12px', color: '#4F4F4F'}} >underperforming<span style={{marginLeft: '145px'}}>overperforming</span></p> */}
-                                            </div>
-                                            <div className="brand_inside_text ml-10perc">
-                                                <span>{Math.round(companyDetails[0]["company1TotalScore"], 2)}</span>
-                                                <span>/100</span>
-                                            </div>
-                                            {/* </div> */}
-                                        </div>
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link className='Similar-Link' to={'/companies/' + companyDetails[0]["SimilarCompany2"]}><p>{companyDetails[0]["SimilarCompany2"]}</p>
-                                        {/* <div>{companyDetails[0]["SimilarCompany2"]}</div> */}
-                                        <div className='brand_box'>
-                                            <div className="d-fldex justify-content-center" style={{ position: "relative" }}>
-                                                <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center' }}>industry average</div>
-                                                <div style={{ textAlign: 'center' }}><AiFillCaretDown style={{}} /></div>
-                                                <div class="horizontalline2" style={{ width: `${companyDetails[0]["comp2SliderLength"]}px` }}></div>
-                                                <div class="verticalline2"></div>
-                                                <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo" />
-                                                <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
-                                            </div>
-                                            <div className="brand_inside_text ml-10perc">
-                                                <span>{Math.round(companyDetails[0]["company2TotalScore"], 2)}</span>
-                                                <span>/100</span>
-                                            </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link className='Similar-Link' to={'/companies/' + companyDetails[0]["SimilarCompany3"]}><p>{companyDetails[0]["SimilarCompany3"]}</p>
-                                        {/* <div>{companyDetails[0]["SimilarCompany3"]}</div> */}
-                                        <div className='brand_box'>
-                                            <div className="d-fldex justify-content-center" style={{ position: "relative" }}>
-                                                <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center' }}>industry average</div>
-                                                <div style={{ textAlign: 'center' }}><AiFillCaretDown style={{}} /></div>
-                                                <div class="horizontalline2" style={{ width: `${companyDetails[0]["comp3SliderLength"]}px` }}></div>
-                                                <div class="verticalline2"></div>
-                                                <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo" />
-                                                <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
-                                            </div>
-                                            <div className="brand_inside_text ml-10perc">
-                                                <span>{Math.round(companyDetails[0]["company3TotalScore"], 2)}</span>
-                                                <span>/100</span>
-                                            </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link className='Similar-Link' to={'/companies/' + companyDetails[0]["SimilarCompany4"]}><p>{companyDetails[0]["SimilarCompany4"]}</p>
-                                        {/* <div>{companyDetails[0]["SimilarCompany4"]}</div> */}
-                                        <div className='brand_box'>
-                                            <div className="d-fldex justify-content-center" style={{ position: "relative" }}>
-                                                <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center' }}>industry average</div>
-                                                <div style={{ textAlign: 'center' }}><AiFillCaretDown style={{}} /></div>
-                                                <div class="horizontalline2" style={{ width: `${companyDetails[0]["comp4SliderLength"]}px` }}></div>
-                                                <div class="verticalline2"></div>
-                                                <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo" />
-                                                <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
-                                            </div>
-                                            <div className="brand_inside_text ml-10perc">
-                                                <span>{Math.round(companyDetails[0]["company4TotalScore"], 2)}</span>
-                                                <span>/100</span>
-                                            </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                                {/* </div> */}
-                            </div>
-                        </div>
                     </div>
                 </Grid>
             </Grid>
