@@ -1,3 +1,7 @@
+span {
+    pointer-events: none;
+}
+
 .main-Compare-Container {
     display: flex;
     flex-direction: row;
@@ -390,6 +394,8 @@
     margin-bottom: 10px;
     margin-top: 10px;
 }
+
+
 
 .ml-10perc {
     margin-left: 10%;

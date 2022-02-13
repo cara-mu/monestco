@@ -12,7 +12,7 @@ run the following command in command line:
 ## Verifying
 run the following commands in Python command:
 > import django    
->print(django.get_version())    
+> print(django.get_version())    
 3.2
 
 ### Run the Project
