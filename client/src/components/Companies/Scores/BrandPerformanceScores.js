@@ -1,5 +1,5 @@
 import "../../../styles/Companies.css";
-export default function BrandPerformance(props) {
+export default function BrandPerformanceScores(props) {
     return (
         <div>
           {props.title}
