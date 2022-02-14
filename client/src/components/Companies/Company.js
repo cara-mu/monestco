@@ -749,6 +749,7 @@ function Company({ match, location }) {
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <div className='Right-Menu' style={{ marginTop: '7%', marginLeft: '0.5rem' }}>
+                        
                         {/*Score*/}
                         <Scores company={companyName} />
 

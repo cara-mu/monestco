@@ -90,7 +90,7 @@ export default function Scores(props) {
 
   return (
     <Fragment>
-      <div className='Brand-Section-title Right-Menu'>
+      <div className='Brand-Section-title'>
         Brand Performance
       <InfoIcon className='brand_info-icon' onClick={() => setBrandPShowInfo(!showBrandPInfo)} />
         <BrandPerformance />
