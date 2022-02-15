@@ -608,8 +608,6 @@ function Company({ match, location }) {
             })
     }, [findLocation]);
 
-    //<Facts cite = {citations} company = {companyName} />
-
     const News = (newsinput) => {
         return Object.entries(newsinput[0]['Category']).map((category, i) => {
             return <div>
@@ -767,7 +765,7 @@ function Company({ match, location }) {
 
                         <div className='Decorative-Line'></div>
                         {/*{Facts(fact)}*/}
-                        <Facts cite = {citations} company = {companyName}/>
+                        <Facts company = {companyName}/>
 
 
                         <div className='In-The-News'>

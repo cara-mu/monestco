@@ -34,12 +34,23 @@ const companyFacts = [
         ID: []
     }
 ]
+const companyCit = [
+    {
+        RelationalID: "",
+        Author: "",
+        Date: "",
+        PublishingGroup: "",
+        Title: "",
+        Pages: ""
+    }
+]
 
 export default function Facts(props) {
     const [factCitation, setFactCitation] = useState([]);
     const [showCitation, setShowCitation] = useState(false);
     const [fact, setFact] = React.useState(companyFacts);
     const [state, setState] = useState([])
+    const [citations, setCitations] = React.useState(companyCit);
 
     useEffect(() => {
         axios.get('/facts',
@@ -103,7 +114,7 @@ export default function Facts(props) {
                         }
                     ).then(resp => {
                         if (resp.data.length != 0) {
-                            let data = props.cite;
+                            let data = citations;
                             if (citationsarr.length != 0) {
                                 relidarr = citationsarr[0][0]["RelationalID"];
                                 authorarr = citationsarr[0][0]["Author"];
