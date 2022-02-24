@@ -2,3 +2,11 @@ node_modules
 client/src/eslintcache
 client/.eslintcache
 server/.DS_Store
+
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
