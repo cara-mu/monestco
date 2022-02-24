@@ -5,10 +5,6 @@ import Container from 'react-bootstrap/Container';
 import Grid from '@material-ui/core/Grid';
 import { Link, useParams, withRouter, useLocation } from 'react-router-dom';
 import '../../styles/Companies.css';
-import DiversityImg from '../../assets/diversity.png';
-import WorkerExploitImg from '../../assets/workerexploit.png';
-import WasteImg from '../../assets/wastepollution.png';
-import SustainableImg from '../../assets/sustainable.png';
 import DropdownButton from '../../assets/dropdownbutton.png';
 import NewsPlaceHolder from '../../assets/news.png';
 import { makeStyles } from '@material-ui/core/styles';
@@ -26,7 +22,7 @@ import { AiFillCaretDown } from 'react-icons/ai';
 import TextTruncate from 'react-text-truncate';
 import PoliticalContribution from "./PoliticalContribution";
 import Facts from "./Facts";
-
+import Scores from "./Scores/Scores";
 
 const companyinfo = [
     {
@@ -161,7 +157,6 @@ function Company({ match, location }) {
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
     const [openID, setOpenID] = useState(0);
-    const [showBrandPInfo, setBrandPShowInfo] = useState(false);
     const [showCompanyInitInfo, setCompanyInitShowInfo] = useState(false);
     const [showNewsInfo, setNewsShowInfo] = useState(false);
     const [showInfo, setShowInfo] = useState(false)
@@ -178,10 +173,6 @@ function Company({ match, location }) {
 
     const handleCloseInfo = () => {
         setShowInfo(false)
-    }
-
-    const handleCloseBrandPInfo = () => {
-        setBrandPShowInfo(false)
     }
 
     const handleCloseNewsInfo = () => {
@@ -243,22 +234,7 @@ function Company({ match, location }) {
             issueAdd={news[0]["IssueAddressed"]} issueAddExp={news[0]["IssueAddressedExplanation"]} respTake={news[0]["ResponsibilityTaken"]} respTakenExp={news[0]["ResponsibilityTakenExplanation"]} newsID={news[0]["ID"]} citID={citations[0]["RelationalID"]} author={citations[0]["Author"]} cittitle={citations[0]["Title"]} pubgroup={citations[0]["PublishingGroup"]} date={citations[0]["Date"]} pages={citations[0]["Pages"]} url={citations[0]["URL"]} />
     );
 
-    const BrandPerformancePopup = ({ handleCloseInfo }) => {
 
-        return (
-            <div className="company-popup">
-                <div className='company-popup-content'>
-                    <div style={{ display: 'flex', flexDirection: 'column', marginTop: '1rem' }}>
-                        <div>Brand Performance</div>
-                        <div style={{ fontSize: '16px', fontWeight: '500', lineHeight: '25px' }}>
-                            Performance is scored following an assessment of company policies, practices and actions taken in each of the following categories. To understand the scores given, click on Detailed Breakdown.
-                        </div>
-                    </div>
-                    <HighlightOffRoundedIcon onClick={handleCloseBrandPInfo} className="popup-close-icon" />
-                </div>
-            </div>
-        )
-    };
     const CompanyInitPopup = ({ handleCloseInfo }) => {
         return (
             <div className="company-popup">
@@ -331,34 +307,6 @@ function Company({ match, location }) {
 
     }
 
-    const BrandPerformance = () => {
-
-        const [tabView, setTabView] = useState(window.innerWidth < 800);
-
-        useLayoutEffect(() => {
-            function updateSize() {
-                if (window.innerWidth > 800) {
-                    setTabView(false);
-                } else {
-                    setTabView(true);
-                }
-            }
-            window.addEventListener("resize", updateSize);
-            updateSize();
-            return () => window.removeEventListener("resize", updateSize);
-        }, []);
-
-        if (!tabView) { //web view
-            return (
-                <div className='brand_info-text'>Performance is scored following an assessment of company policies, practices and actions taken in each of the following categories. To understand the scores given, click on Detailed Breakdown</div>
-            )
-        } else if (showBrandPInfo && tabView) { //tab view	
-            return (
-                <BrandPerformancePopup handleCloseBrandPInfo={handleCloseBrandPInfo} />
-            )
-        } else return null
-
-    }
 
     const CompanyInitiative = () => {
 
@@ -435,10 +383,6 @@ function Company({ match, location }) {
             let data = companyDetails;
             let score = (parseInt(resp.data[0]["Ascore"]) + parseInt(resp.data[0]["Bscore"]) + parseInt(resp.data[0]["Cscore"]) + parseInt(resp.data[0]["Dscore"])) / 4;
             data[0]["TotalScore"] = score;
-            data[0]["Ascore"] = resp.data[0]["Ascore"];
-            data[0]["Bscore"] = resp.data[0]["Bscore"];
-            data[0]["Cscore"] = resp.data[0]["Cscore"];
-            data[0]["Dscore"] = resp.data[0]["Dscore"];
             let ratio = 324 * score / 100;
             data[0]["SliderLength"] = ratio;
             setCompanyDetails(data);
@@ -698,65 +642,10 @@ function Company({ match, location }) {
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <div className='Right-Menu' style={{ marginTop: '7%', marginLeft: '0.5rem' }}>
-                        <div className='Brand-Section-title Right-Menu'>
-                            Brand Performance
-                        <InfoIcon className='brand_info-icon' onClick={() => setBrandPShowInfo(!showBrandPInfo)} />
-                            <BrandPerformance />
-                        </div>
-                        <div className='Decorative-Line'></div>
+                        
+                        {/*Score*/}
+                        <Scores company={companyName} />
 
-                        <div className='Brand-Performance'>
-                            <div className='Brand-Performance-container'>
-                                <div>
-                                    DIVERSITY & INCLUSION
-                                    <div className='Description'>
-                                        <div className='Description-text'>
-                                            Discrimination, Gender Equality, <br></br>Cultural Diversity, Inclusivity
-                                        </div>
-                                        <div className='Description-data'>
-                                            <img src={DiversityImg} />
-                                            <div className="Description-score"><span style={{ cursor: 'default' }}>{companyDetails[0]["Ascore"]}</span><span style={{ cursor: 'default' }}>/100</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    WORKER EXPLOITATION
-                                    <div className='Description'>
-                                        <div className='Description-text'>
-                                            Child Labour, Forced Labour, <br></br> Living Wage, Working Conditions
-                                        </div>
-                                        <div className='Description-data'>
-                                            <img src={WorkerExploitImg} />
-                                            <div className="Description-score"><span style={{ cursor: 'default' }}>{companyDetails[0]["Bscore"]}</span><span style={{ cursor: 'default' }}>/100</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    WASTE & POLLUTION
-                                    <div className='Description'>
-                                        <div className='Description-text'>
-                                            Air Pollution, Water Pollution & Wastes, <br></br> Packaging Waste, Material Waste
-                                        </div>
-                                        <div className='Description-data'>
-                                            <img src={WasteImg} />
-                                            <div className="Description-score"><span style={{ cursor: 'default' }}>{companyDetails[0]["Cscore"]}</span><span style={{ cursor: 'default' }}>/100</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    ETHICAL SOURCING
-                                    <div className='Description'>
-                                        <div className='Description-text'>
-                                            Cotton Farming, Deforestation, <br /> Animal Welfare
-                                        </div>
-                                        <div className='Description-data'>
-                                            <img src={SustainableImg} />
-                                            <div className="Description-score"><span style={{ cursor: 'default' }}>{companyDetails[0]["Dscore"]}</span><span style={{ cursor: 'default' }}>/100</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div className='Brand-Section-title'>
                             Company Initiatives
                         <InfoIcon className='brand_info-icon' onClick={() => setCompanyInitShowInfo(!showCompanyInitInfo)} />
