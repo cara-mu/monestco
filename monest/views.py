@@ -9,6 +9,8 @@ from monest.models import Company, Scores, Facts, News, IndustryStandards, Polit
 from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
+import logging
+logger = logging.getLogger(__name__)
 
 
 # Create your views here.
@@ -143,20 +145,29 @@ def get_scores_base(name: str, score_types: [str], include_sub: bool, parse_func
     if not len(score_types):
         return {}
 
-    company = Company.objects.get(name=name)
-    condition = Q()
-    if include_sub:
-        for t in score_types:
-            condition |= Q(metric__types__contains=t)
-    else:
-        condition |= Q(metric__types__in=score_types)
+    try:
+        company = Company.objects.get(name=name)
+        condition = Q()
+        if include_sub:
+            for t in score_types:
+                condition |= Q(metric__types__contains=t)
+        else:
+            condition |= Q(metric__types__in=score_types)
 
-    res = {}
-    parent_scores = Scores.objects.filter(Q(company=company.parent_company) & condition)
-    res = parse_func(parent_scores, res)
-    scores = Scores.objects.filter(Q(company=company) & condition)
-    res = parse_func(scores, res)
-    return res
+        res = {}
+        parent_scores = Scores.objects.filter(Q(company=company.parent_company) & condition)
+        res = parse_func(parent_scores, res)
+        scores = Scores.objects.filter(Q(company=company) & condition)
+        res = parse_func(scores, res)
+        return res
+
+    except Company.DoesNotExist as e1:
+        logger.error(e1)
+        raise e1
+
+    except Scores.DoesNotExist as e2:
+        logger.error(e2)
+        raise e2
 
 
 def get_scores(name: str, score_types: [str], include_sub: bool) -> {}:
@@ -184,6 +195,13 @@ def company_scores(request):
     name = request.query_params['0']
     res = get_scores(name, ['A', 'B', 'C', 'D'], True)
     return JsonResponse([res], safe=False)
+
+
+@api_view(['GET'])
+def company_total_scores(request):
+    name = request.query_params['company']
+    res = get_scores(name, ['A', 'B', 'C', 'D'], False)
+    return JsonResponse(res, safe=False)
 
 
 @api_view(['GET', 'POST'])
@@ -378,6 +396,42 @@ def similar_company_3(request):
 @api_view(['GET', 'POST'])
 def similar_company_4(request):
     return get_similar_company(request, 4)
+
+
+@api_view(['GET'])
+def similar_companies(request):
+    global company_name
+    name = request.query_params['company']
+    try:
+        company = Company.objects.get(name=name)
+    except Company.DoesNotExist:
+        return JsonResponse({'error': f'company {name} cannot find'}, status=400)
+
+    res = {}
+    for i in range(1, 5):
+        if i == 1:
+            company_name = company.similar_company_1
+        elif i == 2:
+            company_name = company.similar_company_2
+        elif i == 3:
+            company_name = company.similar_company_3
+        elif i == 4:
+            company_name = company.similar_company_4
+
+        try:
+            score = get_total_score(company_name)
+            res[i] = {
+                'name': company_name,
+                'score': score
+            }
+        except (Company.DoesNotExist, Scores.DoesNotExist):
+            logger.error(f'error in querying score for {company_name}, setting score to 0')
+            res[i] = {
+                'name':  company_name,
+                'score': 0
+            }
+
+    return JsonResponse(res, safe=False)
 
 
 @api_view(['GET', 'POST'])
