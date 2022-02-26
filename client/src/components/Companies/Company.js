@@ -26,6 +26,7 @@ import { AiFillCaretDown } from 'react-icons/ai';
 import TextTruncate from 'react-text-truncate';
 import PoliticalContribution from "./PoliticalContribution";
 import Facts from "./Facts";
+import BrandProfile from "./BrandProfile";
 
 
 const companyinfo = [
@@ -669,8 +670,10 @@ function Company({ match, location }) {
         <div className='Layout'>
             <Grid container spacing={3}>
                 <Grid item xs={12} md={4}>
+
                     {/*brand profile*/}
-                    <BrandProfile company = {companyName}/>
+                    <BrandProfile company = {companyName} info = {companyinfo}/>
+
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <div className='Right-Menu' style={{ marginTop: '7%', marginLeft: '0.5rem' }}>
