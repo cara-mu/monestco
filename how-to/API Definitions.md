@@ -781,6 +781,22 @@ Notes:
 
 ```
 
+13. Get Company's Total Score
+- URL: /companyTotalScores
+- Method: Get
+- Params: ?company=Uniqlo
+- Return
+```json
+[
+  {
+    "Ascore": 52,
+    "Bscore": 50,
+    "Cscore": 45,
+    "Dscore": 32
+  }
+]
+```
+
 ## Citations
 
 13. Get Citation Information for Each Brand in Detailed Breakdowns
@@ -1704,8 +1720,40 @@ Notes:
    }
 ]
 ```
+## Similar Company
+1. Get Total Scores for similar companies
+- URL: /api/v1/similarcompanies
+- Method: GET
+- Params:  ?company=Adidas
+- Return: 200 
+```json
+{
+  "1": {
+    "name": "Nike",
+    "score": 0
+  },
+  "2": {
+    "name": "Under Armour",
+    "score": 0
+  },
+  "3": {
+    "name": "Reebok",
+    "score": 55
+  },
+  "4": {
+    "name": "New Balance",
+    "score": 0
+  }
+}
+```
+- Return: 400
+```json
+{
+  "error": "company Adida cannot find"
+}
+```
 
-18. Return the 4 scores of the similar company 1
+3. Return the 4 scores of the similar company 1
 - URL: /similiarCompany1
 - Method: Post
 - Params: ?0=Aritzia
