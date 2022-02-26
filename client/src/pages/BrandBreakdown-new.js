@@ -8,6 +8,7 @@ import ExpandMoreSharpIcon from "@material-ui/icons/ExpandMoreSharp";
 import "../styles/BrandBreakdown.css";
 import "../styles/BrandBreakdown-new.css";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const field = [
   {
@@ -1516,7 +1517,9 @@ class BrandBreakdown extends React.Component {
   return (
     <div className="breakdown_container">
       <div className="breakdown_logo">
-        <img src={this.state.logo}  className="breakdown_logoImage" />
+        <Link to={"/companies/" + this.state.companyName}>
+          <img src={this.state.logo}  className="breakdown_logoImage" />
+        </Link>
         <p className="breakdown_logoText">
           {Math.round(this.state.totalscore, 2)}<span style={{ fontSize: 32 }}>/100</span>
         </p>
