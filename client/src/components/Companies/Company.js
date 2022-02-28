@@ -156,7 +156,6 @@ function Company({ match, location }) {
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
     const [openID, setOpenID] = useState(0);
-    const [showBrandPInfo, setBrandPShowInfo] = useState(false);
     const [showCompanyInitInfo, setCompanyInitShowInfo] = useState(false);
     const [showNewsInfo, setNewsShowInfo] = useState(false);
     const [showInfo, setShowInfo] = useState(false)
@@ -173,10 +172,6 @@ function Company({ match, location }) {
 
     const handleCloseInfo = () => {
         setShowInfo(false)
-    }
-
-    const handleCloseBrandPInfo = () => {
-        setBrandPShowInfo(false)
     }
 
     const handleCloseNewsInfo = () => {
@@ -238,22 +233,7 @@ function Company({ match, location }) {
             issueAdd={news[0]["IssueAddressed"]} issueAddExp={news[0]["IssueAddressedExplanation"]} respTake={news[0]["ResponsibilityTaken"]} respTakenExp={news[0]["ResponsibilityTakenExplanation"]} newsID={news[0]["ID"]} citID={citations[0]["RelationalID"]} author={citations[0]["Author"]} cittitle={citations[0]["Title"]} pubgroup={citations[0]["PublishingGroup"]} date={citations[0]["Date"]} pages={citations[0]["Pages"]} url={citations[0]["URL"]} />
     );
 
-    const BrandPerformancePopup = ({ handleCloseInfo }) => {
 
-        return (
-            <div className="company-popup">
-                <div className='company-popup-content'>
-                    <div style={{ display: 'flex', flexDirection: 'column', marginTop: '1rem' }}>
-                        <div>Brand Performance</div>
-                        <div style={{ fontSize: '16px', fontWeight: '500', lineHeight: '25px' }}>
-                            Performance is scored following an assessment of company policies, practices and actions taken in each of the following categories. To understand the scores given, click on Detailed Breakdown.
-                        </div>
-                    </div>
-                    <HighlightOffRoundedIcon onClick={handleCloseBrandPInfo} className="popup-close-icon" />
-                </div>
-            </div>
-        )
-    };
     const CompanyInitPopup = ({ handleCloseInfo }) => {
         return (
             <div className="company-popup">
@@ -326,34 +306,6 @@ function Company({ match, location }) {
 
     }
 
-    const BrandPerformance = () => {
-
-        const [tabView, setTabView] = useState(window.innerWidth < 800);
-
-        useLayoutEffect(() => {
-            function updateSize() {
-                if (window.innerWidth > 800) {
-                    setTabView(false);
-                } else {
-                    setTabView(true);
-                }
-            }
-            window.addEventListener("resize", updateSize);
-            updateSize();
-            return () => window.removeEventListener("resize", updateSize);
-        }, []);
-
-        if (!tabView) { //web view
-            return (
-                <div className='brand_info-text'>Performance is scored following an assessment of company policies, practices and actions taken in each of the following categories. To understand the scores given, click on Detailed Breakdown</div>
-            )
-        } else if (showBrandPInfo && tabView) { //tab view	
-            return (
-                <BrandPerformancePopup handleCloseBrandPInfo={handleCloseBrandPInfo} />
-            )
-        } else return null
-
-    }
 
     const CompanyInitiative = () => {
 
@@ -797,13 +749,7 @@ function Company({ match, location }) {
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <div className='Right-Menu' style={{ marginTop: '7%', marginLeft: '0.5rem' }}>
-                        <div className='Brand-Section-title Right-Menu'>
-                            Brand Performance
-                        <InfoIcon className='brand_info-icon' onClick={() => setBrandPShowInfo(!showBrandPInfo)} />
-                            <BrandPerformance />
-                        </div>
-                        <div className='Decorative-Line'></div>
-
+                        
                         {/*Score*/}
                         <Scores company={companyName} />
 
