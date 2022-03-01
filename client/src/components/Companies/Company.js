@@ -22,12 +22,8 @@ import { AiFillCaretDown } from 'react-icons/ai';
 import TextTruncate from 'react-text-truncate';
 import PoliticalContribution from "./PoliticalContribution";
 import Facts from "./Facts";
-<<<<<<< HEAD
-import BrandProfile from "./BrandProfile";
-
-=======
 import Scores from "./Scores/Scores";
->>>>>>> 2c1bd86c131cb5624c36ab40b3cb6cd1618cab04
+import BrandProfile from "./BrandProfile";
 
 const companyinfo = [
     {
@@ -620,8 +616,9 @@ function Company({ match, location }) {
             <Grid container spacing={3}>
                 <Grid item xs={12} md={4}>
 
-                    {/*brand profile*/}
+                    {/*brand profile with companyName and info*/}
                     <BrandProfile company = {companyName} info = {companyinfo}/>
+                    {/*test*/}
 
                 </Grid>
                 <Grid item xs={12} md={8}>
