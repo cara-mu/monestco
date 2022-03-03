@@ -21,7 +21,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { AiFillCaretDown } from 'react-icons/ai';
 import TextTruncate from 'react-text-truncate';
 import PoliticalContribution from "./PoliticalContribution";
+import Facts from "./Facts";
 import Scores from "./Scores/Scores";
+import BrandProfile from "./BrandProfile";
 
 const companyinfo = [
     {
@@ -551,113 +553,6 @@ function Company({ match, location }) {
             })
     }, [findLocation]);
 
-    const Facts = (factinput) => {
-        const [factCitation, setFactCitation] = useState([]);
-        const [showCitation, setShowCitation] = useState(false);
-
-        const FactCitations = (i) => {
-            if (factCitation.length != 0) {
-                return <div><i>{JSON.parse(factCitation)[0]["Title"][i]}</i>, {JSON.parse(factCitation)[0]["Author"][i]}{JSON.parse(factCitation)[0]["Author"][i] && <span>,</span>} {JSON.parse(factCitation)[0]["PublishingGroup"][i]}, {JSON.parse(factCitation)[0]["Date"][i]}{JSON.parse(factCitation)[0]["Pages"][i] && <span>,</span>} {JSON.parse(factCitation)[0]["Pages"][i]}</div>
-            }
-        }
-
-        const showCitations = async () => {
-            if (showCitation == false) setShowCitation(true);
-            if (showCitation == true) setShowCitation(false);
-            // console.log(showCitation);
-            // if (showCitation == false) setShowCitation(true);
-            // if (showCitation == true) setShowCitation(false);
-            // if (showCitation == -1) {
-            //     setShowCitation(j);
-            //     console.log(showCitation);
-            // }
-            // if (showCitation == j) {
-            //     setShowCitation(-1);
-            //     console.log(showCitation);
-            // }
-            let citationsarr = [];
-            let relidarr = [];
-            let authorarr = [];
-            let datearr = [];
-            let pubarr = [];
-            let titlearr = [];
-            let urlarr = [];
-            let pagesarr = [];
-            if (factinput[0]['Heading'].length != 0) {
-                for (let i = 0; i < Object.entries(factinput[0]["Heading"]).length; ++i) {
-                    await axios.post("/citationsFacts", {}, { params: [companyName, factinput[0]["ID"][i], "F"] })
-                    .then((resp) => {
-                        if (resp.data.length != 0) {
-                            let data = citations;
-                            if (citationsarr.length != 0) {
-                                relidarr = citationsarr[0][0]["RelationalID"];
-                                authorarr = citationsarr[0][0]["Author"];
-                                datearr = citationsarr[0][0]["Date"];
-                                pubarr = citationsarr[0][0]["PublishingGroup"];
-                                titlearr = citationsarr[0][0]["Title"];
-                                urlarr = citationsarr[0][0]["URL"];
-                                pagesarr = citationsarr[0][0]["Pages"];
-                            }
-                            resp.data.map((citation) => {
-                                relidarr.push(citation["RelationalID"]);
-                                authorarr.push(citation["Author"]);
-                                datearr.push(citation["Date"]);
-                                pubarr.push(citation["PublishingGroup"]);
-                                titlearr.push(citation["Title"]);
-                                urlarr.push(citation["URL"]);
-                                pagesarr.push(citation["Pages"]);
-                            });
-                            data[0]["Author"] = authorarr;
-                            data[0]["Date"] = datearr;
-                            data[0]["PublishingGroup"] = pubarr;
-                            data[0]["Title"] = titlearr;
-                            data[0]["RelationalID"] = relidarr;
-                            data[0]["URL"] = urlarr;
-                            data[0]["Pages"] = pagesarr;
-                            citationsarr.push(data);
-                        }
-                    });
-                }
-                setFactCitation(JSON.stringify(citationsarr[0]));
-            }
-        };
-
-        return Object.entries(factinput[0]['Heading']).map((heading, i) => {
-            return <div>
-                <Accordion className={classes.dropdown}>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon className='circle-new' />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                    >
-                        <Typography className={classes.heading}>{heading[1]}</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails style={{ backgroundColor: '#F2F2F2' }}>
-                        <Typography className={classes.expandMenu}>
-                            {factinput[0]['Summary'][i]}
-                            <div
-                                className="Fun-Fact"
-                                style={{ width: "100%", fontWeight: "700" }}
-                            >
-                                Citation
-              <i
-                                    onClick={() => showCitations()}
-                                    style={{ borderColor: "#323232" }}
-                                    className={`Fun-Fact-arrowdown ${showCitation ? "Fun-Fact-arrowdown-rotate" : ""}`}
-                                ></i>
-                            </div>
-                            {showCitation ?
-                                <div>
-                                    {FactCitations(i)}
-                                </div>
-                                : null}
-                        </Typography>
-                    </AccordionDetails>
-                </Accordion>
-                <div className='FunFact-Decorative-Line'></div>
-            </div>
-        })
-    }
 
     const News = (newsinput) => {
         return Object.entries(newsinput[0]['Category']).map((category, i) => {
@@ -720,32 +615,11 @@ function Company({ match, location }) {
         <div className='Layout'>
             <Grid container spacing={3}>
                 <Grid item xs={12} md={4}>
-                    <div className='Left-Menu'>
-                        <div>
-                            <img className='brand-logo' src={`${companyDetails[0]["Logo"]}`} alt={`${companyDetails[0]["Logo"]}`} />
 
-                            {/* conditional rendering for subsidiary */}
-                            {companyDetails[0]["Subsidiary"] != null &&
-                                <div style={{ fontSize: '14px', fontWeight: '500', color: '#797979', margin: '10px 0' }}>Subsidiary of {companyDetails[0]["Subsidiary"]}</div>
-                            }
+                    {/*brand profile with companyName and info*/}
+                    <BrandProfile company = {companyName} info = {companyinfo}/>
+                    {/*test*/}
 
-                            <p style={{ marginTop: "5%", color: '#4F4F4F' }}><b>{companyDetails[0]["Name"]}</b> {companyDetails[0]["Description"]}</p>
-                        </div>
-                        <div>
-                            <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginLeft: '105px' }}>industry average</div>
-                            <AiFillCaretDown style={{ marginLeft: '155px' }} />
-                            {/* {companyDetails[0]["SliderLength"]} */}
-                            <div class="horizontalline" style={{ width: `${companyDetails[0]["SliderLength"]}px` }}></div>
-                            <div class="verticalline"></div>
-                            <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" />
-                            <p style={{ fontFamily: 'DM Sans', fontSize: '12px', color: '#4F4F4F' }} >underperforming<span style={{ marginLeft: '145px' }}>overperforming</span></p>
-                            <div className="brand_inside_text">
-                                <span className='navy'>{Math.round(companyDetails[0]["TotalScore"], 2)}</span>
-                                <span>/100</span>
-                            </div>
-                            <Link to={`/brand-breakdown/${companyName}`} className='breakDown-link'>Detailed Breakdown</Link>
-                        </div>
-                    </div>
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <div className='Right-Menu' style={{ marginTop: '7%', marginLeft: '0.5rem' }}>
@@ -760,7 +634,8 @@ function Company({ match, location }) {
                         </div>
 
                         <div className='Decorative-Line'></div>
-                        {Facts(fact)}
+                        {/*{Facts(fact)}*/}
+                        <Facts company = {companyName}/>
 
 
                         <div className='In-The-News'>
