@@ -1,3 +1,0 @@
-Requirement already satisfied: Django in /Users/austinzhang/Desktop/Repo/tutorial-env/lib/python3.9/site-packages (4.0.2)
-Requirement already satisfied: asgiref<4,>=3.4.1 in /Users/austinzhang/Desktop/Repo/tutorial-env/lib/python3.9/site-packages (from Django) (3.5.0)
-Requirement already satisfied: sqlparse>=0.2.2 in /Users/austinzhang/Desktop/Repo/tutorial-env/lib/python3.9/site-packages (from Django) (0.4.2)
