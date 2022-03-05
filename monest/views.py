@@ -186,8 +186,23 @@ def get_scores(name: str, score_types: [str], include_sub: bool) -> {}:
 
 
 def get_total_score(name: str) -> int:
+    """
+    get total score.
+    If a company lacks certain scores, say A score,  total_score wouldn't include that component
+    :param name:
+    :return:
+    """
     scores = get_scores_base(name, ['A', 'B', 'C', 'D'], False, update_scores)
-    total_score = scores['Ascore'] + scores['Bscore'] + scores['Cscore'] + scores['Dscore']
+    total_score = 0
+    if 'Ascore' in scores:
+        total_score += scores['Ascore']
+    if 'Bscore' in scores:
+        total_score += scores['Bscore']
+    if 'Cscore' in scores:
+        total_score += scores['Cscore']
+    if 'Dscore' in scores:
+        total_score += scores['Dscore']
+
     total_score = round(total_score / 4)
     return total_score
 

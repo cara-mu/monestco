@@ -417,74 +417,7 @@ function Company({ match, location }) {
                 setCompanyDetails(data);
                 setState(resp.data);
             })
-        axios.post(
-            '/similarCompany1',
-            {},
-            {
-                params: companyName
-            }
-        ).then((resp) => {
-            let data = companyDetails;
-            data[0]["company1Ascore"] = resp.data[0]["Ascore"];
-            data[0]["company1Bscore"] = resp.data[0]["Bscore"];
-            data[0]["company1Cscore"] = resp.data[0]["Cscore"];
-            data[0]["company1Dscore"] = resp.data[0]["Dscore"];
-            let company1TotalScore = (parseInt(data[0]["company1Ascore"]) + parseInt(data[0]["company1Bscore"]) + parseInt(data[0]["company1Cscore"]) + parseInt(data[0]["company1Dscore"])) / 4;
-            let comp1SliderLength = 324 * company1TotalScore / 100
-            data[0]["company1TotalScore"] = company1TotalScore;
-            data[0]["comp1SliderLength"] = comp1SliderLength;
-        })
-        axios.post(
-            '/similarCompany2',
-            {},
-            {
-                params: companyName
-            }
-        ).then((resp) => {
-            let data = companyDetails;
-            data[0]["company2Ascore"] = resp.data[0]["Ascore"];
-            data[0]["company2Bscore"] = resp.data[0]["Bscore"];
-            data[0]["company2Cscore"] = resp.data[0]["Cscore"];
-            data[0]["company2Dscore"] = resp.data[0]["Dscore"];
-            let company2TotalScore = (parseInt(data[0]["company2Ascore"]) + parseInt(data[0]["company2Bscore"]) + parseInt(data[0]["company2Cscore"]) + parseInt(data[0]["company2Dscore"])) / 4;
-            let comp2SliderLength = 324 * company2TotalScore / 100
-            data[0]["company2TotalScore"] = company2TotalScore;
-            data[0]["comp2SliderLength"] = comp2SliderLength;
-        })
-        axios.post(
-            '/similarCompany3',
-            {},
-            {
-                params: companyName
-            }
-        ).then((resp) => {
-            let data = companyDetails;
-            data[0]["company3Ascore"] = resp.data[0]["Ascore"];
-            data[0]["company3Bscore"] = resp.data[0]["Bscore"];
-            data[0]["company3Cscore"] = resp.data[0]["Cscore"];
-            data[0]["company3Dscore"] = resp.data[0]["Dscore"];
-            let company3TotalScore = (parseInt(data[0]["company3Ascore"]) + parseInt(data[0]["company3Bscore"]) + parseInt(data[0]["company3Cscore"]) + parseInt(data[0]["company3Dscore"])) / 4;
-            let comp3SliderLength = 324 * company3TotalScore / 100
-            data[0]["company3TotalScore"] = company3TotalScore;
-            data[0]["comp3SliderLength"] = comp3SliderLength;
-        })
-        axios.post(
-            '/similarCompany4',
-            {},
-            {
-                params: companyName
-            }
-        ).then((resp) => {
-            let data = companyDetails;
-            data[0]["company4Ascore"] = resp.data[0]["Ascore"];
-            data[0]["company4Bscore"] = resp.data[0]["Bscore"];
-            data[0]["company4Cscore"] = resp.data[0]["Cscore"];
-            data[0]["company4Dscore"] = resp.data[0]["Dscore"];
-            let company4TotalScore = (parseInt(data[0]["company4Ascore"]) + parseInt(data[0]["company4Bscore"]) + parseInt(data[0]["company4Cscore"]) + parseInt(data[0]["company4Dscore"])) / 4;
-            let comp4SliderLength = 324 * company4TotalScore / 100
-            data[0]["company4TotalScore"] = company4TotalScore;
-            data[0]["comp4SliderLength"] = comp4SliderLength;
-        })
+
         axios.post(
             '/facts',
             {},
