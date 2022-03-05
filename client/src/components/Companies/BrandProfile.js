@@ -1,7 +1,7 @@
-import axios from 'axios';
 import React, { useEffect, useState, useLayoutEffect } from 'react';
 import { AiFillCaretDown } from 'react-icons/ai';
 import { Link, useParams, withRouter, useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 
 export default function BrandProfile(props){
@@ -32,7 +32,7 @@ export default function BrandProfile(props){
                                 <span className='navy'>{Math.round(companyDetails[0]["TotalScore"], 2)}</span>
                                 <span>/100</span>
                             </div>
-                            <Link to={`/brand-breakdown/${props.companyName}`} className='breakDown-link'>Detailed Breakdown</Link>
+                            <Link to={`/brand-breakdown/${props.company}`} className='breakDown-link'>Detailed Breakdown</Link>
                         </div>
                     </div>
     );
