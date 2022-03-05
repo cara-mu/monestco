@@ -47,15 +47,6 @@ const companyinfo = [
     }
 ]
 
-const companyFacts = [
-    {
-        CompanyID: 0,
-        Heading: [],
-        Summary: [],
-        ID: []
-    }
-]
-
 const companyNews = [
     {
         CompanyID: 0,
@@ -163,7 +154,6 @@ function Company({ match, location }) {
     const [showNewsInfo, setNewsShowInfo] = useState(false);
     const [showInfo, setShowInfo] = useState(false)
     const [companyDetails, setCompanyDetails] = React.useState(companyinfo);
-    const [fact, setFact] = React.useState(companyFacts);
     const [news, setNews] = React.useState(companyNews);
     const [citations, setCitations] = React.useState(companyCit);
     const { loading, setLoading } = useState(false);
@@ -268,47 +258,6 @@ function Company({ match, location }) {
         )
     };
 
-    const RenderFact = ({ item }) => {
-        const [showFact, setShowFact] = useState(false);
-        const [showCitation, setShowCitation] = useState(false);
-
-        useEffect(() => {
-            if (showFact === false) {
-                setShowCitation(false)
-            }
-        }, [showFact])
-
-        return (
-            <div>
-                <div className='Fun-Fact'>{item.title}
-                    <div
-                        className={showFact ? "Fun-Fact-circle-close" : "Fun-Fact-circle"}
-                        onClick={() => setShowFact(!showFact)}
-                    >
-                        <i className={showFact ? "Fun-Fact-arrowdown-close" : "Fun-Fact-arrowdown"}></i>
-                    </div>
-                </div>
-                <div className={`fact-animate-field ${showFact ? 'fact-animate' : ''}`}>
-                    {
-                        showFact ?
-                            <div className="Fun-Fact-Dropdown">
-                                {item.discription}
-                                <div className='Fun-Fact-Citation' style={{ width: '100%', fontWeight: '700' }}>
-                                    Citation
-                                <i onClick={() => setShowCitation(!showCitation)} style={{ borderColor: '#323232' }} className={showCitation ? "Fun-Fact-arrowdown-close" : "Fun-Fact-arrowdown"}></i>
-                                </div>
-                                {
-                                    showCitation ? <div>{item.citation}</div> : null
-                                }
-                            </div> : null
-                    }
-                </div>
-                <div className='FunFact-Decorative-Line'></div>
-            </div>
-        )
-
-    }
-
 
     const CompanyInitiative = () => {
 
@@ -368,9 +317,6 @@ function Company({ match, location }) {
 
     }
 
-    const newsDiscriptionTitle = "Nike allegedly discriminates against women at its corporate headquarters";
-    const newsDiscriptionInfo = "Fed up with feeling marginalized working at the Nike headquarters, a group of female employees began secretly surveying their coworkers on their experiences with gender discrimination....";
-
     useEffect(() => {
         // setLoading(true);
         // let data = companyDetails;
@@ -418,29 +364,7 @@ function Company({ match, location }) {
                 setState(resp.data);
             })
 
-        axios.post(
-            '/facts',
-            {},
-            {
-                params: companyName
-            }
-        )
-            .then((resp) => {
-                let data = companyFacts;
-                let headingsarr = [];
-                let summaryarr = [];
-                let idarr = [];
-                resp.data.map(fact => {
-                    headingsarr.push(fact['Heading']);
-                    summaryarr.push(fact['Summary']);
-                    idarr.push(fact['ID']);
-                })
-                data[0]['Heading'] = headingsarr;
-                data[0]['Summary'] = summaryarr;
-                data[0]["ID"] = idarr;
-                setFact(data);
-                setState(resp.data);
-            })
+
         axios.post(
             '/news',
             {},
