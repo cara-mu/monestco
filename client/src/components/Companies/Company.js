@@ -21,7 +21,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { AiFillCaretDown } from 'react-icons/ai';
 import TextTruncate from 'react-text-truncate';
 import PoliticalContribution from "./PoliticalContribution";
-import Facts from "./Facts";
+import Fact from "./companyInitiative"; {/* facts */}
 import Scores from "./Scores/Scores";
 import BrandProfile from "./BrandProfile";
 
@@ -627,15 +627,8 @@ function Company({ match, location }) {
                         {/*Score*/}
                         <Scores company={companyName} />
 
-                        <div className='Brand-Section-title'>
-                            Company Initiatives
-                        <InfoIcon className='brand_info-icon' onClick={() => setCompanyInitShowInfo(!showCompanyInitInfo)} />
-                            <CompanyInitiative />
-                        </div>
-
-                        <div className='Decorative-Line'></div>
-                        {/*{Facts(fact)}*/}
-                        <Facts company = {companyName}/>
+                        {/*Facts and company initiative header*/}
+                        <Fact/>
 
 
                         <div className='In-The-News'>

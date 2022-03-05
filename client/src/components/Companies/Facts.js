@@ -4,9 +4,11 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Typography from "@material-ui/core/Typography";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
-import React, {useEffect, useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import axios from "axios";
+import React, {useLayoutEffect, useEffect, useState } from 'react';
+import HighlightOffRoundedIcon from '@material-ui/icons/HighlightOffRounded';
+
 
 const style = makeStyles((theme) => ({
     downdrop: {
@@ -149,7 +151,7 @@ export default function Facts(props) {
             }
         }
         
-
+        
 
         return Object.entries(fact[0]['Heading']).map((heading, i) => {
             return <div>
