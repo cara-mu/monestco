@@ -94,7 +94,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'monest',
 <<<<<<< HEAD
+<<<<<<< HEAD
         'USER': 'austinzhang',
+=======
+        'USER': 'monest',
+>>>>>>> parent of 8a62016 (Integrating Django and making score unclickable)
 =======
         'USER': 'monest',
 >>>>>>> parent of 8a62016 (Integrating Django and making score unclickable)
