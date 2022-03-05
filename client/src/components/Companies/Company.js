@@ -47,15 +47,6 @@ const companyinfo = [
     }
 ]
 
-const companyFacts = [
-    {
-        CompanyID: 0,
-        Heading: [],
-        Summary: [],
-        ID: []
-    }
-]
-
 const companyNews = [
     {
         CompanyID: 0,
@@ -163,7 +154,6 @@ function Company({ match, location }) {
     const [showNewsInfo, setNewsShowInfo] = useState(false);
     const [showInfo, setShowInfo] = useState(false)
     const [companyDetails, setCompanyDetails] = React.useState(companyinfo);
-    const [fact, setFact] = React.useState(companyFacts);
     const [news, setNews] = React.useState(companyNews);
     const [citations, setCitations] = React.useState(companyCit);
     const { loading, setLoading } = useState(false);
@@ -268,47 +258,6 @@ function Company({ match, location }) {
         )
     };
 
-    const RenderFact = ({ item }) => {
-        const [showFact, setShowFact] = useState(false);
-        const [showCitation, setShowCitation] = useState(false);
-
-        useEffect(() => {
-            if (showFact === false) {
-                setShowCitation(false)
-            }
-        }, [showFact])
-
-        return (
-            <div>
-                <div className='Fun-Fact'>{item.title}
-                    <div
-                        className={showFact ? "Fun-Fact-circle-close" : "Fun-Fact-circle"}
-                        onClick={() => setShowFact(!showFact)}
-                    >
-                        <i className={showFact ? "Fun-Fact-arrowdown-close" : "Fun-Fact-arrowdown"}></i>
-                    </div>
-                </div>
-                <div className={`fact-animate-field ${showFact ? 'fact-animate' : ''}`}>
-                    {
-                        showFact ?
-                            <div className="Fun-Fact-Dropdown">
-                                {item.discription}
-                                <div className='Fun-Fact-Citation' style={{ width: '100%', fontWeight: '700' }}>
-                                    Citation
-                                <i onClick={() => setShowCitation(!showCitation)} style={{ borderColor: '#323232' }} className={showCitation ? "Fun-Fact-arrowdown-close" : "Fun-Fact-arrowdown"}></i>
-                                </div>
-                                {
-                                    showCitation ? <div>{item.citation}</div> : null
-                                }
-                            </div> : null
-                    }
-                </div>
-                <div className='FunFact-Decorative-Line'></div>
-            </div>
-        )
-
-    }
-
 
     const CompanyInitiative = () => {
 
@@ -368,9 +317,6 @@ function Company({ match, location }) {
 
     }
 
-    const newsDiscriptionTitle = "Nike allegedly discriminates against women at its corporate headquarters";
-    const newsDiscriptionInfo = "Fed up with feeling marginalized working at the Nike headquarters, a group of female employees began secretly surveying their coworkers on their experiences with gender discrimination....";
-
     useEffect(() => {
         // setLoading(true);
         // let data = companyDetails;
@@ -417,97 +363,8 @@ function Company({ match, location }) {
                 setCompanyDetails(data);
                 setState(resp.data);
             })
-        axios.post(
-            '/similarCompany1',
-            {},
-            {
-                params: companyName
-            }
-        ).then((resp) => {
-            let data = companyDetails;
-            data[0]["company1Ascore"] = resp.data[0]["Ascore"];
-            data[0]["company1Bscore"] = resp.data[0]["Bscore"];
-            data[0]["company1Cscore"] = resp.data[0]["Cscore"];
-            data[0]["company1Dscore"] = resp.data[0]["Dscore"];
-            let company1TotalScore = (parseInt(data[0]["company1Ascore"]) + parseInt(data[0]["company1Bscore"]) + parseInt(data[0]["company1Cscore"]) + parseInt(data[0]["company1Dscore"])) / 4;
-            let comp1SliderLength = 324 * company1TotalScore / 100
-            data[0]["company1TotalScore"] = company1TotalScore;
-            data[0]["comp1SliderLength"] = comp1SliderLength;
-        })
-        axios.post(
-            '/similarCompany2',
-            {},
-            {
-                params: companyName
-            }
-        ).then((resp) => {
-            let data = companyDetails;
-            data[0]["company2Ascore"] = resp.data[0]["Ascore"];
-            data[0]["company2Bscore"] = resp.data[0]["Bscore"];
-            data[0]["company2Cscore"] = resp.data[0]["Cscore"];
-            data[0]["company2Dscore"] = resp.data[0]["Dscore"];
-            let company2TotalScore = (parseInt(data[0]["company2Ascore"]) + parseInt(data[0]["company2Bscore"]) + parseInt(data[0]["company2Cscore"]) + parseInt(data[0]["company2Dscore"])) / 4;
-            let comp2SliderLength = 324 * company2TotalScore / 100
-            data[0]["company2TotalScore"] = company2TotalScore;
-            data[0]["comp2SliderLength"] = comp2SliderLength;
-        })
-        axios.post(
-            '/similarCompany3',
-            {},
-            {
-                params: companyName
-            }
-        ).then((resp) => {
-            let data = companyDetails;
-            data[0]["company3Ascore"] = resp.data[0]["Ascore"];
-            data[0]["company3Bscore"] = resp.data[0]["Bscore"];
-            data[0]["company3Cscore"] = resp.data[0]["Cscore"];
-            data[0]["company3Dscore"] = resp.data[0]["Dscore"];
-            let company3TotalScore = (parseInt(data[0]["company3Ascore"]) + parseInt(data[0]["company3Bscore"]) + parseInt(data[0]["company3Cscore"]) + parseInt(data[0]["company3Dscore"])) / 4;
-            let comp3SliderLength = 324 * company3TotalScore / 100
-            data[0]["company3TotalScore"] = company3TotalScore;
-            data[0]["comp3SliderLength"] = comp3SliderLength;
-        })
-        axios.post(
-            '/similarCompany4',
-            {},
-            {
-                params: companyName
-            }
-        ).then((resp) => {
-            let data = companyDetails;
-            data[0]["company4Ascore"] = resp.data[0]["Ascore"];
-            data[0]["company4Bscore"] = resp.data[0]["Bscore"];
-            data[0]["company4Cscore"] = resp.data[0]["Cscore"];
-            data[0]["company4Dscore"] = resp.data[0]["Dscore"];
-            let company4TotalScore = (parseInt(data[0]["company4Ascore"]) + parseInt(data[0]["company4Bscore"]) + parseInt(data[0]["company4Cscore"]) + parseInt(data[0]["company4Dscore"])) / 4;
-            let comp4SliderLength = 324 * company4TotalScore / 100
-            data[0]["company4TotalScore"] = company4TotalScore;
-            data[0]["comp4SliderLength"] = comp4SliderLength;
-        })
-        axios.post(
-            '/facts',
-            {},
-            {
-                params: companyName
-            }
-        )
-            .then((resp) => {
-                let data = companyFacts;
-                let headingsarr = [];
-                let summaryarr = [];
-                let idarr = [];
-                resp.data.map(fact => {
-                    headingsarr.push(fact['Heading']);
-                    summaryarr.push(fact['Summary']);
-                    idarr.push(fact['ID']);
-                })
-                data[0]['Heading'] = headingsarr;
-                data[0]['Summary'] = summaryarr;
-                data[0]["ID"] = idarr;
-                setFact(data);
-                setState(resp.data);
-            })
+
+
         axios.post(
             '/news',
             {},
