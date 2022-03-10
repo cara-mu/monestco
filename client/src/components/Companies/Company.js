@@ -22,9 +22,9 @@ import { AiFillCaretDown } from 'react-icons/ai';
 import TextTruncate from 'react-text-truncate';
 import Scores from "./Scores/Scores";
 import BrandProfile from "./BrandProfile";
+import SimilarBrand from "./SimilarBrand";
 import PoliticalContribution from "./PoliticalContribution";
 import Fact from "./companyInitiative"; {/* facts */}
-
 
 const companyinfo = [
     {
@@ -44,15 +44,6 @@ const companyinfo = [
         SimilarCompany4: "",
         Subsidiary: "",
         CompanyID: ""
-    }
-]
-
-const companyFacts = [
-    {
-        CompanyID: 0,
-        Heading: [],
-        Summary: [],
-        ID: []
     }
 ]
 
@@ -163,7 +154,6 @@ function Company({ match, location }) {
     const [showNewsInfo, setNewsShowInfo] = useState(false);
     const [showInfo, setShowInfo] = useState(false)
     const [companyDetails, setCompanyDetails] = React.useState(companyinfo);
-    const [fact, setFact] = React.useState(companyFacts);
     const [news, setNews] = React.useState(companyNews);
     const [citations, setCitations] = React.useState(companyCit);
     const { loading, setLoading } = useState(false);
@@ -268,47 +258,6 @@ function Company({ match, location }) {
         )
     };
 
-    const RenderFact = ({ item }) => {
-        const [showFact, setShowFact] = useState(false);
-        const [showCitation, setShowCitation] = useState(false);
-
-        useEffect(() => {
-            if (showFact === false) {
-                setShowCitation(false)
-            }
-        }, [showFact])
-
-        return (
-            <div>
-                <div className='Fun-Fact'>{item.title}
-                    <div
-                        className={showFact ? "Fun-Fact-circle-close" : "Fun-Fact-circle"}
-                        onClick={() => setShowFact(!showFact)}
-                    >
-                        <i className={showFact ? "Fun-Fact-arrowdown-close" : "Fun-Fact-arrowdown"}></i>
-                    </div>
-                </div>
-                <div className={`fact-animate-field ${showFact ? 'fact-animate' : ''}`}>
-                    {
-                        showFact ?
-                            <div className="Fun-Fact-Dropdown">
-                                {item.discription}
-                                <div className='Fun-Fact-Citation' style={{ width: '100%', fontWeight: '700' }}>
-                                    Citation
-                                <i onClick={() => setShowCitation(!showCitation)} style={{ borderColor: '#323232' }} className={showCitation ? "Fun-Fact-arrowdown-close" : "Fun-Fact-arrowdown"}></i>
-                                </div>
-                                {
-                                    showCitation ? <div>{item.citation}</div> : null
-                                }
-                            </div> : null
-                    }
-                </div>
-                <div className='FunFact-Decorative-Line'></div>
-            </div>
-        )
-
-    }
-
 
     const CompanyInitiative = () => {
 
@@ -368,9 +317,6 @@ function Company({ match, location }) {
 
     }
 
-    const newsDiscriptionTitle = "Nike allegedly discriminates against women at its corporate headquarters";
-    const newsDiscriptionInfo = "Fed up with feeling marginalized working at the Nike headquarters, a group of female employees began secretly surveying their coworkers on their experiences with gender discrimination....";
-
     useEffect(() => {
         // setLoading(true);
         // let data = companyDetails;
@@ -417,97 +363,8 @@ function Company({ match, location }) {
                 setCompanyDetails(data);
                 setState(resp.data);
             })
-        axios.post(
-            '/similarCompany1',
-            {},
-            {
-                params: companyName
-            }
-        ).then((resp) => {
-            let data = companyDetails;
-            data[0]["company1Ascore"] = resp.data[0]["Ascore"];
-            data[0]["company1Bscore"] = resp.data[0]["Bscore"];
-            data[0]["company1Cscore"] = resp.data[0]["Cscore"];
-            data[0]["company1Dscore"] = resp.data[0]["Dscore"];
-            let company1TotalScore = (parseInt(data[0]["company1Ascore"]) + parseInt(data[0]["company1Bscore"]) + parseInt(data[0]["company1Cscore"]) + parseInt(data[0]["company1Dscore"])) / 4;
-            let comp1SliderLength = 324 * company1TotalScore / 100
-            data[0]["company1TotalScore"] = company1TotalScore;
-            data[0]["comp1SliderLength"] = comp1SliderLength;
-        })
-        axios.post(
-            '/similarCompany2',
-            {},
-            {
-                params: companyName
-            }
-        ).then((resp) => {
-            let data = companyDetails;
-            data[0]["company2Ascore"] = resp.data[0]["Ascore"];
-            data[0]["company2Bscore"] = resp.data[0]["Bscore"];
-            data[0]["company2Cscore"] = resp.data[0]["Cscore"];
-            data[0]["company2Dscore"] = resp.data[0]["Dscore"];
-            let company2TotalScore = (parseInt(data[0]["company2Ascore"]) + parseInt(data[0]["company2Bscore"]) + parseInt(data[0]["company2Cscore"]) + parseInt(data[0]["company2Dscore"])) / 4;
-            let comp2SliderLength = 324 * company2TotalScore / 100
-            data[0]["company2TotalScore"] = company2TotalScore;
-            data[0]["comp2SliderLength"] = comp2SliderLength;
-        })
-        axios.post(
-            '/similarCompany3',
-            {},
-            {
-                params: companyName
-            }
-        ).then((resp) => {
-            let data = companyDetails;
-            data[0]["company3Ascore"] = resp.data[0]["Ascore"];
-            data[0]["company3Bscore"] = resp.data[0]["Bscore"];
-            data[0]["company3Cscore"] = resp.data[0]["Cscore"];
-            data[0]["company3Dscore"] = resp.data[0]["Dscore"];
-            let company3TotalScore = (parseInt(data[0]["company3Ascore"]) + parseInt(data[0]["company3Bscore"]) + parseInt(data[0]["company3Cscore"]) + parseInt(data[0]["company3Dscore"])) / 4;
-            let comp3SliderLength = 324 * company3TotalScore / 100
-            data[0]["company3TotalScore"] = company3TotalScore;
-            data[0]["comp3SliderLength"] = comp3SliderLength;
-        })
-        axios.post(
-            '/similarCompany4',
-            {},
-            {
-                params: companyName
-            }
-        ).then((resp) => {
-            let data = companyDetails;
-            data[0]["company4Ascore"] = resp.data[0]["Ascore"];
-            data[0]["company4Bscore"] = resp.data[0]["Bscore"];
-            data[0]["company4Cscore"] = resp.data[0]["Cscore"];
-            data[0]["company4Dscore"] = resp.data[0]["Dscore"];
-            let company4TotalScore = (parseInt(data[0]["company4Ascore"]) + parseInt(data[0]["company4Bscore"]) + parseInt(data[0]["company4Cscore"]) + parseInt(data[0]["company4Dscore"])) / 4;
-            let comp4SliderLength = 324 * company4TotalScore / 100
-            data[0]["company4TotalScore"] = company4TotalScore;
-            data[0]["comp4SliderLength"] = comp4SliderLength;
-        })
-        axios.post(
-            '/facts',
-            {},
-            {
-                params: companyName
-            }
-        )
-            .then((resp) => {
-                let data = companyFacts;
-                let headingsarr = [];
-                let summaryarr = [];
-                let idarr = [];
-                resp.data.map(fact => {
-                    headingsarr.push(fact['Heading']);
-                    summaryarr.push(fact['Summary']);
-                    idarr.push(fact['ID']);
-                })
-                data[0]['Heading'] = headingsarr;
-                data[0]['Summary'] = summaryarr;
-                data[0]["ID"] = idarr;
-                setFact(data);
-                setState(resp.data);
-            })
+
+
         axios.post(
             '/news',
             {},
@@ -660,100 +517,7 @@ function Company({ match, location }) {
 
                         {/* Similar Brands */}
 
-
-                        <div className="similar_brands">
-                            <div className='Brand-Section-title'>Similar Brands</div>
-                            <div className='Decorative-Line'></div>
-                            <div className="similar_brands-container">
-                                <div>
-                                    <Link className='Similar-Link' to={'/companies/' + companyDetails[0]["SimilarCompany1"]}>
-                                        <p>{companyDetails[0]["SimilarCompany1"]}</p>
-                                        {/* <div>{companyDetails[0]["SimilarCompany1"]}</div> */}
-                                        <div className='brand_box'>
-                                            {/* <div className="d-fdlex justify-content-center">
-                                            <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
-                                            <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div>
-                                            <div class="horizontalline2" style={{width: `${companyDetails[0]["SliderLength"]}px` }}></div>
-                                            <div class="verticalline2"></div> 
-                                            <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/> */}
-                                            {/* <p style={{fontFamily: 'DM Sans', fontSize: '12px', color: '#4F4F4F'}} >underperforming<span style={{marginLeft: '145px'}}>overperforming</span></p> */}
-                                            <div className="d-fledx justify-content-center" style={{ position: "relative" }}>
-                                                <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center' }}>industry average</div>
-                                                <div style={{ textAlign: 'center' }}><AiFillCaretDown style={{}} /></div>
-                                                <div class="horizontalline2" style={{ width: `${companyDetails[0]["comp1SliderLength"]}px` }}></div>
-                                                <div class="verticalline2"></div>
-                                                <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo" />
-                                                <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
-                                                {/* <p style={{fontFamily: 'DM Sans', fontSize: '12px', color: '#4F4F4F'}} >underperforming<span style={{marginLeft: '145px'}}>overperforming</span></p> */}
-                                            </div>
-                                            <div className="brand_inside_text ml-10perc">
-                                                <span>{Math.round(companyDetails[0]["company1TotalScore"], 2)}</span>
-                                                <span>/100</span>
-                                            </div>
-                                            {/* </div> */}
-                                        </div>
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link className='Similar-Link' to={'/companies/' + companyDetails[0]["SimilarCompany2"]}><p>{companyDetails[0]["SimilarCompany2"]}</p>
-                                        {/* <div>{companyDetails[0]["SimilarCompany2"]}</div> */}
-                                        <div className='brand_box'>
-                                            <div className="d-fldex justify-content-center" style={{ position: "relative" }}>
-                                                <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center' }}>industry average</div>
-                                                <div style={{ textAlign: 'center' }}><AiFillCaretDown style={{}} /></div>
-                                                <div class="horizontalline2" style={{ width: `${companyDetails[0]["comp2SliderLength"]}px` }}></div>
-                                                <div class="verticalline2"></div>
-                                                <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo" />
-                                                <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
-                                            </div>
-                                            <div className="brand_inside_text ml-10perc">
-                                                <span>{Math.round(companyDetails[0]["company2TotalScore"], 2)}</span>
-                                                <span>/100</span>
-                                            </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link className='Similar-Link' to={'/companies/' + companyDetails[0]["SimilarCompany3"]}><p>{companyDetails[0]["SimilarCompany3"]}</p>
-                                        {/* <div>{companyDetails[0]["SimilarCompany3"]}</div> */}
-                                        <div className='brand_box'>
-                                            <div className="d-fldex justify-content-center" style={{ position: "relative" }}>
-                                                <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center' }}>industry average</div>
-                                                <div style={{ textAlign: 'center' }}><AiFillCaretDown style={{}} /></div>
-                                                <div class="horizontalline2" style={{ width: `${companyDetails[0]["comp3SliderLength"]}px` }}></div>
-                                                <div class="verticalline2"></div>
-                                                <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo" />
-                                                <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
-                                            </div>
-                                            <div className="brand_inside_text ml-10perc">
-                                                <span>{Math.round(companyDetails[0]["company3TotalScore"], 2)}</span>
-                                                <span>/100</span>
-                                            </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                                <div>
-                                    <Link className='Similar-Link' to={'/companies/' + companyDetails[0]["SimilarCompany4"]}><p>{companyDetails[0]["SimilarCompany4"]}</p>
-                                        {/* <div>{companyDetails[0]["SimilarCompany4"]}</div> */}
-                                        <div className='brand_box'>
-                                            <div className="d-fldex justify-content-center" style={{ position: "relative" }}>
-                                                <div style={{ fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center' }}>industry average</div>
-                                                <div style={{ textAlign: 'center' }}><AiFillCaretDown style={{}} /></div>
-                                                <div class="horizontalline2" style={{ width: `${companyDetails[0]["comp4SliderLength"]}px` }}></div>
-                                                <div class="verticalline2"></div>
-                                                <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo" />
-                                                <div className="performing-Container"><span>underperforming</span><span>overperforming</span></div>
-                                            </div>
-                                            <div className="brand_inside_text ml-10perc">
-                                                <span>{Math.round(companyDetails[0]["company4TotalScore"], 2)}</span>
-                                                <span>/100</span>
-                                            </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                                {/* </div> */}
-                            </div>
-                        </div>
+                        <SimilarBrand company = {companyName}/>
                     </div>
                 </Grid>
             </Grid>
