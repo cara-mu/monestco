@@ -6,6 +6,12 @@ import Facts from "./Facts";
 const CompanyInitiative = () => {
 
     const [tabView, setTabView] = useState(window.innerWidth < 800);
+    const [showCompanyInitInfo, setCompanyInitShowInfo] = useState(false);
+
+    const handleCloseCompanyInitInfo = () => {
+        setCompanyInitShowInfo(false)
+    }
+
 
     useLayoutEffect(() => {
         function updateSize() {
@@ -32,7 +38,13 @@ const CompanyInitiative = () => {
 
 }
 
-const CompanyInitPopup = ({ handleCloseInfo }) => {
+const CompanyInitPopup = () => {
+    const [showCompanyInitInfo, setCompanyInitShowInfo] = useState(false);
+
+    const handleCloseCompanyInitInfo = () => {
+        setCompanyInitShowInfo(false)
+    }
+
     return (
         <div className="company-popup">
             <div className='company-popup-content'>
@@ -48,12 +60,14 @@ const CompanyInitPopup = ({ handleCloseInfo }) => {
     )
 };
 
-const handleCloseCompanyInitInfo = () => {
-    setCompanyInitShowInfo(false)
-}
+
 
 export default function Fact (props){
-        const [showCompanyInitInfo, setCompanyInitShowInfo] = useState(false);
+    const [showCompanyInitInfo, setCompanyInitShowInfo] = useState(false);
+
+    const handleCloseCompanyInitInfo = () => {
+        setCompanyInitShowInfo(false)
+    }
         return(
             <div>
                 <div className='Brand-Section-title'>
@@ -63,7 +77,7 @@ export default function Fact (props){
                 </div>
 
                 <div className='Decorative-Line'></div>
-                <Facts company = {companyName}/>
+                <Facts company = {props.companyName}/>
             </div>
         );
     }

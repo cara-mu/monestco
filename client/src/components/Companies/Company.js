@@ -21,9 +21,10 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { AiFillCaretDown } from 'react-icons/ai';
 import TextTruncate from 'react-text-truncate';
 import PoliticalContribution from "./PoliticalContribution";
-import Fact from "./companyInitiative"; {/* facts */}
 import Scores from "./Scores/Scores";
 import BrandProfile from "./BrandProfile";
+import Fact from "./companyInitiative"; {/* facts */}
+
 
 const companyinfo = [
     {
