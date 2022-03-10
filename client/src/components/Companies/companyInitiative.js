@@ -64,10 +64,6 @@ const CompanyInitPopup = () => {
 
 export default function Fact (props){
     const [showCompanyInitInfo, setCompanyInitShowInfo] = useState(false);
-
-    const handleCloseCompanyInitInfo = () => {
-        setCompanyInitShowInfo(false)
-    }
         return(
             <div>
                 <div className='Brand-Section-title'>

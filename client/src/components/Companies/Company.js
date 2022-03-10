@@ -629,7 +629,8 @@ function Company({ match, location }) {
                         <Scores company={companyName} />
 
                         {/*Facts and company initiative header*/}
-                        <Fact/>
+                        <Fact companyName = {companyName}/>
+                        {/* test */}
 
 
                         <div className='In-The-News'>
