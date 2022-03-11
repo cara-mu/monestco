@@ -431,6 +431,7 @@ def similar_companies(request):
     try:
         company = Company.objects.get(name=name)
     except Company.DoesNotExist:
+        logger.info(f'company {name} cannot find')
         return JsonResponse({'error': f'company {name} cannot find'}, status=400)
 
     res = {}
