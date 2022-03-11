@@ -387,43 +387,6 @@ def news_citations(request):
     return JsonResponse(res, safe=False)
 
 
-def get_similar_company(request, index):
-    name = request.query_params['0']
-    company = Company.objects.get(name=name)
-    if index == 1:
-        target = company.similar_company_1
-    elif index == 2:
-        target = company.similar_company_2
-    elif index == 3:
-        target = company.similar_company_3
-    elif index == 4:
-        target = company.similar_company_4
-    else:
-        return {}
-    res = get_scores(target, ['A', 'B', 'C', 'D'], False)
-    return JsonResponse([res], safe=False)
-
-
-@api_view(['GET', 'POST'])
-def similar_company_1(request):
-    return get_similar_company(request, 1)
-
-
-@api_view(['GET', 'POST'])
-def similar_company_2(request):
-    return get_similar_company(request, 2)
-
-
-@api_view(['GET', 'POST'])
-def similar_company_3(request):
-    return get_similar_company(request, 3)
-
-
-@api_view(['GET', 'POST'])
-def similar_company_4(request):
-    return get_similar_company(request, 4)
-
-
 @api_view(['GET'])
 def similar_companies(request):
     global company_name
