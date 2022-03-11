@@ -138,27 +138,40 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
-            'simple': {
-                'format': '{levelname} {asctime} {name} {module}.{funcName}:{lineno} {message}',
-                'style': '{',
+        'verbose': {
+                'format': '%(levelname)s %(asctime)s %(name)s.%(funcName)s:%(lineno)s - %(message)s'
             },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
         },
+    },
     'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
         'file': {
             'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': 'logs/test.log',
-            'formatter': 'simple'
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': path.join(BASE_DIR, 'logs', 'monest.log'),
+            'maxBytes': 15728640,  # 1024 * 1024 * 15B = 15MB
+            'backupCount': 10,
+            'formatter': 'verbose'
         },
     },
     'loggers': {
         '': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': False,
+            'handlers': ['console', 'file'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+            # Responsive logging, set an environment variable DJANGO_LOG_LEVEL to change logging level dynamically
+            # Default level: INFO
         },
     },
 }
+
+import logging.config
+logging.config.dictConfig(LOGGING)
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
