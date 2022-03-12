@@ -1421,8 +1421,16 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
   async function renderData(company, inputIndex) {
     let data = fieldData;
     inputIndex--;
+
+    //There are special characters inside company name, such as 'H&M'
+    let company_name = encodeURIComponent(company);
+    let a_url = "/api/v1/scores?company=" + company_name + "&type=A";
+    let b_url = "/api/v1/scores?company=" + company_name + "&type=B";
+    let c_url = "/api/v1/scores?company=" + company_name + "&type=C";
+    let d_url = "/api/v1/scores?company=" + company_name + "&type=D";
+
     await axios
-      .get(`/api/v1/scores?company=${company}&type=A`)
+      .get(a_url)
       .then((resp) => {
         data[0].mainScore[inputIndex].score = resp.data.rows[0]["Ascore"];
 
@@ -1484,7 +1492,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
       });
 
     await axios
-      .get(`/api/v1/scores?company=${company}&type=B`)
+      .get(b_url)
       .then((resp) => {
         data[1].mainScore[inputIndex].score = resp.data.rows[0]["Bscore"];
 
@@ -1562,7 +1570,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
       });
 
     await axios
-      .get(`/api/v1/scores?company=${company}&type=C`)
+      .get(c_url)
       .then((resp) => {
         data[2].mainScore[inputIndex].score = resp.data.rows[0]["Cscore"];
 
@@ -1644,7 +1652,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
       });
 
     await axios
-      .get(`/api/v1/scores?company=${company}&type=D`)
+      .get(d_url)
       .then((resp) => {
         data[3].mainScore[inputIndex].score = resp.data.rows[0]["Dscore"];
 

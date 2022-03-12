@@ -72,8 +72,12 @@ export default function Scores(props) {
     } else return null
   }
 
+    //There are special characters inside company name, such as 'H&M'
+    let company_name = encodeURIComponent(props.company);
+    let url = "/api/v1/scores/abcd?company=" + company_name;
+
   useEffect(()=>{
-    axios.get(`/api/v1/scores/abcd?company=${props.company}`).
+    axios.get(url).
     then((resp) => {
       let data = TotalScore;
       data['A'] = resp.data["Ascore"];

@@ -52,8 +52,12 @@ export default function Facts(props) {
     const [state, setState] = useState([])
     const [citations, setCitations] = React.useState(companyCit);
 
+    //There are special characters inside company name, such as 'H&M'
+    let company_name = encodeURIComponent(props.company);
+    let fact_url = "/api/v1/facts?company=" + company_name;
+
     useEffect(() => {
-        axios.get(`/api/v1/facts?company=${props.company}`)
+        axios.get(fact_url)
             .then((resp) => {
                 let data = companyFacts;
                 let headingsarr = [];

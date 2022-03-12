@@ -26,10 +26,14 @@ export default function SimilarBrand(props) {
 
     const [SimilarBrand, setSimilarBrand] = useState(similarbrands);
 
+    //There are special characters inside company name, such as 'H&M'
+    let company_name = encodeURIComponent(props.company);
+    let url = "/api/v1/similarcompanies?company=" + company_name;
+
     // hook
     useEffect(() => {
 
-        axios.get(`/api/v1/similarcompanies?company=${props.company}`).
+        axios.get(url).
         then((resp) => {
             let data = SimilarBrand;
             data["1"].name = resp.data["1"].name;
