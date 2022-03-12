@@ -53,11 +53,7 @@ export default function Facts(props) {
     const [citations, setCitations] = React.useState(companyCit);
 
     useEffect(() => {
-        axios.get('/facts',
-            {
-                params: props.company
-            }
-        )
+        axios.get(`/api/v1/facts?company=${props.company}`)
             .then((resp) => {
                 let data = companyFacts;
                 let headingsarr = [];
@@ -87,17 +83,7 @@ export default function Facts(props) {
         const showCitations = async () => {
             if (showCitation == false) setShowCitation(true);
             if (showCitation == true) setShowCitation(false);
-            // console.log(showCitation);
-            // if (showCitation == false) setShowCitation(true);
-            // if (showCitation == true) setShowCitation(false);
-            // if (showCitation == -1) {
-            //     setShowCitation(j);
-            //     console.log(showCitation);
-            // }
-            // if (showCitation == j) {
-            //     setShowCitation(-1);
-            //     console.log(showCitation);
-            // }
+
             let citationsarr = [];
             let relidarr = [];
             let authorarr = [];

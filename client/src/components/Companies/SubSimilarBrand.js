@@ -1,4 +1,4 @@
-import { Link, useParams, withRouter, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AiFillCaretDown } from 'react-icons/ai';
 
 export default function SubSimilarBrand(props) {

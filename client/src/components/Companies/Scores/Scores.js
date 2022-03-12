@@ -73,7 +73,7 @@ export default function Scores(props) {
   }
 
   useEffect(()=>{
-    axios.get(`/api/v1/scores/companyTotalScores?company=${props.company}`).
+    axios.get(`/api/v1/scores/abcd?company=${props.company}`).
     then((resp) => {
       let data = TotalScore;
       data['A'] = resp.data["Ascore"];
