@@ -1422,7 +1422,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
     let data = fieldData;
     inputIndex--;
     await axios
-      .get(`/api/v1//scores?company=${company}&type=A`)
+      .get(`/api/v1/scores?company=${company}&type=A`)
       .then((resp) => {
         data[0].mainScore[inputIndex].score = resp.data.rows[0]["Ascore"];
 
@@ -1484,7 +1484,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
       });
 
     await axios
-      .get(`/api/v1//scores?company=${company}&type=B`)
+      .get(`/api/v1/scores?company=${company}&type=B`)
       .then((resp) => {
         data[1].mainScore[inputIndex].score = resp.data.rows[0]["Bscore"];
 
@@ -1562,7 +1562,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
       });
 
     await axios
-      .get(`/api/v1//scores?company=${company}&type=C`)
+      .get(`/api/v1/scores?company=${company}&type=C`)
       .then((resp) => {
         data[2].mainScore[inputIndex].score = resp.data.rows[0]["Cscore"];
 
@@ -1644,7 +1644,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
       });
 
     await axios
-      .get(`/api/v1//scores?company=${company}&type=D`)
+      .get(`/api/v1/scores?company=${company}&type=D`)
       .then((resp) => {
         data[3].mainScore[inputIndex].score = resp.data.rows[0]["Dscore"];
 
