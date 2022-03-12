@@ -24,7 +24,7 @@ export default function BrandProfile(props){
 
     //There are special characters inside company name, such as 'H&M'
     let company_name = encodeURIComponent(props.company);
-    let url = "/api/v1/news?company=" + company_name;
+    let url = "/api/v1/companybasic?company=" + company_name;
 
     useEffect(() => {
 
