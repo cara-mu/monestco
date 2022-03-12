@@ -94,9 +94,9 @@ export default function Facts(props) {
             let pagesarr = [];
             if (fact[0]['Heading'].length != 0) {
                 Promise.all(Object.entries(fact[0]['Heading']).map((heading, i) =>
-                    axios.get('/citationsFacts',
+                    axios.get('/api/v1/citation/facts',
                         {
-                            params: [props.company, fact[0]["ID"][i], 'F']
+                            params: [fact[0]["ID"][i]]
                         }
                     ).then(resp => {
                         if (resp.data.length != 0) {

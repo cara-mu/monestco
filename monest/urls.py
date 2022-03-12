@@ -21,4 +21,8 @@ urlpatterns = [
     path('v1/partialcompanybasic', views.partial_company_basic, name='partial_company_basic'),
     path('v1/facts', views.facts, name='facts'),
     path('v1/news', views.news, name='news'),
+    path('v1/citation/scores', views.score_citations, name='score_citations'),
+    path('v1/citation/facts', views.fact_citations, name='fact_citations'),
+    path('v1/citation/news', views.news_citations, name='news_citations'),
+    path('v1/industry', views.industry_standards, name='industry_standards'),
 ]

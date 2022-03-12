@@ -874,9 +874,8 @@ class BrandBreakdown extends React.Component {
 
   componentDidMount () {
     this.setState({companyName: this.props.match.params.companyName});
-    axios.post(
-      '/citationsLong',
-      {},
+    axios.get(
+      '/api/v1/citation/scores',
       {
         params: [this.props.match.params.companyName]
       }
@@ -1398,11 +1397,8 @@ class BrandBreakdown extends React.Component {
         totalscore: resp.data[0].TotalScore
       })
     })
-    axios.get(
-      '/industry',
-      {},
-      {}
-    ).then(resp => {
+    axios.get('/api/v1/industry')
+        .then(resp => {
       console.log(resp.data);
       field[0].subfield[0].total = resp.data.rows[0]["A1total"];
       field[0].subfield[0].subNestedField[0].total[0] = resp.data.rows[0]["A1.1total"];

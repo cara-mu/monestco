@@ -338,9 +338,9 @@ def facts(request):
     return JsonResponse(res, safe=False)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def fact_citations(request):
-    fact_id = request.query_params['1']
+    fact_id = request.query_params['0']
     citations = Facts.objects.get(id=fact_id).citation.all()
     res = []
     for item in citations:
@@ -389,7 +389,7 @@ def news(request):
 
 @api_view(['GET', 'POST'])
 def news_citations(request):
-    news_id = request.query_params['1']
+    news_id = request.query_params['0']
     citations = News.objects.get(id=news_id).citation.all()
     res = []
     for item in citations:
@@ -442,7 +442,7 @@ def similar_companies(request):
     return JsonResponse(res, safe=False)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def industry_standards(request):
     """
     current implementation in Nodejs is hardcoded return Apparel.
