@@ -124,4 +124,5 @@ class PoliticalAssociation(models.Model):
     citation = models.ManyToManyField(Citations, blank=True)
 
 
-
+class Email(models.Model): 
+    userEmail = models.EmailField(max_length = 254)

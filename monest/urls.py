@@ -16,4 +16,5 @@ urlpatterns = [
     path('v1/scores/companyTotalScores', views.company_total_scores, name='company_Total_Scores'),
     path('v1/ranking', views.brands_ranking, name='brands_ranking'),
     path('v1/similarcompanies', views.similar_companies, name='similar_companies'),
+    path('v1/emails', views.emails, name='emails')
 ]
