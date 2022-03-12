@@ -79,7 +79,7 @@ export const MenuItems = [
     },
     {
         title: 'Steve Madden',
-        path: '/companies/Steve Madden ',
+        path: '/companies/Steve Madden',
         cName: 'nav-links'
     },
     {
