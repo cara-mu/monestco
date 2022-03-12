@@ -297,9 +297,13 @@ function Company({ match, location }) {
 
     useEffect(() => {
 
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
 
-        axios.get(`/api/v1/news?company=${companyName}`)
+        //There are special characters inside company name, such as 'H&M'
+        let company_name = encodeURIComponent(companyName);
+        let url = "/api/v1/news?company=" + company_name;
+
+        axios.get(url)
             .then((resp) => {
                 let data = companyNews;
                 let photoarr = [];

@@ -22,9 +22,13 @@ export default function BrandProfile(props){
 
     const [companyDetails, setCompanyDetails] = useState(companyinfo);
 
+    //There are special characters inside company name, such as 'H&M'
+    let company_name = encodeURIComponent(props.company);
+    let url = "/api/v1/news?company=" + company_name;
+
     useEffect(() => {
 
-        axios.get(`/api/v1/companybasic?company=${props.company}`)
+        axios.get(url)
             .then((resp) => {
                 let data = companyDetails;
                 data["Category"] = resp.data["Category"];

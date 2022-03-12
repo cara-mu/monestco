@@ -874,7 +874,13 @@ class BrandBreakdown extends React.Component {
 
   componentDidMount () {
     this.setState({companyName: this.props.match.params.companyName});
-    axios.get(`/api/v1/citation/scores?company=${this.props.match.params.companyName}`)
+    //There are special characters inside company name, such as 'H&M'
+    let company_name = encodeURIComponent(this.props.match.params.companyName);
+    let score_url = "/api/v1/scores/detail?company=" + company_name;
+    let score_citation_url = "/api/v1/citation/scores?company=" + company_name;
+    let partial_basic_url = "/api/v1/partialcompanybasic?company=" + company_name;
+
+    axios.get(score_citation_url)
         .then(resp => {
       let arrA11 = [];
       let arrA12 = [];
@@ -1241,7 +1247,7 @@ class BrandBreakdown extends React.Component {
 
       }
     })
-    axios.get(`/api/v1/scores/detail?company=${this.props.match.params.companyName}`)
+    axios.get(score_url)
         .then((resp) => {
         field[0].mainScore = resp.data[0]["Ascore"];
         field[0].subfield[0].mainNestedScore = resp.data[0]["A1score"];
@@ -1384,7 +1390,7 @@ class BrandBreakdown extends React.Component {
         field[3].subfield[2].subNestedField[0].texts[4] = resp.data[0]["D3.5long"];
         this.setState({reset: true});
     });
-    axios.get(`/api/v1/partialcompanybasic?company=${this.props.match.params.companyName}`)
+    axios.get(partial_basic_url)
         .then(resp => {
       console.log(resp.data);
       this.setState({
