@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import SubSimilarBrand from './SubSimilarBrand';
-import { Link, useParams, withRouter, useLocation } from 'react-router-dom';
-import { AiFillCaretDown } from 'react-icons/ai';
+
 
 export default function SimilarBrand(props) {
 
@@ -25,7 +24,7 @@ export default function SimilarBrand(props) {
           }
     }
 
-    const [SimilarBrand, setSimilarBrand] = React.useState(similarbrands);
+    const [SimilarBrand, setSimilarBrand] = useState(similarbrands);
 
     // hook
     useEffect(() => {

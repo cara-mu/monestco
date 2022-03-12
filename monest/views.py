@@ -215,16 +215,15 @@ def get_score_citations(name: str, score_types: [str], include_sub: bool) -> {}:
     return res
 
 
-@csrf_exempt
-@api_view(['GET', 'POST'])
-def company_scores(request):
-    name = request.query_params['0']
+@api_view(['GET'])
+def company_detail_scores(request):
+    name = request.query_params['company']
     res = get_scores(name, ['A', 'B', 'C', 'D'], True)
     return JsonResponse([res], safe=False)
 
 
 @api_view(['GET'])
-def company_total_scores(request):
+def company_a_b_c_d(request):
     name = request.query_params['company']
     res = get_scores(name, ['A', 'B', 'C', 'D'], False)
     return JsonResponse(res, safe=False)
@@ -273,12 +272,16 @@ def score_citations(request):
     return JsonResponse(res, safe=False)
 
 
-@api_view(['GET', 'POST'])
-def other_company_info(request):
-    name = request.query_params['0']
-    res = {}
-    company = Company.objects.get(name=name)
-    res['Logo'] = company.logo
+@api_view(['GET'])
+def partial_company_basic(request):
+    name = request.query_params['company']
+    try:
+        company = Company.objects.get(name=name)
+    except Company.DoesNotExist:
+        logger.info(f'company {name} cannot find')
+        return JsonResponse(f'company {name} cannot find', status=400)
+
+    res = {'Logo':  company.logo}
     if company.parent_company:
         res['Subsidiary'] = company.parent_company
     else:
@@ -288,10 +291,15 @@ def other_company_info(request):
     return JsonResponse([res], safe=False)
 
 
-@api_view(['GET', 'POST'])
-def company_name(request):
-    name = request.query_params['0']
-    company = Company.objects.get(name=name)
+@api_view(['GET'])
+def company_basic(request):
+    name = request.query_params['company']
+    try:
+        company = Company.objects.get(name=name)
+    except Company.DoesNotExist:
+        logger.info(f'company {name} cannot find')
+        return JsonResponse(f'company {name} cannot find', status=400)
+
     res = {'Name': company.name}
     if company.parent_company:
         res['Subsidiary'] = company.parent_company
@@ -306,13 +314,18 @@ def company_name(request):
     res['SimilarCompany4'] = company.similar_company_4
     res['TotalScore'] = get_total_score(name)
 
-    return JsonResponse([res], safe=False)
+    return JsonResponse(res, safe=False)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def facts(request):
-    name = request.query_params['0']
-    company = Company.objects.get(name=name)
+    name = request.query_params['company']
+    try:
+        company = Company.objects.get(name=name)
+    except Company.DoesNotExist:
+        logger.info(f'company {name} cannot find')
+        return JsonResponse(f'company {name} cannot find', status=400)
+
     fact_items = Facts.objects.all().filter(company=company)
     res = []
     for item in fact_items:
@@ -346,10 +359,15 @@ def fact_citations(request):
 News_Category = dict(News.Category_Choice)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def news(request):
-    name = request.query_params['0']
-    company = Company.objects.get(name=name)
+    name = request.query_params['company']
+    try:
+        company = Company.objects.get(name=name)
+    except Company.DoesNotExist:
+        logger.info(f'company {name} cannot find')
+        return JsonResponse(f'company {name} cannot find', status=400)
+
     news_items = News.objects.all().filter(company=company)
     res = []
     for item in news_items:
