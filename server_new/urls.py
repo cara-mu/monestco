@@ -19,11 +19,6 @@ from monest.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('allcompanies', all_company_names, name='all_company_names'),
-    path('companydetailsA', a_scores, name='a_scores'),
-    path('companydetailsB', b_scores, name='b_scores'),
-    path('companydetailsC', c_scores, name='c_scores'),
-    path('companydetailsD', d_scores, name='d_scores'),
     path('api/', include('monest.urls')),
     path('/', index, name="index"),
     re_path(r'^(?:.*)/?$', index, name='index'),

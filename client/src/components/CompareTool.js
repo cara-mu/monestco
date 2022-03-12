@@ -201,9 +201,8 @@ class CompareTool extends React.Component {
     }
 
     async returnIndustryStandards(company, condition) {
-        await axios.post('/companydetailsA', {}, {
-               params: company
-            }).then(resp => {
+        await axios.get(`/api/v1//scores?company=${props.company}&type=A`,
+            ).then(resp => {
 
                 var A1 = {};
                 A1['A1'] = resp.data.rows[0]['A1'];
@@ -264,10 +263,8 @@ class CompareTool extends React.Component {
                 console.log(error);
             })
 
-        await axios.post('/companydetailsB', {}, {
-               params: company
-            }).then(resp => {
-                
+        await axios.get(`/api/v1//scores?company=${props.company}&type=B`)
+            .then(resp => {
                 var B1 = {};
                 B1['B1'] = resp.data.rows[0]['B1'];
                 B1['B11_text'] = resp.data.rows[0]['B11_text'];
@@ -338,10 +335,8 @@ class CompareTool extends React.Component {
                 console.log(error);
             })
 
-        await axios.post('/companydetailsC', {}, {
-               params: company
-            }).then(resp => {
-
+        await axios.get(`/api/v1//scores?company=${props.company}&type=C`)
+            .then(resp => {
                 var C1 = {};
                 C1['C1'] = resp.data.rows[0]['C1'];
                 C1['C11_text'] = resp.data.rows[0]['C11_text'];
@@ -415,10 +410,8 @@ class CompareTool extends React.Component {
                 console.log(error);
             })
 
-        await axios.post('/companydetailsD', {}, {
-               params: company
-            }).then(resp => {
-
+        await axios.get(`/api/v1//scores?company=${props.company}&type=D`)
+            .then(resp => {
                 var D1 = {};
                 D1['D1'] = resp.data.rows[0]['D1'];
                 D1['D11_text'] = resp.data.rows[0]['D11_text'];
@@ -577,7 +570,7 @@ class CompareTool extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('/allcompanies').then((resp) => {
+        axios.get('/api/v1/allcompanies').then((resp) => {
             const allcompanies = [];
             for (var i = 0; i < resp.data.rows.length; i++) {
                 allcompanies.push(resp.data.rows[i].name);
@@ -585,7 +578,7 @@ class CompareTool extends React.Component {
             this.setState({allcompanies: allcompanies});
         })
 
-        axios.get('/industry').then((resp) => {
+        axios.get('/api/v1/industry').then((resp) => {
             const industrystandards = {};
             for (const standard in resp.data.rows[0]) {
                 industrystandards[standard] = resp.data.rows[0][standard];

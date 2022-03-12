@@ -874,12 +874,8 @@ class BrandBreakdown extends React.Component {
 
   componentDidMount () {
     this.setState({companyName: this.props.match.params.companyName});
-    axios.get(
-      '/api/v1/citation/scores',
-      {
-        params: [this.props.match.params.companyName]
-      }
-    ).then(resp => {
+    axios.get(`/api/v1/citation/scores?company=${this.props.match.params.companyName}`)
+        .then(resp => {
       let arrA11 = [];
       let arrA12 = [];
       let arrA21 = [];
