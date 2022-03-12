@@ -7,7 +7,6 @@ import Paper from "@material-ui/core/Paper";
 import "../styles/Comparison.css";
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import CloseSharpIcon from '@material-ui/icons/CloseSharp';
-//import CompareTool from '../components/CompareTool';
 import CompareTool from "../components/CompareTool-new";
 import companies from '../data/companies.json';
 import CompareSearch from "../components/CompareSearch";

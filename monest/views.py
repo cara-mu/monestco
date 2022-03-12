@@ -214,6 +214,32 @@ def get_score_citations(name: str, score_types: [str], include_sub: bool) -> {}:
         res += item
     return res
 
+@api_view(['GET'])
+def company_type_score(request):
+    """
+    API for return type of score
+    :param request: 
+        company :  the name of the company
+        type:  A or B, or C, or D, indicating which type of scores is needed
+    :return: 
+    """
+    name = request.query_params['company']
+    try:
+        company = Company.objects.get(name=name)
+    except Company.DoesNotExist:
+        logger.info(f'company {name} cannot find')
+        return JsonResponse(f'company {name} cannot find', status=400)
+    
+    score_type = request.query_params['type']
+    if score_type not in ['A', 'B', 'C', 'D']:
+        logger.info(f'type {score_type} invalid')
+        return JsonResponse(f'type {score_type} invalid', status=400)
+
+    res = get_scores(name, [score_type], True)
+    return JsonResponse({
+        'rows': [res]
+    }, safe=False)
+
 
 @api_view(['GET'])
 def company_detail_scores(request):
@@ -230,44 +256,8 @@ def company_a_b_c_d(request):
 
 
 @api_view(['GET', 'POST'])
-def a_scores(request):
-    name = request.query_params['0']
-    res = get_scores(name, ['A'], True)
-    return JsonResponse({
-        'rows': [res]
-    }, safe=False)
-
-
-@api_view(['GET', 'POST'])
-def b_scores(request):
-    name = request.query_params['0']
-    res = get_scores(name, ['B'], True)
-    return JsonResponse({
-        'rows': [res]
-    }, safe=False)
-
-
-@api_view(['GET', 'POST'])
-def c_scores(request):
-    name = request.query_params['0']
-    res = get_scores(name, ['C'], True)
-    return JsonResponse({
-        'rows': [res]
-    }, safe=False)
-
-
-@api_view(['GET', 'POST'])
-def d_scores(request):
-    name = request.query_params['0']
-    res = get_scores(name, ['D'], True)
-    return JsonResponse({
-        'rows': [res]
-    }, safe=False)
-
-
-@api_view(['GET', 'POST'])
 def score_citations(request):
-    name = request.query_params['0']
+    name = request.query_params['company']
     res = get_score_citations(name, ['A', 'B', 'C', 'D'], True)
     return JsonResponse(res, safe=False)
 

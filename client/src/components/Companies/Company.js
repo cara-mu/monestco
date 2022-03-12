@@ -449,9 +449,7 @@ function Company({ match, location }) {
                         {/*Political Association*/}
                         <PoliticalContribution company = {companyName}/>
 
-
                         {/* Similar Brands */}
-
                         <SimilarBrand company = {companyName}/>
                     </div>
                 </Grid>
