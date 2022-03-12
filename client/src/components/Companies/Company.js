@@ -154,10 +154,9 @@ function Company({ match, location }) {
     }
 
     const handleOpen = (k, ID) => {
-        axios.post('/citations',
-            {},
+        axios.get('/api/v1/citation/news',
             {
-                params: [companyName, ID, 'N']
+                params: [ID]
             }
         ).then(resp => {
             let data = citations;
