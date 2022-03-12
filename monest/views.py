@@ -90,6 +90,17 @@ def update_scores(raw_scores, processed_scores: {}) -> {}:
     return processed_scores
 
 
+def update_pol(raw_scores, processed_scores: {}) -> {}:
+    dem = 0
+    rep = 0
+    for item in raw_scores:
+        dem += item.dem
+        rep += item.rep
+    processed_scores['dem'] = dem
+    processed_scores['rep'] = rep
+    return processed_scores
+
+
 def update_citations(raw_scores, processed_citation: {}) -> {}:
     """
     update and prepare citations
@@ -176,8 +187,23 @@ def get_scores(name: str, score_types: [str], include_sub: bool) -> {}:
 
 
 def get_total_score(name: str) -> int:
+    """
+    get total score.
+    If a company lacks certain scores, say A score,  total_score wouldn't include that component
+    :param name:
+    :return:
+    """
     scores = get_scores_base(name, ['A', 'B', 'C', 'D'], False, update_scores)
-    total_score = scores['Ascore'] + scores['Bscore'] + scores['Cscore'] + scores['Dscore']
+    total_score = 0
+    if 'Ascore' in scores:
+        total_score += scores['Ascore']
+    if 'Bscore' in scores:
+        total_score += scores['Bscore']
+    if 'Cscore' in scores:
+        total_score += scores['Cscore']
+    if 'Dscore' in scores:
+        total_score += scores['Dscore']
+
     total_score = round(total_score / 4)
     return total_score
 
@@ -362,43 +388,6 @@ def news_citations(request):
     return JsonResponse(res, safe=False)
 
 
-def get_similar_company(request, index):
-    name = request.query_params['0']
-    company = Company.objects.get(name=name)
-    if index == 1:
-        target = company.similar_company_1
-    elif index == 2:
-        target = company.similar_company_2
-    elif index == 3:
-        target = company.similar_company_3
-    elif index == 4:
-        target = company.similar_company_4
-    else:
-        return {}
-    res = get_scores(target, ['A', 'B', 'C', 'D'], False)
-    return JsonResponse([res], safe=False)
-
-
-@api_view(['GET', 'POST'])
-def similar_company_1(request):
-    return get_similar_company(request, 1)
-
-
-@api_view(['GET', 'POST'])
-def similar_company_2(request):
-    return get_similar_company(request, 2)
-
-
-@api_view(['GET', 'POST'])
-def similar_company_3(request):
-    return get_similar_company(request, 3)
-
-
-@api_view(['GET', 'POST'])
-def similar_company_4(request):
-    return get_similar_company(request, 4)
-
-
 @api_view(['GET'])
 def similar_companies(request):
     global company_name
@@ -406,6 +395,7 @@ def similar_companies(request):
     try:
         company = Company.objects.get(name=name)
     except Company.DoesNotExist:
+        logger.info(f'company {name} cannot find')
         return JsonResponse({'error': f'company {name} cannot find'}, status=400)
 
     res = {}
@@ -460,24 +450,24 @@ def industry_standards(request):
 
 @api_view(['GET'])
 def political_association_summary(request):
-    company = request.query_params['company']
+    name = request.query_params['company']
+    company = Company.objects.get(name=name)
+    res = {}
     records = PoliticalAssociation.objects.all().filter(company=company)
-    dem = 0
-    rep = 0
-    for item in records:
-        dem += item.dem
-        rep += item.rep
-
-    return JsonResponse({
-        'rep': rep,
-        'dem': dem
-    }, safe=False)
+    # if empty then parent records instead
+    if not records:
+        records = PoliticalAssociation.objects.all().filter(company=company.parent_company)
+    res = update_pol(records, res)
+    return JsonResponse(res, safe=False)
 
 
 @api_view(['GET'])
 def political_association_details(request):
-    company = request.query_params['company']
+    name = request.query_params['company']
+    company = Company.objects.get(name=name)
     records = PoliticalAssociation.objects.all().filter(company=company)
+    if not records:
+        records = PoliticalAssociation.objects.all().filter(company=company.parent_company)
     data = []
     citation = []
     for item in records:
