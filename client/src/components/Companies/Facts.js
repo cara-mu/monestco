@@ -52,12 +52,12 @@ export default function Facts(props) {
     const [state, setState] = useState([])
     const [citations, setCitations] = React.useState(companyCit);
 
+    //There are special characters inside company name, such as 'H&M'
+    let company_name = encodeURIComponent(props.company);
+    let fact_url = "/api/v1/facts?company=" + company_name;
+
     useEffect(() => {
-        axios.get('/facts',
-            {
-                params: props.company
-            }
-        )
+        axios.get(fact_url)
             .then((resp) => {
                 let data = companyFacts;
                 let headingsarr = [];
@@ -87,17 +87,7 @@ export default function Facts(props) {
         const showCitations = async () => {
             if (showCitation == false) setShowCitation(true);
             if (showCitation == true) setShowCitation(false);
-            // console.log(showCitation);
-            // if (showCitation == false) setShowCitation(true);
-            // if (showCitation == true) setShowCitation(false);
-            // if (showCitation == -1) {
-            //     setShowCitation(j);
-            //     console.log(showCitation);
-            // }
-            // if (showCitation == j) {
-            //     setShowCitation(-1);
-            //     console.log(showCitation);
-            // }
+
             let citationsarr = [];
             let relidarr = [];
             let authorarr = [];
@@ -108,9 +98,9 @@ export default function Facts(props) {
             let pagesarr = [];
             if (fact[0]['Heading'].length != 0) {
                 Promise.all(Object.entries(fact[0]['Heading']).map((heading, i) =>
-                    axios.get('/citationsFacts',
+                    axios.get('/api/v1/citation/facts',
                         {
-                            params: [props.company, fact[0]["ID"][i], 'F']
+                            params: [fact[0]["ID"][i]]
                         }
                     ).then(resp => {
                         if (resp.data.length != 0) {

@@ -62,7 +62,7 @@ function NavigationBar() {
   const [showList, setShowList] = useState(false);
 
   useEffect(() => {
-    axios.get("/allcompanies").then((resp) => {
+    axios.get("/api/v1/allcompanies").then((resp) => {
       const allcompanies = [];
       console.log(resp.data)
       for (var i = 0; i < resp.data.rows.length; i++) {

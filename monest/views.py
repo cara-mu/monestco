@@ -215,71 +215,64 @@ def get_score_citations(name: str, score_types: [str], include_sub: bool) -> {}:
         res += item
     return res
 
+@api_view(['GET'])
+def company_type_score(request):
+    """
+    API for return type of score
+    :param request: 
+        company :  the name of the company
+        type:  A or B, or C, or D, indicating which type of scores is needed
+    :return: 
+    """
+    name = request.query_params['company']
+    try:
+        company = Company.objects.get(name=name)
+    except Company.DoesNotExist:
+        logger.info(f'company {name} cannot find')
+        return JsonResponse(f'company {name} cannot find', status=400)
+    
+    score_type = request.query_params['type']
+    if score_type not in ['A', 'B', 'C', 'D']:
+        logger.info(f'type {score_type} invalid')
+        return JsonResponse(f'type {score_type} invalid', status=400)
 
-@csrf_exempt
-@api_view(['GET', 'POST'])
-def company_scores(request):
-    name = request.query_params['0']
+    res = get_scores(name, [score_type], True)
+    return JsonResponse({
+        'rows': [res]
+    }, safe=False)
+
+
+@api_view(['GET'])
+def company_detail_scores(request):
+    name = request.query_params['company']
     res = get_scores(name, ['A', 'B', 'C', 'D'], True)
     return JsonResponse([res], safe=False)
 
 
 @api_view(['GET'])
-def company_total_scores(request):
+def company_a_b_c_d(request):
     name = request.query_params['company']
     res = get_scores(name, ['A', 'B', 'C', 'D'], False)
     return JsonResponse(res, safe=False)
 
 
 @api_view(['GET', 'POST'])
-def a_scores(request):
-    name = request.query_params['0']
-    res = get_scores(name, ['A'], True)
-    return JsonResponse({
-        'rows': [res]
-    }, safe=False)
-
-
-@api_view(['GET', 'POST'])
-def b_scores(request):
-    name = request.query_params['0']
-    res = get_scores(name, ['B'], True)
-    return JsonResponse({
-        'rows': [res]
-    }, safe=False)
-
-
-@api_view(['GET', 'POST'])
-def c_scores(request):
-    name = request.query_params['0']
-    res = get_scores(name, ['C'], True)
-    return JsonResponse({
-        'rows': [res]
-    }, safe=False)
-
-
-@api_view(['GET', 'POST'])
-def d_scores(request):
-    name = request.query_params['0']
-    res = get_scores(name, ['D'], True)
-    return JsonResponse({
-        'rows': [res]
-    }, safe=False)
-
-
-@api_view(['GET', 'POST'])
 def score_citations(request):
-    name = request.query_params['0']
+    name = request.query_params['company']
     res = get_score_citations(name, ['A', 'B', 'C', 'D'], True)
     return JsonResponse(res, safe=False)
 
 
-@api_view(['GET', 'POST'])
-def other_company_info(request):
-    name = request.query_params['0']
-    res = {}
-    company = Company.objects.get(name=name)
-    res['Logo'] = company.logo
+@api_view(['GET'])
+def partial_company_basic(request):
+    name = request.query_params['company']
+    try:
+        company = Company.objects.get(name=name)
+    except Company.DoesNotExist:
+        logger.info(f'company {name} cannot find')
+        return JsonResponse(f'company {name} cannot find', status=400)
+
+    res = {'Logo':  company.logo}
     if company.parent_company:
         res['Subsidiary'] = company.parent_company
     else:
@@ -289,10 +282,15 @@ def other_company_info(request):
     return JsonResponse([res], safe=False)
 
 
-@api_view(['GET', 'POST'])
-def company_name(request):
-    name = request.query_params['0']
-    company = Company.objects.get(name=name)
+@api_view(['GET'])
+def company_basic(request):
+    name = request.query_params['company']
+    try:
+        company = Company.objects.get(name=name)
+    except Company.DoesNotExist:
+        logger.info(f'company {name} cannot find')
+        return JsonResponse(f'company {name} cannot find', status=400)
+
     res = {'Name': company.name}
     if company.parent_company:
         res['Subsidiary'] = company.parent_company
@@ -307,13 +305,18 @@ def company_name(request):
     res['SimilarCompany4'] = company.similar_company_4
     res['TotalScore'] = get_total_score(name)
 
-    return JsonResponse([res], safe=False)
+    return JsonResponse(res, safe=False)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def facts(request):
-    name = request.query_params['0']
-    company = Company.objects.get(name=name)
+    name = request.query_params['company']
+    try:
+        company = Company.objects.get(name=name)
+    except Company.DoesNotExist:
+        logger.info(f'company {name} cannot find')
+        return JsonResponse(f'company {name} cannot find', status=400)
+
     fact_items = Facts.objects.all().filter(company=company)
     res = []
     for item in fact_items:
@@ -326,9 +329,9 @@ def facts(request):
     return JsonResponse(res, safe=False)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def fact_citations(request):
-    fact_id = request.query_params['1']
+    fact_id = request.query_params['0']
     citations = Facts.objects.get(id=fact_id).citation.all()
     res = []
     for item in citations:
@@ -347,10 +350,15 @@ def fact_citations(request):
 News_Category = dict(News.Category_Choice)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def news(request):
-    name = request.query_params['0']
-    company = Company.objects.get(name=name)
+    name = request.query_params['company']
+    try:
+        company = Company.objects.get(name=name)
+    except Company.DoesNotExist:
+        logger.info(f'company {name} cannot find')
+        return JsonResponse(f'company {name} cannot find', status=400)
+
     news_items = News.objects.all().filter(company=company)
     res = []
     for item in news_items:
@@ -372,7 +380,7 @@ def news(request):
 
 @api_view(['GET', 'POST'])
 def news_citations(request):
-    news_id = request.query_params['1']
+    news_id = request.query_params['0']
     citations = News.objects.get(id=news_id).citation.all()
     res = []
     for item in citations:
@@ -425,7 +433,7 @@ def similar_companies(request):
     return JsonResponse(res, safe=False)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def industry_standards(request):
     """
     current implementation in Nodejs is hardcoded return Apparel.

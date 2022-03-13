@@ -26,26 +26,6 @@ import Scores from "./Scores/Scores";
 import BrandProfile from "./BrandProfile";
 import SimilarBrand from "./SimilarBrand";
 
-const companyinfo = [
-    {
-        A_ID: 0,
-        B_ID: 0,
-        C_ID: 0,
-        D_ID: 0,
-        TotalScore: 0,
-        Category: "",
-        Description: "",
-        IndustryStandardsID: 0,
-        Logo: 0,
-        Name: "",
-        SimilarCompany1: "",
-        SimilarCompany2: "",
-        SimilarCompany3: "",
-        SimilarCompany4: "",
-        Subsidiary: "",
-        CompanyID: ""
-    }
-]
 
 const companyNews = [
     {
@@ -153,7 +133,6 @@ function Company({ match, location }) {
     const [showCompanyInitInfo, setCompanyInitShowInfo] = useState(false);
     const [showNewsInfo, setNewsShowInfo] = useState(false);
     const [showInfo, setShowInfo] = useState(false)
-    const [companyDetails, setCompanyDetails] = React.useState(companyinfo);
     const [news, setNews] = React.useState(companyNews);
     const [citations, setCitations] = React.useState(companyCit);
     const { loading, setLoading } = useState(false);
@@ -175,10 +154,9 @@ function Company({ match, location }) {
     }
 
     const handleOpen = (k, ID) => {
-        axios.post('/citations',
-            {},
+        axios.get('/api/v1/citation/news',
             {
-                params: [companyName, ID, 'N']
+                params: [ID]
             }
         ).then(resp => {
             let data = citations;
@@ -318,60 +296,14 @@ function Company({ match, location }) {
     }
 
     useEffect(() => {
-        // setLoading(true);
-        // let data = companyDetails;
-        window.scrollTo(0, 0)
-        axios.post(
-            '/companyscores',
-            {},
-            {
-                params: companyName
-            }
-        ).then((resp) => {
-            let data = companyDetails;
-            let score = (parseInt(resp.data[0]["Ascore"]) + parseInt(resp.data[0]["Bscore"]) + parseInt(resp.data[0]["Cscore"]) + parseInt(resp.data[0]["Dscore"])) / 4;
-            data[0]["TotalScore"] = score;
-            let ratio = 324 * score / 100;
-            data[0]["SliderLength"] = ratio;
-            setCompanyDetails(data);
-            setState(resp.data);
-        });
 
-        axios.post(
-            '/companyname',
-            {},
-            {
-                params: companyName
-            }
-        )
-            .then((resp) => {
-                let data = companyDetails;
-                // data[0]["A_ID"] = resp.data[0]["A_ID"];
-                // data[0]["B_ID"] = resp.data[0]["B_ID"];
-                // data[0]["C_ID"] = resp.data[0]["C_ID"];
-                // data[0]["D_ID"] = resp.data[0]["D_ID"];
-                data[0]["Category"] = resp.data[0]["Category"];
-                data[0]["Description"] = resp.data[0]["Description"];
-                data[0]["IndustryStandardsID"] = resp.data[0]["IndustryStandardsID"];
-                data[0]["Logo"] = resp.data[0]["Logo"];
-                data[0]["Name"] = resp.data[0]["Name"];
-                data[0]["SimilarCompany1"] = resp.data[0]["SimilarCompany1"];
-                data[0]["SimilarCompany2"] = resp.data[0]["SimilarCompany2"];
-                data[0]["SimilarCompany3"] = resp.data[0]["SimilarCompany3"];
-                data[0]["SimilarCompany4"] = resp.data[0]["SimilarCompany4"];
-                data[0]["Subsidiary"] = resp.data[0]["Subsidiary"];
-                setCompanyDetails(data);
-                setState(resp.data);
-            })
+        window.scrollTo(0, 0);
 
+        //There are special characters inside company name, such as 'H&M'
+        let company_name = encodeURIComponent(companyName);
+        let url = "/api/v1/news?company=" + company_name;
 
-        axios.post(
-            '/news',
-            {},
-            {
-                params: companyName
-            }
-        )
+        axios.get(url)
             .then((resp) => {
                 let data = companyNews;
                 let photoarr = [];
@@ -475,7 +407,7 @@ function Company({ match, location }) {
                 <Grid item xs={12} md={4}>
 
                     {/*brand profile with companyName and info*/}
-                    <BrandProfile company = {companyName} info = {companyinfo}/>
+                    <BrandProfile company = {companyName} />
                     {/*test*/}
 
                 </Grid>
@@ -521,9 +453,7 @@ function Company({ match, location }) {
                         {/*Political Association*/}
                         <PoliticalContribution company = {companyName}/>
 
-
                         {/* Similar Brands */}
-
                         <SimilarBrand company = {companyName}/>
                     </div>
                 </Grid>

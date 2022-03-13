@@ -874,13 +874,14 @@ class BrandBreakdown extends React.Component {
 
   componentDidMount () {
     this.setState({companyName: this.props.match.params.companyName});
-    axios.post(
-      '/citationsLong',
-      {},
-      {
-        params: [this.props.match.params.companyName]
-      }
-    ).then(resp => {
+    //There are special characters inside company name, such as 'H&M'
+    let company_name = encodeURIComponent(this.props.match.params.companyName);
+    let score_url = "/api/v1/scores/detail?company=" + company_name;
+    let score_citation_url = "/api/v1/citation/scores?company=" + company_name;
+    let partial_basic_url = "/api/v1/partialcompanybasic?company=" + company_name;
+
+    axios.get(score_citation_url)
+        .then(resp => {
       let arrA11 = [];
       let arrA12 = [];
       let arrA21 = [];
@@ -1246,20 +1247,8 @@ class BrandBreakdown extends React.Component {
 
       }
     })
-    axios.post(
-      '/companyscores',
-      {},
-          {
-              params: this.props.match.params.companyName
-          }
-      ).then((resp) => {
-        // console.log(this.state.companyName);
-        // let score = (parseInt(resp.data[0]["Ascore"]) + parseInt(resp.data[0]["Bscore"]) + parseInt(resp.data[0]["Cscore"]) + parseInt(resp.data[0]["Dscore"]))/4;
-        // let data = {TotalScore: score, Ascore: resp.data[0]["Ascore"], Bscore: resp.data[0]["Bscore"], Cscore: resp.data[0]["Cscore"], Dscore: resp.data[0]["Dscore"]};
-        // let dataA = {A1score: resp.data[0]["A1score"], A11score: resp.data[0]["A1.1score"], A11text: resp.data[0]["A1.1long"], A12score: resp.data[0]["A1.2score"], A12text: resp.data[0]["A1.2long"], A2score: resp.data[0]["A2score"], A21score: resp.data[0]["A2.1score"], A21text: resp.data[0]["A2.1long"], A22score: resp.data[0]["A2.2score"], A22text: resp.data[0]["A2.2long"], A23score: resp.data[0]["A2.3score"], A3score: resp.data[0]["A3score"], A31score: resp.data[0]["A3.1score"], A31text: resp.data[0]["A3.1long"], A32score: resp.data[0]["A3.2score"], A32text: resp.data[0]["A3.2long"], A33score: resp.data[0]["A3.3score"], A33text: resp.data[0]["A3.3long"], A4score: resp.data[0]["A4score"], A41score: resp.data[0]["A4.1score"], A41text: resp.data[0]["A4.1long"], A42score: resp.data[0]["A4.2score"], A42text: resp.data[0]["A4.2long"], A43score: resp.data[0]["A4.3score"], A43text: resp.data[0]["A4.3long"]};
-        // let dataB = {B1score: resp.data[0]["B1score"], B11score: resp.data[0]["B1.1score"], B11text: resp.data[0]["B1.1long"], B12score: resp.data[0]["B1.2score"], B12text: resp.data[0]["B1.2long"], B13score: resp.data[0]["B1.3score"], B13text: resp.data[0]["B1.3long"], B2score: resp.data[0]["B2score"], B21score: resp.data[0]["B2.1score"], B21text: resp.data[0]["B2.1long"], B22score: resp.data[0]["B2.2score"], B22text: resp.data[0]["B2.2long"], B23score: resp.data[0]["B2.3score"], B3score: resp.data[0]["B3score"], B31score: resp.data[0]["B3.1score"], B31text: resp.data[0]["B3.1long"], B32score: resp.data[0]["A3.2score"], B32text: resp.data[0]["B3.2long"], B33score: resp.data[0]["B3.3score"], B33text: resp.data[0]["B3.3long"], B34score: resp.data[0]["B3.4score"], B34text: resp.data[0]["B3.4long"], B4score: resp.data[0]["B4score"], B41score: resp.data[0]["B4.1score"], B41text: resp.data[0]["B4.1long"], B42score: resp.data[0]["B4.2score"], B42text: resp.data[0]["A4.2long"], B43score: resp.data[0]["B4.3score"], B43text: resp.data[0]["B4.3long"], B44score: resp.data[0]["B4.4score"], B44text: resp.data[0]["B4.4long"]};
-        // let dataC = {C1score: resp.data[0]["C1score"], C11score: resp.data[0]["C1.1score"], C11text: resp.data[0]["C1.1long"], C12score: resp.data[0]["C1.2score"], C12text: resp.data[0]["C1.2long"], C13score: resp.data[0]["C1.3score"], C13text: resp.data[0]["C1.3long"], C14score: resp.data[0]["C1.4score"], C14text: resp.data[0]["C1.4long"], C2score: resp.data[0]["C2score"], C21score: resp.data[0]["C2.1score"], C21text: resp.data[0]["C2.1long"], C22score: resp.data[0]["C2.2score"], C22text: resp.data[0]["C2.2long"], C23score: resp.data[0]["C2.3score"], C23text: resp.data[0]["C2.3long"], C24score: resp.data[0]["C2.4score"], C24text: resp.data[0]["C2.4long"], C3score: resp.data[0]["C3score"], C31score: resp.data[0]["C3.1score"], C31text: resp.data[0]["C3.1long"], C32score: resp.data[0]["C3.2score"], C32text: resp.data[0]["C3.2long"], C33score: resp.data[0]["C3.3score"], C33text: resp.data[0]["C3.3long"], C34score: resp.data[0]["C3.4score"], C34text: resp.data[0]["C3.4long"], C4score: resp.data[0]["C4score"], C41score: resp.data[0]["C4.1score"], C41text: resp.data[0]["C4.1long"], C42score: resp.data[0]["C4.2score"], C42text: resp.data[0]["C4.2long"], C43score: resp.data[0]["C4.3score"], C43text: resp.data[0]["C4.3long"], C44score: resp.data[0]["C4.4score"], C44text: resp.data[0]["C4.4long"]};
-        // let dataD = {D1score: resp.data[0]["D1score"], D11score: resp.data[0]["D1.1score"], C11text: resp.data[0]["D1.1long"], D12score: resp.data[0]["D1.2score"], D12text: resp.data[0]["D1.2long"], D2score: resp.data[0]["D2score"], D21text: resp.data[0]["D2.1long"], D22score: resp.data[0]["D2.2score"], D22text: resp.data[0]["D2.2long"], D23score: resp.data[0]["D2.3score"], D23text: resp.data[0]["D2.3long"], D3score: resp.data[0]["D3score"], D31score: resp.data[0]["D3.1score"], D31text: resp.data[0]["D3.1long"], D32score: resp.data[0]["D3.2score"], D32text: resp.data[0]["D3.2long"], D33score: resp.data[0]["D3.3score"], D33text: resp.data[0]["D3.3long"], D34score: resp.data[0]["D3.4score"], D34text: resp.data[0]["D3.4long"], D35score: resp.data[0]["D3.5score"], D35text: resp.data[0]["D3.5long"]};
+    axios.get(score_url)
+        .then((resp) => {
         field[0].mainScore = resp.data[0]["Ascore"];
         field[0].subfield[0].mainNestedScore = resp.data[0]["A1score"];
         field[0].subfield[1].mainNestedScore = resp.data[0]["A2score"];
@@ -1401,13 +1390,8 @@ class BrandBreakdown extends React.Component {
         field[3].subfield[2].subNestedField[0].texts[4] = resp.data[0]["D3.5long"];
         this.setState({reset: true});
     });
-    axios.post(
-      '/somecompanyinfo',
-      {},
-        {
-          params: this.props.match.params.companyName
-        }
-    ).then(resp => {
+    axios.get(partial_basic_url)
+        .then(resp => {
       console.log(resp.data);
       this.setState({
         logo: resp.data[0].Logo,
@@ -1415,11 +1399,8 @@ class BrandBreakdown extends React.Component {
         totalscore: resp.data[0].TotalScore
       })
     })
-    axios.get(
-      '/industry',
-      {},
-      {}
-    ).then(resp => {
+    axios.get('/api/v1/industry')
+        .then(resp => {
       console.log(resp.data);
       field[0].subfield[0].total = resp.data.rows[0]["A1total"];
       field[0].subfield[0].subNestedField[0].total[0] = resp.data.rows[0]["A1.1total"];
