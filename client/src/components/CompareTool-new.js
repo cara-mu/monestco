@@ -7,79 +7,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import "../styles/compareTool-new.css";
 import axios from "axios";
 import {AiOutlineClose} from 'react-icons/ai';
-import { icons } from "react-icons/lib";
-import { SignalCellularNull } from "@material-ui/icons";
 
-// const scoreInfo = [
-//   {
-//     A_1 : 0,
-//     A1_1 : 0,
-//     A1_2 : 0,
-//     A_2: 0,
-//     A2_1 : 0,
-//     A2_2: 0,
-//     A2_3: 0,
-//     A_3 : 0,
-//     A3_1 : 0,
-//     A3_2: 0,
-//     A3_3 : 0,
-//     A_4 : 0,
-//     A4_1 : 0,
-//     A4_2: 0,
-//     A4_3 : 0,
-//     B_1 : 0,
-//     B1_1 : 0,
-//     B1_2: 0,
-//     B1_3 : 0,
-//     B_2: 0,
-//     B2_1 : 0,
-//     B2_2: 0,
-//     B2_3 : 0,
-//     B_3 : 0,
-//     B3_1 : 0,
-//     B3_2: 0,
-//     B3_3 : 0,
-//     B3_4 : 0,
-//     B_4 : 0,
-//     B4_1 : 0,
-//     B4_2: 0,
-//     B4_3 : 0,
-//     B4_4 : 0,
-//     C_1 : 0,
-//     C1_1 : 0,
-//     C1_2: 0,
-//     C1_3 : 0,
-//     C1_4 : 0,
-//     C_2: 0,
-//     C2_1 : 0,
-//     C2_2: 0,
-//     C2_3 : 0,
-//     C2_4 : 0,
-//     C_3 : 0,
-//     C3_1 : 0,
-//     C3_2: 0,
-//     C3_3 : 0,
-//     C3_4 : 0,
-//     C_4 : 0,
-//     C4_1 : 0,
-//     C4_2: 0,
-//     C4_3 : 0,
-//     C4_4 : 0,
-//     D_1 : 0,
-//     D1_1 : 0,
-//     D1_2: 0,
-//     D_2: 0,
-//     D2_1 : 0,
-//     D2_2: 0,
-//     D2_3 : 0,
-//     D_3 : 0,
-//     D3_1 : 0,
-//     D3_2: 0, 
-//     D3_3 : 0,
-//     D3_4 : 0,
-//     D3_5 : 0
-//   }
-// ]
 const field = [
   {
     mainField: "DIVERSITY & INCLUSION",
@@ -1493,14 +1421,16 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
   async function renderData(company, inputIndex) {
     let data = fieldData;
     inputIndex--;
+
+    //There are special characters inside company name, such as 'H&M'
+    let company_name = encodeURIComponent(company);
+    let a_url = "/api/v1/scores?company=" + company_name + "&type=A";
+    let b_url = "/api/v1/scores?company=" + company_name + "&type=B";
+    let c_url = "/api/v1/scores?company=" + company_name + "&type=C";
+    let d_url = "/api/v1/scores?company=" + company_name + "&type=D";
+
     await axios
-      .post(
-        "/companydetailsA",
-        {},
-        {
-          params: company,
-        }
-      )
+      .get(a_url)
       .then((resp) => {
         data[0].mainScore[inputIndex].score = resp.data.rows[0]["Ascore"];
 
@@ -1562,13 +1492,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
       });
 
     await axios
-      .post(
-        "/companydetailsB",
-        {},
-        {
-          params: company,
-        }
-      )
+      .get(b_url)
       .then((resp) => {
         data[1].mainScore[inputIndex].score = resp.data.rows[0]["Bscore"];
 
@@ -1646,13 +1570,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
       });
 
     await axios
-      .post(
-        "/companydetailsC",
-        {},
-        {
-          params: company,
-        }
-      )
+      .get(c_url)
       .then((resp) => {
         data[2].mainScore[inputIndex].score = resp.data.rows[0]["Cscore"];
 
@@ -1734,13 +1652,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
       });
 
     await axios
-      .post(
-        "/companydetailsD",
-        {},
-        {
-          params: company,
-        }
-      )
+      .get(d_url)
       .then((resp) => {
         data[3].mainScore[inputIndex].score = resp.data.rows[0]["Dscore"];
 
@@ -1810,7 +1722,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
   }
 
   useEffect(() => {
-    axios.get("/allcompanies").then((resp) => {
+    axios.get("/api/v1/allcompanies").then((resp) => {
       const allcompanies = [];
       console.log("before all comp");
       console.log(resp.data);
@@ -1825,78 +1737,8 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
     deleteField(1);
     deleteField(2);
 
-    // axios.get("/scoredenominator").then((resp) => {
-    //   let data = scoreDenominator
-    //   data[0]["A_1"] = resp.data.rows[0]["A1total"]
-    //   data[0]["A_2"] = resp.data.rows[0]["A2total"]
-    //   data[0]["A_3"] = resp.data.rows[0]["A3total"]
-    //   data[0]["A_4"] = resp.data.rows[0]["A4total"]
-    //   data[0]["A1_1"] = resp.data.rows[0]["A1.1total"]
-    //   data[0]["A1_2"] = resp.data.rows[0]["A1.2total"]
-    //   data[0]["A2_1"] = resp.data.rows[0]["A2.1total"]
-    //   data[0]["A2_2"] = resp.data.rows[0]["A2.2total"]
-    //   data[0]["A2_3"] = resp.data.rows[0]["A2.3total"]
-    //   data[0]["A3_1"] = resp.data.rows[0]["A3.1total"]
-    //   data[0]["A3_2"] = resp.data.rows[0]["A3.2total"]
-    //   data[0]["A3_3"] = resp.data.rows[0]["A3.3total"]
-    //   data[0]["A4_1"] = resp.data.rows[0]["A4.1total"]
-    //   data[0]["A4_2"] = resp.data.rows[0]["A4.2total"]
-    //   data[0]["A4_3"] = resp.data.rows[0]["A4.3total"]
-    //   data[0]["B_1"] = resp.data.rows[0]["B1total"]
-    //   data[0]["B_2"] = resp.data.rows[0]["B2total"]
-    //   data[0]["B_3"] = resp.data.rows[0]["B3total"]
-    //   data[0]["B_4"] = resp.data.rows[0]["B4total"]
-    //   data[0]["C_1"] = resp.data.rows[0]["C1total"]
-    //   data[0]["C_2"] = resp.data.rows[0]["C2total"]
-    //   data[0]["C_3"] = resp.data.rows[0]["C3total"]
-    //   data[0]["C_4"] = resp.data.rows[0]["C4total"]
-    //   data[0]["D_1"] = resp.data.rows[0]["D1total"]
-    //   data[0]["D_2"] = resp.data.rows[0]["D2total"]
-    //   data[0]["D_3"] = resp.data.rows[0]["D3total"]
-    //   data[0]["B1_1"] = resp.data.rows[0]["B1.1total"]
-    //   data[0]["B1_2"] = resp.data.rows[0]["B1.2total"]
-    //   data[0]["B1_3"] = resp.data.rows[0]["B1.3total"]
-    //   data[0]["B2_1"] = resp.data.rows[0]["B2.1total"]
-    //   data[0]["B2_2"] = resp.data.rows[0]["B2.2total"]
-    //   data[0]["B2_3"] = resp.data.rows[0]["B2.3total"]
-    //   data[0]["B3_1"] = resp.data.rows[0]["B3.1total"]
-    //   data[0]["B3_2"] = resp.data.rows[0]["B3.2total"]
-    //   data[0]["B3_3"] = resp.data.rows[0]["B3.3total"]
-    //   data[0]["B3_4"] = resp.data.rows[0]["B3.4total"]
-    //   data[0]["B4_1"] = resp.data.rows[0]["B4.1total"]
-    //   data[0]["B4_2"] = resp.data.rows[0]["B4.2total"]
-    //   data[0]["B4_3"] = resp.data.rows[0]["B4.3total"]
-    //   data[0]["C1_1"] = resp.data.rows[0]["C1.1total"]
-    //   data[0]["C1_2"] = resp.data.rows[0]["C1.2total"]
-    //   data[0]["C1_3"] = resp.data.rows[0]["C1.3total"]
-    //   data[0]["C2_1"] = resp.data.rows[0]["C2.1total"]
-    //   data[0]["C2_2"] = resp.data.rows[0]["C2.2total"]
-    //   data[0]["C2_3"] = resp.data.rows[0]["C2.3total"]
-    //   data[0]["C2_4"] = resp.data.rows[0]["C2.4total"]
-    //   data[0]["C3_1"] = resp.data.rows[0]["C3.1total"]
-    //   data[0]["C3_2"] = resp.data.rows[0]["C3.2total"]
-    //   data[0]["C3_3"] = resp.data.rows[0]["C3.3total"]
-    //   data[0]["C3_4"] = resp.data.rows[0]["C3.4total(integer"]
-    //   data[0]["C4_1"] = resp.data.rows[0]["C4.1total"]
-    //   data[0]["C4_2"] = resp.data.rows[0]["C4.2total"]
-    //   data[0]["C4_3"] = resp.data.rows[0]["C4.3total"]
-    //   data[0]["C4_4"] = resp.data.rows[0]["C4.4total"]
-    //   data[0]["D1_1"] = resp.data.rows[0]["D1.1total"]
-    //   data[0]["D1_2"] = resp.data.rows[0]["D1.2total"]
-    //   data[0]["D2_1"] = resp.data.rows[0]["D2.1total"]
-    //   data[0]["D2_2"] = resp.data.rows[0]["D2.2total"]
-    //   data[0]["D2_3"] = resp.data.rows[0]["D2.3total"]
-    //   data[0]["D3_1"] = resp.data.rows[0]["D3.1total"]
-    //   data[0]["D3_2"] = resp.data.rows[0]["D3.2total"]
-    //   data[0]["D3_3"] = resp.data.rows[0]["D3.3total"]
-    //   data[0]["D3_4"] = resp.data.rows[0]["D3.4total"]
-    //   data[0]["D3_5"] = resp.data.rows[0]["D3.5total"]
-    //   // console.log("DA DATA")
-    //   // console.log(resp.data)
-    //   setScoreDenominator(data);
-    // })
 
-    axios.get("/industry").then((resp) => {
+    axios.get("/api/v1/industry").then((resp) => {
       console.log("respat");
       console.log(resp.data);
       let data = fieldData;

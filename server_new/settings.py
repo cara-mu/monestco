@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 from os import path
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -59,6 +60,8 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]
+
+SESSION_COOKIE_AGE = 300
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -130,6 +133,44 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+                'format': '%(levelname)s %(asctime)s %(name)s.%(funcName)s:%(lineno)s - %(message)s'
+            },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': path.join(BASE_DIR, 'logs', 'monest.log'),
+            'maxBytes': 15728640,  # 1024 * 1024 * 15B = 15MB
+            'backupCount': 10,
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console', 'file'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+            # Responsive logging, set an environment variable DJANGO_LOG_LEVEL to change logging level dynamically
+            # Default level: INFO
+        },
+    },
+}
+
+import logging.config
+logging.config.dictConfig(LOGGING)
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/

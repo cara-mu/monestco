@@ -2,3 +2,9 @@ node_modules
 client/src/eslintcache
 client/.eslintcache
 server/.DS_Store
+monest/.DS_Store
+monest/__pycache__
+monest/migrations/__pycache__
+server_new/.DS_Store
+server_new/__pycache__
+.idea

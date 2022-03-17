@@ -43,9 +43,12 @@ export default function PoliticalContribution(props) {
     const [showPoliticalAssociationInfo, setPoliticalAssociationShowInfo] = useState(false);
     const [summaryData, setPoliticalAssociationSummaryData] = useState({});
 
+    //There are special characters inside company name, such as 'H&M'
+    let company_name = encodeURIComponent(props.company);
+    let url = "/api/v1/pa/summary?company=" + company_name;
 
     useEffect(() => {
-        axios.get(`/api/v1/pa/summary?company=${props.company}`).then((response) => {
+        axios.get(url).then((response) => {
           setPoliticalAssociationSummaryData(response.data);
         });
       },[props.company]);

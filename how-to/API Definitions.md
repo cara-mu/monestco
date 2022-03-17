@@ -781,6 +781,22 @@ Notes:
 
 ```
 
+13. Get Company's Total Score
+- URL: /companyTotalScores
+- Method: Get
+- Params: ?company=Uniqlo
+- Return
+```json
+[
+  {
+    "Ascore": 52,
+    "Bscore": 50,
+    "Cscore": 45,
+    "Dscore": 32
+  }
+]
+```
+
 ## Citations
 
 13. Get Citation Information for Each Brand in Detailed Breakdowns
@@ -1704,70 +1720,39 @@ Notes:
    }
 ]
 ```
-
-18. Return the 4 scores of the similar company 1
-- URL: /similiarCompany1
-- Method: Post
-- Params: ?0=Aritzia
-- Return
-``` json
-[
-   {
-      "Ascore":55,
-      "Bscore":38,
-      "Cscore":56,
-      "Dscore":49
-   }
-]
+## Similar Company
+18.Get Total Scores for similar companies
+- URL: /api/v1/similarcompanies
+- Method: GET
+- Params:  ?company=Adidas
+- Return: 200 
+```json
+{
+  "1": {
+    "name": "Nike",
+    "score": 0
+  },
+  "2": {
+    "name": "Under Armour",
+    "score": 0
+  },
+  "3": {
+    "name": "Reebok",
+    "score": 55
+  },
+  "4": {
+    "name": "New Balance",
+    "score": 0
+  }
+}
+```
+- Return: 400
+```json
+{
+  "error": "company Adida cannot find"
+}
 ```
 
-19. Return the 4 scores of the similar company 2
-- URL: /similiarCompany2
-- Method: Post
-- Params: ?0=Aritzia
-- Return
-``` json
-[
-   {
-      "Ascore":62,
-      "Bscore":50,
-      "Cscore":71,
-      "Dscore":74
-   }
-]
-```
-
-20. Return the 4 scores of the similar company 3
-- URL: /similiarCompany3
-- Method: Post
-- Params: ?0=Aritzia
-- Return
-``` json
-[
-   {
-      "Ascore":65,
-      "Bscore":42,
-      "Cscore":47,
-      "Dscore":56
-   }
-]
-```
-
-21. Return the 4 scores of the similar company 4
-- URL: /similiarCompany4
-- Method: Post
-- Params: ?0=Aritzia
-- Return
-``` json
-[
-   {
-      "Ascore":42,
-      "Bscore":35,
-      "Cscore":30,
-      "Dscore":28
-   }
-]
-```
 22. Get Some Company Info
 - URL: /somecompanyinfo
 - Method: Post
