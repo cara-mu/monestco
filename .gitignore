@@ -2,3 +2,5 @@ node_modules
 client/src/eslintcache
 client/.eslintcache
 server/.DS_Store
+
+*.pyc
