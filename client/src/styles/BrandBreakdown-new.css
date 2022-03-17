@@ -2,9 +2,21 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 80vw;
-    margin: 0 auto;
-    max-width: 1040px;
+    width: 90vw;
+    margin: 0 auto;    
+    max-width: 1366px;
+}
+
+@media screen and (max-width: 1919px) {
+    .breakdown_container {
+        max-width: 1040px;
+    }
+}
+
+@media screen and (max-width: 1439px) {
+    .breakdown_container {
+        max-width: 1080px;
+    }
 }
 
 .breakdown_info-container {
@@ -18,9 +30,6 @@
     font-size: 18px;
     font-weight: 500;
     line-height: 34px;
-}
-
-.breakdown_data-container {
 }
 
 .breakdown_mainField {

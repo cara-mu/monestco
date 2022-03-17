@@ -1,14 +1,27 @@
 .main-Compare-Container {
     display: flex;
     flex-direction: row;
-    max-width: 1650px;
+    justify-content: space-between;
+    max-width: 1350px;
     margin: 0 auto;
 }
 
 .Layout {
-    max-width: 1650px;
+    max-width: 1350px;
     margin: 0 auto;
     /* overflow-x: hidden; */
+}
+
+@media screen and (max-width: 1919px) {
+    .Layout, .main-Compare-Container {
+        max-width: 1040px;
+    }
+}
+
+@media screen and (max-width: 1439px) {
+    .Layout, .main-Compare-Container {
+        max-width: 1080px;
+    }
 }
 
 .Layout h1{
@@ -41,7 +54,6 @@
     font-weight: bold;
     font-size: 18px;
     color:#3D3E3F;
-    width: 1004px;
 }
 
 .Brand-Section-title {
@@ -349,7 +361,7 @@
     margin-top: 15%;
     /* margin-left: 30%;
     margin-right: 10%; */
-    margin-left: 17%;
+    /* margin-left: 17%; */
     margin-right: 20%;
     position: sticky;
     top: 7rem;

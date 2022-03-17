@@ -104,7 +104,7 @@ export default function Chart(props) {
     }
 
     function generateCitationString({title, author, publisher, date, pages, url}) {
-        if (author.length !== 0){
+        if (author?.length !== 0){
             author = author + ',';
         }
 
