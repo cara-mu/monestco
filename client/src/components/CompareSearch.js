@@ -271,7 +271,7 @@ class CompareSearch extends React.Component {
             onChange={this.handleChange}
             placeholder="Search the brand"
             style={{
-              width: "242px",
+              width: "100%",
               height: "40px",
               border: "2px solid #BDBDBD",
             }}

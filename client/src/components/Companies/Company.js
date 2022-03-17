@@ -257,7 +257,7 @@ function Company({ match, location }) {
 
     return (
         <div className='Layout'>
-            <Grid container spacing={3}>
+            <Grid container>
                 <Grid item xs={12} md={4}>
 
                     {/*brand profile with companyName and info*/}
