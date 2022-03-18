@@ -25,7 +25,7 @@ import Facts from "./Facts";
 import Scores from "./Scores/Scores";
 import BrandProfile from "./BrandProfile";
 import SimilarBrand from "./SimilarBrand";
-
+import News from "./News";
 
 const companyNews = [
     {
@@ -220,21 +220,6 @@ function Company({ match, location }) {
             </div>
         )
     };
-    const NewsPopup = ({ handleCloseInfo }) => {
-        return (
-            <div className="company-popup">
-                <div className='company-popup-content'>
-                    <div style={{ display: 'flex', flexDirection: 'column', marginTop: '1rem' }}>
-                        <div>In the News</div>
-                        <div style={{ fontSize: '16px', fontWeight: '500', lineHeight: '25px' }}>
-                            News and recent events summarized with an assessment of the company’s actions taken in response
-                        </div>
-                    </div>
-                    <HighlightOffRoundedIcon onClick={() => setNewsShowInfo(false)} className="popup-close-icon" />
-                </div>
-            </div>
-        )
-    };
 
 
     const CompanyInitiative = () => {
@@ -266,139 +251,8 @@ function Company({ match, location }) {
 
     }
 
-    const InTheNews = () => {
-
-        const [tabView, setTabView] = useState(window.innerWidth < 800);
-
-        useLayoutEffect(() => {
-            function updateSize() {
-                if (window.innerWidth > 800) {
-                    setTabView(false);
-                } else {
-                    setTabView(true);
-                }
-            }
-            window.addEventListener("resize", updateSize);
-            updateSize();
-            return () => window.removeEventListener("resize", updateSize);
-        }, []);
-
-        if (!tabView) { //web view
-            return (
-                <div className='brand_info-text'>News and recent events summarized with an assessment of the company’s actions taken in response</div>
-            )
-        } else if (showNewsInfo && tabView) { //tab view	
-            return (
-                <NewsPopup handleCloseNewsInfo={handleCloseNewsInfo} />
-            )
-        } else return null
-
-    }
-
-    useEffect(() => {
-
-        window.scrollTo(0, 0);
-
-        //There are special characters inside company name, such as 'H&M'
-        let company_name = encodeURIComponent(companyName);
-        let url = "/api/v1/news?company=" + company_name;
-
-        axios.get(url)
-            .then((resp) => {
-                let data = companyNews;
-                let photoarr = [];
-                let yeararr = [];
-                let catarr = [];
-                let titlearr = [];
-                let summarr = [];
-                let issueaddarr = [];
-                let issueexparr = [];
-                let resptakearr = [];
-                let respexparr = [];
-                let idarr = [];
-                resp.data.map(news => {
-                    photoarr.push(news['Photo']);
-                    yeararr.push(news['Year']);
-                    catarr.push(news['Category']);
-                    titlearr.push(news['Title']);
-                    summarr.push(news['Summary']);
-                    issueaddarr.push(news['IssueAddressed']);
-                    issueexparr.push(news['IssueAddressedExplanation']);
-                    resptakearr.push(news['ResponsibilityTaken']);
-                    respexparr.push(news['ResponsibilityTakenExplanation']);
-                    idarr.push(news['ID']);
-                })
-                data[0]["Photo"] = photoarr;
-                data[0]["Year"] = yeararr;
-                data[0]["Category"] = catarr;
-                data[0]["Title"] = titlearr;
-                data[0]["Summary"] = summarr;
-                data[0]["IssueAddressed"] = issueaddarr;
-                data[0]["IssueAddressedExplanation"] = issueexparr;
-                data[0]["ResponsibilityTaken"] = resptakearr;
-                data[0]["ResponsibilityTakenExplanation"] = respexparr;
-                data[0]["ID"] = idarr;
-                setNews(data);
-                setState(resp.data);
-            })
-    }, [findLocation]);
 
 
-    const News = (newsinput) => {
-        return Object.entries(newsinput[0]['Category']).map((category, i) => {
-            return <div>
-                <div className='news-card'>
-                    <img src={newsinput[0]["Photo"][i]} style={{ background: 'rgba(87, 114, 104, 0.5)' }} />
-                    <div className='news-category'>
-                        <span className='news-category-title'>{category[1]}</span>
-                        <span className='news-category-year'>{newsinput[0]["Year"][i]}</span>
-                    </div>
-                    <div style={{ marginTop: '3%' }} className='News-Description'>
-                        <div className='News-Description-title'>{newsinput[0]["Title"][i]}</div>
-
-                        <TextTruncate
-                            line={3}
-                            containerClassName='News-Description-info'
-                            element="div"
-                            truncateText="…"
-                            text={newsinput[0]["Summary"][i]}
-                        />
-
-                        {/* <div className = 'News-Description-info'>{newsinput[0]["Summary"][i]}</div> */}
-                        <div style={{ fontSize: '14px' }}>
-                            <span>Responsibility Taken?</span>
-
-                            {newsinput[0]["ResponsibilityTaken"][i] == "No" &&
-                                <span style={{ color: '#E94921', marginLeft: '5px' }}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
-                                ||
-                                newsinput[0]["ResponsibilityTaken"][i] == "Yes" &&
-                                <span style={{ color: '#28a745', marginLeft: '5px' }}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
-                                ||
-                                newsinput[0]["ResponsibilityTaken"][i] == "Maybe" &&
-                                <span style={{ color: '#F29A72', marginLeft: '5px' }}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
-                            }
-
-
-                        </div>
-                        <div style={{ fontSize: '14px', display: 'flex', position: 'relative' }}>
-                            <span>Issue Resolved?</span>
-
-                            {newsinput[0]["IssueAddressed"][i] == "No" &&
-                                <span style={{ color: '#E94921', marginLeft: '5px' }}>{newsinput[0]["IssueAddressed"][i]}</span>
-                                ||
-                                newsinput[0]["IssueAddressed"][i] == "Yes" &&
-                                <span style={{ color: '#28a745', marginLeft: '5px' }}>{newsinput[0]["IssueAddressed"][i]}</span>
-                                ||
-                                newsinput[0]["IssueAddressed"][i] == "Maybe" &&
-                                <span style={{ color: '#F29A72', marginLeft: '5px' }}>{newsinput[0]["IssueAddressed"][i]}</span>
-                            }
-                            <button className='News-read-more-btn' onClick={() => handleOpen(i, news[0]["ID"][i])}>Read more</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        })
-    }
 
 
     return (
@@ -427,28 +281,8 @@ function Company({ match, location }) {
                         {/*{Facts(fact)}*/}
                         <Facts company = {companyName}/>
 
-
-                        <div className='In-The-News'>
-                            <div className='Brand-Section-title'>
-                                In The News
-                            <InfoIcon className='brand_info-icon' onClick={() => setNewsShowInfo(!showNewsInfo)} />
-                                <InTheNews />
-                            </div>
-                            <div className='Decorative-Line'></div>
-                            <div className='In-The-News-container'>
-                                {News(news)}
-                            </div>
-                            <Modal
-                                open={open}
-                                onClose={handleClose}
-                                aria-labelledby="simple-modal-title"
-                                aria-describedby="simple-modal-description"
-                            >
-                                {body}
-                            </Modal>
-
-                        </div>
-
+                        {/* News*/}
+                        <News company = {companyName}/>
 
                         {/*Political Association*/}
                         <PoliticalContribution company = {companyName}/>
