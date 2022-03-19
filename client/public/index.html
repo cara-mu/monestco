@@ -10,14 +10,15 @@
       gtag('config', 'G-7T9PS0NF7W');
     </script>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/monest_favicon.svg" />
+    {% load static %}
+    <link rel="icon" href="{% static 'monest_favicon.svg' %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
       content="Empowering consumers to vote with their dollars, one purchase at a time."
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/192.png" />
+    <link rel="apple-touch-icon" href="{% static '192.png' %}" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -27,7 +28,7 @@
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="manifest" href="{% static 'manifest.json' %}" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
