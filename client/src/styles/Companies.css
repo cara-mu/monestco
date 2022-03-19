@@ -1,3 +1,7 @@
+span {
+     pointer-events: none;
+ }
+
 .main-Compare-Container {
     display: flex;
     flex-direction: row;
