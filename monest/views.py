@@ -73,7 +73,6 @@ def all_company_names(request):
         data.append({
             "Name": items[i]
         })
-    print(data)
     return JsonResponse({
         'rows': data
     }, safe=False)
