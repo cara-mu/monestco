@@ -63,7 +63,7 @@ def all_company_names(request):
     companies = Company.objects.values_list('name', flat=True)
 
     items = []
-    for item in enumerate(companies):
+    for item in companies:
         items.append(item)
 
     items.sort()
