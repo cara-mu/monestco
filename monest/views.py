@@ -61,11 +61,19 @@ def all_company_names(request):
     Get all companies
     """
     companies = Company.objects.values_list('name', flat=True)
+
+    items = []
+    for item in enumerate(companies):
+        items.append(item)
+
+    items.sort()
     data = []
-    for item in companies:
+
+    for i, item in enumerate(companies):
         data.append({
-            "Name": item
+            "Name": items[i]
         })
+    print(data)
     return JsonResponse({
         'rows': data
     }, safe=False)
