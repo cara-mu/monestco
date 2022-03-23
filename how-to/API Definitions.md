@@ -1721,7 +1721,7 @@ Notes:
 ]
 ```
 ## Similar Company
-1. Get Total Scores for similar companies
+18.Get Total Scores for similar companies
 - URL: /api/v1/similarcompanies
 - Method: GET
 - Params:  ?company=Adidas
@@ -1753,69 +1753,6 @@ Notes:
 }
 ```
 
-3. Return the 4 scores of the similar company 1
-- URL: /similiarCompany1
-- Method: Post
-- Params: ?0=Aritzia
-- Return
-``` json
-[
-   {
-      "Ascore":55,
-      "Bscore":38,
-      "Cscore":56,
-      "Dscore":49
-   }
-]
-```
-
-19. Return the 4 scores of the similar company 2
-- URL: /similiarCompany2
-- Method: Post
-- Params: ?0=Aritzia
-- Return
-``` json
-[
-   {
-      "Ascore":62,
-      "Bscore":50,
-      "Cscore":71,
-      "Dscore":74
-   }
-]
-```
-
-20. Return the 4 scores of the similar company 3
-- URL: /similiarCompany3
-- Method: Post
-- Params: ?0=Aritzia
-- Return
-``` json
-[
-   {
-      "Ascore":65,
-      "Bscore":42,
-      "Cscore":47,
-      "Dscore":56
-   }
-]
-```
-
-21. Return the 4 scores of the similar company 4
-- URL: /similiarCompany4
-- Method: Post
-- Params: ?0=Aritzia
-- Return
-``` json
-[
-   {
-      "Ascore":42,
-      "Bscore":35,
-      "Cscore":30,
-      "Dscore":28
-   }
-]
-```
 22. Get Some Company Info
 - URL: /somecompanyinfo
 - Method: Post

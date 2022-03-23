@@ -420,7 +420,7 @@ x
     height: min-content;
     position: sticky;
     top: 120px;
-    margin-left: 5%; 
+    /* margin-left: 5%;  */
     width: 20%;
     max-width: 230px; 
     min-width: 200px;
@@ -432,7 +432,7 @@ x
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     /* margin-left: 5%; */
     /* width: 70%; */
 }
@@ -542,6 +542,12 @@ x
     width: 85%;
     border-bottom: 2px solid #E0E0E0;
     margin-bottom: 20px;
+}
+
+@media screen and (max-width:1279px) {
+    .row-2 {
+        margin: 0 auto;
+    }
 }
 
 @media screen and (max-width:1050px) {

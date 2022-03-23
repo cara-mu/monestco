@@ -17,8 +17,21 @@
     width: 85%;
     margin: 134px auto;
     position: relative;
-    max-width: 1650px;
+    max-width: 1350px;
 }
+
+@media screen and (max-width: 1919px) {
+    .Methodology-new {
+        max-width: 1040px;
+    }
+}
+
+@media screen and (max-width: 1439px) {
+    .Methodology-new {
+        max-width: 1080px;
+    }
+}
+
 
 .Methodology-index {
     display: none;
