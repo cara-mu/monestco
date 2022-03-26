@@ -570,7 +570,7 @@ def emails(request):
     email = request.query_params['email']
     allEmails = Email.objects.filter(userEmail=email)
     if allEmails.exists():
-        return JsonResponse({'Error': 'Email already exists'}, status=400)
+        return JsonResponse({'Success': 'Email has been saved'}, safe=False)
     else:
         try:
             emailForm = Email(userEmail=email)

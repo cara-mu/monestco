@@ -13,7 +13,15 @@ function HomePage(){
     function sendEmail(e) {
         const btn = document.getElementById('button');
         const emailfield = document.getElementById('fetched_email');
+        //Initial Front end check
+        const re = new RegExp(/^([\w\d._\-#])+@([\w\d._\-#]+[.][\w\d._\-#]+)+$/);
         e.preventDefault();
+        if (!re.test(emailfield.value)) {
+            console.log("This si from front end")
+            alert("That is an invalid email address");
+            return;
+        }
+        
         axios.post('/api/v1/emails', {}, { 
             params : {
                 email : emailfield.value
@@ -21,6 +29,7 @@ function HomePage(){
         }).then(()=>{
             btn.value = 'Sent!';
             emailfield.value = "";
+            setTimeout(() => {btn.value = "Sign Up"}, 2000)
 
             const serviceID = 'service_00bwmmz';
             const templateID = 'template_17sev0y';
