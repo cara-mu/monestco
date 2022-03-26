@@ -30,7 +30,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     '.monest.co/',
-    'monest-test-backend.herokuapp.com'
+    'monest-test-backend.herokuapp.com',
+    'monesttest.herokuapp.com',
 ]
 
 
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'monest',
+    'recommendation',
 ]
 
 MIDDLEWARE = [
