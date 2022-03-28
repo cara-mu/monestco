@@ -244,6 +244,12 @@ def company_type_score(request):
 @api_view(['GET'])
 def company_detail_scores(request):
     name = request.query_params['company']
+    try:
+        company = Company.objects.get(name=name)
+    except Company.DoesNotExist:
+        logger.info(f'company {name} not found')
+        return JsonResponse(f'company {name} not found', status=400)
+
     res = get_scores(name, ['A', 'B', 'C', 'D'], True)
     return JsonResponse([res], safe=False)
 
@@ -251,6 +257,12 @@ def company_detail_scores(request):
 @api_view(['GET'])
 def company_a_b_c_d(request):
     name = request.query_params['company']
+    try:
+        company = Company.objects.get(name=name)
+    except Company.DoesNotExist:
+        logger.info(f'company {name} not found')
+        return JsonResponse(f'company {name} not found', status=400)
+
     res = get_scores(name, ['A', 'B', 'C', 'D'], False)
     return JsonResponse(res, safe=False)
 
@@ -258,6 +270,12 @@ def company_a_b_c_d(request):
 @api_view(['GET', 'POST'])
 def score_citations(request):
     name = request.query_params['company']
+    try:
+        company = Company.objects.get(name=name)
+    except Company.DoesNotExist:
+        logger.info(f'company {name} not found')
+        return JsonResponse(f'company {name} not found', status=400)
+
     res = get_score_citations(name, ['A', 'B', 'C', 'D'], True)
     return JsonResponse(res, safe=False)
 
@@ -331,7 +349,13 @@ def facts(request):
 @api_view(['GET'])
 def fact_citations(request):
     fact_id = request.query_params['0']
-    citations = Facts.objects.get(id=fact_id).citation.all()
+    # should not trigger
+    try:
+        citations = Facts.objects.get(id=fact_id).citation.all()
+    except Facts.DoesNotExist:
+        logger.info(f'fact {fact_id} not found')
+        return JsonResponse(f'fact {fact_id} not found', status=400)
+
     res = []
     for item in citations:
         res.append({
@@ -380,7 +404,13 @@ def news(request):
 @api_view(['GET', 'POST'])
 def news_citations(request):
     news_id = request.query_params['0']
-    citations = News.objects.get(id=news_id).citation.all()
+    # should not trigger
+    try:
+        citations = News.objects.get(id=news_id).citation.all()
+    except News.DoesNotExist:
+        logger.info(f'news {news_id} not found')
+        return JsonResponse(f'news {news_id} not found', status=400)
+
     res = []
     for item in citations:
         res.append({
@@ -458,7 +488,12 @@ def industry_standards(request):
 @api_view(['GET'])
 def political_association_summary(request):
     name = request.query_params['company']
-    company = Company.objects.get(name=name)
+    try:
+        company = Company.objects.get(name=name)
+    except Company.DoesNotExist:
+        logger.info(f'company {name} not found')
+        return JsonResponse(f'company {name} not found', status=400)
+
     res = {}
     records = PoliticalAssociation.objects.all().filter(company=company)
     # if empty then parent records instead
@@ -471,7 +506,12 @@ def political_association_summary(request):
 @api_view(['GET'])
 def political_association_details(request):
     name = request.query_params['company']
-    company = Company.objects.get(name=name)
+    try:
+        company = Company.objects.get(name=name)
+    except Company.DoesNotExist:
+        logger.info(f'company {name} not found')
+        return JsonResponse(f'company {name} not found', status=400)
+
     records = PoliticalAssociation.objects.all().filter(company=company)
     if not records:
         records = PoliticalAssociation.objects.all().filter(company=company.parent_company)
@@ -541,13 +581,18 @@ def brands_ranking(request):
     Return
     Industry Ranking according to inputted preference
     """
-    company = request.query_params['company']
+    cname = request.query_params['company']
     di = request.query_params['di']
     we = request.query_params['we']
     wp = request.query_params['wp']
     es = request.query_params['es']
 
-    company = Company.objects.get(name=company)
+    try:
+        company = Company.objects.get(name=cname)
+    except Company.DoesNotExist:
+        logger.info(f'company {cname} not found')
+        return JsonResponse(f'company {cname} not found', status=400)
+
     companies = Company.objects.all().filter(industry=company.industry)
     res = []
     scores = {}
