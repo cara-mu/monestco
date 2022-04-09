@@ -6,23 +6,40 @@ import '../../styles/HomePage.css';
 import * as emailjs from "emailjs-com";
 import WindowLogo from '../../assets/window.jpg';
 import CareerImg from '../../assets/career.png';
+import axios from 'axios';
 
 
 function HomePage(){
     function sendEmail(e) {
         const btn = document.getElementById('button');
+        const emailfield = document.getElementById('fetched_email');
+        //Initial Front end check
+        const re = new RegExp(/^([\w\d._\-#])+@([\w\d._\-#]+[.][\w\d._\-#]+)+$/);
+        e.preventDefault();
+        if (!re.test(emailfield.value)) {
+            console.log("This si from front end")
+            alert("That is an invalid email address");
+            return;
+        }
+        
+        axios.post('/api/v1/emails', {}, { 
+            params : {
+                email : emailfield.value
+            }
+        }).then(()=>{
+            btn.value = 'Sent!';
+            emailfield.value = "";
+            setTimeout(() => {btn.value = "Sign Up"}, 2000)
 
-        document.getElementById('form')
-        .addEventListener('submit', function(event) {
-        event.preventDefault();
+            const serviceID = 'service_00bwmmz';
+            const templateID = 'template_17sev0y';
 
-        btn.value = 'Sent!';
-
-        const serviceID = 'service_00bwmmz';
-        const templateID = 'template_17sev0y';
-
-        emailjs.sendForm(serviceID, templateID, this, 'user_43WxN5WcAiBEEo05BK73t');
-        });
+            emailjs.sendForm(serviceID, templateID, this, 'user_43WxN5WcAiBEEo05BK73t');
+        }).catch((err) => {
+            if (typeof err.response !== 'undefined') {
+                alert(err.response.data.Error)
+            }
+        })
     }
 
     return(
@@ -35,10 +52,10 @@ function HomePage(){
                         need to make responsible <br></br>
                         purchasing decisions.</h1>         
                         <label for="fetched_email">Join our Chrome Extension waitlist!</label>               
-                        <form id="form" onClick = {sendEmail}>
+                        <form id="form" >
                             <div class="field" style={{display:'flex', alignItems:'center', flexWrap:'nowrap'}}>                                                                
                                 <input type="text" name="fetched_email" id="fetched_email" placeholder="Your email address"></input>
-                                <input type="submit" id="button" value="Sign Up" ></input>
+                                <input type="button" id="button" value="Sign Up" onClick = {sendEmail}></input>
                             </div>
                         </form>
                     </div>                

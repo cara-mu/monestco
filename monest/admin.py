@@ -1,5 +1,5 @@
 from django.contrib import admin
-from monest.models import Industry, Company, IndustryStandards, Scores, Facts, News, PoliticalAssociation, Citations, Metrics
+from monest.models import Industry, Company, IndustryStandards, Scores, Email, Facts, News, PoliticalAssociation, Citations, Metrics
 from monest.models import PoliticalAssociation
 # Register your models here.
 
@@ -39,6 +39,9 @@ class MetricsAdmin(admin.ModelAdmin):
 class PoliticalAssociationAdmin(admin.ModelAdmin):
     list_display = ['year', 'rep', 'dem', 'individual_percentage', 'company']
 
+class EmailAdmin(admin.ModelAdmin):
+    list_display = ['userEmail']
+
 admin.site.register(Citations, CitationsAdmin)
 admin.site.register(Industry, IndustryAdmin)
 admin.site.register(Company, CompanyAdmin)
@@ -48,6 +51,8 @@ admin.site.register(Facts, FactsAdmin)
 admin.site.register(News, NewsAdmin)
 admin.site.register(PoliticalAssociation, PoliticalAssociationAdmin)
 admin.site.register(Metrics, MetricsAdmin)
+admin.site.register(Email, EmailAdmin)
+
 
 
 

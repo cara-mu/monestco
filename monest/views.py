@@ -5,10 +5,11 @@ from rest_framework import permissions
 from monest.serializers import UserSerializer, GroupSerializer
 from rest_framework.decorators import api_view, permission_classes
 from django.http import JsonResponse
-from monest.models import Company, Scores, Facts, News, IndustryStandards, PoliticalAssociation
+from monest.models import Company, Email, Scores, Facts, News, IndustryStandards, PoliticalAssociation
 from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
+from django.core.exceptions import ValidationError
 import logging
 logger = logging.getLogger(__name__)
 
@@ -614,3 +615,19 @@ def brands_ranking(request):
     res.sort(key=lambda name: scores[name], reverse=True)
 
     return JsonResponse(res, safe=False)
+
+
+@api_view(["POST"])
+def emails(request):
+    email = request.query_params['email']
+    allEmails = Email.objects.filter(userEmail=email)
+    if allEmails.exists():
+        return JsonResponse({'Success': 'Email has been saved'}, safe=False)
+    else:
+        try:
+            emailForm = Email(userEmail=email)
+            emailForm.full_clean()
+            emailForm.save()
+            return JsonResponse({'Success': 'Email has been saved'},safe=False)
+        except ValidationError:
+            return JsonResponse({'Error': 'That is an invalid email address'}, status=400)

@@ -27,5 +27,5 @@ urlpatterns = [
     path('v1/citation/scores', views.score_citations, name='score_citations'),
     path('v1/citation/facts', views.fact_citations, name='fact_citations'),
     path('v1/citation/news', views.news_citations, name='news_citations'),
-
+    path('v1/emails', views.emails, name='emails')
 ]
