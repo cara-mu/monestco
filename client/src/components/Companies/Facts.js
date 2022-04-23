@@ -22,7 +22,8 @@ const style = makeStyles((theme) => ({
         fontSize: '16px'
     },
     expandMenu: {
-        backgroundColor: '#F2F2F2'
+        backgroundColor: '#F2F2F2',
+        fontFamily: 'DM Sans'
     },
 }));
 

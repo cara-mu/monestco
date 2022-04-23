@@ -10,18 +10,18 @@ export default function SimilarBrand(props) {
             "name": "",
             "score": 0
           },
-          "2": {
-            "name": "",
-            "score": 0
-          },
-          "3": {
-            "name": "",
-            "score": 0
-          },
-          "4": {
-            "name": "",
-            "score": 0
-          }
+        "2": {
+          "name": "",
+          "score": 0
+        },
+        "3": {
+          "name": "",
+          "score": 0
+        },
+        "4": {
+          "name": "",
+          "score": 0
+        }
     }
 
     const [SimilarBrand, setSimilarBrand] = useState(similarbrands);
@@ -35,16 +35,7 @@ export default function SimilarBrand(props) {
 
         axios.get(url).
         then((resp) => {
-            let data = SimilarBrand;
-            data["1"].name = resp.data["1"].name;
-            data["1"].score = resp.data["1"].score;
-            data["2"].name = resp.data["2"].name;
-            data["2"].score = resp.data["2"].score;
-            data["3"].name = resp.data["3"].name;
-            data["3"].score = resp.data["3"].score;
-            data["4"].name = resp.data["4"].name;
-            data["4"].score = resp.data["4"].score;
-            setSimilarBrand(data);
+            setSimilarBrand(resp.data);
         })
     }, [props.company]);
     
