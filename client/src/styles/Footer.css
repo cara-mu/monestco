@@ -71,7 +71,7 @@
 .right-block {
   display: flex;
   flex-direction: column;
-  gap: 19px;
+  gap: 17px;
 }
 
 .right-block .footer-sign-up-text {
@@ -97,6 +97,7 @@
   border-radius: 13px;
   padding-left: 16px;
   outline: none;
+  margin-top: 0px;
 }
 
 .footer-sign-up-submit-input {

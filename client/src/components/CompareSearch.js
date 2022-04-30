@@ -145,7 +145,7 @@ class CompareSearch extends React.Component {
         unisexCompanies.push(company.name);
       }
     });
-    this.setState({ unisex:true, foundCompanies: unisexCompanies });
+    this.setState({ unisex: true, foundCompanies: unisexCompanies });
   }
 
   handleChange() {
@@ -177,7 +177,8 @@ class CompareSearch extends React.Component {
             key={i}
             className={this.state.changehandled ? "rendercompanies" : null}
           >
-            <Link className = "companies_result"
+            <Link
+              className="companies_result"
               style={{
                 fontWeight: "350",
                 fontSize: "20px",
@@ -259,9 +260,10 @@ class CompareSearch extends React.Component {
           <FontAwesomeIcon
             style={{
               position: "absolute",
-              marginTop: "9px",
-              marginLeft: "5px",
-              color: "rgba(50, 50, 50, 0.5",
+              top: "50%",
+              color: "rgba(50, 50, 50, 0.5)",
+              left: "5px",
+              transform: "translateY(-50%)",
             }}
             icon={faSearch}
           />
@@ -272,8 +274,8 @@ class CompareSearch extends React.Component {
             placeholder="Search the brand"
             style={{
               width: "100%",
-              height: "40px",
               border: "2px solid #BDBDBD",
+              marginTop: 0,
             }}
           />
         </div>

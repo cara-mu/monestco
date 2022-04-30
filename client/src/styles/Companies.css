@@ -7,7 +7,7 @@ span {
     flex-direction: row;
     justify-content: space-between;
     max-width: 1350px;
-    margin: 0 auto;
+    margin: 0 auto 6rem;
 }
 
 .Layout {
