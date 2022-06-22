@@ -61,7 +61,7 @@ def all_company_names(request):
     """
     Get all companies
     """
-    companies = Company.objects.values_list('name', flat=True)
+    companies = Company.objects.filter(visible=True).values_list('name', flat=True)
 
     items = []
     for item in companies:

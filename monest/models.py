@@ -21,6 +21,7 @@ class Company(models.Model):
                                  on_delete=models.CASCADE,
                                  verbose_name="Belonging to Industry"
                                  )
+    visible = models.BooleanField(default=True)
     similar_company_1 = models.CharField(max_length=30)
     similar_company_2 = models.CharField(max_length=30)
     similar_company_3 = models.CharField(max_length=30)
