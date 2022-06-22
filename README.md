@@ -1,6 +1,13 @@
 # Monestco
 
-> Last updated by Justin Hu, 2021/12/26
+> Last updated by Justin Hu, 2022/06/21
+
+# Important
+Branch protection has been enabled for this repository thus no direct push to the main branch. 
+Submit your change via a pull request.  
+
+To cancel branch protection,  just to GitHub repo -> Settings -> Code and automation ->Branches. 
+
 
 # About
 > [Monest](https://www.monest.co/) provides consumers
