@@ -111,12 +111,12 @@ function Footer() {
               <FooterForm />
             </div>
             <div className="site-list">
-              <div className="list-item">About Us</div>
-              <div className="list-item">Contact</div>
-              <div className="list-item">FAQ</div>
-              <div className="list-item">Privacy Policy</div>
+              <a className="list-item" href="/aboutus">About Us</a>
+              <a className="list-item" href="/contactus">Contact</a>
+              <a className="list-item" href="/faq">FAQ</a>
+              <a className="list-item" href="/privacypolicy">Privacy Policy</a>
               <div className="list-item">Donate</div>
-              <div className="list-item">Terms & Conditions</div>
+              <a className="list-item" href="/thankyou">Terms & Conditions</a>
             </div>
           </div>
           <Rights />
