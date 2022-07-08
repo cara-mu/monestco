@@ -1,5 +1,3 @@
-
-import logo from './assets/DP.png';
 import NavigationBar from './components/NavigationBar';
 import Comparison from './pages/Comparison';
 
