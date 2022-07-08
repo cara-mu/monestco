@@ -1,25 +1,13 @@
-import React, { useEffect, useState, useLayoutEffect } from 'react';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
+import React, { useState, useLayoutEffect } from 'react';
+
 import Grid from '@material-ui/core/Grid';
-import { Link, useParams, withRouter, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import '../../styles/Companies.css';
-import DropdownButton from '../../assets/dropdownbutton.png';
-import NewsPlaceHolder from '../../assets/news.png';
 import { makeStyles } from '@material-ui/core/styles';
-import Modal, { ModalManager } from '@material-ui/core/Modal';
 import ModalBody from '../ModalBody';
 import InfoIcon from "@material-ui/icons/Info";
 import HighlightOffRoundedIcon from '@material-ui/icons/HighlightOffRounded';
 import axios from 'axios';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { AiFillCaretDown } from 'react-icons/ai';
-import TextTruncate from 'react-text-truncate';
 import PoliticalContribution from "./PoliticalContribution";
 import Facts from "./Facts";
 import Scores from "./Scores/Scores";
@@ -111,11 +99,12 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
+/*
 function useForceUpdate() {
     const [value, setValue] = useState(0); // integer state
     return () => setValue(value => value + 1); // update the state to force render
 }
-
+*/
 
 function Company({ match, location }) {
     const {

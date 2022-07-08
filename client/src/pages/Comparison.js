@@ -1,11 +1,5 @@
 import React, { useEffect, useState, useLayoutEffect } from "react";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import "../styles/Comparison.css";
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import CloseSharpIcon from '@material-ui/icons/CloseSharp';
 import CompareTool from "../components/CompareTool-new";
 import companies from '../data/companies.json';
@@ -279,29 +273,6 @@ const Comparison = () => {
                 })}
               </div>
             )}
-            {/* <div className='compare-search-category-container' >
-                <div onClick={() => setSportMenu(!showSportMenu)}  className='compare-search-category'>
-                  Sportswear
-                  <ArrowDropDownIcon/>
-                  {showSportMenu && <SportsMenu />}
-                </div>
-                <div onClick = {() => setUnisexMenu(!showUnisexMenu)}  className='compare-search-category'>
-                  Unisex
-                  <ArrowDropDownIcon/>
-                  {showUnisexMenu && <UnisexMenu />}
-                  </div>
-                <div onClick = {() => setWomenMenu(!showWomenMenu)} className='compare-search-category'>
-                  Women 
-                  <ArrowDropDownIcon/>
-                  {showWomenMenu && <WomenMenu />}
-                  </div>
-                <div onClick = {() => setShoeMenu(!showShoeMenu)} className='compare-search-category'>
-                  Shoes & Accessories 
-                  <ArrowDropDownIcon/>
-                  {showShoeMenu && <ShoeMenu />}
-                  </div>
-                <div className='compare-search-category compare-search-category-inactive'>Luxury <ArrowDropDownIcon/></div>
-            </div> */}
           </div>
           <CompareTool
             inputBrand={inputBrand}
