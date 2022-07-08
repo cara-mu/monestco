@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
 import CancelIcon from "@material-ui/icons/Cancel";
 import "../styles/ModalBody.css";
 
@@ -26,14 +25,14 @@ export default function ModalBody({ handleClose, i, title, summary, issueAdd, is
             </div>        
             <div style={{ fontSize: "14px", marginTop: "1rem" }}>
               <span style={{ fontWeight: "700" }}>Responsibility Taken?</span>
-              {respTake[i] == 'Yes' && <span style={{ color: "#28a745", marginLeft: "5px" }}>{respTake[i]}</span> || respTake[i] == 'No' && <span style={{ color: "#E94921", marginLeft: "5px" }}>{respTake[i]}</span> || respTake[i] == 'Maybe' &&  <span style={{ color: "#F29A72", marginLeft: "5px" }}>{respTake[i]}</span>}
+              {respTake[i] === 'Yes' && <span style={{ color: "#28a745", marginLeft: "5px" }}>{respTake[i]}</span> || respTake[i] === 'No' && <span style={{ color: "#E94921", marginLeft: "5px" }}>{respTake[i]}</span> || respTake[i] === 'Maybe' &&  <span style={{ color: "#F29A72", marginLeft: "5px" }}>{respTake[i]}</span>}
             </div>
             <div>
               {respTakenExp[i]}
             </div>
             <div style={{ fontSize: "14px", marginTop: "1rem" }}>
               <span style={{ fontWeight: "700" }}>Issue Resolved?</span>
-              {issueAdd[i] == 'Yes' && <span style={{ color: "#28a745", marginLeft: "5px" }}>{issueAdd[i]}</span> || issueAdd[i] == 'No' &&  <span style={{ color: "#E94921", marginLeft: "5px" }}>{issueAdd[i]}</span> || issueAdd[i] == 'Maybe' &&  <span style={{ color: "#F29A72", marginLeft: "5px" }}>{issueAdd[i]}</span>}
+              {issueAdd[i] === 'Yes' && <span style={{ color: "#28a745", marginLeft: "5px" }}>{issueAdd[i]}</span> || issueAdd[i] === 'No' &&  <span style={{ color: "#E94921", marginLeft: "5px" }}>{issueAdd[i]}</span> || issueAdd[i] === 'Maybe' &&  <span style={{ color: "#F29A72", marginLeft: "5px" }}>{issueAdd[i]}</span>}
             </div>
             <div>
               {issueAddExp[i]}

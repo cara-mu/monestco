@@ -974,7 +974,7 @@ const ScoreContainer = ({
         </div>
       );
     }
-  } else if (score == -2) {
+  } else if (score === -2) {
     return (
       <div 
         className={
@@ -1268,11 +1268,11 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
   };
 
   const deleteField = (inputIndex) => {
-    if (inputIndex == 0) {
+    if (inputIndex === 0) {
       setInputBrandOne("");
     }
-    if (inputIndex == 1) setInputBrandTwo("");
-    if (inputIndex == 2) setInputBrandThree("");
+    if (inputIndex === 1) setInputBrandTwo("");
+    if (inputIndex === 2) setInputBrandThree("");
 
     let data = fieldData;
     data[0].mainScore[inputIndex].score = -1;

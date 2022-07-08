@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import  MonestSketch from '../../assets/monest_sketch.jpg'
 import  EducateImg from '../../assets/educate.png'
 import  EmpowerImg from '../../assets/empower.png'

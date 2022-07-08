@@ -150,7 +150,7 @@ class CompareSearch extends React.Component {
 
   handleChange() {
     var search = document.getElementById("categorysearch").value.toLowerCase();
-    if (search.charAt(0) == "") {
+    if (search.charAt(0) === "") {
       return null;
     }
     const comps = this.mapCompanies(companies);
