@@ -41,9 +41,11 @@ const companyCit = [
     }
 ]
 
+/*
 function rand() {
     return Math.round(Math.random() * 20) - 10;
 }
+ */
 
 function getModalStyle() {
     const top = 50;
@@ -126,10 +128,7 @@ function Company({ match, location }) {
     const [citations, setCitations] = React.useState(companyCit);
     const { loading, setLoading } = useState(false);
     const [state, setState] = useState([])
-    const [A, setA] = useState(0);
-    const [B, setB] = useState(0);
-    const [C, setC] = useState(0);
-    const [D, setD] = useState(0);
+
 
     const handleCloseInfo = () => {
         setShowInfo(false)
