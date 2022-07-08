@@ -28,16 +28,16 @@ const useStyles = makeStyles((theme) => ({
 
 
 function NavigationBar() {
-  {/* Declare variables that will change state when clicked */ }
-  {/* Set to false by default, when a component is triggered, will set to respective state */}
+  /* Declare variables that will change state when clicked */
+  /* Set to false by default, when a component is triggered, will set to respective state */
   const [click, setClick] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [tabView, setTabView] = useState(false);
   const state = { clicked: false }
   const classes = useStyles();
 
-  {/* Declare additional variables to change state when dropdown menu is triggered*/}
-  {/* Need to define for each navigation item (apparel, tech, etc..) */}
+  /* Declare additional variables to change state when dropdown menu is triggered*/
+  /* Need to define for each navigation item (apparel, tech, etc..) */
   const [appDropdownLink, setAppDropdownLink] = useState(false);
   const [appDropdown, setAppDropdown] = useState(false);
 
@@ -84,7 +84,7 @@ function NavigationBar() {
     }
   };
 
-  {/* Closes menu when navigated away */}
+  /* Closes menu when navigated away */
   const closeMenu = () => {
     setClick(false);
     setKeepNav(true);
@@ -99,7 +99,7 @@ function NavigationBar() {
   const minWidth = 850;
   const timeLimit = 400;
 
-  {/* Manage apparel dropdown menu*/}
+  /* Manage apparel dropdown menu*/
   const enterAppDropdown = () => {
     if (window.innerWidth > minWidth) {    
       setAppDropdown(true);    
@@ -128,7 +128,7 @@ function NavigationBar() {
     }
   };
 
-  {/* Manage fast food dropdown menu */}
+  /* Manage fast food dropdown menu */
   const enterFoodDropdown = () => {
     if (window.innerWidth > minWidth) {
       setFoodDropdown(true);
@@ -157,7 +157,7 @@ function NavigationBar() {
     }
   };
 
-  {/* Manage tech dropdown menu */}
+  /* Manage tech dropdown menu */
   const enterTechDropdownLink = () => {
     if (window.innerWidth > minWidth) {      
       setTechDropdownLink(true);
@@ -186,7 +186,7 @@ function NavigationBar() {
     }
   };
 
-    {/* Manage compare dropdown menu */}
+    /* Manage compare dropdown menu */
   const enterCompareDropdownLink = () => {
     if (window.innerWidth > minWidth) {      
       setCompareDropdownLink(true);
