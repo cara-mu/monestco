@@ -10,7 +10,6 @@ import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import '../styles/NavigationBar.css';
-import BrandDirectory from '../pages/BrandDirectory';
 import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai';
 import axios from 'axios';
 
@@ -210,27 +209,27 @@ function NavigationBar() {
 
   const findBrands = (brand) => {
     let brands = [];
-    if (brand == "Unisex") {
+    if (brand === "Unisex") {
       brands.push("Uniqlo");
       brands.push("Zara");
       brands.push("H&M");
       brands.push("Levis");
-    } else if (brand == "Women") {
+    } else if (brand === "Women") {
       brands.push("Aritzia");
       brands.push("Boohoo");
       brands.push("Victoria's Secret");
       brands.push("Nasty Gal");
-    } else if (brand == "Sportswear") {
+    } else if (brand === "Sportswear") {
       brands.push("Nike");
       brands.push("Adidas");
       brands.push("Under Armour");
       brands.push("Lululemon");
-    } else if (brand == "Shoes & Accessories") {
+    } else if (brand === "Shoes & Accessories") {
       brands.push("Vans");
       brands.push("Converse");
       brands.push("Aldo");
       brands.push("Steve Madden");
-    } else if (brand == "Luxury") {
+    } else if (brand === "Luxury") {
       brands.push("Gucci");
       brands.push("Hermes");
       brands.push("Louis Vutton");

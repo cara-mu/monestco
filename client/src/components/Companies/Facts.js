@@ -1,4 +1,3 @@
-import InfoIcon from "@material-ui/icons/Info";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -79,14 +78,14 @@ export default function Facts(props) {
       const styles = style();
 
     const FactCitations = (i) => {
-        if (factCitation.length != 0) {
+        if (factCitation.length !== 0) {
             return <div><i>{JSON.parse(factCitation)[0]["Title"][i]}</i>, {JSON.parse(factCitation)[0]["Author"][i]}{JSON.parse(factCitation)[0]["Author"][i] && <span>,</span>} {JSON.parse(factCitation)[0]["PublishingGroup"][i]}, {JSON.parse(factCitation)[0]["Date"][i]}{JSON.parse(factCitation)[0]["Pages"][i] && <span>,</span>} {JSON.parse(factCitation)[0]["Pages"][i]}</div>
         }
     }
 
         const showCitations = async () => {
-            if (showCitation == false) setShowCitation(true);
-            if (showCitation == true) setShowCitation(false);
+            if (showCitation === false) setShowCitation(true);
+            if (showCitation === true) setShowCitation(false);
 
             let citationsarr = [];
             let relidarr = [];
@@ -96,16 +95,16 @@ export default function Facts(props) {
             let titlearr = [];
             let urlarr = [];
             let pagesarr = [];
-            if (fact[0]['Heading'].length != 0) {
+            if (fact[0]['Heading'].length !== 0) {
                 Promise.all(Object.entries(fact[0]['Heading']).map((heading, i) =>
                     axios.get('/api/v1/citation/facts',
                         {
                             params: [fact[0]["ID"][i]]
                         }
                     ).then(resp => {
-                        if (resp.data.length != 0) {
+                        if (resp.data.length !== 0) {
                             let data = citations;
-                            if (citationsarr.length != 0) {
+                            if (citationsarr.length !== 0) {
                                 relidarr = citationsarr[0][0]["RelationalID"];
                                 authorarr = citationsarr[0][0]["Author"];
                                 datearr = citationsarr[0][0]["Date"];

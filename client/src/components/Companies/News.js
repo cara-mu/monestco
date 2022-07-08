@@ -166,13 +166,13 @@ const handleOpen = (k, ID) => {
                         <div style={{ fontSize: '14px' }}>
                             <span>Responsibility Taken?</span>
 
-                            {newsinput[0]["ResponsibilityTaken"][i] == "No" &&
+                            {newsinput[0]["ResponsibilityTaken"][i] === "No" &&
                                 <span style={{ color: '#E94921', marginLeft: '5px' }}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
                                 ||
-                                newsinput[0]["ResponsibilityTaken"][i] == "Yes" &&
+                                newsinput[0]["ResponsibilityTaken"][i] === "Yes" &&
                                 <span style={{ color: '#28a745', marginLeft: '5px' }}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
                                 ||
-                                newsinput[0]["ResponsibilityTaken"][i] == "Maybe" &&
+                                newsinput[0]["ResponsibilityTaken"][i] === "Maybe" &&
                                 <span style={{ color: '#F29A72', marginLeft: '5px' }}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
                             }
 
@@ -181,13 +181,13 @@ const handleOpen = (k, ID) => {
                         <div style={{ fontSize: '14px', display: 'flex', position: 'relative' }}>
                             <span>Issue Resolved?</span>
 
-                            {newsinput[0]["IssueAddressed"][i] == "No" &&
+                            {newsinput[0]["IssueAddressed"][i] === "No" &&
                                 <span style={{ color: '#E94921', marginLeft: '5px' }}>{newsinput[0]["IssueAddressed"][i]}</span>
                                 ||
-                                newsinput[0]["IssueAddressed"][i] == "Yes" &&
+                                newsinput[0]["IssueAddressed"][i] === "Yes" &&
                                 <span style={{ color: '#28a745', marginLeft: '5px' }}>{newsinput[0]["IssueAddressed"][i]}</span>
                                 ||
-                                newsinput[0]["IssueAddressed"][i] == "Maybe" &&
+                                newsinput[0]["IssueAddressed"][i] === "Maybe" &&
                                 <span style={{ color: '#F29A72', marginLeft: '5px' }}>{newsinput[0]["IssueAddressed"][i]}</span>
                             }
                             <button className='News-read-more-btn' onClick={() => handleOpen(i, newsinput[0]["ID"][i])}>Read more</button>

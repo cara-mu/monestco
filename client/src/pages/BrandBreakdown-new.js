@@ -1,6 +1,4 @@
-import React, { useState, useLayoutEffect, useEffect } from "react";
-import Logo from "../assets/brandBreakdown.svg";
-import { useParams } from "react-router";
+import React, { useState, useLayoutEffect } from "react";
 import InfoIcon from "@material-ui/icons/Info";
 import CancelIcon from "@material-ui/icons/Cancel";
 import HighlightOffRoundedIcon from '@material-ui/icons/HighlightOffRounded';
@@ -605,7 +603,7 @@ const Popup = ({item, i, k, closePopup}) => {
           <div style={{display:'flex', flexDirection:'row', marginTop:'1rem'}}>
                 <div style={{color: '#FED170', marginRight:'5px'}}>[{k+1}]</div>
                 <div>
-                  <i>{item.citations[i].title[k]}</i>{item.citations[i].restofcit[k].substring(item.citations[i].restofcit[k].length, item.citations[i].restofcit[k].length - 4) != 'null' ? ', '+item.citations[i].restofcit[k] : ', '+item.citations[i].restofcit[k].substring(0, item.citations[i].restofcit[k].length - 6)}
+                  <i>{item.citations[i].title[k]}</i>{item.citations[i].restofcit[k].substring(item.citations[i].restofcit[k].length, item.citations[i].restofcit[k].length - 4) !== 'null' ? ', '+item.citations[i].restofcit[k] : ', '+item.citations[i].restofcit[k].substring(0, item.citations[i].restofcit[k].length - 6)}
                 </div>
               </div>
               <HighlightOffRoundedIcon onClick={closePopup} className="popup-close-icon"/>
@@ -649,13 +647,13 @@ const NestedField = ({ key, indexKey, item, showSubField, setShowSubField }) => 
         <div className="breakdown_nestedField-score">{score}/{item.total[i]}</div>
         <div style={{position:'relative', margin: 15}}>
           {item.texts[i]}
-          {item.citations[i].title != "" && item.citations[i].title.map((title, k) => {
+          {item.citations[i].title !== "" && item.citations[i].title.map((title, k) => {
               console.log("hi");
               console.log(item.citations[i].restofcit[k]);
               return (
                 <span>
                   <sup className="citation-sup">[{k+1}]</sup>
-                  <span className="breakdown_citation-hover"><i>{item.citations[i].title[k]}</i>{item.citations[i].restofcit[k].substring(item.citations[i].restofcit[k].length, item.citations[i].restofcit[k].length - 4) != 'null' ? ', '+item.citations[i].restofcit[k] : ', '+item.citations[i].restofcit[k].substring(0, item.citations[i].restofcit[k].length - 6)}</span>
+                  <span className="breakdown_citation-hover"><i>{item.citations[i].title[k]}</i>{item.citations[i].restofcit[k].substring(item.citations[i].restofcit[k].length, item.citations[i].restofcit[k].length - 4) !== 'null' ? ', '+item.citations[i].restofcit[k] : ', '+item.citations[i].restofcit[k].substring(0, item.citations[i].restofcit[k].length - 6)}</span>
                 </span>
               )
           })}
@@ -667,10 +665,10 @@ const NestedField = ({ key, indexKey, item, showSubField, setShowSubField }) => 
     return item.scores.map((score, i) => {
       return (<div
         className={
-          showInfo==i ? "breakdown_nestedField selected" : "breakdown_nestedField"
+          showInfo===i ? "breakdown_nestedField selected" : "breakdown_nestedField"
         }
       >
-        {showInfo==i ? (
+        {showInfo===i ? (
           <div>
             <span>
               {item.texts[i]}
@@ -681,7 +679,7 @@ const NestedField = ({ key, indexKey, item, showSubField, setShowSubField }) => 
                   <sup className="citation-sup" onClick={() => {
                     setShowPopup(k);
                   }}>[{k+1}]</sup>
-                  {showPopup==k && <Popup item={item} i={i} k={k} closePopup={closePopup} />}
+                  {showPopup===k && <Popup item={item} i={i} k={k} closePopup={closePopup} />}
                 </span>
               )
             })}
@@ -689,7 +687,7 @@ const NestedField = ({ key, indexKey, item, showSubField, setShowSubField }) => 
         ) : (
           <div className="breakdown_nestedField-title">{item.title[i]}</div>
         )}
-        {showInfo==i ? (
+        {showInfo===i ? (
           <CancelIcon
             onClick={() => {
               setShowInfo(-1);
@@ -714,16 +712,16 @@ const NestedField = ({ key, indexKey, item, showSubField, setShowSubField }) => 
       return (
         <div
           className={
-            showInfo==i ? "breakdown_nestedField selected" : "breakdown_nestedField"
+            showInfo===i ? "breakdown_nestedField selected" : "breakdown_nestedField"
           }
         >
-          {showInfo!=i && (
+          {showInfo!==i && (
             <div className="breakdown_nestedField-title">{item.title[i]}</div>
           )}
-          {showInfo!=i && (
+          {showInfo!==i && (
             <div className="breakdown_nestedField-score">{item.scores[i]}/{item.total[i]}</div>
           )}
-          {showInfo==i && (
+          {showInfo===i && (
             <div style={{ gridColumnEnd: "span 2"}}>
                   <span>
                     {item.texts[i]}
@@ -732,13 +730,13 @@ const NestedField = ({ key, indexKey, item, showSubField, setShowSubField }) => 
                 return (
                   <span>
                     <sup className="citation-sup" onClick={() => setShowPopup(k)}>[{k+1}]</sup>
-                    {showPopup==k && <Popup item={item} i={i} k={k} closePopup={closePopup} />}
+                    {showPopup===k && <Popup item={item} i={i} k={k} closePopup={closePopup} />}
                   </span>
                 )
             })}
             </div>
           )}
-          {showInfo==i ? (
+          {showInfo===i ? (
             <CancelIcon
               onClick={() => setShowInfo(-1)}
               className="breakdown_info-icon"
@@ -790,11 +788,11 @@ const Subfield = ({ indexKey, item, showNested, setShowNested }) => {
         onClick={() => 
           setShow(!show)
         }
-          className={show && (showNested == indexKey) ? "circle-breakdown-close" : "circle-breakdown fill-white"}          
+          className={show && (showNested === indexKey) ? "circle-breakdown-close" : "circle-breakdown fill-white"}
         />
       </div>
-      <div className={`animate-field ${show && (showNested == indexKey) ? 'animate' : ''}`}>
-        {show && (showNested == indexKey) &&
+      <div className={`animate-field ${show && (showNested === indexKey) ? 'animate' : ''}`}>
+        {show && (showNested === indexKey) &&
           item.subNestedField.map((item, index) => {
             return <NestedField key={index} indexKey={index} item={item} setShowSubField={(key) => setShowSubField(key)} showSubField={showSubField} />;
           })}
@@ -813,7 +811,7 @@ const Mainfield = ({ item, index, indexKey, showSubField, setShowSubField }) => 
     <div className="breakdown_mainField">
       <div
         onClick={() => {
-          if (showSubField == indexKey) {
+          if (showSubField === indexKey) {
             // setShowNested(null);
             setShow(false);
             setShowSubField(null);
@@ -844,7 +842,7 @@ const Mainfield = ({ item, index, indexKey, showSubField, setShowSubField }) => 
         />
       </div>
       <div className={`animate-field ${show && showSubField === indexKey ? 'animate' : ''}`}>
-        {show && (showSubField == indexKey) && 
+        {show && (showSubField === indexKey) &&
           item.subfield.map((item, index) => {
             return <Subfield key={index} indexKey={index} item={item} showNested={showNested} setShowNested={(key) => setShowNested(key)}/>;
           })}
@@ -988,258 +986,258 @@ class BrandBreakdown extends React.Component {
       let arrD34_2 = [];
       let arrD35_2 = [];
       for (var i = 0; i < resp.data.length; i++) {
-        if (resp.data[i].Type == "A1.1") {
+        if (resp.data[i].Type === "A1.1") {
           arrA11.push(resp.data[i]["Title"]);
           arrA11_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[0].subfield[0].subNestedField[0].citations[0] = {title: arrA11, restofcit: arrA11_2};
         }
-        if (resp.data[i].Type == "A1.2") {
+        if (resp.data[i].Type === "A1.2") {
           arrA12.push(resp.data[i]["Title"]);
           arrA12_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[0].subfield[0].subNestedField[0].citations[1] = {title: arrA12, restofcit: arrA12_2};
         }
-        if (resp.data[i].Type == "A2.1") {
+        if (resp.data[i].Type === "A2.1") {
           arrA21.push(resp.data[i]["Title"]);
           arrA21_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[0].subfield[1].subNestedField[0].citations[0] = {title: arrA21, restofcit: arrA21_2};
         }
-        if (resp.data[i].Type == "A2.2") {
+        if (resp.data[i].Type === "A2.2") {
           arrA22.push(resp.data[i]["Title"]);
           arrA22_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[0].subfield[1].subNestedField[0].citations[1] = {title: arrA22, restofcit: arrA22_2};
         }
-        if (resp.data[i].Type == "A2.3") {
+        if (resp.data[i].Type === "A2.3") {
           arrA23.push(resp.data[i]["Title"]);
           arrA23_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[0].subfield[1].subNestedField[0].citations[2] = {title: arrA23, restofcit: arrA23_2};
         }
-        if (resp.data[i].Type == "A3.1") {
+        if (resp.data[i].Type === "A3.1") {
           arrA31.push(resp.data[i]["Title"]);
           arrA31_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[0].subfield[2].subNestedField[0].citations[0] = {title: arrA31, restofcit: arrA31_2};
         }
-        if (resp.data[i].Type == "A3.2") {
+        if (resp.data[i].Type === "A3.2") {
           arrA32.push(resp.data[i]["Title"]);
           arrA32_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[0].subfield[2].subNestedField[0].citations[1] = {title: arrA32, restofcit: arrA32_2};
         }
-        if (resp.data[i].Type == "A3.3") {
+        if (resp.data[i].Type === "A3.3") {
           arrA33.push(resp.data[i]["Title"]);
           arrA33_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[0].subfield[2].subNestedField[0].citations[2] = {title: arrA33, restofcit: arrA33_2};;
         }
-        if (resp.data[i].Type == "A4.1") {
+        if (resp.data[i].Type === "A4.1") {
           arrA41.push(resp.data[i]["Title"]);
           arrA41_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[0].subfield[3].subNestedField[0].citations[0] = {title: arrA41, restofcit: arrA41_2};
         }
-        if (resp.data[i].Type == "A4.2") {
+        if (resp.data[i].Type === "A4.2") {
           arrA42.push(resp.data[i]["Title"]);
           arrA42_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[0].subfield[3].subNestedField[0].citations[1] = {title: arrA42, restofcit: arrA42_2};
         }
-        if (resp.data[i].Type == "A4.3") {
+        if (resp.data[i].Type === "A4.3") {
           arrA43.push(resp.data[i]["Title"]);
           arrA43_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[0].subfield[3].subNestedField[0].citations[2] = {title: arrA43, restofcit: arrA43_2};
         }
-        if (resp.data[i].Type == "B1.1") {
+        if (resp.data[i].Type === "B1.1") {
           arrB11.push(resp.data[i]["Title"]);
           arrB11_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[1].subfield[0].subNestedField[0].citations[0] = {title: arrB11, restofcit: arrB11_2};
         }
-        if (resp.data[i].Type == "B1.2") {
+        if (resp.data[i].Type === "B1.2") {
           arrB12.push(resp.data[i]["Title"]);
           arrB12_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[1].subfield[0].subNestedField[0].citations[1] = {title: arrB12, restofcit: arrB12_2};
         }
-        if (resp.data[i].Type == "B1.3") {
+        if (resp.data[i].Type === "B1.3") {
           arrB13.push(resp.data[i]["Title"]);
           arrB13_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[1].subfield[0].subNestedField[0].citations[2] = {title: arrB13, restofcit: arrB13_2};
         }
-        if (resp.data[i].Type == "B2.1") {
+        if (resp.data[i].Type === "B2.1") {
           arrB21.push(resp.data[i]["Title"]);
           arrB21_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[1].subfield[1].subNestedField[0].citations[0] = {title: arrB21, restofcit: arrB21_2};
         }
-        if (resp.data[i].Type == "B2.2") {
+        if (resp.data[i].Type === "B2.2") {
           arrB22.push(resp.data[i]["Title"]);
           arrB22_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[1].subfield[1].subNestedField[0].citations[1] = {title: arrB22, restofcit: arrB22_2};
         }
-        if (resp.data[i].Type == "B2.3") {
+        if (resp.data[i].Type === "B2.3") {
           arrB23.push(resp.data[i]["Title"]);
           arrB23_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[1].subfield[1].subNestedField[0].citations[2] = {title: arrB23, restofcit: arrB23_2};
         }
-        if (resp.data[i].Type == "B3.1") {
+        if (resp.data[i].Type === "B3.1") {
           arrB31.push(resp.data[i]["Title"]);
           arrB31_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[1].subfield[2].subNestedField[0].citations[0] = {title: arrB31, restofcit: arrB31_2};
         }
-        if (resp.data[i].Type == "B3.2") {
+        if (resp.data[i].Type === "B3.2") {
           arrB32.push(resp.data[i]["Title"]);
           arrB32_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[1].subfield[2].subNestedField[0].citations[1] = {title: arrB32, restofcit: arrB32_2};
         }
-        if (resp.data[i].Type == "B3.3") {
+        if (resp.data[i].Type === "B3.3") {
           arrB33.push(resp.data[i]["Title"]);
           arrB33_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[1].subfield[2].subNestedField[0].citations[2] = {title: arrB33, restofcit: arrB33_2};
         }
-        if (resp.data[i].Type == "B3.4") {
+        if (resp.data[i].Type === "B3.4") {
           arrB34.push(resp.data[i]["Title"]);
           arrB34_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[1].subfield[2].subNestedField[0].citations[3] = {title: arrB34, restofcit: arrB34_2};
         }
-        if (resp.data[i].Type == "B4.1") {
+        if (resp.data[i].Type === "B4.1") {
           arrB41.push(resp.data[i]["Title"]);
           arrB41_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[1].subfield[3].subNestedField[0].citations[0] = {title: arrB41, restofcit: arrB41_2};
         }
-        if (resp.data[i].Type == "B4.2") {
+        if (resp.data[i].Type === "B4.2") {
           arrB42.push(resp.data[i]["Title"]);
           arrB42_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[1].subfield[3].subNestedField[0].citations[1] = {title: arrB42, restofcit: arrB42_2};
         }
-        if (resp.data[i].Type == "B4.3") {
+        if (resp.data[i].Type === "B4.3") {
           arrB43.push(resp.data[i]["Title"]);
           arrB43_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[1].subfield[3].subNestedField[0].citations[2] = {title: arrB43, restofcit: arrB43_2};
         }
-        if (resp.data[i].Type == "B4.4") {
+        if (resp.data[i].Type === "B4.4") {
           arrB44.push(resp.data[i]["Title"]);
           arrB44_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[1].subfield[3].subNestedField[0].citations[3] = {title: arrB44, restofcit: arrB44_2};
         }
 
-        if (resp.data[i].Type == "C1.1") {
+        if (resp.data[i].Type === "C1.1") {
           arrC11.push(resp.data[i]["Title"]);
           arrC11_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[2].subfield[0].subNestedField[0].citations[0] = {title: arrC11, restofcit: arrC11_2};
         }
-        if (resp.data[i].Type == "C1.2") {
+        if (resp.data[i].Type === "C1.2") {
           arrC12.push(resp.data[i]["Title"]);
           arrC12_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[2].subfield[0].subNestedField[0].citations[1] = {title: arrC12, restofcit: arrC12_2};
         }
-        if (resp.data[i].Type == "C1.3") {
+        if (resp.data[i].Type === "C1.3") {
           arrC13.push(resp.data[i]["Title"]);
           arrC13_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[2].subfield[0].subNestedField[0].citations[2] = {title: arrC13, restofcit: arrC13_2};
         }
-        if (resp.data[i].Type == "C1.4") {
+        if (resp.data[i].Type === "C1.4") {
           arrC14.push(resp.data[i]["Title"]);
           arrC14_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[2].subfield[0].subNestedField[0].citations[3] = {title: arrC14, restofcit: arrC14_2};
         }
-        if (resp.data[i].Type == "C2.1") {
+        if (resp.data[i].Type === "C2.1") {
           arrC21.push(resp.data[i]["Title"]);
           arrC21_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[2].subfield[1].subNestedField[0].citations[0] = {title: arrC21, restofcit: arrC21_2};
         }
-        if (resp.data[i].Type == "C2.2") {
+        if (resp.data[i].Type === "C2.2") {
           arrC22.push(resp.data[i]["Title"]);
           arrC22_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[2].subfield[1].subNestedField[0].citations[1] = {title: arrC22, restofcit: arrC22_2};
         }
-        if (resp.data[i].Type == "C2.3") {
+        if (resp.data[i].Type === "C2.3") {
           arrC23.push(resp.data[i]["Title"]);
           arrC23_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[2].subfield[1].subNestedField[0].citations[2] = {title: arrC23, restofcit: arrC23_2};
         }
-        if (resp.data[i].Type == "C2.4") {
+        if (resp.data[i].Type === "C2.4") {
           arrC24.push(resp.data[i]["Title"]);
           arrC24_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[2].subfield[1].subNestedField[0].citations[3] = {title: arrC24, restofcit: arrC24_2};
         }
-        if (resp.data[i].Type == "C3.1") {
+        if (resp.data[i].Type === "C3.1") {
           arrC31.push(resp.data[i]["Title"]);
           arrC31_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[2].subfield[2].subNestedField[0].citations[0] = {title: arrC31, restofcit: arrC31_2};
         }
-        if (resp.data[i].Type == "C3.2") {
+        if (resp.data[i].Type === "C3.2") {
           arrC32.push(resp.data[i]["Title"]);
           arrC32_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[2].subfield[2].subNestedField[0].citations[1] = {title: arrC32, restofcit: arrC32_2};
         }
-        if (resp.data[i].Type == "C3.3") {
+        if (resp.data[i].Type === "C3.3") {
           arrC33.push(resp.data[i]["Title"]);
           arrC33_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[2].subfield[2].subNestedField[0].citations[2] = {title: arrC33, restofcit: arrC33_2};
         }
-        if (resp.data[i].Type == "C3.4") {
+        if (resp.data[i].Type === "C3.4") {
           arrC34.push(resp.data[i]["Title"]);
           arrC34_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[2].subfield[2].subNestedField[0].citations[3] = {title: arrC34, restofcit: arrC34_2};
         }
-        if (resp.data[i].Type == "C4.1") {
+        if (resp.data[i].Type === "C4.1") {
           arrC41.push(resp.data[i]["Title"]);
           arrC41_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[2].subfield[3].subNestedField[0].citations[0] = {title: arrC41, restofcit: arrC41_2};
         }
-        if (resp.data[i].Type == "C4.2") {
+        if (resp.data[i].Type === "C4.2") {
           arrC42.push(resp.data[i]["Title"]);
           arrC42_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[2].subfield[3].subNestedField[0].citations[1] = {title: arrC42, restofcit: arrC42_2};
         }
-        if (resp.data[i].Type == "C4.3") {
+        if (resp.data[i].Type === "C4.3") {
           arrC43.push(resp.data[i]["Title"]);
           arrC43_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[2].subfield[3].subNestedField[0].citations[2] = {title: arrC43, restofcit: arrC43_2};
         }
-        if (resp.data[i].Type == "C4.4") {
+        if (resp.data[i].Type === "C4.4") {
           arrC44.push(resp.data[i]["Title"]);
           arrC44_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[2].subfield[3].subNestedField[0].citations[3] = {title: arrC44, restofcit: arrC44_2};
         }
-        if (resp.data[i].Type == "D1.1") {
+        if (resp.data[i].Type === "D1.1") {
           arrD11.push(resp.data[i]["Title"]);
           arrD11_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[3].subfield[0].subNestedField[0].citations[0] = {title: arrD11, restofcit: arrD11_2};
         }
-        if (resp.data[i].Type == "D1.2") {
+        if (resp.data[i].Type === "D1.2") {
           arrD12.push(resp.data[i]["Title"]);
           arrD12_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[3].subfield[0].subNestedField[0].citations[1] = {title: arrD12, restofcit: arrD12_2};
         }
-        if (resp.data[i].Type == "D2.1") {
+        if (resp.data[i].Type === "D2.1") {
           arrD21.push(resp.data[i]["Title"]);
           arrD21_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[3].subfield[1].subNestedField[0].citations[0] = {title: arrD21, restofcit: arrD21_2};
         }
-        if (resp.data[i].Type == "D2.2") {
+        if (resp.data[i].Type === "D2.2") {
           arrD22.push(resp.data[i]["Title"]);
           arrD22_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[3].subfield[1].subNestedField[0].citations[1] = {title: arrD22, restofcit: arrD22_2};
         }
-        if (resp.data[i].Type == "D2.3") {
+        if (resp.data[i].Type === "D2.3") {
           arrD23.push(resp.data[i]["Title"]);
           arrD23_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[3].subfield[1].subNestedField[0].citations[2] = {title: arrD23, restofcit: arrD23_2};
         }
-        if (resp.data[i].Type == "D3.1") {
+        if (resp.data[i].Type === "D3.1") {
           arrD31.push(resp.data[i]["Title"]);
           arrD31_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[3].subfield[2].subNestedField[0].citations[0] = {title: arrD31, restofcit: arrD31_2};
         }
-        if (resp.data[i].Type == "D3.2") {
+        if (resp.data[i].Type === "D3.2") {
           arrD32.push(resp.data[i]["Title"]);
           arrD32_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[3].subfield[2].subNestedField[0].citations[1] = {title: arrD32, restofcit: arrD32_2};
         }
-        if (resp.data[i].Type == "D3.3") {
+        if (resp.data[i].Type === "D3.3") {
           arrD33.push(resp.data[i]["Title"]);
           arrD33_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[3].subfield[2].subNestedField[0].citations[2] = {title: arrD33, restofcit: arrD33_2};
         }
-        if (resp.data[i].Type == "D3.4") {
+        if (resp.data[i].Type === "D3.4") {
           arrD34.push(resp.data[i]["Title"]);
           arrD34_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[3].subfield[2].subNestedField[0].citations[3] = {title: arrD34, restofcit: arrD34_2};
         }
-        if (resp.data[i].Type == "D3.5") {
+        if (resp.data[i].Type === "D3.5") {
           arrD35.push(resp.data[i]["Title"]);
           arrD35_2.push(resp.data[i]["PublishingGroup"]+", "+resp.data[i]["Date"]+", "+resp.data[i]["Pages"]);
           field[3].subfield[2].subNestedField[0].citations[4] = {title: arrD35, restofcit: arrD35_2};
