@@ -2,27 +2,27 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import SubSimilarBrand from './SubSimilarBrand';
 
+const similarbrands = {
+    "1": {
+        "name": "",
+        "score": 0
+      },
+      "2": {
+        "name": "",
+        "score": 0
+      },
+      "3": {
+        "name": "",
+        "score": 0
+      },
+      "4": {
+        "name": "",
+        "score": 0
+      }
+}
+
 
 export default function SimilarBrand(props) {
-
-    const similarbrands = {
-        "1": {
-            "name": "",
-            "score": 0
-          },
-          "2": {
-            "name": "",
-            "score": 0
-          },
-          "3": {
-            "name": "",
-            "score": 0
-          },
-          "4": {
-            "name": "",
-            "score": 0
-          }
-    }
 
     const [SimilarBrand, setSimilarBrand] = useState(similarbrands);
 

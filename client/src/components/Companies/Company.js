@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, {useState, useLayoutEffect, useEffect} from 'react';
 
 import Grid from '@material-ui/core/Grid';
 import { useLocation } from 'react-router-dom';
@@ -14,6 +14,20 @@ import Scores from "./Scores/Scores";
 import BrandProfile from "./BrandProfile";
 import SimilarBrand from "./SimilarBrand";
 import News from "./News";
+
+const companyinfo = {
+    TotalScore: 0,
+    Category: "",
+    Description: "",
+    Logo: "",
+    Name: "",
+    SimilarCompany1: "",
+    SimilarCompany2: "",
+    SimilarCompany3: "",
+    SimilarCompany4: "",
+    Subsidiary: null,
+}
+
 
 const companyNews = [
     {
@@ -128,6 +142,37 @@ function Company({ match, location }) {
     const [citations, setCitations] = React.useState(companyCit);
     const { loading, setLoading } = useState(false);
     const [state, setState] = useState([])
+
+    /*
+    fetch data for BrandProfile in parent so that the first time rendering will have data
+    Uninitialized state used for conditional rendering
+    Because useEffect happens after rendering
+     */
+    const [companyDetails, setCompanyDetails] = useState();
+
+    //There are special characters inside company name, such as 'H&M'
+    let company_name = encodeURIComponent(companyName);
+    let url = "/api/v1/companybasic?company=" + company_name;
+
+    useEffect(() => {
+
+        axios.get(url)
+            .then((resp) => {
+                let data = companyinfo;
+                data["Category"] = resp.data["Category"];
+                data["Description"] = resp.data["Description"];
+                data["Logo"] = resp.data["Logo"];
+                data["Name"] = resp.data["Name"];
+                data["SimilarCompany1"] = resp.data["SimilarCompany1"];
+                data["SimilarCompany2"] = resp.data["SimilarCompany2"];
+                data["SimilarCompany3"] = resp.data["SimilarCompany3"];
+                data["SimilarCompany4"] = resp.data["SimilarCompany4"];
+                data["Subsidiary"] = resp.data["Subsidiary"];
+                data["TotalScore"] = resp.data['TotalScore'];
+                setCompanyDetails(data);
+        })
+
+    }, [companyName]);
 
 
     const handleCloseInfo = () => {
@@ -244,9 +289,11 @@ function Company({ match, location }) {
             <Grid container>
                 <Grid item xs={12} md={4}>
 
-                    {/*brand profile with companyName and info*/}
-                    <BrandProfile company = {companyName} />
-                    {/*test*/}
+                    {/*
+                        Conditional rendering:  render when the data is ready
+                     */}
+                    {companyDetails && <BrandProfile {...companyDetails} /> }
+
 
                 </Grid>
                 <Grid item xs={12} md={8}>
