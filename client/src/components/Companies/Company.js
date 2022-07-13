@@ -55,6 +55,18 @@ const companyCit = [
     }
 ]
 
+
+const similarbrands = {
+    A_name: "",
+    A_score: 0,
+    B_name: "",
+    B_score: 0,
+    C_name: "",
+    C_score: 0,
+    D_name: "",
+    D_score: 0,
+}
+
 /*
 function rand() {
     return Math.round(Math.random() * 20) - 10;
@@ -149,14 +161,14 @@ function Company({ match, location }) {
     Because useEffect happens after rendering
      */
     const [companyDetails, setCompanyDetails] = useState();
+    const [similarBrand, setSimilarBrand] = useState();
 
     //There are special characters inside company name, such as 'H&M'
     let company_name = encodeURIComponent(companyName);
-    let url = "/api/v1/companybasic?company=" + company_name;
 
     useEffect(() => {
 
-        axios.get(url)
+        axios.get("/api/v1/companybasic?company=" + company_name)
             .then((resp) => {
                 let data = companyinfo;
                 data["Category"] = resp.data["Category"];
@@ -174,6 +186,24 @@ function Company({ match, location }) {
 
     }, [companyName]);
 
+
+    // Effect for similarbrand
+    useEffect(() => {
+
+        axios.get("/api/v1/similarcompanies?company=" + company_name).
+        then((resp) => {
+            let data = similarbrands;
+            data["A_name"] = resp.data["1"].name;
+            data["A_score"] = resp.data["1"].score;
+            data["B_name"] = resp.data["2"].name;
+            data["B_score"] = resp.data["2"].score;
+            data["C_name"] = resp.data["3"].name;
+            data["C_score"] = resp.data["3"].score;
+            data["D_name"] = resp.data["4"].name;
+            data["D_score"] = resp.data["4"].score;
+            setSimilarBrand(data);
+        })
+    }, [companyName]);
 
     const handleCloseInfo = () => {
         setShowInfo(false)
@@ -318,8 +348,10 @@ function Company({ match, location }) {
                         {/*Political Association*/}
                         <PoliticalContribution company = {companyName}/>
 
-                        {/* Similar Brands */}
-                        <SimilarBrand company = {companyName}/>
+                        {/* Similar Brands
+                            Conditional rendering
+                        */}
+                        {similarBrand && <SimilarBrand {...similarBrand}/>}
                     </div>
                 </Grid>
             </Grid>
