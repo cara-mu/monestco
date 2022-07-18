@@ -181,6 +181,7 @@ const field = [
             popupText: "Efforts are made to ensure marketing campaigns promote diversity and product designs are inclusive to all sizes. ",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
+            totalScore: 6,
             texts: [
               { text: "a43 stuff" },
               { text: "a43 stuff" },
