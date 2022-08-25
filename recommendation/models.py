@@ -1,9 +1,11 @@
 from django.db import models
-
+from bulk_update_or_create import BulkUpdateOrCreateQuerySet
 # Create your models here.
 
 
 class Product(models.Model):
+    objects = BulkUpdateOrCreateQuerySet.as_manager()
+
     id = models.CharField(max_length=50, primary_key=True)
     title = models.CharField(max_length=100, blank=True)
     category = models.CharField(max_length=100, blank=True)

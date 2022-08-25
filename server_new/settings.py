@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'monest',
     'recommendation',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

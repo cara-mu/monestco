@@ -12,3 +12,5 @@ gunicorn
 django-heroku
 scikit-learn
 pandas
+django-extensions
+django-bulk-update-or-create
