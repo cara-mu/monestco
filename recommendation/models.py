@@ -14,5 +14,4 @@ class Product(models.Model):
     descr = models.CharField(max_length=1000, blank=True)
     url = models.URLField(max_length=300)
     image = models.URLField(max_length=300, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField()
