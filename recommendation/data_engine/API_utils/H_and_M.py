@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 import django
 import os
 
@@ -120,6 +121,7 @@ class HMDownloader(BaseDownloader):
                        color=self.append_colors(item['swatches']),
                        url=self.base + item['link'],
                        image=self.transform_image(item['image'][0]['src']),
+                       updated_at=datetime.now(timezone.utc).astimezone()
                        )
 
     def update_all_items(self):

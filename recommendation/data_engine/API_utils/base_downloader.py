@@ -99,7 +99,7 @@ class BaseDownloader:
         if self.save == 'DB':
             Product.objects.bulk_update_or_create(products,
                                                   update_fields=['title', 'category', 'price', 'color', 'descr',
-                                                                 'url', 'image'],
+                                                                 'url', 'image', 'updated_at'],
                                                   match_field='id')
             self.logger.info(f"{len(products)} items saved to database")
         elif self.save == 'File':
