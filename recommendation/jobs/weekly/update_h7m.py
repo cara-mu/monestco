@@ -1,5 +1,5 @@
 from django_extensions.management.jobs import BaseJob
-from ...data_engine.API_utils.H_and_M import HMDownloader
+from ...data_engine.API_utils.HM_Downloader import HMDownloader
 
 
 class Job(BaseJob):
@@ -7,5 +7,5 @@ class Job(BaseJob):
 
     def execute(self):
         # executing empty sample job
-        hm = HMDownloader()
-        hm.run()
+        downloader = HMDownloader()
+        downloader.run()
