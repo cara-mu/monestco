@@ -86,7 +86,8 @@ There is a base downloader class in **_~/recommendation/data_engine/base_downloa
 base abstract of all crawler. When developer crawlers for certain brand, you should inherit this
 base class.
 
-A working example of crawler for H&M could be found at **_~/recommendation/data_engine/H_and_M.py_**
+A working example of crawler for H&M could be found at 
+**_~/recommendation/data_engine/HM_Downloader.py_** or **_~/recommendation/data_engine/Uniqlo_Downloader.py_**
 
 ### Schedule Periodic Scraping Tasks
 
@@ -120,3 +121,4 @@ for message broker.
 ## Todo
 1. scheduled jobs to clear outdated data for products info
 2. implement crawlers for other brands
+3. refine data crawled and model

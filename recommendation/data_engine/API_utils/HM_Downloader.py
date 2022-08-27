@@ -139,7 +139,6 @@ class HMDownloader(BaseDownloader):
     def run(self):
         """
         run the downloader.
-        TBD:  task scheduling capabilities
         :return:
         """
         self.get_total_items()
@@ -147,5 +146,5 @@ class HMDownloader(BaseDownloader):
 
 
 if __name__ == "__main__":
-    hm = HMDownloader()
-    hm.run()
+    downloader = HMDownloader()
+    downloader.run()
