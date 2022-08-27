@@ -14,3 +14,4 @@ scikit-learn
 pandas
 django-extensions
 django-bulk-update-or-create
+requests
