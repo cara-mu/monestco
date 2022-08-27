@@ -1,13 +1,17 @@
 import requests
-
 from recommendation.data_engine.API_utils.base_downloader import BaseDownloader
+import django
+import os
+os.environ.setdefault(
+    'DJANGO_SETTINGS_MODULE', 'server_new.settings'
+)
+django.setup()
 
 
 class UniqloDownloader(BaseDownloader):
     """
     scraping downloader for Uniqlo
     """
-
     def __int__(self):
         """
         Initialization of UniqloDownloader
@@ -65,9 +69,7 @@ class UniqloDownloader(BaseDownloader):
         querystring = {"offset": f"{offset}",
                        "limit": f"{page_size}"}
 
-        payload = ""
-
-        req = requests.Request('GET', self.cata_list_endpoint, data=payload, params=querystring)
+        req = requests.Request('GET', self.cata_list_endpoint, data="", params=querystring)
         prepped = self.session.prepare_request(req)
         try:
             resp = self.session.send(prepped)

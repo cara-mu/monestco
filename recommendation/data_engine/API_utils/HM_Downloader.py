@@ -1,16 +1,14 @@
+from recommendation.data_engine.API_utils.base_downloader import BaseDownloader
+import requests
+import math
+from recommendation.models import Product
 from datetime import datetime, timezone
 import django
 import os
-
 os.environ.setdefault(
     'DJANGO_SETTINGS_MODULE', 'server_new.settings'
 )
 django.setup()
-from recommendation.models import Product
-
-from recommendation.data_engine.API_utils.base_downloader import BaseDownloader
-import requests
-import math
 
 
 class HMDownloader(BaseDownloader):

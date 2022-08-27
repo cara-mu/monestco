@@ -1,4 +1,3 @@
-import requests
 import django
 import os
 os.environ.setdefault(
@@ -7,12 +6,13 @@ os.environ.setdefault(
 django.setup()
 from recommendation.models import Product
 from django.core import serializers
+import requests
 import logging
 logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
 
-#fileHandler = logging.FileHandler("{0}/{1}.log".format(logPath, fileName))
-#fileHandler.setFormatter(logFormatter)
-#logger.addHandler(fileHandler)
+# fileHandler = logging.FileHandler("{0}/{1}.log".format(logPath, fileName))
+# fileHandler.setFormatter(logFormatter)
+# logger.addHandler(fileHandler)
 
 
 class BaseDownloader:
@@ -20,14 +20,16 @@ class BaseDownloader:
     Base downloader for all API based downloaders
     """
 
-    def __init__(self, brand, base_url, cata_list_endpoint, offset=0, page_size=36, save='DB'):
+    def __init__(self, brand: str, base_url: str, cata_list_endpoint: str,
+                 offset: int = 0, page_size: int = 36, save: str = 'DB') -> None:
         """
         Initialize downloader
-        :param total:  total items to download
-        :param endpoint:  API endpoint
-        :param method:  HTTP method to query catalog list
-        :param base:    base domain
-        :param save:    media used to save:  DB, or File
+        :param brand:  brand name
+        :param base_url:  base url for the brand
+        :param cata_list_endpoint:  API endpoint for catalog list page
+        :param offset:  offset of paganization,  starting from 0
+        :param page_size:    page size of paganization, default 36
+        :param save:    media used to save:  DB, or File, saving to DB by default
         """
 
         # initialize brand name, base_url, catalog_list url
