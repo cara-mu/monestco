@@ -15,7 +15,6 @@ class UniqloDownloader(BaseDownloader):
     def __int__(self):
         """
         Initialization of UniqloDownloader
-        :return:
         """
         super().__init__(brand='Uniqlo',
                          base_url="https://www.uniqlo.com/",

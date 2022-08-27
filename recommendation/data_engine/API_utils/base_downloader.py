@@ -1,3 +1,6 @@
+from django.core import serializers
+import requests
+import logging
 import django
 import os
 os.environ.setdefault(
@@ -5,9 +8,6 @@ os.environ.setdefault(
 )
 django.setup()
 from recommendation.models import Product
-from django.core import serializers
-import requests
-import logging
 logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
 
 # fileHandler = logging.FileHandler("{0}/{1}.log".format(logPath, fileName))
