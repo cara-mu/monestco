@@ -1,5 +1,8 @@
+import math
 import requests
 from recommendation.data_engine.API_utils.base_downloader import BaseDownloader
+from datetime import datetime, timezone
+from recommendation.models import Product
 import django
 import os
 os.environ.setdefault(
@@ -12,16 +15,15 @@ class UniqloDownloader(BaseDownloader):
     """
     scraping downloader for Uniqlo
     """
-    def __int__(self):
+    def __init__(self):
         """
-        Initialization of UniqloDownloader
+        Initialize downloader
         """
         super().__init__(brand='Uniqlo',
-                         base_url="https://www.uniqlo.com/",
+                         base_url="https://www.uniqlo.com",
                          cata_list_endpoint="https://www.uniqlo.com/ca/api/commerce/v3/en/products")
-
         self.logger.info(
-            f'Initializing UniqloDownloader with total = {self.total}, cata_endpoint = {self.cata_list_endpoint},'
+            f'Initializing HMDownloader with total = {self.total}, cata_endpoint = {self.cata_list_endpoint},'
             f'  base = {self.base}, save = {self.save}')
 
         self.session.headers = {
@@ -78,15 +80,68 @@ class UniqloDownloader(BaseDownloader):
             self.logger.info(e)
             return []
 
+    def update_all_items(self):
+        """
+        update all items
+        :return:
+        """
+        total_pages = math.ceil(self.total / self.page_size)
+        self.logger.info(f"total page to download: {total_pages}")
+        for i in range(total_pages):
+            products = []
+            res = self.get_category_list(i * self.page_size, self.page_size)
+            for item in res['result']['items']:
+                # time.sleep(1)
+                products.append(self.creat_product_model(item))
+            self.logger.info(f"page #{i + 1} / {total_pages} finished downloading, {len(products)} item retrieved")
+            self.create_or_update(products)
+
+
+    @staticmethod
+    def append_colors(colors):
+        color = ''
+        for item in colors:
+            color += item['name']
+            color += ','
+        return color
+
+    @staticmethod
+    def get_price(data: {}) -> float:
+        if data['base']:
+            return data['base']['value']
+        elif data['promo']:
+            return data['promo']['value']
+        else:
+            return 0
+
+    def creat_product_model(self, item):
+        """
+        construct Django model object
+        :param item:
+        :return:
+        """
+        return Product(id=self.generate_id(item['productId']),
+                       title=item['name'],
+                       category=item['genderName'] + item['name'],
+                       price=self.get_price(item['prices']),
+                       color=self.append_colors(item['colors']),
+                       url=self.base + '/ca/en/products/' + item['productId'],
+                       image=item['images']['main'][0]['url'],
+                       descr=item['longDescription'],
+                       updated_at=datetime.now(timezone.utc).astimezone()
+                       )
+
     def run(self):
         """
         run the downloader.
         :return:
         """
+        self.logger.info('Uniqlo Downloader Started!')
         self.get_total_items()
         self.update_all_items()
+        self.logger.info(f'Uniqlo Downloader Exited, {self.counter} items processed')
 
 
 if __name__ == "__main__":
     downloader = UniqloDownloader()
-    downloader.get_total_items()
+    downloader.run()

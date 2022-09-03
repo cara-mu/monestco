@@ -131,7 +131,7 @@ class HMDownloader(BaseDownloader):
             for item in res['products']:
                 # time.sleep(1)
                 products.append(self.creat_product_model(item))
-            self.logger.info(f"page #{i + 1} / {total_pages} finished downloading, {len(products)} item retrieved")
+            self.logger.info(f"page {i + 1} / {total_pages} finished downloading, {len(products)} item retrieved")
             self.create_or_update(products)
 
     def run(self):
@@ -139,8 +139,10 @@ class HMDownloader(BaseDownloader):
         run the downloader.
         :return:
         """
+        self.logger.info('HM Downloader Started!')
         self.get_total_items()
         self.update_all_items()
+        self.logger.info(f'HM Downloader Exited, {self.counter} items processed')
 
 
 if __name__ == "__main__":

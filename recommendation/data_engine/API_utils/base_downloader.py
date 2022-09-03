@@ -45,6 +45,9 @@ class BaseDownloader:
         # Save method
         self.save = save
 
+        # processed items count
+        self.counter = 0
+
         # logging setting
         self.logger = logging.getLogger('data_engine')
         self.logger.setLevel(logging.DEBUG)
@@ -103,12 +106,14 @@ class BaseDownloader:
                                                   update_fields=['title', 'category', 'price', 'color', 'descr',
                                                                  'url', 'image', 'updated_at'],
                                                   match_field='id')
+            self.counter += len(products)
             self.logger.info(f"{len(products)} items saved to database")
         elif self.save == 'File':
             with open("data.jsonl", "a") as out:
                 JsonlSerializer = serializers.get_serializer('jsonl')
                 jsonl_serializer = JsonlSerializer()
                 jsonl_serializer.serialize(products, stream=out)
+                self.counter += len(products)
                 self.logger.info(f"{len(products)} items saved to file")
         else:
             self.logger.error(f"invalid save type {self.save}")
