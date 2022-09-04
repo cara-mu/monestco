@@ -20,6 +20,7 @@ from monest.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('monest.urls')),
+    path('reco/', include('recommendation.urls')),
     path('/', index, name="index"),
     re_path(r'^(?:.*)/?$', index, name='index'),
 ]
