@@ -77,6 +77,95 @@ There are many way to input data to the database,  here are two:
 
 # Recommendation Engine
 
+## How to use it
+An API endpoint has been created to get recommendation results for a given apparel product.
+
+URL: **_/reco/v1/similar_products_**
+
+sample POST request:
+```json
+{
+      "product" : {
+        "id": "Test",
+        "title": "Satin Bridesmaid Dress",
+        "category": "Ladies_dresses_wrap",
+        "price": 67,
+        "color": "Black",
+        "url": "google.com",
+        "image": "google.com",
+        "descr": "great jean woman"
+      },
+      "conditions": {
+        "price": [10, 100],
+        "color": ["black", "red"]
+      }
+}
+```
+
+sample recommendation results:
+```json
+[
+    {
+        "title": "Satin Wrap-front Dress",
+        "category": "Ladies_dresses_wrap",
+        "price": 69.99,
+        "color": "Black,",
+        "descr": "",
+        "url": "https://www2.hm.com/en_ca/productpage.1040179001.html",
+        "image": "lp2.hm.com/hmgoepprod?set=source[/d4/4c/d44c74c9a37552dc0d2f6afa0917ef6838aa7a7b.jpg],origin[dam],category[],type[LOOKBOOK],res[m],hmver[1]&call=url[file:/product/style]"
+    },
+    {
+        "title": "Satin Wrap-front Dress",
+        "category": "Ladies_dresses_wrap",
+        "price": 37.99,
+        "color": "Black,",
+        "descr": "",
+        "url": "https://www2.hm.com/en_ca/productpage.1029017001.html",
+        "image": "lp2.hm.com/hmgoepprod?set=source[/7d/2c/7d2cd916916e7b40d123bff202c7e0435e2612c9.jpg],origin[dam],category[],type[LOOKBOOK],res[m],hmver[1]&call=url[file:/product/style]"
+    },
+    {
+        "title": "Satin Wrap-front Dress",
+        "category": "Ladies_dresses_wrap",
+        "price": 49.99,
+        "color": "Black,",
+        "descr": "",
+        "url": "https://www2.hm.com/en_ca/productpage.1031587001.html",
+        "image": "lp2.hm.com/hmgoepprod?set=source[/c8/a9/c8a9010004e66f97372c92ae39616a441ce532c3.jpg],origin[dam],category[],type[LOOKBOOK],res[m],hmver[1]&call=url[file:/product/style]"
+    },
+    {
+        "title": "Wrap Dress",
+        "category": "Ladies_dresses_wrap",
+        "price": 39.99,
+        "color": "Black,",
+        "descr": "",
+        "url": "https://www2.hm.com/en_ca/productpage.1058085002.html",
+        "image": "lp2.hm.com/hmgoepprod?set=source[/8b/5f/8b5fed79fd8219b6f3ac5ddcd2e2da276bdb448c.jpg],origin[dam],category[],type[LOOKBOOK],res[m],hmver[1]&call=url[file:/product/style]"
+    },
+    {
+        "title": "Tie-belt Satin Dress",
+        "category": "Ladies_dresses_wrap",
+        "price": 49.99,
+        "color": "Dusty rose,Black,",
+        "descr": "",
+        "url": "https://www2.hm.com/en_ca/productpage.1048879002.html",
+        "image": "lp2.hm.com/hmgoepprod?set=source[/da/54/da540a3be7103b3a088e726404c72c22ed0bcaed.jpg],origin[dam],category[],type[LOOKBOOK],res[m],hmver[1]&call=url[file:/product/style]"
+    }
+]
+```
+
+## How it works
+
+The recommendation engine comprises two parts:
+1. data retrieve
+   1. web crawlers to fetch apparel data from multiple sources
+   2. data transforming
+   3. database update
+2. recommendation engine
+   1. text vectorization
+   2. similarity computation
+   3. give recommendation
+
+
 ## Web crawler
 Monest leverages web scraping to fetch apparel products info to its database and gives
 recommendations based the dataset. 
@@ -121,4 +210,6 @@ for message broker.
 ## Todo
 1. scheduled jobs to clear outdated data for products info
 2. implement crawlers for other brands
-3. refine data crawled and model
+3. implement filtering logic in recommendation engine
+4. refine data crawler
+5. refine model
