@@ -213,3 +213,5 @@ for message broker.
 3. implement filtering logic in recommendation engine
 4. refine data crawler
 5. refine model
+   1. refine vectorization method of words/text
+   2. add image based recommendation to the process
